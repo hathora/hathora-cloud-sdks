@@ -1,0 +1,22 @@
+{
+  "name": "hathora-cloud-sdks",
+  "version": "1.0.0",
+  "description": "Parent project for Hathora Cloud SDKs in all languages",
+  "main": "index.js",
+  "scripts": {
+    "generate": "openapi-generator-cli generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hathora/hathora-cloud-sdks.git"
+  },
+  "author": "Hathora",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hathora/hathora-cloud-sdks/issues"
+  },
+  "homepage": "https://github.com/hathora/hathora-cloud-sdks#readme",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.6.0"
+  }
+}

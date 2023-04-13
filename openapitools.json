@@ -1,0 +1,46 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "6.5.0",
+    "generators": {
+      "java": {
+        "generatorName": "java",
+        "output": "clients/java",
+        "inputSpec": "swagger.json",
+        "additionalProperties": {
+          "artifactVersion": "0.0.4",
+          "artifactId": "hathora-cloud-sdk",
+          "groupId": "com.hathora",
+          "apiPackage": "com.hathora.client.api",
+          "invokerPackage": "com.hathora.client",
+          "modelPackage": "com.hathora.client.model",
+          "artifactDescription": "SDK to interact with Hathora Cloud",
+          "artifactUrl": "https://github.com/hathora/builder",
+          "disallowAdditionalPropertiesIfNotPresent": false,
+          "developerEmail": "contact@hathora.dev",
+          "developerName": "Hathora",
+          "developerOrganization": "Hathora",
+          "developerOrganizationUrl": "https://hathora.dev",
+          "hideGenerationTimestamp": true,
+          "licenseName": "MIT",
+          "licenseUrl": "https://opensource.org/license/mit/",
+          "scmConnection": "scm:git:git@github.com:hathora/builder.git",
+          "scmDeveloperConnection": "scm:git:git@github.com:hathora/builder.git",
+          "scmUrl": "https://github.com/hathora/builder"
+        }
+      },
+      "typescript": {
+        "generatorName": "typescript-fetch",
+        "output": "clients/typescript",
+        "inputSpec": "swagger.json",
+        "additionalProperties": {
+          "npmName": "hathora-cloud-sdk",
+          "npmVersion": "0.0.4",
+          "supportsES6": true,
+          "withInterfaces": true
+        }
+      }
+    }
+  }
+}
