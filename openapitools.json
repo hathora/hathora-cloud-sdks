@@ -7,10 +7,9 @@
     "generators": {
       "java": {
         "generatorName": "java",
-        "output": "clients/java",
+        "output": "java",
         "inputSpec": "swagger.json",
         "additionalProperties": {
-          "artifactVersion": "0.0.4",
           "artifactId": "hathora-cloud-sdk",
           "groupId": "com.hathora",
           "apiPackage": "com.hathora.client.api",
@@ -33,7 +32,7 @@
       },
       "typescript": {
         "generatorName": "typescript-fetch",
-        "output": "clients/typescript",
+        "output": "typescript",
         "inputSpec": "swagger.json",
         "additionalProperties": {
           "npmName": "hathora-cloud-sdk",

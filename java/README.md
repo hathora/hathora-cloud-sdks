@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.hathora</groupId>
   <artifactId>hathora-cloud-sdk</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.hathora:hathora-cloud-sdk:0.0.4"
+     implementation "com.hathora:hathora-cloud-sdk:0.0.1"
   }
 ```
 
@@ -69,7 +69,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/hathora-cloud-sdk-0.0.4.jar`
+* `target/hathora-cloud-sdk-0.0.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
