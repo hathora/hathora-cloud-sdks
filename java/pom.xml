@@ -5,13 +5,13 @@
     <artifactId>hathora-cloud-sdk</artifactId>
     <packaging>jar</packaging>
     <name>hathora-cloud-sdk</name>
-    <version>0.0.7</version>
-    <url>https://github.com/hathora/builder</url>
+    <version>0.1.0</version>
+    <url>https://github.com/hathora/hathora-cloud-sdks</url>
     <description>SDK to interact with Hathora Cloud</description>
     <scm>
-        <connection>scm:git:git@github.com:hathora/builder.git</connection>
-        <developerConnection>scm:git:git@github.com:hathora/builder.git</developerConnection>
-        <url>https://github.com/hathora/builder</url>
+        <connection>scm:git:git@github.com:hathora/hathora-cloud-sdks.git</connection>
+        <developerConnection>scm:git:git@github.com:hathora/hathora-cloud-sdks.git</developerConnection>
+        <url>https://github.com/hathora/hathora-cloud-sdks</url>
     </scm>
 
     <licenses>
