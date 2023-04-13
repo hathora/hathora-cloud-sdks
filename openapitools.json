@@ -36,7 +36,6 @@
         "inputSpec": "swagger.json",
         "additionalProperties": {
           "npmName": "hathora-cloud-sdk",
-          "npmVersion": "0.0.4",
           "supportsES6": true,
           "withInterfaces": true
         }

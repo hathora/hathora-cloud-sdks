@@ -45,7 +45,6 @@ docs/RoomV1Api.md
 docs/SetLobbyStateRequest.md
 docs/StartingConnectionInfo.md
 docs/TransportType.md
-src/main/AndroidManifest.xml
 src/main/java/com/hathora/client/ApiCallback.java
 src/main/java/com/hathora/client/ApiClient.java
 src/main/java/com/hathora/client/ApiException.java

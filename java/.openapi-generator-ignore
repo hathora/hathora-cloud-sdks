@@ -24,7 +24,7 @@
 
 gradle/
 .github/
-java/src/test/
+src/test/
 pom.xml
 build.gradle
 build.sbt
@@ -35,4 +35,4 @@ gradlew.bat
 settings.gradle
 .travis.yml
 .gitignore
-java/src/main/AndroidManifest.xml
+src/main/AndroidManifest.xml

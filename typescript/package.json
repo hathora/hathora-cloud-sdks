@@ -1,6 +1,6 @@
 {
   "name": "hathora-cloud-sdk",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "OpenAPI client for hathora-cloud-sdk",
   "author": "OpenAPI-Generator",
   "repository": {
