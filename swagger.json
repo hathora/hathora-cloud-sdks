@@ -3271,7 +3271,10 @@
 	},
 	"servers": [
 		{
-			"url": "https://api.hathora.dev/"
+			"url": "https://api.hathora.dev"
+		},
+		{
+			"url": "/"
 		}
 	]
 }

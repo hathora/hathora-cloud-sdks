@@ -66,6 +66,11 @@ public class ApiClient {
       "https://api.hathora.dev",
       "No description provided",
       new HashMap<String, ServerVariable>()
+    ),
+    new ServerConfiguration(
+      "",
+      "No description provided",
+      new HashMap<String, ServerVariable>()
     )
   ));
     protected Integer serverIndex = 0;

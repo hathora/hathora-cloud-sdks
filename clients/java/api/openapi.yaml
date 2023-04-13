@@ -4,7 +4,8 @@ info:
   title: Hathora Cloud API
   version: 0.0.1
 servers:
-- url: https://api.hathora.dev/
+- url: https://api.hathora.dev
+- url: /
 paths:
   /apps/v1/list:
     get:

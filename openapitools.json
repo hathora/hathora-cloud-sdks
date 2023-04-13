@@ -3,6 +3,7 @@
   "spaces": 2,
   "generator-cli": {
     "version": "6.5.0",
+    "repository": "https://github.com/hathora/hathora-cloud-sdks",
     "generators": {
       "java": {
         "generatorName": "java",
@@ -16,7 +17,7 @@
           "invokerPackage": "com.hathora.client",
           "modelPackage": "com.hathora.client.model",
           "artifactDescription": "SDK to interact with Hathora Cloud",
-          "artifactUrl": "https://github.com/hathora/builder",
+          "artifactUrl": "https://github.com/hathora/hathora-cloud-sdks",
           "disallowAdditionalPropertiesIfNotPresent": false,
           "developerEmail": "contact@hathora.dev",
           "developerName": "Hathora",
@@ -25,9 +26,9 @@
           "hideGenerationTimestamp": true,
           "licenseName": "MIT",
           "licenseUrl": "https://opensource.org/license/mit/",
-          "scmConnection": "scm:git:git@github.com:hathora/builder.git",
-          "scmDeveloperConnection": "scm:git:git@github.com:hathora/builder.git",
-          "scmUrl": "https://github.com/hathora/builder"
+          "scmConnection": "scm:git:git@github.com:hathora/hathora-cloud-sdks.git",
+          "scmDeveloperConnection": "scm:git:git@github.com:hathora/hathora-cloud-sdks.git",
+          "scmUrl": "https://github.com/hathora/hathora-cloud-sdks"
         }
       },
       "typescript": {
