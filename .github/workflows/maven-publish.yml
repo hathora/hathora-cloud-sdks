@@ -28,11 +28,8 @@ jobs:
         run: |
           mvn versions:set -DnewVersion=$(git describe --tags)
 
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
-
       - name: Publish to Apache Maven Central
-        run: mvn deploy
+        run: mvn -B deploy
         env:
           MAVEN_USERNAME: dsiddharth
           MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
