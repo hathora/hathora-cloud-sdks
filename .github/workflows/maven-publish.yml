@@ -1,5 +1,8 @@
 name: Maven Publish
 
+on:
+  push:
+
 defaults:
   run:
     working-directory: java
