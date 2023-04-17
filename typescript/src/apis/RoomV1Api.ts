@@ -85,7 +85,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    createRoom(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createRoom(appId: string, createRoomRequest: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
@@ -99,7 +99,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    destroyRoom(requestParameters: DestroyRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    destroyRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * 
@@ -113,7 +113,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    getActiveRoomsForProcess(requestParameters: GetActiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
+    getActiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
 
     /**
      * 
@@ -127,7 +127,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    getConnectionInfo(requestParameters: GetConnectionInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo>;
+    getConnectionInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo>;
 
     /**
      * 
@@ -141,7 +141,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    getInactiveRoomsForProcess(requestParameters: GetInactiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
+    getInactiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
 
     /**
      * 
@@ -155,7 +155,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    getRoomInfo(requestParameters: GetRoomInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room>;
+    getRoomInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room>;
 
     /**
      * 
@@ -169,7 +169,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    suspendRoom(requestParameters: SuspendRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -220,8 +220,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async createRoom(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createRoomRaw(requestParameters, initOverrides);
+    async createRoom(appId: string, createRoomRequest: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createRoomRaw({ appId: appId, createRoomRequest: createRoomRequest }, initOverrides);
         return await response.value();
     }
 
@@ -260,8 +260,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async destroyRoom(requestParameters: DestroyRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.destroyRoomRaw(requestParameters, initOverrides);
+    async destroyRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.destroyRoomRaw({ appId: appId, roomId: roomId }, initOverrides);
     }
 
     /**
@@ -299,8 +299,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getActiveRoomsForProcess(requestParameters: GetActiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
-        const response = await this.getActiveRoomsForProcessRaw(requestParameters, initOverrides);
+    async getActiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
+        const response = await this.getActiveRoomsForProcessRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
     }
 
@@ -331,8 +331,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getConnectionInfo(requestParameters: GetConnectionInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo> {
-        const response = await this.getConnectionInfoRaw(requestParameters, initOverrides);
+    async getConnectionInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo> {
+        const response = await this.getConnectionInfoRaw({ appId: appId, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -371,8 +371,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getInactiveRoomsForProcess(requestParameters: GetInactiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
-        const response = await this.getInactiveRoomsForProcessRaw(requestParameters, initOverrides);
+    async getInactiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
+        const response = await this.getInactiveRoomsForProcessRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
     }
 
@@ -411,8 +411,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getRoomInfo(requestParameters: GetRoomInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room> {
-        const response = await this.getRoomInfoRaw(requestParameters, initOverrides);
+    async getRoomInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room> {
+        const response = await this.getRoomInfoRaw({ appId: appId, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -451,8 +451,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async suspendRoom(requestParameters: SuspendRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.suspendRoomRaw(requestParameters, initOverrides);
+    async suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.suspendRoomRaw({ appId: appId, roomId: roomId }, initOverrides);
     }
 
 }

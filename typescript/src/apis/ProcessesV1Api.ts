@@ -62,7 +62,7 @@ export interface ProcessesV1ApiInterface {
 
     /**
      */
-    getProcessInfo(requestParameters: GetProcessInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Process>;
+    getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Process>;
 
     /**
      * 
@@ -76,7 +76,7 @@ export interface ProcessesV1ApiInterface {
 
     /**
      */
-    getRunningProcesses(requestParameters: GetRunningProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProcessWithRooms>>;
+    getRunningProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProcessWithRooms>>;
 
     /**
      * 
@@ -90,7 +90,7 @@ export interface ProcessesV1ApiInterface {
 
     /**
      */
-    getStoppedProcesses(requestParameters: GetStoppedProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Process>>;
+    getStoppedProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Process>>;
 
 }
 
@@ -134,8 +134,8 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
 
     /**
      */
-    async getProcessInfo(requestParameters: GetProcessInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Process> {
-        const response = await this.getProcessInfoRaw(requestParameters, initOverrides);
+    async getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Process> {
+        const response = await this.getProcessInfoRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
     }
 
@@ -174,8 +174,8 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
 
     /**
      */
-    async getRunningProcesses(requestParameters: GetRunningProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProcessWithRooms>> {
-        const response = await this.getRunningProcessesRaw(requestParameters, initOverrides);
+    async getRunningProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProcessWithRooms>> {
+        const response = await this.getRunningProcessesRaw({ appId: appId, region: region }, initOverrides);
         return await response.value();
     }
 
@@ -214,8 +214,8 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
 
     /**
      */
-    async getStoppedProcesses(requestParameters: GetStoppedProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Process>> {
-        const response = await this.getStoppedProcessesRaw(requestParameters, initOverrides);
+    async getStoppedProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Process>> {
+        const response = await this.getStoppedProcessesRaw({ appId: appId, region: region }, initOverrides);
         return await response.value();
     }
 

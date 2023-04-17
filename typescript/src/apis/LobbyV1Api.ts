@@ -67,7 +67,7 @@ export interface LobbyV1ApiInterface {
 
     /**
      */
-    createPrivateLobbyDeprecated(requestParameters: CreatePrivateLobbyDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createPrivateLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
@@ -83,7 +83,7 @@ export interface LobbyV1ApiInterface {
 
     /**
      */
-    createPublicLobbyDeprecated(requestParameters: CreatePublicLobbyDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createPublicLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
@@ -99,7 +99,7 @@ export interface LobbyV1ApiInterface {
 
     /**
      */
-    listActivePublicLobbiesDeprecated(requestParameters: ListActivePublicLobbiesDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
+    listActivePublicLobbiesDeprecated(appId: string, authorization: string, local?: boolean, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
 
 }
 
@@ -151,8 +151,8 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
     /**
      */
-    async createPrivateLobbyDeprecated(requestParameters: CreatePrivateLobbyDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createPrivateLobbyDeprecatedRaw(requestParameters, initOverrides);
+    async createPrivateLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createPrivateLobbyDeprecatedRaw({ appId: appId, authorization: authorization, region: region, local: local }, initOverrides);
         return await response.value();
     }
 
@@ -199,8 +199,8 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
     /**
      */
-    async createPublicLobbyDeprecated(requestParameters: CreatePublicLobbyDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createPublicLobbyDeprecatedRaw(requestParameters, initOverrides);
+    async createPublicLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createPublicLobbyDeprecatedRaw({ appId: appId, authorization: authorization, region: region, local: local }, initOverrides);
         return await response.value();
     }
 
@@ -243,8 +243,8 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
     /**
      */
-    async listActivePublicLobbiesDeprecated(requestParameters: ListActivePublicLobbiesDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
-        const response = await this.listActivePublicLobbiesDeprecatedRaw(requestParameters, initOverrides);
+    async listActivePublicLobbiesDeprecated(appId: string, authorization: string, local?: boolean, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
+        const response = await this.listActivePublicLobbiesDeprecatedRaw({ appId: appId, authorization: authorization, local: local, region: region }, initOverrides);
         return await response.value();
     }
 

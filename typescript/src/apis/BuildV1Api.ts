@@ -64,7 +64,7 @@ export interface BuildV1ApiInterface {
 
     /**
      */
-    createBuild(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
+    createBuild(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
 
     /**
      * 
@@ -78,7 +78,7 @@ export interface BuildV1ApiInterface {
 
     /**
      */
-    deleteBuild(requestParameters: DeleteBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    deleteBuild(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * 
@@ -92,7 +92,7 @@ export interface BuildV1ApiInterface {
 
     /**
      */
-    getBuildInfo(requestParameters: GetBuildInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
+    getBuildInfo(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
 
     /**
      * 
@@ -105,7 +105,7 @@ export interface BuildV1ApiInterface {
 
     /**
      */
-    getBuilds(requestParameters: GetBuildsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>>;
+    getBuilds(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>>;
 
     /**
      * 
@@ -120,7 +120,7 @@ export interface BuildV1ApiInterface {
 
     /**
      */
-    runBuild(requestParameters: RunBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    runBuild(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
 }
 
@@ -160,8 +160,8 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
     /**
      */
-    async createBuild(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
-        const response = await this.createBuildRaw(requestParameters, initOverrides);
+    async createBuild(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
+        const response = await this.createBuildRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 
@@ -200,8 +200,8 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
     /**
      */
-    async deleteBuild(requestParameters: DeleteBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deleteBuildRaw(requestParameters, initOverrides);
+    async deleteBuild(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteBuildRaw({ appId: appId, buildId: buildId }, initOverrides);
     }
 
     /**
@@ -239,8 +239,8 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
     /**
      */
-    async getBuildInfo(requestParameters: GetBuildInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
-        const response = await this.getBuildInfoRaw(requestParameters, initOverrides);
+    async getBuildInfo(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
+        const response = await this.getBuildInfoRaw({ appId: appId, buildId: buildId }, initOverrides);
         return await response.value();
     }
 
@@ -275,8 +275,8 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
     /**
      */
-    async getBuilds(requestParameters: GetBuildsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>> {
-        const response = await this.getBuildsRaw(requestParameters, initOverrides);
+    async getBuilds(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>> {
+        const response = await this.getBuildsRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 
@@ -344,8 +344,8 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
     /**
      */
-    async runBuild(requestParameters: RunBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.runBuildRaw(requestParameters, initOverrides);
+    async runBuild(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.runBuildRaw({ appId: appId, buildId: buildId, file: file }, initOverrides);
         return await response.value();
     }
 

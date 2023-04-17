@@ -64,7 +64,7 @@ export interface LogV1ApiInterface {
 
     /**
      */
-    getLogsForApp(requestParameters: GetLogsForAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    getLogsForApp(appId: string, follow?: boolean, tailLines?: number, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
@@ -80,7 +80,7 @@ export interface LogV1ApiInterface {
 
     /**
      */
-    getLogsForDeployment(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 
     /**
      * 
@@ -96,7 +96,7 @@ export interface LogV1ApiInterface {
 
     /**
      */
-    getLogsForProcess(requestParameters: GetLogsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    getLogsForProcess(appId: string, processId: string, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
 }
 
@@ -152,8 +152,8 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
     /**
      */
-    async getLogsForApp(requestParameters: GetLogsForAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.getLogsForAppRaw(requestParameters, initOverrides);
+    async getLogsForApp(appId: string, follow?: boolean, tailLines?: number, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.getLogsForAppRaw({ appId: appId, follow: follow, tailLines: tailLines, region: region }, initOverrides);
         return await response.value();
     }
 
@@ -204,8 +204,8 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
     /**
      */
-    async getLogsForDeployment(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.getLogsForDeploymentRaw(requestParameters, initOverrides);
+    async getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.getLogsForDeploymentRaw({ appId: appId, deploymentId: deploymentId, follow: follow, tailLines: tailLines }, initOverrides);
         return await response.value();
     }
 
@@ -256,8 +256,8 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
     /**
      */
-    async getLogsForProcess(requestParameters: GetLogsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.getLogsForProcessRaw(requestParameters, initOverrides);
+    async getLogsForProcess(appId: string, processId: string, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.getLogsForProcessRaw({ appId: appId, processId: processId, follow: follow, tailLines: tailLines }, initOverrides);
         return await response.value();
     }
 

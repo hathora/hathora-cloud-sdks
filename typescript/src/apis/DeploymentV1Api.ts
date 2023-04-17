@@ -60,7 +60,7 @@ export interface DeploymentV1ApiInterface {
 
     /**
      */
-    createDeployment(requestParameters: CreateDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
+    createDeployment(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
     /**
      * 
@@ -74,7 +74,7 @@ export interface DeploymentV1ApiInterface {
 
     /**
      */
-    getDeploymentInfo(requestParameters: GetDeploymentInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
+    getDeploymentInfo(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
     /**
      * 
@@ -87,7 +87,7 @@ export interface DeploymentV1ApiInterface {
 
     /**
      */
-    getDeployments(requestParameters: GetDeploymentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>>;
+    getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>>;
 
 }
 
@@ -138,8 +138,8 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
 
     /**
      */
-    async createDeployment(requestParameters: CreateDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
-        const response = await this.createDeploymentRaw(requestParameters, initOverrides);
+    async createDeployment(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
+        const response = await this.createDeploymentRaw({ appId: appId, buildId: buildId, deploymentConfig: deploymentConfig }, initOverrides);
         return await response.value();
     }
 
@@ -178,8 +178,8 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
 
     /**
      */
-    async getDeploymentInfo(requestParameters: GetDeploymentInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
-        const response = await this.getDeploymentInfoRaw(requestParameters, initOverrides);
+    async getDeploymentInfo(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
+        const response = await this.getDeploymentInfoRaw({ appId: appId, deploymentId: deploymentId }, initOverrides);
         return await response.value();
     }
 
@@ -214,8 +214,8 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
 
     /**
      */
-    async getDeployments(requestParameters: GetDeploymentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>> {
-        const response = await this.getDeploymentsRaw(requestParameters, initOverrides);
+    async getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>> {
+        const response = await this.getDeploymentsRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 

@@ -57,7 +57,7 @@ export interface MetricsV1ApiInterface {
 
     /**
      */
-    getMetrics(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RecordPartialMetricNameMetricValueArray>;
+    getMetrics(appId: string, processId: string, metrics?: Array<MetricName>, end?: number, start?: number, step?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RecordPartialMetricNameMetricValueArray>;
 
 }
 
@@ -117,8 +117,8 @@ export class MetricsV1Api extends runtime.BaseAPI implements MetricsV1ApiInterfa
 
     /**
      */
-    async getMetrics(requestParameters: GetMetricsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RecordPartialMetricNameMetricValueArray> {
-        const response = await this.getMetricsRaw(requestParameters, initOverrides);
+    async getMetrics(appId: string, processId: string, metrics?: Array<MetricName>, end?: number, start?: number, step?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RecordPartialMetricNameMetricValueArray> {
+        const response = await this.getMetricsRaw({ appId: appId, processId: processId, metrics: metrics, end: end, start: start, step: step }, initOverrides);
         return await response.value();
     }
 

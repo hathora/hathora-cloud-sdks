@@ -82,7 +82,7 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    createPrivateLobby(requestParameters: CreatePrivateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    createPrivateLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
      * 
@@ -98,7 +98,7 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    createPublicLobby(requestParameters: CreatePublicLobbyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    createPublicLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
      * 
@@ -112,7 +112,7 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    getLobbyInfo(requestParameters: GetLobbyInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    getLobbyInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
      * 
@@ -126,7 +126,7 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    listActivePublicLobbies(requestParameters: ListActivePublicLobbiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
+    listActivePublicLobbies(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
 
     /**
      * 
@@ -141,7 +141,7 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    setLobbyState(requestParameters: SetLobbyStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    setLobbyState(appId: string, roomId: string, setLobbyStateRequest: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
 }
 
@@ -192,8 +192,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async createPrivateLobby(requestParameters: CreatePrivateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.createPrivateLobbyRaw(requestParameters, initOverrides);
+    async createPrivateLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.createPrivateLobbyRaw({ appId: appId, authorization: authorization, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -239,8 +239,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async createPublicLobby(requestParameters: CreatePublicLobbyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.createPublicLobbyRaw(requestParameters, initOverrides);
+    async createPublicLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.createPublicLobbyRaw({ appId: appId, authorization: authorization, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -271,8 +271,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async getLobbyInfo(requestParameters: GetLobbyInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.getLobbyInfoRaw(requestParameters, initOverrides);
+    async getLobbyInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.getLobbyInfoRaw({ appId: appId, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -303,8 +303,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async listActivePublicLobbies(requestParameters: ListActivePublicLobbiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
-        const response = await this.listActivePublicLobbiesRaw(requestParameters, initOverrides);
+    async listActivePublicLobbies(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
+        const response = await this.listActivePublicLobbiesRaw({ appId: appId, region: region }, initOverrides);
         return await response.value();
     }
 
@@ -350,8 +350,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async setLobbyState(requestParameters: SetLobbyStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.setLobbyStateRaw(requestParameters, initOverrides);
+    async setLobbyState(appId: string, roomId: string, setLobbyStateRequest: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.setLobbyStateRaw({ appId: appId, roomId: roomId, setLobbyStateRequest: setLobbyStateRequest }, initOverrides);
         return await response.value();
     }
 

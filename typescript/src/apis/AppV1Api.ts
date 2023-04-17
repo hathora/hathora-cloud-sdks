@@ -63,7 +63,7 @@ export interface AppV1ApiInterface {
 
     /**
      */
-    createApp(requestParameters: CreateAppOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
+    createApp(createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
 
     /**
      * 
@@ -76,7 +76,7 @@ export interface AppV1ApiInterface {
 
     /**
      */
-    deleteApp(requestParameters: DeleteAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    deleteApp(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * 
@@ -89,7 +89,7 @@ export interface AppV1ApiInterface {
 
     /**
      */
-    getAppInfo(requestParameters: GetAppInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
+    getAppInfo(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
 
     /**
      * 
@@ -115,7 +115,7 @@ export interface AppV1ApiInterface {
 
     /**
      */
-    updateApp(requestParameters: UpdateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
+    updateApp(appId: string, createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
 
 }
 
@@ -158,8 +158,8 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
     /**
      */
-    async createApp(requestParameters: CreateAppOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
-        const response = await this.createAppRaw(requestParameters, initOverrides);
+    async createApp(createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
+        const response = await this.createAppRaw({ createAppRequest: createAppRequest }, initOverrides);
         return await response.value();
     }
 
@@ -194,8 +194,8 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
     /**
      */
-    async deleteApp(requestParameters: DeleteAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deleteAppRaw(requestParameters, initOverrides);
+    async deleteApp(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteAppRaw({ appId: appId }, initOverrides);
     }
 
     /**
@@ -229,8 +229,8 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
     /**
      */
-    async getAppInfo(requestParameters: GetAppInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
-        const response = await this.getAppInfoRaw(requestParameters, initOverrides);
+    async getAppInfo(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
+        const response = await this.getAppInfoRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 
@@ -304,8 +304,8 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
     /**
      */
-    async updateApp(requestParameters: UpdateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
-        const response = await this.updateAppRaw(requestParameters, initOverrides);
+    async updateApp(appId: string, createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
+        const response = await this.updateAppRaw({ appId: appId, createAppRequest: createAppRequest }, initOverrides);
         return await response.value();
     }
 

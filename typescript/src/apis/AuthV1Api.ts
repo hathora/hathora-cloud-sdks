@@ -60,7 +60,7 @@ export interface AuthV1ApiInterface {
 
     /**
      */
-    loginAnonymous(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
+    loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
 
     /**
      * 
@@ -74,7 +74,7 @@ export interface AuthV1ApiInterface {
 
     /**
      */
-    loginGoogle(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
+    loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
 
     /**
      * 
@@ -88,7 +88,7 @@ export interface AuthV1ApiInterface {
 
     /**
      */
-    loginNickname(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
+    loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
 
 }
 
@@ -120,8 +120,8 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
 
     /**
      */
-    async loginAnonymous(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
-        const response = await this.loginAnonymousRaw(requestParameters, initOverrides);
+    async loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
+        const response = await this.loginAnonymousRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 
@@ -155,8 +155,8 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
 
     /**
      */
-    async loginGoogle(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
-        const response = await this.loginGoogleRaw(requestParameters, initOverrides);
+    async loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
+        const response = await this.loginGoogleRaw({ appId: appId, loginGoogleRequest: loginGoogleRequest }, initOverrides);
         return await response.value();
     }
 
@@ -190,8 +190,8 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
 
     /**
      */
-    async loginNickname(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
-        const response = await this.loginNicknameRaw(requestParameters, initOverrides);
+    async loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
+        const response = await this.loginNicknameRaw({ appId: appId, loginNicknameRequest: loginNicknameRequest }, initOverrides);
         return await response.value();
     }
 

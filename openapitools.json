@@ -37,7 +37,8 @@
         "additionalProperties": {
           "npmName": "hathora-cloud-sdk",
           "supportsES6": true,
-          "withInterfaces": true
+          "withInterfaces": true,
+          "useSingleRequestParameter": false
         }
       }
     }
