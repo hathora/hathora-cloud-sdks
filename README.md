@@ -4,4 +4,4 @@ Welcome to the official repo for the Hathora Cloud SDKs! An explanation of the c
 
 ## Contributions
 
-Contributions to the `hathora-cloud-sdks` are welcome! If you encounter a bug, have a feature request, or would like to contribute code, please submit an issue or pull request on the GitHub repository.
+Contributions are welcome! If you encounter a bug, have a feature request, or would like to contribute code, please submit an issue or pull request on this GitHub repository.
