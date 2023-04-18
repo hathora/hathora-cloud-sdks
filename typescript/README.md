@@ -1,45 +1,31 @@
 ## @hathora/hathora-cloud-sdk@0.0.1
 
-This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
+This package contains the typescript SDK for [Hathora Cloud](https://hathora.dev/).
 
-Environment
-* Node.js
-* Webpack
-* Browserify
+### Installation
 
-Language level
-* ES5 - you must have a Promises/A+ library installed
-* ES6
-
-Module system
-* CommonJS
-* ES6 module system
-
-It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
-
-### Building
-
-To build and compile the typescript sources to javascript use:
-```
-npm install
-npm run build
-```
-
-### Publishing
-
-First build the package then run ```npm publish```
-
-### Consuming
-
-navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
+Using npm:
 
 ```
-npm install @hathora/hathora-cloud-sdk@0.0.1 --save
+npm install @hathora/hathora-cloud-sdk
 ```
 
-_unPublished (not recommended):_
+Using yarn:
 
 ```
-npm install PATH_TO_GENERATED_PACKAGE --save
+yarn add @hathora/hathora-cloud-sdk
+```
+
+Once installed, you can import the package in your code like this:
+
+```
+const HathoraCloud = require('@hathora/hathora-cloud-sdk');
+```
+
+or
+
+```
+import HathoraCloud from "@hathora/hathora-cloud-sdk";
+```
+
+That's it! You are now ready to use the package in your project.
