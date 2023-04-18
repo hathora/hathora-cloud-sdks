@@ -333,7 +333,8 @@
 						"type": "string",
 						"enum": [
 							"private",
-							"public"
+							"public",
+							"local"
 						]
 					},
 					"region": {
@@ -392,7 +393,13 @@
 						},
 						"type": "array"
 					},
-					"egress": {
+					"rate_egress": {
+						"items": {
+							"$ref": "#/components/schemas/MetricValue"
+						},
+						"type": "array"
+					},
+					"total_egress": {
 						"items": {
 							"$ref": "#/components/schemas/MetricValue"
 						},
@@ -410,7 +417,8 @@
 				"enum": [
 					"cpu",
 					"memory",
-					"egress"
+					"rate_egress",
+					"total_egress"
 				]
 			},
 			"Process": {
@@ -743,8 +751,8 @@
 			"post": {
 				"operationId": "CreateApp",
 				"responses": {
-					"200": {
-						"description": "Ok",
+					"201": {
+						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -841,6 +849,16 @@
 						}
 					},
 					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"422": {
 						"description": "",
 						"content": {
 							"application/json": {
@@ -1313,8 +1331,8 @@
 			"post": {
 				"operationId": "CreateBuild",
 				"responses": {
-					"200": {
-						"description": "Ok",
+					"201": {
+						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1628,8 +1646,8 @@
 			"post": {
 				"operationId": "CreateDeployment",
 				"responses": {
-					"200": {
-						"description": "Ok",
+					"201": {
+						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -1765,6 +1783,7 @@
 				"tags": [
 					"LobbyV1"
 				],
+				"deprecated": true,
 				"security": [],
 				"parameters": [
 					{
@@ -1861,6 +1880,7 @@
 				"tags": [
 					"LobbyV1"
 				],
+				"deprecated": true,
 				"security": [],
 				"parameters": [
 					{
@@ -1940,6 +1960,7 @@
 				"tags": [
 					"LobbyV1"
 				],
+				"deprecated": true,
 				"security": [],
 				"parameters": [
 					{
@@ -1982,8 +2003,8 @@
 			"post": {
 				"operationId": "CreatePrivateLobby",
 				"responses": {
-					"200": {
-						"description": "Ok",
+					"201": {
+						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -2092,8 +2113,118 @@
 			"post": {
 				"operationId": "CreatePublicLobby",
 				"responses": {
-					"200": {
-						"description": "Ok",
+					"201": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Lobby"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"LobbyV2"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "roomId",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/RoomId"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"initialConfig": {
+										"additionalProperties": false,
+										"type": "object"
+									},
+									"region": {
+										"$ref": "#/components/schemas/Region"
+									}
+								},
+								"required": [
+									"initialConfig",
+									"region"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/lobby/v2/{appId}/create/local": {
+			"post": {
+				"operationId": "CreateLocalLobby",
+				"responses": {
+					"201": {
+						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -2645,7 +2776,7 @@
 							"default": [
 								"cpu",
 								"memory",
-								"egress"
+								"rate_egress"
 							],
 							"type": "array",
 							"items": {
@@ -2853,8 +2984,8 @@
 			"post": {
 				"operationId": "CreateRoom",
 				"responses": {
-					"200": {
-						"description": "Ok",
+					"201": {
+						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {

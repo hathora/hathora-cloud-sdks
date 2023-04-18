@@ -36,12 +36,12 @@ paths:
               $ref: '#/components/schemas/CreateApp_request'
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application'
-          description: Ok
+          description: ""
         "422":
           content:
             application/json:
@@ -85,6 +85,12 @@ paths:
                 $ref: '#/components/schemas/Application'
           description: Ok
         "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "422":
           content:
             application/json:
               schema:
@@ -345,12 +351,12 @@ paths:
           $ref: '#/components/schemas/AppId'
         style: simple
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Build'
-          description: Ok
+          description: ""
         "404":
           content:
             application/json:
@@ -560,12 +566,12 @@ paths:
               $ref: '#/components/schemas/DeploymentConfig'
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Deployment'
-          description: Ok
+          description: ""
         "404":
           content:
             application/json:
@@ -592,6 +598,7 @@ paths:
       x-accepts: application/json
   /lobby/v1/{appId}/create/private:
     post:
+      deprecated: true
       operationId: CreatePrivateLobbyDeprecated
       parameters:
       - explode: false
@@ -660,6 +667,7 @@ paths:
       x-accepts: application/json
   /lobby/v1/{appId}/create/public:
     post:
+      deprecated: true
       operationId: CreatePublicLobbyDeprecated
       parameters:
       - explode: false
@@ -728,6 +736,7 @@ paths:
       x-accepts: application/json
   /lobby/v1/{appId}/list:
     get:
+      deprecated: true
       operationId: ListActivePublicLobbiesDeprecated
       parameters:
       - explode: false
@@ -816,12 +825,12 @@ paths:
               $ref: '#/components/schemas/CreatePrivateLobby_request'
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Lobby'
-          description: Ok
+          description: ""
         "401":
           content:
             application/json:
@@ -883,12 +892,79 @@ paths:
               $ref: '#/components/schemas/CreatePrivateLobby_request'
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Lobby'
-          description: Ok
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "429":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security: []
+      tags:
+      - LobbyV2
+      x-content-type: application/json
+      x-accepts: application/json
+  /lobby/v2/{appId}/create/local:
+    post:
+      operationId: CreateLocalLobby
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: roomId
+        required: false
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePrivateLobby_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lobby'
+          description: ""
         "401":
           content:
             application/json:
@@ -1213,7 +1289,7 @@ paths:
           default:
           - cpu
           - memory
-          - egress
+          - rate_egress
           items:
             $ref: '#/components/schemas/MetricName'
           type: array
@@ -1397,12 +1473,12 @@ paths:
               $ref: '#/components/schemas/CreateRoom_request'
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/RoomId'
-          description: Ok
+          description: ""
         "404":
           content:
             application/json:
@@ -1889,6 +1965,7 @@ components:
           enum:
           - private
           - public
+          - local
           type: string
         region:
           $ref: '#/components/schemas/Region'
@@ -1931,12 +2008,17 @@ components:
           timestamp: 6.027456183070403
         - value: 0.8008281904610115
           timestamp: 6.027456183070403
+        total_egress:
+        - value: 0.8008281904610115
+          timestamp: 6.027456183070403
+        - value: 0.8008281904610115
+          timestamp: 6.027456183070403
         cpu:
         - value: 0.8008281904610115
           timestamp: 6.027456183070403
         - value: 0.8008281904610115
           timestamp: 6.027456183070403
-        egress:
+        rate_egress:
         - value: 0.8008281904610115
           timestamp: 6.027456183070403
         - value: 0.8008281904610115
@@ -1950,7 +2032,11 @@ components:
           items:
             $ref: '#/components/schemas/MetricValue'
           type: array
-        egress:
+        rate_egress:
+          items:
+            $ref: '#/components/schemas/MetricValue'
+          type: array
+        total_egress:
           items:
             $ref: '#/components/schemas/MetricValue'
           type: array
@@ -1961,7 +2047,8 @@ components:
       enum:
       - cpu
       - memory
-      - egress
+      - rate_egress
+      - total_egress
       type: string
     Process:
       example:

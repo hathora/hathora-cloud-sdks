@@ -9,7 +9,9 @@
 
 * `MEMORY` (value: `"memory"`)
 
-* `EGRESS` (value: `"egress"`)
+* `RATE_EGRESS` (value: `"rate_egress"`)
+
+* `TOTAL_EGRESS` (value: `"total_egress"`)
 
 
 
