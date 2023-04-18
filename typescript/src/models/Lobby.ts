@@ -88,7 +88,8 @@ export interface Lobby {
  */
 export const LobbyVisibilityEnum = {
     Private: 'private',
-    Public: 'public'
+    Public: 'public',
+    Local: 'local'
 } as const;
 export type LobbyVisibilityEnum = typeof LobbyVisibilityEnum[keyof typeof LobbyVisibilityEnum];
 

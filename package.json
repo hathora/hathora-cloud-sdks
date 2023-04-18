@@ -4,7 +4,7 @@
   "description": "Parent project for Hathora Cloud SDKs in all languages",
   "main": "index.js",
   "scripts": {
-    "generate": "openapi-generator-cli generate"
+    "generate": "npx @openapitools/openapi-generator-cli generate"
   },
   "repository": {
     "type": "git",

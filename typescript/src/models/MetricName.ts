@@ -20,7 +20,8 @@
 export const MetricName = {
     Cpu: 'cpu',
     Memory: 'memory',
-    Egress: 'egress'
+    RateEgress: 'rate_egress',
+    TotalEgress: 'total_egress'
 } as const;
 export type MetricName = typeof MetricName[keyof typeof MetricName];
 

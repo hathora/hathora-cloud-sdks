@@ -92,7 +92,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPrivateLobbyDeprecatedCall(String appId, String authorization, Region region, Boolean local, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -150,6 +152,7 @@ public class LobbyV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPrivateLobbyDeprecatedValidateBeforeCall(String appId, String authorization, Region region, Boolean local, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -184,7 +187,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public String createPrivateLobbyDeprecated(String appId, String authorization, Region region, Boolean local) throws ApiException {
         ApiResponse<String> localVarResp = createPrivateLobbyDeprecatedWithHttpInfo(appId, authorization, region, local);
         return localVarResp.getData();
@@ -208,7 +213,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<String> createPrivateLobbyDeprecatedWithHttpInfo(String appId, String authorization, Region region, Boolean local) throws ApiException {
         okhttp3.Call localVarCall = createPrivateLobbyDeprecatedValidateBeforeCall(appId, authorization, region, local, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
@@ -234,7 +241,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPrivateLobbyDeprecatedAsync(String appId, String authorization, Region region, Boolean local, final ApiCallback<String> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPrivateLobbyDeprecatedValidateBeforeCall(appId, authorization, region, local, _callback);
@@ -260,7 +269,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPublicLobbyDeprecatedCall(String appId, String authorization, Region region, Boolean local, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -318,6 +329,7 @@ public class LobbyV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPublicLobbyDeprecatedValidateBeforeCall(String appId, String authorization, Region region, Boolean local, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -352,7 +364,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public String createPublicLobbyDeprecated(String appId, String authorization, Region region, Boolean local) throws ApiException {
         ApiResponse<String> localVarResp = createPublicLobbyDeprecatedWithHttpInfo(appId, authorization, region, local);
         return localVarResp.getData();
@@ -376,7 +390,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<String> createPublicLobbyDeprecatedWithHttpInfo(String appId, String authorization, Region region, Boolean local) throws ApiException {
         okhttp3.Call localVarCall = createPublicLobbyDeprecatedValidateBeforeCall(appId, authorization, region, local, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
@@ -402,7 +418,9 @@ public class LobbyV1Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPublicLobbyDeprecatedAsync(String appId, String authorization, Region region, Boolean local, final ApiCallback<String> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPublicLobbyDeprecatedValidateBeforeCall(appId, authorization, region, local, _callback);
@@ -426,7 +444,9 @@ public class LobbyV1Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call listActivePublicLobbiesDeprecatedCall(String appId, String authorization, Boolean local, Region region, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -484,6 +504,7 @@ public class LobbyV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call listActivePublicLobbiesDeprecatedValidateBeforeCall(String appId, String authorization, Boolean local, Region region, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -516,7 +537,9 @@ public class LobbyV1Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public List<Lobby> listActivePublicLobbiesDeprecated(String appId, String authorization, Boolean local, Region region) throws ApiException {
         ApiResponse<List<Lobby>> localVarResp = listActivePublicLobbiesDeprecatedWithHttpInfo(appId, authorization, local, region);
         return localVarResp.getData();
@@ -538,7 +561,9 @@ public class LobbyV1Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<List<Lobby>> listActivePublicLobbiesDeprecatedWithHttpInfo(String appId, String authorization, Boolean local, Region region) throws ApiException {
         okhttp3.Call localVarCall = listActivePublicLobbiesDeprecatedValidateBeforeCall(appId, authorization, local, region, null);
         Type localVarReturnType = new TypeToken<List<Lobby>>(){}.getType();
@@ -562,7 +587,9 @@ public class LobbyV1Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call listActivePublicLobbiesDeprecatedAsync(String appId, String authorization, Boolean local, Region region, final ApiCallback<List<Lobby>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listActivePublicLobbiesDeprecatedValidateBeforeCall(appId, authorization, local, region, _callback);

@@ -35,7 +35,7 @@
         "output": "typescript",
         "inputSpec": "swagger.json",
         "additionalProperties": {
-          "npmName": "hathora-cloud-sdk",
+          "npmName": "@hathora/hathora-cloud-sdk",
           "supportsES6": true,
           "withInterfaces": true,
           "useSingleRequestParameter": false

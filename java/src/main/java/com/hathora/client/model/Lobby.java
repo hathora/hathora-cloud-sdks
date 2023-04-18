@@ -77,7 +77,9 @@ public class Lobby {
   public enum VisibilityEnum {
     PRIVATE("private"),
     
-    PUBLIC("public");
+    PUBLIC("public"),
+    
+    LOCAL("local");
 
     private String value;
 

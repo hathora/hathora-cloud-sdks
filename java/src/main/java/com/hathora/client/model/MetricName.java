@@ -33,7 +33,9 @@ public enum MetricName {
   
   MEMORY("memory"),
   
-  EGRESS("egress");
+  RATE_EGRESS("rate_egress"),
+  
+  TOTAL_EGRESS("total_egress");
 
   private String value;
 

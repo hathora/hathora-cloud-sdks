@@ -59,9 +59,13 @@ public class RecordPartialMetricNameMetricValueArray {
   @SerializedName(SERIALIZED_NAME_MEMORY)
   private List<MetricValue> memory;
 
-  public static final String SERIALIZED_NAME_EGRESS = "egress";
-  @SerializedName(SERIALIZED_NAME_EGRESS)
-  private List<MetricValue> egress;
+  public static final String SERIALIZED_NAME_RATE_EGRESS = "rate_egress";
+  @SerializedName(SERIALIZED_NAME_RATE_EGRESS)
+  private List<MetricValue> rateEgress;
+
+  public static final String SERIALIZED_NAME_TOTAL_EGRESS = "total_egress";
+  @SerializedName(SERIALIZED_NAME_TOTAL_EGRESS)
+  private List<MetricValue> totalEgress;
 
   public RecordPartialMetricNameMetricValueArray() {
   }
@@ -126,33 +130,63 @@ public class RecordPartialMetricNameMetricValueArray {
   }
 
 
-  public RecordPartialMetricNameMetricValueArray egress(List<MetricValue> egress) {
+  public RecordPartialMetricNameMetricValueArray rateEgress(List<MetricValue> rateEgress) {
     
-    this.egress = egress;
+    this.rateEgress = rateEgress;
     return this;
   }
 
-  public RecordPartialMetricNameMetricValueArray addEgressItem(MetricValue egressItem) {
-    if (this.egress == null) {
-      this.egress = new ArrayList<>();
+  public RecordPartialMetricNameMetricValueArray addRateEgressItem(MetricValue rateEgressItem) {
+    if (this.rateEgress == null) {
+      this.rateEgress = new ArrayList<>();
     }
-    this.egress.add(egressItem);
+    this.rateEgress.add(rateEgressItem);
     return this;
   }
 
    /**
-   * Get egress
-   * @return egress
+   * Get rateEgress
+   * @return rateEgress
   **/
   @javax.annotation.Nullable
 
-  public List<MetricValue> getEgress() {
-    return egress;
+  public List<MetricValue> getRateEgress() {
+    return rateEgress;
   }
 
 
-  public void setEgress(List<MetricValue> egress) {
-    this.egress = egress;
+  public void setRateEgress(List<MetricValue> rateEgress) {
+    this.rateEgress = rateEgress;
+  }
+
+
+  public RecordPartialMetricNameMetricValueArray totalEgress(List<MetricValue> totalEgress) {
+    
+    this.totalEgress = totalEgress;
+    return this;
+  }
+
+  public RecordPartialMetricNameMetricValueArray addTotalEgressItem(MetricValue totalEgressItem) {
+    if (this.totalEgress == null) {
+      this.totalEgress = new ArrayList<>();
+    }
+    this.totalEgress.add(totalEgressItem);
+    return this;
+  }
+
+   /**
+   * Get totalEgress
+   * @return totalEgress
+  **/
+  @javax.annotation.Nullable
+
+  public List<MetricValue> getTotalEgress() {
+    return totalEgress;
+  }
+
+
+  public void setTotalEgress(List<MetricValue> totalEgress) {
+    this.totalEgress = totalEgress;
   }
 
   /**
@@ -212,13 +246,14 @@ public class RecordPartialMetricNameMetricValueArray {
     RecordPartialMetricNameMetricValueArray recordPartialMetricNameMetricValueArray = (RecordPartialMetricNameMetricValueArray) o;
     return Objects.equals(this.cpu, recordPartialMetricNameMetricValueArray.cpu) &&
         Objects.equals(this.memory, recordPartialMetricNameMetricValueArray.memory) &&
-        Objects.equals(this.egress, recordPartialMetricNameMetricValueArray.egress)&&
+        Objects.equals(this.rateEgress, recordPartialMetricNameMetricValueArray.rateEgress) &&
+        Objects.equals(this.totalEgress, recordPartialMetricNameMetricValueArray.totalEgress)&&
         Objects.equals(this.additionalProperties, recordPartialMetricNameMetricValueArray.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cpu, memory, egress, additionalProperties);
+    return Objects.hash(cpu, memory, rateEgress, totalEgress, additionalProperties);
   }
 
   @Override
@@ -227,7 +262,8 @@ public class RecordPartialMetricNameMetricValueArray {
     sb.append("class RecordPartialMetricNameMetricValueArray {\n");
     sb.append("    cpu: ").append(toIndentedString(cpu)).append("\n");
     sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
-    sb.append("    egress: ").append(toIndentedString(egress)).append("\n");
+    sb.append("    rateEgress: ").append(toIndentedString(rateEgress)).append("\n");
+    sb.append("    totalEgress: ").append(toIndentedString(totalEgress)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -253,7 +289,8 @@ public class RecordPartialMetricNameMetricValueArray {
     openapiFields = new HashSet<String>();
     openapiFields.add("cpu");
     openapiFields.add("memory");
-    openapiFields.add("egress");
+    openapiFields.add("rate_egress");
+    openapiFields.add("total_egress");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -299,17 +336,31 @@ public class RecordPartialMetricNameMetricValueArray {
           };
         }
       }
-      if (jsonObj.get("egress") != null && !jsonObj.get("egress").isJsonNull()) {
-        JsonArray jsonArrayegress = jsonObj.getAsJsonArray("egress");
-        if (jsonArrayegress != null) {
+      if (jsonObj.get("rate_egress") != null && !jsonObj.get("rate_egress").isJsonNull()) {
+        JsonArray jsonArrayrateEgress = jsonObj.getAsJsonArray("rate_egress");
+        if (jsonArrayrateEgress != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("egress").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `egress` to be an array in the JSON string but got `%s`", jsonObj.get("egress").toString()));
+          if (!jsonObj.get("rate_egress").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `rate_egress` to be an array in the JSON string but got `%s`", jsonObj.get("rate_egress").toString()));
           }
 
-          // validate the optional field `egress` (array)
-          for (int i = 0; i < jsonArrayegress.size(); i++) {
-            MetricValue.validateJsonObject(jsonArrayegress.get(i).getAsJsonObject());
+          // validate the optional field `rate_egress` (array)
+          for (int i = 0; i < jsonArrayrateEgress.size(); i++) {
+            MetricValue.validateJsonObject(jsonArrayrateEgress.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("total_egress") != null && !jsonObj.get("total_egress").isJsonNull()) {
+        JsonArray jsonArraytotalEgress = jsonObj.getAsJsonArray("total_egress");
+        if (jsonArraytotalEgress != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("total_egress").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `total_egress` to be an array in the JSON string but got `%s`", jsonObj.get("total_egress").toString()));
+          }
+
+          // validate the optional field `total_egress` (array)
+          for (int i = 0; i < jsonArraytotalEgress.size(); i++) {
+            MetricValue.validateJsonObject(jsonArraytotalEgress.get(i).getAsJsonObject());
           };
         }
       }

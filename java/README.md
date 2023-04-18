@@ -137,6 +137,7 @@ Class | Method | HTTP request | Description
 *LobbyV1Api* | [**createPrivateLobbyDeprecated**](docs/LobbyV1Api.md#createPrivateLobbyDeprecated) | **POST** /lobby/v1/{appId}/create/private | 
 *LobbyV1Api* | [**createPublicLobbyDeprecated**](docs/LobbyV1Api.md#createPublicLobbyDeprecated) | **POST** /lobby/v1/{appId}/create/public | 
 *LobbyV1Api* | [**listActivePublicLobbiesDeprecated**](docs/LobbyV1Api.md#listActivePublicLobbiesDeprecated) | **GET** /lobby/v1/{appId}/list | 
+*LobbyV2Api* | [**createLocalLobby**](docs/LobbyV2Api.md#createLocalLobby) | **POST** /lobby/v2/{appId}/create/local | 
 *LobbyV2Api* | [**createPrivateLobby**](docs/LobbyV2Api.md#createPrivateLobby) | **POST** /lobby/v2/{appId}/create/private | 
 *LobbyV2Api* | [**createPublicLobby**](docs/LobbyV2Api.md#createPublicLobby) | **POST** /lobby/v2/{appId}/create/public | 
 *LobbyV2Api* | [**getLobbyInfo**](docs/LobbyV2Api.md#getLobbyInfo) | **GET** /lobby/v2/{appId}/info/{roomId} | 

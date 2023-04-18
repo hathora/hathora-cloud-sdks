@@ -60,6 +60,7 @@ export interface LobbyV1ApiInterface {
      * @param {Region} [region] 
      * @param {boolean} [local] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV1ApiInterface
      */
@@ -76,6 +77,7 @@ export interface LobbyV1ApiInterface {
      * @param {Region} [region] 
      * @param {boolean} [local] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV1ApiInterface
      */
@@ -92,6 +94,7 @@ export interface LobbyV1ApiInterface {
      * @param {boolean} [local] 
      * @param {Region} [region] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV1ApiInterface
      */
