@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of RecordPartialMetricNameMetricValueArray
         /// </summary>
-        [Fact]
+        [Test]
         public void RecordPartialMetricNameMetricValueArrayInstanceTest()
         {
             // TODO uncomment below to test "IsType" RecordPartialMetricNameMetricValueArray
             //Assert.IsType<RecordPartialMetricNameMetricValueArray>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Cpu'
         /// </summary>
-        [Fact]
+        [Test]
         public void CpuTest()
         {
             // TODO unit test for the property 'Cpu'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Memory'
         /// </summary>
-        [Fact]
+        [Test]
         public void MemoryTest()
         {
             // TODO unit test for the property 'Memory'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RateEgress'
         /// </summary>
-        [Fact]
+        [Test]
         public void RateEgressTest()
         {
             // TODO unit test for the property 'RateEgress'
@@ -82,12 +81,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'TotalEgress'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalEgressTest()
         {
             // TODO unit test for the property 'TotalEgress'
         }
-
     }
-
 }

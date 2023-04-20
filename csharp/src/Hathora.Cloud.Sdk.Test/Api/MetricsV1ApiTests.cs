@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of MetricsV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' MetricsV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetMetrics
         /// </summary>
-        [Fact]
+        [Test]
         public void GetMetricsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of Room
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomInstanceTest()
         {
             // TODO uncomment below to test "IsType" Room
             //Assert.IsType<Room>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'CurrentAllocation'
         /// </summary>
-        [Fact]
+        [Test]
         public void CurrentAllocationTest()
         {
             // TODO unit test for the property 'CurrentAllocation'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
+        [Test]
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Allocations'
         /// </summary>
-        [Fact]
+        [Test]
         public void AllocationsTest()
         {
             // TODO unit test for the property 'Allocations'
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomId'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomIdTest()
         {
             // TODO unit test for the property 'RoomId'
@@ -90,12 +89,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppId'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppIdTest()
         {
             // TODO unit test for the property 'AppId'
         }
-
     }
-
 }

@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of RoomV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' RoomV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreateRoom
         /// </summary>
-        [Fact]
+        [Test]
         public void CreateRoomTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -70,7 +69,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test DestroyRoom
         /// </summary>
-        [Fact]
+        [Test]
         public void DestroyRoomTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetActiveRoomsForProcess
         /// </summary>
-        [Fact]
+        [Test]
         public void GetActiveRoomsForProcessTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -95,7 +94,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetConnectionInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetConnectionInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -108,7 +107,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetInactiveRoomsForProcess
         /// </summary>
-        [Fact]
+        [Test]
         public void GetInactiveRoomsForProcessTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -121,7 +120,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetRoomInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetRoomInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -134,7 +133,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test SuspendRoom
         /// </summary>
-        [Fact]
+        [Test]
         public void SuspendRoomTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

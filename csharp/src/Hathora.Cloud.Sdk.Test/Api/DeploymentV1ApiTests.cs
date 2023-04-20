@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of DeploymentV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' DeploymentV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreateDeployment
         /// </summary>
-        [Fact]
+        [Test]
         public void CreateDeploymentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -71,7 +70,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetDeploymentInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetDeploymentInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -84,7 +83,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetDeployments
         /// </summary>
-        [Fact]
+        [Test]
         public void GetDeploymentsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

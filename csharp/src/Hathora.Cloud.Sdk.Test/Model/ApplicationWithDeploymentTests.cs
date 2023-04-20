@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of ApplicationWithDeployment
         /// </summary>
-        [Fact]
+        [Test]
         public void ApplicationWithDeploymentInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApplicationWithDeployment
             //Assert.IsType<ApplicationWithDeployment>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'DeletedBy'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeletedByTest()
         {
             // TODO unit test for the property 'DeletedBy'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'DeletedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeletedAtTest()
         {
             // TODO unit test for the property 'DeletedAt'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedBy'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedByTest()
         {
             // TODO unit test for the property 'CreatedBy'
@@ -90,7 +89,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'OrgId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrgIdTest()
         {
             // TODO unit test for the property 'OrgId'
@@ -98,7 +97,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AuthConfiguration'
         /// </summary>
-        [Fact]
+        [Test]
         public void AuthConfigurationTest()
         {
             // TODO unit test for the property 'AuthConfiguration'
@@ -106,7 +105,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppSecret'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppSecretTest()
         {
             // TODO unit test for the property 'AppSecret'
@@ -114,7 +113,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppId'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppIdTest()
         {
             // TODO unit test for the property 'AppId'
@@ -122,7 +121,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppName'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppNameTest()
         {
             // TODO unit test for the property 'AppName'
@@ -130,12 +129,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Deployment'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeploymentTest()
         {
             // TODO unit test for the property 'Deployment'
         }
-
     }
-
 }

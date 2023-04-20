@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of BuildV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' BuildV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreateBuild
         /// </summary>
-        [Fact]
+        [Test]
         public void CreateBuildTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -69,7 +68,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test DeleteBuild
         /// </summary>
-        [Fact]
+        [Test]
         public void DeleteBuildTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -81,7 +80,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetBuildInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetBuildInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -94,7 +93,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetBuilds
         /// </summary>
-        [Fact]
+        [Test]
         public void GetBuildsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -106,7 +105,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test RunBuild
         /// </summary>
-        [Fact]
+        [Test]
         public void RunBuildTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

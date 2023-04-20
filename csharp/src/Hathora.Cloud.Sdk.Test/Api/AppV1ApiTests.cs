@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of AppV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' AppV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreateApp
         /// </summary>
-        [Fact]
+        [Test]
         public void CreateAppTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -69,7 +68,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test DeleteApp
         /// </summary>
-        [Fact]
+        [Test]
         public void DeleteAppTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -80,7 +79,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetAppInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetAppInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -92,7 +91,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetApps
         /// </summary>
-        [Fact]
+        [Test]
         public void GetAppsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -103,7 +102,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test UpdateApp
         /// </summary>
-        [Fact]
+        [Test]
         public void UpdateAppTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

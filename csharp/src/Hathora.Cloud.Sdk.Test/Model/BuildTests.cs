@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of Build
         /// </summary>
-        [Fact]
+        [Test]
         public void BuildInstanceTest()
         {
             // TODO uncomment below to test "IsType" Build
             //Assert.IsType<Build>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'RegionalContainerTags'
         /// </summary>
-        [Fact]
+        [Test]
         public void RegionalContainerTagsTest()
         {
             // TODO unit test for the property 'RegionalContainerTags'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'ImageSize'
         /// </summary>
-        [Fact]
+        [Test]
         public void ImageSizeTest()
         {
             // TODO unit test for the property 'ImageSize'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
+        [Test]
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'DeletedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeletedAtTest()
         {
             // TODO unit test for the property 'DeletedAt'
@@ -90,7 +89,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'FinishedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void FinishedAtTest()
         {
             // TODO unit test for the property 'FinishedAt'
@@ -98,7 +97,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'StartedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void StartedAtTest()
         {
             // TODO unit test for the property 'StartedAt'
@@ -106,7 +105,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
@@ -114,7 +113,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedBy'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedByTest()
         {
             // TODO unit test for the property 'CreatedBy'
@@ -122,7 +121,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'BuildId'
         /// </summary>
-        [Fact]
+        [Test]
         public void BuildIdTest()
         {
             // TODO unit test for the property 'BuildId'
@@ -130,12 +129,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppId'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppIdTest()
         {
             // TODO unit test for the property 'AppId'
         }
-
     }
-
 }

@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of LobbyV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' LobbyV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreatePrivateLobbyDeprecated
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatePrivateLobbyDeprecatedTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -72,7 +71,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreatePublicLobbyDeprecated
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatePublicLobbyDeprecatedTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -87,7 +86,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test ListActivePublicLobbiesDeprecated
         /// </summary>
-        [Fact]
+        [Test]
         public void ListActivePublicLobbiesDeprecatedTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

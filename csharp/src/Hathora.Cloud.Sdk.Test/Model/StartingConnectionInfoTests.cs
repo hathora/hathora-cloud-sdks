@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of StartingConnectionInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void StartingConnectionInfoInstanceTest()
         {
             // TODO uncomment below to test "IsType" StartingConnectionInfo
             //Assert.IsType<StartingConnectionInfo>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
+        [Test]
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
@@ -66,12 +65,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomId'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomIdTest()
         {
             // TODO unit test for the property 'RoomId'
         }
-
     }
-
 }

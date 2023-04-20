@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of CreateAppRequestAuthConfiguration
         /// </summary>
-        [Fact]
+        [Test]
         public void CreateAppRequestAuthConfigurationInstanceTest()
         {
             // TODO uncomment below to test "IsType" CreateAppRequestAuthConfiguration
             //Assert.IsType<CreateAppRequestAuthConfiguration>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Google'
         /// </summary>
-        [Fact]
+        [Test]
         public void GoogleTest()
         {
             // TODO unit test for the property 'Google'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Nickname'
         /// </summary>
-        [Fact]
+        [Test]
         public void NicknameTest()
         {
             // TODO unit test for the property 'Nickname'
@@ -74,12 +73,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Anonymous'
         /// </summary>
-        [Fact]
+        [Test]
         public void AnonymousTest()
         {
             // TODO unit test for the property 'Anonymous'
         }
-
     }
-
 }

@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of Deployment
         /// </summary>
-        [Fact]
+        [Test]
         public void DeploymentInstanceTest()
         {
             // TODO uncomment below to test "IsType" Deployment
             //Assert.IsType<Deployment>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Env'
         /// </summary>
-        [Fact]
+        [Test]
         public void EnvTest()
         {
             // TODO unit test for the property 'Env'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomsPerProcess'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomsPerProcessTest()
         {
             // TODO unit test for the property 'RoomsPerProcess'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'PlanName'
         /// </summary>
-        [Fact]
+        [Test]
         public void PlanNameTest()
         {
             // TODO unit test for the property 'PlanName'
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'TransportType'
         /// </summary>
-        [Fact]
+        [Test]
         public void TransportTypeTest()
         {
             // TODO unit test for the property 'TransportType'
@@ -90,7 +89,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'ContainerPort'
         /// </summary>
-        [Fact]
+        [Test]
         public void ContainerPortTest()
         {
             // TODO unit test for the property 'ContainerPort'
@@ -98,7 +97,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
@@ -106,7 +105,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedBy'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedByTest()
         {
             // TODO unit test for the property 'CreatedBy'
@@ -114,7 +113,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RequestedMemoryMB'
         /// </summary>
-        [Fact]
+        [Test]
         public void RequestedMemoryMBTest()
         {
             // TODO unit test for the property 'RequestedMemoryMB'
@@ -122,7 +121,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RequestedCPU'
         /// </summary>
-        [Fact]
+        [Test]
         public void RequestedCPUTest()
         {
             // TODO unit test for the property 'RequestedCPU'
@@ -130,7 +129,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'DeploymentId'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeploymentIdTest()
         {
             // TODO unit test for the property 'DeploymentId'
@@ -138,7 +137,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'BuildId'
         /// </summary>
-        [Fact]
+        [Test]
         public void BuildIdTest()
         {
             // TODO unit test for the property 'BuildId'
@@ -146,12 +145,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppId'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppIdTest()
         {
             // TODO unit test for the property 'AppId'
         }
-
     }
-
 }

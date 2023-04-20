@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,23 +47,20 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of CreateRoomRequest
         /// </summary>
-        [Fact]
+        [Test]
         public void CreateRoomRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" CreateRoomRequest
             //Assert.IsType<CreateRoomRequest>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Region'
         /// </summary>
-        [Fact]
+        [Test]
         public void RegionTest()
         {
             // TODO unit test for the property 'Region'
         }
-
     }
-
 }

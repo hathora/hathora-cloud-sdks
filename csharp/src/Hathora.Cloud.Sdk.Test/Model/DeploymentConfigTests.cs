@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of DeploymentConfig
         /// </summary>
-        [Fact]
+        [Test]
         public void DeploymentConfigInstanceTest()
         {
             // TODO uncomment below to test "IsType" DeploymentConfig
             //Assert.IsType<DeploymentConfig>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Env'
         /// </summary>
-        [Fact]
+        [Test]
         public void EnvTest()
         {
             // TODO unit test for the property 'Env'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomsPerProcess'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomsPerProcessTest()
         {
             // TODO unit test for the property 'RoomsPerProcess'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'PlanName'
         /// </summary>
-        [Fact]
+        [Test]
         public void PlanNameTest()
         {
             // TODO unit test for the property 'PlanName'
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'TransportType'
         /// </summary>
-        [Fact]
+        [Test]
         public void TransportTypeTest()
         {
             // TODO unit test for the property 'TransportType'
@@ -90,12 +89,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'ContainerPort'
         /// </summary>
-        [Fact]
+        [Test]
         public void ContainerPortTest()
         {
             // TODO unit test for the property 'ContainerPort'
         }
-
     }
-
 }

@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of LobbyV2Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' LobbyV2Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreateLocalLobby
         /// </summary>
-        [Fact]
+        [Test]
         public void CreateLocalLobbyTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -72,7 +71,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreatePrivateLobby
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatePrivateLobbyTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -87,7 +86,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test CreatePublicLobby
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatePublicLobbyTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -102,7 +101,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetLobbyInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetLobbyInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -115,7 +114,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test ListActivePublicLobbies
         /// </summary>
-        [Fact]
+        [Test]
         public void ListActivePublicLobbiesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -128,7 +127,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test SetLobbyState
         /// </summary>
-        [Fact]
+        [Test]
         public void SetLobbyStateTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

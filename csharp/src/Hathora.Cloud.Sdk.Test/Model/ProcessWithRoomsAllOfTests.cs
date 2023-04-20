@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of ProcessWithRoomsAllOf
         /// </summary>
-        [Fact]
+        [Test]
         public void ProcessWithRoomsAllOfInstanceTest()
         {
             // TODO uncomment below to test "IsType" ProcessWithRoomsAllOf
             //Assert.IsType<ProcessWithRoomsAllOf>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Rooms'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomsTest()
         {
             // TODO unit test for the property 'Rooms'
@@ -66,12 +65,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'TotalRooms'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalRoomsTest()
         {
             // TODO unit test for the property 'TotalRooms'
         }
-
     }
-
 }

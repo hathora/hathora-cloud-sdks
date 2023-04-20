@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of ProcessesV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' ProcessesV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetProcessInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetProcessInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -70,7 +69,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetRunningProcesses
         /// </summary>
-        [Fact]
+        [Test]
         public void GetRunningProcessesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -83,7 +82,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetStoppedProcesses
         /// </summary>
-        [Fact]
+        [Test]
         public void GetStoppedProcessesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

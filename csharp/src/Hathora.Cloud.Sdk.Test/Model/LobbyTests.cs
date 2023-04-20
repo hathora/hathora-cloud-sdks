@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of Lobby
         /// </summary>
-        [Fact]
+        [Test]
         public void LobbyInstanceTest()
         {
             // TODO uncomment below to test "IsType" Lobby
             //Assert.IsType<Lobby>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'State'
         /// </summary>
-        [Fact]
+        [Test]
         public void StateTest()
         {
             // TODO unit test for the property 'State'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'InitialConfig'
         /// </summary>
-        [Fact]
+        [Test]
         public void InitialConfigTest()
         {
             // TODO unit test for the property 'InitialConfig'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'CreatedBy'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedByTest()
         {
             // TODO unit test for the property 'CreatedBy'
@@ -90,7 +89,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Local'
         /// </summary>
-        [Fact]
+        [Test]
         public void LocalTest()
         {
             // TODO unit test for the property 'Local'
@@ -98,7 +97,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Visibility'
         /// </summary>
-        [Fact]
+        [Test]
         public void VisibilityTest()
         {
             // TODO unit test for the property 'Visibility'
@@ -106,7 +105,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Region'
         /// </summary>
-        [Fact]
+        [Test]
         public void RegionTest()
         {
             // TODO unit test for the property 'Region'
@@ -114,7 +113,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomId'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomIdTest()
         {
             // TODO unit test for the property 'RoomId'
@@ -122,12 +121,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppId'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppIdTest()
         {
             // TODO unit test for the property 'AppId'
         }
-
     }
-
 }

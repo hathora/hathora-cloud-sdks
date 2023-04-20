@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of DeploymentConfigEnvInner
         /// </summary>
-        [Fact]
+        [Test]
         public void DeploymentConfigEnvInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" DeploymentConfigEnvInner
             //Assert.IsType<DeploymentConfigEnvInner>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'Value'
         /// </summary>
-        [Fact]
+        [Test]
         public void ValueTest()
         {
             // TODO unit test for the property 'Value'
@@ -66,12 +65,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
     }
-
 }

@@ -13,8 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
-using Xunit;
+using NUnit.Framework;
 
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Api;
@@ -47,7 +46,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test an instance of AuthV1Api
         /// </summary>
-        [Fact]
+        [Test]
         public void InstanceTest()
         {
             // TODO uncomment below to test 'IsType' AuthV1Api
@@ -57,7 +56,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test LoginAnonymous
         /// </summary>
-        [Fact]
+        [Test]
         public void LoginAnonymousTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -69,7 +68,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test LoginGoogle
         /// </summary>
-        [Fact]
+        [Test]
         public void LoginGoogleTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test LoginNickname
         /// </summary>
-        [Fact]
+        [Test]
         public void LoginNicknameTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

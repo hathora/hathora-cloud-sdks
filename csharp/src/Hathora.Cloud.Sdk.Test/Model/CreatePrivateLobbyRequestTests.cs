@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of CreatePrivateLobbyRequest
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatePrivateLobbyRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" CreatePrivateLobbyRequest
             //Assert.IsType<CreatePrivateLobbyRequest>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'InitialConfig'
         /// </summary>
-        [Fact]
+        [Test]
         public void InitialConfigTest()
         {
             // TODO unit test for the property 'InitialConfig'
@@ -66,12 +65,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Region'
         /// </summary>
-        [Fact]
+        [Test]
         public void RegionTest()
         {
             // TODO unit test for the property 'Region'
         }
-
     }
-
 }

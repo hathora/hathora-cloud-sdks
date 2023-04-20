@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,23 +47,20 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of LoginGoogleRequest
         /// </summary>
-        [Fact]
+        [Test]
         public void LoginGoogleRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" LoginGoogleRequest
             //Assert.IsType<LoginGoogleRequest>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'IdToken'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTokenTest()
         {
             // TODO unit test for the property 'IdToken'
         }
-
     }
-
 }

@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of ProcessWithRooms
         /// </summary>
-        [Fact]
+        [Test]
         public void ProcessWithRoomsInstanceTest()
         {
             // TODO uncomment below to test "IsType" ProcessWithRooms
             //Assert.IsType<ProcessWithRooms>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'EgressedBytes'
         /// </summary>
-        [Fact]
+        [Test]
         public void EgressedBytesTest()
         {
             // TODO unit test for the property 'EgressedBytes'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'IdleSince'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdleSinceTest()
         {
             // TODO unit test for the property 'IdleSince'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'ActiveConnections'
         /// </summary>
-        [Fact]
+        [Test]
         public void ActiveConnectionsTest()
         {
             // TODO unit test for the property 'ActiveConnections'
@@ -82,7 +81,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomSlotsAvailable'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomSlotsAvailableTest()
         {
             // TODO unit test for the property 'RoomSlotsAvailable'
@@ -90,7 +89,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Draining'
         /// </summary>
-        [Fact]
+        [Test]
         public void DrainingTest()
         {
             // TODO unit test for the property 'Draining'
@@ -98,7 +97,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'TerminatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void TerminatedAtTest()
         {
             // TODO unit test for the property 'TerminatedAt'
@@ -106,7 +105,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'StoppingAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void StoppingAtTest()
         {
             // TODO unit test for the property 'StoppingAt'
@@ -114,7 +113,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'StartedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void StartedAtTest()
         {
             // TODO unit test for the property 'StartedAt'
@@ -122,7 +121,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'StartingAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void StartingAtTest()
         {
             // TODO unit test for the property 'StartingAt'
@@ -130,7 +129,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomsPerProcess'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomsPerProcessTest()
         {
             // TODO unit test for the property 'RoomsPerProcess'
@@ -138,7 +137,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Port'
         /// </summary>
-        [Fact]
+        [Test]
         public void PortTest()
         {
             // TODO unit test for the property 'Port'
@@ -146,7 +145,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Host'
         /// </summary>
-        [Fact]
+        [Test]
         public void HostTest()
         {
             // TODO unit test for the property 'Host'
@@ -154,7 +153,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Region'
         /// </summary>
-        [Fact]
+        [Test]
         public void RegionTest()
         {
             // TODO unit test for the property 'Region'
@@ -162,7 +161,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'ProcessId'
         /// </summary>
-        [Fact]
+        [Test]
         public void ProcessIdTest()
         {
             // TODO unit test for the property 'ProcessId'
@@ -170,7 +169,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'DeploymentId'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeploymentIdTest()
         {
             // TODO unit test for the property 'DeploymentId'
@@ -178,7 +177,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'AppId'
         /// </summary>
-        [Fact]
+        [Test]
         public void AppIdTest()
         {
             // TODO unit test for the property 'AppId'
@@ -186,7 +185,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'Rooms'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomsTest()
         {
             // TODO unit test for the property 'Rooms'
@@ -194,12 +193,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'TotalRooms'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalRoomsTest()
         {
             // TODO unit test for the property 'TotalRooms'
         }
-
     }
-
 }

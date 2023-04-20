@@ -8,16 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Hathora.Cloud.Sdk.Api;
 using Hathora.Cloud.Sdk.Model;
 using Hathora.Cloud.Sdk.Client;
 using System.Reflection;
 using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Hathora.Cloud.Sdk.Test.Model
 {
@@ -47,18 +47,17 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test an instance of RoomAllocation
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomAllocationInstanceTest()
         {
             // TODO uncomment below to test "IsType" RoomAllocation
             //Assert.IsType<RoomAllocation>(instance);
         }
 
-
         /// <summary>
         /// Test the property 'UnscheduledAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void UnscheduledAtTest()
         {
             // TODO unit test for the property 'UnscheduledAt'
@@ -66,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'ScheduledAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void ScheduledAtTest()
         {
             // TODO unit test for the property 'ScheduledAt'
@@ -74,7 +73,7 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'ProcessId'
         /// </summary>
-        [Fact]
+        [Test]
         public void ProcessIdTest()
         {
             // TODO unit test for the property 'ProcessId'
@@ -82,12 +81,10 @@ namespace Hathora.Cloud.Sdk.Test.Model
         /// <summary>
         /// Test the property 'RoomAllocationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoomAllocationIdTest()
         {
             // TODO unit test for the property 'RoomAllocationId'
         }
-
     }
-
 }
