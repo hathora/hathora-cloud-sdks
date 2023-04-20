@@ -31,9 +31,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LoginAnonymous200Response</returns>
-        LoginAnonymous200Response LoginAnonymous(string appId, int operationIndex = 0);
+        LoginAnonymous200Response LoginAnonymous(string appId);
 
         /// <summary>
         /// 
@@ -43,18 +42,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LoginAnonymous200Response</returns>
-        ApiResponse<LoginAnonymous200Response> LoginAnonymousWithHttpInfo(string appId, int operationIndex = 0);
+        ApiResponse<LoginAnonymous200Response> LoginAnonymousWithHttpInfo(string appId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LoginAnonymous200Response</returns>
-        LoginAnonymous200Response LoginGoogle(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0);
+        LoginAnonymous200Response LoginGoogle(string appId, LoginGoogleRequest loginGoogleRequest);
 
         /// <summary>
         /// 
@@ -65,18 +62,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LoginAnonymous200Response</returns>
-        ApiResponse<LoginAnonymous200Response> LoginGoogleWithHttpInfo(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0);
+        ApiResponse<LoginAnonymous200Response> LoginGoogleWithHttpInfo(string appId, LoginGoogleRequest loginGoogleRequest);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LoginAnonymous200Response</returns>
-        LoginAnonymous200Response LoginNickname(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0);
+        LoginAnonymous200Response LoginNickname(string appId, LoginNicknameRequest loginNicknameRequest);
 
         /// <summary>
         /// 
@@ -87,9 +82,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LoginAnonymous200Response</returns>
-        ApiResponse<LoginAnonymous200Response> LoginNicknameWithHttpInfo(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0);
+        ApiResponse<LoginAnonymous200Response> LoginNicknameWithHttpInfo(string appId, LoginNicknameRequest loginNicknameRequest);
         #endregion Synchronous Operations
     }
 
@@ -107,10 +101,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoginAnonymous200Response</returns>
-        System.Threading.Tasks.Task<LoginAnonymous200Response> LoginAnonymousAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LoginAnonymous200Response> LoginAnonymousAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -120,10 +113,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoginAnonymous200Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LoginAnonymous200Response>> LoginAnonymousWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LoginAnonymous200Response>> LoginAnonymousWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -133,10 +125,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoginAnonymous200Response</returns>
-        System.Threading.Tasks.Task<LoginAnonymous200Response> LoginGoogleAsync(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LoginAnonymous200Response> LoginGoogleAsync(string appId, LoginGoogleRequest loginGoogleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -147,10 +138,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoginAnonymous200Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LoginAnonymous200Response>> LoginGoogleWithHttpInfoAsync(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LoginAnonymous200Response>> LoginGoogleWithHttpInfoAsync(string appId, LoginGoogleRequest loginGoogleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -160,10 +150,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoginAnonymous200Response</returns>
-        System.Threading.Tasks.Task<LoginAnonymous200Response> LoginNicknameAsync(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LoginAnonymous200Response> LoginNicknameAsync(string appId, LoginNicknameRequest loginNicknameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -174,10 +163,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoginAnonymous200Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LoginAnonymous200Response>> LoginNicknameWithHttpInfoAsync(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LoginAnonymous200Response>> LoginNicknameWithHttpInfoAsync(string appId, LoginNicknameRequest loginNicknameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -192,12 +180,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class AuthV1Api : IAuthV1Api
+    public partial class AuthV1Api : IDisposable, IAuthV1Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public AuthV1Api() : this((string)null)
@@ -206,7 +196,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public AuthV1Api(string basePath)
         {
@@ -214,16 +208,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthV1Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="AuthV1Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public AuthV1Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -233,8 +230,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -245,6 +243,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public AuthV1Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -256,6 +255,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -303,9 +315,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LoginAnonymous200Response</returns>
-        public LoginAnonymous200Response LoginAnonymous(string appId, int operationIndex = 0)
+        public LoginAnonymous200Response LoginAnonymous(string appId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = LoginAnonymousWithHttpInfo(appId);
             return localVarResponse.Data;
@@ -316,15 +327,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LoginAnonymous200Response</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> LoginAnonymousWithHttpInfo(string appId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> LoginAnonymousWithHttpInfo(string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AuthV1Api->LoginAnonymous");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -337,32 +345,21 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            localVarRequestOptions.Operation = "AuthV1Api.LoginAnonymous";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<LoginAnonymous200Response>("/auth/v1/{appId}/login/anonymous", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("LoginAnonymous", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -373,12 +370,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoginAnonymous200Response</returns>
-        public async System.Threading.Tasks.Task<LoginAnonymous200Response> LoginAnonymousAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LoginAnonymous200Response> LoginAnonymousAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await LoginAnonymousWithHttpInfoAsync(appId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = LoginAnonymousWithHttpInfoAsync(appId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -387,16 +388,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoginAnonymous200Response)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response>> LoginAnonymousWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response>> LoginAnonymousWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AuthV1Api->LoginAnonymous");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -409,34 +407,30 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
 
-            localVarRequestOptions.Operation = "AuthV1Api.LoginAnonymous";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<LoginAnonymous200Response>("/auth/v1/{appId}/login/anonymous", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<LoginAnonymous200Response>("/auth/v1/{appId}/login/anonymous", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("LoginAnonymous", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -448,9 +442,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LoginAnonymous200Response</returns>
-        public LoginAnonymous200Response LoginGoogle(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0)
+        public LoginAnonymous200Response LoginGoogle(string appId, LoginGoogleRequest loginGoogleRequest)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = LoginGoogleWithHttpInfo(appId, loginGoogleRequest);
             return localVarResponse.Data;
@@ -462,21 +455,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LoginAnonymous200Response</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> LoginGoogleWithHttpInfo(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> LoginGoogleWithHttpInfo(string appId, LoginGoogleRequest loginGoogleRequest)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AuthV1Api->LoginGoogle");
-            }
 
             // verify the required parameter 'loginGoogleRequest' is set
             if (loginGoogleRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'loginGoogleRequest' when calling AuthV1Api->LoginGoogle");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -490,33 +478,22 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = loginGoogleRequest;
 
-            localVarRequestOptions.Operation = "AuthV1Api.LoginGoogle";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<LoginAnonymous200Response>("/auth/v1/{appId}/login/google", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("LoginGoogle", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -528,12 +505,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoginAnonymous200Response</returns>
-        public async System.Threading.Tasks.Task<LoginAnonymous200Response> LoginGoogleAsync(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LoginAnonymous200Response> LoginGoogleAsync(string appId, LoginGoogleRequest loginGoogleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await LoginGoogleWithHttpInfoAsync(appId, loginGoogleRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = LoginGoogleWithHttpInfoAsync(appId, loginGoogleRequest, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -543,22 +524,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginGoogleRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoginAnonymous200Response)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response>> LoginGoogleWithHttpInfoAsync(string appId, LoginGoogleRequest loginGoogleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response>> LoginGoogleWithHttpInfoAsync(string appId, LoginGoogleRequest loginGoogleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AuthV1Api->LoginGoogle");
-            }
 
             // verify the required parameter 'loginGoogleRequest' is set
             if (loginGoogleRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'loginGoogleRequest' when calling AuthV1Api->LoginGoogle");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -572,35 +548,31 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = loginGoogleRequest;
 
-            localVarRequestOptions.Operation = "AuthV1Api.LoginGoogle";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<LoginAnonymous200Response>("/auth/v1/{appId}/login/google", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<LoginAnonymous200Response>("/auth/v1/{appId}/login/google", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("LoginGoogle", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -612,9 +584,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LoginAnonymous200Response</returns>
-        public LoginAnonymous200Response LoginNickname(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0)
+        public LoginAnonymous200Response LoginNickname(string appId, LoginNicknameRequest loginNicknameRequest)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = LoginNicknameWithHttpInfo(appId, loginNicknameRequest);
             return localVarResponse.Data;
@@ -626,21 +597,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LoginAnonymous200Response</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> LoginNicknameWithHttpInfo(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> LoginNicknameWithHttpInfo(string appId, LoginNicknameRequest loginNicknameRequest)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AuthV1Api->LoginNickname");
-            }
 
             // verify the required parameter 'loginNicknameRequest' is set
             if (loginNicknameRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'loginNicknameRequest' when calling AuthV1Api->LoginNickname");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -654,33 +620,22 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = loginNicknameRequest;
 
-            localVarRequestOptions.Operation = "AuthV1Api.LoginNickname";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<LoginAnonymous200Response>("/auth/v1/{appId}/login/nickname", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("LoginNickname", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -692,12 +647,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoginAnonymous200Response</returns>
-        public async System.Threading.Tasks.Task<LoginAnonymous200Response> LoginNicknameAsync(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LoginAnonymous200Response> LoginNicknameAsync(string appId, LoginNicknameRequest loginNicknameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await LoginNicknameWithHttpInfoAsync(appId, loginNicknameRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = LoginNicknameWithHttpInfoAsync(appId, loginNicknameRequest, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -707,22 +666,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="loginNicknameRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoginAnonymous200Response)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response>> LoginNicknameWithHttpInfoAsync(string appId, LoginNicknameRequest loginNicknameRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<LoginAnonymous200Response>> LoginNicknameWithHttpInfoAsync(string appId, LoginNicknameRequest loginNicknameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AuthV1Api->LoginNickname");
-            }
 
             // verify the required parameter 'loginNicknameRequest' is set
             if (loginNicknameRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'loginNicknameRequest' when calling AuthV1Api->LoginNickname");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -736,35 +690,31 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = loginNicknameRequest;
 
-            localVarRequestOptions.Operation = "AuthV1Api.LoginNickname";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<LoginAnonymous200Response>("/auth/v1/{appId}/login/nickname", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<LoginAnonymous200Response>("/auth/v1/{appId}/login/nickname", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("LoginNickname", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

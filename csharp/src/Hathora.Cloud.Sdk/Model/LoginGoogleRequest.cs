@@ -20,7 +20,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 
 namespace Hathora.Cloud.Sdk.Model
@@ -29,7 +28,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// LoginGoogleRequest
     /// </summary>
     [DataContract(Name = "LoginGoogle_request")]
-    public partial class LoginGoogleRequest : IEquatable<LoginGoogleRequest>, IValidatableObject
+    public partial class LoginGoogleRequest : IEquatable<LoginGoogleRequest>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginGoogleRequest" /> class.
@@ -140,15 +139,6 @@ namespace Hathora.Cloud.Sdk.Model
             }
         }
 
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
 }

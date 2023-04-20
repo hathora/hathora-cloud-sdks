@@ -31,9 +31,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Application</returns>
-        Application CreateApp(CreateAppRequest createAppRequest, int operationIndex = 0);
+        Application CreateApp(CreateAppRequest createAppRequest);
 
         /// <summary>
         /// 
@@ -43,17 +42,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> CreateAppWithHttpInfo(CreateAppRequest createAppRequest, int operationIndex = 0);
+        ApiResponse<Application> CreateAppWithHttpInfo(CreateAppRequest createAppRequest);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void DeleteApp(string appId, int operationIndex = 0);
+        void DeleteApp(string appId);
 
         /// <summary>
         /// 
@@ -63,17 +60,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteAppWithHttpInfo(string appId, int operationIndex = 0);
+        ApiResponse<Object> DeleteAppWithHttpInfo(string appId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Application</returns>
-        Application GetAppInfo(string appId, int operationIndex = 0);
+        Application GetAppInfo(string appId);
 
         /// <summary>
         /// 
@@ -83,16 +78,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> GetAppInfoWithHttpInfo(string appId, int operationIndex = 0);
+        ApiResponse<Application> GetAppInfoWithHttpInfo(string appId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;ApplicationWithDeployment&gt;</returns>
-        List<ApplicationWithDeployment> GetApps(int operationIndex = 0);
+        List<ApplicationWithDeployment> GetApps();
 
         /// <summary>
         /// 
@@ -101,18 +94,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;ApplicationWithDeployment&gt;</returns>
-        ApiResponse<List<ApplicationWithDeployment>> GetAppsWithHttpInfo(int operationIndex = 0);
+        ApiResponse<List<ApplicationWithDeployment>> GetAppsWithHttpInfo();
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Application</returns>
-        Application UpdateApp(string appId, CreateAppRequest createAppRequest, int operationIndex = 0);
+        Application UpdateApp(string appId, CreateAppRequest createAppRequest);
 
         /// <summary>
         /// 
@@ -123,9 +114,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> UpdateAppWithHttpInfo(string appId, CreateAppRequest createAppRequest, int operationIndex = 0);
+        ApiResponse<Application> UpdateAppWithHttpInfo(string appId, CreateAppRequest createAppRequest);
         #endregion Synchronous Operations
     }
 
@@ -143,10 +133,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> CreateAppAsync(CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Application> CreateAppAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -156,10 +145,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> CreateAppWithHttpInfoAsync(CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Application>> CreateAppWithHttpInfoAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -168,10 +156,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteAppAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task DeleteAppAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -181,10 +168,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAppWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAppWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -193,10 +179,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> GetAppInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Application> GetAppInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -206,10 +191,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> GetAppInfoWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Application>> GetAppInfoWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -217,10 +201,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;ApplicationWithDeployment&gt;</returns>
-        System.Threading.Tasks.Task<List<ApplicationWithDeployment>> GetAppsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<ApplicationWithDeployment>> GetAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -229,10 +212,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;ApplicationWithDeployment&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ApplicationWithDeployment>>> GetAppsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<ApplicationWithDeployment>>> GetAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -242,10 +224,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -256,10 +237,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -274,12 +254,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class AppV1Api : IAppV1Api
+    public partial class AppV1Api : IDisposable, IAppV1Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AppV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public AppV1Api() : this((string)null)
@@ -288,7 +270,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AppV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public AppV1Api(string basePath)
         {
@@ -296,16 +282,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AppV1Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="AppV1Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public AppV1Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -315,8 +304,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -327,6 +317,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public AppV1Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -338,6 +329,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -385,9 +389,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Application</returns>
-        public Application CreateApp(CreateAppRequest createAppRequest, int operationIndex = 0)
+        public Application CreateApp(CreateAppRequest createAppRequest)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = CreateAppWithHttpInfo(createAppRequest);
             return localVarResponse.Data;
@@ -398,15 +401,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Application</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> CreateAppWithHttpInfo(CreateAppRequest createAppRequest, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> CreateAppWithHttpInfo(CreateAppRequest createAppRequest)
         {
             // verify the required parameter 'createAppRequest' is set
             if (createAppRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->CreateApp");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -420,21 +420,12 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.Data = createAppRequest;
-
-            localVarRequestOptions.Operation = "AppV1Api.CreateApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -445,13 +436,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Application>("/apps/v1/create", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -462,12 +451,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> CreateAppAsync(CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Application> CreateAppAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await CreateAppWithHttpInfoAsync(createAppRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = CreateAppWithHttpInfoAsync(createAppRequest, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -476,16 +469,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> CreateAppWithHttpInfoAsync(CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> CreateAppWithHttpInfoAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'createAppRequest' is set
             if (createAppRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->CreateApp");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -499,22 +489,14 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.Data = createAppRequest;
-
-            localVarRequestOptions.Operation = "AppV1Api.CreateApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -524,15 +506,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Application>("/apps/v1/create", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Application>("/apps/v1/create", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -543,9 +529,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void DeleteApp(string appId, int operationIndex = 0)
+        public void DeleteApp(string appId)
         {
             DeleteAppWithHttpInfo(appId);
         }
@@ -555,15 +540,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> DeleteAppWithHttpInfo(string appId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> DeleteAppWithHttpInfo(string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->DeleteApp");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -576,21 +558,12 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            localVarRequestOptions.Operation = "AppV1Api.DeleteApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -601,13 +574,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Delete<Object>("/apps/v1/delete/{appId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -618,12 +589,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteAppAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task DeleteAppAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await DeleteAppWithHttpInfoAsync(appId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = DeleteAppWithHttpInfoAsync(appId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            await task.ConfigureAwait(false);
+#else
+            await task;
+#endif
         }
 
         /// <summary>
@@ -631,16 +606,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> DeleteAppWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> DeleteAppWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->DeleteApp");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -653,22 +625,14 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            localVarRequestOptions.Operation = "AppV1Api.DeleteApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -678,15 +642,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/apps/v1/delete/{appId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.DeleteAsync<Object>("/apps/v1/delete/{appId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -697,9 +665,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Application</returns>
-        public Application GetAppInfo(string appId, int operationIndex = 0)
+        public Application GetAppInfo(string appId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = GetAppInfoWithHttpInfo(appId);
             return localVarResponse.Data;
@@ -710,15 +677,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Application</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> GetAppInfoWithHttpInfo(string appId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> GetAppInfoWithHttpInfo(string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->GetAppInfo");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -731,21 +695,12 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            localVarRequestOptions.Operation = "AppV1Api.GetAppInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -756,13 +711,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Application>("/apps/v1/info/{appId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAppInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -773,12 +726,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> GetAppInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Application> GetAppInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await GetAppInfoWithHttpInfoAsync(appId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetAppInfoWithHttpInfoAsync(appId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -787,16 +744,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> GetAppInfoWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> GetAppInfoWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->GetAppInfo");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -809,22 +763,14 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            localVarRequestOptions.Operation = "AppV1Api.GetAppInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -834,15 +780,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Application>("/apps/v1/info/{appId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<Application>("/apps/v1/info/{appId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAppInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -852,9 +802,8 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;ApplicationWithDeployment&gt;</returns>
-        public List<ApplicationWithDeployment> GetApps(int operationIndex = 0)
+        public List<ApplicationWithDeployment> GetApps()
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> localVarResponse = GetAppsWithHttpInfo();
             return localVarResponse.Data;
@@ -864,9 +813,8 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;ApplicationWithDeployment&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> GetAppsWithHttpInfo(int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> GetAppsWithHttpInfo()
         {
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -879,20 +827,11 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-
-            localVarRequestOptions.Operation = "AppV1Api.GetApps";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -903,13 +842,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<ApplicationWithDeployment>>("/apps/v1/list", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetApps", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -919,12 +856,16 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;ApplicationWithDeployment&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ApplicationWithDeployment>> GetAppsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<ApplicationWithDeployment>> GetAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> localVarResponse = await GetAppsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetAppsWithHttpInfoAsync(cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -932,10 +873,9 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;ApplicationWithDeployment&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>>> GetAppsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>>> GetAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -948,21 +888,13 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-
-            localVarRequestOptions.Operation = "AppV1Api.GetApps";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -972,15 +904,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<ApplicationWithDeployment>>("/apps/v1/list", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<List<ApplicationWithDeployment>>("/apps/v1/list", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetApps", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -992,9 +928,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Application</returns>
-        public Application UpdateApp(string appId, CreateAppRequest createAppRequest, int operationIndex = 0)
+        public Application UpdateApp(string appId, CreateAppRequest createAppRequest)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = UpdateAppWithHttpInfo(appId, createAppRequest);
             return localVarResponse.Data;
@@ -1006,21 +941,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Application</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> UpdateAppWithHttpInfo(string appId, CreateAppRequest createAppRequest, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> UpdateAppWithHttpInfo(string appId, CreateAppRequest createAppRequest)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->UpdateApp");
-            }
 
             // verify the required parameter 'createAppRequest' is set
             if (createAppRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->UpdateApp");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1034,22 +964,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = createAppRequest;
-
-            localVarRequestOptions.Operation = "AppV1Api.UpdateApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1060,13 +981,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Application>("/apps/v1/update/{appId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1078,12 +997,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await UpdateAppWithHttpInfoAsync(appId, createAppRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = UpdateAppWithHttpInfoAsync(appId, createAppRequest, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -1093,22 +1016,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createAppRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, CreateAppRequest createAppRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->UpdateApp");
-            }
 
             // verify the required parameter 'createAppRequest' is set
             if (createAppRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->UpdateApp");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1122,23 +1040,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = createAppRequest;
-
-            localVarRequestOptions.Operation = "AppV1Api.UpdateApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1148,15 +1058,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Application>("/apps/v1/update/{appId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Application>("/apps/v1/update/{appId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

@@ -20,7 +20,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 
 namespace Hathora.Cloud.Sdk.Model
@@ -29,7 +28,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// Construct a type with a set of properties K of type T
     /// </summary>
     [DataContract(Name = "Record_Partial_MetricName_.MetricValue-Array_")]
-    public partial class RecordPartialMetricNameMetricValueArray : IEquatable<RecordPartialMetricNameMetricValueArray>, IValidatableObject
+    public partial class RecordPartialMetricNameMetricValueArray : IEquatable<RecordPartialMetricNameMetricValueArray>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RecordPartialMetricNameMetricValueArray" /> class.
@@ -185,15 +184,6 @@ namespace Hathora.Cloud.Sdk.Model
             }
         }
 
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
 }

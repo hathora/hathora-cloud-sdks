@@ -24,17 +24,18 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using RestSharp;
-using RestSharp.Serializers;
-using RestSharpMethod = RestSharp.Method;
-using Polly;
+using ErrorEventArgs = Newtonsoft.Json.Serialization.ErrorEventArgs;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using UnityEngine.Networking;
+using UnityEngine;
 
 namespace Hathora.Cloud.Sdk.Client
 {
     /// <summary>
-    /// Allows RestSharp to Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON.
+    /// To Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON.
     /// </summary>
-    internal class CustomJsonCodec : IRestSerializer, ISerializer, IDeserializer
+    internal class CustomJsonCodec
     {
         private readonly IReadableConfiguration _configuration;
         private static readonly string _contentType = "application/json";
@@ -80,95 +81,100 @@ namespace Hathora.Cloud.Sdk.Client
             }
         }
 
-        public string Serialize(Parameter bodyParameter) => Serialize(bodyParameter.Value);
-
-        public T Deserialize<T>(RestResponse response)
+        public T Deserialize<T>(UnityWebRequest request)
         {
-            var result = (T)Deserialize(response, typeof(T));
+            var result = (T) Deserialize(request, typeof(T));
             return result;
         }
 
         /// <summary>
         /// Deserialize the JSON string into a proper object.
         /// </summary>
-        /// <param name="response">The HTTP response.</param>
+        /// <param name="response">The UnityWebRequest after it has a response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        internal object Deserialize(RestResponse response, Type type)
+        internal object Deserialize(UnityWebRequest request, Type type)
         {
             if (type == typeof(byte[])) // return byte array
             {
-                return response.RawBytes;
+                return request.downloadHandler.data;
             }
 
             // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
             if (type == typeof(Stream))
             {
-                var bytes = response.RawBytes;
-                if (response.Headers != null)
-                {
-                    var filePath = string.IsNullOrEmpty(_configuration.TempFolderPath)
-                        ? Path.GetTempPath()
-                        : _configuration.TempFolderPath;
-                    var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
-                    foreach (var header in response.Headers)
-                    {
-                        var match = regex.Match(header.ToString());
-                        if (match.Success)
-                        {
-                            string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, bytes);
-                            return new FileStream(fileName, FileMode.Open);
-                        }
-                    }
-                }
-                var stream = new MemoryStream(bytes);
-                return stream;
+                // NOTE: Ignoring Content-Disposition filename support, since not all platforms
+                // have a location on disk to write arbitrary data (tvOS, consoles).
+                return new MemoryStream(request.downloadHandler.data);
             }
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
-                return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
+                return DateTime.Parse(request.downloadHandler.text, null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
 
             if (type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
             {
-                return Convert.ChangeType(response.Content, type);
+                return Convert.ChangeType(request.downloadHandler.text, type);
             }
 
-            // at this point, it must be a model (json)
-            try
+            var contentType = request.GetResponseHeader("Content-Type");
+
+            if (!string.IsNullOrEmpty(contentType) && contentType.Contains("application/json"))
             {
-                return JsonConvert.DeserializeObject(response.Content, type, _serializerSettings);
+                var text = request.downloadHandler?.text;
+
+                // Generated APIs that don't expect a return value provide System.Object as the type
+                if (type == typeof(System.Object) && (string.IsNullOrEmpty(text) || text.Trim() == "null"))
+                {
+                    return null;
+                }
+
+                if (request.responseCode >= 200 && request.responseCode < 300)
+                {
+                    try
+                    {
+                        // Deserialize as a model
+                        return JsonConvert.DeserializeObject(text, type, _serializerSettings);
+                    }
+                    catch (Exception e)
+                    {
+                        throw new UnexpectedResponseException(request, type, e.ToString());
+                    }
+                }
+                else
+                {
+                    throw new ApiException((int)request.responseCode, request.error, text);
+                }
             }
-            catch (Exception e)
+            
+            if (type != typeof(System.Object) && request.responseCode >= 200 && request.responseCode < 300)
             {
-                throw new ApiException(500, e.Message);
+                throw new UnexpectedResponseException(request, type);
             }
+
+            return null;
+
         }
 
-        public ISerializer Serializer => this;
-        public IDeserializer Deserializer => this;
-
-        public string[] AcceptedContentTypes => RestSharp.Serializers.ContentType.JsonAccept;
-
-        public SupportsContentType SupportsContentType => contentType =>
-            contentType.EndsWith("json", StringComparison.InvariantCultureIgnoreCase) ||
-            contentType.EndsWith("javascript", StringComparison.InvariantCultureIgnoreCase);
+        public string RootElement { get; set; }
+        public string Namespace { get; set; }
+        public string DateFormat { get; set; }
 
         public string ContentType
         {
             get { return _contentType; }
             set { throw new InvalidOperationException("Not allowed to set content type."); }
         }
-
-        public DataFormat DataFormat => DataFormat.Json;
     }
     /// <summary>
     /// Provides a default implementation of an Api client (both synchronous and asynchronous implementations),
     /// encapsulating general REST accessor use cases.
     /// </summary>
-    public partial class ApiClient : ISynchronousClient, IAsynchronousClient
+    /// <remarks>
+    /// The Dispose method will manage the HttpClient lifecycle when not passed by constructor.
+    /// </remarks>
+    public partial class ApiClient : IDisposable, ISynchronousClient, IAsynchronousClient
     {
         private readonly string _baseUrl;
 
@@ -190,92 +196,46 @@ namespace Hathora.Cloud.Sdk.Client
         };
 
         /// <summary>
-        /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
-        /// </summary>
-        /// <param name="request">The RestSharp request object</param>
-        partial void InterceptRequest(RestRequest request);
-
-        /// <summary>
-        /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
-        /// </summary>
-        /// <param name="request">The RestSharp request object</param>
-        /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(RestRequest request, RestResponse response);
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" />, defaulting to the global configurations' base url.
         /// </summary>
-        public ApiClient()
+        public ApiClient() :
+                 this(Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance.BasePath)
         {
-            _baseUrl = Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance.BasePath;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" />
+        /// Initializes a new instance of the <see cref="ApiClient" />.
         /// </summary>
         /// <param name="basePath">The target service's base path in URL format.</param>
         /// <exception cref="ArgumentException"></exception>
         public ApiClient(string basePath)
         {
-            if (string.IsNullOrEmpty(basePath))
-                throw new ArgumentException("basePath cannot be empty");
+            if (string.IsNullOrEmpty(basePath)) throw new ArgumentException("basePath cannot be empty");
 
             _baseUrl = basePath;
         }
 
         /// <summary>
-        /// Constructs the RestSharp version of an http method
+        /// Disposes resources if they were created by us
         /// </summary>
-        /// <param name="method">Swagger Client Custom HttpMethod</param>
-        /// <returns>RestSharp's HttpMethod instance.</returns>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private RestSharpMethod Method(HttpMethod method)
+        public void Dispose()
         {
-            RestSharpMethod other;
-            switch (method)
-            {
-                case HttpMethod.Get:
-                    other = RestSharpMethod.Get;
-                    break;
-                case HttpMethod.Post:
-                    other = RestSharpMethod.Post;
-                    break;
-                case HttpMethod.Put:
-                    other = RestSharpMethod.Put;
-                    break;
-                case HttpMethod.Delete:
-                    other = RestSharpMethod.Delete;
-                    break;
-                case HttpMethod.Head:
-                    other = RestSharpMethod.Head;
-                    break;
-                case HttpMethod.Options:
-                    other = RestSharpMethod.Options;
-                    break;
-                case HttpMethod.Patch:
-                    other = RestSharpMethod.Patch;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("method", method, null);
-            }
-
-            return other;
         }
 
         /// <summary>
-        /// Provides all logic for constructing a new RestSharp <see cref="RestRequest"/>.
+        /// Provides all logic for constructing a new UnityWebRequest.
         /// At this point, all information for querying the service is known. Here, it is simply
-        /// mapped into the RestSharp request.
+        /// mapped into the UnityWebRequest.
         /// </summary>
         /// <param name="method">The http verb.</param>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="configuration">A per-request configuration object. It is assumed that any merge with
         /// GlobalConfiguration has been done before calling this method.</param>
-        /// <returns>[private] A new RestRequest instance.</returns>
+        /// <returns>[private] A new UnityWebRequest instance.</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        private RestRequest NewRequest(
-            HttpMethod method,
+        private UnityWebRequest NewRequest<T>(
+            string method,
             string path,
             RequestOptions options,
             IReadableConfiguration configuration)
@@ -284,32 +244,77 @@ namespace Hathora.Cloud.Sdk.Client
             if (options == null) throw new ArgumentNullException("options");
             if (configuration == null) throw new ArgumentNullException("configuration");
 
-            RestRequest request = new RestRequest(path, Method(method));
+            WebRequestPathBuilder builder = new WebRequestPathBuilder(_baseUrl, path);
 
-            if (options.PathParameters != null)
+            builder.AddPathParameters(options.PathParameters);
+
+            builder.AddQueryParameters(options.QueryParameters);
+
+            string contentType = null;
+            if (options.HeaderParameters != null && options.HeaderParameters.ContainsKey("Content-Type"))
             {
-                foreach (var pathParam in options.PathParameters)
-                {
-                    request.AddParameter(pathParam.Key, pathParam.Value, ParameterType.UrlSegment);
-                }
+                var contentTypes = options.HeaderParameters["Content-Type"];
+                contentType = contentTypes.FirstOrDefault();
             }
 
-            if (options.QueryParameters != null)
+            var uri = builder.GetFullUri();
+            UnityWebRequest request = null;
+
+            if (contentType == "multipart/form-data")
             {
-                foreach (var queryParam in options.QueryParameters)
+                var formData = new List<IMultipartFormSection>();
+                foreach (var formParameter in options.FormParameters)
                 {
-                    foreach (var value in queryParam.Value)
-                    {
-                        request.AddQueryParameter(queryParam.Key, value);
-                    }
+                    formData.Add(new MultipartFormDataSection(formParameter.Key, formParameter.Value));
                 }
+
+                request = UnityWebRequest.Post(uri, formData);
+                request.method = method;
             }
+            else if (contentType == "application/x-www-form-urlencoded")
+            {
+                var form = new WWWForm();
+                foreach (var kvp in options.FormParameters)
+                {
+                    form.AddField(kvp.Key, kvp.Value);
+                }
+
+                request = UnityWebRequest.Post(uri, form);
+                request.method = method;
+            }
+            else if (options.Data != null)
+            {
+                var serializer = new CustomJsonCodec(SerializerSettings, configuration);
+                var jsonData = serializer.Serialize(options.Data);
+
+                // Making a post body application/json encoded is whack with UnityWebRequest.
+                // See: https://stackoverflow.com/questions/68156230/unitywebrequest-post-not-sending-body
+                request = UnityWebRequest.Put(uri, jsonData);
+                request.method = method;
+                request.SetRequestHeader("Content-Type", "application/json");
+            }
+            else
+            {
+                request = new UnityWebRequest(builder.GetFullUri(), method);
+            }
+
+            if (request.downloadHandler == null && typeof(T) != typeof(System.Object))
+            {
+                request.downloadHandler = new DownloadHandlerBuffer();
+            }
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            if (configuration.UserAgent != null)
+            {
+                request.SetRequestHeader("User-Agent", configuration.UserAgent);
+            }
+#endif
 
             if (configuration.DefaultHeaders != null)
             {
                 foreach (var headerParam in configuration.DefaultHeaders)
                 {
-                    request.AddHeader(headerParam.Key, headerParam.Value);
+                    request.SetRequestHeader(headerParam.Key, headerParam.Value);
                 }
             }
 
@@ -319,308 +324,122 @@ namespace Hathora.Cloud.Sdk.Client
                 {
                     foreach (var value in headerParam.Value)
                     {
-                        request.AddHeader(headerParam.Key, value);
+                        // Todo make content headers actually content headers
+                        request.SetRequestHeader(headerParam.Key, value);
                     }
                 }
             }
 
-            if (options.FormParameters != null)
+            if (options.Cookies != null && options.Cookies.Count > 0)
             {
-                foreach (var formParam in options.FormParameters)
+                #if UNITY_WEBGL
+                throw new System.InvalidOperationException("UnityWebRequest does not support setting cookies in WebGL");
+                #else
+                if (options.Cookies.Count != 1)
                 {
-                    request.AddParameter(formParam.Key, formParam.Value);
+                    UnityEngine.Debug.LogError("Only one cookie supported, ignoring others");
                 }
-            }
 
-            if (options.Data != null)
-            {
-                if (options.Data is Stream stream)
-                {
-                    var contentType = "application/octet-stream";
-                    if (options.HeaderParameters != null)
-                    {
-                        var contentTypes = options.HeaderParameters["Content-Type"];
-                        contentType = contentTypes[0];
-                    }
-
-                    var bytes = ClientUtils.ReadAsBytes(stream);
-                    request.AddParameter(contentType, bytes, ParameterType.RequestBody);
-                }
-                else
-                {
-                    if (options.HeaderParameters != null)
-                    {
-                        var contentTypes = options.HeaderParameters["Content-Type"];
-                        if (contentTypes == null || contentTypes.Any(header => header.Contains("application/json")))
-                        {
-                            request.RequestFormat = DataFormat.Json;
-                        }
-                        else
-                        {
-                            // TODO: Generated client user should add additional handlers. RestSharp only supports XML and JSON, with XML as default.
-                        }
-                    }
-                    else
-                    {
-                        // Here, we'll assume JSON APIs are more common. XML can be forced by adding produces/consumes to openapi spec explicitly.
-                        request.RequestFormat = DataFormat.Json;
-                    }
-
-                    request.AddJsonBody(options.Data);
-                }
-            }
-
-            if (options.FileParameters != null)
-            {
-                foreach (var fileParam in options.FileParameters)
-                {
-                    foreach (var file in fileParam.Value)
-                    {
-                        var bytes = ClientUtils.ReadAsBytes(file);
-                        var fileStream = file as FileStream;
-                        if (fileStream != null)
-                            request.AddFile(fileParam.Key, bytes, System.IO.Path.GetFileName(fileStream.Name));
-                        else
-                            request.AddFile(fileParam.Key, bytes, "no_file_name_provided");
-                    }
-                }
+                request.SetRequestHeader("Cookie", options.Cookies[0].ToString());
+                #endif
             }
 
             return request;
+
         }
 
-        private ApiResponse<T> ToApiResponse<T>(RestResponse<T> response)
-        {
-            T result = response.Data;
-            string rawContent = response.Content;
+        partial void InterceptRequest(UnityWebRequest req, string path, RequestOptions options, IReadableConfiguration configuration);
+        partial void InterceptResponse(UnityWebRequest req, string path, RequestOptions options, IReadableConfiguration configuration, ref object responseData);
 
-            var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result, rawContent)
+        private ApiResponse<T> ToApiResponse<T>(UnityWebRequest request, object responseData)
+        {
+            T result = (T) responseData;
+
+            var transformed = new ApiResponse<T>((HttpStatusCode)request.responseCode, new Multimap<string, string>(), result, request.downloadHandler?.text ?? "")
             {
-                ErrorText = response.ErrorMessage,
+                ErrorText = request.error,
                 Cookies = new List<Cookie>()
             };
 
-            if (response.Headers != null)
+            // process response headers, e.g. Access-Control-Allow-Methods
+            var responseHeaders = request.GetResponseHeaders();
+            if (responseHeaders != null)
             {
-                foreach (var responseHeader in response.Headers)
+                foreach (var responseHeader in request.GetResponseHeaders())
                 {
-                    transformed.Headers.Add(responseHeader.Name, ClientUtils.ParameterToString(responseHeader.Value));
-                }
-            }
-
-            if (response.ContentHeaders != null)
-            {
-                foreach (var responseHeader in response.ContentHeaders)
-                {
-                    transformed.Headers.Add(responseHeader.Name, ClientUtils.ParameterToString(responseHeader.Value));
-                }
-            }
-
-            if (response.Cookies != null)
-            {
-                foreach (var responseCookies in response.Cookies.Cast<Cookie>())
-                {
-                    transformed.Cookies.Add(
-                        new Cookie(
-                            responseCookies.Name,
-                            responseCookies.Value,
-                            responseCookies.Path,
-                            responseCookies.Domain)
-                        );
+                    transformed.Headers.Add(responseHeader.Key, ClientUtils.ParameterToString(responseHeader.Value));
                 }
             }
 
             return transformed;
         }
 
-        private ApiResponse<T> Exec<T>(RestRequest req, RequestOptions options, IReadableConfiguration configuration)
+        private async Task<ApiResponse<T>> ExecAsync<T>(
+            UnityWebRequest request,
+            string path,
+            RequestOptions options,
+            IReadableConfiguration configuration,
+            System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var baseUrl = configuration.GetOperationServerUrl(options.Operation, options.OperationIndex) ?? _baseUrl;
+            var deserializer = new CustomJsonCodec(SerializerSettings, configuration);
 
-            var cookies = new CookieContainer();
-
-            if (options.Cookies != null && options.Cookies.Count > 0)
+            using (request)
             {
-                foreach (var cookie in options.Cookies)
+                if (configuration.Timeout > 0)
                 {
-                    cookies.Add(new Cookie(cookie.Name, cookie.Value));
+                    request.timeout = (int)Math.Ceiling(configuration.Timeout / 1000.0f);
                 }
-            }
 
-            var clientOptions = new RestClientOptions(baseUrl)
-            {
-                ClientCertificates = configuration.ClientCertificates,
-                CookieContainer = cookies,
-                MaxTimeout = configuration.Timeout,
-                Proxy = configuration.Proxy,
-                UserAgent = configuration.UserAgent
-            };
-
-            RestClient client = new RestClient(clientOptions)
-                .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
-
-            InterceptRequest(req);
-
-            RestResponse<T> response;
-            if (RetryConfiguration.RetryPolicy != null)
-            {
-                var policy = RetryConfiguration.RetryPolicy;
-                var policyResult = policy.ExecuteAndCapture(() => client.Execute(req));
-                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result) : new RestResponse<T>
+                if (configuration.Proxy != null)
                 {
-                    Request = req,
-                    ErrorException = policyResult.FinalException
-                };
-            }
-            else
-            {
-                response = client.Execute<T>(req);
-            }
-
-            // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
-            if (typeof(Hathora.Cloud.Sdk.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
-            {
-                try
-                {
-                    response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                    throw new InvalidOperationException("Configuration `Proxy` not supported by UnityWebRequest");
                 }
-                catch (Exception ex)
+
+                if (configuration.ClientCertificates != null)
                 {
-                    throw ex.InnerException != null ? ex.InnerException : ex;
+                    // Only Android/iOS/tvOS/Standalone players can support certificates, and this
+                    // implementation is intended to work on all platforms.
+                    //
+                    // TODO: Could optionally allow support for this on these platforms.
+                    //
+                    // See: https://docs.unity3d.com/ScriptReference/Networking.CertificateHandler.html
+                    throw new InvalidOperationException("Configuration `ClientCertificates` not supported by UnityWebRequest on all platforms");
                 }
-            }
-            else if (typeof(T).Name == "Stream") // for binary response
-            {
-                response.Data = (T)(object)new MemoryStream(response.RawBytes);
-            }
-            else if (typeof(T).Name == "Byte[]") // for byte response
-            {
-                response.Data = (T)(object)response.RawBytes;
-            }
-            else if (typeof(T).Name == "String") // for string response
-            {
-                response.Data = (T)(object)response.Content;
-            }
 
-            InterceptResponse(req, response);
+                InterceptRequest(request, path, options, configuration);
 
-            var result = ToApiResponse(response);
-            if (response.ErrorMessage != null)
-            {
-                result.ErrorText = response.ErrorMessage;
-            }
+                var asyncOp = request.SendWebRequest();
 
-            if (response.Cookies != null && response.Cookies.Count > 0)
-            {
-                if (result.Cookies == null) result.Cookies = new List<Cookie>();
-                foreach (var restResponseCookie in response.Cookies.Cast<Cookie>())
+                TaskCompletionSource<UnityWebRequest.Result> tsc = new TaskCompletionSource<UnityWebRequest.Result>();
+                asyncOp.completed += (_) => tsc.TrySetResult(request.result);
+
+                using (var tokenRegistration = cancellationToken.Register(request.Abort, true))
                 {
-                    var cookie = new Cookie(
-                        restResponseCookie.Name,
-                        restResponseCookie.Value,
-                        restResponseCookie.Path,
-                        restResponseCookie.Domain
-                    )
-                    {
-                        Comment = restResponseCookie.Comment,
-                        CommentUri = restResponseCookie.CommentUri,
-                        Discard = restResponseCookie.Discard,
-                        Expired = restResponseCookie.Expired,
-                        Expires = restResponseCookie.Expires,
-                        HttpOnly = restResponseCookie.HttpOnly,
-                        Port = restResponseCookie.Port,
-                        Secure = restResponseCookie.Secure,
-                        Version = restResponseCookie.Version
-                    };
-
-                    result.Cookies.Add(cookie);
+                    await tsc.Task;
                 }
-            }
-            return result;
-        }
-
-        private async Task<ApiResponse<T>> ExecAsync<T>(RestRequest req, RequestOptions options, IReadableConfiguration configuration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            var baseUrl = configuration.GetOperationServerUrl(options.Operation, options.OperationIndex) ?? _baseUrl;
-
-            var clientOptions = new RestClientOptions(baseUrl)
-            {
-                ClientCertificates = configuration.ClientCertificates,
-                MaxTimeout = configuration.Timeout,
-                Proxy = configuration.Proxy,
-                UserAgent = configuration.UserAgent
-            };
-
-            RestClient client = new RestClient(clientOptions)
-                .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
-
-            InterceptRequest(req);
-
-            RestResponse<T> response;
-            if (RetryConfiguration.AsyncRetryPolicy != null)
-            {
-                var policy = RetryConfiguration.AsyncRetryPolicy;
-                var policyResult = await policy.ExecuteAndCaptureAsync((ct) => client.ExecuteAsync(req, ct), cancellationToken).ConfigureAwait(false);
-                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result) : new RestResponse<T>
+                
+                if (request.result == UnityWebRequest.Result.ConnectionError ||
+                    request.result == UnityWebRequest.Result.DataProcessingError)
                 {
-                    Request = req,
-                    ErrorException = policyResult.FinalException
-                };
-            }
-            else
-            {
-                response = await client.ExecuteAsync<T>(req, cancellationToken).ConfigureAwait(false);
-            }
-
-            // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
-            if (typeof(Hathora.Cloud.Sdk.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
-            {
-                response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
-            }
-            else if (typeof(T).Name == "Stream") // for binary response
-            {
-                response.Data = (T)(object)new MemoryStream(response.RawBytes);
-            }
-            else if (typeof(T).Name == "Byte[]") // for byte response
-            {
-                response.Data = (T)(object)response.RawBytes;
-            }
-
-            InterceptResponse(req, response);
-
-            var result = ToApiResponse(response);
-            if (response.ErrorMessage != null)
-            {
-                result.ErrorText = response.ErrorMessage;
-            }
-
-            if (response.Cookies != null && response.Cookies.Count > 0)
-            {
-                if (result.Cookies == null) result.Cookies = new List<Cookie>();
-                foreach (var restResponseCookie in response.Cookies.Cast<Cookie>())
-                {
-                    var cookie = new Cookie(
-                        restResponseCookie.Name,
-                        restResponseCookie.Value,
-                        restResponseCookie.Path,
-                        restResponseCookie.Domain
-                    )
-                    {
-                        Comment = restResponseCookie.Comment,
-                        CommentUri = restResponseCookie.CommentUri,
-                        Discard = restResponseCookie.Discard,
-                        Expired = restResponseCookie.Expired,
-                        Expires = restResponseCookie.Expires,
-                        HttpOnly = restResponseCookie.HttpOnly,
-                        Port = restResponseCookie.Port,
-                        Secure = restResponseCookie.Secure,
-                        Version = restResponseCookie.Version
-                    };
-
-                    result.Cookies.Add(cookie);
+                    throw new ConnectionException(request);
                 }
+
+                object responseData = deserializer.Deserialize<T>(request);
+
+                // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
+                if (typeof(Hathora.Cloud.Sdk.Model.AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
+                {
+                    responseData = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { new ByteArrayContent(request.downloadHandler.data) });
+                }
+                else if (typeof(T).Name == "Stream") // for binary response
+                {
+                    responseData = (T) (object) new MemoryStream(request.downloadHandler.data);
+                }
+
+                InterceptResponse(request, path, options, configuration, ref responseData);
+
+                return ToApiResponse<T>(request, responseData);
             }
-            return result;
         }
 
         #region IAsynchronousClient
@@ -636,7 +455,7 @@ namespace Hathora.Cloud.Sdk.Client
         public Task<ApiResponse<T>> GetAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Get, path, options, config), options, config, cancellationToken);
+            return ExecAsync<T>(NewRequest<T>("GET", path, options, config), path, options, config, cancellationToken);
         }
 
         /// <summary>
@@ -651,7 +470,7 @@ namespace Hathora.Cloud.Sdk.Client
         public Task<ApiResponse<T>> PostAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Post, path, options, config), options, config, cancellationToken);
+            return ExecAsync<T>(NewRequest<T>("POST", path, options, config), path, options, config, cancellationToken);
         }
 
         /// <summary>
@@ -666,7 +485,7 @@ namespace Hathora.Cloud.Sdk.Client
         public Task<ApiResponse<T>> PutAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Put, path, options, config), options, config, cancellationToken);
+            return ExecAsync<T>(NewRequest<T>("PUT", path, options, config), path, options, config, cancellationToken);
         }
 
         /// <summary>
@@ -681,7 +500,7 @@ namespace Hathora.Cloud.Sdk.Client
         public Task<ApiResponse<T>> DeleteAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Delete, path, options, config), options, config, cancellationToken);
+            return ExecAsync<T>(NewRequest<T>("DELETE", path, options, config), path, options, config, cancellationToken);
         }
 
         /// <summary>
@@ -696,7 +515,7 @@ namespace Hathora.Cloud.Sdk.Client
         public Task<ApiResponse<T>> HeadAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Head, path, options, config), options, config, cancellationToken);
+            return ExecAsync<T>(NewRequest<T>("HEAD", path, options, config), path, options, config, cancellationToken);
         }
 
         /// <summary>
@@ -711,7 +530,7 @@ namespace Hathora.Cloud.Sdk.Client
         public Task<ApiResponse<T>> OptionsAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Options, path, options, config), options, config, cancellationToken);
+            return ExecAsync<T>(NewRequest<T>("OPTIONS", path, options, config), path, options, config, cancellationToken);
         }
 
         /// <summary>
@@ -726,7 +545,7 @@ namespace Hathora.Cloud.Sdk.Client
         public Task<ApiResponse<T>> PatchAsync<T>(string path, RequestOptions options, IReadableConfiguration configuration = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var config = configuration ?? GlobalConfiguration.Instance;
-            return ExecAsync<T>(NewRequest(HttpMethod.Patch, path, options, config), options, config, cancellationToken);
+            return ExecAsync<T>(NewRequest<T>("PATCH", path, options, config), path, options, config, cancellationToken);
         }
         #endregion IAsynchronousClient
 
@@ -741,8 +560,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Get<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Get, path, options, config), options, config);
+            throw new System.NotImplementedException("UnityWebRequest does not support synchronous operation");
         }
 
         /// <summary>
@@ -755,8 +573,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Post<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Post, path, options, config), options, config);
+            throw new System.NotImplementedException("UnityWebRequest does not support synchronous operation");
         }
 
         /// <summary>
@@ -769,8 +586,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Put<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Put, path, options, config), options, config);
+            throw new System.NotImplementedException("UnityWebRequest does not support synchronous operation");
         }
 
         /// <summary>
@@ -783,8 +599,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Delete<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Delete, path, options, config), options, config);
+            throw new System.NotImplementedException("UnityWebRequest does not support synchronous operation");
         }
 
         /// <summary>
@@ -797,8 +612,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Head<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Head, path, options, config), options, config);
+            throw new System.NotImplementedException("UnityWebRequest does not support synchronous operation");
         }
 
         /// <summary>
@@ -811,8 +625,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Options<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Options, path, options, config), options, config);
+            throw new System.NotImplementedException("UnityWebRequest does not support synchronous operation");
         }
 
         /// <summary>
@@ -825,8 +638,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// <returns>A Task containing ApiResponse</returns>
         public ApiResponse<T> Patch<T>(string path, RequestOptions options, IReadableConfiguration configuration = null)
         {
-            var config = configuration ?? GlobalConfiguration.Instance;
-            return Exec<T>(NewRequest(HttpMethod.Patch, path, options, config), options, config);
+            throw new System.NotImplementedException("UnityWebRequest does not support synchronous operation");
         }
         #endregion ISynchronousClient
     }

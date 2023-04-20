@@ -34,9 +34,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>byte[]</returns>
-        byte[] GetLogsForApp(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0);
+        byte[] GetLogsForApp(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?));
 
         /// <summary>
         /// 
@@ -49,9 +48,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0);
+        ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?));
         /// <summary>
         /// 
         /// </summary>
@@ -60,9 +58,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Object</returns>
-        Object GetLogsForDeployment(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0);
+        Object GetLogsForDeployment(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?));
 
         /// <summary>
         /// 
@@ -75,9 +72,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetLogsForDeploymentWithHttpInfo(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0);
+        ApiResponse<Object> GetLogsForDeploymentWithHttpInfo(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?));
         /// <summary>
         /// 
         /// </summary>
@@ -86,9 +82,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>byte[]</returns>
-        byte[] GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0);
+        byte[] GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?));
 
         /// <summary>
         /// 
@@ -101,9 +96,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0);
+        ApiResponse<byte[]> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?));
         #endregion Synchronous Operations
     }
 
@@ -124,10 +118,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -140,10 +133,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -155,10 +147,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetLogsForDeploymentAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Object> GetLogsForDeploymentAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -171,10 +162,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetLogsForDeploymentWithHttpInfoAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetLogsForDeploymentWithHttpInfoAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -186,10 +176,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<byte[]> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -202,10 +191,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -220,12 +208,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class LogV1Api : ILogV1Api
+    public partial class LogV1Api : IDisposable, ILogV1Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LogV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public LogV1Api() : this((string)null)
@@ -234,7 +224,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LogV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public LogV1Api(string basePath)
         {
@@ -242,16 +236,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LogV1Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="LogV1Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public LogV1Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -261,8 +258,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -273,6 +271,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public LogV1Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -284,6 +283,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -334,9 +346,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>byte[]</returns>
-        public byte[] GetLogsForApp(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0)
+        public byte[] GetLogsForApp(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = GetLogsForAppWithHttpInfo(appId, follow, tailLines, region);
             return localVarResponse.Data;
@@ -350,15 +361,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LogV1Api->GetLogsForApp");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -372,16 +380,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (follow != null)
@@ -397,9 +399,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            localVarRequestOptions.Operation = "LogV1Api.GetLogsForApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -409,13 +408,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<byte[]>("/logs/v1/{appId}/all", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLogsForApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -429,12 +426,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await GetLogsForAppWithHttpInfoAsync(appId, follow, tailLines, region, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetLogsForAppWithHttpInfoAsync(appId, follow, tailLines, region, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -446,16 +447,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), double? tailLines = default(double?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LogV1Api->GetLogsForApp");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -469,17 +467,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (follow != null)
@@ -495,9 +488,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            localVarRequestOptions.Operation = "LogV1Api.GetLogsForApp";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -506,15 +496,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/all", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/all", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLogsForApp", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -528,9 +522,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Object</returns>
-        public Object GetLogsForDeployment(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0)
+        public Object GetLogsForDeployment(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Object> localVarResponse = GetLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
             return localVarResponse.Data;
@@ -544,15 +537,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> GetLogsForDeploymentWithHttpInfo(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> GetLogsForDeploymentWithHttpInfo(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LogV1Api->GetLogsForDeployment");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -566,16 +556,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deploymentId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(deploymentId)); // path parameter
@@ -588,9 +572,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            localVarRequestOptions.Operation = "LogV1Api.GetLogsForDeployment";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -600,13 +581,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Object>("/logs/v1/{appId}/deployment/{deploymentId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLogsForDeployment", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -620,12 +599,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetLogsForDeploymentAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Object> GetLogsForDeploymentAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Object> localVarResponse = await GetLogsForDeploymentWithHttpInfoAsync(appId, deploymentId, follow, tailLines, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetLogsForDeploymentWithHttpInfoAsync(appId, deploymentId, follow, tailLines, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Object> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Object> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -637,16 +620,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> GetLogsForDeploymentWithHttpInfoAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> GetLogsForDeploymentWithHttpInfoAsync(string appId, double deploymentId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LogV1Api->GetLogsForDeployment");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -660,17 +640,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deploymentId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(deploymentId)); // path parameter
@@ -683,9 +658,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            localVarRequestOptions.Operation = "LogV1Api.GetLogsForDeployment";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -694,15 +666,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/logs/v1/{appId}/deployment/{deploymentId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<Object>("/logs/v1/{appId}/deployment/{deploymentId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLogsForDeployment", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -716,9 +692,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>byte[]</returns>
-        public byte[] GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0)
+        public byte[] GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = GetLogsForProcessWithHttpInfo(appId, processId, follow, tailLines);
             return localVarResponse.Data;
@@ -732,21 +707,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LogV1Api->GetLogsForProcess");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling LogV1Api->GetLogsForProcess");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -760,16 +730,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
@@ -782,9 +746,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            localVarRequestOptions.Operation = "LogV1Api.GetLogsForProcess";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -794,13 +755,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<byte[]>("/logs/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLogsForProcess", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -814,12 +773,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<byte[]> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await GetLogsForProcessWithHttpInfoAsync(appId, processId, follow, tailLines, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetLogsForProcessWithHttpInfoAsync(appId, processId, follow, tailLines, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -831,22 +794,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional, default to 100D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), double? tailLines = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LogV1Api->GetLogsForProcess");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling LogV1Api->GetLogsForProcess");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -860,17 +818,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
@@ -883,9 +836,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            localVarRequestOptions.Operation = "LogV1Api.GetLogsForProcess";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -894,15 +844,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLogsForProcess", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

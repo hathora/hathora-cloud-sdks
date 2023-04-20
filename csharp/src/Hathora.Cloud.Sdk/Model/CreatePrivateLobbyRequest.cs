@@ -20,7 +20,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 
 namespace Hathora.Cloud.Sdk.Model
@@ -29,7 +28,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// CreatePrivateLobbyRequest
     /// </summary>
     [DataContract(Name = "CreatePrivateLobby_request")]
-    public partial class CreatePrivateLobbyRequest : IEquatable<CreatePrivateLobbyRequest>, IValidatableObject
+    public partial class CreatePrivateLobbyRequest : IEquatable<CreatePrivateLobbyRequest>
     {
 
         /// <summary>
@@ -154,15 +153,6 @@ namespace Hathora.Cloud.Sdk.Model
             }
         }
 
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
 }

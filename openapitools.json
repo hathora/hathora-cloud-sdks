@@ -45,8 +45,10 @@
         "generatorName": "csharp-netcore",
         "output": "csharp",
         "inputSpec": "swagger.json",
+        "library": "unityWebRequest",
         "additionalProperties": {
           "packageName": "Hathora.Cloud.Sdk",
+          "targetFramework": "netstandard2.1",
           "disallowAdditionalPropertiesIfNotPresent": false
         }
       }

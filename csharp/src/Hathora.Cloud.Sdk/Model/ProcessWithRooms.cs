@@ -20,7 +20,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 
 namespace Hathora.Cloud.Sdk.Model
@@ -29,7 +28,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// ProcessWithRooms
     /// </summary>
     [DataContract(Name = "ProcessWithRooms")]
-    public partial class ProcessWithRooms : IEquatable<ProcessWithRooms>, IValidatableObject
+    public partial class ProcessWithRooms : IEquatable<ProcessWithRooms>
     {
 
         /// <summary>
@@ -446,15 +445,6 @@ namespace Hathora.Cloud.Sdk.Model
             }
         }
 
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
 }

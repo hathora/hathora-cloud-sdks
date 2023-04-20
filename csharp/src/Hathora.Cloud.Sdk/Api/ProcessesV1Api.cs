@@ -32,9 +32,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Process</returns>
-        Process GetProcessInfo(string appId, string processId, int operationIndex = 0);
+        Process GetProcessInfo(string appId, string processId);
 
         /// <summary>
         /// 
@@ -45,18 +44,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Process</returns>
-        ApiResponse<Process> GetProcessInfoWithHttpInfo(string appId, string processId, int operationIndex = 0);
+        ApiResponse<Process> GetProcessInfoWithHttpInfo(string appId, string processId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;ProcessWithRooms&gt;</returns>
-        List<ProcessWithRooms> GetRunningProcesses(string appId, Region? region = default(Region?), int operationIndex = 0);
+        List<ProcessWithRooms> GetRunningProcesses(string appId, Region? region = default(Region?));
 
         /// <summary>
         /// 
@@ -67,18 +64,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;ProcessWithRooms&gt;</returns>
-        ApiResponse<List<ProcessWithRooms>> GetRunningProcessesWithHttpInfo(string appId, Region? region = default(Region?), int operationIndex = 0);
+        ApiResponse<List<ProcessWithRooms>> GetRunningProcessesWithHttpInfo(string appId, Region? region = default(Region?));
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Process&gt;</returns>
-        List<Process> GetStoppedProcesses(string appId, Region? region = default(Region?), int operationIndex = 0);
+        List<Process> GetStoppedProcesses(string appId, Region? region = default(Region?));
 
         /// <summary>
         /// 
@@ -89,9 +84,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Process&gt;</returns>
-        ApiResponse<List<Process>> GetStoppedProcessesWithHttpInfo(string appId, Region? region = default(Region?), int operationIndex = 0);
+        ApiResponse<List<Process>> GetStoppedProcessesWithHttpInfo(string appId, Region? region = default(Region?));
         #endregion Synchronous Operations
     }
 
@@ -110,10 +104,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Process</returns>
-        System.Threading.Tasks.Task<Process> GetProcessInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Process> GetProcessInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -124,10 +117,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Process)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Process>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Process>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -137,10 +129,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;ProcessWithRooms&gt;</returns>
-        System.Threading.Tasks.Task<List<ProcessWithRooms>> GetRunningProcessesAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<ProcessWithRooms>> GetRunningProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -151,10 +142,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;ProcessWithRooms&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ProcessWithRooms>>> GetRunningProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<ProcessWithRooms>>> GetRunningProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -164,10 +154,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Process&gt;</returns>
-        System.Threading.Tasks.Task<List<Process>> GetStoppedProcessesAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<Process>> GetStoppedProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -178,10 +167,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Process&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Process>>> GetStoppedProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<Process>>> GetStoppedProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -196,12 +184,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class ProcessesV1Api : IProcessesV1Api
+    public partial class ProcessesV1Api : IDisposable, IProcessesV1Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProcessesV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public ProcessesV1Api() : this((string)null)
@@ -210,7 +200,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProcessesV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public ProcessesV1Api(string basePath)
         {
@@ -218,16 +212,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProcessesV1Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="ProcessesV1Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public ProcessesV1Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -237,8 +234,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -249,6 +247,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public ProcessesV1Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -260,6 +259,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -308,9 +320,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Process</returns>
-        public Process GetProcessInfo(string appId, string processId, int operationIndex = 0)
+        public Process GetProcessInfo(string appId, string processId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Process> localVarResponse = GetProcessInfoWithHttpInfo(appId, processId);
             return localVarResponse.Data;
@@ -322,21 +333,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Process</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Process> GetProcessInfoWithHttpInfo(string appId, string processId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Process> GetProcessInfoWithHttpInfo(string appId, string processId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetProcessInfo");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV1Api->GetProcessInfo");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -349,22 +355,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
-
-            localVarRequestOptions.Operation = "ProcessesV1Api.GetProcessInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -375,13 +372,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Process>("/processes/v1/{appId}/info/{processId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProcessInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -393,12 +388,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Process</returns>
-        public async System.Threading.Tasks.Task<Process> GetProcessInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Process> GetProcessInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Process> localVarResponse = await GetProcessInfoWithHttpInfoAsync(appId, processId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetProcessInfoWithHttpInfoAsync(appId, processId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Process> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Process> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -408,22 +407,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Process)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Process>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Process>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetProcessInfo");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV1Api->GetProcessInfo");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -436,23 +430,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
-
-            localVarRequestOptions.Operation = "ProcessesV1Api.GetProcessInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -462,15 +448,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Process>("/processes/v1/{appId}/info/{processId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<Process>("/processes/v1/{appId}/info/{processId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProcessInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -482,9 +472,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;ProcessWithRooms&gt;</returns>
-        public List<ProcessWithRooms> GetRunningProcesses(string appId, Region? region = default(Region?), int operationIndex = 0)
+        public List<ProcessWithRooms> GetRunningProcesses(string appId, Region? region = default(Region?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> localVarResponse = GetRunningProcessesWithHttpInfo(appId, region);
             return localVarResponse.Data;
@@ -496,15 +485,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;ProcessWithRooms&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> GetRunningProcessesWithHttpInfo(string appId, Region? region = default(Region?), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> GetRunningProcessesWithHttpInfo(string appId, Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetRunningProcesses");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -517,25 +503,16 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (region != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
-
-            localVarRequestOptions.Operation = "ProcessesV1Api.GetRunningProcesses";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -546,13 +523,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<ProcessWithRooms>>("/processes/v1/{appId}/list/running", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetRunningProcesses", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -564,12 +539,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;ProcessWithRooms&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ProcessWithRooms>> GetRunningProcessesAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<ProcessWithRooms>> GetRunningProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> localVarResponse = await GetRunningProcessesWithHttpInfoAsync(appId, region, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetRunningProcessesWithHttpInfoAsync(appId, region, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -579,16 +558,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;ProcessWithRooms&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>>> GetRunningProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>>> GetRunningProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetRunningProcesses");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -601,26 +577,18 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (region != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
-
-            localVarRequestOptions.Operation = "ProcessesV1Api.GetRunningProcesses";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -630,15 +598,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<ProcessWithRooms>>("/processes/v1/{appId}/list/running", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<List<ProcessWithRooms>>("/processes/v1/{appId}/list/running", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetRunningProcesses", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -650,9 +622,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Process&gt;</returns>
-        public List<Process> GetStoppedProcesses(string appId, Region? region = default(Region?), int operationIndex = 0)
+        public List<Process> GetStoppedProcesses(string appId, Region? region = default(Region?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> localVarResponse = GetStoppedProcessesWithHttpInfo(appId, region);
             return localVarResponse.Data;
@@ -664,15 +635,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Process&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> GetStoppedProcessesWithHttpInfo(string appId, Region? region = default(Region?), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> GetStoppedProcessesWithHttpInfo(string appId, Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetStoppedProcesses");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -685,25 +653,16 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (region != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
-
-            localVarRequestOptions.Operation = "ProcessesV1Api.GetStoppedProcesses";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -714,13 +673,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<Process>>("/processes/v1/{appId}/list/stopped", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetStoppedProcesses", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -732,12 +689,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Process&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Process>> GetStoppedProcessesAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<Process>> GetStoppedProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> localVarResponse = await GetStoppedProcessesWithHttpInfoAsync(appId, region, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetStoppedProcessesWithHttpInfoAsync(appId, region, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -747,16 +708,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Process&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>>> GetStoppedProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>>> GetStoppedProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetStoppedProcesses");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -769,26 +727,18 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (region != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
-
-            localVarRequestOptions.Operation = "ProcessesV1Api.GetStoppedProcesses";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -798,15 +748,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Process>>("/processes/v1/{appId}/list/stopped", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<List<Process>>("/processes/v1/{appId}/list/stopped", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetStoppedProcesses", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

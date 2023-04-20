@@ -33,9 +33,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Deployment</returns>
-        Deployment CreateDeployment(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0);
+        Deployment CreateDeployment(string appId, double buildId, DeploymentConfig deploymentConfig);
 
         /// <summary>
         /// 
@@ -47,18 +46,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Deployment</returns>
-        ApiResponse<Deployment> CreateDeploymentWithHttpInfo(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0);
+        ApiResponse<Deployment> CreateDeploymentWithHttpInfo(string appId, double buildId, DeploymentConfig deploymentConfig);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Deployment</returns>
-        Deployment GetDeploymentInfo(string appId, double deploymentId, int operationIndex = 0);
+        Deployment GetDeploymentInfo(string appId, double deploymentId);
 
         /// <summary>
         /// 
@@ -69,17 +66,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Deployment</returns>
-        ApiResponse<Deployment> GetDeploymentInfoWithHttpInfo(string appId, double deploymentId, int operationIndex = 0);
+        ApiResponse<Deployment> GetDeploymentInfoWithHttpInfo(string appId, double deploymentId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Deployment&gt;</returns>
-        List<Deployment> GetDeployments(string appId, int operationIndex = 0);
+        List<Deployment> GetDeployments(string appId);
 
         /// <summary>
         /// 
@@ -89,9 +84,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Deployment&gt;</returns>
-        ApiResponse<List<Deployment>> GetDeploymentsWithHttpInfo(string appId, int operationIndex = 0);
+        ApiResponse<List<Deployment>> GetDeploymentsWithHttpInfo(string appId);
         #endregion Synchronous Operations
     }
 
@@ -111,10 +105,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        System.Threading.Tasks.Task<Deployment> CreateDeploymentAsync(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Deployment> CreateDeploymentAsync(string appId, double buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -126,10 +119,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deployment>> CreateDeploymentWithHttpInfoAsync(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Deployment>> CreateDeploymentWithHttpInfoAsync(string appId, double buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -139,10 +131,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        System.Threading.Tasks.Task<Deployment> GetDeploymentInfoAsync(string appId, double deploymentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Deployment> GetDeploymentInfoAsync(string appId, double deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -153,10 +144,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deployment>> GetDeploymentInfoWithHttpInfoAsync(string appId, double deploymentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Deployment>> GetDeploymentInfoWithHttpInfoAsync(string appId, double deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -165,10 +155,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Deployment&gt;</returns>
-        System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -178,10 +167,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Deployment&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Deployment>>> GetDeploymentsWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<Deployment>>> GetDeploymentsWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -196,12 +184,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class DeploymentV1Api : IDeploymentV1Api
+    public partial class DeploymentV1Api : IDisposable, IDeploymentV1Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DeploymentV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public DeploymentV1Api() : this((string)null)
@@ -210,7 +200,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DeploymentV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public DeploymentV1Api(string basePath)
         {
@@ -218,16 +212,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeploymentV1Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="DeploymentV1Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public DeploymentV1Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -237,8 +234,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -249,6 +247,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public DeploymentV1Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -260,6 +259,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -309,9 +321,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Deployment</returns>
-        public Deployment CreateDeployment(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0)
+        public Deployment CreateDeployment(string appId, double buildId, DeploymentConfig deploymentConfig)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = CreateDeploymentWithHttpInfo(appId, buildId, deploymentConfig);
             return localVarResponse.Data;
@@ -324,21 +335,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Deployment</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> CreateDeploymentWithHttpInfo(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> CreateDeploymentWithHttpInfo(string appId, double buildId, DeploymentConfig deploymentConfig)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->CreateDeployment");
-            }
 
             // verify the required parameter 'deploymentConfig' is set
             if (deploymentConfig == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'deploymentConfig' when calling DeploymentV1Api->CreateDeployment");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -352,23 +358,14 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("buildId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(buildId)); // path parameter
             localVarRequestOptions.Data = deploymentConfig;
-
-            localVarRequestOptions.Operation = "DeploymentV1Api.CreateDeployment";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -379,13 +376,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Deployment>("/deployments/v1/{appId}/create/{buildId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDeployment", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -398,12 +393,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        public async System.Threading.Tasks.Task<Deployment> CreateDeploymentAsync(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Deployment> CreateDeploymentAsync(string appId, double buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await CreateDeploymentWithHttpInfoAsync(appId, buildId, deploymentConfig, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = CreateDeploymentWithHttpInfoAsync(appId, buildId, deploymentConfig, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -414,22 +413,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> CreateDeploymentWithHttpInfoAsync(string appId, double buildId, DeploymentConfig deploymentConfig, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> CreateDeploymentWithHttpInfoAsync(string appId, double buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->CreateDeployment");
-            }
 
             // verify the required parameter 'deploymentConfig' is set
             if (deploymentConfig == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'deploymentConfig' when calling DeploymentV1Api->CreateDeployment");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -443,24 +437,16 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("buildId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(buildId)); // path parameter
             localVarRequestOptions.Data = deploymentConfig;
-
-            localVarRequestOptions.Operation = "DeploymentV1Api.CreateDeployment";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -470,15 +456,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Deployment>("/deployments/v1/{appId}/create/{buildId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Deployment>("/deployments/v1/{appId}/create/{buildId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDeployment", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -490,9 +480,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Deployment</returns>
-        public Deployment GetDeploymentInfo(string appId, double deploymentId, int operationIndex = 0)
+        public Deployment GetDeploymentInfo(string appId, double deploymentId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = GetDeploymentInfoWithHttpInfo(appId, deploymentId);
             return localVarResponse.Data;
@@ -504,15 +493,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Deployment</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> GetDeploymentInfoWithHttpInfo(string appId, double deploymentId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> GetDeploymentInfoWithHttpInfo(string appId, double deploymentId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentInfo");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -525,22 +511,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deploymentId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(deploymentId)); // path parameter
-
-            localVarRequestOptions.Operation = "DeploymentV1Api.GetDeploymentInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -551,13 +528,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Deployment>("/deployments/v1/{appId}/info/{deploymentId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetDeploymentInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -569,12 +544,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        public async System.Threading.Tasks.Task<Deployment> GetDeploymentInfoAsync(string appId, double deploymentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Deployment> GetDeploymentInfoAsync(string appId, double deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await GetDeploymentInfoWithHttpInfoAsync(appId, deploymentId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetDeploymentInfoWithHttpInfoAsync(appId, deploymentId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -584,16 +563,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> GetDeploymentInfoWithHttpInfoAsync(string appId, double deploymentId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> GetDeploymentInfoWithHttpInfoAsync(string appId, double deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentInfo");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -606,23 +582,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deploymentId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(deploymentId)); // path parameter
-
-            localVarRequestOptions.Operation = "DeploymentV1Api.GetDeploymentInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -632,15 +600,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Deployment>("/deployments/v1/{appId}/info/{deploymentId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<Deployment>("/deployments/v1/{appId}/info/{deploymentId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetDeploymentInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -651,9 +623,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Deployment&gt;</returns>
-        public List<Deployment> GetDeployments(string appId, int operationIndex = 0)
+        public List<Deployment> GetDeployments(string appId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> localVarResponse = GetDeploymentsWithHttpInfo(appId);
             return localVarResponse.Data;
@@ -664,15 +635,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Deployment&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> GetDeploymentsWithHttpInfo(string appId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> GetDeploymentsWithHttpInfo(string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeployments");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -685,21 +653,12 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            localVarRequestOptions.Operation = "DeploymentV1Api.GetDeployments";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -710,13 +669,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<Deployment>>("/deployments/v1/{appId}/list", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetDeployments", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -727,12 +684,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Deployment&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> localVarResponse = await GetDeploymentsWithHttpInfoAsync(appId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetDeploymentsWithHttpInfoAsync(appId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -741,16 +702,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Deployment&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>>> GetDeploymentsWithHttpInfoAsync(string appId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>>> GetDeploymentsWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeployments");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -763,22 +721,14 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            localVarRequestOptions.Operation = "DeploymentV1Api.GetDeployments";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -788,15 +738,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Deployment>>("/deployments/v1/{appId}/list", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<List<Deployment>>("/deployments/v1/{appId}/list", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetDeployments", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

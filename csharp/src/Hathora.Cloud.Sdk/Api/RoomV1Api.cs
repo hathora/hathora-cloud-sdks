@@ -32,9 +32,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>string</returns>
-        string CreateRoom(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0);
+        string CreateRoom(string appId, CreateRoomRequest createRoomRequest);
 
         /// <summary>
         /// 
@@ -45,18 +44,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> CreateRoomWithHttpInfo(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0);
+        ApiResponse<string> CreateRoomWithHttpInfo(string appId, CreateRoomRequest createRoomRequest);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void DestroyRoom(string appId, string roomId, int operationIndex = 0);
+        void DestroyRoom(string appId, string roomId);
 
         /// <summary>
         /// 
@@ -67,18 +64,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DestroyRoomWithHttpInfo(string appId, string roomId, int operationIndex = 0);
+        ApiResponse<Object> DestroyRoomWithHttpInfo(string appId, string roomId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        List<PickRoomExcludeKeyofRoomAllocations> GetActiveRoomsForProcess(string appId, string processId, int operationIndex = 0);
+        List<PickRoomExcludeKeyofRoomAllocations> GetActiveRoomsForProcess(string appId, string processId);
 
         /// <summary>
         /// 
@@ -89,18 +84,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessWithHttpInfo(string appId, string processId, int operationIndex = 0);
+        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessWithHttpInfo(string appId, string processId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ConnectionInfo</returns>
-        ConnectionInfo GetConnectionInfo(string appId, string roomId, int operationIndex = 0);
+        ConnectionInfo GetConnectionInfo(string appId, string roomId);
 
         /// <summary>
         /// 
@@ -111,18 +104,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ConnectionInfo</returns>
-        ApiResponse<ConnectionInfo> GetConnectionInfoWithHttpInfo(string appId, string roomId, int operationIndex = 0);
+        ApiResponse<ConnectionInfo> GetConnectionInfoWithHttpInfo(string appId, string roomId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        List<PickRoomExcludeKeyofRoomAllocations> GetInactiveRoomsForProcess(string appId, string processId, int operationIndex = 0);
+        List<PickRoomExcludeKeyofRoomAllocations> GetInactiveRoomsForProcess(string appId, string processId);
 
         /// <summary>
         /// 
@@ -133,18 +124,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessWithHttpInfo(string appId, string processId, int operationIndex = 0);
+        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessWithHttpInfo(string appId, string processId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Room</returns>
-        Room GetRoomInfo(string appId, string roomId, int operationIndex = 0);
+        Room GetRoomInfo(string appId, string roomId);
 
         /// <summary>
         /// 
@@ -155,18 +144,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Room</returns>
-        ApiResponse<Room> GetRoomInfoWithHttpInfo(string appId, string roomId, int operationIndex = 0);
+        ApiResponse<Room> GetRoomInfoWithHttpInfo(string appId, string roomId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void SuspendRoom(string appId, string roomId, int operationIndex = 0);
+        void SuspendRoom(string appId, string roomId);
 
         /// <summary>
         /// 
@@ -177,9 +164,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SuspendRoomWithHttpInfo(string appId, string roomId, int operationIndex = 0);
+        ApiResponse<Object> SuspendRoomWithHttpInfo(string appId, string roomId);
         #endregion Synchronous Operations
     }
 
@@ -198,10 +184,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> CreateRoomAsync(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> CreateRoomAsync(string appId, CreateRoomRequest createRoomRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -212,10 +197,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -225,10 +209,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DestroyRoomAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task DestroyRoomAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -239,10 +222,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DestroyRoomWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> DestroyRoomWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -252,10 +234,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -266,10 +247,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;PickRoomExcludeKeyofRoomAllocations&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetActiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetActiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -279,10 +259,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ConnectionInfo</returns>
-        System.Threading.Tasks.Task<ConnectionInfo> GetConnectionInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ConnectionInfo> GetConnectionInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -293,10 +272,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ConnectionInfo)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConnectionInfo>> GetConnectionInfoWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ConnectionInfo>> GetConnectionInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -306,10 +284,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -320,10 +297,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;PickRoomExcludeKeyofRoomAllocations&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetInactiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetInactiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -333,10 +309,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Room</returns>
-        System.Threading.Tasks.Task<Room> GetRoomInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Room> GetRoomInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -347,10 +322,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Room)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Room>> GetRoomInfoWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Room>> GetRoomInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -360,10 +334,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SuspendRoomAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task SuspendRoomAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -374,10 +347,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SuspendRoomWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> SuspendRoomWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -392,12 +364,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class RoomV1Api : IRoomV1Api
+    public partial class RoomV1Api : IDisposable, IRoomV1Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RoomV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public RoomV1Api() : this((string)null)
@@ -406,7 +380,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RoomV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public RoomV1Api(string basePath)
         {
@@ -414,16 +392,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RoomV1Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="RoomV1Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public RoomV1Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -433,8 +414,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -445,6 +427,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public RoomV1Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -456,6 +439,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -504,9 +500,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>string</returns>
-        public string CreateRoom(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0)
+        public string CreateRoom(string appId, CreateRoomRequest createRoomRequest)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = CreateRoomWithHttpInfo(appId, createRoomRequest);
             return localVarResponse.Data;
@@ -518,21 +513,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreateRoomWithHttpInfo(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreateRoomWithHttpInfo(string appId, CreateRoomRequest createRoomRequest)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->CreateRoom");
-            }
 
             // verify the required parameter 'createRoomRequest' is set
             if (createRoomRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomRequest' when calling RoomV1Api->CreateRoom");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -546,22 +536,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = createRoomRequest;
-
-            localVarRequestOptions.Operation = "RoomV1Api.CreateRoom";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -572,13 +553,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<string>("/rooms/v1/{appId}/create", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateRoom", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -590,12 +569,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> CreateRoomAsync(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> CreateRoomAsync(string appId, CreateRoomRequest createRoomRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = await CreateRoomWithHttpInfoAsync(appId, createRoomRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = CreateRoomWithHttpInfoAsync(appId, createRoomRequest, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -605,22 +588,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="createRoomRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->CreateRoom");
-            }
 
             // verify the required parameter 'createRoomRequest' is set
             if (createRoomRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomRequest' when calling RoomV1Api->CreateRoom");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -634,23 +612,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.Data = createRoomRequest;
-
-            localVarRequestOptions.Operation = "RoomV1Api.CreateRoom";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -660,15 +630,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/rooms/v1/{appId}/create", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<string>("/rooms/v1/{appId}/create", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateRoom", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -680,9 +654,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void DestroyRoom(string appId, string roomId, int operationIndex = 0)
+        public void DestroyRoom(string appId, string roomId)
         {
             DestroyRoomWithHttpInfo(appId, roomId);
         }
@@ -693,21 +666,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> DestroyRoomWithHttpInfo(string appId, string roomId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> DestroyRoomWithHttpInfo(string appId, string roomId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->DestroyRoom");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->DestroyRoom");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -720,22 +688,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.DestroyRoom";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -746,13 +705,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Object>("/rooms/v1/{appId}/destroy/{roomId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DestroyRoom", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -764,12 +721,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DestroyRoomAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task DestroyRoomAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await DestroyRoomWithHttpInfoAsync(appId, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = DestroyRoomWithHttpInfoAsync(appId, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            await task.ConfigureAwait(false);
+#else
+            await task;
+#endif
         }
 
         /// <summary>
@@ -778,22 +739,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> DestroyRoomWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> DestroyRoomWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->DestroyRoom");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->DestroyRoom");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -806,23 +762,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.DestroyRoom";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -832,15 +780,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/rooms/v1/{appId}/destroy/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Object>("/rooms/v1/{appId}/destroy/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DestroyRoom", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -852,9 +804,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        public List<PickRoomExcludeKeyofRoomAllocations> GetActiveRoomsForProcess(string appId, string processId, int operationIndex = 0)
+        public List<PickRoomExcludeKeyofRoomAllocations> GetActiveRoomsForProcess(string appId, string processId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = GetActiveRoomsForProcessWithHttpInfo(appId, processId);
             return localVarResponse.Data;
@@ -866,21 +817,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessWithHttpInfo(string appId, string processId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessWithHttpInfo(string appId, string processId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetActiveRoomsForProcess");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling RoomV1Api->GetActiveRoomsForProcess");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -893,22 +839,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.GetActiveRoomsForProcess";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -919,13 +856,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<PickRoomExcludeKeyofRoomAllocations>>("/rooms/v1/{appId}/list/{processId}/active", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetActiveRoomsForProcess", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -937,12 +872,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        public async System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetActiveRoomsForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = await GetActiveRoomsForProcessWithHttpInfoAsync(appId, processId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetActiveRoomsForProcessWithHttpInfoAsync(appId, processId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -952,22 +891,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;PickRoomExcludeKeyofRoomAllocations&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetActiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetActiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetActiveRoomsForProcess");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling RoomV1Api->GetActiveRoomsForProcess");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -980,23 +914,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.GetActiveRoomsForProcess";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1006,15 +932,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<PickRoomExcludeKeyofRoomAllocations>>("/rooms/v1/{appId}/list/{processId}/active", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<List<PickRoomExcludeKeyofRoomAllocations>>("/rooms/v1/{appId}/list/{processId}/active", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetActiveRoomsForProcess", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1026,9 +956,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ConnectionInfo</returns>
-        public ConnectionInfo GetConnectionInfo(string appId, string roomId, int operationIndex = 0)
+        public ConnectionInfo GetConnectionInfo(string appId, string roomId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo> localVarResponse = GetConnectionInfoWithHttpInfo(appId, roomId);
             return localVarResponse.Data;
@@ -1040,21 +969,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ConnectionInfo</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo> GetConnectionInfoWithHttpInfo(string appId, string roomId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo> GetConnectionInfoWithHttpInfo(string appId, string roomId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetConnectionInfo");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->GetConnectionInfo");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1067,33 +991,22 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            localVarRequestOptions.Operation = "RoomV1Api.GetConnectionInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<ConnectionInfo>("/rooms/v1/{appId}/connectioninfo/{roomId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetConnectionInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1105,12 +1018,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ConnectionInfo</returns>
-        public async System.Threading.Tasks.Task<ConnectionInfo> GetConnectionInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ConnectionInfo> GetConnectionInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo> localVarResponse = await GetConnectionInfoWithHttpInfoAsync(appId, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetConnectionInfoWithHttpInfoAsync(appId, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -1120,22 +1037,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ConnectionInfo)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo>> GetConnectionInfoWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfo>> GetConnectionInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetConnectionInfo");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->GetConnectionInfo");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1148,35 +1060,31 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            localVarRequestOptions.Operation = "RoomV1Api.GetConnectionInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ConnectionInfo>("/rooms/v1/{appId}/connectioninfo/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<ConnectionInfo>("/rooms/v1/{appId}/connectioninfo/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetConnectionInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1188,9 +1096,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        public List<PickRoomExcludeKeyofRoomAllocations> GetInactiveRoomsForProcess(string appId, string processId, int operationIndex = 0)
+        public List<PickRoomExcludeKeyofRoomAllocations> GetInactiveRoomsForProcess(string appId, string processId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = GetInactiveRoomsForProcessWithHttpInfo(appId, processId);
             return localVarResponse.Data;
@@ -1202,21 +1109,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessWithHttpInfo(string appId, string processId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessWithHttpInfo(string appId, string processId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetInactiveRoomsForProcess");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling RoomV1Api->GetInactiveRoomsForProcess");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1229,22 +1131,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.GetInactiveRoomsForProcess";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1255,13 +1148,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<PickRoomExcludeKeyofRoomAllocations>>("/rooms/v1/{appId}/list/{processId}/inactive", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetInactiveRoomsForProcess", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1273,12 +1164,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;PickRoomExcludeKeyofRoomAllocations&gt;</returns>
-        public async System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<PickRoomExcludeKeyofRoomAllocations>> GetInactiveRoomsForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = await GetInactiveRoomsForProcessWithHttpInfoAsync(appId, processId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetInactiveRoomsForProcessWithHttpInfoAsync(appId, processId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -1288,22 +1183,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;PickRoomExcludeKeyofRoomAllocations&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetInactiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>>> GetInactiveRoomsForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetInactiveRoomsForProcess");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling RoomV1Api->GetInactiveRoomsForProcess");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1316,23 +1206,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.GetInactiveRoomsForProcess";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1342,15 +1224,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<PickRoomExcludeKeyofRoomAllocations>>("/rooms/v1/{appId}/list/{processId}/inactive", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<List<PickRoomExcludeKeyofRoomAllocations>>("/rooms/v1/{appId}/list/{processId}/inactive", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetInactiveRoomsForProcess", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1362,9 +1248,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Room</returns>
-        public Room GetRoomInfo(string appId, string roomId, int operationIndex = 0)
+        public Room GetRoomInfo(string appId, string roomId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Room> localVarResponse = GetRoomInfoWithHttpInfo(appId, roomId);
             return localVarResponse.Data;
@@ -1376,21 +1261,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Room</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Room> GetRoomInfoWithHttpInfo(string appId, string roomId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Room> GetRoomInfoWithHttpInfo(string appId, string roomId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetRoomInfo");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->GetRoomInfo");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1403,22 +1283,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.GetRoomInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1429,13 +1300,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Room>("/rooms/v1/{appId}/info/{roomId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetRoomInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1447,12 +1316,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Room</returns>
-        public async System.Threading.Tasks.Task<Room> GetRoomInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Room> GetRoomInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Room> localVarResponse = await GetRoomInfoWithHttpInfoAsync(appId, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetRoomInfoWithHttpInfoAsync(appId, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Room> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Room> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -1462,22 +1335,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Room)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Room>> GetRoomInfoWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Room>> GetRoomInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->GetRoomInfo");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->GetRoomInfo");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1490,23 +1358,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.GetRoomInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1516,15 +1376,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Room>("/rooms/v1/{appId}/info/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<Room>("/rooms/v1/{appId}/info/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetRoomInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1536,9 +1400,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void SuspendRoom(string appId, string roomId, int operationIndex = 0)
+        public void SuspendRoom(string appId, string roomId)
         {
             SuspendRoomWithHttpInfo(appId, roomId);
         }
@@ -1549,21 +1412,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> SuspendRoomWithHttpInfo(string appId, string roomId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> SuspendRoomWithHttpInfo(string appId, string roomId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->SuspendRoom");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->SuspendRoom");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1576,22 +1434,13 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.SuspendRoom";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1602,13 +1451,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Object>("/rooms/v1/{appId}/suspend/{roomId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SuspendRoom", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1620,12 +1467,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SuspendRoomAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task SuspendRoomAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            await SuspendRoomWithHttpInfoAsync(appId, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = SuspendRoomWithHttpInfoAsync(appId, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            await task.ConfigureAwait(false);
+#else
+            await task;
+#endif
         }
 
         /// <summary>
@@ -1634,22 +1485,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> SuspendRoomWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> SuspendRoomWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->SuspendRoom");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV1Api->SuspendRoom");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1662,23 +1508,15 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-
-            localVarRequestOptions.Operation = "RoomV1Api.SuspendRoom";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1688,15 +1526,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/rooms/v1/{appId}/suspend/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Object>("/rooms/v1/{appId}/suspend/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SuspendRoom", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

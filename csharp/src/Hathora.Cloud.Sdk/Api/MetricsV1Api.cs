@@ -36,9 +36,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RecordPartialMetricNameMetricValueArray</returns>
-        RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0);
+        RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?));
 
         /// <summary>
         /// 
@@ -53,9 +52,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RecordPartialMetricNameMetricValueArray</returns>
-        ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0);
+        ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?));
         #endregion Synchronous Operations
     }
 
@@ -78,10 +76,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RecordPartialMetricNameMetricValueArray</returns>
-        System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -96,10 +93,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RecordPartialMetricNameMetricValueArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -114,12 +110,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class MetricsV1Api : IMetricsV1Api
+    public partial class MetricsV1Api : IDisposable, IMetricsV1Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricsV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public MetricsV1Api() : this((string)null)
@@ -128,7 +126,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MetricsV1Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public MetricsV1Api(string basePath)
         {
@@ -136,16 +138,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MetricsV1Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="MetricsV1Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public MetricsV1Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -155,8 +160,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -167,6 +173,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public MetricsV1Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -178,6 +185,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -230,9 +250,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RecordPartialMetricNameMetricValueArray</returns>
-        public RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0)
+        public RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> localVarResponse = GetMetricsWithHttpInfo(appId, processId, metrics, end, start, step);
             return localVarResponse.Data;
@@ -248,21 +267,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RecordPartialMetricNameMetricValueArray</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling MetricsV1Api->GetMetrics");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling MetricsV1Api->GetMetrics");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -275,16 +289,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
@@ -305,9 +313,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "step", step));
             }
 
-            localVarRequestOptions.Operation = "MetricsV1Api.GetMetrics";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -317,13 +322,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<RecordPartialMetricNameMetricValueArray>("/metrics/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetMetrics", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -339,12 +342,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RecordPartialMetricNameMetricValueArray</returns>
-        public async System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> localVarResponse = await GetMetricsWithHttpInfoAsync(appId, processId, metrics, end, start, step, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetMetricsWithHttpInfoAsync(appId, processId, metrics, end, start, step, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -358,22 +365,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
         /// <param name="step"> (optional, default to 60D)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RecordPartialMetricNameMetricValueArray)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling MetricsV1Api->GetMetrics");
-            }
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling MetricsV1Api->GetMetrics");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -386,17 +388,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
@@ -417,9 +414,6 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "step", step));
             }
 
-            localVarRequestOptions.Operation = "MetricsV1Api.GetMetrics";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (auth0) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
@@ -428,15 +422,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<RecordPartialMetricNameMetricValueArray>("/metrics/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<RecordPartialMetricNameMetricValueArray>("/metrics/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetMetrics", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

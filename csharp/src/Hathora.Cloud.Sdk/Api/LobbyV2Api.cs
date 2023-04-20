@@ -34,9 +34,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        Lobby CreateLocalLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0);
+        Lobby CreateLocalLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -49,9 +48,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0);
+        ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -60,9 +58,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        Lobby CreatePrivateLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0);
+        Lobby CreatePrivateLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -75,9 +72,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0);
+        ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -86,9 +82,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        Lobby CreatePublicLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0);
+        Lobby CreatePublicLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -101,18 +96,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0);
+        ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        Lobby GetLobbyInfo(string appId, string roomId, int operationIndex = 0);
+        Lobby GetLobbyInfo(string appId, string roomId);
 
         /// <summary>
         /// 
@@ -123,18 +116,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        ApiResponse<Lobby> GetLobbyInfoWithHttpInfo(string appId, string roomId, int operationIndex = 0);
+        ApiResponse<Lobby> GetLobbyInfoWithHttpInfo(string appId, string roomId);
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Lobby&gt;</returns>
-        List<Lobby> ListActivePublicLobbies(string appId, Region? region = default(Region?), int operationIndex = 0);
+        List<Lobby> ListActivePublicLobbies(string appId, Region? region = default(Region?));
 
         /// <summary>
         /// 
@@ -145,9 +136,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Lobby&gt;</returns>
-        ApiResponse<List<Lobby>> ListActivePublicLobbiesWithHttpInfo(string appId, Region? region = default(Region?), int operationIndex = 0);
+        ApiResponse<List<Lobby>> ListActivePublicLobbiesWithHttpInfo(string appId, Region? region = default(Region?));
         /// <summary>
         /// 
         /// </summary>
@@ -155,9 +145,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        Lobby SetLobbyState(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0);
+        Lobby SetLobbyState(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest);
 
         /// <summary>
         /// 
@@ -169,9 +158,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0);
+        ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest);
         #endregion Synchronous Operations
     }
 
@@ -192,10 +180,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -208,10 +195,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -223,10 +209,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -239,10 +224,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -254,10 +238,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -270,10 +253,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -283,10 +265,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        System.Threading.Tasks.Task<Lobby> GetLobbyInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Lobby> GetLobbyInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -297,10 +278,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> GetLobbyInfoWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> GetLobbyInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -310,10 +290,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Lobby&gt;</returns>
-        System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -324,10 +303,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Lobby&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Lobby>>> ListActivePublicLobbiesWithHttpInfoAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<Lobby>>> ListActivePublicLobbiesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -338,10 +316,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -353,10 +330,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -371,12 +347,14 @@ namespace Hathora.Cloud.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class LobbyV2Api : ILobbyV2Api
+    public partial class LobbyV2Api : IDisposable, ILobbyV2Api
     {
         private Hathora.Cloud.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LobbyV2Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public LobbyV2Api() : this((string)null)
@@ -385,7 +363,11 @@ namespace Hathora.Cloud.Sdk.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LobbyV2Api"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public LobbyV2Api(string basePath)
         {
@@ -393,16 +375,19 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 new Hathora.Cloud.Sdk.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LobbyV2Api"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="LobbyV2Api"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public LobbyV2Api(Hathora.Cloud.Sdk.Client.Configuration configuration)
         {
@@ -412,8 +397,9 @@ namespace Hathora.Cloud.Sdk.Api
                 Hathora.Cloud.Sdk.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Hathora.Cloud.Sdk.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -424,6 +410,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public LobbyV2Api(Hathora.Cloud.Sdk.Client.ISynchronousClient client, Hathora.Cloud.Sdk.Client.IAsynchronousClient asyncClient, Hathora.Cloud.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -435,6 +422,19 @@ namespace Hathora.Cloud.Sdk.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Hathora.Cloud.Sdk.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Hathora.Cloud.Sdk.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -485,9 +485,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        public Lobby CreateLocalLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0)
+        public Lobby CreateLocalLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreateLocalLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
             return localVarResponse.Data;
@@ -501,27 +500,20 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLocalLobby");
-            }
 
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreateLocalLobby");
-            }
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createPrivateLobbyRequest' when calling LobbyV2Api->CreateLocalLobby");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -535,16 +527,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (roomId != null)
@@ -554,19 +540,14 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
-            localVarRequestOptions.Operation = "LobbyV2Api.CreateLocalLobby";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/create/local", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateLocalLobby", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -580,12 +561,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        public async System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await CreateLocalLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = CreateLocalLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -597,28 +582,21 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLocalLobby");
-            }
 
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreateLocalLobby");
-            }
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createPrivateLobbyRequest' when calling LobbyV2Api->CreateLocalLobby");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -632,17 +610,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (roomId != null)
@@ -652,20 +625,21 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
-            localVarRequestOptions.Operation = "LobbyV2Api.CreateLocalLobby";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/create/local", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/create/local", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateLocalLobby", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -679,9 +653,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        public Lobby CreatePrivateLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0)
+        public Lobby CreatePrivateLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreatePrivateLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
             return localVarResponse.Data;
@@ -695,27 +668,20 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePrivateLobby");
-            }
 
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePrivateLobby");
-            }
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createPrivateLobbyRequest' when calling LobbyV2Api->CreatePrivateLobby");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -729,16 +695,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (roomId != null)
@@ -748,19 +708,14 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
-            localVarRequestOptions.Operation = "LobbyV2Api.CreatePrivateLobby";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/create/private", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreatePrivateLobby", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -774,12 +729,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        public async System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await CreatePrivateLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = CreatePrivateLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -791,28 +750,21 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePrivateLobby");
-            }
 
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePrivateLobby");
-            }
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createPrivateLobbyRequest' when calling LobbyV2Api->CreatePrivateLobby");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -826,17 +778,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (roomId != null)
@@ -846,20 +793,21 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
-            localVarRequestOptions.Operation = "LobbyV2Api.CreatePrivateLobby";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/create/private", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/create/private", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreatePrivateLobby", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -873,9 +821,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        public Lobby CreatePublicLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0)
+        public Lobby CreatePublicLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreatePublicLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
             return localVarResponse.Data;
@@ -889,27 +836,20 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePublicLobby");
-            }
 
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePublicLobby");
-            }
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createPrivateLobbyRequest' when calling LobbyV2Api->CreatePublicLobby");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -923,16 +863,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (roomId != null)
@@ -942,19 +876,14 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
-            localVarRequestOptions.Operation = "LobbyV2Api.CreatePublicLobby";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/create/public", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreatePublicLobby", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -968,12 +897,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        public async System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await CreatePublicLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = CreatePublicLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -985,28 +918,21 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePublicLobby");
-            }
 
             // verify the required parameter 'authorization' is set
             if (authorization == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePublicLobby");
-            }
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createPrivateLobbyRequest' when calling LobbyV2Api->CreatePublicLobby");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1020,17 +946,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (roomId != null)
@@ -1040,20 +961,21 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
-            localVarRequestOptions.Operation = "LobbyV2Api.CreatePublicLobby";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/create/public", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/create/public", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreatePublicLobby", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1065,9 +987,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        public Lobby GetLobbyInfo(string appId, string roomId, int operationIndex = 0)
+        public Lobby GetLobbyInfo(string appId, string roomId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = GetLobbyInfoWithHttpInfo(appId, roomId);
             return localVarResponse.Data;
@@ -1079,21 +1000,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> GetLobbyInfoWithHttpInfo(string appId, string roomId, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> GetLobbyInfoWithHttpInfo(string appId, string roomId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->GetLobbyInfo");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling LobbyV2Api->GetLobbyInfo");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1106,33 +1022,22 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            localVarRequestOptions.Operation = "LobbyV2Api.GetLobbyInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<Lobby>("/lobby/v2/{appId}/info/{roomId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLobbyInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1144,12 +1049,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        public async System.Threading.Tasks.Task<Lobby> GetLobbyInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> GetLobbyInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await GetLobbyInfoWithHttpInfoAsync(appId, roomId, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = GetLobbyInfoWithHttpInfoAsync(appId, roomId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -1159,22 +1068,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> GetLobbyInfoWithHttpInfoAsync(string appId, string roomId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> GetLobbyInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->GetLobbyInfo");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling LobbyV2Api->GetLobbyInfo");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1187,35 +1091,31 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            localVarRequestOptions.Operation = "LobbyV2Api.GetLobbyInfo";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Lobby>("/lobby/v2/{appId}/info/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<Lobby>("/lobby/v2/{appId}/info/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetLobbyInfo", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1227,9 +1127,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>List&lt;Lobby&gt;</returns>
-        public List<Lobby> ListActivePublicLobbies(string appId, Region? region = default(Region?), int operationIndex = 0)
+        public List<Lobby> ListActivePublicLobbies(string appId, Region? region = default(Region?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = ListActivePublicLobbiesWithHttpInfo(appId, region);
             return localVarResponse.Data;
@@ -1241,15 +1140,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;Lobby&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> ListActivePublicLobbiesWithHttpInfo(string appId, Region? region = default(Region?), int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> ListActivePublicLobbiesWithHttpInfo(string appId, Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->ListActivePublicLobbies");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1262,16 +1158,10 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (region != null)
@@ -1279,19 +1169,14 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            localVarRequestOptions.Operation = "LobbyV2Api.ListActivePublicLobbies";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<List<Lobby>>("/lobby/v2/{appId}/list/public", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListActivePublicLobbies", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1303,12 +1188,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Lobby&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = await ListActivePublicLobbiesWithHttpInfoAsync(appId, region, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = ListActivePublicLobbiesWithHttpInfoAsync(appId, region, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -1318,16 +1207,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Lobby&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>>> ListActivePublicLobbiesWithHttpInfoAsync(string appId, Region? region = default(Region?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>>> ListActivePublicLobbiesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->ListActivePublicLobbies");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1340,17 +1226,12 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             if (region != null)
@@ -1358,20 +1239,21 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            localVarRequestOptions.Operation = "LobbyV2Api.ListActivePublicLobbies";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Lobby>>("/lobby/v2/{appId}/list/public", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.GetAsync<List<Lobby>>("/lobby/v2/{appId}/list/public", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListActivePublicLobbies", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1384,9 +1266,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Lobby</returns>
-        public Lobby SetLobbyState(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0)
+        public Lobby SetLobbyState(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = SetLobbyStateWithHttpInfo(appId, roomId, setLobbyStateRequest);
             return localVarResponse.Data;
@@ -1399,27 +1280,20 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Lobby</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->SetLobbyState");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling LobbyV2Api->SetLobbyState");
-            }
 
             // verify the required parameter 'setLobbyStateRequest' is set
             if (setLobbyStateRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'setLobbyStateRequest' when calling LobbyV2Api->SetLobbyState");
-            }
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1433,23 +1307,14 @@ namespace Hathora.Cloud.Sdk.Api
             };
 
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
             localVarRequestOptions.Data = setLobbyStateRequest;
-
-            localVarRequestOptions.Operation = "LobbyV2Api.SetLobbyState";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1460,13 +1325,11 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/setState/{roomId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SetLobbyState", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1479,12 +1342,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        public async System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await SetLobbyStateWithHttpInfoAsync(appId, roomId, setLobbyStateRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            var task = SetLobbyStateWithHttpInfoAsync(appId, roomId, setLobbyStateRequest, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task;
+#endif
             return localVarResponse.Data;
         }
 
@@ -1495,28 +1362,21 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="setLobbyStateRequest"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->SetLobbyState");
-            }
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling LobbyV2Api->SetLobbyState");
-            }
 
             // verify the required parameter 'setLobbyStateRequest' is set
             if (setLobbyStateRequest == null)
-            {
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'setLobbyStateRequest' when calling LobbyV2Api->SetLobbyState");
-            }
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1530,24 +1390,16 @@ namespace Hathora.Cloud.Sdk.Api
                 "application/json"
             };
 
+
             var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
             localVarRequestOptions.Data = setLobbyStateRequest;
-
-            localVarRequestOptions.Operation = "LobbyV2Api.SetLobbyState";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -1557,15 +1409,19 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/setState/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            var task = this.AsynchronousClient.PostAsync<Lobby>("/lobby/v2/{appId}/setState/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SetLobbyState", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

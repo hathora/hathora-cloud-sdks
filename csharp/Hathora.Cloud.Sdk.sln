@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hathora.Cloud.Sdk", "src\Hathora.Cloud.Sdk\Hathora.Cloud.Sdk.csproj", "{D136F148-4604-4484-95E4-2DDCA0F381FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hathora.Cloud.Sdk", "src\Hathora.Cloud.Sdk\Hathora.Cloud.Sdk.csproj", "{0D3EC4F8-1024-4D12-BE9E-66F8513EFC06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hathora.Cloud.Sdk.Test", "src\Hathora.Cloud.Sdk.Test\Hathora.Cloud.Sdk.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D136F148-4604-4484-95E4-2DDCA0F381FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D136F148-4604-4484-95E4-2DDCA0F381FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D136F148-4604-4484-95E4-2DDCA0F381FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D136F148-4604-4484-95E4-2DDCA0F381FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D3EC4F8-1024-4D12-BE9E-66F8513EFC06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D3EC4F8-1024-4D12-BE9E-66F8513EFC06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D3EC4F8-1024-4D12-BE9E-66F8513EFC06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D3EC4F8-1024-4D12-BE9E-66F8513EFC06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

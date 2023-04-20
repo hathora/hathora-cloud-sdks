@@ -1,8 +1,6 @@
 .gitignore
-Hathora.Cloud.Sdk.sln
 README.md
 api/openapi.yaml
-appveyor.yml
 docs/ActiveConnectionInfo.md
 docs/AppV1Api.md
 docs/Application.md
@@ -49,7 +47,7 @@ docs/SetLobbyStateRequest.md
 docs/StartingConnectionInfo.md
 docs/TransportType.md
 git_push.sh
-src/Hathora.Cloud.Sdk.Test/Hathora.Cloud.Sdk.Test.csproj
+src/Hathora.Cloud.Sdk.Test/Hathora.Cloud.Sdk.Test.asmdef
 src/Hathora.Cloud.Sdk/Api/AppV1Api.cs
 src/Hathora.Cloud.Sdk/Api/AuthV1Api.cs
 src/Hathora.Cloud.Sdk/Api/BuildV1Api.cs
@@ -65,9 +63,9 @@ src/Hathora.Cloud.Sdk/Client/ApiException.cs
 src/Hathora.Cloud.Sdk/Client/ApiResponse.cs
 src/Hathora.Cloud.Sdk/Client/ClientUtils.cs
 src/Hathora.Cloud.Sdk/Client/Configuration.cs
+src/Hathora.Cloud.Sdk/Client/ConnectionException.cs
 src/Hathora.Cloud.Sdk/Client/ExceptionFactory.cs
 src/Hathora.Cloud.Sdk/Client/GlobalConfiguration.cs
-src/Hathora.Cloud.Sdk/Client/HttpMethod.cs
 src/Hathora.Cloud.Sdk/Client/IApiAccessor.cs
 src/Hathora.Cloud.Sdk/Client/IAsynchronousClient.cs
 src/Hathora.Cloud.Sdk/Client/IReadableConfiguration.cs
@@ -75,8 +73,9 @@ src/Hathora.Cloud.Sdk/Client/ISynchronousClient.cs
 src/Hathora.Cloud.Sdk/Client/Multimap.cs
 src/Hathora.Cloud.Sdk/Client/OpenAPIDateConverter.cs
 src/Hathora.Cloud.Sdk/Client/RequestOptions.cs
-src/Hathora.Cloud.Sdk/Client/RetryConfiguration.cs
-src/Hathora.Cloud.Sdk/Hathora.Cloud.Sdk.csproj
+src/Hathora.Cloud.Sdk/Client/UnexpectedResponseException.cs
+src/Hathora.Cloud.Sdk/Client/WebRequestPathBuilder.cs
+src/Hathora.Cloud.Sdk/Hathora.Cloud.Sdk.asmdef
 src/Hathora.Cloud.Sdk/Model/AbstractOpenAPISchema.cs
 src/Hathora.Cloud.Sdk/Model/ActiveConnectionInfo.cs
 src/Hathora.Cloud.Sdk/Model/Application.cs
