@@ -1,6 +1,5 @@
 .gitignore
 .npmignore
-README.md
 src/apis/AppV1Api.ts
 src/apis/AuthV1Api.ts
 src/apis/BuildV1Api.ts

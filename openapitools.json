@@ -40,6 +40,15 @@
           "withInterfaces": true,
           "useSingleRequestParameter": false
         }
+      },
+      "csharp": {
+        "generatorName": "csharp-netcore",
+        "output": "csharp",
+        "inputSpec": "swagger.json",
+        "additionalProperties": {
+          "packageName": "Hathora.Cloud.Sdk",
+          "disallowAdditionalPropertiesIfNotPresent": false
+        }
       }
     }
   }
