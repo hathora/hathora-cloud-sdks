@@ -306,6 +306,29 @@
 				],
 				"type": "object"
 			},
+			"DiscoveryResponse": {
+				"items": {
+					"properties": {
+						"port": {
+							"type": "number",
+							"format": "double"
+						},
+						"host": {
+							"type": "string"
+						},
+						"region": {
+							"$ref": "#/components/schemas/Region"
+						}
+					},
+					"required": [
+						"port",
+						"host",
+						"region"
+					],
+					"type": "object"
+				},
+				"type": "array"
+			},
 			"RoomId": {
 				"type": "string"
 			},
@@ -1725,6 +1748,28 @@
 				}
 			}
 		},
+		"/discovery/v1/ping": {
+			"get": {
+				"operationId": "GetPingServiceEndpoints",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/DiscoveryResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"DiscoveryV1"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
 		"/lobby/v1/{appId}/create/private": {
 			"post": {
 				"operationId": "CreatePrivateLobbyDeprecated",
@@ -1750,6 +1795,16 @@
 						}
 					},
 					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"422": {
 						"description": "",
 						"content": {
 							"application/json": {
@@ -1847,6 +1902,16 @@
 						}
 					},
 					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"422": {
 						"description": "",
 						"content": {
 							"application/json": {
@@ -2033,6 +2098,16 @@
 							}
 						}
 					},
+					"422": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
 					"429": {
 						"description": "",
 						"content": {
@@ -2057,6 +2132,7 @@
 				"tags": [
 					"LobbyV2"
 				],
+				"deprecated": true,
 				"security": [],
 				"parameters": [
 					{
@@ -2143,6 +2219,16 @@
 							}
 						}
 					},
+					"422": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
 					"429": {
 						"description": "",
 						"content": {
@@ -2167,6 +2253,7 @@
 				"tags": [
 					"LobbyV2"
 				],
+				"deprecated": true,
 				"security": [],
 				"parameters": [
 					{
@@ -2253,6 +2340,137 @@
 							}
 						}
 					},
+					"422": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"LobbyV2"
+				],
+				"deprecated": true,
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "roomId",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/RoomId"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"initialConfig": {
+										"additionalProperties": false,
+										"type": "object"
+									},
+									"region": {
+										"$ref": "#/components/schemas/Region"
+									}
+								},
+								"required": [
+									"initialConfig",
+									"region"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/lobby/v2/{appId}/create": {
+			"post": {
+				"operationId": "CreateLobby",
+				"responses": {
+					"201": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Lobby"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
 					"429": {
 						"description": "",
 						"content": {
@@ -2310,6 +2528,14 @@
 						"application/json": {
 							"schema": {
 								"properties": {
+									"visibility": {
+										"type": "string",
+										"enum": [
+											"public",
+											"private",
+											"local"
+										]
+									},
 									"initialConfig": {
 										"additionalProperties": false,
 										"type": "object"
@@ -2319,6 +2545,7 @@
 									}
 								},
 								"required": [
+									"visibility",
 									"initialConfig",
 									"region"
 								],
@@ -2435,6 +2662,16 @@
 						}
 					},
 					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"422": {
 						"description": "",
 						"content": {
 							"application/json": {

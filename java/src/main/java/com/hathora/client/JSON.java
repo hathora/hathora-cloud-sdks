@@ -103,12 +103,14 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateAppRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateAppRequestAuthConfiguration.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateAppRequestAuthConfigurationGoogle.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateLobbyRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreatePrivateLobbyRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateRoomRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Deployment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.DeploymentAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.DeploymentConfig.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.DeploymentConfigEnvInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.DiscoveryResponseInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Lobby.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.LoginAnonymous200Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.LoginGoogleRequest.CustomTypeAdapterFactory());

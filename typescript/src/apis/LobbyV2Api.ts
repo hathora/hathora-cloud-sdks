@@ -15,12 +15,15 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreateLobbyRequest,
   CreatePrivateLobbyRequest,
   Lobby,
   Region,
   SetLobbyStateRequest,
 } from '../models';
 import {
+    CreateLobbyRequestFromJSON,
+    CreateLobbyRequestToJSON,
     CreatePrivateLobbyRequestFromJSON,
     CreatePrivateLobbyRequestToJSON,
     LobbyFromJSON,
@@ -30,6 +33,13 @@ import {
     SetLobbyStateRequestFromJSON,
     SetLobbyStateRequestToJSON,
 } from '../models';
+
+export interface CreateLobbyOperationRequest {
+    appId: string;
+    authorization: string;
+    createLobbyRequest: CreateLobbyRequest;
+    roomId?: string;
+}
 
 export interface CreateLocalLobbyRequest {
     appId: string;
@@ -79,9 +89,26 @@ export interface LobbyV2ApiInterface {
      * 
      * @param {string} appId 
      * @param {string} authorization 
+     * @param {CreateLobbyRequest} createLobbyRequest 
+     * @param {string} [roomId] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LobbyV2ApiInterface
+     */
+    createLobbyRaw(requestParameters: CreateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
+
+    /**
+     */
+    createLobby(appId: string, authorization: string, createLobbyRequest: CreateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+
+    /**
+     * 
+     * @param {string} appId 
+     * @param {string} authorization 
      * @param {CreatePrivateLobbyRequest} createPrivateLobbyRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV2ApiInterface
      */
@@ -98,6 +125,7 @@ export interface LobbyV2ApiInterface {
      * @param {CreatePrivateLobbyRequest} createPrivateLobbyRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV2ApiInterface
      */
@@ -114,6 +142,7 @@ export interface LobbyV2ApiInterface {
      * @param {CreatePrivateLobbyRequest} createPrivateLobbyRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV2ApiInterface
      */
@@ -172,6 +201,53 @@ export interface LobbyV2ApiInterface {
  * 
  */
 export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
+
+    /**
+     */
+    async createLobbyRaw(requestParameters: CreateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createLobby.');
+        }
+
+        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
+            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling createLobby.');
+        }
+
+        if (requestParameters.createLobbyRequest === null || requestParameters.createLobbyRequest === undefined) {
+            throw new runtime.RequiredError('createLobbyRequest','Required parameter requestParameters.createLobbyRequest was null or undefined when calling createLobby.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.roomId !== undefined) {
+            queryParameters['roomId'] = requestParameters.roomId;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
+            headerParameters['Authorization'] = String(requestParameters.authorization);
+        }
+
+        const response = await this.request({
+            path: `/lobby/v2/{appId}/create`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateLobbyRequestToJSON(requestParameters.createLobbyRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LobbyFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async createLobby(appId: string, authorization: string, createLobbyRequest: CreateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.createLobbyRaw({ appId: appId, authorization: authorization, createLobbyRequest: createLobbyRequest, roomId: roomId }, initOverrides);
+        return await response.value();
+    }
 
     /**
      */

@@ -134,9 +134,11 @@ Class | Method | HTTP request | Description
 *DeploymentV1Api* | [**createDeployment**](docs/DeploymentV1Api.md#createDeployment) | **POST** /deployments/v1/{appId}/create/{buildId} | 
 *DeploymentV1Api* | [**getDeploymentInfo**](docs/DeploymentV1Api.md#getDeploymentInfo) | **GET** /deployments/v1/{appId}/info/{deploymentId} | 
 *DeploymentV1Api* | [**getDeployments**](docs/DeploymentV1Api.md#getDeployments) | **GET** /deployments/v1/{appId}/list | 
+*DiscoveryV1Api* | [**getPingServiceEndpoints**](docs/DiscoveryV1Api.md#getPingServiceEndpoints) | **GET** /discovery/v1/ping | 
 *LobbyV1Api* | [**createPrivateLobbyDeprecated**](docs/LobbyV1Api.md#createPrivateLobbyDeprecated) | **POST** /lobby/v1/{appId}/create/private | 
 *LobbyV1Api* | [**createPublicLobbyDeprecated**](docs/LobbyV1Api.md#createPublicLobbyDeprecated) | **POST** /lobby/v1/{appId}/create/public | 
 *LobbyV1Api* | [**listActivePublicLobbiesDeprecated**](docs/LobbyV1Api.md#listActivePublicLobbiesDeprecated) | **GET** /lobby/v1/{appId}/list | 
+*LobbyV2Api* | [**createLobby**](docs/LobbyV2Api.md#createLobby) | **POST** /lobby/v2/{appId}/create | 
 *LobbyV2Api* | [**createLocalLobby**](docs/LobbyV2Api.md#createLocalLobby) | **POST** /lobby/v2/{appId}/create/local | 
 *LobbyV2Api* | [**createPrivateLobby**](docs/LobbyV2Api.md#createPrivateLobby) | **POST** /lobby/v2/{appId}/create/private | 
 *LobbyV2Api* | [**createPublicLobby**](docs/LobbyV2Api.md#createPublicLobby) | **POST** /lobby/v2/{appId}/create/public | 
@@ -171,12 +173,14 @@ Class | Method | HTTP request | Description
  - [CreateAppRequest](docs/CreateAppRequest.md)
  - [CreateAppRequestAuthConfiguration](docs/CreateAppRequestAuthConfiguration.md)
  - [CreateAppRequestAuthConfigurationGoogle](docs/CreateAppRequestAuthConfigurationGoogle.md)
+ - [CreateLobbyRequest](docs/CreateLobbyRequest.md)
  - [CreatePrivateLobbyRequest](docs/CreatePrivateLobbyRequest.md)
  - [CreateRoomRequest](docs/CreateRoomRequest.md)
  - [Deployment](docs/Deployment.md)
  - [DeploymentAllOf](docs/DeploymentAllOf.md)
  - [DeploymentConfig](docs/DeploymentConfig.md)
  - [DeploymentConfigEnvInner](docs/DeploymentConfigEnvInner.md)
+ - [DiscoveryResponseInner](docs/DiscoveryResponseInner.md)
  - [Lobby](docs/Lobby.md)
  - [LoginAnonymous200Response](docs/LoginAnonymous200Response.md)
  - [LoginGoogleRequest](docs/LoginGoogleRequest.md)

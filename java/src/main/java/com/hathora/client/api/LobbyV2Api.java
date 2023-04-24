@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.CreateLobbyRequest;
 import com.hathora.client.model.CreatePrivateLobbyRequest;
 import com.hathora.client.model.Lobby;
 import com.hathora.client.model.Region;
@@ -77,6 +78,180 @@ public class LobbyV2Api {
     }
 
     /**
+     * Build call for createLobby
+     * @param appId  (required)
+     * @param authorization  (required)
+     * @param createLobbyRequest  (required)
+     * @param roomId  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createLobbyCall(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createLobbyRequest;
+
+        // create path and map variables
+        String localVarPath = "/lobby/v2/{appId}/create"
+            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (roomId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("roomId", roomId));
+        }
+
+        if (authorization != null) {
+            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createLobbyValidateBeforeCall(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling createLobby(Async)");
+        }
+
+        // verify the required parameter 'authorization' is set
+        if (authorization == null) {
+            throw new ApiException("Missing the required parameter 'authorization' when calling createLobby(Async)");
+        }
+
+        // verify the required parameter 'createLobbyRequest' is set
+        if (createLobbyRequest == null) {
+            throw new ApiException("Missing the required parameter 'createLobbyRequest' when calling createLobby(Async)");
+        }
+
+        return createLobbyCall(appId, authorization, createLobbyRequest, roomId, _callback);
+
+    }
+
+    /**
+     * 
+     * 
+     * @param appId  (required)
+     * @param authorization  (required)
+     * @param createLobbyRequest  (required)
+     * @param roomId  (optional)
+     * @return Lobby
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public Lobby createLobby(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId) throws ApiException {
+        ApiResponse<Lobby> localVarResp = createLobbyWithHttpInfo(appId, authorization, createLobbyRequest, roomId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param appId  (required)
+     * @param authorization  (required)
+     * @param createLobbyRequest  (required)
+     * @param roomId  (optional)
+     * @return ApiResponse&lt;Lobby&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Lobby> createLobbyWithHttpInfo(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createLobbyValidateBeforeCall(appId, authorization, createLobbyRequest, roomId, null);
+        Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param appId  (required)
+     * @param authorization  (required)
+     * @param createLobbyRequest  (required)
+     * @param roomId  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createLobbyAsync(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createLobbyValidateBeforeCall(appId, authorization, createLobbyRequest, roomId, _callback);
+        Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for createLocalLobby
      * @param appId  (required)
      * @param authorization  (required)
@@ -91,10 +266,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createLocalLobbyCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -149,6 +327,7 @@ public class LobbyV2Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createLocalLobbyValidateBeforeCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -185,10 +364,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public Lobby createLocalLobby(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
         ApiResponse<Lobby> localVarResp = createLocalLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
         return localVarResp.getData();
@@ -209,10 +391,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Lobby> createLocalLobbyWithHttpInfo(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
         okhttp3.Call localVarCall = createLocalLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
@@ -235,10 +420,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createLocalLobbyAsync(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createLocalLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
@@ -261,10 +449,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPrivateLobbyCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -319,6 +510,7 @@ public class LobbyV2Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPrivateLobbyValidateBeforeCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -355,10 +547,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public Lobby createPrivateLobby(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
         ApiResponse<Lobby> localVarResp = createPrivateLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
         return localVarResp.getData();
@@ -379,10 +574,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Lobby> createPrivateLobbyWithHttpInfo(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
         okhttp3.Call localVarCall = createPrivateLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
@@ -405,10 +603,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPrivateLobbyAsync(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPrivateLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
@@ -431,10 +632,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPublicLobbyCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -489,6 +693,7 @@ public class LobbyV2Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createPublicLobbyValidateBeforeCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -525,10 +730,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public Lobby createPublicLobby(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
         ApiResponse<Lobby> localVarResp = createPublicLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
         return localVarResp.getData();
@@ -549,10 +757,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Lobby> createPublicLobbyWithHttpInfo(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
         okhttp3.Call localVarCall = createPublicLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
@@ -575,10 +786,13 @@ public class LobbyV2Api {
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call createPublicLobbyAsync(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPublicLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
@@ -867,6 +1081,7 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setLobbyStateCall(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest, final ApiCallback _callback) throws ApiException {
@@ -950,6 +1165,7 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public Lobby setLobbyState(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest) throws ApiException {
@@ -970,6 +1186,7 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Lobby> setLobbyStateWithHttpInfo(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest) throws ApiException {
@@ -992,6 +1209,7 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call setLobbyStateAsync(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest, final ApiCallback<Lobby> _callback) throws ApiException {

@@ -13,6 +13,7 @@ docs/ConnectionInfo.md
 docs/CreateAppRequest.md
 docs/CreateAppRequestAuthConfiguration.md
 docs/CreateAppRequestAuthConfigurationGoogle.md
+docs/CreateLobbyRequest.md
 docs/CreatePrivateLobbyRequest.md
 docs/CreateRoomRequest.md
 docs/Deployment.md
@@ -20,6 +21,8 @@ docs/DeploymentAllOf.md
 docs/DeploymentConfig.md
 docs/DeploymentConfigEnvInner.md
 docs/DeploymentV1Api.md
+docs/DiscoveryResponseInner.md
+docs/DiscoveryV1Api.md
 docs/Lobby.md
 docs/LobbyV1Api.md
 docs/LobbyV2Api.md
@@ -62,6 +65,7 @@ src/main/java/com/hathora/client/api/AppV1Api.java
 src/main/java/com/hathora/client/api/AuthV1Api.java
 src/main/java/com/hathora/client/api/BuildV1Api.java
 src/main/java/com/hathora/client/api/DeploymentV1Api.java
+src/main/java/com/hathora/client/api/DiscoveryV1Api.java
 src/main/java/com/hathora/client/api/LobbyV1Api.java
 src/main/java/com/hathora/client/api/LobbyV2Api.java
 src/main/java/com/hathora/client/api/LogV1Api.java
@@ -83,12 +87,14 @@ src/main/java/com/hathora/client/model/ConnectionInfo.java
 src/main/java/com/hathora/client/model/CreateAppRequest.java
 src/main/java/com/hathora/client/model/CreateAppRequestAuthConfiguration.java
 src/main/java/com/hathora/client/model/CreateAppRequestAuthConfigurationGoogle.java
+src/main/java/com/hathora/client/model/CreateLobbyRequest.java
 src/main/java/com/hathora/client/model/CreatePrivateLobbyRequest.java
 src/main/java/com/hathora/client/model/CreateRoomRequest.java
 src/main/java/com/hathora/client/model/Deployment.java
 src/main/java/com/hathora/client/model/DeploymentAllOf.java
 src/main/java/com/hathora/client/model/DeploymentConfig.java
 src/main/java/com/hathora/client/model/DeploymentConfigEnvInner.java
+src/main/java/com/hathora/client/model/DiscoveryResponseInner.java
 src/main/java/com/hathora/client/model/Lobby.java
 src/main/java/com/hathora/client/model/LoginAnonymous200Response.java
 src/main/java/com/hathora/client/model/LoginGoogleRequest.java

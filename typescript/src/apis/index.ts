@@ -4,6 +4,7 @@ export * from './AppV1Api';
 export * from './AuthV1Api';
 export * from './BuildV1Api';
 export * from './DeploymentV1Api';
+export * from './DiscoveryV1Api';
 export * from './LobbyV1Api';
 export * from './LobbyV2Api';
 export * from './LogV1Api';

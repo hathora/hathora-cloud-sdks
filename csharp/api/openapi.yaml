@@ -574,6 +574,20 @@ paths:
       - auth0: []
       tags:
       - DeploymentV1
+  /discovery/v1/ping:
+    get:
+      operationId: GetPingServiceEndpoints
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscoveryResponse'
+          description: Ok
+      security: []
+      tags:
+      - DiscoveryV1
   /lobby/v1/{appId}/create/private:
     post:
       deprecated: true
@@ -622,6 +636,12 @@ paths:
                 type: string
           description: ""
         "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "422":
           content:
             application/json:
               schema:
@@ -690,6 +710,12 @@ paths:
                 type: string
           description: ""
         "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "422":
           content:
             application/json:
               schema:
@@ -770,6 +796,7 @@ paths:
       - LobbyV1
   /lobby/v2/{appId}/create/private:
     post:
+      deprecated: true
       operationId: CreatePrivateLobby
       parameters:
       - explode: false
@@ -818,6 +845,12 @@ paths:
               schema:
                 type: string
           description: ""
+        "422":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "429":
           content:
             application/json:
@@ -835,6 +868,7 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/create/public:
     post:
+      deprecated: true
       operationId: CreatePublicLobby
       parameters:
       - explode: false
@@ -883,6 +917,12 @@ paths:
               schema:
                 type: string
           description: ""
+        "422":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "429":
           content:
             application/json:
@@ -900,6 +940,7 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/create/local:
     post:
+      deprecated: true
       operationId: CreateLocalLobby
       parameters:
       - explode: false
@@ -943,6 +984,83 @@ paths:
                 type: string
           description: ""
         "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "422":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "429":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security: []
+      tags:
+      - LobbyV2
+  /lobby/v2/{appId}/create:
+    post:
+      operationId: CreateLobby
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: header
+        name: Authorization
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: roomId
+        required: false
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLobby_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lobby'
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "422":
           content:
             application/json:
               schema:
@@ -1059,6 +1177,12 @@ paths:
                 $ref: '#/components/schemas/Lobby'
           description: Ok
         "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "422":
           content:
             application/json:
               schema:
@@ -1884,6 +2008,10 @@ components:
       - startedAt
       - status
       type: object
+    DiscoveryResponse:
+      items:
+        $ref: '#/components/schemas/DiscoveryResponse_inner'
+      type: array
     RoomId:
       type: string
     Lobby:
@@ -2300,6 +2428,24 @@ components:
       - initialConfig
       - region
       type: object
+    CreateLobby_request:
+      properties:
+        visibility:
+          enum:
+          - public
+          - private
+          - local
+          type: string
+        initialConfig:
+          additionalProperties: false
+          type: object
+        region:
+          $ref: '#/components/schemas/Region'
+      required:
+      - initialConfig
+      - region
+      - visibility
+      type: object
     SetLobbyState_request:
       properties:
         state:
@@ -2378,6 +2524,24 @@ components:
           $ref: '#/components/schemas/Region'
       required:
       - containerTag
+      - region
+      type: object
+    DiscoveryResponse_inner:
+      example:
+        port: 0.8008281904610115
+        host: host
+        region: null
+      properties:
+        port:
+          format: double
+          type: number
+        host:
+          type: string
+        region:
+          $ref: '#/components/schemas/Region'
+      required:
+      - host
+      - port
       - region
       type: object
     ProcessWithRooms_allOf:
