@@ -15,21 +15,21 @@
 
 import * as runtime from '../runtime';
 import type {
+  AppConfig,
   Application,
   ApplicationWithDeployment,
-  CreateAppRequest,
 } from '../models';
 import {
+    AppConfigFromJSON,
+    AppConfigToJSON,
     ApplicationFromJSON,
     ApplicationToJSON,
     ApplicationWithDeploymentFromJSON,
     ApplicationWithDeploymentToJSON,
-    CreateAppRequestFromJSON,
-    CreateAppRequestToJSON,
 } from '../models';
 
-export interface CreateAppOperationRequest {
-    createAppRequest: CreateAppRequest;
+export interface CreateAppRequest {
+    appConfig: AppConfig;
 }
 
 export interface DeleteAppRequest {
@@ -42,7 +42,7 @@ export interface GetAppInfoRequest {
 
 export interface UpdateAppRequest {
     appId: string;
-    createAppRequest: CreateAppRequest;
+    appConfig: AppConfig;
 }
 
 /**
@@ -54,16 +54,16 @@ export interface UpdateAppRequest {
 export interface AppV1ApiInterface {
     /**
      * 
-     * @param {CreateAppRequest} createAppRequest 
+     * @param {AppConfig} appConfig 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AppV1ApiInterface
      */
-    createAppRaw(requestParameters: CreateAppOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Application>>;
+    createAppRaw(requestParameters: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Application>>;
 
     /**
      */
-    createApp(createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
+    createApp(appConfig: AppConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
 
     /**
      * 
@@ -106,7 +106,7 @@ export interface AppV1ApiInterface {
     /**
      * 
      * @param {string} appId 
-     * @param {CreateAppRequest} createAppRequest 
+     * @param {AppConfig} appConfig 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AppV1ApiInterface
@@ -115,7 +115,7 @@ export interface AppV1ApiInterface {
 
     /**
      */
-    updateApp(appId: string, createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
+    updateApp(appId: string, appConfig: AppConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application>;
 
 }
 
@@ -126,9 +126,9 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
     /**
      */
-    async createAppRaw(requestParameters: CreateAppOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Application>> {
-        if (requestParameters.createAppRequest === null || requestParameters.createAppRequest === undefined) {
-            throw new runtime.RequiredError('createAppRequest','Required parameter requestParameters.createAppRequest was null or undefined when calling createApp.');
+    async createAppRaw(requestParameters: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Application>> {
+        if (requestParameters.appConfig === null || requestParameters.appConfig === undefined) {
+            throw new runtime.RequiredError('appConfig','Required parameter requestParameters.appConfig was null or undefined when calling createApp.');
         }
 
         const queryParameters: any = {};
@@ -150,7 +150,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateAppRequestToJSON(requestParameters.createAppRequest),
+            body: AppConfigToJSON(requestParameters.appConfig),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ApplicationFromJSON(jsonValue));
@@ -158,8 +158,8 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
     /**
      */
-    async createApp(createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
-        const response = await this.createAppRaw({ createAppRequest: createAppRequest }, initOverrides);
+    async createApp(appConfig: AppConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
+        const response = await this.createAppRaw({ appConfig: appConfig }, initOverrides);
         return await response.value();
     }
 
@@ -273,8 +273,8 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling updateApp.');
         }
 
-        if (requestParameters.createAppRequest === null || requestParameters.createAppRequest === undefined) {
-            throw new runtime.RequiredError('createAppRequest','Required parameter requestParameters.createAppRequest was null or undefined when calling updateApp.');
+        if (requestParameters.appConfig === null || requestParameters.appConfig === undefined) {
+            throw new runtime.RequiredError('appConfig','Required parameter requestParameters.appConfig was null or undefined when calling updateApp.');
         }
 
         const queryParameters: any = {};
@@ -296,7 +296,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateAppRequestToJSON(requestParameters.createAppRequest),
+            body: AppConfigToJSON(requestParameters.appConfig),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ApplicationFromJSON(jsonValue));
@@ -304,8 +304,8 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
     /**
      */
-    async updateApp(appId: string, createAppRequest: CreateAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
-        const response = await this.updateAppRaw({ appId: appId, createAppRequest: createAppRequest }, initOverrides);
+    async updateApp(appId: string, appConfig: AppConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Application> {
+        const response = await this.updateAppRaw({ appId: appId, appConfig: appConfig }, initOverrides);
         return await response.value();
     }
 

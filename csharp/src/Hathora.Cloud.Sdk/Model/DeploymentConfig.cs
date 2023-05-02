@@ -58,7 +58,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="planName">planName (required).</param>
         /// <param name="transportType">transportType (required).</param>
         /// <param name="containerPort">containerPort (required).</param>
-        public DeploymentConfig(List<DeploymentConfigEnvInner> env = default(List<DeploymentConfigEnvInner>), double roomsPerProcess = default(double), PlanName planName = default(PlanName), TransportType transportType = default(TransportType), double containerPort = default(double))
+        public DeploymentConfig(List<DeploymentConfigEnvInner> env = default(List<DeploymentConfigEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), TransportType transportType = default(TransportType), int containerPort = default(int))
         {
             // to ensure "env" is required (not null)
             if (env == null)
@@ -83,13 +83,13 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets RoomsPerProcess
         /// </summary>
         [DataMember(Name = "roomsPerProcess", IsRequired = true, EmitDefaultValue = true)]
-        public double RoomsPerProcess { get; set; }
+        public int RoomsPerProcess { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainerPort
         /// </summary>
         [DataMember(Name = "containerPort", IsRequired = true, EmitDefaultValue = true)]
-        public double ContainerPort { get; set; }
+        public int ContainerPort { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties

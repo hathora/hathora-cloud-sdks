@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Env** | [**List&lt;DeploymentConfigEnvInner&gt;**](DeploymentConfigEnvInner.md) |  | 
-**RoomsPerProcess** | **double** |  | 
+**RoomsPerProcess** | **int** |  | 
 **PlanName** | **PlanName** |  | 
 **TransportType** | **TransportType** |  | 
-**ContainerPort** | **double** |  | 
+**ContainerPort** | **int** |  | 
 **CreatedAt** | **DateTime** |  | 
 **CreatedBy** | **string** |  | 
 **RequestedMemoryMB** | **double** |  | 

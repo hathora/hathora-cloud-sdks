@@ -35,9 +35,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <returns>RecordPartialMetricNameMetricValueArray</returns>
-        RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?));
+        RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?));
 
         /// <summary>
         /// 
@@ -51,9 +51,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <returns>ApiResponse of RecordPartialMetricNameMetricValueArray</returns>
-        ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?));
+        ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?));
         #endregion Synchronous Operations
     }
 
@@ -75,10 +75,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RecordPartialMetricNameMetricValueArray</returns>
-        System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -92,10 +92,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RecordPartialMetricNameMetricValueArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -249,9 +249,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <returns>RecordPartialMetricNameMetricValueArray</returns>
-        public RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?))
+        public RecordPartialMetricNameMetricValueArray GetMetrics(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> localVarResponse = GetMetricsWithHttpInfo(appId, processId, metrics, end, start, step);
             return localVarResponse.Data;
@@ -266,9 +266,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <returns>ApiResponse of RecordPartialMetricNameMetricValueArray</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray> GetMetricsWithHttpInfo(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -341,10 +341,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RecordPartialMetricNameMetricValueArray</returns>
-        public async System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<RecordPartialMetricNameMetricValueArray> GetMetricsAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetMetricsWithHttpInfoAsync(appId, processId, metrics, end, start, step, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
@@ -364,10 +364,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="metrics"> (optional)</param>
         /// <param name="end"> (optional)</param>
         /// <param name="start"> (optional)</param>
-        /// <param name="step"> (optional, default to 60D)</param>
+        /// <param name="step"> (optional, default to 60)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RecordPartialMetricNameMetricValueArray)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), double? end = default(double?), double? start = default(double?), double? step = default(double?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<RecordPartialMetricNameMetricValueArray>> GetMetricsWithHttpInfoAsync(string appId, string processId, List<MetricName> metrics = default(List<MetricName>), int? end = default(int?), int? start = default(int?), int? step = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)

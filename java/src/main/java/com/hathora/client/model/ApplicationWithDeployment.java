@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hathora.client.model.CreateAppRequestAuthConfiguration;
+import com.hathora.client.model.ApplicationAuthConfiguration;
 import com.hathora.client.model.Deployment;
 import java.io.IOException;
 import java.time.OffsetDateTime;
@@ -73,7 +73,7 @@ public class ApplicationWithDeployment {
 
   public static final String SERIALIZED_NAME_AUTH_CONFIGURATION = "authConfiguration";
   @SerializedName(SERIALIZED_NAME_AUTH_CONFIGURATION)
-  private CreateAppRequestAuthConfiguration authConfiguration;
+  private ApplicationAuthConfiguration authConfiguration;
 
   public static final String SERIALIZED_NAME_APP_SECRET = "appSecret";
   @SerializedName(SERIALIZED_NAME_APP_SECRET)
@@ -204,7 +204,7 @@ public class ApplicationWithDeployment {
   }
 
 
-  public ApplicationWithDeployment authConfiguration(CreateAppRequestAuthConfiguration authConfiguration) {
+  public ApplicationWithDeployment authConfiguration(ApplicationAuthConfiguration authConfiguration) {
     
     this.authConfiguration = authConfiguration;
     return this;
@@ -216,12 +216,12 @@ public class ApplicationWithDeployment {
   **/
   @javax.annotation.Nonnull
 
-  public CreateAppRequestAuthConfiguration getAuthConfiguration() {
+  public ApplicationAuthConfiguration getAuthConfiguration() {
     return authConfiguration;
   }
 
 
-  public void setAuthConfiguration(CreateAppRequestAuthConfiguration authConfiguration) {
+  public void setAuthConfiguration(ApplicationAuthConfiguration authConfiguration) {
     this.authConfiguration = authConfiguration;
   }
 
@@ -477,7 +477,7 @@ public class ApplicationWithDeployment {
         throw new IllegalArgumentException(String.format("Expected the field `orgId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orgId").toString()));
       }
       // validate the required field `authConfiguration`
-      CreateAppRequestAuthConfiguration.validateJsonObject(jsonObj.getAsJsonObject("authConfiguration"));
+      ApplicationAuthConfiguration.validateJsonObject(jsonObj.getAsJsonObject("authConfiguration"));
       if (!jsonObj.get("appSecret").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appSecret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appSecret").toString()));
       }

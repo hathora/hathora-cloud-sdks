@@ -8,10 +8,10 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**env** | [**List&lt;DeploymentConfigEnvInner&gt;**](DeploymentConfigEnvInner.md) |  |  |
-|**roomsPerProcess** | **Double** |  |  |
+|**roomsPerProcess** | **Integer** |  |  |
 |**planName** | **PlanName** |  |  |
 |**transportType** | **TransportType** |  |  |
-|**containerPort** | **Double** |  |  |
+|**containerPort** | **Integer** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**createdBy** | **String** |  |  |
 |**requestedMemoryMB** | **Double** |  |  |

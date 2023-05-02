@@ -64,11 +64,11 @@ namespace Hathora.Cloud.SdkExample
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AppV1Api(config);
-            var createAppRequest = new CreateAppRequest(); // CreateAppRequest | 
+            var appConfig = new AppConfig(); // AppConfig | 
 
             try
             {
-                Application result = await apiInstance.CreateAppAsync(createAppRequest);
+                Application result = await apiInstance.CreateAppAsync(appConfig);
                 Debug.Log(result);
                 Debug.Log("Done!");
             }
@@ -138,15 +138,15 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Model.ActiveConnectionInfo](ActiveConnectionInfo.md)
+ - [Model.AppConfig](AppConfig.md)
  - [Model.Application](Application.md)
+ - [Model.ApplicationAuthConfiguration](ApplicationAuthConfiguration.md)
+ - [Model.ApplicationAuthConfigurationGoogle](ApplicationAuthConfigurationGoogle.md)
  - [Model.ApplicationWithDeployment](ApplicationWithDeployment.md)
  - [Model.ApplicationWithDeploymentAllOf](ApplicationWithDeploymentAllOf.md)
  - [Model.Build](Build.md)
  - [Model.BuildRegionalContainerTagsInner](BuildRegionalContainerTagsInner.md)
  - [Model.ConnectionInfo](ConnectionInfo.md)
- - [Model.CreateAppRequest](CreateAppRequest.md)
- - [Model.CreateAppRequestAuthConfiguration](CreateAppRequestAuthConfiguration.md)
- - [Model.CreateAppRequestAuthConfigurationGoogle](CreateAppRequestAuthConfigurationGoogle.md)
  - [Model.CreateLobbyRequest](CreateLobbyRequest.md)
  - [Model.CreatePrivateLobbyRequest](CreatePrivateLobbyRequest.md)
  - [Model.CreateRoomRequest](CreateRoomRequest.md)

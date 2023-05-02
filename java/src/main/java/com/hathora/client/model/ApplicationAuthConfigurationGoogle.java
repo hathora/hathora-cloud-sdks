@@ -20,12 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hathora.client.model.DeploymentConfigEnvInner;
-import com.hathora.client.model.PlanName;
-import com.hathora.client.model.TransportType;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,152 +44,36 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * DeploymentConfig
+ * ApplicationAuthConfigurationGoogle
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class DeploymentConfig {
-  public static final String SERIALIZED_NAME_ENV = "env";
-  @SerializedName(SERIALIZED_NAME_ENV)
-  private List<DeploymentConfigEnvInner> env = new ArrayList<>();
+public class ApplicationAuthConfigurationGoogle {
+  public static final String SERIALIZED_NAME_CLIENT_ID = "clientId";
+  @SerializedName(SERIALIZED_NAME_CLIENT_ID)
+  private String clientId;
 
-  public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
-  @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
-  private Integer roomsPerProcess;
-
-  public static final String SERIALIZED_NAME_PLAN_NAME = "planName";
-  @SerializedName(SERIALIZED_NAME_PLAN_NAME)
-  private PlanName planName;
-
-  public static final String SERIALIZED_NAME_TRANSPORT_TYPE = "transportType";
-  @SerializedName(SERIALIZED_NAME_TRANSPORT_TYPE)
-  private TransportType transportType;
-
-  public static final String SERIALIZED_NAME_CONTAINER_PORT = "containerPort";
-  @SerializedName(SERIALIZED_NAME_CONTAINER_PORT)
-  private Integer containerPort;
-
-  public DeploymentConfig() {
+  public ApplicationAuthConfigurationGoogle() {
   }
 
-  public DeploymentConfig env(List<DeploymentConfigEnvInner> env) {
+  public ApplicationAuthConfigurationGoogle clientId(String clientId) {
     
-    this.env = env;
-    return this;
-  }
-
-  public DeploymentConfig addEnvItem(DeploymentConfigEnvInner envItem) {
-    if (this.env == null) {
-      this.env = new ArrayList<>();
-    }
-    this.env.add(envItem);
+    this.clientId = clientId;
     return this;
   }
 
    /**
-   * Get env
-   * @return env
+   * Get clientId
+   * @return clientId
   **/
   @javax.annotation.Nonnull
 
-  public List<DeploymentConfigEnvInner> getEnv() {
-    return env;
+  public String getClientId() {
+    return clientId;
   }
 
 
-  public void setEnv(List<DeploymentConfigEnvInner> env) {
-    this.env = env;
-  }
-
-
-  public DeploymentConfig roomsPerProcess(Integer roomsPerProcess) {
-    
-    this.roomsPerProcess = roomsPerProcess;
-    return this;
-  }
-
-   /**
-   * Get roomsPerProcess
-   * minimum: 1
-   * maximum: 10000
-   * @return roomsPerProcess
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getRoomsPerProcess() {
-    return roomsPerProcess;
-  }
-
-
-  public void setRoomsPerProcess(Integer roomsPerProcess) {
-    this.roomsPerProcess = roomsPerProcess;
-  }
-
-
-  public DeploymentConfig planName(PlanName planName) {
-    
-    this.planName = planName;
-    return this;
-  }
-
-   /**
-   * Get planName
-   * @return planName
-  **/
-  @javax.annotation.Nonnull
-
-  public PlanName getPlanName() {
-    return planName;
-  }
-
-
-  public void setPlanName(PlanName planName) {
-    this.planName = planName;
-  }
-
-
-  public DeploymentConfig transportType(TransportType transportType) {
-    
-    this.transportType = transportType;
-    return this;
-  }
-
-   /**
-   * Get transportType
-   * @return transportType
-  **/
-  @javax.annotation.Nonnull
-
-  public TransportType getTransportType() {
-    return transportType;
-  }
-
-
-  public void setTransportType(TransportType transportType) {
-    this.transportType = transportType;
-  }
-
-
-  public DeploymentConfig containerPort(Integer containerPort) {
-    
-    this.containerPort = containerPort;
-    return this;
-  }
-
-   /**
-   * Get containerPort
-   * minimum: 1
-   * maximum: 65535
-   * @return containerPort
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getContainerPort() {
-    return containerPort;
-  }
-
-
-  public void setContainerPort(Integer containerPort) {
-    this.containerPort = containerPort;
+  public void setClientId(String clientId) {
+    this.clientId = clientId;
   }
 
   /**
@@ -210,9 +89,9 @@ public class DeploymentConfig {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the DeploymentConfig instance itself
+   * @return the ApplicationAuthConfigurationGoogle instance itself
    */
-  public DeploymentConfig putAdditionalProperty(String key, Object value) {
+  public ApplicationAuthConfigurationGoogle putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -251,29 +130,21 @@ public class DeploymentConfig {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeploymentConfig deploymentConfig = (DeploymentConfig) o;
-    return Objects.equals(this.env, deploymentConfig.env) &&
-        Objects.equals(this.roomsPerProcess, deploymentConfig.roomsPerProcess) &&
-        Objects.equals(this.planName, deploymentConfig.planName) &&
-        Objects.equals(this.transportType, deploymentConfig.transportType) &&
-        Objects.equals(this.containerPort, deploymentConfig.containerPort)&&
-        Objects.equals(this.additionalProperties, deploymentConfig.additionalProperties);
+    ApplicationAuthConfigurationGoogle applicationAuthConfigurationGoogle = (ApplicationAuthConfigurationGoogle) o;
+    return Objects.equals(this.clientId, applicationAuthConfigurationGoogle.clientId)&&
+        Objects.equals(this.additionalProperties, applicationAuthConfigurationGoogle.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(env, roomsPerProcess, planName, transportType, containerPort, additionalProperties);
+    return Objects.hash(clientId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeploymentConfig {\n");
-    sb.append("    env: ").append(toIndentedString(env)).append("\n");
-    sb.append("    roomsPerProcess: ").append(toIndentedString(roomsPerProcess)).append("\n");
-    sb.append("    planName: ").append(toIndentedString(planName)).append("\n");
-    sb.append("    transportType: ").append(toIndentedString(transportType)).append("\n");
-    sb.append("    containerPort: ").append(toIndentedString(containerPort)).append("\n");
+    sb.append("class ApplicationAuthConfigurationGoogle {\n");
+    sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -297,66 +168,51 @@ public class DeploymentConfig {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("env");
-    openapiFields.add("roomsPerProcess");
-    openapiFields.add("planName");
-    openapiFields.add("transportType");
-    openapiFields.add("containerPort");
+    openapiFields.add("clientId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("env");
-    openapiRequiredFields.add("roomsPerProcess");
-    openapiRequiredFields.add("planName");
-    openapiRequiredFields.add("transportType");
-    openapiRequiredFields.add("containerPort");
+    openapiRequiredFields.add("clientId");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DeploymentConfig
+  * @throws IOException if the JSON Object is invalid with respect to ApplicationAuthConfigurationGoogle
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!DeploymentConfig.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeploymentConfig is not found in the empty JSON string", DeploymentConfig.openapiRequiredFields.toString()));
+        if (!ApplicationAuthConfigurationGoogle.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ApplicationAuthConfigurationGoogle is not found in the empty JSON string", ApplicationAuthConfigurationGoogle.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DeploymentConfig.openapiRequiredFields) {
+      for (String requiredField : ApplicationAuthConfigurationGoogle.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("env").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `env` to be an array in the JSON string but got `%s`", jsonObj.get("env").toString()));
+      if (!jsonObj.get("clientId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clientId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientId").toString()));
       }
-
-      JsonArray jsonArrayenv = jsonObj.getAsJsonArray("env");
-      // validate the required field `env` (array)
-      for (int i = 0; i < jsonArrayenv.size(); i++) {
-        DeploymentConfigEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeploymentConfig.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeploymentConfig' and its subtypes
+       if (!ApplicationAuthConfigurationGoogle.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ApplicationAuthConfigurationGoogle' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeploymentConfig> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeploymentConfig.class));
+       final TypeAdapter<ApplicationAuthConfigurationGoogle> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ApplicationAuthConfigurationGoogle.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DeploymentConfig>() {
+       return (TypeAdapter<T>) new TypeAdapter<ApplicationAuthConfigurationGoogle>() {
            @Override
-           public void write(JsonWriter out, DeploymentConfig value) throws IOException {
+           public void write(JsonWriter out, ApplicationAuthConfigurationGoogle value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -379,11 +235,11 @@ public class DeploymentConfig {
            }
 
            @Override
-           public DeploymentConfig read(JsonReader in) throws IOException {
+           public ApplicationAuthConfigurationGoogle read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             DeploymentConfig instance = thisAdapter.fromJsonTree(jsonObj);
+             ApplicationAuthConfigurationGoogle instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -410,18 +266,18 @@ public class DeploymentConfig {
   }
 
  /**
-  * Create an instance of DeploymentConfig given an JSON string
+  * Create an instance of ApplicationAuthConfigurationGoogle given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of DeploymentConfig
-  * @throws IOException if the JSON string is invalid with respect to DeploymentConfig
+  * @return An instance of ApplicationAuthConfigurationGoogle
+  * @throws IOException if the JSON string is invalid with respect to ApplicationAuthConfigurationGoogle
   */
-  public static DeploymentConfig fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeploymentConfig.class);
+  public static ApplicationAuthConfigurationGoogle fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ApplicationAuthConfigurationGoogle.class);
   }
 
  /**
-  * Convert an instance of DeploymentConfig to an JSON string
+  * Convert an instance of ApplicationAuthConfigurationGoogle to an JSON string
   *
   * @return JSON string
   */

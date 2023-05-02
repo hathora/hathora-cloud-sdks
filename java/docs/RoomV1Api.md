@@ -279,8 +279,8 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** |  |  -  |
 | **404** |  |  -  |
-| **422** |  |  -  |
 | **500** |  |  -  |
 
 <a name="getInactiveRoomsForProcess"></a>

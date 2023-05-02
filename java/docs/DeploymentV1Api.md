@@ -77,8 +77,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **400** |  |  -  |
 | **404** |  |  -  |
-| **422** |  |  -  |
 | **500** |  |  -  |
 
 <a name="getDeploymentInfo"></a>

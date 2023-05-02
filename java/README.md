@@ -96,9 +96,9 @@ public class Example {
     auth0.setBearerToken("BEARER TOKEN");
 
     AppV1Api apiInstance = new AppV1Api(defaultClient);
-    CreateAppRequest createAppRequest = new CreateAppRequest(); // CreateAppRequest | 
+    AppConfig appConfig = new AppConfig(); // AppConfig | 
     try {
-      Application result = apiInstance.createApp(createAppRequest);
+      Application result = apiInstance.createApp(appConfig);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AppV1Api#createApp");
@@ -164,15 +164,15 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [ActiveConnectionInfo](docs/ActiveConnectionInfo.md)
+ - [AppConfig](docs/AppConfig.md)
  - [Application](docs/Application.md)
+ - [ApplicationAuthConfiguration](docs/ApplicationAuthConfiguration.md)
+ - [ApplicationAuthConfigurationGoogle](docs/ApplicationAuthConfigurationGoogle.md)
  - [ApplicationWithDeployment](docs/ApplicationWithDeployment.md)
  - [ApplicationWithDeploymentAllOf](docs/ApplicationWithDeploymentAllOf.md)
  - [Build](docs/Build.md)
  - [BuildRegionalContainerTagsInner](docs/BuildRegionalContainerTagsInner.md)
  - [ConnectionInfo](docs/ConnectionInfo.md)
- - [CreateAppRequest](docs/CreateAppRequest.md)
- - [CreateAppRequestAuthConfiguration](docs/CreateAppRequestAuthConfiguration.md)
- - [CreateAppRequestAuthConfigurationGoogle](docs/CreateAppRequestAuthConfigurationGoogle.md)
  - [CreateLobbyRequest](docs/CreateLobbyRequest.md)
  - [CreatePrivateLobbyRequest](docs/CreatePrivateLobbyRequest.md)
  - [CreateRoomRequest](docs/CreateRoomRequest.md)

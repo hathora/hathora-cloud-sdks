@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hathora.client.model.ApplicationAuthConfiguration;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,160 +45,22 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * Application
+ * AppConfig
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class Application {
-  public static final String SERIALIZED_NAME_DELETED_BY = "deletedBy";
-  @SerializedName(SERIALIZED_NAME_DELETED_BY)
-  private String deletedBy;
-
-  public static final String SERIALIZED_NAME_DELETED_AT = "deletedAt";
-  @SerializedName(SERIALIZED_NAME_DELETED_AT)
-  private OffsetDateTime deletedAt;
-
-  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
-  @SerializedName(SERIALIZED_NAME_CREATED_AT)
-  private OffsetDateTime createdAt;
-
-  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY)
-  private String createdBy;
-
-  public static final String SERIALIZED_NAME_ORG_ID = "orgId";
-  @SerializedName(SERIALIZED_NAME_ORG_ID)
-  private String orgId;
-
+public class AppConfig {
   public static final String SERIALIZED_NAME_AUTH_CONFIGURATION = "authConfiguration";
   @SerializedName(SERIALIZED_NAME_AUTH_CONFIGURATION)
   private ApplicationAuthConfiguration authConfiguration;
-
-  public static final String SERIALIZED_NAME_APP_SECRET = "appSecret";
-  @SerializedName(SERIALIZED_NAME_APP_SECRET)
-  private String appSecret;
-
-  public static final String SERIALIZED_NAME_APP_ID = "appId";
-  @SerializedName(SERIALIZED_NAME_APP_ID)
-  private String appId;
 
   public static final String SERIALIZED_NAME_APP_NAME = "appName";
   @SerializedName(SERIALIZED_NAME_APP_NAME)
   private String appName;
 
-  public Application() {
+  public AppConfig() {
   }
 
-  public Application deletedBy(String deletedBy) {
-    
-    this.deletedBy = deletedBy;
-    return this;
-  }
-
-   /**
-   * Get deletedBy
-   * @return deletedBy
-  **/
-  @javax.annotation.Nullable
-
-  public String getDeletedBy() {
-    return deletedBy;
-  }
-
-
-  public void setDeletedBy(String deletedBy) {
-    this.deletedBy = deletedBy;
-  }
-
-
-  public Application deletedAt(OffsetDateTime deletedAt) {
-    
-    this.deletedAt = deletedAt;
-    return this;
-  }
-
-   /**
-   * Get deletedAt
-   * @return deletedAt
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getDeletedAt() {
-    return deletedAt;
-  }
-
-
-  public void setDeletedAt(OffsetDateTime deletedAt) {
-    this.deletedAt = deletedAt;
-  }
-
-
-  public Application createdAt(OffsetDateTime createdAt) {
-    
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-
-  public Application createdBy(String createdBy) {
-    
-    this.createdBy = createdBy;
-    return this;
-  }
-
-   /**
-   * Get createdBy
-   * @return createdBy
-  **/
-  @javax.annotation.Nonnull
-
-  public String getCreatedBy() {
-    return createdBy;
-  }
-
-
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
-
-
-  public Application orgId(String orgId) {
-    
-    this.orgId = orgId;
-    return this;
-  }
-
-   /**
-   * Get orgId
-   * @return orgId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getOrgId() {
-    return orgId;
-  }
-
-
-  public void setOrgId(String orgId) {
-    this.orgId = orgId;
-  }
-
-
-  public Application authConfiguration(ApplicationAuthConfiguration authConfiguration) {
+  public AppConfig authConfiguration(ApplicationAuthConfiguration authConfiguration) {
     
     this.authConfiguration = authConfiguration;
     return this;
@@ -221,51 +82,7 @@ public class Application {
   }
 
 
-  public Application appSecret(String appSecret) {
-    
-    this.appSecret = appSecret;
-    return this;
-  }
-
-   /**
-   * Get appSecret
-   * @return appSecret
-  **/
-  @javax.annotation.Nonnull
-
-  public String getAppSecret() {
-    return appSecret;
-  }
-
-
-  public void setAppSecret(String appSecret) {
-    this.appSecret = appSecret;
-  }
-
-
-  public Application appId(String appId) {
-    
-    this.appId = appId;
-    return this;
-  }
-
-   /**
-   * Get appId
-   * @return appId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getAppId() {
-    return appId;
-  }
-
-
-  public void setAppId(String appId) {
-    this.appId = appId;
-  }
-
-
-  public Application appName(String appName) {
+  public AppConfig appName(String appName) {
     
     this.appName = appName;
     return this;
@@ -299,9 +116,9 @@ public class Application {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Application instance itself
+   * @return the AppConfig instance itself
    */
-  public Application putAdditionalProperty(String key, Object value) {
+  public AppConfig putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -340,36 +157,22 @@ public class Application {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Application application = (Application) o;
-    return Objects.equals(this.deletedBy, application.deletedBy) &&
-        Objects.equals(this.deletedAt, application.deletedAt) &&
-        Objects.equals(this.createdAt, application.createdAt) &&
-        Objects.equals(this.createdBy, application.createdBy) &&
-        Objects.equals(this.orgId, application.orgId) &&
-        Objects.equals(this.authConfiguration, application.authConfiguration) &&
-        Objects.equals(this.appSecret, application.appSecret) &&
-        Objects.equals(this.appId, application.appId) &&
-        Objects.equals(this.appName, application.appName)&&
-        Objects.equals(this.additionalProperties, application.additionalProperties);
+    AppConfig appConfig = (AppConfig) o;
+    return Objects.equals(this.authConfiguration, appConfig.authConfiguration) &&
+        Objects.equals(this.appName, appConfig.appName)&&
+        Objects.equals(this.additionalProperties, appConfig.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deletedBy, deletedAt, createdAt, createdBy, orgId, authConfiguration, appSecret, appId, appName, additionalProperties);
+    return Objects.hash(authConfiguration, appName, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Application {\n");
-    sb.append("    deletedBy: ").append(toIndentedString(deletedBy)).append("\n");
-    sb.append("    deletedAt: ").append(toIndentedString(deletedAt)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
-    sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
+    sb.append("class AppConfig {\n");
     sb.append("    authConfiguration: ").append(toIndentedString(authConfiguration)).append("\n");
-    sb.append("    appSecret: ").append(toIndentedString(appSecret)).append("\n");
-    sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
     sb.append("    appName: ").append(toIndentedString(appName)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -394,26 +197,12 @@ public class Application {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("deletedBy");
-    openapiFields.add("deletedAt");
-    openapiFields.add("createdAt");
-    openapiFields.add("createdBy");
-    openapiFields.add("orgId");
     openapiFields.add("authConfiguration");
-    openapiFields.add("appSecret");
-    openapiFields.add("appId");
     openapiFields.add("appName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("deletedBy");
-    openapiRequiredFields.add("deletedAt");
-    openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("createdBy");
-    openapiRequiredFields.add("orgId");
     openapiRequiredFields.add("authConfiguration");
-    openapiRequiredFields.add("appSecret");
-    openapiRequiredFields.add("appId");
     openapiRequiredFields.add("appName");
   }
 
@@ -421,38 +210,23 @@ public class Application {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Application
+  * @throws IOException if the JSON Object is invalid with respect to AppConfig
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!Application.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Application is not found in the empty JSON string", Application.openapiRequiredFields.toString()));
+        if (!AppConfig.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AppConfig is not found in the empty JSON string", AppConfig.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Application.openapiRequiredFields) {
+      for (String requiredField : AppConfig.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("deletedBy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deletedBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deletedBy").toString()));
-      }
-      if (!jsonObj.get("createdBy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
-      }
-      if (!jsonObj.get("orgId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `orgId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orgId").toString()));
-      }
       // validate the required field `authConfiguration`
       ApplicationAuthConfiguration.validateJsonObject(jsonObj.getAsJsonObject("authConfiguration"));
-      if (!jsonObj.get("appSecret").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `appSecret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appSecret").toString()));
-      }
-      if (!jsonObj.get("appId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `appId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appId").toString()));
-      }
       if (!jsonObj.get("appName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appName").toString()));
       }
@@ -462,16 +236,16 @@ public class Application {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Application.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Application' and its subtypes
+       if (!AppConfig.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AppConfig' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Application> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Application.class));
+       final TypeAdapter<AppConfig> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AppConfig.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Application>() {
+       return (TypeAdapter<T>) new TypeAdapter<AppConfig>() {
            @Override
-           public void write(JsonWriter out, Application value) throws IOException {
+           public void write(JsonWriter out, AppConfig value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -494,11 +268,11 @@ public class Application {
            }
 
            @Override
-           public Application read(JsonReader in) throws IOException {
+           public AppConfig read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             Application instance = thisAdapter.fromJsonTree(jsonObj);
+             AppConfig instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -525,18 +299,18 @@ public class Application {
   }
 
  /**
-  * Create an instance of Application given an JSON string
+  * Create an instance of AppConfig given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of Application
-  * @throws IOException if the JSON string is invalid with respect to Application
+  * @return An instance of AppConfig
+  * @throws IOException if the JSON string is invalid with respect to AppConfig
   */
-  public static Application fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Application.class);
+  public static AppConfig fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AppConfig.class);
   }
 
  /**
-  * Convert an instance of Application to an JSON string
+  * Convert an instance of AppConfig to an JSON string
   *
   * @return JSON string
   */

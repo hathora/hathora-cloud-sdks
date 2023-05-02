@@ -65,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="deploymentId">deploymentId (required).</param>
         /// <param name="buildId">buildId (required).</param>
         /// <param name="appId">appId (required).</param>
-        public Deployment(List<DeploymentConfigEnvInner> env = default(List<DeploymentConfigEnvInner>), double roomsPerProcess = default(double), PlanName planName = default(PlanName), TransportType transportType = default(TransportType), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), double requestedMemoryMB = default(double), double requestedCPU = default(double), double deploymentId = default(double), double buildId = default(double), string appId = default(string))
+        public Deployment(List<DeploymentConfigEnvInner> env = default(List<DeploymentConfigEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), TransportType transportType = default(TransportType), int containerPort = default(int), DateTime createdAt = default(DateTime), string createdBy = default(string), double requestedMemoryMB = default(double), double requestedCPU = default(double), double deploymentId = default(double), double buildId = default(double), string appId = default(string))
         {
             // to ensure "env" is required (not null)
             if (env == null)
@@ -107,13 +107,13 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets RoomsPerProcess
         /// </summary>
         [DataMember(Name = "roomsPerProcess", IsRequired = true, EmitDefaultValue = true)]
-        public double RoomsPerProcess { get; set; }
+        public int RoomsPerProcess { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainerPort
         /// </summary>
         [DataMember(Name = "containerPort", IsRequired = true, EmitDefaultValue = true)]
-        public double ContainerPort { get; set; }
+        public int ContainerPort { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt

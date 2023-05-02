@@ -30,9 +30,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>Application</returns>
-        Application CreateApp(CreateAppRequest createAppRequest);
+        Application CreateApp(AppConfig appConfig);
 
         /// <summary>
         /// 
@@ -41,9 +41,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> CreateAppWithHttpInfo(CreateAppRequest createAppRequest);
+        ApiResponse<Application> CreateAppWithHttpInfo(AppConfig appConfig);
         /// <summary>
         /// 
         /// </summary>
@@ -101,9 +101,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>Application</returns>
-        Application UpdateApp(string appId, CreateAppRequest createAppRequest);
+        Application UpdateApp(string appId, AppConfig appConfig);
 
         /// <summary>
         /// 
@@ -113,9 +113,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>ApiResponse of Application</returns>
-        ApiResponse<Application> UpdateAppWithHttpInfo(string appId, CreateAppRequest createAppRequest);
+        ApiResponse<Application> UpdateAppWithHttpInfo(string appId, AppConfig appConfig);
         #endregion Synchronous Operations
     }
 
@@ -132,10 +132,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> CreateAppAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Application> CreateAppAsync(AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -144,10 +144,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> CreateAppWithHttpInfoAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Application>> CreateAppWithHttpInfoAsync(AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -223,10 +223,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -236,10 +236,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -388,11 +388,11 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>Application</returns>
-        public Application CreateApp(CreateAppRequest createAppRequest)
+        public Application CreateApp(AppConfig appConfig)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = CreateAppWithHttpInfo(createAppRequest);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = CreateAppWithHttpInfo(appConfig);
             return localVarResponse.Data;
         }
 
@@ -400,13 +400,13 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>ApiResponse of Application</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> CreateAppWithHttpInfo(CreateAppRequest createAppRequest)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> CreateAppWithHttpInfo(AppConfig appConfig)
         {
-            // verify the required parameter 'createAppRequest' is set
-            if (createAppRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->CreateApp");
+            // verify the required parameter 'appConfig' is set
+            if (appConfig == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appConfig' when calling AppV1Api->CreateApp");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -425,7 +425,7 @@ namespace Hathora.Cloud.Sdk.Api
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.Data = createAppRequest;
+            localVarRequestOptions.Data = appConfig;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -450,12 +450,12 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> CreateAppAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Application> CreateAppAsync(AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateAppWithHttpInfoAsync(createAppRequest, cancellationToken);
+            var task = CreateAppWithHttpInfoAsync(appConfig, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -468,14 +468,14 @@ namespace Hathora.Cloud.Sdk.Api
         ///  
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> CreateAppWithHttpInfoAsync(CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> CreateAppWithHttpInfoAsync(AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'createAppRequest' is set
-            if (createAppRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->CreateApp");
+            // verify the required parameter 'appConfig' is set
+            if (appConfig == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appConfig' when calling AppV1Api->CreateApp");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -496,7 +496,7 @@ namespace Hathora.Cloud.Sdk.Api
             var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.Data = createAppRequest;
+            localVarRequestOptions.Data = appConfig;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -927,11 +927,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>Application</returns>
-        public Application UpdateApp(string appId, CreateAppRequest createAppRequest)
+        public Application UpdateApp(string appId, AppConfig appConfig)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = UpdateAppWithHttpInfo(appId, createAppRequest);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = UpdateAppWithHttpInfo(appId, appConfig);
             return localVarResponse.Data;
         }
 
@@ -940,17 +940,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <returns>ApiResponse of Application</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> UpdateAppWithHttpInfo(string appId, CreateAppRequest createAppRequest)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Application> UpdateAppWithHttpInfo(string appId, AppConfig appConfig)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->UpdateApp");
 
-            // verify the required parameter 'createAppRequest' is set
-            if (createAppRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->UpdateApp");
+            // verify the required parameter 'appConfig' is set
+            if (appConfig == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appConfig' when calling AppV1Api->UpdateApp");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -970,7 +970,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-            localVarRequestOptions.Data = createAppRequest;
+            localVarRequestOptions.Data = appConfig;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -996,12 +996,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Application</returns>
-        public async System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Application> UpdateAppAsync(string appId, AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = UpdateAppWithHttpInfoAsync(appId, createAppRequest, cancellationToken);
+            var task = UpdateAppWithHttpInfoAsync(appId, appConfig, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Application> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -1015,18 +1015,18 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createAppRequest"></param>
+        /// <param name="appConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Application)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, CreateAppRequest createAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Application>> UpdateAppWithHttpInfoAsync(string appId, AppConfig appConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling AppV1Api->UpdateApp");
 
-            // verify the required parameter 'createAppRequest' is set
-            if (createAppRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createAppRequest' when calling AppV1Api->UpdateApp");
+            // verify the required parameter 'appConfig' is set
+            if (appConfig == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appConfig' when calling AppV1Api->UpdateApp");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1048,7 +1048,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-            localVarRequestOptions.Data = createAppRequest;
+            localVarRequestOptions.Data = appConfig;
 
             // authentication (auth0) required
             // bearer authentication required

@@ -12,7 +12,7 @@
 |**createdAt** | **OffsetDateTime** |  |  |
 |**createdBy** | **String** |  |  |
 |**orgId** | **String** |  |  |
-|**authConfiguration** | [**CreateAppRequestAuthConfiguration**](CreateAppRequestAuthConfiguration.md) |  |  |
+|**authConfiguration** | [**ApplicationAuthConfiguration**](ApplicationAuthConfiguration.md) |  |  |
 |**appSecret** | **String** |  |  |
 |**appId** | **String** |  |  |
 |**appName** | **String** |  |  |

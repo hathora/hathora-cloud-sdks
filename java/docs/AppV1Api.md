@@ -13,7 +13,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createApp"></a>
 # **createApp**
-> Application createApp(createAppRequest)
+> Application createApp(appConfig)
 
 
 
@@ -37,9 +37,9 @@ public class Example {
     auth0.setBearerToken("BEARER TOKEN");
 
     AppV1Api apiInstance = new AppV1Api(defaultClient);
-    CreateAppRequest createAppRequest = new CreateAppRequest(); // CreateAppRequest | 
+    AppConfig appConfig = new AppConfig(); // AppConfig | 
     try {
-      Application result = apiInstance.createApp(createAppRequest);
+      Application result = apiInstance.createApp(appConfig);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AppV1Api#createApp");
@@ -56,7 +56,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createAppRequest** | [**CreateAppRequest**](CreateAppRequest.md)|  | |
+| **appConfig** | [**AppConfig**](AppConfig.md)|  | |
 
 ### Return type
 
@@ -273,7 +273,7 @@ This endpoint does not need any parameter.
 
 <a name="updateApp"></a>
 # **updateApp**
-> Application updateApp(appId, createAppRequest)
+> Application updateApp(appId, appConfig)
 
 
 
@@ -298,9 +298,9 @@ public class Example {
 
     AppV1Api apiInstance = new AppV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    CreateAppRequest createAppRequest = new CreateAppRequest(); // CreateAppRequest | 
+    AppConfig appConfig = new AppConfig(); // AppConfig | 
     try {
-      Application result = apiInstance.updateApp(appId, createAppRequest);
+      Application result = apiInstance.updateApp(appId, appConfig);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AppV1Api#updateApp");
@@ -318,7 +318,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **createAppRequest** | [**CreateAppRequest**](CreateAppRequest.md)|  | |
+| **appConfig** | [**AppConfig**](AppConfig.md)|  | |
 
 ### Return type
 
@@ -338,6 +338,5 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **404** |  |  -  |
-| **422** |  |  -  |
 | **500** |  |  -  |
 

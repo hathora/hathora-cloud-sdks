@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Env** | [**List&lt;DeploymentConfigEnvInner&gt;**](DeploymentConfigEnvInner.md) |  | 
-**RoomsPerProcess** | **double** |  | 
+**RoomsPerProcess** | **int** |  | 
 **PlanName** | **PlanName** |  | 
 **TransportType** | **TransportType** |  | 
-**ContainerPort** | **double** |  | 
+**ContainerPort** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

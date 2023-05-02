@@ -77,7 +77,7 @@ public class LogV1Api {
      * Build call for getLogsForApp
      * @param appId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param region  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -89,7 +89,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForAppCall(String appId, Boolean follow, Double tailLines, Region region, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLogsForAppCall(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,7 +148,7 @@ public class LogV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLogsForAppValidateBeforeCall(String appId, Boolean follow, Double tailLines, Region region, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLogsForAppValidateBeforeCall(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling getLogsForApp(Async)");
@@ -163,7 +163,7 @@ public class LogV1Api {
      * 
      * @param appId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param region  (optional)
      * @return byte[]
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,7 +174,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getLogsForApp(String appId, Boolean follow, Double tailLines, Region region) throws ApiException {
+    public byte[] getLogsForApp(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
         ApiResponse<byte[]> localVarResp = getLogsForAppWithHttpInfo(appId, follow, tailLines, region);
         return localVarResp.getData();
     }
@@ -184,7 +184,7 @@ public class LogV1Api {
      * 
      * @param appId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param region  (optional)
      * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -195,7 +195,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getLogsForAppWithHttpInfo(String appId, Boolean follow, Double tailLines, Region region) throws ApiException {
+    public ApiResponse<byte[]> getLogsForAppWithHttpInfo(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
         okhttp3.Call localVarCall = getLogsForAppValidateBeforeCall(appId, follow, tailLines, region, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -206,7 +206,7 @@ public class LogV1Api {
      * 
      * @param appId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param region  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -218,7 +218,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForAppAsync(String appId, Boolean follow, Double tailLines, Region region, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getLogsForAppAsync(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback<byte[]> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForAppValidateBeforeCall(appId, follow, tailLines, region, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
@@ -230,7 +230,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -241,7 +241,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForDeploymentCall(String appId, Double deploymentId, Boolean follow, Double tailLines, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLogsForDeploymentCall(String appId, Double deploymentId, Boolean follow, Integer tailLines, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,7 +297,7 @@ public class LogV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLogsForDeploymentValidateBeforeCall(String appId, Double deploymentId, Boolean follow, Double tailLines, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLogsForDeploymentValidateBeforeCall(String appId, Double deploymentId, Boolean follow, Integer tailLines, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling getLogsForDeployment(Async)");
@@ -318,7 +318,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -328,7 +328,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Object getLogsForDeployment(String appId, Double deploymentId, Boolean follow, Double tailLines) throws ApiException {
+    public Object getLogsForDeployment(String appId, Double deploymentId, Boolean follow, Integer tailLines) throws ApiException {
         ApiResponse<Object> localVarResp = getLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
         return localVarResp.getData();
     }
@@ -339,7 +339,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -349,7 +349,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getLogsForDeploymentWithHttpInfo(String appId, Double deploymentId, Boolean follow, Double tailLines) throws ApiException {
+    public ApiResponse<Object> getLogsForDeploymentWithHttpInfo(String appId, Double deploymentId, Boolean follow, Integer tailLines) throws ApiException {
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -361,7 +361,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -372,7 +372,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForDeploymentAsync(String appId, Double deploymentId, Boolean follow, Double tailLines, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getLogsForDeploymentAsync(String appId, Double deploymentId, Boolean follow, Integer tailLines, final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
@@ -384,7 +384,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param processId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -395,7 +395,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForProcessCall(String appId, String processId, Boolean follow, Double tailLines, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLogsForProcessCall(String appId, String processId, Boolean follow, Integer tailLines, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -451,7 +451,7 @@ public class LogV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLogsForProcessValidateBeforeCall(String appId, String processId, Boolean follow, Double tailLines, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLogsForProcessValidateBeforeCall(String appId, String processId, Boolean follow, Integer tailLines, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling getLogsForProcess(Async)");
@@ -472,7 +472,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param processId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @return byte[]
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -482,7 +482,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getLogsForProcess(String appId, String processId, Boolean follow, Double tailLines) throws ApiException {
+    public byte[] getLogsForProcess(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
         ApiResponse<byte[]> localVarResp = getLogsForProcessWithHttpInfo(appId, processId, follow, tailLines);
         return localVarResp.getData();
     }
@@ -493,7 +493,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param processId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -503,7 +503,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getLogsForProcessWithHttpInfo(String appId, String processId, Boolean follow, Double tailLines) throws ApiException {
+    public ApiResponse<byte[]> getLogsForProcessWithHttpInfo(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
         okhttp3.Call localVarCall = getLogsForProcessValidateBeforeCall(appId, processId, follow, tailLines, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -515,7 +515,7 @@ public class LogV1Api {
      * @param appId  (required)
      * @param processId  (required)
      * @param follow  (optional, default to false)
-     * @param tailLines  (optional, default to 100)
+     * @param tailLines  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -526,7 +526,7 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForProcessAsync(String appId, String processId, Boolean follow, Double tailLines, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getLogsForProcessAsync(String appId, String processId, Boolean follow, Integer tailLines, final ApiCallback<byte[]> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForProcessValidateBeforeCall(appId, processId, follow, tailLines, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();

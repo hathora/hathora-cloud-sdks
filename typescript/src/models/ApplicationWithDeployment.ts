@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { CreateAppRequestAuthConfiguration } from './CreateAppRequestAuthConfiguration';
+import type { ApplicationAuthConfiguration } from './ApplicationAuthConfiguration';
 import {
-    CreateAppRequestAuthConfigurationFromJSON,
-    CreateAppRequestAuthConfigurationFromJSONTyped,
-    CreateAppRequestAuthConfigurationToJSON,
-} from './CreateAppRequestAuthConfiguration';
+    ApplicationAuthConfigurationFromJSON,
+    ApplicationAuthConfigurationFromJSONTyped,
+    ApplicationAuthConfigurationToJSON,
+} from './ApplicationAuthConfiguration';
 import type { Deployment } from './Deployment';
 import {
     DeploymentFromJSON,
@@ -64,10 +64,10 @@ export interface ApplicationWithDeployment {
     orgId: string;
     /**
      * 
-     * @type {CreateAppRequestAuthConfiguration}
+     * @type {ApplicationAuthConfiguration}
      * @memberof ApplicationWithDeployment
      */
-    authConfiguration: CreateAppRequestAuthConfiguration;
+    authConfiguration: ApplicationAuthConfiguration;
     /**
      * 
      * @type {string}
@@ -128,7 +128,7 @@ export function ApplicationWithDeploymentFromJSONTyped(json: any, ignoreDiscrimi
         'createdAt': (new Date(json['createdAt'])),
         'createdBy': json['createdBy'],
         'orgId': json['orgId'],
-        'authConfiguration': CreateAppRequestAuthConfigurationFromJSON(json['authConfiguration']),
+        'authConfiguration': ApplicationAuthConfigurationFromJSON(json['authConfiguration']),
         'appSecret': json['appSecret'],
         'appId': json['appId'],
         'appName': json['appName'],
@@ -150,7 +150,7 @@ export function ApplicationWithDeploymentToJSON(value?: ApplicationWithDeploymen
         'createdAt': (value.createdAt.toISOString()),
         'createdBy': value.createdBy,
         'orgId': value.orgId,
-        'authConfiguration': CreateAppRequestAuthConfigurationToJSON(value.authConfiguration),
+        'authConfiguration': ApplicationAuthConfigurationToJSON(value.authConfiguration),
         'appSecret': value.appSecret,
         'appId': value.appId,
         'appName': value.appName,

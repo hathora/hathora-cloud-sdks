@@ -50,7 +50,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="appSecret">appSecret (required).</param>
         /// <param name="appId">appId (required).</param>
         /// <param name="appName">appName (required).</param>
-        public Application(string deletedBy = default(string), DateTime? deletedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), string orgId = default(string), CreateAppRequestAuthConfiguration authConfiguration = default(CreateAppRequestAuthConfiguration), string appSecret = default(string), string appId = default(string), string appName = default(string))
+        public Application(string deletedBy = default(string), DateTime? deletedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), string orgId = default(string), ApplicationAuthConfiguration authConfiguration = default(ApplicationAuthConfiguration), string appSecret = default(string), string appId = default(string), string appName = default(string))
         {
             // to ensure "deletedBy" is required (not null)
             if (deletedBy == null)
@@ -138,7 +138,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets AuthConfiguration
         /// </summary>
         [DataMember(Name = "authConfiguration", IsRequired = true, EmitDefaultValue = true)]
-        public CreateAppRequestAuthConfiguration AuthConfiguration { get; set; }
+        public ApplicationAuthConfiguration AuthConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets AppSecret

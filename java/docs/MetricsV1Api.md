@@ -36,9 +36,9 @@ public class Example {
     String appId = "appId_example"; // String | 
     String processId = "processId_example"; // String | 
     List<MetricName> metrics = Arrays.asList(); // List<MetricName> | 
-    Double end = 3.4D; // Double | 
-    Double start = 3.4D; // Double | 
-    Double step = 60D; // Double | 
+    Integer end = 56; // Integer | 
+    Integer start = 56; // Integer | 
+    Integer step = 60; // Integer | 
     try {
       RecordPartialMetricNameMetricValueArray result = apiInstance.getMetrics(appId, processId, metrics, end, start, step);
       System.out.println(result);
@@ -60,9 +60,9 @@ public class Example {
 | **appId** | **String**|  | |
 | **processId** | **String**|  | |
 | **metrics** | [**List&lt;MetricName&gt;**](MetricName.md)|  | [optional] |
-| **end** | **Double**|  | [optional] |
-| **start** | **Double**|  | [optional] |
-| **step** | **Double**|  | [optional] [default to 60] |
+| **end** | **Integer**|  | [optional] |
+| **start** | **Integer**|  | [optional] |
+| **step** | **Integer**|  | [optional] [default to 60] |
 
 ### Return type
 

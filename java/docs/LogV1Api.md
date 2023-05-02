@@ -37,7 +37,7 @@ public class Example {
     LogV1Api apiInstance = new LogV1Api(defaultClient);
     String appId = "appId_example"; // String | 
     Boolean follow = false; // Boolean | 
-    Double tailLines = 100D; // Double | 
+    Integer tailLines = 56; // Integer | 
     Region region = Region.fromValue("Seattle"); // Region | 
     try {
       byte[] result = apiInstance.getLogsForApp(appId, follow, tailLines, region);
@@ -59,7 +59,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
 | **follow** | **Boolean**|  | [optional] [default to false] |
-| **tailLines** | **Double**|  | [optional] [default to 100] |
+| **tailLines** | **Integer**|  | [optional] |
 | **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
 
 ### Return type
@@ -110,7 +110,7 @@ public class Example {
     String appId = "appId_example"; // String | 
     Double deploymentId = 3.4D; // Double | 
     Boolean follow = false; // Boolean | 
-    Double tailLines = 100D; // Double | 
+    Integer tailLines = 56; // Integer | 
     try {
       Object result = apiInstance.getLogsForDeployment(appId, deploymentId, follow, tailLines);
       System.out.println(result);
@@ -132,7 +132,7 @@ public class Example {
 | **appId** | **String**|  | |
 | **deploymentId** | **Double**|  | |
 | **follow** | **Boolean**|  | [optional] [default to false] |
-| **tailLines** | **Double**|  | [optional] [default to 100] |
+| **tailLines** | **Integer**|  | [optional] |
 
 ### Return type
 
@@ -182,7 +182,7 @@ public class Example {
     String appId = "appId_example"; // String | 
     String processId = "processId_example"; // String | 
     Boolean follow = false; // Boolean | 
-    Double tailLines = 100D; // Double | 
+    Integer tailLines = 56; // Integer | 
     try {
       byte[] result = apiInstance.getLogsForProcess(appId, processId, follow, tailLines);
       System.out.println(result);
@@ -204,7 +204,7 @@ public class Example {
 | **appId** | **String**|  | |
 | **processId** | **String**|  | |
 | **follow** | **Boolean**|  | [optional] [default to false] |
-| **tailLines** | **Double**|  | [optional] [default to 100] |
+| **tailLines** | **Integer**|  | [optional] |
 
 ### Return type
 

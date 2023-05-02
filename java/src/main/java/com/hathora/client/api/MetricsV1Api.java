@@ -93,7 +93,7 @@ public class MetricsV1Api {
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMetricsCall(String appId, String processId, List<MetricName> metrics, Double end, Double start, Double step, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMetricsCall(String appId, String processId, List<MetricName> metrics, Integer end, Integer start, Integer step, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -156,7 +156,7 @@ public class MetricsV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMetricsValidateBeforeCall(String appId, String processId, List<MetricName> metrics, Double end, Double start, Double step, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMetricsValidateBeforeCall(String appId, String processId, List<MetricName> metrics, Integer end, Integer start, Integer step, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling getMetrics(Async)");
@@ -190,7 +190,7 @@ public class MetricsV1Api {
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public RecordPartialMetricNameMetricValueArray getMetrics(String appId, String processId, List<MetricName> metrics, Double end, Double start, Double step) throws ApiException {
+    public RecordPartialMetricNameMetricValueArray getMetrics(String appId, String processId, List<MetricName> metrics, Integer end, Integer start, Integer step) throws ApiException {
         ApiResponse<RecordPartialMetricNameMetricValueArray> localVarResp = getMetricsWithHttpInfo(appId, processId, metrics, end, start, step);
         return localVarResp.getData();
     }
@@ -214,7 +214,7 @@ public class MetricsV1Api {
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RecordPartialMetricNameMetricValueArray> getMetricsWithHttpInfo(String appId, String processId, List<MetricName> metrics, Double end, Double start, Double step) throws ApiException {
+    public ApiResponse<RecordPartialMetricNameMetricValueArray> getMetricsWithHttpInfo(String appId, String processId, List<MetricName> metrics, Integer end, Integer start, Integer step) throws ApiException {
         okhttp3.Call localVarCall = getMetricsValidateBeforeCall(appId, processId, metrics, end, start, step, null);
         Type localVarReturnType = new TypeToken<RecordPartialMetricNameMetricValueArray>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -240,7 +240,7 @@ public class MetricsV1Api {
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMetricsAsync(String appId, String processId, List<MetricName> metrics, Double end, Double start, Double step, final ApiCallback<RecordPartialMetricNameMetricValueArray> _callback) throws ApiException {
+    public okhttp3.Call getMetricsAsync(String appId, String processId, List<MetricName> metrics, Integer end, Integer start, Integer step, final ApiCallback<RecordPartialMetricNameMetricValueArray> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMetricsValidateBeforeCall(appId, processId, metrics, end, start, step, _callback);
         Type localVarReturnType = new TypeToken<RecordPartialMetricNameMetricValueArray>(){}.getType();

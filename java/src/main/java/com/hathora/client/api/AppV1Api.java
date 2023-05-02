@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.AppConfig;
 import com.hathora.client.model.Application;
 import com.hathora.client.model.ApplicationWithDeployment;
-import com.hathora.client.model.CreateAppRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class AppV1Api {
 
     /**
      * Build call for createApp
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,7 +89,7 @@ public class AppV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAppCall(CreateAppRequest createAppRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAppCall(AppConfig appConfig, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -103,7 +103,7 @@ public class AppV1Api {
             basePath = null;
         }
 
-        Object localVarPostBody = createAppRequest;
+        Object localVarPostBody = appConfig;
 
         // create path and map variables
         String localVarPath = "/apps/v1/create";
@@ -135,20 +135,20 @@ public class AppV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAppValidateBeforeCall(CreateAppRequest createAppRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createAppRequest' is set
-        if (createAppRequest == null) {
-            throw new ApiException("Missing the required parameter 'createAppRequest' when calling createApp(Async)");
+    private okhttp3.Call createAppValidateBeforeCall(AppConfig appConfig, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'appConfig' is set
+        if (appConfig == null) {
+            throw new ApiException("Missing the required parameter 'appConfig' when calling createApp(Async)");
         }
 
-        return createAppCall(createAppRequest, _callback);
+        return createAppCall(appConfig, _callback);
 
     }
 
     /**
      * 
      * 
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @return Application
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -159,15 +159,15 @@ public class AppV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Application createApp(CreateAppRequest createAppRequest) throws ApiException {
-        ApiResponse<Application> localVarResp = createAppWithHttpInfo(createAppRequest);
+    public Application createApp(AppConfig appConfig) throws ApiException {
+        ApiResponse<Application> localVarResp = createAppWithHttpInfo(appConfig);
         return localVarResp.getData();
     }
 
     /**
      * 
      * 
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @return ApiResponse&lt;Application&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -178,8 +178,8 @@ public class AppV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Application> createAppWithHttpInfo(CreateAppRequest createAppRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAppValidateBeforeCall(createAppRequest, null);
+    public ApiResponse<Application> createAppWithHttpInfo(AppConfig appConfig) throws ApiException {
+        okhttp3.Call localVarCall = createAppValidateBeforeCall(appConfig, null);
         Type localVarReturnType = new TypeToken<Application>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -187,7 +187,7 @@ public class AppV1Api {
     /**
      *  (asynchronously)
      * 
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -199,9 +199,9 @@ public class AppV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createAppAsync(CreateAppRequest createAppRequest, final ApiCallback<Application> _callback) throws ApiException {
+    public okhttp3.Call createAppAsync(AppConfig appConfig, final ApiCallback<Application> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAppValidateBeforeCall(createAppRequest, _callback);
+        okhttp3.Call localVarCall = createAppValidateBeforeCall(appConfig, _callback);
         Type localVarReturnType = new TypeToken<Application>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -576,7 +576,7 @@ public class AppV1Api {
     /**
      * Build call for updateApp
      * @param appId  (required)
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -585,11 +585,10 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAppCall(String appId, CreateAppRequest createAppRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAppCall(String appId, AppConfig appConfig, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -603,7 +602,7 @@ public class AppV1Api {
             basePath = null;
         }
 
-        Object localVarPostBody = createAppRequest;
+        Object localVarPostBody = appConfig;
 
         // create path and map variables
         String localVarPath = "/apps/v1/update/{appId}"
@@ -636,18 +635,18 @@ public class AppV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAppValidateBeforeCall(String appId, CreateAppRequest createAppRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAppValidateBeforeCall(String appId, AppConfig appConfig, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling updateApp(Async)");
         }
 
-        // verify the required parameter 'createAppRequest' is set
-        if (createAppRequest == null) {
-            throw new ApiException("Missing the required parameter 'createAppRequest' when calling updateApp(Async)");
+        // verify the required parameter 'appConfig' is set
+        if (appConfig == null) {
+            throw new ApiException("Missing the required parameter 'appConfig' when calling updateApp(Async)");
         }
 
-        return updateAppCall(appId, createAppRequest, _callback);
+        return updateAppCall(appId, appConfig, _callback);
 
     }
 
@@ -655,7 +654,7 @@ public class AppV1Api {
      * 
      * 
      * @param appId  (required)
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @return Application
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -663,12 +662,11 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Application updateApp(String appId, CreateAppRequest createAppRequest) throws ApiException {
-        ApiResponse<Application> localVarResp = updateAppWithHttpInfo(appId, createAppRequest);
+    public Application updateApp(String appId, AppConfig appConfig) throws ApiException {
+        ApiResponse<Application> localVarResp = updateAppWithHttpInfo(appId, appConfig);
         return localVarResp.getData();
     }
 
@@ -676,7 +674,7 @@ public class AppV1Api {
      * 
      * 
      * @param appId  (required)
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @return ApiResponse&lt;Application&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -684,12 +682,11 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Application> updateAppWithHttpInfo(String appId, CreateAppRequest createAppRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateAppValidateBeforeCall(appId, createAppRequest, null);
+    public ApiResponse<Application> updateAppWithHttpInfo(String appId, AppConfig appConfig) throws ApiException {
+        okhttp3.Call localVarCall = updateAppValidateBeforeCall(appId, appConfig, null);
         Type localVarReturnType = new TypeToken<Application>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -698,7 +695,7 @@ public class AppV1Api {
      *  (asynchronously)
      * 
      * @param appId  (required)
-     * @param createAppRequest  (required)
+     * @param appConfig  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -707,13 +704,12 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAppAsync(String appId, CreateAppRequest createAppRequest, final ApiCallback<Application> _callback) throws ApiException {
+    public okhttp3.Call updateAppAsync(String appId, AppConfig appConfig, final ApiCallback<Application> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateAppValidateBeforeCall(appId, createAppRequest, _callback);
+        okhttp3.Call localVarCall = updateAppValidateBeforeCall(appId, appConfig, _callback);
         Type localVarReturnType = new TypeToken<Application>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

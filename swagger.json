@@ -103,10 +103,14 @@
 						"items": {
 							"properties": {
 								"value": {
-									"type": "string"
+									"type": "string",
+									"maxLength": 5000
 								},
 								"name": {
-									"type": "string"
+									"type": "string",
+									"minLength": 1,
+									"maxLength": 100,
+									"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
 								}
 							},
 							"required": [
@@ -115,11 +119,14 @@
 							],
 							"type": "object"
 						},
-						"type": "array"
+						"type": "array",
+						"maxItems": 100
 					},
 					"roomsPerProcess": {
-						"type": "number",
-						"format": "double"
+						"type": "integer",
+						"format": "int32",
+						"minimum": 1,
+						"maximum": 10000
 					},
 					"planName": {
 						"$ref": "#/components/schemas/PlanName"
@@ -128,8 +135,10 @@
 						"$ref": "#/components/schemas/TransportType"
 					},
 					"containerPort": {
-						"type": "number",
-						"format": "double"
+						"type": "integer",
+						"format": "int32",
+						"minimum": 1,
+						"maximum": 65535
 					}
 				},
 				"required": [
@@ -214,6 +223,42 @@
 						"type": "object"
 					}
 				]
+			},
+			"AppConfig": {
+				"properties": {
+					"authConfiguration": {
+						"properties": {
+							"google": {
+								"properties": {
+									"clientId": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"clientId"
+								],
+								"type": "object"
+							},
+							"nickname": {
+								"$ref": "#/components/schemas/Record_string.never_"
+							},
+							"anonymous": {
+								"$ref": "#/components/schemas/Record_string.never_"
+							}
+						},
+						"type": "object"
+					},
+					"appName": {
+						"type": "string",
+						"maxLength": 32,
+						"pattern": "^[a-z0-9-]+$"
+					}
+				},
+				"required": [
+					"authConfiguration",
+					"appName"
+				],
+				"type": "object"
 			},
 			"Region": {
 				"type": "string",
@@ -381,6 +426,13 @@
 					"appId"
 				],
 				"type": "object"
+			},
+			"TailLines": {
+				"type": "integer",
+				"format": "int32",
+				"default": "100",
+				"minimum": 1,
+				"maximum": 10000
 			},
 			"ProcessId": {
 				"type": "string"
@@ -819,38 +871,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"properties": {
-									"authConfiguration": {
-										"properties": {
-											"google": {
-												"properties": {
-													"clientId": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientId"
-												],
-												"type": "object"
-											},
-											"nickname": {
-												"$ref": "#/components/schemas/Record_string.never_"
-											},
-											"anonymous": {
-												"$ref": "#/components/schemas/Record_string.never_"
-											}
-										},
-										"type": "object"
-									},
-									"appName": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"authConfiguration",
-									"appName"
-								],
-								"type": "object"
+								"$ref": "#/components/schemas/AppConfig"
 							}
 						}
 					}
@@ -872,16 +893,6 @@
 						}
 					},
 					"404": {
-						"description": "",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					},
-					"422": {
 						"description": "",
 						"content": {
 							"application/json": {
@@ -925,38 +936,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"properties": {
-									"authConfiguration": {
-										"properties": {
-											"google": {
-												"properties": {
-													"clientId": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientId"
-												],
-												"type": "object"
-											},
-											"nickname": {
-												"$ref": "#/components/schemas/Record_string.never_"
-											},
-											"anonymous": {
-												"$ref": "#/components/schemas/Record_string.never_"
-											}
-										},
-										"type": "object"
-									},
-									"appName": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"authConfiguration",
-									"appName"
-								],
-								"type": "object"
+								"$ref": "#/components/schemas/AppConfig"
 							}
 						}
 					}
@@ -1679,7 +1659,7 @@
 							}
 						}
 					},
-					"404": {
+					"400": {
 						"description": "",
 						"content": {
 							"application/json": {
@@ -1689,7 +1669,7 @@
 							}
 						}
 					},
-					"422": {
+					"404": {
 						"description": "",
 						"content": {
 							"application/json": {
@@ -2786,9 +2766,7 @@
 						"name": "tailLines",
 						"required": false,
 						"schema": {
-							"default": 100,
-							"format": "double",
-							"type": "number"
+							"$ref": "#/components/schemas/TailLines"
 						}
 					},
 					{
@@ -2867,9 +2845,7 @@
 						"name": "tailLines",
 						"required": false,
 						"schema": {
-							"default": 100,
-							"format": "double",
-							"type": "number"
+							"$ref": "#/components/schemas/TailLines"
 						}
 					}
 				]
@@ -2937,9 +2913,7 @@
 						"name": "tailLines",
 						"required": false,
 						"schema": {
-							"default": 100,
-							"format": "double",
-							"type": "number"
+							"$ref": "#/components/schemas/TailLines"
 						}
 					}
 				]
@@ -3026,8 +3000,8 @@
 						"name": "end",
 						"required": false,
 						"schema": {
-							"format": "double",
-							"type": "number"
+							"format": "int32",
+							"type": "integer"
 						}
 					},
 					{
@@ -3035,8 +3009,8 @@
 						"name": "start",
 						"required": false,
 						"schema": {
-							"format": "double",
-							"type": "number"
+							"format": "int32",
+							"type": "integer"
 						}
 					},
 					{
@@ -3045,8 +3019,8 @@
 						"required": false,
 						"schema": {
 							"default": 60,
-							"format": "double",
-							"type": "number"
+							"format": "int32",
+							"type": "integer"
 						}
 					}
 				]
@@ -3581,7 +3555,7 @@
 							}
 						}
 					},
-					"404": {
+					"400": {
 						"description": "",
 						"content": {
 							"application/json": {
@@ -3591,7 +3565,7 @@
 							}
 						}
 					},
-					"422": {
+					"404": {
 						"description": "",
 						"content": {
 							"application/json": {

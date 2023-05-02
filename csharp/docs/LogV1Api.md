@@ -10,7 +10,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="getlogsforapp"></a>
 # **GetLogsForApp**
-> byte[] GetLogsForApp (string appId, bool? follow = null, double? tailLines = null, Region? region = null)
+> byte[] GetLogsForApp (string appId, bool? follow = null, int? tailLines = null, Region? region = null)
 
 
 
@@ -36,7 +36,7 @@ namespace Example
             var apiInstance = new LogV1Api(config);
             var appId = "appId_example";  // string | 
             var follow = false;  // bool? |  (optional)  (default to false)
-            var tailLines = 100D;  // double? |  (optional)  (default to 100D)
+            var tailLines = 56;  // int? |  (optional) 
             var region = (Region) "Seattle";  // Region? |  (optional) 
 
             try
@@ -80,7 +80,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
 | **follow** | **bool?** |  | [optional] [default to false] |
-| **tailLines** | **double?** |  | [optional] [default to 100D] |
+| **tailLines** | **int?** |  | [optional]  |
 | **region** | **Region?** |  | [optional]  |
 
 ### Return type
@@ -107,7 +107,7 @@ catch (ApiException e)
 
 <a name="getlogsfordeployment"></a>
 # **GetLogsForDeployment**
-> Object GetLogsForDeployment (string appId, double deploymentId, bool? follow = null, double? tailLines = null)
+> Object GetLogsForDeployment (string appId, double deploymentId, bool? follow = null, int? tailLines = null)
 
 
 
@@ -134,7 +134,7 @@ namespace Example
             var appId = "appId_example";  // string | 
             var deploymentId = 1.2D;  // double | 
             var follow = false;  // bool? |  (optional)  (default to false)
-            var tailLines = 100D;  // double? |  (optional)  (default to 100D)
+            var tailLines = 56;  // int? |  (optional) 
 
             try
             {
@@ -178,7 +178,7 @@ catch (ApiException e)
 | **appId** | **string** |  |  |
 | **deploymentId** | **double** |  |  |
 | **follow** | **bool?** |  | [optional] [default to false] |
-| **tailLines** | **double?** |  | [optional] [default to 100D] |
+| **tailLines** | **int?** |  | [optional]  |
 
 ### Return type
 
@@ -204,7 +204,7 @@ catch (ApiException e)
 
 <a name="getlogsforprocess"></a>
 # **GetLogsForProcess**
-> byte[] GetLogsForProcess (string appId, string processId, bool? follow = null, double? tailLines = null)
+> byte[] GetLogsForProcess (string appId, string processId, bool? follow = null, int? tailLines = null)
 
 
 
@@ -231,7 +231,7 @@ namespace Example
             var appId = "appId_example";  // string | 
             var processId = "processId_example";  // string | 
             var follow = false;  // bool? |  (optional)  (default to false)
-            var tailLines = 100D;  // double? |  (optional)  (default to 100D)
+            var tailLines = 56;  // int? |  (optional) 
 
             try
             {
@@ -275,7 +275,7 @@ catch (ApiException e)
 | **appId** | **string** |  |  |
 | **processId** | **string** |  |  |
 | **follow** | **bool?** |  | [optional] [default to false] |
-| **tailLines** | **double?** |  | [optional] [default to 100D] |
+| **tailLines** | **int?** |  | [optional]  |
 
 ### Return type
 

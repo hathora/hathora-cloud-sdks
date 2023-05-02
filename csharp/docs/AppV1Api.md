@@ -12,7 +12,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createapp"></a>
 # **CreateApp**
-> Application CreateApp (CreateAppRequest createAppRequest)
+> Application CreateApp (AppConfig appConfig)
 
 
 
@@ -36,11 +36,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AppV1Api(config);
-            var createAppRequest = new CreateAppRequest(); // CreateAppRequest | 
+            var appConfig = new AppConfig(); // AppConfig | 
 
             try
             {
-                Application result = apiInstance.CreateApp(createAppRequest);
+                Application result = apiInstance.CreateApp(appConfig);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -60,7 +60,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.CreateAppWithHttpInfo(createAppRequest);
+    ApiResponse<Application> response = apiInstance.CreateAppWithHttpInfo(appConfig);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -77,7 +77,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **createAppRequest** | [**CreateAppRequest**](CreateAppRequest.md) |  |  |
+| **appConfig** | [**AppConfig**](AppConfig.md) |  |  |
 
 ### Return type
 
@@ -368,7 +368,7 @@ This endpoint does not need any parameter.
 
 <a name="updateapp"></a>
 # **UpdateApp**
-> Application UpdateApp (string appId, CreateAppRequest createAppRequest)
+> Application UpdateApp (string appId, AppConfig appConfig)
 
 
 
@@ -393,11 +393,11 @@ namespace Example
 
             var apiInstance = new AppV1Api(config);
             var appId = "appId_example";  // string | 
-            var createAppRequest = new CreateAppRequest(); // CreateAppRequest | 
+            var appConfig = new AppConfig(); // AppConfig | 
 
             try
             {
-                Application result = apiInstance.UpdateApp(appId, createAppRequest);
+                Application result = apiInstance.UpdateApp(appId, appConfig);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -417,7 +417,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Application> response = apiInstance.UpdateAppWithHttpInfo(appId, createAppRequest);
+    ApiResponse<Application> response = apiInstance.UpdateAppWithHttpInfo(appId, appConfig);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -435,7 +435,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **createAppRequest** | [**CreateAppRequest**](CreateAppRequest.md) |  |  |
+| **appConfig** | [**AppConfig**](AppConfig.md) |  |  |
 
 ### Return type
 
@@ -456,7 +456,6 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **404** |  |  -  |
-| **422** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

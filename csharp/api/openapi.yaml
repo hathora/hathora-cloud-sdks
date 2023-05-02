@@ -32,7 +32,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateApp_request'
+              $ref: '#/components/schemas/AppConfig'
         required: true
       responses:
         "201":
@@ -72,7 +72,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateApp_request'
+              $ref: '#/components/schemas/AppConfig'
         required: true
       responses:
         "200":
@@ -82,12 +82,6 @@ paths:
                 $ref: '#/components/schemas/Application'
           description: Ok
         "404":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: ""
-        "422":
           content:
             application/json:
               schema:
@@ -552,13 +546,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Deployment'
           description: ""
-        "404":
+        "400":
           content:
             application/json:
               schema:
                 type: string
           description: ""
-        "422":
+        "404":
           content:
             application/json:
               schema:
@@ -1216,9 +1210,7 @@ paths:
         name: tailLines
         required: false
         schema:
-          default: 100
-          format: double
-          type: number
+          $ref: '#/components/schemas/TailLines'
         style: form
       - explode: true
         in: query
@@ -1276,9 +1268,7 @@ paths:
         name: tailLines
         required: false
         schema:
-          default: 100
-          format: double
-          type: number
+          $ref: '#/components/schemas/TailLines'
         style: form
       responses:
         "200":
@@ -1329,9 +1319,7 @@ paths:
         name: tailLines
         required: false
         schema:
-          default: 100
-          format: double
-          type: number
+          $ref: '#/components/schemas/TailLines'
         style: form
       responses:
         "200":
@@ -1385,16 +1373,16 @@ paths:
         name: end
         required: false
         schema:
-          format: double
-          type: number
+          format: int32
+          type: integer
         style: form
       - explode: true
         in: query
         name: start
         required: false
         schema:
-          format: double
-          type: number
+          format: int32
+          type: integer
         style: form
       - explode: true
         in: query
@@ -1402,8 +1390,8 @@ paths:
         required: false
         schema:
           default: 60
-          format: double
-          type: number
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -1785,13 +1773,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ConnectionInfo'
           description: Ok
-        "404":
+        "400":
           content:
             application/json:
               schema:
                 type: string
           description: ""
-        "422":
+        "404":
           content:
             application/json:
               schema:
@@ -1850,7 +1838,7 @@ components:
         orgId:
           type: string
         authConfiguration:
-          $ref: '#/components/schemas/CreateApp_request_authConfiguration'
+          $ref: '#/components/schemas/Application_authConfiguration'
         appSecret:
           type: string
         appId:
@@ -1883,11 +1871,17 @@ components:
       type: string
     DeploymentConfig:
       example:
-        roomsPerProcess: 0.8008281904610115
+        roomsPerProcess: 801
         planName: null
-        containerPort: 6.027456183070403
+        containerPort: 39501
         transportType: null
         env:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
         - name: name
           value: value
         - name: name
@@ -1896,17 +1890,22 @@ components:
         env:
           items:
             $ref: '#/components/schemas/DeploymentConfig_env_inner'
+          maxItems: 100
           type: array
         roomsPerProcess:
-          format: double
-          type: number
+          format: int32
+          maximum: 10000
+          minimum: 1
+          type: integer
         planName:
           $ref: '#/components/schemas/PlanName'
         transportType:
           $ref: '#/components/schemas/TransportType'
         containerPort:
-          format: double
-          type: number
+          format: int32
+          maximum: 65535
+          minimum: 1
+          type: integer
       required:
       - containerPort
       - env
@@ -1930,6 +1929,25 @@ components:
       allOf:
       - $ref: '#/components/schemas/Application'
       - $ref: '#/components/schemas/ApplicationWithDeployment_allOf'
+    AppConfig:
+      example:
+        appName: appName
+        authConfiguration:
+          nickname: "{}"
+          anonymous: "{}"
+          google:
+            clientId: clientId
+      properties:
+        authConfiguration:
+          $ref: '#/components/schemas/Application_authConfiguration'
+        appName:
+          maxLength: 32
+          pattern: "^[a-z0-9-]+$"
+          type: string
+      required:
+      - appName
+      - authConfiguration
+      type: object
     Region:
       enum:
       - Seattle
@@ -2061,6 +2079,11 @@ components:
       - roomId
       - visibility
       type: object
+    TailLines:
+      format: int32
+      maximum: 10000
+      minimum: 1
+      type: integer
     ProcessId:
       type: string
     MetricValue:
@@ -2349,43 +2372,6 @@ components:
       anyOf:
       - $ref: '#/components/schemas/StartingConnectionInfo'
       - $ref: '#/components/schemas/ActiveConnectionInfo'
-    CreateApp_request_authConfiguration_google:
-      example:
-        clientId: clientId
-      properties:
-        clientId:
-          type: string
-      required:
-      - clientId
-      type: object
-    CreateApp_request_authConfiguration:
-      example:
-        nickname: "{}"
-        anonymous: "{}"
-        google:
-          clientId: clientId
-      properties:
-        google:
-          $ref: '#/components/schemas/CreateApp_request_authConfiguration_google'
-        nickname:
-          description: Construct a type with a set of properties K of type T
-          properties: {}
-          type: object
-        anonymous:
-          description: Construct a type with a set of properties K of type T
-          properties: {}
-          type: object
-      type: object
-    CreateApp_request:
-      properties:
-        authConfiguration:
-          $ref: '#/components/schemas/CreateApp_request_authConfiguration'
-        appName:
-          type: string
-      required:
-      - appName
-      - authConfiguration
-      type: object
     LoginAnonymous_200_response:
       example:
         token: token
@@ -2461,14 +2447,45 @@ components:
       required:
       - region
       type: object
+    Application_authConfiguration_google:
+      example:
+        clientId: clientId
+      properties:
+        clientId:
+          type: string
+      required:
+      - clientId
+      type: object
+    Application_authConfiguration:
+      example:
+        nickname: "{}"
+        anonymous: "{}"
+        google:
+          clientId: clientId
+      properties:
+        google:
+          $ref: '#/components/schemas/Application_authConfiguration_google'
+        nickname:
+          description: Construct a type with a set of properties K of type T
+          properties: {}
+          type: object
+        anonymous:
+          description: Construct a type with a set of properties K of type T
+          properties: {}
+          type: object
+      type: object
     DeploymentConfig_env_inner:
       example:
         name: name
         value: value
       properties:
         value:
+          maxLength: 5000
           type: string
         name:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z_][a-zA-Z0-9_]*$"
           type: string
       required:
       - name

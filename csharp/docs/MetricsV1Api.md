@@ -8,7 +8,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="getmetrics"></a>
 # **GetMetrics**
-> RecordPartialMetricNameMetricValueArray GetMetrics (string appId, string processId, List<MetricName> metrics = null, double? end = null, double? start = null, double? step = null)
+> RecordPartialMetricNameMetricValueArray GetMetrics (string appId, string processId, List<MetricName> metrics = null, int? end = null, int? start = null, int? step = null)
 
 
 
@@ -35,9 +35,9 @@ namespace Example
             var appId = "appId_example";  // string | 
             var processId = "processId_example";  // string | 
             var metrics = new List<MetricName>(); // List<MetricName> |  (optional) 
-            var end = 1.2D;  // double? |  (optional) 
-            var start = 1.2D;  // double? |  (optional) 
-            var step = 60D;  // double? |  (optional)  (default to 60D)
+            var end = 56;  // int? |  (optional) 
+            var start = 56;  // int? |  (optional) 
+            var step = 60;  // int? |  (optional)  (default to 60)
 
             try
             {
@@ -81,9 +81,9 @@ catch (ApiException e)
 | **appId** | **string** |  |  |
 | **processId** | **string** |  |  |
 | **metrics** | [**List&lt;MetricName&gt;**](MetricName.md) |  | [optional]  |
-| **end** | **double?** |  | [optional]  |
-| **start** | **double?** |  | [optional]  |
-| **step** | **double?** |  | [optional] [default to 60D] |
+| **end** | **int?** |  | [optional]  |
+| **start** | **int?** |  | [optional]  |
+| **step** | **int?** |  | [optional] [default to 60] |
 
 ### Return type
 

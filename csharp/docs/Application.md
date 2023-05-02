@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **DateTime** |  | 
 **CreatedBy** | **string** |  | 
 **OrgId** | **string** |  | 
-**AuthConfiguration** | [**CreateAppRequestAuthConfiguration**](CreateAppRequestAuthConfiguration.md) |  | 
+**AuthConfiguration** | [**ApplicationAuthConfiguration**](ApplicationAuthConfiguration.md) |  | 
 **AppSecret** | **string** |  | 
 **AppId** | **string** |  | 
 **AppName** | **string** |  | 

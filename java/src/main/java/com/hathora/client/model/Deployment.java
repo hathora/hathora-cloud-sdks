@@ -60,7 +60,7 @@ public class Deployment {
 
   public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
   @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
-  private Double roomsPerProcess;
+  private Integer roomsPerProcess;
 
   public static final String SERIALIZED_NAME_PLAN_NAME = "planName";
   @SerializedName(SERIALIZED_NAME_PLAN_NAME)
@@ -72,7 +72,7 @@ public class Deployment {
 
   public static final String SERIALIZED_NAME_CONTAINER_PORT = "containerPort";
   @SerializedName(SERIALIZED_NAME_CONTAINER_PORT)
-  private Double containerPort;
+  private Integer containerPort;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -135,7 +135,7 @@ public class Deployment {
   }
 
 
-  public Deployment roomsPerProcess(Double roomsPerProcess) {
+  public Deployment roomsPerProcess(Integer roomsPerProcess) {
     
     this.roomsPerProcess = roomsPerProcess;
     return this;
@@ -143,16 +143,18 @@ public class Deployment {
 
    /**
    * Get roomsPerProcess
+   * minimum: 1
+   * maximum: 10000
    * @return roomsPerProcess
   **/
   @javax.annotation.Nonnull
 
-  public Double getRoomsPerProcess() {
+  public Integer getRoomsPerProcess() {
     return roomsPerProcess;
   }
 
 
-  public void setRoomsPerProcess(Double roomsPerProcess) {
+  public void setRoomsPerProcess(Integer roomsPerProcess) {
     this.roomsPerProcess = roomsPerProcess;
   }
 
@@ -201,7 +203,7 @@ public class Deployment {
   }
 
 
-  public Deployment containerPort(Double containerPort) {
+  public Deployment containerPort(Integer containerPort) {
     
     this.containerPort = containerPort;
     return this;
@@ -209,16 +211,18 @@ public class Deployment {
 
    /**
    * Get containerPort
+   * minimum: 1
+   * maximum: 65535
    * @return containerPort
   **/
   @javax.annotation.Nonnull
 
-  public Double getContainerPort() {
+  public Integer getContainerPort() {
     return containerPort;
   }
 
 
-  public void setContainerPort(Double containerPort) {
+  public void setContainerPort(Integer containerPort) {
     this.containerPort = containerPort;
   }
 
