@@ -646,6 +646,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/RoomId'
           description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "401":
           content:
             application/json:
@@ -721,6 +727,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/RoomId'
           description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "401":
           content:
             application/json:
@@ -853,6 +865,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Lobby'
           description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "401":
           content:
             application/json:
@@ -926,6 +944,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Lobby'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
           description: ""
         "401":
           content:
@@ -1001,6 +1025,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Lobby'
           description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "401":
           content:
             application/json:
@@ -1073,6 +1103,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Lobby'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
           description: ""
         "401":
           content:
@@ -1581,6 +1617,13 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
+      - explode: true
+        in: query
+        name: roomId
+        required: false
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: form
       requestBody:
         content:
           application/json:
@@ -1593,6 +1636,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RoomId'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
           description: ""
         "404":
           content:
@@ -2084,6 +2133,9 @@ components:
         $ref: '#/components/schemas/DiscoveryResponse_inner'
       type: array
     RoomId:
+      maxLength: 100
+      minLength: 1
+      pattern: "^[a-zA-Z0-9_-]*$"
       type: string
     Lobby:
       example:
@@ -2119,6 +2171,9 @@ components:
         region:
           $ref: '#/components/schemas/Region'
         roomId:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
           type: string
         appId:
           type: string
@@ -2327,6 +2382,9 @@ components:
         appId:
           type: string
         roomId:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
           type: string
         status:
           $ref: '#/components/schemas/RoomStatus'
@@ -2375,6 +2433,9 @@ components:
             $ref: '#/components/schemas/RoomAllocation'
           type: array
         roomId:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
           type: string
         appId:
           type: string
@@ -2393,6 +2454,9 @@ components:
           nullable: false
           type: string
         roomId:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
           type: string
       required:
       - roomId
@@ -2413,6 +2477,9 @@ components:
         host:
           type: string
         roomId:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
           type: string
       required:
       - host

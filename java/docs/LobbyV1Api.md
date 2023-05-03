@@ -74,6 +74,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
@@ -145,6 +146,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |

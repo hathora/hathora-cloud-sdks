@@ -80,6 +80,7 @@ public class RoomV1Api {
      * Build call for createRoom
      * @param appId  (required)
      * @param createRoomRequest  (required)
+     * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,11 +88,12 @@ public class RoomV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomCall(String appId, CreateRoomRequest createRoomRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createRoomCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -117,6 +119,10 @@ public class RoomV1Api {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (roomId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("roomId", roomId));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -138,7 +144,7 @@ public class RoomV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createRoomValidateBeforeCall(String appId, CreateRoomRequest createRoomRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRoomValidateBeforeCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling createRoom(Async)");
@@ -149,7 +155,7 @@ public class RoomV1Api {
             throw new ApiException("Missing the required parameter 'createRoomRequest' when calling createRoom(Async)");
         }
 
-        return createRoomCall(appId, createRoomRequest, _callback);
+        return createRoomCall(appId, createRoomRequest, roomId, _callback);
 
     }
 
@@ -158,18 +164,20 @@ public class RoomV1Api {
      * 
      * @param appId  (required)
      * @param createRoomRequest  (required)
+     * @param roomId  (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public String createRoom(String appId, CreateRoomRequest createRoomRequest) throws ApiException {
-        ApiResponse<String> localVarResp = createRoomWithHttpInfo(appId, createRoomRequest);
+    public String createRoom(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
+        ApiResponse<String> localVarResp = createRoomWithHttpInfo(appId, createRoomRequest, roomId);
         return localVarResp.getData();
     }
 
@@ -178,18 +186,20 @@ public class RoomV1Api {
      * 
      * @param appId  (required)
      * @param createRoomRequest  (required)
+     * @param roomId  (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<String> createRoomWithHttpInfo(String appId, CreateRoomRequest createRoomRequest) throws ApiException {
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, null);
+    public ApiResponse<String> createRoomWithHttpInfo(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -199,6 +209,7 @@ public class RoomV1Api {
      * 
      * @param appId  (required)
      * @param createRoomRequest  (required)
+     * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -206,13 +217,14 @@ public class RoomV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomAsync(String appId, CreateRoomRequest createRoomRequest, final ApiCallback<String> _callback) throws ApiException {
+    public okhttp3.Call createRoomAsync(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, _callback);
+        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

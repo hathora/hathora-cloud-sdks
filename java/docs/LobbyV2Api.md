@@ -78,6 +78,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
@@ -149,6 +150,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
@@ -220,6 +222,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
@@ -291,6 +294,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |

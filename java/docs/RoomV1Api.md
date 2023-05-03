@@ -15,7 +15,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createRoom"></a>
 # **createRoom**
-> String createRoom(appId, createRoomRequest)
+> String createRoom(appId, createRoomRequest, roomId)
 
 
 
@@ -41,8 +41,9 @@ public class Example {
     RoomV1Api apiInstance = new RoomV1Api(defaultClient);
     String appId = "appId_example"; // String | 
     CreateRoomRequest createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
+    String roomId = "roomId_example"; // String | 
     try {
-      String result = apiInstance.createRoom(appId, createRoomRequest);
+      String result = apiInstance.createRoom(appId, createRoomRequest, roomId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RoomV1Api#createRoom");
@@ -61,6 +62,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
 | **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md)|  | |
+| **roomId** | **String**|  | [optional] |
 
 ### Return type
 
@@ -79,6 +81,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **400** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 

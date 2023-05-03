@@ -34,6 +34,7 @@ import {
 export interface CreateRoomOperationRequest {
     appId: string;
     createRoomRequest: CreateRoomRequest;
+    roomId?: string;
 }
 
 export interface DestroyRoomRequest {
@@ -77,6 +78,7 @@ export interface RoomV1ApiInterface {
      * 
      * @param {string} appId 
      * @param {CreateRoomRequest} createRoomRequest 
+     * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
@@ -85,7 +87,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    createRoom(appId: string, createRoomRequest: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
@@ -191,6 +193,10 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
         const queryParameters: any = {};
 
+        if (requestParameters.roomId !== undefined) {
+            queryParameters['roomId'] = requestParameters.roomId;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
@@ -220,8 +226,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async createRoom(appId: string, createRoomRequest: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createRoomRaw({ appId: appId, createRoomRequest: createRoomRequest }, initOverrides);
+    async createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createRoomRaw({ appId: appId, createRoomRequest: createRoomRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
