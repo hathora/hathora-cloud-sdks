@@ -83,7 +83,7 @@ public class Example {
 
 <a name="getLogsForDeployment"></a>
 # **getLogsForDeployment**
-> Object getLogsForDeployment(appId, deploymentId, follow, tailLines)
+> byte[] getLogsForDeployment(appId, deploymentId, follow, tailLines)
 
 
 
@@ -112,7 +112,7 @@ public class Example {
     Boolean follow = false; // Boolean | 
     Integer tailLines = 56; // Integer | 
     try {
-      Object result = apiInstance.getLogsForDeployment(appId, deploymentId, follow, tailLines);
+      byte[] result = apiInstance.getLogsForDeployment(appId, deploymentId, follow, tailLines);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LogV1Api#getLogsForDeployment");
@@ -136,7 +136,7 @@ public class Example {
 
 ### Return type
 
-**Object**
+**byte[]**
 
 ### Authorization
 

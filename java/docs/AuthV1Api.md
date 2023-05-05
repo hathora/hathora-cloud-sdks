@@ -11,7 +11,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="loginAnonymous"></a>
 # **loginAnonymous**
-> LoginAnonymous200Response loginAnonymous(appId)
+> LoginResponse loginAnonymous(appId)
 
 
 
@@ -32,7 +32,7 @@ public class Example {
     AuthV1Api apiInstance = new AuthV1Api(defaultClient);
     String appId = "appId_example"; // String | 
     try {
-      LoginAnonymous200Response result = apiInstance.loginAnonymous(appId);
+      LoginResponse result = apiInstance.loginAnonymous(appId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthV1Api#loginAnonymous");
@@ -53,7 +53,7 @@ public class Example {
 
 ### Return type
 
-[**LoginAnonymous200Response**](LoginAnonymous200Response.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ No authorization required
 
 <a name="loginGoogle"></a>
 # **loginGoogle**
-> LoginAnonymous200Response loginGoogle(appId, loginGoogleRequest)
+> LoginResponse loginGoogle(appId, loginGoogleRequest)
 
 
 
@@ -94,7 +94,7 @@ public class Example {
     String appId = "appId_example"; // String | 
     LoginGoogleRequest loginGoogleRequest = new LoginGoogleRequest(); // LoginGoogleRequest | 
     try {
-      LoginAnonymous200Response result = apiInstance.loginGoogle(appId, loginGoogleRequest);
+      LoginResponse result = apiInstance.loginGoogle(appId, loginGoogleRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthV1Api#loginGoogle");
@@ -116,7 +116,7 @@ public class Example {
 
 ### Return type
 
-[**LoginAnonymous200Response**](LoginAnonymous200Response.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ No authorization required
 
 <a name="loginNickname"></a>
 # **loginNickname**
-> LoginAnonymous200Response loginNickname(appId, loginNicknameRequest)
+> LoginResponse loginNickname(appId, loginNicknameRequest)
 
 
 
@@ -158,7 +158,7 @@ public class Example {
     String appId = "appId_example"; // String | 
     LoginNicknameRequest loginNicknameRequest = new LoginNicknameRequest(); // LoginNicknameRequest | 
     try {
-      LoginAnonymous200Response result = apiInstance.loginNickname(appId, loginNicknameRequest);
+      LoginResponse result = apiInstance.loginNickname(appId, loginNicknameRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthV1Api#loginNickname");
@@ -180,7 +180,7 @@ public class Example {
 
 ### Return type
 
-[**LoginAnonymous200Response**](LoginAnonymous200Response.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 

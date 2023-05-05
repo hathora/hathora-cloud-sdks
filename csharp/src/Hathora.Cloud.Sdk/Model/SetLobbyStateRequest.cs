@@ -27,7 +27,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// <summary>
     /// SetLobbyStateRequest
     /// </summary>
-    [DataContract(Name = "SetLobbyState_request")]
+    [DataContract(Name = "SetLobbyStateRequest")]
     public partial class SetLobbyStateRequest : IEquatable<SetLobbyStateRequest>
     {
         /// <summary>

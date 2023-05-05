@@ -15,17 +15,17 @@
 
 import * as runtime from '../runtime';
 import type {
-  LoginAnonymous200Response,
   LoginGoogleRequest,
   LoginNicknameRequest,
+  LoginResponse,
 } from '../models';
 import {
-    LoginAnonymous200ResponseFromJSON,
-    LoginAnonymous200ResponseToJSON,
     LoginGoogleRequestFromJSON,
     LoginGoogleRequestToJSON,
     LoginNicknameRequestFromJSON,
     LoginNicknameRequestToJSON,
+    LoginResponseFromJSON,
+    LoginResponseToJSON,
 } from '../models';
 
 export interface LoginAnonymousRequest {
@@ -56,11 +56,11 @@ export interface AuthV1ApiInterface {
      * @throws {RequiredError}
      * @memberof AuthV1ApiInterface
      */
-    loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginAnonymous200Response>>;
+    loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>>;
 
     /**
      */
-    loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
+    loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse>;
 
     /**
      * 
@@ -70,11 +70,11 @@ export interface AuthV1ApiInterface {
      * @throws {RequiredError}
      * @memberof AuthV1ApiInterface
      */
-    loginGoogleRaw(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginAnonymous200Response>>;
+    loginGoogleRaw(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>>;
 
     /**
      */
-    loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
+    loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse>;
 
     /**
      * 
@@ -84,11 +84,11 @@ export interface AuthV1ApiInterface {
      * @throws {RequiredError}
      * @memberof AuthV1ApiInterface
      */
-    loginNicknameRaw(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginAnonymous200Response>>;
+    loginNicknameRaw(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>>;
 
     /**
      */
-    loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response>;
+    loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse>;
 
 }
 
@@ -99,7 +99,7 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
 
     /**
      */
-    async loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginAnonymous200Response>> {
+    async loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling loginAnonymous.');
         }
@@ -115,19 +115,19 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LoginAnonymous200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LoginResponseFromJSON(jsonValue));
     }
 
     /**
      */
-    async loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
+    async loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
         const response = await this.loginAnonymousRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async loginGoogleRaw(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginAnonymous200Response>> {
+    async loginGoogleRaw(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling loginGoogle.');
         }
@@ -150,19 +150,19 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
             body: LoginGoogleRequestToJSON(requestParameters.loginGoogleRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LoginAnonymous200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LoginResponseFromJSON(jsonValue));
     }
 
     /**
      */
-    async loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
+    async loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
         const response = await this.loginGoogleRaw({ appId: appId, loginGoogleRequest: loginGoogleRequest }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async loginNicknameRaw(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginAnonymous200Response>> {
+    async loginNicknameRaw(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling loginNickname.');
         }
@@ -185,12 +185,12 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
             body: LoginNicknameRequestToJSON(requestParameters.loginNicknameRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LoginAnonymous200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => LoginResponseFromJSON(jsonValue));
     }
 
     /**
      */
-    async loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginAnonymous200Response> {
+    async loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
         const response = await this.loginNicknameRaw({ appId: appId, loginNicknameRequest: loginNicknameRequest }, initOverrides);
         return await response.value();
     }

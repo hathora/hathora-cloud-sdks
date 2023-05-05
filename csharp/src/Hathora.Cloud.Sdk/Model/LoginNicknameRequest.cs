@@ -27,7 +27,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// <summary>
     /// LoginNicknameRequest
     /// </summary>
-    [DataContract(Name = "LoginNickname_request")]
+    [DataContract(Name = "LoginNicknameRequest")]
     public partial class LoginNicknameRequest : IEquatable<LoginNicknameRequest>
     {
         /// <summary>

@@ -76,11 +76,11 @@ export interface LogV1ApiInterface {
      * @throws {RequiredError}
      * @memberof LogV1ApiInterface
      */
-    getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
 
     /**
      */
-    getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
@@ -159,7 +159,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
     /**
      */
-    async getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+    async getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getLogsForDeployment.');
         }
@@ -196,7 +196,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
+            return new runtime.JSONApiResponse<string>(response);
         } else {
             return new runtime.TextApiResponse(response) as any;
         }
@@ -204,7 +204,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
     /**
      */
-    async getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+    async getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
         const response = await this.getLogsForDeploymentRaw({ appId: appId, deploymentId: deploymentId, follow: follow, tailLines: tailLines }, initOverrides);
         return await response.value();
     }
