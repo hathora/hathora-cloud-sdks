@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import com.hathora.client.model.ConnectionInfoV2;
-import com.hathora.client.model.CreateRoomDeprecatedRequest;
+import com.hathora.client.model.CreateRoomRequest;
 import com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations;
 import com.hathora.client.model.Room;
 
@@ -79,7 +79,7 @@ public class RoomV2Api {
     /**
      * Build call for createRoom
      * @param appId  (required)
-     * @param createRoomDeprecatedRequest  (required)
+     * @param createRoomRequest  (required)
      * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -93,7 +93,7 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomCall(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createRoomCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,7 +107,7 @@ public class RoomV2Api {
             basePath = null;
         }
 
-        Object localVarPostBody = createRoomDeprecatedRequest;
+        Object localVarPostBody = createRoomRequest;
 
         // create path and map variables
         String localVarPath = "/rooms/v2/{appId}/create"
@@ -144,18 +144,18 @@ public class RoomV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createRoomValidateBeforeCall(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRoomValidateBeforeCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling createRoom(Async)");
         }
 
-        // verify the required parameter 'createRoomDeprecatedRequest' is set
-        if (createRoomDeprecatedRequest == null) {
-            throw new ApiException("Missing the required parameter 'createRoomDeprecatedRequest' when calling createRoom(Async)");
+        // verify the required parameter 'createRoomRequest' is set
+        if (createRoomRequest == null) {
+            throw new ApiException("Missing the required parameter 'createRoomRequest' when calling createRoom(Async)");
         }
 
-        return createRoomCall(appId, createRoomDeprecatedRequest, roomId, _callback);
+        return createRoomCall(appId, createRoomRequest, roomId, _callback);
 
     }
 
@@ -163,7 +163,7 @@ public class RoomV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param createRoomDeprecatedRequest  (required)
+     * @param createRoomRequest  (required)
      * @param roomId  (optional)
      * @return ConnectionInfoV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -176,8 +176,8 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectionInfoV2 createRoom(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId) throws ApiException {
-        ApiResponse<ConnectionInfoV2> localVarResp = createRoomWithHttpInfo(appId, createRoomDeprecatedRequest, roomId);
+    public ConnectionInfoV2 createRoom(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
+        ApiResponse<ConnectionInfoV2> localVarResp = createRoomWithHttpInfo(appId, createRoomRequest, roomId);
         return localVarResp.getData();
     }
 
@@ -185,7 +185,7 @@ public class RoomV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param createRoomDeprecatedRequest  (required)
+     * @param createRoomRequest  (required)
      * @param roomId  (optional)
      * @return ApiResponse&lt;ConnectionInfoV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -198,8 +198,8 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectionInfoV2> createRoomWithHttpInfo(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomDeprecatedRequest, roomId, null);
+    public ApiResponse<ConnectionInfoV2> createRoomWithHttpInfo(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, null);
         Type localVarReturnType = new TypeToken<ConnectionInfoV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -208,7 +208,7 @@ public class RoomV2Api {
      *  (asynchronously)
      * 
      * @param appId  (required)
-     * @param createRoomDeprecatedRequest  (required)
+     * @param createRoomRequest  (required)
      * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -222,9 +222,9 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomAsync(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId, final ApiCallback<ConnectionInfoV2> _callback) throws ApiException {
+    public okhttp3.Call createRoomAsync(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback<ConnectionInfoV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomDeprecatedRequest, roomId, _callback);
+        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, _callback);
         Type localVarReturnType = new TypeToken<ConnectionInfoV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

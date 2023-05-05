@@ -16,24 +16,24 @@
 import * as runtime from '../runtime';
 import type {
   ConnectionInfoV2,
-  CreateRoomDeprecatedRequest,
+  CreateRoomRequest,
   PickRoomExcludeKeyofRoomAllocations,
   Room,
 } from '../models';
 import {
     ConnectionInfoV2FromJSON,
     ConnectionInfoV2ToJSON,
-    CreateRoomDeprecatedRequestFromJSON,
-    CreateRoomDeprecatedRequestToJSON,
+    CreateRoomRequestFromJSON,
+    CreateRoomRequestToJSON,
     PickRoomExcludeKeyofRoomAllocationsFromJSON,
     PickRoomExcludeKeyofRoomAllocationsToJSON,
     RoomFromJSON,
     RoomToJSON,
 } from '../models';
 
-export interface CreateRoomRequest {
+export interface CreateRoomOperationRequest {
     appId: string;
-    createRoomDeprecatedRequest: CreateRoomDeprecatedRequest;
+    createRoomRequest: CreateRoomRequest;
     roomId?: string;
 }
 
@@ -77,17 +77,17 @@ export interface RoomV2ApiInterface {
     /**
      * 
      * @param {string} appId 
-     * @param {CreateRoomDeprecatedRequest} createRoomDeprecatedRequest 
+     * @param {CreateRoomRequest} createRoomRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RoomV2ApiInterface
      */
-    createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfoV2>>;
+    createRoomRaw(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfoV2>>;
 
     /**
      */
-    createRoom(appId: string, createRoomDeprecatedRequest: CreateRoomDeprecatedRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfoV2>;
+    createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfoV2>;
 
     /**
      * 
@@ -182,13 +182,13 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
 
     /**
      */
-    async createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfoV2>> {
+    async createRoomRaw(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfoV2>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createRoom.');
         }
 
-        if (requestParameters.createRoomDeprecatedRequest === null || requestParameters.createRoomDeprecatedRequest === undefined) {
-            throw new runtime.RequiredError('createRoomDeprecatedRequest','Required parameter requestParameters.createRoomDeprecatedRequest was null or undefined when calling createRoom.');
+        if (requestParameters.createRoomRequest === null || requestParameters.createRoomRequest === undefined) {
+            throw new runtime.RequiredError('createRoomRequest','Required parameter requestParameters.createRoomRequest was null or undefined when calling createRoom.');
         }
 
         const queryParameters: any = {};
@@ -214,7 +214,7 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateRoomDeprecatedRequestToJSON(requestParameters.createRoomDeprecatedRequest),
+            body: CreateRoomRequestToJSON(requestParameters.createRoomRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ConnectionInfoV2FromJSON(jsonValue));
@@ -222,8 +222,8 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
 
     /**
      */
-    async createRoom(appId: string, createRoomDeprecatedRequest: CreateRoomDeprecatedRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfoV2> {
-        const response = await this.createRoomRaw({ appId: appId, createRoomDeprecatedRequest: createRoomDeprecatedRequest, roomId: roomId }, initOverrides);
+    async createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfoV2> {
+        const response = await this.createRoomRaw({ appId: appId, createRoomRequest: createRoomRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 

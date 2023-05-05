@@ -31,11 +31,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>string</returns>
         [Obsolete]
-        string CreateRoomDeprecated(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string));
+        string CreateRoomDeprecated(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -45,11 +45,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of string</returns>
         [Obsolete]
-        ApiResponse<string> CreateRoomDeprecatedWithHttpInfo(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string));
+        ApiResponse<string> CreateRoomDeprecatedWithHttpInfo(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -199,12 +199,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<string> CreateRoomDeprecatedAsync(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> CreateRoomDeprecatedAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -214,12 +214,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<string>> CreateRoomDeprecatedWithHttpInfoAsync(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> CreateRoomDeprecatedWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -531,13 +531,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>string</returns>
         [Obsolete]
-        public string CreateRoomDeprecated(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string))
+        public string CreateRoomDeprecated(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = CreateRoomDeprecatedWithHttpInfo(appId, createRoomDeprecatedRequest, roomId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = CreateRoomDeprecatedWithHttpInfo(appId, createRoomRequest, roomId);
             return localVarResponse.Data;
         }
 
@@ -546,19 +546,19 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of string</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreateRoomDeprecatedWithHttpInfo(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreateRoomDeprecatedWithHttpInfo(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->CreateRoomDeprecated");
 
-            // verify the required parameter 'createRoomDeprecatedRequest' is set
-            if (createRoomDeprecatedRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomDeprecatedRequest' when calling RoomV1Api->CreateRoomDeprecated");
+            // verify the required parameter 'createRoomRequest' is set
+            if (createRoomRequest == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomRequest' when calling RoomV1Api->CreateRoomDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -582,7 +582,7 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.Data = createRoomDeprecatedRequest;
+            localVarRequestOptions.Data = createRoomRequest;
 
             // authentication (auth0) required
             // bearer authentication required
@@ -608,14 +608,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<string> CreateRoomDeprecatedAsync(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> CreateRoomDeprecatedAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateRoomDeprecatedWithHttpInfoAsync(appId, createRoomDeprecatedRequest, roomId, cancellationToken);
+            var task = CreateRoomDeprecatedWithHttpInfoAsync(appId, createRoomRequest, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -629,20 +629,20 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomDeprecatedRequest"></param>
+        /// <param name="createRoomRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreateRoomDeprecatedWithHttpInfoAsync(string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreateRoomDeprecatedWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV1Api->CreateRoomDeprecated");
 
-            // verify the required parameter 'createRoomDeprecatedRequest' is set
-            if (createRoomDeprecatedRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomDeprecatedRequest' when calling RoomV1Api->CreateRoomDeprecated");
+            // verify the required parameter 'createRoomRequest' is set
+            if (createRoomRequest == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomRequest' when calling RoomV1Api->CreateRoomDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -668,7 +668,7 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.Data = createRoomDeprecatedRequest;
+            localVarRequestOptions.Data = createRoomRequest;
 
             // authentication (auth0) required
             // bearer authentication required

@@ -27,7 +27,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// <summary>
     /// CreateLobbyRequest
     /// </summary>
-    [DataContract(Name = "CreateLobby_request")]
+    [DataContract(Name = "CreateLobbyRequest")]
     public partial class CreateLobbyRequest : IEquatable<CreateLobbyRequest>
     {
         /// <summary>

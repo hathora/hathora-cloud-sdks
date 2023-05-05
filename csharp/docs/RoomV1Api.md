@@ -14,7 +14,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createroomdeprecated"></a>
 # **CreateRoomDeprecated**
-> string CreateRoomDeprecated (string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = null)
+> string CreateRoomDeprecated (string appId, CreateRoomRequest createRoomRequest, string roomId = null)
 
 
 
@@ -39,12 +39,12 @@ namespace Example
 
             var apiInstance = new RoomV1Api(config);
             var appId = "appId_example";  // string | 
-            var createRoomDeprecatedRequest = new CreateRoomDeprecatedRequest(); // CreateRoomDeprecatedRequest | 
+            var createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
             var roomId = "roomId_example";  // string |  (optional) 
 
             try
             {
-                string result = apiInstance.CreateRoomDeprecated(appId, createRoomDeprecatedRequest, roomId);
+                string result = apiInstance.CreateRoomDeprecated(appId, createRoomRequest, roomId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -64,7 +64,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<string> response = apiInstance.CreateRoomDeprecatedWithHttpInfo(appId, createRoomDeprecatedRequest, roomId);
+    ApiResponse<string> response = apiInstance.CreateRoomDeprecatedWithHttpInfo(appId, createRoomRequest, roomId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -82,7 +82,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **createRoomDeprecatedRequest** | [**CreateRoomDeprecatedRequest**](CreateRoomDeprecatedRequest.md) |  |  |
+| **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md) |  |  |
 | **roomId** | **string** |  | [optional]  |
 
 ### Return type

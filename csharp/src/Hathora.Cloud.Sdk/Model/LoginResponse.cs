@@ -25,39 +25,39 @@ using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 namespace Hathora.Cloud.Sdk.Model
 {
     /// <summary>
-    /// LoginGoogleRequest
+    /// LoginResponse
     /// </summary>
-    [DataContract(Name = "LoginGoogleRequest")]
-    public partial class LoginGoogleRequest : IEquatable<LoginGoogleRequest>
+    [DataContract(Name = "LoginResponse")]
+    public partial class LoginResponse : IEquatable<LoginResponse>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginGoogleRequest" /> class.
+        /// Initializes a new instance of the <see cref="LoginResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected LoginGoogleRequest()
+        protected LoginResponse()
         {
             this.AdditionalProperties = new Dictionary<string, object>();
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginGoogleRequest" /> class.
+        /// Initializes a new instance of the <see cref="LoginResponse" /> class.
         /// </summary>
-        /// <param name="idToken">idToken (required).</param>
-        public LoginGoogleRequest(string idToken = default(string))
+        /// <param name="token">token (required).</param>
+        public LoginResponse(string token = default(string))
         {
-            // to ensure "idToken" is required (not null)
-            if (idToken == null)
+            // to ensure "token" is required (not null)
+            if (token == null)
             {
-                throw new ArgumentNullException("idToken is a required property for LoginGoogleRequest and cannot be null");
+                throw new ArgumentNullException("token is a required property for LoginResponse and cannot be null");
             }
-            this.IdToken = idToken;
+            this.Token = token;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Gets or Sets IdToken
+        /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name = "idToken", IsRequired = true, EmitDefaultValue = true)]
-        public string IdToken { get; set; }
+        [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = true)]
+        public string Token { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -72,8 +72,8 @@ namespace Hathora.Cloud.Sdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class LoginGoogleRequest {\n");
-            sb.Append("  IdToken: ").Append(IdToken).Append("\n");
+            sb.Append("class LoginResponse {\n");
+            sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -95,15 +95,15 @@ namespace Hathora.Cloud.Sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as LoginGoogleRequest);
+            return this.Equals(input as LoginResponse);
         }
 
         /// <summary>
-        /// Returns true if LoginGoogleRequest instances are equal
+        /// Returns true if LoginResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of LoginGoogleRequest to be compared</param>
+        /// <param name="input">Instance of LoginResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(LoginGoogleRequest input)
+        public bool Equals(LoginResponse input)
         {
             if (input == null)
             {
@@ -111,9 +111,9 @@ namespace Hathora.Cloud.Sdk.Model
             }
             return 
                 (
-                    this.IdToken == input.IdToken ||
-                    (this.IdToken != null &&
-                    this.IdToken.Equals(input.IdToken))
+                    this.Token == input.Token ||
+                    (this.Token != null &&
+                    this.Token.Equals(input.Token))
                 )
                 && (this.AdditionalProperties.Count == input.AdditionalProperties.Count && !this.AdditionalProperties.Except(input.AdditionalProperties).Any());
         }
@@ -127,9 +127,9 @@ namespace Hathora.Cloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.IdToken != null)
+                if (this.Token != null)
                 {
-                    hashCode = (hashCode * 59) + this.IdToken.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
                 }
                 if (this.AdditionalProperties != null)
                 {

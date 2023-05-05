@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.hathora.client.model.LoginAnonymous200Response;
 import com.hathora.client.model.LoginGoogleRequest;
 import com.hathora.client.model.LoginNicknameRequest;
+import com.hathora.client.model.LoginResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -148,7 +148,7 @@ public class AuthV1Api {
      * 
      * 
      * @param appId  (required)
-     * @return LoginAnonymous200Response
+     * @return LoginResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -157,8 +157,8 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public LoginAnonymous200Response loginAnonymous(String appId) throws ApiException {
-        ApiResponse<LoginAnonymous200Response> localVarResp = loginAnonymousWithHttpInfo(appId);
+    public LoginResponse loginAnonymous(String appId) throws ApiException {
+        ApiResponse<LoginResponse> localVarResp = loginAnonymousWithHttpInfo(appId);
         return localVarResp.getData();
     }
 
@@ -166,7 +166,7 @@ public class AuthV1Api {
      * 
      * 
      * @param appId  (required)
-     * @return ApiResponse&lt;LoginAnonymous200Response&gt;
+     * @return ApiResponse&lt;LoginResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -175,9 +175,9 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoginAnonymous200Response> loginAnonymousWithHttpInfo(String appId) throws ApiException {
+    public ApiResponse<LoginResponse> loginAnonymousWithHttpInfo(String appId) throws ApiException {
         okhttp3.Call localVarCall = loginAnonymousValidateBeforeCall(appId, null);
-        Type localVarReturnType = new TypeToken<LoginAnonymous200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -195,10 +195,10 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginAnonymousAsync(String appId, final ApiCallback<LoginAnonymous200Response> _callback) throws ApiException {
+    public okhttp3.Call loginAnonymousAsync(String appId, final ApiCallback<LoginResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = loginAnonymousValidateBeforeCall(appId, _callback);
-        Type localVarReturnType = new TypeToken<LoginAnonymous200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -284,7 +284,7 @@ public class AuthV1Api {
      * 
      * @param appId  (required)
      * @param loginGoogleRequest  (required)
-     * @return LoginAnonymous200Response
+     * @return LoginResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -294,8 +294,8 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public LoginAnonymous200Response loginGoogle(String appId, LoginGoogleRequest loginGoogleRequest) throws ApiException {
-        ApiResponse<LoginAnonymous200Response> localVarResp = loginGoogleWithHttpInfo(appId, loginGoogleRequest);
+    public LoginResponse loginGoogle(String appId, LoginGoogleRequest loginGoogleRequest) throws ApiException {
+        ApiResponse<LoginResponse> localVarResp = loginGoogleWithHttpInfo(appId, loginGoogleRequest);
         return localVarResp.getData();
     }
 
@@ -304,7 +304,7 @@ public class AuthV1Api {
      * 
      * @param appId  (required)
      * @param loginGoogleRequest  (required)
-     * @return ApiResponse&lt;LoginAnonymous200Response&gt;
+     * @return ApiResponse&lt;LoginResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -314,9 +314,9 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoginAnonymous200Response> loginGoogleWithHttpInfo(String appId, LoginGoogleRequest loginGoogleRequest) throws ApiException {
+    public ApiResponse<LoginResponse> loginGoogleWithHttpInfo(String appId, LoginGoogleRequest loginGoogleRequest) throws ApiException {
         okhttp3.Call localVarCall = loginGoogleValidateBeforeCall(appId, loginGoogleRequest, null);
-        Type localVarReturnType = new TypeToken<LoginAnonymous200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -336,10 +336,10 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginGoogleAsync(String appId, LoginGoogleRequest loginGoogleRequest, final ApiCallback<LoginAnonymous200Response> _callback) throws ApiException {
+    public okhttp3.Call loginGoogleAsync(String appId, LoginGoogleRequest loginGoogleRequest, final ApiCallback<LoginResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = loginGoogleValidateBeforeCall(appId, loginGoogleRequest, _callback);
-        Type localVarReturnType = new TypeToken<LoginAnonymous200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -424,7 +424,7 @@ public class AuthV1Api {
      * 
      * @param appId  (required)
      * @param loginNicknameRequest  (required)
-     * @return LoginAnonymous200Response
+     * @return LoginResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -433,8 +433,8 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public LoginAnonymous200Response loginNickname(String appId, LoginNicknameRequest loginNicknameRequest) throws ApiException {
-        ApiResponse<LoginAnonymous200Response> localVarResp = loginNicknameWithHttpInfo(appId, loginNicknameRequest);
+    public LoginResponse loginNickname(String appId, LoginNicknameRequest loginNicknameRequest) throws ApiException {
+        ApiResponse<LoginResponse> localVarResp = loginNicknameWithHttpInfo(appId, loginNicknameRequest);
         return localVarResp.getData();
     }
 
@@ -443,7 +443,7 @@ public class AuthV1Api {
      * 
      * @param appId  (required)
      * @param loginNicknameRequest  (required)
-     * @return ApiResponse&lt;LoginAnonymous200Response&gt;
+     * @return ApiResponse&lt;LoginResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -452,9 +452,9 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoginAnonymous200Response> loginNicknameWithHttpInfo(String appId, LoginNicknameRequest loginNicknameRequest) throws ApiException {
+    public ApiResponse<LoginResponse> loginNicknameWithHttpInfo(String appId, LoginNicknameRequest loginNicknameRequest) throws ApiException {
         okhttp3.Call localVarCall = loginNicknameValidateBeforeCall(appId, loginNicknameRequest, null);
-        Type localVarReturnType = new TypeToken<LoginAnonymous200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -473,10 +473,10 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginNicknameAsync(String appId, LoginNicknameRequest loginNicknameRequest, final ApiCallback<LoginAnonymous200Response> _callback) throws ApiException {
+    public okhttp3.Call loginNicknameAsync(String appId, LoginNicknameRequest loginNicknameRequest, final ApiCallback<LoginResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = loginNicknameValidateBeforeCall(appId, loginNicknameRequest, _callback);
-        Type localVarReturnType = new TypeToken<LoginAnonymous200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

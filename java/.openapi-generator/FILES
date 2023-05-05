@@ -17,7 +17,7 @@ docs/ConnectionInfoV2.md
 docs/ContainerPort.md
 docs/CreateLobbyRequest.md
 docs/CreatePrivateLobbyRequest.md
-docs/CreateRoomDeprecatedRequest.md
+docs/CreateRoomRequest.md
 docs/Deployment.md
 docs/DeploymentConfig.md
 docs/DeploymentConfigEnvInner.md
@@ -30,9 +30,9 @@ docs/Lobby.md
 docs/LobbyV1Api.md
 docs/LobbyV2Api.md
 docs/LogV1Api.md
-docs/LoginAnonymous200Response.md
 docs/LoginGoogleRequest.md
 docs/LoginNicknameRequest.md
+docs/LoginResponse.md
 docs/MetricName.md
 docs/MetricValue.md
 docs/MetricsV1Api.md
@@ -96,7 +96,7 @@ src/main/java/com/hathora/client/model/ConnectionInfoV2.java
 src/main/java/com/hathora/client/model/ContainerPort.java
 src/main/java/com/hathora/client/model/CreateLobbyRequest.java
 src/main/java/com/hathora/client/model/CreatePrivateLobbyRequest.java
-src/main/java/com/hathora/client/model/CreateRoomDeprecatedRequest.java
+src/main/java/com/hathora/client/model/CreateRoomRequest.java
 src/main/java/com/hathora/client/model/Deployment.java
 src/main/java/com/hathora/client/model/DeploymentConfig.java
 src/main/java/com/hathora/client/model/DeploymentConfigEnvInner.java
@@ -104,9 +104,9 @@ src/main/java/com/hathora/client/model/DeploymentEnvInner.java
 src/main/java/com/hathora/client/model/DiscoveryResponseInner.java
 src/main/java/com/hathora/client/model/ExposedPort.java
 src/main/java/com/hathora/client/model/Lobby.java
-src/main/java/com/hathora/client/model/LoginAnonymous200Response.java
 src/main/java/com/hathora/client/model/LoginGoogleRequest.java
 src/main/java/com/hathora/client/model/LoginNicknameRequest.java
+src/main/java/com/hathora/client/model/LoginResponse.java
 src/main/java/com/hathora/client/model/MetricName.java
 src/main/java/com/hathora/client/model/MetricValue.java
 src/main/java/com/hathora/client/model/PickRoomExcludeKeyofRoomAllocations.java

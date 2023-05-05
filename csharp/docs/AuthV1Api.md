@@ -10,7 +10,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="loginanonymous"></a>
 # **LoginAnonymous**
-> LoginAnonymous200Response LoginAnonymous (string appId)
+> LoginResponse LoginAnonymous (string appId)
 
 
 
@@ -35,7 +35,7 @@ namespace Example
 
             try
             {
-                LoginAnonymous200Response result = apiInstance.LoginAnonymous(appId);
+                LoginResponse result = apiInstance.LoginAnonymous(appId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -55,7 +55,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<LoginAnonymous200Response> response = apiInstance.LoginAnonymousWithHttpInfo(appId);
+    ApiResponse<LoginResponse> response = apiInstance.LoginAnonymousWithHttpInfo(appId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -76,7 +76,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**LoginAnonymous200Response**](LoginAnonymous200Response.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 
@@ -98,7 +98,7 @@ No authorization required
 
 <a name="logingoogle"></a>
 # **LoginGoogle**
-> LoginAnonymous200Response LoginGoogle (string appId, LoginGoogleRequest loginGoogleRequest)
+> LoginResponse LoginGoogle (string appId, LoginGoogleRequest loginGoogleRequest)
 
 
 
@@ -124,7 +124,7 @@ namespace Example
 
             try
             {
-                LoginAnonymous200Response result = apiInstance.LoginGoogle(appId, loginGoogleRequest);
+                LoginResponse result = apiInstance.LoginGoogle(appId, loginGoogleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -144,7 +144,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<LoginAnonymous200Response> response = apiInstance.LoginGoogleWithHttpInfo(appId, loginGoogleRequest);
+    ApiResponse<LoginResponse> response = apiInstance.LoginGoogleWithHttpInfo(appId, loginGoogleRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -166,7 +166,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**LoginAnonymous200Response**](LoginAnonymous200Response.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 
@@ -189,7 +189,7 @@ No authorization required
 
 <a name="loginnickname"></a>
 # **LoginNickname**
-> LoginAnonymous200Response LoginNickname (string appId, LoginNicknameRequest loginNicknameRequest)
+> LoginResponse LoginNickname (string appId, LoginNicknameRequest loginNicknameRequest)
 
 
 
@@ -215,7 +215,7 @@ namespace Example
 
             try
             {
-                LoginAnonymous200Response result = apiInstance.LoginNickname(appId, loginNicknameRequest);
+                LoginResponse result = apiInstance.LoginNickname(appId, loginNicknameRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -235,7 +235,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<LoginAnonymous200Response> response = apiInstance.LoginNicknameWithHttpInfo(appId, loginNicknameRequest);
+    ApiResponse<LoginResponse> response = apiInstance.LoginNicknameWithHttpInfo(appId, loginNicknameRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -257,7 +257,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**LoginAnonymous200Response**](LoginAnonymous200Response.md)
+[**LoginResponse**](LoginResponse.md)
 
 ### Authorization
 

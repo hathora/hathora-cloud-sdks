@@ -107,7 +107,7 @@ catch (ApiException e)
 
 <a name="getlogsfordeployment"></a>
 # **GetLogsForDeployment**
-> Object GetLogsForDeployment (string appId, double deploymentId, bool? follow = null, int? tailLines = null)
+> byte[] GetLogsForDeployment (string appId, double deploymentId, bool? follow = null, int? tailLines = null)
 
 
 
@@ -138,7 +138,7 @@ namespace Example
 
             try
             {
-                Object result = apiInstance.GetLogsForDeployment(appId, deploymentId, follow, tailLines);
+                byte[] result = apiInstance.GetLogsForDeployment(appId, deploymentId, follow, tailLines);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -158,7 +158,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Object> response = apiInstance.GetLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
+    ApiResponse<byte[]> response = apiInstance.GetLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -182,7 +182,7 @@ catch (ApiException e)
 
 ### Return type
 
-**Object**
+**byte[]**
 
 ### Authorization
 

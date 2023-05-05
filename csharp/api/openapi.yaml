@@ -171,7 +171,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginAnonymous_200_response'
+                $ref: '#/components/schemas/LoginResponse'
           description: Ok
         "404":
           content:
@@ -197,14 +197,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginNickname_request'
+              $ref: '#/components/schemas/LoginNicknameRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginAnonymous_200_response'
+                $ref: '#/components/schemas/LoginResponse'
           description: Ok
         "404":
           content:
@@ -230,14 +230,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginGoogle_request'
+              $ref: '#/components/schemas/LoginGoogleRequest'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginAnonymous_200_response'
+                $ref: '#/components/schemas/LoginResponse'
           description: Ok
         "401":
           content:
@@ -1063,7 +1063,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateLobby_request'
+              $ref: '#/components/schemas/CreateLobbyRequest'
         required: true
       responses:
         "201":
@@ -1197,7 +1197,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SetLobbyState_request'
+              $ref: '#/components/schemas/SetLobbyStateRequest'
         required: true
       responses:
         "200":
@@ -1361,7 +1361,9 @@ paths:
         "200":
           content:
             text/plain:
-              schema: {}
+              schema:
+                format: byte
+                type: string
           description: Ok
         "404":
           content:
@@ -1584,7 +1586,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRoomDeprecated_request'
+              $ref: '#/components/schemas/CreateRoomRequest'
         required: true
       responses:
         "201":
@@ -1872,7 +1874,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRoomDeprecated_request'
+              $ref: '#/components/schemas/CreateRoomRequest'
         required: true
       responses:
         "201":
@@ -2347,6 +2349,33 @@ components:
       - appName
       - authConfiguration
       type: object
+    LoginResponse:
+      example:
+        token: token
+      properties:
+        token:
+          type: string
+      required:
+      - token
+      type: object
+    LoginNicknameRequest:
+      example:
+        nickname: nickname
+      properties:
+        nickname:
+          type: string
+      required:
+      - nickname
+      type: object
+    LoginGoogleRequest:
+      example:
+        idToken: idToken
+      properties:
+        idToken:
+          type: string
+      required:
+      - idToken
+      type: object
     Region:
       enum:
       - Seattle
@@ -2539,6 +2568,38 @@ components:
       - region
       - roomId
       - visibility
+      type: object
+    CreateLobbyRequest:
+      example:
+        visibility: public
+        initialConfig: "{}"
+        region: null
+      properties:
+        visibility:
+          enum:
+          - public
+          - private
+          - local
+          type: string
+        initialConfig:
+          additionalProperties: false
+          type: object
+        region:
+          $ref: '#/components/schemas/Region'
+      required:
+      - initialConfig
+      - region
+      - visibility
+      type: object
+    SetLobbyStateRequest:
+      example:
+        state: "{}"
+      properties:
+        state:
+          additionalProperties: false
+          type: object
+      required:
+      - state
       type: object
     TailLines:
       format: int32
@@ -2804,6 +2865,15 @@ components:
       allOf:
       - $ref: '#/components/schemas/Process'
       - $ref: '#/components/schemas/ProcessWithRooms_allOf'
+    CreateRoomRequest:
+      example:
+        region: null
+      properties:
+        region:
+          $ref: '#/components/schemas/Region'
+      required:
+      - region
+      type: object
     Room:
       example:
         allocations:
@@ -2930,29 +3000,6 @@ components:
       - roomId
       - status
       type: object
-    LoginAnonymous_200_response:
-      example:
-        token: token
-      properties:
-        token:
-          type: string
-      required:
-      - token
-      type: object
-    LoginNickname_request:
-      properties:
-        nickname:
-          type: string
-      required:
-      - nickname
-      type: object
-    LoginGoogle_request:
-      properties:
-        idToken:
-          type: string
-      required:
-      - idToken
-      type: object
     RunBuild_request:
       properties:
         file:
@@ -2970,39 +3017,6 @@ components:
           $ref: '#/components/schemas/Region'
       required:
       - initialConfig
-      - region
-      type: object
-    CreateLobby_request:
-      properties:
-        visibility:
-          enum:
-          - public
-          - private
-          - local
-          type: string
-        initialConfig:
-          additionalProperties: false
-          type: object
-        region:
-          $ref: '#/components/schemas/Region'
-      required:
-      - initialConfig
-      - region
-      - visibility
-      type: object
-    SetLobbyState_request:
-      properties:
-        state:
-          additionalProperties: false
-          type: object
-      required:
-      - state
-      type: object
-    CreateRoomDeprecated_request:
-      properties:
-        region:
-          $ref: '#/components/schemas/Region'
-      required:
       - region
       type: object
     Application_authConfiguration_google:

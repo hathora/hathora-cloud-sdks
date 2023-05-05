@@ -28,7 +28,7 @@ src/models/ConnectionInfoV2.ts
 src/models/ContainerPort.ts
 src/models/CreateLobbyRequest.ts
 src/models/CreatePrivateLobbyRequest.ts
-src/models/CreateRoomDeprecatedRequest.ts
+src/models/CreateRoomRequest.ts
 src/models/Deployment.ts
 src/models/DeploymentConfig.ts
 src/models/DeploymentConfigEnvInner.ts
@@ -36,9 +36,9 @@ src/models/DeploymentEnvInner.ts
 src/models/DiscoveryResponseInner.ts
 src/models/ExposedPort.ts
 src/models/Lobby.ts
-src/models/LoginAnonymous200Response.ts
 src/models/LoginGoogleRequest.ts
 src/models/LoginNicknameRequest.ts
+src/models/LoginResponse.ts
 src/models/MetricName.ts
 src/models/MetricValue.ts
 src/models/PickRoomExcludeKeyofRoomAllocations.ts

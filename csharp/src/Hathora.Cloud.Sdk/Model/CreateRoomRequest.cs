@@ -27,7 +27,7 @@ namespace Hathora.Cloud.Sdk.Model
     /// <summary>
     /// CreateRoomRequest
     /// </summary>
-    [DataContract(Name = "CreateRoom_request")]
+    [DataContract(Name = "CreateRoomRequest")]
     public partial class CreateRoomRequest : IEquatable<CreateRoomRequest>
     {
 

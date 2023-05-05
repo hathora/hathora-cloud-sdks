@@ -319,7 +319,7 @@ public class LogV1Api {
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
-     * @return Object
+     * @return byte[]
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -328,8 +328,8 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Object getLogsForDeployment(String appId, Double deploymentId, Boolean follow, Integer tailLines) throws ApiException {
-        ApiResponse<Object> localVarResp = getLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
+    public byte[] getLogsForDeployment(String appId, Double deploymentId, Boolean follow, Integer tailLines) throws ApiException {
+        ApiResponse<byte[]> localVarResp = getLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
         return localVarResp.getData();
     }
 
@@ -340,7 +340,7 @@ public class LogV1Api {
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;byte[]&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -349,9 +349,9 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getLogsForDeploymentWithHttpInfo(String appId, Double deploymentId, Boolean follow, Integer tailLines) throws ApiException {
+    public ApiResponse<byte[]> getLogsForDeploymentWithHttpInfo(String appId, Double deploymentId, Boolean follow, Integer tailLines) throws ApiException {
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -372,10 +372,10 @@ public class LogV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForDeploymentAsync(String appId, Double deploymentId, Boolean follow, Integer tailLines, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getLogsForDeploymentAsync(String appId, Double deploymentId, Boolean follow, Integer tailLines, final ApiCallback<byte[]> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
