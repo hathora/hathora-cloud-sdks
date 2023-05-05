@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Env** | [**List&lt;DeploymentConfigEnvInner&gt;**](DeploymentConfigEnvInner.md) |  | 
-**RoomsPerProcess** | **int** |  | 
+**Env** | [**List&lt;DeploymentEnvInner&gt;**](DeploymentEnvInner.md) |  | 
+**RoomsPerProcess** | **double** |  | 
 **PlanName** | **PlanName** |  | 
+**AdditionalContainerPorts** | [**List&lt;ContainerPort&gt;**](ContainerPort.md) |  | 
+**DefaultContainerPort** | [**ContainerPort**](ContainerPort.md) |  | 
 **TransportType** | **TransportType** |  | 
-**ContainerPort** | **int** |  | 
+**ContainerPort** | **double** |  | 
 **CreatedAt** | **DateTime** |  | 
 **CreatedBy** | **string** |  | 
 **RequestedMemoryMB** | **double** |  | 

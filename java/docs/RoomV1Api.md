@@ -4,18 +4,18 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createRoom**](RoomV1Api.md#createRoom) | **POST** /rooms/v1/{appId}/create |  |
-| [**destroyRoom**](RoomV1Api.md#destroyRoom) | **POST** /rooms/v1/{appId}/destroy/{roomId} |  |
-| [**getActiveRoomsForProcess**](RoomV1Api.md#getActiveRoomsForProcess) | **GET** /rooms/v1/{appId}/list/{processId}/active |  |
-| [**getConnectionInfo**](RoomV1Api.md#getConnectionInfo) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} |  |
-| [**getInactiveRoomsForProcess**](RoomV1Api.md#getInactiveRoomsForProcess) | **GET** /rooms/v1/{appId}/list/{processId}/inactive |  |
-| [**getRoomInfo**](RoomV1Api.md#getRoomInfo) | **GET** /rooms/v1/{appId}/info/{roomId} |  |
-| [**suspendRoom**](RoomV1Api.md#suspendRoom) | **POST** /rooms/v1/{appId}/suspend/{roomId} |  |
+| [**createRoomDeprecated**](RoomV1Api.md#createRoomDeprecated) | **POST** /rooms/v1/{appId}/create |  |
+| [**destroyRoomDeprecated**](RoomV1Api.md#destroyRoomDeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} |  |
+| [**getActiveRoomsForProcessDeprecated**](RoomV1Api.md#getActiveRoomsForProcessDeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active |  |
+| [**getConnectionInfoDeprecated**](RoomV1Api.md#getConnectionInfoDeprecated) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} |  |
+| [**getInactiveRoomsForProcessDeprecated**](RoomV1Api.md#getInactiveRoomsForProcessDeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/inactive |  |
+| [**getRoomInfoDeprecated**](RoomV1Api.md#getRoomInfoDeprecated) | **GET** /rooms/v1/{appId}/info/{roomId} |  |
+| [**suspendRoomDeprecated**](RoomV1Api.md#suspendRoomDeprecated) | **POST** /rooms/v1/{appId}/suspend/{roomId} |  |
 
 
-<a name="createRoom"></a>
-# **createRoom**
-> String createRoom(appId, createRoomRequest, roomId)
+<a name="createRoomDeprecated"></a>
+# **createRoomDeprecated**
+> String createRoomDeprecated(appId, createRoomDeprecatedRequest, roomId)
 
 
 
@@ -40,13 +40,13 @@ public class Example {
 
     RoomV1Api apiInstance = new RoomV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    CreateRoomRequest createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
+    CreateRoomDeprecatedRequest createRoomDeprecatedRequest = new CreateRoomDeprecatedRequest(); // CreateRoomDeprecatedRequest | 
     String roomId = "roomId_example"; // String | 
     try {
-      String result = apiInstance.createRoom(appId, createRoomRequest, roomId);
+      String result = apiInstance.createRoomDeprecated(appId, createRoomDeprecatedRequest, roomId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV1Api#createRoom");
+      System.err.println("Exception when calling RoomV1Api#createRoomDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -61,7 +61,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md)|  | |
+| **createRoomDeprecatedRequest** | [**CreateRoomDeprecatedRequest**](CreateRoomDeprecatedRequest.md)|  | |
 | **roomId** | **String**|  | [optional] |
 
 ### Return type
@@ -85,9 +85,9 @@ public class Example {
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="destroyRoom"></a>
-# **destroyRoom**
-> destroyRoom(appId, roomId)
+<a name="destroyRoomDeprecated"></a>
+# **destroyRoomDeprecated**
+> destroyRoomDeprecated(appId, roomId)
 
 
 
@@ -114,9 +114,9 @@ public class Example {
     String appId = "appId_example"; // String | 
     String roomId = "roomId_example"; // String | 
     try {
-      apiInstance.destroyRoom(appId, roomId);
+      apiInstance.destroyRoomDeprecated(appId, roomId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV1Api#destroyRoom");
+      System.err.println("Exception when calling RoomV1Api#destroyRoomDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -153,9 +153,9 @@ null (empty response body)
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getActiveRoomsForProcess"></a>
-# **getActiveRoomsForProcess**
-> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getActiveRoomsForProcess(appId, processId)
+<a name="getActiveRoomsForProcessDeprecated"></a>
+# **getActiveRoomsForProcessDeprecated**
+> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getActiveRoomsForProcessDeprecated(appId, processId)
 
 
 
@@ -182,10 +182,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     String processId = "processId_example"; // String | 
     try {
-      List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.getActiveRoomsForProcess(appId, processId);
+      List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.getActiveRoomsForProcessDeprecated(appId, processId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV1Api#getActiveRoomsForProcess");
+      System.err.println("Exception when calling RoomV1Api#getActiveRoomsForProcessDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -221,9 +221,9 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getConnectionInfo"></a>
-# **getConnectionInfo**
-> ConnectionInfo getConnectionInfo(appId, roomId)
+<a name="getConnectionInfoDeprecated"></a>
+# **getConnectionInfoDeprecated**
+> ConnectionInfo getConnectionInfoDeprecated(appId, roomId)
 
 
 
@@ -245,10 +245,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     String roomId = "roomId_example"; // String | 
     try {
-      ConnectionInfo result = apiInstance.getConnectionInfo(appId, roomId);
+      ConnectionInfo result = apiInstance.getConnectionInfoDeprecated(appId, roomId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV1Api#getConnectionInfo");
+      System.err.println("Exception when calling RoomV1Api#getConnectionInfoDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -286,9 +286,9 @@ No authorization required
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getInactiveRoomsForProcess"></a>
-# **getInactiveRoomsForProcess**
-> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getInactiveRoomsForProcess(appId, processId)
+<a name="getInactiveRoomsForProcessDeprecated"></a>
+# **getInactiveRoomsForProcessDeprecated**
+> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getInactiveRoomsForProcessDeprecated(appId, processId)
 
 
 
@@ -315,10 +315,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     String processId = "processId_example"; // String | 
     try {
-      List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.getInactiveRoomsForProcess(appId, processId);
+      List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.getInactiveRoomsForProcessDeprecated(appId, processId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV1Api#getInactiveRoomsForProcess");
+      System.err.println("Exception when calling RoomV1Api#getInactiveRoomsForProcessDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -354,9 +354,9 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getRoomInfo"></a>
-# **getRoomInfo**
-> Room getRoomInfo(appId, roomId)
+<a name="getRoomInfoDeprecated"></a>
+# **getRoomInfoDeprecated**
+> Room getRoomInfoDeprecated(appId, roomId)
 
 
 
@@ -383,10 +383,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     String roomId = "roomId_example"; // String | 
     try {
-      Room result = apiInstance.getRoomInfo(appId, roomId);
+      Room result = apiInstance.getRoomInfoDeprecated(appId, roomId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV1Api#getRoomInfo");
+      System.err.println("Exception when calling RoomV1Api#getRoomInfoDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -422,9 +422,9 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="suspendRoom"></a>
-# **suspendRoom**
-> suspendRoom(appId, roomId)
+<a name="suspendRoomDeprecated"></a>
+# **suspendRoomDeprecated**
+> suspendRoomDeprecated(appId, roomId)
 
 
 
@@ -451,9 +451,9 @@ public class Example {
     String appId = "appId_example"; // String | 
     String roomId = "roomId_example"; // String | 
     try {
-      apiInstance.suspendRoom(appId, roomId);
+      apiInstance.suspendRoomDeprecated(appId, roomId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV1Api#suspendRoom");
+      System.err.println("Exception when calling RoomV1Api#suspendRoomDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

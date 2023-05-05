@@ -7,11 +7,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**env** | [**List&lt;DeploymentConfigEnvInner&gt;**](DeploymentConfigEnvInner.md) |  |  |
-|**roomsPerProcess** | **Integer** |  |  |
+|**env** | [**List&lt;DeploymentEnvInner&gt;**](DeploymentEnvInner.md) |  |  |
+|**roomsPerProcess** | **Double** |  |  |
 |**planName** | **PlanName** |  |  |
+|**additionalContainerPorts** | [**List&lt;ContainerPort&gt;**](ContainerPort.md) |  |  |
+|**defaultContainerPort** | [**ContainerPort**](ContainerPort.md) |  |  |
 |**transportType** | **TransportType** |  |  |
-|**containerPort** | **Integer** |  |  |
+|**containerPort** | **Double** |  |  |
 |**createdAt** | **OffsetDateTime** |  |  |
 |**createdBy** | **String** |  |  |
 |**requestedMemoryMB** | **Double** |  |  |

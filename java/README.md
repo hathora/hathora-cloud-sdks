@@ -152,13 +152,20 @@ Class | Method | HTTP request | Description
 *ProcessesV1Api* | [**getProcessInfo**](docs/ProcessesV1Api.md#getProcessInfo) | **GET** /processes/v1/{appId}/info/{processId} | 
 *ProcessesV1Api* | [**getRunningProcesses**](docs/ProcessesV1Api.md#getRunningProcesses) | **GET** /processes/v1/{appId}/list/running | 
 *ProcessesV1Api* | [**getStoppedProcesses**](docs/ProcessesV1Api.md#getStoppedProcesses) | **GET** /processes/v1/{appId}/list/stopped | 
-*RoomV1Api* | [**createRoom**](docs/RoomV1Api.md#createRoom) | **POST** /rooms/v1/{appId}/create | 
-*RoomV1Api* | [**destroyRoom**](docs/RoomV1Api.md#destroyRoom) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
-*RoomV1Api* | [**getActiveRoomsForProcess**](docs/RoomV1Api.md#getActiveRoomsForProcess) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
-*RoomV1Api* | [**getConnectionInfo**](docs/RoomV1Api.md#getConnectionInfo) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} | 
-*RoomV1Api* | [**getInactiveRoomsForProcess**](docs/RoomV1Api.md#getInactiveRoomsForProcess) | **GET** /rooms/v1/{appId}/list/{processId}/inactive | 
-*RoomV1Api* | [**getRoomInfo**](docs/RoomV1Api.md#getRoomInfo) | **GET** /rooms/v1/{appId}/info/{roomId} | 
-*RoomV1Api* | [**suspendRoom**](docs/RoomV1Api.md#suspendRoom) | **POST** /rooms/v1/{appId}/suspend/{roomId} | 
+*RoomV1Api* | [**createRoomDeprecated**](docs/RoomV1Api.md#createRoomDeprecated) | **POST** /rooms/v1/{appId}/create | 
+*RoomV1Api* | [**destroyRoomDeprecated**](docs/RoomV1Api.md#destroyRoomDeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
+*RoomV1Api* | [**getActiveRoomsForProcessDeprecated**](docs/RoomV1Api.md#getActiveRoomsForProcessDeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
+*RoomV1Api* | [**getConnectionInfoDeprecated**](docs/RoomV1Api.md#getConnectionInfoDeprecated) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} | 
+*RoomV1Api* | [**getInactiveRoomsForProcessDeprecated**](docs/RoomV1Api.md#getInactiveRoomsForProcessDeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/inactive | 
+*RoomV1Api* | [**getRoomInfoDeprecated**](docs/RoomV1Api.md#getRoomInfoDeprecated) | **GET** /rooms/v1/{appId}/info/{roomId} | 
+*RoomV1Api* | [**suspendRoomDeprecated**](docs/RoomV1Api.md#suspendRoomDeprecated) | **POST** /rooms/v1/{appId}/suspend/{roomId} | 
+*RoomV2Api* | [**createRoom**](docs/RoomV2Api.md#createRoom) | **POST** /rooms/v2/{appId}/create | 
+*RoomV2Api* | [**destroyRoom**](docs/RoomV2Api.md#destroyRoom) | **POST** /rooms/v2/{appId}/destroy/{roomId} | 
+*RoomV2Api* | [**getActiveRoomsForProcess**](docs/RoomV2Api.md#getActiveRoomsForProcess) | **GET** /rooms/v2/{appId}/list/{processId}/active | 
+*RoomV2Api* | [**getConnectionInfo**](docs/RoomV2Api.md#getConnectionInfo) | **GET** /rooms/v2/{appId}/connectioninfo/{roomId} | 
+*RoomV2Api* | [**getInactiveRoomsForProcess**](docs/RoomV2Api.md#getInactiveRoomsForProcess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive | 
+*RoomV2Api* | [**getRoomInfo**](docs/RoomV2Api.md#getRoomInfo) | **GET** /rooms/v2/{appId}/info/{roomId} | 
+*RoomV2Api* | [**suspendRoom**](docs/RoomV2Api.md#suspendRoom) | **POST** /rooms/v2/{appId}/suspend/{roomId} | 
 
 
 ## Documentation for Models
@@ -173,14 +180,17 @@ Class | Method | HTTP request | Description
  - [Build](docs/Build.md)
  - [BuildRegionalContainerTagsInner](docs/BuildRegionalContainerTagsInner.md)
  - [ConnectionInfo](docs/ConnectionInfo.md)
+ - [ConnectionInfoV2](docs/ConnectionInfoV2.md)
+ - [ContainerPort](docs/ContainerPort.md)
  - [CreateLobbyRequest](docs/CreateLobbyRequest.md)
  - [CreatePrivateLobbyRequest](docs/CreatePrivateLobbyRequest.md)
- - [CreateRoomRequest](docs/CreateRoomRequest.md)
+ - [CreateRoomDeprecatedRequest](docs/CreateRoomDeprecatedRequest.md)
  - [Deployment](docs/Deployment.md)
- - [DeploymentAllOf](docs/DeploymentAllOf.md)
  - [DeploymentConfig](docs/DeploymentConfig.md)
  - [DeploymentConfigEnvInner](docs/DeploymentConfigEnvInner.md)
+ - [DeploymentEnvInner](docs/DeploymentEnvInner.md)
  - [DiscoveryResponseInner](docs/DiscoveryResponseInner.md)
+ - [ExposedPort](docs/ExposedPort.md)
  - [Lobby](docs/Lobby.md)
  - [LoginAnonymous200Response](docs/LoginAnonymous200Response.md)
  - [LoginGoogleRequest](docs/LoginGoogleRequest.md)

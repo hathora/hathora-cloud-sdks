@@ -11,3 +11,4 @@ export * from './LogV1Api';
 export * from './MetricsV1Api';
 export * from './ProcessesV1Api';
 export * from './RoomV1Api';
+export * from './RoomV2Api';

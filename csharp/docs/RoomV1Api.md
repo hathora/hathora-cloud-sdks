@@ -4,17 +4,17 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateRoom**](RoomV1Api.md#createroom) | **POST** /rooms/v1/{appId}/create |  |
-| [**DestroyRoom**](RoomV1Api.md#destroyroom) | **POST** /rooms/v1/{appId}/destroy/{roomId} |  |
-| [**GetActiveRoomsForProcess**](RoomV1Api.md#getactiveroomsforprocess) | **GET** /rooms/v1/{appId}/list/{processId}/active |  |
-| [**GetConnectionInfo**](RoomV1Api.md#getconnectioninfo) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} |  |
-| [**GetInactiveRoomsForProcess**](RoomV1Api.md#getinactiveroomsforprocess) | **GET** /rooms/v1/{appId}/list/{processId}/inactive |  |
-| [**GetRoomInfo**](RoomV1Api.md#getroominfo) | **GET** /rooms/v1/{appId}/info/{roomId} |  |
-| [**SuspendRoom**](RoomV1Api.md#suspendroom) | **POST** /rooms/v1/{appId}/suspend/{roomId} |  |
+| [**CreateRoomDeprecated**](RoomV1Api.md#createroomdeprecated) | **POST** /rooms/v1/{appId}/create |  |
+| [**DestroyRoomDeprecated**](RoomV1Api.md#destroyroomdeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} |  |
+| [**GetActiveRoomsForProcessDeprecated**](RoomV1Api.md#getactiveroomsforprocessdeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active |  |
+| [**GetConnectionInfoDeprecated**](RoomV1Api.md#getconnectioninfodeprecated) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} |  |
+| [**GetInactiveRoomsForProcessDeprecated**](RoomV1Api.md#getinactiveroomsforprocessdeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/inactive |  |
+| [**GetRoomInfoDeprecated**](RoomV1Api.md#getroominfodeprecated) | **GET** /rooms/v1/{appId}/info/{roomId} |  |
+| [**SuspendRoomDeprecated**](RoomV1Api.md#suspendroomdeprecated) | **POST** /rooms/v1/{appId}/suspend/{roomId} |  |
 
-<a name="createroom"></a>
-# **CreateRoom**
-> string CreateRoom (string appId, CreateRoomRequest createRoomRequest, string roomId = null)
+<a name="createroomdeprecated"></a>
+# **CreateRoomDeprecated**
+> string CreateRoomDeprecated (string appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, string roomId = null)
 
 
 
@@ -28,7 +28,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class CreateRoomExample
+    public class CreateRoomDeprecatedExample
     {
         public static void Main()
         {
@@ -39,17 +39,17 @@ namespace Example
 
             var apiInstance = new RoomV1Api(config);
             var appId = "appId_example";  // string | 
-            var createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
+            var createRoomDeprecatedRequest = new CreateRoomDeprecatedRequest(); // CreateRoomDeprecatedRequest | 
             var roomId = "roomId_example";  // string |  (optional) 
 
             try
             {
-                string result = apiInstance.CreateRoom(appId, createRoomRequest, roomId);
+                string result = apiInstance.CreateRoomDeprecated(appId, createRoomDeprecatedRequest, roomId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV1Api.CreateRoom: " + e.Message);
+                Debug.Print("Exception when calling RoomV1Api.CreateRoomDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -58,20 +58,20 @@ namespace Example
 }
 ```
 
-#### Using the CreateRoomWithHttpInfo variant
+#### Using the CreateRoomDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<string> response = apiInstance.CreateRoomWithHttpInfo(appId, createRoomRequest, roomId);
+    ApiResponse<string> response = apiInstance.CreateRoomDeprecatedWithHttpInfo(appId, createRoomDeprecatedRequest, roomId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV1Api.CreateRoomWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV1Api.CreateRoomDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -82,7 +82,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md) |  |  |
+| **createRoomDeprecatedRequest** | [**CreateRoomDeprecatedRequest**](CreateRoomDeprecatedRequest.md) |  |  |
 | **roomId** | **string** |  | [optional]  |
 
 ### Return type
@@ -109,9 +109,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="destroyroom"></a>
-# **DestroyRoom**
-> void DestroyRoom (string appId, string roomId)
+<a name="destroyroomdeprecated"></a>
+# **DestroyRoomDeprecated**
+> void DestroyRoomDeprecated (string appId, string roomId)
 
 
 
@@ -125,7 +125,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class DestroyRoomExample
+    public class DestroyRoomDeprecatedExample
     {
         public static void Main()
         {
@@ -140,11 +140,11 @@ namespace Example
 
             try
             {
-                apiInstance.DestroyRoom(appId, roomId);
+                apiInstance.DestroyRoomDeprecated(appId, roomId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV1Api.DestroyRoom: " + e.Message);
+                Debug.Print("Exception when calling RoomV1Api.DestroyRoomDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -153,17 +153,17 @@ namespace Example
 }
 ```
 
-#### Using the DestroyRoomWithHttpInfo variant
+#### Using the DestroyRoomDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    apiInstance.DestroyRoomWithHttpInfo(appId, roomId);
+    apiInstance.DestroyRoomDeprecatedWithHttpInfo(appId, roomId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV1Api.DestroyRoomWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV1Api.DestroyRoomDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -199,9 +199,9 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getactiveroomsforprocess"></a>
-# **GetActiveRoomsForProcess**
-> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; GetActiveRoomsForProcess (string appId, string processId)
+<a name="getactiveroomsforprocessdeprecated"></a>
+# **GetActiveRoomsForProcessDeprecated**
+> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; GetActiveRoomsForProcessDeprecated (string appId, string processId)
 
 
 
@@ -215,7 +215,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetActiveRoomsForProcessExample
+    public class GetActiveRoomsForProcessDeprecatedExample
     {
         public static void Main()
         {
@@ -230,12 +230,12 @@ namespace Example
 
             try
             {
-                List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.GetActiveRoomsForProcess(appId, processId);
+                List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.GetActiveRoomsForProcessDeprecated(appId, processId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV1Api.GetActiveRoomsForProcess: " + e.Message);
+                Debug.Print("Exception when calling RoomV1Api.GetActiveRoomsForProcessDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -244,20 +244,20 @@ namespace Example
 }
 ```
 
-#### Using the GetActiveRoomsForProcessWithHttpInfo variant
+#### Using the GetActiveRoomsForProcessDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> response = apiInstance.GetActiveRoomsForProcessWithHttpInfo(appId, processId);
+    ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> response = apiInstance.GetActiveRoomsForProcessDeprecatedWithHttpInfo(appId, processId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV1Api.GetActiveRoomsForProcessWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV1Api.GetActiveRoomsForProcessDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -292,9 +292,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getconnectioninfo"></a>
-# **GetConnectionInfo**
-> ConnectionInfo GetConnectionInfo (string appId, string roomId)
+<a name="getconnectioninfodeprecated"></a>
+# **GetConnectionInfoDeprecated**
+> ConnectionInfo GetConnectionInfoDeprecated (string appId, string roomId)
 
 
 
@@ -308,7 +308,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetConnectionInfoExample
+    public class GetConnectionInfoDeprecatedExample
     {
         public static void Main()
         {
@@ -320,12 +320,12 @@ namespace Example
 
             try
             {
-                ConnectionInfo result = apiInstance.GetConnectionInfo(appId, roomId);
+                ConnectionInfo result = apiInstance.GetConnectionInfoDeprecated(appId, roomId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV1Api.GetConnectionInfo: " + e.Message);
+                Debug.Print("Exception when calling RoomV1Api.GetConnectionInfoDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -334,20 +334,20 @@ namespace Example
 }
 ```
 
-#### Using the GetConnectionInfoWithHttpInfo variant
+#### Using the GetConnectionInfoDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<ConnectionInfo> response = apiInstance.GetConnectionInfoWithHttpInfo(appId, roomId);
+    ApiResponse<ConnectionInfo> response = apiInstance.GetConnectionInfoDeprecatedWithHttpInfo(appId, roomId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV1Api.GetConnectionInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV1Api.GetConnectionInfoDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -384,9 +384,9 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getinactiveroomsforprocess"></a>
-# **GetInactiveRoomsForProcess**
-> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; GetInactiveRoomsForProcess (string appId, string processId)
+<a name="getinactiveroomsforprocessdeprecated"></a>
+# **GetInactiveRoomsForProcessDeprecated**
+> List&lt;PickRoomExcludeKeyofRoomAllocations&gt; GetInactiveRoomsForProcessDeprecated (string appId, string processId)
 
 
 
@@ -400,7 +400,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetInactiveRoomsForProcessExample
+    public class GetInactiveRoomsForProcessDeprecatedExample
     {
         public static void Main()
         {
@@ -415,12 +415,12 @@ namespace Example
 
             try
             {
-                List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.GetInactiveRoomsForProcess(appId, processId);
+                List<PickRoomExcludeKeyofRoomAllocations> result = apiInstance.GetInactiveRoomsForProcessDeprecated(appId, processId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV1Api.GetInactiveRoomsForProcess: " + e.Message);
+                Debug.Print("Exception when calling RoomV1Api.GetInactiveRoomsForProcessDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -429,20 +429,20 @@ namespace Example
 }
 ```
 
-#### Using the GetInactiveRoomsForProcessWithHttpInfo variant
+#### Using the GetInactiveRoomsForProcessDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> response = apiInstance.GetInactiveRoomsForProcessWithHttpInfo(appId, processId);
+    ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> response = apiInstance.GetInactiveRoomsForProcessDeprecatedWithHttpInfo(appId, processId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV1Api.GetInactiveRoomsForProcessWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV1Api.GetInactiveRoomsForProcessDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -477,9 +477,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getroominfo"></a>
-# **GetRoomInfo**
-> Room GetRoomInfo (string appId, string roomId)
+<a name="getroominfodeprecated"></a>
+# **GetRoomInfoDeprecated**
+> Room GetRoomInfoDeprecated (string appId, string roomId)
 
 
 
@@ -493,7 +493,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetRoomInfoExample
+    public class GetRoomInfoDeprecatedExample
     {
         public static void Main()
         {
@@ -508,12 +508,12 @@ namespace Example
 
             try
             {
-                Room result = apiInstance.GetRoomInfo(appId, roomId);
+                Room result = apiInstance.GetRoomInfoDeprecated(appId, roomId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV1Api.GetRoomInfo: " + e.Message);
+                Debug.Print("Exception when calling RoomV1Api.GetRoomInfoDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -522,20 +522,20 @@ namespace Example
 }
 ```
 
-#### Using the GetRoomInfoWithHttpInfo variant
+#### Using the GetRoomInfoDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Room> response = apiInstance.GetRoomInfoWithHttpInfo(appId, roomId);
+    ApiResponse<Room> response = apiInstance.GetRoomInfoDeprecatedWithHttpInfo(appId, roomId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV1Api.GetRoomInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV1Api.GetRoomInfoDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -570,9 +570,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="suspendroom"></a>
-# **SuspendRoom**
-> void SuspendRoom (string appId, string roomId)
+<a name="suspendroomdeprecated"></a>
+# **SuspendRoomDeprecated**
+> void SuspendRoomDeprecated (string appId, string roomId)
 
 
 
@@ -586,7 +586,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class SuspendRoomExample
+    public class SuspendRoomDeprecatedExample
     {
         public static void Main()
         {
@@ -601,11 +601,11 @@ namespace Example
 
             try
             {
-                apiInstance.SuspendRoom(appId, roomId);
+                apiInstance.SuspendRoomDeprecated(appId, roomId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV1Api.SuspendRoom: " + e.Message);
+                Debug.Print("Exception when calling RoomV1Api.SuspendRoomDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -614,17 +614,17 @@ namespace Example
 }
 ```
 
-#### Using the SuspendRoomWithHttpInfo variant
+#### Using the SuspendRoomDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    apiInstance.SuspendRoomWithHttpInfo(appId, roomId);
+    apiInstance.SuspendRoomDeprecatedWithHttpInfo(appId, roomId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV1Api.SuspendRoomWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV1Api.SuspendRoomDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

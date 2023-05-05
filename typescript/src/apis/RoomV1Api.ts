@@ -16,53 +16,53 @@
 import * as runtime from '../runtime';
 import type {
   ConnectionInfo,
-  CreateRoomRequest,
+  CreateRoomDeprecatedRequest,
   PickRoomExcludeKeyofRoomAllocations,
   Room,
 } from '../models';
 import {
     ConnectionInfoFromJSON,
     ConnectionInfoToJSON,
-    CreateRoomRequestFromJSON,
-    CreateRoomRequestToJSON,
+    CreateRoomDeprecatedRequestFromJSON,
+    CreateRoomDeprecatedRequestToJSON,
     PickRoomExcludeKeyofRoomAllocationsFromJSON,
     PickRoomExcludeKeyofRoomAllocationsToJSON,
     RoomFromJSON,
     RoomToJSON,
 } from '../models';
 
-export interface CreateRoomOperationRequest {
+export interface CreateRoomDeprecatedOperationRequest {
     appId: string;
-    createRoomRequest: CreateRoomRequest;
+    createRoomDeprecatedRequest: CreateRoomDeprecatedRequest;
     roomId?: string;
 }
 
-export interface DestroyRoomRequest {
+export interface DestroyRoomDeprecatedRequest {
     appId: string;
     roomId: string;
 }
 
-export interface GetActiveRoomsForProcessRequest {
+export interface GetActiveRoomsForProcessDeprecatedRequest {
     appId: string;
     processId: string;
 }
 
-export interface GetConnectionInfoRequest {
+export interface GetConnectionInfoDeprecatedRequest {
     appId: string;
     roomId: string;
 }
 
-export interface GetInactiveRoomsForProcessRequest {
+export interface GetInactiveRoomsForProcessDeprecatedRequest {
     appId: string;
     processId: string;
 }
 
-export interface GetRoomInfoRequest {
+export interface GetRoomInfoDeprecatedRequest {
     appId: string;
     roomId: string;
 }
 
-export interface SuspendRoomRequest {
+export interface SuspendRoomDeprecatedRequest {
     appId: string;
     roomId: string;
 }
@@ -77,101 +77,108 @@ export interface RoomV1ApiInterface {
     /**
      * 
      * @param {string} appId 
-     * @param {CreateRoomRequest} createRoomRequest 
+     * @param {CreateRoomDeprecatedRequest} createRoomDeprecatedRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
      */
-    createRoomRaw(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    createRoomDeprecatedRaw(requestParameters: CreateRoomDeprecatedOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
 
     /**
      */
-    createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createRoomDeprecated(appId: string, createRoomDeprecatedRequest: CreateRoomDeprecatedRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
      * @param {string} appId 
      * @param {string} roomId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
      */
-    destroyRoomRaw(requestParameters: DestroyRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    destroyRoomDeprecatedRaw(requestParameters: DestroyRoomDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      */
-    destroyRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    destroyRoomDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * 
      * @param {string} appId 
      * @param {string} processId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
      */
-    getActiveRoomsForProcessRaw(requestParameters: GetActiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>>;
+    getActiveRoomsForProcessDeprecatedRaw(requestParameters: GetActiveRoomsForProcessDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>>;
 
     /**
      */
-    getActiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
+    getActiveRoomsForProcessDeprecated(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
 
     /**
      * 
      * @param {string} appId 
      * @param {string} roomId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
      */
-    getConnectionInfoRaw(requestParameters: GetConnectionInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfo>>;
+    getConnectionInfoDeprecatedRaw(requestParameters: GetConnectionInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfo>>;
 
     /**
      */
-    getConnectionInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo>;
+    getConnectionInfoDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo>;
 
     /**
      * 
      * @param {string} appId 
      * @param {string} processId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
      */
-    getInactiveRoomsForProcessRaw(requestParameters: GetInactiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>>;
+    getInactiveRoomsForProcessDeprecatedRaw(requestParameters: GetInactiveRoomsForProcessDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>>;
 
     /**
      */
-    getInactiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
+    getInactiveRoomsForProcessDeprecated(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>>;
 
     /**
      * 
      * @param {string} appId 
      * @param {string} roomId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
      */
-    getRoomInfoRaw(requestParameters: GetRoomInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Room>>;
+    getRoomInfoDeprecatedRaw(requestParameters: GetRoomInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Room>>;
 
     /**
      */
-    getRoomInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room>;
+    getRoomInfoDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room>;
 
     /**
      * 
      * @param {string} appId 
      * @param {string} roomId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV1ApiInterface
      */
-    suspendRoomRaw(requestParameters: SuspendRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    suspendRoomDeprecatedRaw(requestParameters: SuspendRoomDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      */
-    suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    suspendRoomDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -182,13 +189,13 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async createRoomRaw(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async createRoomDeprecatedRaw(requestParameters: CreateRoomDeprecatedOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createRoom.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createRoomDeprecated.');
         }
 
-        if (requestParameters.createRoomRequest === null || requestParameters.createRoomRequest === undefined) {
-            throw new runtime.RequiredError('createRoomRequest','Required parameter requestParameters.createRoomRequest was null or undefined when calling createRoom.');
+        if (requestParameters.createRoomDeprecatedRequest === null || requestParameters.createRoomDeprecatedRequest === undefined) {
+            throw new runtime.RequiredError('createRoomDeprecatedRequest','Required parameter requestParameters.createRoomDeprecatedRequest was null or undefined when calling createRoomDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -214,7 +221,7 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateRoomRequestToJSON(requestParameters.createRoomRequest),
+            body: CreateRoomDeprecatedRequestToJSON(requestParameters.createRoomDeprecatedRequest),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -226,20 +233,20 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createRoomRaw({ appId: appId, createRoomRequest: createRoomRequest, roomId: roomId }, initOverrides);
+    async createRoomDeprecated(appId: string, createRoomDeprecatedRequest: CreateRoomDeprecatedRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createRoomDeprecatedRaw({ appId: appId, createRoomDeprecatedRequest: createRoomDeprecatedRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async destroyRoomRaw(requestParameters: DestroyRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async destroyRoomDeprecatedRaw(requestParameters: DestroyRoomDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling destroyRoom.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling destroyRoomDeprecated.');
         }
 
         if (requestParameters.roomId === null || requestParameters.roomId === undefined) {
-            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling destroyRoom.');
+            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling destroyRoomDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -266,19 +273,19 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async destroyRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.destroyRoomRaw({ appId: appId, roomId: roomId }, initOverrides);
+    async destroyRoomDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.destroyRoomDeprecatedRaw({ appId: appId, roomId: roomId }, initOverrides);
     }
 
     /**
      */
-    async getActiveRoomsForProcessRaw(requestParameters: GetActiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>> {
+    async getActiveRoomsForProcessDeprecatedRaw(requestParameters: GetActiveRoomsForProcessDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getActiveRoomsForProcess.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getActiveRoomsForProcessDeprecated.');
         }
 
         if (requestParameters.processId === null || requestParameters.processId === undefined) {
-            throw new runtime.RequiredError('processId','Required parameter requestParameters.processId was null or undefined when calling getActiveRoomsForProcess.');
+            throw new runtime.RequiredError('processId','Required parameter requestParameters.processId was null or undefined when calling getActiveRoomsForProcessDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -305,20 +312,20 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getActiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
-        const response = await this.getActiveRoomsForProcessRaw({ appId: appId, processId: processId }, initOverrides);
+    async getActiveRoomsForProcessDeprecated(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
+        const response = await this.getActiveRoomsForProcessDeprecatedRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async getConnectionInfoRaw(requestParameters: GetConnectionInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfo>> {
+    async getConnectionInfoDeprecatedRaw(requestParameters: GetConnectionInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfo>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getConnectionInfo.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getConnectionInfoDeprecated.');
         }
 
         if (requestParameters.roomId === null || requestParameters.roomId === undefined) {
-            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling getConnectionInfo.');
+            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling getConnectionInfoDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -337,20 +344,20 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getConnectionInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo> {
-        const response = await this.getConnectionInfoRaw({ appId: appId, roomId: roomId }, initOverrides);
+    async getConnectionInfoDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfo> {
+        const response = await this.getConnectionInfoDeprecatedRaw({ appId: appId, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async getInactiveRoomsForProcessRaw(requestParameters: GetInactiveRoomsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>> {
+    async getInactiveRoomsForProcessDeprecatedRaw(requestParameters: GetInactiveRoomsForProcessDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PickRoomExcludeKeyofRoomAllocations>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getInactiveRoomsForProcess.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getInactiveRoomsForProcessDeprecated.');
         }
 
         if (requestParameters.processId === null || requestParameters.processId === undefined) {
-            throw new runtime.RequiredError('processId','Required parameter requestParameters.processId was null or undefined when calling getInactiveRoomsForProcess.');
+            throw new runtime.RequiredError('processId','Required parameter requestParameters.processId was null or undefined when calling getInactiveRoomsForProcessDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -377,20 +384,20 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getInactiveRoomsForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
-        const response = await this.getInactiveRoomsForProcessRaw({ appId: appId, processId: processId }, initOverrides);
+    async getInactiveRoomsForProcessDeprecated(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PickRoomExcludeKeyofRoomAllocations>> {
+        const response = await this.getInactiveRoomsForProcessDeprecatedRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async getRoomInfoRaw(requestParameters: GetRoomInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Room>> {
+    async getRoomInfoDeprecatedRaw(requestParameters: GetRoomInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Room>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getRoomInfo.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getRoomInfoDeprecated.');
         }
 
         if (requestParameters.roomId === null || requestParameters.roomId === undefined) {
-            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling getRoomInfo.');
+            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling getRoomInfoDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -417,20 +424,20 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async getRoomInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room> {
-        const response = await this.getRoomInfoRaw({ appId: appId, roomId: roomId }, initOverrides);
+    async getRoomInfoDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Room> {
+        const response = await this.getRoomInfoDeprecatedRaw({ appId: appId, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async suspendRoomRaw(requestParameters: SuspendRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async suspendRoomDeprecatedRaw(requestParameters: SuspendRoomDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling suspendRoom.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling suspendRoomDeprecated.');
         }
 
         if (requestParameters.roomId === null || requestParameters.roomId === undefined) {
-            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling suspendRoom.');
+            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling suspendRoomDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -457,8 +464,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.suspendRoomRaw({ appId: appId, roomId: roomId }, initOverrides);
+    async suspendRoomDeprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.suspendRoomDeprecatedRaw({ appId: appId, roomId: roomId }, initOverrides);
     }
 
 }

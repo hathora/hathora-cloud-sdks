@@ -11,6 +11,7 @@ src/apis/LogV1Api.ts
 src/apis/MetricsV1Api.ts
 src/apis/ProcessesV1Api.ts
 src/apis/RoomV1Api.ts
+src/apis/RoomV2Api.ts
 src/apis/index.ts
 src/index.ts
 src/models/ActiveConnectionInfo.ts
@@ -23,14 +24,17 @@ src/models/ApplicationWithDeploymentAllOf.ts
 src/models/Build.ts
 src/models/BuildRegionalContainerTagsInner.ts
 src/models/ConnectionInfo.ts
+src/models/ConnectionInfoV2.ts
+src/models/ContainerPort.ts
 src/models/CreateLobbyRequest.ts
 src/models/CreatePrivateLobbyRequest.ts
-src/models/CreateRoomRequest.ts
+src/models/CreateRoomDeprecatedRequest.ts
 src/models/Deployment.ts
-src/models/DeploymentAllOf.ts
 src/models/DeploymentConfig.ts
 src/models/DeploymentConfigEnvInner.ts
+src/models/DeploymentEnvInner.ts
 src/models/DiscoveryResponseInner.ts
+src/models/ExposedPort.ts
 src/models/Lobby.ts
 src/models/LoginAnonymous200Response.ts
 src/models/LoginGoogleRequest.ts

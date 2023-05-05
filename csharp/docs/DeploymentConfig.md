@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Env** | [**List&lt;DeploymentConfigEnvInner&gt;**](DeploymentConfigEnvInner.md) |  | 
 **RoomsPerProcess** | **int** |  | 
 **PlanName** | **PlanName** |  | 
+**AdditionalContainerPorts** | [**List&lt;ContainerPort&gt;**](ContainerPort.md) |  | [optional] 
 **TransportType** | **TransportType** |  | 
 **ContainerPort** | **int** |  | 
 

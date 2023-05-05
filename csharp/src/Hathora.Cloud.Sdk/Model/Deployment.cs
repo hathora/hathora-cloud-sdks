@@ -56,6 +56,8 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="env">env (required).</param>
         /// <param name="roomsPerProcess">roomsPerProcess (required).</param>
         /// <param name="planName">planName (required).</param>
+        /// <param name="additionalContainerPorts">additionalContainerPorts (required).</param>
+        /// <param name="defaultContainerPort">defaultContainerPort (required).</param>
         /// <param name="transportType">transportType (required).</param>
         /// <param name="containerPort">containerPort (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
@@ -65,7 +67,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="deploymentId">deploymentId (required).</param>
         /// <param name="buildId">buildId (required).</param>
         /// <param name="appId">appId (required).</param>
-        public Deployment(List<DeploymentConfigEnvInner> env = default(List<DeploymentConfigEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), TransportType transportType = default(TransportType), int containerPort = default(int), DateTime createdAt = default(DateTime), string createdBy = default(string), double requestedMemoryMB = default(double), double requestedCPU = default(double), double deploymentId = default(double), double buildId = default(double), string appId = default(string))
+        public Deployment(List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), double roomsPerProcess = default(double), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), TransportType transportType = default(TransportType), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), double requestedMemoryMB = default(double), double requestedCPU = default(double), double deploymentId = default(double), double buildId = default(double), string appId = default(string))
         {
             // to ensure "env" is required (not null)
             if (env == null)
@@ -75,6 +77,18 @@ namespace Hathora.Cloud.Sdk.Model
             this.Env = env;
             this.RoomsPerProcess = roomsPerProcess;
             this.PlanName = planName;
+            // to ensure "additionalContainerPorts" is required (not null)
+            if (additionalContainerPorts == null)
+            {
+                throw new ArgumentNullException("additionalContainerPorts is a required property for Deployment and cannot be null");
+            }
+            this.AdditionalContainerPorts = additionalContainerPorts;
+            // to ensure "defaultContainerPort" is required (not null)
+            if (defaultContainerPort == null)
+            {
+                throw new ArgumentNullException("defaultContainerPort is a required property for Deployment and cannot be null");
+            }
+            this.DefaultContainerPort = defaultContainerPort;
             this.TransportType = transportType;
             this.ContainerPort = containerPort;
             this.CreatedAt = createdAt;
@@ -101,19 +115,32 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets Env
         /// </summary>
         [DataMember(Name = "env", IsRequired = true, EmitDefaultValue = true)]
-        public List<DeploymentConfigEnvInner> Env { get; set; }
+        public List<DeploymentEnvInner> Env { get; set; }
 
         /// <summary>
         /// Gets or Sets RoomsPerProcess
         /// </summary>
         [DataMember(Name = "roomsPerProcess", IsRequired = true, EmitDefaultValue = true)]
-        public int RoomsPerProcess { get; set; }
+        public double RoomsPerProcess { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AdditionalContainerPorts
+        /// </summary>
+        [DataMember(Name = "additionalContainerPorts", IsRequired = true, EmitDefaultValue = true)]
+        public List<ContainerPort> AdditionalContainerPorts { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DefaultContainerPort
+        /// </summary>
+        [DataMember(Name = "defaultContainerPort", IsRequired = true, EmitDefaultValue = true)]
+        public ContainerPort DefaultContainerPort { get; set; }
 
         /// <summary>
         /// Gets or Sets ContainerPort
         /// </summary>
         [DataMember(Name = "containerPort", IsRequired = true, EmitDefaultValue = true)]
-        public int ContainerPort { get; set; }
+        [Obsolete]
+        public double ContainerPort { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -174,6 +201,8 @@ namespace Hathora.Cloud.Sdk.Model
             sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("  RoomsPerProcess: ").Append(RoomsPerProcess).Append("\n");
             sb.Append("  PlanName: ").Append(PlanName).Append("\n");
+            sb.Append("  AdditionalContainerPorts: ").Append(AdditionalContainerPorts).Append("\n");
+            sb.Append("  DefaultContainerPort: ").Append(DefaultContainerPort).Append("\n");
             sb.Append("  TransportType: ").Append(TransportType).Append("\n");
             sb.Append("  ContainerPort: ").Append(ContainerPort).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -234,6 +263,17 @@ namespace Hathora.Cloud.Sdk.Model
                     this.PlanName.Equals(input.PlanName)
                 ) && 
                 (
+                    this.AdditionalContainerPorts == input.AdditionalContainerPorts ||
+                    this.AdditionalContainerPorts != null &&
+                    input.AdditionalContainerPorts != null &&
+                    this.AdditionalContainerPorts.SequenceEqual(input.AdditionalContainerPorts)
+                ) && 
+                (
+                    this.DefaultContainerPort == input.DefaultContainerPort ||
+                    (this.DefaultContainerPort != null &&
+                    this.DefaultContainerPort.Equals(input.DefaultContainerPort))
+                ) && 
+                (
                     this.TransportType == input.TransportType ||
                     this.TransportType.Equals(input.TransportType)
                 ) && 
@@ -290,6 +330,14 @@ namespace Hathora.Cloud.Sdk.Model
                 }
                 hashCode = (hashCode * 59) + this.RoomsPerProcess.GetHashCode();
                 hashCode = (hashCode * 59) + this.PlanName.GetHashCode();
+                if (this.AdditionalContainerPorts != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdditionalContainerPorts.GetHashCode();
+                }
+                if (this.DefaultContainerPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultContainerPort.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.TransportType.GetHashCode();
                 hashCode = (hashCode * 59) + this.ContainerPort.GetHashCode();
                 if (this.CreatedAt != null)

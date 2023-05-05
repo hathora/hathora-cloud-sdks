@@ -1608,7 +1608,8 @@ paths:
       x-accepts: application/json
   /rooms/v1/{appId}/create:
     post:
-      operationId: CreateRoom
+      deprecated: true
+      operationId: CreateRoomDeprecated
       parameters:
       - explode: false
         in: path
@@ -1628,7 +1629,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRoom_request'
+              $ref: '#/components/schemas/CreateRoomDeprecated_request'
         required: true
       responses:
         "201":
@@ -1663,7 +1664,8 @@ paths:
       x-accepts: application/json
   /rooms/v1/{appId}/info/{roomId}:
     get:
-      operationId: GetRoomInfo
+      deprecated: true
+      operationId: GetRoomInfoDeprecated
       parameters:
       - explode: false
         in: path
@@ -1699,7 +1701,8 @@ paths:
       x-accepts: application/json
   /rooms/v1/{appId}/list/{processId}/active:
     get:
-      operationId: GetActiveRoomsForProcess
+      deprecated: true
+      operationId: GetActiveRoomsForProcessDeprecated
       parameters:
       - explode: false
         in: path
@@ -1737,7 +1740,8 @@ paths:
       x-accepts: application/json
   /rooms/v1/{appId}/list/{processId}/inactive:
     get:
-      operationId: GetInactiveRoomsForProcess
+      deprecated: true
+      operationId: GetInactiveRoomsForProcessDeprecated
       parameters:
       - explode: false
         in: path
@@ -1775,7 +1779,8 @@ paths:
       x-accepts: application/json
   /rooms/v1/{appId}/destroy/{roomId}:
     post:
-      operationId: DestroyRoom
+      deprecated: true
+      operationId: DestroyRoomDeprecated
       parameters:
       - explode: false
         in: path
@@ -1813,7 +1818,8 @@ paths:
       x-accepts: application/json
   /rooms/v1/{appId}/suspend/{roomId}:
     post:
-      operationId: SuspendRoom
+      deprecated: true
+      operationId: SuspendRoomDeprecated
       parameters:
       - explode: false
         in: path
@@ -1851,7 +1857,8 @@ paths:
       x-accepts: application/json
   /rooms/v1/{appId}/connectioninfo/{roomId}:
     get:
-      operationId: GetConnectionInfo
+      deprecated: true
+      operationId: GetConnectionInfoDeprecated
       parameters:
       - explode: false
         in: path
@@ -1895,6 +1902,296 @@ paths:
       security: []
       tags:
       - RoomV1
+      x-accepts: application/json
+  /rooms/v2/{appId}/create:
+    post:
+      operationId: CreateRoom
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: true
+        in: query
+        name: roomId
+        required: false
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoomDeprecated_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionInfoV2'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - RoomV2
+      x-content-type: application/json
+      x-accepts: application/json
+  /rooms/v2/{appId}/info/{roomId}:
+    get:
+      operationId: GetRoomInfo
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: roomId
+        required: true
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - RoomV2
+      x-accepts: application/json
+  /rooms/v2/{appId}/list/{processId}/active:
+    get:
+      operationId: GetActiveRoomsForProcess
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: processId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ProcessId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoomWithoutAllocations'
+                type: array
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - RoomV2
+      x-accepts: application/json
+  /rooms/v2/{appId}/list/{processId}/inactive:
+    get:
+      operationId: GetInactiveRoomsForProcess
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: processId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ProcessId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoomWithoutAllocations'
+                type: array
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - RoomV2
+      x-accepts: application/json
+  /rooms/v2/{appId}/destroy/{roomId}:
+    post:
+      operationId: DestroyRoom
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: roomId
+        required: true
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: simple
+      responses:
+        "204":
+          description: No content
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - RoomV2
+      x-accepts: application/json
+  /rooms/v2/{appId}/suspend/{roomId}:
+    post:
+      operationId: SuspendRoom
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: roomId
+        required: true
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: simple
+      responses:
+        "204":
+          description: No content
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - RoomV2
+      x-accepts: application/json
+  /rooms/v2/{appId}/connectioninfo/{roomId}:
+    get:
+      operationId: GetConnectionInfo
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: roomId
+        required: true
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionInfoV2'
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security: []
+      tags:
+      - RoomV2
       x-accepts: application/json
 components:
   examples: {}
@@ -1958,63 +2255,6 @@ components:
       - deletedBy
       - orgId
       type: object
-    TransportType:
-      enum:
-      - tcp
-      - udp
-      - tls
-      type: string
-    PlanName:
-      enum:
-      - tiny
-      - small
-      - medium
-      - large
-      type: string
-    DeploymentConfig:
-      example:
-        roomsPerProcess: 801
-        planName: null
-        containerPort: 39501
-        transportType: null
-        env:
-        - name: name
-          value: value
-        - name: name
-          value: value
-        - name: name
-          value: value
-        - name: name
-          value: value
-        - name: name
-          value: value
-      properties:
-        env:
-          items:
-            $ref: '#/components/schemas/DeploymentConfig_env_inner'
-          maxItems: 100
-          type: array
-        roomsPerProcess:
-          format: int32
-          maximum: 10000
-          minimum: 1
-          type: integer
-        planName:
-          $ref: '#/components/schemas/PlanName'
-        transportType:
-          $ref: '#/components/schemas/TransportType'
-        containerPort:
-          format: int32
-          maximum: 65535
-          minimum: 1
-          type: integer
-      required:
-      - containerPort
-      - env
-      - planName
-      - roomsPerProcess
-      - transportType
-      type: object
     AppId:
       type: string
     BuildId:
@@ -2023,10 +2263,128 @@ components:
     DeploymentId:
       format: double
       type: number
+    TransportType:
+      enum:
+      - tcp
+      - udp
+      - tls
+      type: string
+    ContainerPort:
+      example:
+        port: 39501
+        name: name
+        transportType: null
+      properties:
+        transportType:
+          $ref: '#/components/schemas/TransportType'
+        port:
+          format: int32
+          maximum: 65535
+          minimum: 1
+          type: integer
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
+          type: string
+      required:
+      - name
+      - port
+      - transportType
+      type: object
+    PlanName:
+      enum:
+      - tiny
+      - small
+      - medium
+      - large
+      type: string
     Deployment:
-      allOf:
-      - $ref: '#/components/schemas/DeploymentConfig'
-      - $ref: '#/components/schemas/Deployment_allOf'
+      example:
+        requestedCPU: 5.637376656633329
+        defaultContainerPort:
+          port: 39501
+          name: name
+          transportType: null
+        roomsPerProcess: 0.8008281904610115
+        planName: null
+        buildId: 7.061401241503109
+        env:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        additionalContainerPorts:
+        - port: 39501
+          name: name
+          transportType: null
+        - port: 39501
+          name: name
+          transportType: null
+        createdBy: createdBy
+        deploymentId: 2.3021358869347655
+        appId: appId
+        containerPort: 1.4658129805029452
+        transportType: null
+        requestedMemoryMB: 5.962133916683182
+      properties:
+        env:
+          items:
+            $ref: '#/components/schemas/Deployment_env_inner'
+          type: array
+        roomsPerProcess:
+          format: double
+          type: number
+        planName:
+          $ref: '#/components/schemas/PlanName'
+        additionalContainerPorts:
+          items:
+            $ref: '#/components/schemas/ContainerPort'
+          type: array
+        defaultContainerPort:
+          $ref: '#/components/schemas/ContainerPort'
+        transportType:
+          $ref: '#/components/schemas/TransportType'
+        containerPort:
+          deprecated: true
+          format: double
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        createdBy:
+          type: string
+        requestedMemoryMB:
+          format: double
+          type: number
+        requestedCPU:
+          format: double
+          type: number
+        deploymentId:
+          format: double
+          type: number
+        buildId:
+          format: double
+          type: number
+        appId:
+          type: string
+      required:
+      - additionalContainerPorts
+      - appId
+      - buildId
+      - containerPort
+      - createdAt
+      - createdBy
+      - defaultContainerPort
+      - deploymentId
+      - env
+      - planName
+      - requestedCPU
+      - requestedMemoryMB
+      - roomsPerProcess
+      - transportType
+      type: object
     ApplicationWithDeployment:
       allOf:
       - $ref: '#/components/schemas/Application'
@@ -2127,6 +2485,62 @@ components:
       - regionalContainerTags
       - startedAt
       - status
+      type: object
+    DeploymentConfig:
+      example:
+        roomsPerProcess: 801
+        additionalContainerPorts:
+        - port: 39501
+          name: name
+          transportType: null
+        - port: 39501
+          name: name
+          transportType: null
+        planName: null
+        containerPort: 39501
+        transportType: null
+        env:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+        - name: name
+          value: value
+      properties:
+        env:
+          items:
+            $ref: '#/components/schemas/DeploymentConfig_env_inner'
+          maxItems: 100
+          type: array
+        roomsPerProcess:
+          format: int32
+          maximum: 10000
+          minimum: 1
+          type: integer
+        planName:
+          $ref: '#/components/schemas/PlanName'
+        additionalContainerPorts:
+          items:
+            $ref: '#/components/schemas/ContainerPort'
+          maxItems: 2
+          type: array
+        transportType:
+          $ref: '#/components/schemas/TransportType'
+        containerPort:
+          format: int32
+          maximum: 65535
+          minimum: 1
+          type: integer
+      required:
+      - containerPort
+      - env
+      - planName
+      - roomsPerProcess
+      - transportType
       type: object
     DiscoveryResponse:
       items:
@@ -2259,22 +2673,58 @@ components:
       - rate_egress
       - total_egress
       type: string
+    ExposedPort:
+      example:
+        port: 5.637376656633329
+        host: host
+        name: name
+        transportType: null
+      properties:
+        transportType:
+          $ref: '#/components/schemas/TransportType'
+        port:
+          format: double
+          type: number
+        host:
+          type: string
+        name:
+          type: string
+      required:
+      - host
+      - name
+      - port
+      - transportType
+      type: object
     Process:
       example:
         egressedBytes: 0.8008281904610115
         idleSince: 2000-01-23T04:56:07.000+00:00
         terminatedAt: 2000-01-23T04:56:07.000+00:00
         roomsPerProcess: 5.962133916683182
+        exposedPort:
+          port: 5.637376656633329
+          host: host
+          name: name
+          transportType: null
         startedAt: 2000-01-23T04:56:07.000+00:00
         stoppingAt: 2000-01-23T04:56:07.000+00:00
         activeConnections: 6.027456183070403
-        port: 5.637376656633329
+        port: 2.3021358869347655
         processId: processId
         startingAt: 2000-01-23T04:56:07.000+00:00
         draining: true
-        deploymentId: 2.3021358869347655
+        deploymentId: 7.061401241503109
         appId: appId
         host: host
+        additionalExposedPorts:
+        - port: 5.637376656633329
+          host: host
+          name: name
+          transportType: null
+        - port: 5.637376656633329
+          host: host
+          name: name
+          transportType: null
         region: null
         roomSlotsAvailable: 1.4658129805029452
       properties:
@@ -2311,10 +2761,18 @@ components:
         roomsPerProcess:
           format: double
           type: number
+        additionalExposedPorts:
+          items:
+            $ref: '#/components/schemas/ExposedPort'
+          type: array
+        exposedPort:
+          $ref: '#/components/schemas/ExposedPort'
         port:
+          deprecated: true
           format: double
           type: number
         host:
+          deprecated: true
           type: string
         region:
           $ref: '#/components/schemas/Region'
@@ -2327,6 +2785,7 @@ components:
           type: string
       required:
       - activeConnections
+      - additionalExposedPorts
       - appId
       - deploymentId
       - draining
@@ -2492,6 +2951,46 @@ components:
       anyOf:
       - $ref: '#/components/schemas/StartingConnectionInfo'
       - $ref: '#/components/schemas/ActiveConnectionInfo'
+    ConnectionInfoV2:
+      example:
+        exposedPort:
+          port: 5.637376656633329
+          host: host
+          name: name
+          transportType: null
+        additionalExposedPorts:
+        - port: 5.637376656633329
+          host: host
+          name: name
+          transportType: null
+        - port: 5.637376656633329
+          host: host
+          name: name
+          transportType: null
+        roomId: roomId
+        status: starting
+      properties:
+        additionalExposedPorts:
+          items:
+            $ref: '#/components/schemas/ExposedPort'
+          type: array
+        exposedPort:
+          $ref: '#/components/schemas/ExposedPort'
+        status:
+          enum:
+          - starting
+          - active
+          type: string
+        roomId:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
+          type: string
+      required:
+      - additionalExposedPorts
+      - roomId
+      - status
+      type: object
     LoginAnonymous_200_response:
       example:
         token: token
@@ -2560,7 +3059,7 @@ components:
       required:
       - state
       type: object
-    CreateRoom_request:
+    CreateRoomDeprecated_request:
       properties:
         region:
           $ref: '#/components/schemas/Region'
@@ -2594,54 +3093,19 @@ components:
           properties: {}
           type: object
       type: object
-    DeploymentConfig_env_inner:
+    Deployment_env_inner:
       example:
         name: name
         value: value
       properties:
         value:
-          maxLength: 5000
           type: string
         name:
-          maxLength: 100
-          minLength: 1
-          pattern: "^[a-zA-Z_][a-zA-Z0-9_]*$"
           type: string
       required:
       - name
       - value
       type: object
-    Deployment_allOf:
-      properties:
-        createdAt:
-          format: date-time
-          type: string
-        createdBy:
-          type: string
-        requestedMemoryMB:
-          format: double
-          type: number
-        requestedCPU:
-          format: double
-          type: number
-        deploymentId:
-          format: double
-          type: number
-        buildId:
-          format: double
-          type: number
-        appId:
-          type: string
-      required:
-      - appId
-      - buildId
-      - createdAt
-      - createdBy
-      - deploymentId
-      - requestedCPU
-      - requestedMemoryMB
-      type: object
-      example: null
     ApplicationWithDeployment_allOf:
       properties:
         deployment:
@@ -2662,6 +3126,23 @@ components:
       required:
       - containerTag
       - region
+      type: object
+    DeploymentConfig_env_inner:
+      example:
+        name: name
+        value: value
+      properties:
+        value:
+          maxLength: 5000
+          type: string
+        name:
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z_][a-zA-Z0-9_]*$"
+          type: string
+      required:
+      - name
+      - value
       type: object
     DiscoveryResponse_inner:
       example:
