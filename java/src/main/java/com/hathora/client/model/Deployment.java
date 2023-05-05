@@ -20,7 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hathora.client.model.DeploymentConfigEnvInner;
+import com.hathora.client.model.ContainerPort;
+import com.hathora.client.model.DeploymentEnvInner;
 import com.hathora.client.model.PlanName;
 import com.hathora.client.model.TransportType;
 import java.io.IOException;
@@ -56,15 +57,23 @@ import com.hathora.client.JSON;
 public class Deployment {
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
-  private List<DeploymentConfigEnvInner> env = new ArrayList<>();
+  private List<DeploymentEnvInner> env = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
   @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
-  private Integer roomsPerProcess;
+  private Double roomsPerProcess;
 
   public static final String SERIALIZED_NAME_PLAN_NAME = "planName";
   @SerializedName(SERIALIZED_NAME_PLAN_NAME)
   private PlanName planName;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_CONTAINER_PORTS = "additionalContainerPorts";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_CONTAINER_PORTS)
+  private List<ContainerPort> additionalContainerPorts = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_DEFAULT_CONTAINER_PORT = "defaultContainerPort";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_CONTAINER_PORT)
+  private ContainerPort defaultContainerPort;
 
   public static final String SERIALIZED_NAME_TRANSPORT_TYPE = "transportType";
   @SerializedName(SERIALIZED_NAME_TRANSPORT_TYPE)
@@ -72,7 +81,7 @@ public class Deployment {
 
   public static final String SERIALIZED_NAME_CONTAINER_PORT = "containerPort";
   @SerializedName(SERIALIZED_NAME_CONTAINER_PORT)
-  private Integer containerPort;
+  private Double containerPort;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -105,13 +114,13 @@ public class Deployment {
   public Deployment() {
   }
 
-  public Deployment env(List<DeploymentConfigEnvInner> env) {
+  public Deployment env(List<DeploymentEnvInner> env) {
     
     this.env = env;
     return this;
   }
 
-  public Deployment addEnvItem(DeploymentConfigEnvInner envItem) {
+  public Deployment addEnvItem(DeploymentEnvInner envItem) {
     if (this.env == null) {
       this.env = new ArrayList<>();
     }
@@ -125,17 +134,17 @@ public class Deployment {
   **/
   @javax.annotation.Nonnull
 
-  public List<DeploymentConfigEnvInner> getEnv() {
+  public List<DeploymentEnvInner> getEnv() {
     return env;
   }
 
 
-  public void setEnv(List<DeploymentConfigEnvInner> env) {
+  public void setEnv(List<DeploymentEnvInner> env) {
     this.env = env;
   }
 
 
-  public Deployment roomsPerProcess(Integer roomsPerProcess) {
+  public Deployment roomsPerProcess(Double roomsPerProcess) {
     
     this.roomsPerProcess = roomsPerProcess;
     return this;
@@ -143,18 +152,16 @@ public class Deployment {
 
    /**
    * Get roomsPerProcess
-   * minimum: 1
-   * maximum: 10000
    * @return roomsPerProcess
   **/
   @javax.annotation.Nonnull
 
-  public Integer getRoomsPerProcess() {
+  public Double getRoomsPerProcess() {
     return roomsPerProcess;
   }
 
 
-  public void setRoomsPerProcess(Integer roomsPerProcess) {
+  public void setRoomsPerProcess(Double roomsPerProcess) {
     this.roomsPerProcess = roomsPerProcess;
   }
 
@@ -181,6 +188,58 @@ public class Deployment {
   }
 
 
+  public Deployment additionalContainerPorts(List<ContainerPort> additionalContainerPorts) {
+    
+    this.additionalContainerPorts = additionalContainerPorts;
+    return this;
+  }
+
+  public Deployment addAdditionalContainerPortsItem(ContainerPort additionalContainerPortsItem) {
+    if (this.additionalContainerPorts == null) {
+      this.additionalContainerPorts = new ArrayList<>();
+    }
+    this.additionalContainerPorts.add(additionalContainerPortsItem);
+    return this;
+  }
+
+   /**
+   * Get additionalContainerPorts
+   * @return additionalContainerPorts
+  **/
+  @javax.annotation.Nonnull
+
+  public List<ContainerPort> getAdditionalContainerPorts() {
+    return additionalContainerPorts;
+  }
+
+
+  public void setAdditionalContainerPorts(List<ContainerPort> additionalContainerPorts) {
+    this.additionalContainerPorts = additionalContainerPorts;
+  }
+
+
+  public Deployment defaultContainerPort(ContainerPort defaultContainerPort) {
+    
+    this.defaultContainerPort = defaultContainerPort;
+    return this;
+  }
+
+   /**
+   * Get defaultContainerPort
+   * @return defaultContainerPort
+  **/
+  @javax.annotation.Nonnull
+
+  public ContainerPort getDefaultContainerPort() {
+    return defaultContainerPort;
+  }
+
+
+  public void setDefaultContainerPort(ContainerPort defaultContainerPort) {
+    this.defaultContainerPort = defaultContainerPort;
+  }
+
+
   public Deployment transportType(TransportType transportType) {
     
     this.transportType = transportType;
@@ -203,7 +262,7 @@ public class Deployment {
   }
 
 
-  public Deployment containerPort(Integer containerPort) {
+  public Deployment containerPort(Double containerPort) {
     
     this.containerPort = containerPort;
     return this;
@@ -211,18 +270,18 @@ public class Deployment {
 
    /**
    * Get containerPort
-   * minimum: 1
-   * maximum: 65535
    * @return containerPort
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
-  public Integer getContainerPort() {
+  public Double getContainerPort() {
     return containerPort;
   }
 
 
-  public void setContainerPort(Integer containerPort) {
+  public void setContainerPort(Double containerPort) {
     this.containerPort = containerPort;
   }
 
@@ -438,6 +497,8 @@ public class Deployment {
     return Objects.equals(this.env, deployment.env) &&
         Objects.equals(this.roomsPerProcess, deployment.roomsPerProcess) &&
         Objects.equals(this.planName, deployment.planName) &&
+        Objects.equals(this.additionalContainerPorts, deployment.additionalContainerPorts) &&
+        Objects.equals(this.defaultContainerPort, deployment.defaultContainerPort) &&
         Objects.equals(this.transportType, deployment.transportType) &&
         Objects.equals(this.containerPort, deployment.containerPort) &&
         Objects.equals(this.createdAt, deployment.createdAt) &&
@@ -452,7 +513,7 @@ public class Deployment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(env, roomsPerProcess, planName, transportType, containerPort, createdAt, createdBy, requestedMemoryMB, requestedCPU, deploymentId, buildId, appId, additionalProperties);
+    return Objects.hash(env, roomsPerProcess, planName, additionalContainerPorts, defaultContainerPort, transportType, containerPort, createdAt, createdBy, requestedMemoryMB, requestedCPU, deploymentId, buildId, appId, additionalProperties);
   }
 
   @Override
@@ -462,6 +523,8 @@ public class Deployment {
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    roomsPerProcess: ").append(toIndentedString(roomsPerProcess)).append("\n");
     sb.append("    planName: ").append(toIndentedString(planName)).append("\n");
+    sb.append("    additionalContainerPorts: ").append(toIndentedString(additionalContainerPorts)).append("\n");
+    sb.append("    defaultContainerPort: ").append(toIndentedString(defaultContainerPort)).append("\n");
     sb.append("    transportType: ").append(toIndentedString(transportType)).append("\n");
     sb.append("    containerPort: ").append(toIndentedString(containerPort)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -497,6 +560,8 @@ public class Deployment {
     openapiFields.add("env");
     openapiFields.add("roomsPerProcess");
     openapiFields.add("planName");
+    openapiFields.add("additionalContainerPorts");
+    openapiFields.add("defaultContainerPort");
     openapiFields.add("transportType");
     openapiFields.add("containerPort");
     openapiFields.add("createdAt");
@@ -512,6 +577,8 @@ public class Deployment {
     openapiRequiredFields.add("env");
     openapiRequiredFields.add("roomsPerProcess");
     openapiRequiredFields.add("planName");
+    openapiRequiredFields.add("additionalContainerPorts");
+    openapiRequiredFields.add("defaultContainerPort");
     openapiRequiredFields.add("transportType");
     openapiRequiredFields.add("containerPort");
     openapiRequiredFields.add("createdAt");
@@ -550,8 +617,20 @@ public class Deployment {
       JsonArray jsonArrayenv = jsonObj.getAsJsonArray("env");
       // validate the required field `env` (array)
       for (int i = 0; i < jsonArrayenv.size(); i++) {
-        DeploymentConfigEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
+        DeploymentEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
       };
+      // ensure the json data is an array
+      if (!jsonObj.get("additionalContainerPorts").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additionalContainerPorts` to be an array in the JSON string but got `%s`", jsonObj.get("additionalContainerPorts").toString()));
+      }
+
+      JsonArray jsonArrayadditionalContainerPorts = jsonObj.getAsJsonArray("additionalContainerPorts");
+      // validate the required field `additionalContainerPorts` (array)
+      for (int i = 0; i < jsonArrayadditionalContainerPorts.size(); i++) {
+        ContainerPort.validateJsonObject(jsonArrayadditionalContainerPorts.get(i).getAsJsonObject());
+      };
+      // validate the required field `defaultContainerPort`
+      ContainerPort.validateJsonObject(jsonObj.getAsJsonObject("defaultContainerPort"));
       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
       }

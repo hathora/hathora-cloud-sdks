@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import com.hathora.client.model.ConnectionInfo;
-import com.hathora.client.model.CreateRoomRequest;
+import com.hathora.client.model.CreateRoomDeprecatedRequest;
 import com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations;
 import com.hathora.client.model.Room;
 
@@ -77,9 +77,9 @@ public class RoomV1Api {
     }
 
     /**
-     * Build call for createRoom
+     * Build call for createRoomDeprecated
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomDeprecatedRequest  (required)
      * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -92,8 +92,10 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createRoomCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createRoomDeprecatedCall(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -107,7 +109,7 @@ public class RoomV1Api {
             basePath = null;
         }
 
-        Object localVarPostBody = createRoomRequest;
+        Object localVarPostBody = createRoomDeprecatedRequest;
 
         // create path and map variables
         String localVarPath = "/rooms/v1/{appId}/create"
@@ -143,19 +145,20 @@ public class RoomV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createRoomValidateBeforeCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRoomDeprecatedValidateBeforeCall(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling createRoom(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling createRoomDeprecated(Async)");
         }
 
-        // verify the required parameter 'createRoomRequest' is set
-        if (createRoomRequest == null) {
-            throw new ApiException("Missing the required parameter 'createRoomRequest' when calling createRoom(Async)");
+        // verify the required parameter 'createRoomDeprecatedRequest' is set
+        if (createRoomDeprecatedRequest == null) {
+            throw new ApiException("Missing the required parameter 'createRoomDeprecatedRequest' when calling createRoomDeprecated(Async)");
         }
 
-        return createRoomCall(appId, createRoomRequest, roomId, _callback);
+        return createRoomDeprecatedCall(appId, createRoomDeprecatedRequest, roomId, _callback);
 
     }
 
@@ -163,7 +166,7 @@ public class RoomV1Api {
      * 
      * 
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomDeprecatedRequest  (required)
      * @param roomId  (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -175,9 +178,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public String createRoom(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
-        ApiResponse<String> localVarResp = createRoomWithHttpInfo(appId, createRoomRequest, roomId);
+    @Deprecated
+    public String createRoomDeprecated(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId) throws ApiException {
+        ApiResponse<String> localVarResp = createRoomDeprecatedWithHttpInfo(appId, createRoomDeprecatedRequest, roomId);
         return localVarResp.getData();
     }
 
@@ -185,7 +190,7 @@ public class RoomV1Api {
      * 
      * 
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomDeprecatedRequest  (required)
      * @param roomId  (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -197,9 +202,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<String> createRoomWithHttpInfo(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, null);
+    @Deprecated
+    public ApiResponse<String> createRoomDeprecatedWithHttpInfo(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createRoomDeprecatedValidateBeforeCall(appId, createRoomDeprecatedRequest, roomId, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -208,7 +215,7 @@ public class RoomV1Api {
      *  (asynchronously)
      * 
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomDeprecatedRequest  (required)
      * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -221,16 +228,18 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createRoomAsync(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback<String> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createRoomDeprecatedAsync(String appId, CreateRoomDeprecatedRequest createRoomDeprecatedRequest, String roomId, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, _callback);
+        okhttp3.Call localVarCall = createRoomDeprecatedValidateBeforeCall(appId, createRoomDeprecatedRequest, roomId, _callback);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for destroyRoom
+     * Build call for destroyRoomDeprecated
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback Callback for upload/download progress
@@ -243,8 +252,10 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call destroyRoomCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call destroyRoomDeprecatedCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -290,19 +301,20 @@ public class RoomV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call destroyRoomValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call destroyRoomDeprecatedValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling destroyRoom(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling destroyRoomDeprecated(Async)");
         }
 
         // verify the required parameter 'roomId' is set
         if (roomId == null) {
-            throw new ApiException("Missing the required parameter 'roomId' when calling destroyRoom(Async)");
+            throw new ApiException("Missing the required parameter 'roomId' when calling destroyRoomDeprecated(Async)");
         }
 
-        return destroyRoomCall(appId, roomId, _callback);
+        return destroyRoomDeprecatedCall(appId, roomId, _callback);
 
     }
 
@@ -319,9 +331,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public void destroyRoom(String appId, String roomId) throws ApiException {
-        destroyRoomWithHttpInfo(appId, roomId);
+    @Deprecated
+    public void destroyRoomDeprecated(String appId, String roomId) throws ApiException {
+        destroyRoomDeprecatedWithHttpInfo(appId, roomId);
     }
 
     /**
@@ -338,9 +352,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Void> destroyRoomWithHttpInfo(String appId, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = destroyRoomValidateBeforeCall(appId, roomId, null);
+    @Deprecated
+    public ApiResponse<Void> destroyRoomDeprecatedWithHttpInfo(String appId, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = destroyRoomDeprecatedValidateBeforeCall(appId, roomId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -359,15 +375,17 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call destroyRoomAsync(String appId, String roomId, final ApiCallback<Void> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call destroyRoomDeprecatedAsync(String appId, String roomId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = destroyRoomValidateBeforeCall(appId, roomId, _callback);
+        okhttp3.Call localVarCall = destroyRoomDeprecatedValidateBeforeCall(appId, roomId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getActiveRoomsForProcess
+     * Build call for getActiveRoomsForProcessDeprecated
      * @param appId  (required)
      * @param processId  (required)
      * @param _callback Callback for upload/download progress
@@ -379,8 +397,10 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getActiveRoomsForProcessCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getActiveRoomsForProcessDeprecatedCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -426,19 +446,20 @@ public class RoomV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getActiveRoomsForProcessValidateBeforeCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getActiveRoomsForProcessDeprecatedValidateBeforeCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getActiveRoomsForProcess(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getActiveRoomsForProcessDeprecated(Async)");
         }
 
         // verify the required parameter 'processId' is set
         if (processId == null) {
-            throw new ApiException("Missing the required parameter 'processId' when calling getActiveRoomsForProcess(Async)");
+            throw new ApiException("Missing the required parameter 'processId' when calling getActiveRoomsForProcessDeprecated(Async)");
         }
 
-        return getActiveRoomsForProcessCall(appId, processId, _callback);
+        return getActiveRoomsForProcessDeprecatedCall(appId, processId, _callback);
 
     }
 
@@ -455,9 +476,11 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public List<PickRoomExcludeKeyofRoomAllocations> getActiveRoomsForProcess(String appId, String processId) throws ApiException {
-        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResp = getActiveRoomsForProcessWithHttpInfo(appId, processId);
+    @Deprecated
+    public List<PickRoomExcludeKeyofRoomAllocations> getActiveRoomsForProcessDeprecated(String appId, String processId) throws ApiException {
+        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResp = getActiveRoomsForProcessDeprecatedWithHttpInfo(appId, processId);
         return localVarResp.getData();
     }
 
@@ -474,9 +497,11 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> getActiveRoomsForProcessWithHttpInfo(String appId, String processId) throws ApiException {
-        okhttp3.Call localVarCall = getActiveRoomsForProcessValidateBeforeCall(appId, processId, null);
+    @Deprecated
+    public ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> getActiveRoomsForProcessDeprecatedWithHttpInfo(String appId, String processId) throws ApiException {
+        okhttp3.Call localVarCall = getActiveRoomsForProcessDeprecatedValidateBeforeCall(appId, processId, null);
         Type localVarReturnType = new TypeToken<List<PickRoomExcludeKeyofRoomAllocations>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -495,16 +520,18 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getActiveRoomsForProcessAsync(String appId, String processId, final ApiCallback<List<PickRoomExcludeKeyofRoomAllocations>> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getActiveRoomsForProcessDeprecatedAsync(String appId, String processId, final ApiCallback<List<PickRoomExcludeKeyofRoomAllocations>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getActiveRoomsForProcessValidateBeforeCall(appId, processId, _callback);
+        okhttp3.Call localVarCall = getActiveRoomsForProcessDeprecatedValidateBeforeCall(appId, processId, _callback);
         Type localVarReturnType = new TypeToken<List<PickRoomExcludeKeyofRoomAllocations>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getConnectionInfo
+     * Build call for getConnectionInfoDeprecated
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback Callback for upload/download progress
@@ -518,8 +545,10 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getConnectionInfoCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getConnectionInfoDeprecatedCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -565,19 +594,20 @@ public class RoomV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getConnectionInfoValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConnectionInfoDeprecatedValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getConnectionInfo(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getConnectionInfoDeprecated(Async)");
         }
 
         // verify the required parameter 'roomId' is set
         if (roomId == null) {
-            throw new ApiException("Missing the required parameter 'roomId' when calling getConnectionInfo(Async)");
+            throw new ApiException("Missing the required parameter 'roomId' when calling getConnectionInfoDeprecated(Async)");
         }
 
-        return getConnectionInfoCall(appId, roomId, _callback);
+        return getConnectionInfoDeprecatedCall(appId, roomId, _callback);
 
     }
 
@@ -596,9 +626,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ConnectionInfo getConnectionInfo(String appId, String roomId) throws ApiException {
-        ApiResponse<ConnectionInfo> localVarResp = getConnectionInfoWithHttpInfo(appId, roomId);
+    @Deprecated
+    public ConnectionInfo getConnectionInfoDeprecated(String appId, String roomId) throws ApiException {
+        ApiResponse<ConnectionInfo> localVarResp = getConnectionInfoDeprecatedWithHttpInfo(appId, roomId);
         return localVarResp.getData();
     }
 
@@ -617,9 +649,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<ConnectionInfo> getConnectionInfoWithHttpInfo(String appId, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = getConnectionInfoValidateBeforeCall(appId, roomId, null);
+    @Deprecated
+    public ApiResponse<ConnectionInfo> getConnectionInfoDeprecatedWithHttpInfo(String appId, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = getConnectionInfoDeprecatedValidateBeforeCall(appId, roomId, null);
         Type localVarReturnType = new TypeToken<ConnectionInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -640,16 +674,18 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getConnectionInfoAsync(String appId, String roomId, final ApiCallback<ConnectionInfo> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getConnectionInfoDeprecatedAsync(String appId, String roomId, final ApiCallback<ConnectionInfo> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getConnectionInfoValidateBeforeCall(appId, roomId, _callback);
+        okhttp3.Call localVarCall = getConnectionInfoDeprecatedValidateBeforeCall(appId, roomId, _callback);
         Type localVarReturnType = new TypeToken<ConnectionInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getInactiveRoomsForProcess
+     * Build call for getInactiveRoomsForProcessDeprecated
      * @param appId  (required)
      * @param processId  (required)
      * @param _callback Callback for upload/download progress
@@ -661,8 +697,10 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getInactiveRoomsForProcessCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getInactiveRoomsForProcessDeprecatedCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -708,19 +746,20 @@ public class RoomV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInactiveRoomsForProcessValidateBeforeCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInactiveRoomsForProcessDeprecatedValidateBeforeCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getInactiveRoomsForProcess(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getInactiveRoomsForProcessDeprecated(Async)");
         }
 
         // verify the required parameter 'processId' is set
         if (processId == null) {
-            throw new ApiException("Missing the required parameter 'processId' when calling getInactiveRoomsForProcess(Async)");
+            throw new ApiException("Missing the required parameter 'processId' when calling getInactiveRoomsForProcessDeprecated(Async)");
         }
 
-        return getInactiveRoomsForProcessCall(appId, processId, _callback);
+        return getInactiveRoomsForProcessDeprecatedCall(appId, processId, _callback);
 
     }
 
@@ -737,9 +776,11 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public List<PickRoomExcludeKeyofRoomAllocations> getInactiveRoomsForProcess(String appId, String processId) throws ApiException {
-        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResp = getInactiveRoomsForProcessWithHttpInfo(appId, processId);
+    @Deprecated
+    public List<PickRoomExcludeKeyofRoomAllocations> getInactiveRoomsForProcessDeprecated(String appId, String processId) throws ApiException {
+        ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> localVarResp = getInactiveRoomsForProcessDeprecatedWithHttpInfo(appId, processId);
         return localVarResp.getData();
     }
 
@@ -756,9 +797,11 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> getInactiveRoomsForProcessWithHttpInfo(String appId, String processId) throws ApiException {
-        okhttp3.Call localVarCall = getInactiveRoomsForProcessValidateBeforeCall(appId, processId, null);
+    @Deprecated
+    public ApiResponse<List<PickRoomExcludeKeyofRoomAllocations>> getInactiveRoomsForProcessDeprecatedWithHttpInfo(String appId, String processId) throws ApiException {
+        okhttp3.Call localVarCall = getInactiveRoomsForProcessDeprecatedValidateBeforeCall(appId, processId, null);
         Type localVarReturnType = new TypeToken<List<PickRoomExcludeKeyofRoomAllocations>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -777,16 +820,18 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getInactiveRoomsForProcessAsync(String appId, String processId, final ApiCallback<List<PickRoomExcludeKeyofRoomAllocations>> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getInactiveRoomsForProcessDeprecatedAsync(String appId, String processId, final ApiCallback<List<PickRoomExcludeKeyofRoomAllocations>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInactiveRoomsForProcessValidateBeforeCall(appId, processId, _callback);
+        okhttp3.Call localVarCall = getInactiveRoomsForProcessDeprecatedValidateBeforeCall(appId, processId, _callback);
         Type localVarReturnType = new TypeToken<List<PickRoomExcludeKeyofRoomAllocations>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getRoomInfo
+     * Build call for getRoomInfoDeprecated
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback Callback for upload/download progress
@@ -798,8 +843,10 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getRoomInfoCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getRoomInfoDeprecatedCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -845,19 +892,20 @@ public class RoomV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRoomInfoValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRoomInfoDeprecatedValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getRoomInfo(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getRoomInfoDeprecated(Async)");
         }
 
         // verify the required parameter 'roomId' is set
         if (roomId == null) {
-            throw new ApiException("Missing the required parameter 'roomId' when calling getRoomInfo(Async)");
+            throw new ApiException("Missing the required parameter 'roomId' when calling getRoomInfoDeprecated(Async)");
         }
 
-        return getRoomInfoCall(appId, roomId, _callback);
+        return getRoomInfoDeprecatedCall(appId, roomId, _callback);
 
     }
 
@@ -874,9 +922,11 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Room getRoomInfo(String appId, String roomId) throws ApiException {
-        ApiResponse<Room> localVarResp = getRoomInfoWithHttpInfo(appId, roomId);
+    @Deprecated
+    public Room getRoomInfoDeprecated(String appId, String roomId) throws ApiException {
+        ApiResponse<Room> localVarResp = getRoomInfoDeprecatedWithHttpInfo(appId, roomId);
         return localVarResp.getData();
     }
 
@@ -893,9 +943,11 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Room> getRoomInfoWithHttpInfo(String appId, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = getRoomInfoValidateBeforeCall(appId, roomId, null);
+    @Deprecated
+    public ApiResponse<Room> getRoomInfoDeprecatedWithHttpInfo(String appId, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = getRoomInfoDeprecatedValidateBeforeCall(appId, roomId, null);
         Type localVarReturnType = new TypeToken<Room>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -914,16 +966,18 @@ public class RoomV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getRoomInfoAsync(String appId, String roomId, final ApiCallback<Room> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getRoomInfoDeprecatedAsync(String appId, String roomId, final ApiCallback<Room> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRoomInfoValidateBeforeCall(appId, roomId, _callback);
+        okhttp3.Call localVarCall = getRoomInfoDeprecatedValidateBeforeCall(appId, roomId, _callback);
         Type localVarReturnType = new TypeToken<Room>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for suspendRoom
+     * Build call for suspendRoomDeprecated
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback Callback for upload/download progress
@@ -936,8 +990,10 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call suspendRoomCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call suspendRoomDeprecatedCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -983,19 +1039,20 @@ public class RoomV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call suspendRoomValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call suspendRoomDeprecatedValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling suspendRoom(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling suspendRoomDeprecated(Async)");
         }
 
         // verify the required parameter 'roomId' is set
         if (roomId == null) {
-            throw new ApiException("Missing the required parameter 'roomId' when calling suspendRoom(Async)");
+            throw new ApiException("Missing the required parameter 'roomId' when calling suspendRoomDeprecated(Async)");
         }
 
-        return suspendRoomCall(appId, roomId, _callback);
+        return suspendRoomDeprecatedCall(appId, roomId, _callback);
 
     }
 
@@ -1012,9 +1069,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public void suspendRoom(String appId, String roomId) throws ApiException {
-        suspendRoomWithHttpInfo(appId, roomId);
+    @Deprecated
+    public void suspendRoomDeprecated(String appId, String roomId) throws ApiException {
+        suspendRoomDeprecatedWithHttpInfo(appId, roomId);
     }
 
     /**
@@ -1031,9 +1090,11 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Void> suspendRoomWithHttpInfo(String appId, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = suspendRoomValidateBeforeCall(appId, roomId, null);
+    @Deprecated
+    public ApiResponse<Void> suspendRoomDeprecatedWithHttpInfo(String appId, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = suspendRoomDeprecatedValidateBeforeCall(appId, roomId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1052,10 +1113,12 @@ public class RoomV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call suspendRoomAsync(String appId, String roomId, final ApiCallback<Void> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call suspendRoomDeprecatedAsync(String appId, String roomId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = suspendRoomValidateBeforeCall(appId, roomId, _callback);
+        okhttp3.Call localVarCall = suspendRoomDeprecatedValidateBeforeCall(appId, roomId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

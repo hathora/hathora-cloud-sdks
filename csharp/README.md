@@ -125,13 +125,20 @@ Class | Method | HTTP request | Description
 *ProcessesV1Api* | [**GetProcessInfo**](ProcessesV1Api.md#getprocessinfo) | **GET** /processes/v1/{appId}/info/{processId} | 
 *ProcessesV1Api* | [**GetRunningProcesses**](ProcessesV1Api.md#getrunningprocesses) | **GET** /processes/v1/{appId}/list/running | 
 *ProcessesV1Api* | [**GetStoppedProcesses**](ProcessesV1Api.md#getstoppedprocesses) | **GET** /processes/v1/{appId}/list/stopped | 
-*RoomV1Api* | [**CreateRoom**](RoomV1Api.md#createroom) | **POST** /rooms/v1/{appId}/create | 
-*RoomV1Api* | [**DestroyRoom**](RoomV1Api.md#destroyroom) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
-*RoomV1Api* | [**GetActiveRoomsForProcess**](RoomV1Api.md#getactiveroomsforprocess) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
-*RoomV1Api* | [**GetConnectionInfo**](RoomV1Api.md#getconnectioninfo) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} | 
-*RoomV1Api* | [**GetInactiveRoomsForProcess**](RoomV1Api.md#getinactiveroomsforprocess) | **GET** /rooms/v1/{appId}/list/{processId}/inactive | 
-*RoomV1Api* | [**GetRoomInfo**](RoomV1Api.md#getroominfo) | **GET** /rooms/v1/{appId}/info/{roomId} | 
-*RoomV1Api* | [**SuspendRoom**](RoomV1Api.md#suspendroom) | **POST** /rooms/v1/{appId}/suspend/{roomId} | 
+*RoomV1Api* | [**CreateRoomDeprecated**](RoomV1Api.md#createroomdeprecated) | **POST** /rooms/v1/{appId}/create | 
+*RoomV1Api* | [**DestroyRoomDeprecated**](RoomV1Api.md#destroyroomdeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
+*RoomV1Api* | [**GetActiveRoomsForProcessDeprecated**](RoomV1Api.md#getactiveroomsforprocessdeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
+*RoomV1Api* | [**GetConnectionInfoDeprecated**](RoomV1Api.md#getconnectioninfodeprecated) | **GET** /rooms/v1/{appId}/connectioninfo/{roomId} | 
+*RoomV1Api* | [**GetInactiveRoomsForProcessDeprecated**](RoomV1Api.md#getinactiveroomsforprocessdeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/inactive | 
+*RoomV1Api* | [**GetRoomInfoDeprecated**](RoomV1Api.md#getroominfodeprecated) | **GET** /rooms/v1/{appId}/info/{roomId} | 
+*RoomV1Api* | [**SuspendRoomDeprecated**](RoomV1Api.md#suspendroomdeprecated) | **POST** /rooms/v1/{appId}/suspend/{roomId} | 
+*RoomV2Api* | [**CreateRoom**](RoomV2Api.md#createroom) | **POST** /rooms/v2/{appId}/create | 
+*RoomV2Api* | [**DestroyRoom**](RoomV2Api.md#destroyroom) | **POST** /rooms/v2/{appId}/destroy/{roomId} | 
+*RoomV2Api* | [**GetActiveRoomsForProcess**](RoomV2Api.md#getactiveroomsforprocess) | **GET** /rooms/v2/{appId}/list/{processId}/active | 
+*RoomV2Api* | [**GetConnectionInfo**](RoomV2Api.md#getconnectioninfo) | **GET** /rooms/v2/{appId}/connectioninfo/{roomId} | 
+*RoomV2Api* | [**GetInactiveRoomsForProcess**](RoomV2Api.md#getinactiveroomsforprocess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive | 
+*RoomV2Api* | [**GetRoomInfo**](RoomV2Api.md#getroominfo) | **GET** /rooms/v2/{appId}/info/{roomId} | 
+*RoomV2Api* | [**SuspendRoom**](RoomV2Api.md#suspendroom) | **POST** /rooms/v2/{appId}/suspend/{roomId} | 
 
 
 <a name="documentation-for-models"></a>
@@ -147,14 +154,17 @@ Class | Method | HTTP request | Description
  - [Model.Build](Build.md)
  - [Model.BuildRegionalContainerTagsInner](BuildRegionalContainerTagsInner.md)
  - [Model.ConnectionInfo](ConnectionInfo.md)
+ - [Model.ConnectionInfoV2](ConnectionInfoV2.md)
+ - [Model.ContainerPort](ContainerPort.md)
  - [Model.CreateLobbyRequest](CreateLobbyRequest.md)
  - [Model.CreatePrivateLobbyRequest](CreatePrivateLobbyRequest.md)
- - [Model.CreateRoomRequest](CreateRoomRequest.md)
+ - [Model.CreateRoomDeprecatedRequest](CreateRoomDeprecatedRequest.md)
  - [Model.Deployment](Deployment.md)
- - [Model.DeploymentAllOf](DeploymentAllOf.md)
  - [Model.DeploymentConfig](DeploymentConfig.md)
  - [Model.DeploymentConfigEnvInner](DeploymentConfigEnvInner.md)
+ - [Model.DeploymentEnvInner](DeploymentEnvInner.md)
  - [Model.DiscoveryResponseInner](DiscoveryResponseInner.md)
+ - [Model.ExposedPort](ExposedPort.md)
  - [Model.Lobby](Lobby.md)
  - [Model.LoginAnonymous200Response](LoginAnonymous200Response.md)
  - [Model.LoginGoogleRequest](LoginGoogleRequest.md)

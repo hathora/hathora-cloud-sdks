@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ContainerPort } from './ContainerPort';
+import {
+    ContainerPortFromJSON,
+    ContainerPortFromJSONTyped,
+    ContainerPortToJSON,
+} from './ContainerPort';
 import type { DeploymentConfigEnvInner } from './DeploymentConfigEnvInner';
 import {
     DeploymentConfigEnvInnerFromJSON,
@@ -58,6 +64,12 @@ export interface DeploymentConfig {
     planName: PlanName;
     /**
      * 
+     * @type {Array<ContainerPort>}
+     * @memberof DeploymentConfig
+     */
+    additionalContainerPorts?: Array<ContainerPort>;
+    /**
+     * 
      * @type {TransportType}
      * @memberof DeploymentConfig
      */
@@ -97,6 +109,7 @@ export function DeploymentConfigFromJSONTyped(json: any, ignoreDiscriminator: bo
         'env': ((json['env'] as Array<any>).map(DeploymentConfigEnvInnerFromJSON)),
         'roomsPerProcess': json['roomsPerProcess'],
         'planName': PlanNameFromJSON(json['planName']),
+        'additionalContainerPorts': !exists(json, 'additionalContainerPorts') ? undefined : ((json['additionalContainerPorts'] as Array<any>).map(ContainerPortFromJSON)),
         'transportType': TransportTypeFromJSON(json['transportType']),
         'containerPort': json['containerPort'],
     };
@@ -114,6 +127,7 @@ export function DeploymentConfigToJSON(value?: DeploymentConfig | null): any {
         'env': ((value.env as Array<any>).map(DeploymentConfigEnvInnerToJSON)),
         'roomsPerProcess': value.roomsPerProcess,
         'planName': PlanNameToJSON(value.planName),
+        'additionalContainerPorts': value.additionalContainerPorts === undefined ? undefined : ((value.additionalContainerPorts as Array<any>).map(ContainerPortToJSON)),
         'transportType': TransportTypeToJSON(value.transportType),
         'containerPort': value.containerPort,
     };

@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hathora.client.model.ExposedPort;
 import com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations;
 import com.hathora.client.model.Region;
 import java.io.IOException;
@@ -92,6 +93,14 @@ public class ProcessWithRooms {
   public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
   @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
   private Double roomsPerProcess;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_EXPOSED_PORTS = "additionalExposedPorts";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_EXPOSED_PORTS)
+  private List<ExposedPort> additionalExposedPorts = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_EXPOSED_PORT = "exposedPort";
+  @SerializedName(SERIALIZED_NAME_EXPOSED_PORT)
+  private ExposedPort exposedPort;
 
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
@@ -348,6 +357,58 @@ public class ProcessWithRooms {
   }
 
 
+  public ProcessWithRooms additionalExposedPorts(List<ExposedPort> additionalExposedPorts) {
+    
+    this.additionalExposedPorts = additionalExposedPorts;
+    return this;
+  }
+
+  public ProcessWithRooms addAdditionalExposedPortsItem(ExposedPort additionalExposedPortsItem) {
+    if (this.additionalExposedPorts == null) {
+      this.additionalExposedPorts = new ArrayList<>();
+    }
+    this.additionalExposedPorts.add(additionalExposedPortsItem);
+    return this;
+  }
+
+   /**
+   * Get additionalExposedPorts
+   * @return additionalExposedPorts
+  **/
+  @javax.annotation.Nonnull
+
+  public List<ExposedPort> getAdditionalExposedPorts() {
+    return additionalExposedPorts;
+  }
+
+
+  public void setAdditionalExposedPorts(List<ExposedPort> additionalExposedPorts) {
+    this.additionalExposedPorts = additionalExposedPorts;
+  }
+
+
+  public ProcessWithRooms exposedPort(ExposedPort exposedPort) {
+    
+    this.exposedPort = exposedPort;
+    return this;
+  }
+
+   /**
+   * Get exposedPort
+   * @return exposedPort
+  **/
+  @javax.annotation.Nullable
+
+  public ExposedPort getExposedPort() {
+    return exposedPort;
+  }
+
+
+  public void setExposedPort(ExposedPort exposedPort) {
+    this.exposedPort = exposedPort;
+  }
+
+
   public ProcessWithRooms port(Double port) {
     
     this.port = port;
@@ -357,7 +418,9 @@ public class ProcessWithRooms {
    /**
    * Get port
    * @return port
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public Double getPort() {
@@ -379,7 +442,9 @@ public class ProcessWithRooms {
    /**
    * Get host
    * @return host
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public String getHost() {
@@ -596,6 +661,8 @@ public class ProcessWithRooms {
         Objects.equals(this.startedAt, processWithRooms.startedAt) &&
         Objects.equals(this.startingAt, processWithRooms.startingAt) &&
         Objects.equals(this.roomsPerProcess, processWithRooms.roomsPerProcess) &&
+        Objects.equals(this.additionalExposedPorts, processWithRooms.additionalExposedPorts) &&
+        Objects.equals(this.exposedPort, processWithRooms.exposedPort) &&
         Objects.equals(this.port, processWithRooms.port) &&
         Objects.equals(this.host, processWithRooms.host) &&
         Objects.equals(this.region, processWithRooms.region) &&
@@ -609,7 +676,7 @@ public class ProcessWithRooms {
 
   @Override
   public int hashCode() {
-    return Objects.hash(egressedBytes, idleSince, activeConnections, roomSlotsAvailable, draining, terminatedAt, stoppingAt, startedAt, startingAt, roomsPerProcess, port, host, region, processId, deploymentId, appId, rooms, totalRooms, additionalProperties);
+    return Objects.hash(egressedBytes, idleSince, activeConnections, roomSlotsAvailable, draining, terminatedAt, stoppingAt, startedAt, startingAt, roomsPerProcess, additionalExposedPorts, exposedPort, port, host, region, processId, deploymentId, appId, rooms, totalRooms, additionalProperties);
   }
 
   @Override
@@ -626,6 +693,8 @@ public class ProcessWithRooms {
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
     sb.append("    startingAt: ").append(toIndentedString(startingAt)).append("\n");
     sb.append("    roomsPerProcess: ").append(toIndentedString(roomsPerProcess)).append("\n");
+    sb.append("    additionalExposedPorts: ").append(toIndentedString(additionalExposedPorts)).append("\n");
+    sb.append("    exposedPort: ").append(toIndentedString(exposedPort)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
@@ -667,6 +736,8 @@ public class ProcessWithRooms {
     openapiFields.add("startedAt");
     openapiFields.add("startingAt");
     openapiFields.add("roomsPerProcess");
+    openapiFields.add("additionalExposedPorts");
+    openapiFields.add("exposedPort");
     openapiFields.add("port");
     openapiFields.add("host");
     openapiFields.add("region");
@@ -688,6 +759,7 @@ public class ProcessWithRooms {
     openapiRequiredFields.add("startedAt");
     openapiRequiredFields.add("startingAt");
     openapiRequiredFields.add("roomsPerProcess");
+    openapiRequiredFields.add("additionalExposedPorts");
     openapiRequiredFields.add("port");
     openapiRequiredFields.add("host");
     openapiRequiredFields.add("region");
@@ -716,6 +788,20 @@ public class ProcessWithRooms {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("additionalExposedPorts").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additionalExposedPorts` to be an array in the JSON string but got `%s`", jsonObj.get("additionalExposedPorts").toString()));
+      }
+
+      JsonArray jsonArrayadditionalExposedPorts = jsonObj.getAsJsonArray("additionalExposedPorts");
+      // validate the required field `additionalExposedPorts` (array)
+      for (int i = 0; i < jsonArrayadditionalExposedPorts.size(); i++) {
+        ExposedPort.validateJsonObject(jsonArrayadditionalExposedPorts.get(i).getAsJsonObject());
+      };
+      // validate the optional field `exposedPort`
+      if (jsonObj.get("exposedPort") != null && !jsonObj.get("exposedPort").isJsonNull()) {
+        ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
       }
       if (!jsonObj.get("host").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));

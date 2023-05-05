@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ExposedPort } from './ExposedPort';
+import {
+    ExposedPortFromJSON,
+    ExposedPortFromJSONTyped,
+    ExposedPortToJSON,
+} from './ExposedPort';
 import type { PickRoomExcludeKeyofRoomAllocations } from './PickRoomExcludeKeyofRoomAllocations';
 import {
     PickRoomExcludeKeyofRoomAllocationsFromJSON,
@@ -94,14 +100,28 @@ export interface ProcessWithRooms {
     roomsPerProcess: number;
     /**
      * 
+     * @type {Array<ExposedPort>}
+     * @memberof ProcessWithRooms
+     */
+    additionalExposedPorts: Array<ExposedPort>;
+    /**
+     * 
+     * @type {ExposedPort}
+     * @memberof ProcessWithRooms
+     */
+    exposedPort?: ExposedPort;
+    /**
+     * 
      * @type {number}
      * @memberof ProcessWithRooms
+     * @deprecated
      */
     port: number;
     /**
      * 
      * @type {string}
      * @memberof ProcessWithRooms
+     * @deprecated
      */
     host: string;
     /**
@@ -157,6 +177,7 @@ export function instanceOfProcessWithRooms(value: object): boolean {
     isInstance = isInstance && "startedAt" in value;
     isInstance = isInstance && "startingAt" in value;
     isInstance = isInstance && "roomsPerProcess" in value;
+    isInstance = isInstance && "additionalExposedPorts" in value;
     isInstance = isInstance && "port" in value;
     isInstance = isInstance && "host" in value;
     isInstance = isInstance && "region" in value;
@@ -189,6 +210,8 @@ export function ProcessWithRoomsFromJSONTyped(json: any, ignoreDiscriminator: bo
         'startedAt': (json['startedAt'] === null ? null : new Date(json['startedAt'])),
         'startingAt': (new Date(json['startingAt'])),
         'roomsPerProcess': json['roomsPerProcess'],
+        'additionalExposedPorts': ((json['additionalExposedPorts'] as Array<any>).map(ExposedPortFromJSON)),
+        'exposedPort': !exists(json, 'exposedPort') ? undefined : ExposedPortFromJSON(json['exposedPort']),
         'port': json['port'],
         'host': json['host'],
         'region': RegionFromJSON(json['region']),
@@ -219,6 +242,8 @@ export function ProcessWithRoomsToJSON(value?: ProcessWithRooms | null): any {
         'startedAt': (value.startedAt === null ? null : value.startedAt.toISOString()),
         'startingAt': (value.startingAt.toISOString()),
         'roomsPerProcess': value.roomsPerProcess,
+        'additionalExposedPorts': ((value.additionalExposedPorts as Array<any>).map(ExposedPortToJSON)),
+        'exposedPort': ExposedPortToJSON(value.exposedPort),
         'port': value.port,
         'host': value.host,
         'region': RegionToJSON(value.region),

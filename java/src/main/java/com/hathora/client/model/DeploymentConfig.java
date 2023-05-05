@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hathora.client.model.ContainerPort;
 import com.hathora.client.model.DeploymentConfigEnvInner;
 import com.hathora.client.model.PlanName;
 import com.hathora.client.model.TransportType;
@@ -64,6 +65,10 @@ public class DeploymentConfig {
   public static final String SERIALIZED_NAME_PLAN_NAME = "planName";
   @SerializedName(SERIALIZED_NAME_PLAN_NAME)
   private PlanName planName;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_CONTAINER_PORTS = "additionalContainerPorts";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_CONTAINER_PORTS)
+  private List<ContainerPort> additionalContainerPorts;
 
   public static final String SERIALIZED_NAME_TRANSPORT_TYPE = "transportType";
   @SerializedName(SERIALIZED_NAME_TRANSPORT_TYPE)
@@ -149,6 +154,36 @@ public class DeploymentConfig {
 
   public void setPlanName(PlanName planName) {
     this.planName = planName;
+  }
+
+
+  public DeploymentConfig additionalContainerPorts(List<ContainerPort> additionalContainerPorts) {
+    
+    this.additionalContainerPorts = additionalContainerPorts;
+    return this;
+  }
+
+  public DeploymentConfig addAdditionalContainerPortsItem(ContainerPort additionalContainerPortsItem) {
+    if (this.additionalContainerPorts == null) {
+      this.additionalContainerPorts = new ArrayList<>();
+    }
+    this.additionalContainerPorts.add(additionalContainerPortsItem);
+    return this;
+  }
+
+   /**
+   * Get additionalContainerPorts
+   * @return additionalContainerPorts
+  **/
+  @javax.annotation.Nullable
+
+  public List<ContainerPort> getAdditionalContainerPorts() {
+    return additionalContainerPorts;
+  }
+
+
+  public void setAdditionalContainerPorts(List<ContainerPort> additionalContainerPorts) {
+    this.additionalContainerPorts = additionalContainerPorts;
   }
 
 
@@ -255,6 +290,7 @@ public class DeploymentConfig {
     return Objects.equals(this.env, deploymentConfig.env) &&
         Objects.equals(this.roomsPerProcess, deploymentConfig.roomsPerProcess) &&
         Objects.equals(this.planName, deploymentConfig.planName) &&
+        Objects.equals(this.additionalContainerPorts, deploymentConfig.additionalContainerPorts) &&
         Objects.equals(this.transportType, deploymentConfig.transportType) &&
         Objects.equals(this.containerPort, deploymentConfig.containerPort)&&
         Objects.equals(this.additionalProperties, deploymentConfig.additionalProperties);
@@ -262,7 +298,7 @@ public class DeploymentConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(env, roomsPerProcess, planName, transportType, containerPort, additionalProperties);
+    return Objects.hash(env, roomsPerProcess, planName, additionalContainerPorts, transportType, containerPort, additionalProperties);
   }
 
   @Override
@@ -272,6 +308,7 @@ public class DeploymentConfig {
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    roomsPerProcess: ").append(toIndentedString(roomsPerProcess)).append("\n");
     sb.append("    planName: ").append(toIndentedString(planName)).append("\n");
+    sb.append("    additionalContainerPorts: ").append(toIndentedString(additionalContainerPorts)).append("\n");
     sb.append("    transportType: ").append(toIndentedString(transportType)).append("\n");
     sb.append("    containerPort: ").append(toIndentedString(containerPort)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -300,6 +337,7 @@ public class DeploymentConfig {
     openapiFields.add("env");
     openapiFields.add("roomsPerProcess");
     openapiFields.add("planName");
+    openapiFields.add("additionalContainerPorts");
     openapiFields.add("transportType");
     openapiFields.add("containerPort");
 
@@ -341,6 +379,20 @@ public class DeploymentConfig {
       for (int i = 0; i < jsonArrayenv.size(); i++) {
         DeploymentConfigEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
       };
+      if (jsonObj.get("additionalContainerPorts") != null && !jsonObj.get("additionalContainerPorts").isJsonNull()) {
+        JsonArray jsonArrayadditionalContainerPorts = jsonObj.getAsJsonArray("additionalContainerPorts");
+        if (jsonArrayadditionalContainerPorts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("additionalContainerPorts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `additionalContainerPorts` to be an array in the JSON string but got `%s`", jsonObj.get("additionalContainerPorts").toString()));
+          }
+
+          // validate the optional field `additionalContainerPorts` (array)
+          for (int i = 0; i < jsonArrayadditionalContainerPorts.size(); i++) {
+            ContainerPort.validateJsonObject(jsonArrayadditionalContainerPorts.get(i).getAsJsonObject());
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

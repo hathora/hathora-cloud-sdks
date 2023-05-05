@@ -17,6 +17,8 @@
 |**startedAt** | **OffsetDateTime** |  |  |
 |**startingAt** | **OffsetDateTime** |  |  |
 |**roomsPerProcess** | **Double** |  |  |
+|**additionalExposedPorts** | [**List&lt;ExposedPort&gt;**](ExposedPort.md) |  |  |
+|**exposedPort** | [**ExposedPort**](ExposedPort.md) |  |  [optional] |
 |**port** | **Double** |  |  |
 |**host** | **String** |  |  |
 |**region** | **Region** |  |  |

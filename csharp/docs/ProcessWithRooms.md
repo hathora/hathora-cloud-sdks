@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **StartedAt** | **DateTime?** |  | 
 **StartingAt** | **DateTime** |  | 
 **RoomsPerProcess** | **double** |  | 
+**AdditionalExposedPorts** | [**List&lt;ExposedPort&gt;**](ExposedPort.md) |  | 
+**ExposedPort** | [**ExposedPort**](ExposedPort.md) |  | [optional] 
 **Port** | **double** |  | 
 **Host** | **string** |  | 
 **Region** | **Region** |  | 

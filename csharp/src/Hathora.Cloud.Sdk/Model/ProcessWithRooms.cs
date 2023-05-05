@@ -57,6 +57,8 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="startedAt">startedAt (required).</param>
         /// <param name="startingAt">startingAt (required).</param>
         /// <param name="roomsPerProcess">roomsPerProcess (required).</param>
+        /// <param name="additionalExposedPorts">additionalExposedPorts (required).</param>
+        /// <param name="exposedPort">exposedPort.</param>
         /// <param name="port">port (required).</param>
         /// <param name="host">host (required).</param>
         /// <param name="region">region (required).</param>
@@ -65,7 +67,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="appId">appId (required).</param>
         /// <param name="rooms">rooms (required).</param>
         /// <param name="totalRooms">totalRooms (required).</param>
-        public ProcessWithRooms(double egressedBytes = default(double), DateTime? idleSince = default(DateTime?), double activeConnections = default(double), double roomSlotsAvailable = default(double), bool draining = default(bool), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime startingAt = default(DateTime), double roomsPerProcess = default(double), double port = default(double), string host = default(string), Region region = default(Region), string processId = default(string), double deploymentId = default(double), string appId = default(string), List<PickRoomExcludeKeyofRoomAllocations> rooms = default(List<PickRoomExcludeKeyofRoomAllocations>), double totalRooms = default(double))
+        public ProcessWithRooms(double egressedBytes = default(double), DateTime? idleSince = default(DateTime?), double activeConnections = default(double), double roomSlotsAvailable = default(double), bool draining = default(bool), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime startingAt = default(DateTime), double roomsPerProcess = default(double), List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), double port = default(double), string host = default(string), Region region = default(Region), string processId = default(string), double deploymentId = default(double), string appId = default(string), List<PickRoomExcludeKeyofRoomAllocations> rooms = default(List<PickRoomExcludeKeyofRoomAllocations>), double totalRooms = default(double))
         {
             this.EgressedBytes = egressedBytes;
             // to ensure "idleSince" is required (not null)
@@ -97,6 +99,12 @@ namespace Hathora.Cloud.Sdk.Model
             this.StartedAt = startedAt;
             this.StartingAt = startingAt;
             this.RoomsPerProcess = roomsPerProcess;
+            // to ensure "additionalExposedPorts" is required (not null)
+            if (additionalExposedPorts == null)
+            {
+                throw new ArgumentNullException("additionalExposedPorts is a required property for ProcessWithRooms and cannot be null");
+            }
+            this.AdditionalExposedPorts = additionalExposedPorts;
             this.Port = port;
             // to ensure "host" is required (not null)
             if (host == null)
@@ -125,6 +133,7 @@ namespace Hathora.Cloud.Sdk.Model
             }
             this.Rooms = rooms;
             this.TotalRooms = totalRooms;
+            this.ExposedPort = exposedPort;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -189,15 +198,29 @@ namespace Hathora.Cloud.Sdk.Model
         public double RoomsPerProcess { get; set; }
 
         /// <summary>
+        /// Gets or Sets AdditionalExposedPorts
+        /// </summary>
+        [DataMember(Name = "additionalExposedPorts", IsRequired = true, EmitDefaultValue = true)]
+        public List<ExposedPort> AdditionalExposedPorts { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExposedPort
+        /// </summary>
+        [DataMember(Name = "exposedPort", EmitDefaultValue = false)]
+        public ExposedPort ExposedPort { get; set; }
+
+        /// <summary>
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name = "port", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public double Port { get; set; }
 
         /// <summary>
         /// Gets or Sets Host
         /// </summary>
         [DataMember(Name = "host", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public string Host { get; set; }
 
         /// <summary>
@@ -254,6 +277,8 @@ namespace Hathora.Cloud.Sdk.Model
             sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
             sb.Append("  StartingAt: ").Append(StartingAt).Append("\n");
             sb.Append("  RoomsPerProcess: ").Append(RoomsPerProcess).Append("\n");
+            sb.Append("  AdditionalExposedPorts: ").Append(AdditionalExposedPorts).Append("\n");
+            sb.Append("  ExposedPort: ").Append(ExposedPort).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
@@ -344,6 +369,17 @@ namespace Hathora.Cloud.Sdk.Model
                     this.RoomsPerProcess.Equals(input.RoomsPerProcess)
                 ) && 
                 (
+                    this.AdditionalExposedPorts == input.AdditionalExposedPorts ||
+                    this.AdditionalExposedPorts != null &&
+                    input.AdditionalExposedPorts != null &&
+                    this.AdditionalExposedPorts.SequenceEqual(input.AdditionalExposedPorts)
+                ) && 
+                (
+                    this.ExposedPort == input.ExposedPort ||
+                    (this.ExposedPort != null &&
+                    this.ExposedPort.Equals(input.ExposedPort))
+                ) && 
+                (
                     this.Port == input.Port ||
                     this.Port.Equals(input.Port)
                 ) && 
@@ -417,6 +453,14 @@ namespace Hathora.Cloud.Sdk.Model
                     hashCode = (hashCode * 59) + this.StartingAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RoomsPerProcess.GetHashCode();
+                if (this.AdditionalExposedPorts != null)
+                {
+                    hashCode = (hashCode * 59) + this.AdditionalExposedPorts.GetHashCode();
+                }
+                if (this.ExposedPort != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExposedPort.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Port.GetHashCode();
                 if (this.Host != null)
                 {

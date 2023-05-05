@@ -13,12 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { DeploymentConfigEnvInner } from './DeploymentConfigEnvInner';
+import type { ContainerPort } from './ContainerPort';
 import {
-    DeploymentConfigEnvInnerFromJSON,
-    DeploymentConfigEnvInnerFromJSONTyped,
-    DeploymentConfigEnvInnerToJSON,
-} from './DeploymentConfigEnvInner';
+    ContainerPortFromJSON,
+    ContainerPortFromJSONTyped,
+    ContainerPortToJSON,
+} from './ContainerPort';
+import type { DeploymentEnvInner } from './DeploymentEnvInner';
+import {
+    DeploymentEnvInnerFromJSON,
+    DeploymentEnvInnerFromJSONTyped,
+    DeploymentEnvInnerToJSON,
+} from './DeploymentEnvInner';
 import type { PlanName } from './PlanName';
 import {
     PlanNameFromJSON,
@@ -40,10 +46,10 @@ import {
 export interface Deployment {
     /**
      * 
-     * @type {Array<DeploymentConfigEnvInner>}
+     * @type {Array<DeploymentEnvInner>}
      * @memberof Deployment
      */
-    env: Array<DeploymentConfigEnvInner>;
+    env: Array<DeploymentEnvInner>;
     /**
      * 
      * @type {number}
@@ -58,6 +64,18 @@ export interface Deployment {
     planName: PlanName;
     /**
      * 
+     * @type {Array<ContainerPort>}
+     * @memberof Deployment
+     */
+    additionalContainerPorts: Array<ContainerPort>;
+    /**
+     * 
+     * @type {ContainerPort}
+     * @memberof Deployment
+     */
+    defaultContainerPort: ContainerPort;
+    /**
+     * 
      * @type {TransportType}
      * @memberof Deployment
      */
@@ -66,6 +84,7 @@ export interface Deployment {
      * 
      * @type {number}
      * @memberof Deployment
+     * @deprecated
      */
     containerPort: number;
     /**
@@ -120,6 +139,8 @@ export function instanceOfDeployment(value: object): boolean {
     isInstance = isInstance && "env" in value;
     isInstance = isInstance && "roomsPerProcess" in value;
     isInstance = isInstance && "planName" in value;
+    isInstance = isInstance && "additionalContainerPorts" in value;
+    isInstance = isInstance && "defaultContainerPort" in value;
     isInstance = isInstance && "transportType" in value;
     isInstance = isInstance && "containerPort" in value;
     isInstance = isInstance && "createdAt" in value;
@@ -143,9 +164,11 @@ export function DeploymentFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'env': ((json['env'] as Array<any>).map(DeploymentConfigEnvInnerFromJSON)),
+        'env': ((json['env'] as Array<any>).map(DeploymentEnvInnerFromJSON)),
         'roomsPerProcess': json['roomsPerProcess'],
         'planName': PlanNameFromJSON(json['planName']),
+        'additionalContainerPorts': ((json['additionalContainerPorts'] as Array<any>).map(ContainerPortFromJSON)),
+        'defaultContainerPort': ContainerPortFromJSON(json['defaultContainerPort']),
         'transportType': TransportTypeFromJSON(json['transportType']),
         'containerPort': json['containerPort'],
         'createdAt': (new Date(json['createdAt'])),
@@ -167,9 +190,11 @@ export function DeploymentToJSON(value?: Deployment | null): any {
     }
     return {
         
-        'env': ((value.env as Array<any>).map(DeploymentConfigEnvInnerToJSON)),
+        'env': ((value.env as Array<any>).map(DeploymentEnvInnerToJSON)),
         'roomsPerProcess': value.roomsPerProcess,
         'planName': PlanNameToJSON(value.planName),
+        'additionalContainerPorts': ((value.additionalContainerPorts as Array<any>).map(ContainerPortToJSON)),
+        'defaultContainerPort': ContainerPortToJSON(value.defaultContainerPort),
         'transportType': TransportTypeToJSON(value.transportType),
         'containerPort': value.containerPort,
         'createdAt': (value.createdAt.toISOString()),
