@@ -23,3 +23,5 @@
 #!docs/README.md
 
 src/Hathora.Cloud.Sdk/Client/FileParameter.cs
+post-csharp-generation.patch
+post-csharp.sh
