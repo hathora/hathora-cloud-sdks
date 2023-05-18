@@ -1,2 +1,2 @@
 #!/bin/sh
-git apply ./post-csharp-generation.patch
+git apply ./csharp/post-csharp-generation.patch
