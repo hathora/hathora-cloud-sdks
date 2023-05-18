@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "generate": "CSHARP_POST_PROCESS_FILE=post-csharp.sh npx @openapitools/openapi-generator-cli generate --enable-post-process-file"
+    "generate": "CSHARP_POST_PROCESS_FILE=post-csharp.sh npx @openapitools/openapi-generator-cli generate --enable-post-process-file -i swagger.json"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0"
