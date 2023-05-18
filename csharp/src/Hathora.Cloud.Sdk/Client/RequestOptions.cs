@@ -44,6 +44,11 @@ namespace Hathora.Cloud.Sdk.Client
         public Dictionary<string, string> FormParameters { get; set; }
 
         /// <summary>
+        /// File parameters to be sent along with the request.
+        /// </summary>
+        public Multimap<string, FileParameter> FileParameters { get; set; }
+
+        /// <summary>
         /// Cookies to be sent along with the request.
         /// </summary>
         public List<Cookie> Cookies { get; set; }
@@ -62,6 +67,7 @@ namespace Hathora.Cloud.Sdk.Client
             QueryParameters = new Multimap<string, string>();
             HeaderParameters = new Multimap<string, string>();
             FormParameters = new Dictionary<string, string>();
+            FileParameters = new Multimap<string, FileParameter>();
             Cookies = new List<Cookie>();
         }
     }

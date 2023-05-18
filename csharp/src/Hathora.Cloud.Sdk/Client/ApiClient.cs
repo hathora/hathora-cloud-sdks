@@ -147,7 +147,7 @@ namespace Hathora.Cloud.Sdk.Client
                     throw new ApiException((int)request.responseCode, request.error, text);
                 }
             }
-            
+
             if (type != typeof(System.Object) && request.responseCode >= 200 && request.responseCode < 300)
             {
                 throw new UnexpectedResponseException(request, type);
@@ -222,6 +222,15 @@ namespace Hathora.Cloud.Sdk.Client
         {
         }
 
+        public static byte[] ToByteArray(Stream stream)
+        {
+            stream.Position = 0;
+            byte[] buffer = new byte[stream.Length];
+            for (int totalBytesCopied = 0; totalBytesCopied < stream.Length; )
+                totalBytesCopied += stream.Read(buffer, totalBytesCopied, Convert.ToInt32(stream.Length) - totalBytesCopied);
+            return buffer;
+        }
+
         /// <summary>
         /// Provides all logic for constructing a new UnityWebRequest.
         /// At this point, all information for querying the service is known. Here, it is simply
@@ -260,7 +269,7 @@ namespace Hathora.Cloud.Sdk.Client
             var uri = builder.GetFullUri();
             UnityWebRequest request = null;
 
-            if (contentType == "multipart/form-data")
+            if (contentType != null && contentType.Contains("multipart/form-data"))
             {
                 var formData = new List<IMultipartFormSection>();
                 foreach (var formParameter in options.FormParameters)
@@ -268,7 +277,21 @@ namespace Hathora.Cloud.Sdk.Client
                     formData.Add(new MultipartFormDataSection(formParameter.Key, formParameter.Value));
                 }
 
-                request = UnityWebRequest.Post(uri, formData);
+                if (options.FileParameters != null && options.FileParameters.Count > 0)
+                {
+                    foreach (var fileParam in options.FileParameters)
+                    {
+                        foreach (var file in fileParam.Value)
+                        {
+                            formData.Add(new MultipartFormFileSection("file", ToByteArray(file.Content), file.Name, "application/octet-stream"));
+                        }
+                    }
+                }
+
+                var boundary = UnityWebRequest.GenerateBoundary();
+                options.HeaderParameters.Remove("Content-Type");
+                options.HeaderParameters.Add("Content-Type", "multipart/form-data; boundary=" + Encoding.UTF8.GetString(boundary, 0, boundary.Length));
+                request = UnityWebRequest.Post(uri, formData, boundary);
                 request.method = method;
             }
             else if (contentType == "application/x-www-form-urlencoded")
@@ -417,7 +440,7 @@ namespace Hathora.Cloud.Sdk.Client
                 {
                     await tsc.Task;
                 }
-                
+
                 if (request.result == UnityWebRequest.Result.ConnectionError ||
                     request.result == UnityWebRequest.Result.DataProcessingError)
                 {
