@@ -55,6 +55,7 @@ docs/StartingConnectionInfo.md
 docs/TransportType.md
 git_push.sh
 src/Hathora.Cloud.Sdk.Test/Hathora.Cloud.Sdk.Test.asmdef
+src/Hathora.Cloud.Sdk.Test/Model/LoginResponseTests.cs
 src/Hathora.Cloud.Sdk/Api/AppV1Api.cs
 src/Hathora.Cloud.Sdk/Api/AuthV1Api.cs
 src/Hathora.Cloud.Sdk/Api/BuildV1Api.cs
