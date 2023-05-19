@@ -13,9 +13,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mime;
+using System.Text;
 using Hathora.Cloud.Sdk.Client;
 using Hathora.Cloud.Sdk.Model;
+using UnityEngine.Networking;
 
 namespace Hathora.Cloud.Sdk.Api
 {
@@ -1095,6 +1098,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("buildId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(buildId)); // path parameter
+            localVarRequestOptions.FileParameters.Add("file", file);
 
             // authentication (auth0) required
             // bearer authentication required
