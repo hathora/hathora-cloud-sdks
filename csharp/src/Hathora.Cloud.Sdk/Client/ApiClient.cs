@@ -147,7 +147,7 @@ namespace Hathora.Cloud.Sdk.Client
                     throw new ApiException((int)request.responseCode, request.error, text);
                 }
             }
-            
+
             if (type != typeof(System.Object) && request.responseCode >= 200 && request.responseCode < 300)
             {
                 throw new UnexpectedResponseException(request, type);
@@ -221,9 +221,7 @@ namespace Hathora.Cloud.Sdk.Client
         public void Dispose()
         {
         }
-        
-        
-        // jchu: file stream support edit
+
         public static byte[] ToByteArray(Stream stream)
         {
             stream.Position = 0;
@@ -271,7 +269,6 @@ namespace Hathora.Cloud.Sdk.Client
             var uri = builder.GetFullUri();
             UnityWebRequest request = null;
 
-            // jchu: file stream support edit
             if (contentType != null && contentType.Contains("multipart/form-data"))
             {
                 var formData = new List<IMultipartFormSection>();
@@ -279,33 +276,21 @@ namespace Hathora.Cloud.Sdk.Client
                 {
                     formData.Add(new MultipartFormDataSection(formParameter.Key, formParameter.Value));
                 }
-                
+
                 if (options.FileParameters != null && options.FileParameters.Count > 0)
                 {
                     foreach (var fileParam in options.FileParameters)
                     {
                         foreach (var file in fileParam.Value)
                         {
-                            // formData.Add(new MultipartFormFileSection("file", ToByteArray(file.Content), file.Name, "application/x-gzip"));
                             formData.Add(new MultipartFormFileSection("file", ToByteArray(file.Content), file.Name, "application/octet-stream"));
                         }
                     }
                 }
 
-                // START - Hathora custom code for properly handling file stream uploads
                 var boundary = UnityWebRequest.GenerateBoundary();
-                // We need to make sure our content-type header includes the form data boundary
                 options.HeaderParameters.Remove("Content-Type");
                 options.HeaderParameters.Add("Content-Type", "multipart/form-data; boundary=" + Encoding.UTF8.GetString(boundary, 0, boundary.Length));
-                // Console.WriteLine("~~~~~CUSTOMLOGZ~~~~~");
-                // Console.WriteLine(formData.Count);
-                // Console.WriteLine(formData[formData.Count-1].sectionName);
-                // Console.WriteLine(formData[formData.Count-1].contentType);
-                // Console.WriteLine(formData[formData.Count-1].fileName);
-                // Console.WriteLine(formData[formData.Count-1].sectionData.Length);
-                // Console.WriteLine("!----request info----!");
-                // Console.WriteLine(uri);
-                // Console.WriteLine(Encoding.UTF8.GetString(boundary, 0, boundary.Length));
                 request = UnityWebRequest.Post(uri, formData, boundary);
                 request.method = method;
             }
@@ -455,7 +440,7 @@ namespace Hathora.Cloud.Sdk.Client
                 {
                     await tsc.Task;
                 }
-                
+
                 if (request.result == UnityWebRequest.Result.ConnectionError ||
                     request.result == UnityWebRequest.Result.DataProcessingError)
                 {

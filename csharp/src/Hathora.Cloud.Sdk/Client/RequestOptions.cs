@@ -42,8 +42,7 @@ namespace Hathora.Cloud.Sdk.Client
         /// Form parameters to be sent along with the request.
         /// </summary>
         public Dictionary<string, string> FormParameters { get; set; }
-        
-        // jchu: file stream support edit
+
         /// <summary>
         /// File parameters to be sent along with the request.
         /// </summary>
@@ -68,7 +67,6 @@ namespace Hathora.Cloud.Sdk.Client
             QueryParameters = new Multimap<string, string>();
             HeaderParameters = new Multimap<string, string>();
             FormParameters = new Dictionary<string, string>();
-            // jchu: file stream support edit
             FileParameters = new Multimap<string, FileParameter>();
             Cookies = new List<Cookie>();
         }
