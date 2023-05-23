@@ -53,17 +53,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="deployment">deployment (required).</param>
         public ApplicationWithDeployment(string deletedBy = default(string), DateTime? deletedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), string orgId = default(string), ApplicationAuthConfiguration authConfiguration = default(ApplicationAuthConfiguration), string appSecret = default(string), string appId = default(string), string appName = default(string), Deployment deployment = default(Deployment))
         {
-            // to ensure "deletedBy" is required (not null)
-            if (deletedBy == null)
-            {
-                throw new ArgumentNullException("deletedBy is a required property for ApplicationWithDeployment and cannot be null");
-            }
             this.DeletedBy = deletedBy;
-            // to ensure "deletedAt" is required (not null)
-            if (deletedAt == null)
-            {
-                throw new ArgumentNullException("deletedAt is a required property for ApplicationWithDeployment and cannot be null");
-            }
             this.DeletedAt = deletedAt;
             this.CreatedAt = createdAt;
             // to ensure "createdBy" is required (not null)
@@ -102,11 +92,6 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("appName is a required property for ApplicationWithDeployment and cannot be null");
             }
             this.AppName = appName;
-            // to ensure "deployment" is required (not null)
-            if (deployment == null)
-            {
-                throw new ArgumentNullException("deployment is a required property for ApplicationWithDeployment and cannot be null");
-            }
             this.Deployment = deployment;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
@@ -114,13 +99,13 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Gets or Sets DeletedBy
         /// </summary>
-        [DataMember(Name = "deletedBy", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "deletedBy", EmitDefaultValue = true)]
         public string DeletedBy { get; set; }
 
         /// <summary>
         /// Gets or Sets DeletedAt
         /// </summary>
-        [DataMember(Name = "deletedAt", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "deletedAt", EmitDefaultValue = true)]
         public DateTime? DeletedAt { get; set; }
 
         /// <summary>
@@ -168,8 +153,8 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Deployment
         /// </summary>
-        [DataMember(Name = "deployment", IsRequired = true, EmitDefaultValue = true)]
-        public Deployment Deployment { get; set; }
+        [DataMember(Name = "deployment", EmitDefaultValue = true)]
+        public Deployment? Deployment { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
