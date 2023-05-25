@@ -77,11 +77,15 @@ namespace Hathora.Cloud.Sdk.Model
             this.Env = env;
             this.RoomsPerProcess = roomsPerProcess;
             this.PlanName = planName;
-            // to ensure "additionalContainerPorts" is required (not null)
-            if (additionalContainerPorts == null)
-            {
-                throw new ArgumentNullException("additionalContainerPorts is a required property for Deployment and cannot be null");
-            }
+            
+            #region Expected optional; manually removed --Dylan
+            // // to ensure "additionalContainerPorts" is required (not null)
+            // if (additionalContainerPorts == null)
+            // {
+            //     throw new ArgumentNullException("additionalContainerPorts is a required property for Deployment and cannot be null");
+            // }
+            #endregion // Expected optional; manually removed --Dylan
+            
             this.AdditionalContainerPorts = additionalContainerPorts;
             // to ensure "defaultContainerPort" is required (not null)
             if (defaultContainerPort == null)
@@ -126,7 +130,8 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Gets or Sets AdditionalContainerPorts
         /// </summary>
-        [DataMember(Name = "additionalContainerPorts", IsRequired = true, EmitDefaultValue = true)]
+        // [DataMember(ContainerName = "additionalContainerPorts", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "additionalContainerPorts", IsRequired = false, EmitDefaultValue = true)] // Manually changed to !IsRequired --Dylan
         public List<ContainerPort> AdditionalContainerPorts { get; set; }
 
         /// <summary>
