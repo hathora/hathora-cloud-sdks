@@ -1,6 +1,6 @@
 {
   "name": "com.hathora.hathora-sdk",
-  "version": "v1.0.7",
+  "version": "v1.0.8",
   "displayName": "Hathora Unity SDK",
   "description": "Serverless cloud hosting for multiplayer games: Seamlessly build, deploy, and scale game servers globally.",
   "unity": "2021.3",
