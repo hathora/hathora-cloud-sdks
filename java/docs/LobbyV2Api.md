@@ -19,6 +19,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -307,6 +309,8 @@ No authorization required
 
 
 
+Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -370,6 +374,8 @@ No authorization required
 
 
 
+Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -386,7 +392,7 @@ public class Example {
 
     LobbyV2Api apiInstance = new LobbyV2Api(defaultClient);
     String appId = "appId_example"; // String | 
-    Region region = Region.fromValue("Seattle"); // Region | 
+    Region region = Region.fromValue("Seattle"); // Region | Region to filter by. If omitted, active public lobbies in all regions will be returned.
     try {
       List<Lobby> result = apiInstance.listActivePublicLobbies(appId, region);
       System.out.println(result);
@@ -406,7 +412,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)| Region to filter by. If omitted, active public lobbies in all regions will be returned. | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
 
 ### Return type
 
@@ -431,6 +437,8 @@ No authorization required
 > Lobby setLobbyState(appId, roomId, setLobbyStateRequest)
 
 
+
+Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
 
 ### Example
 ```java

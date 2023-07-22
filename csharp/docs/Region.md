@@ -1,4 +1,5 @@
 # Hathora.Cloud.Sdk.Model.Region
+Available regions to request a game server.
 
 ## Properties
 

@@ -15,6 +15,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+
 ### Example
 ```java
 // Import classes:
@@ -36,7 +38,7 @@ public class Example {
 
     DeploymentV1Api apiInstance = new DeploymentV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    Double buildId = 3.4D; // Double | 
+    Integer buildId = 56; // Integer | 
     DeploymentConfig deploymentConfig = new DeploymentConfig(); // DeploymentConfig | 
     try {
       Deployment result = apiInstance.createDeployment(appId, buildId, deploymentConfig);
@@ -57,7 +59,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **buildId** | **Double**|  | |
+| **buildId** | **Integer**|  | |
 | **deploymentConfig** | [**DeploymentConfig**](DeploymentConfig.md)|  | |
 
 ### Return type
@@ -87,6 +89,8 @@ public class Example {
 
 
 
+Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -108,7 +112,7 @@ public class Example {
 
     DeploymentV1Api apiInstance = new DeploymentV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    Double deploymentId = 3.4D; // Double | 
+    Integer deploymentId = 56; // Integer | 
     try {
       Deployment result = apiInstance.getDeploymentInfo(appId, deploymentId);
       System.out.println(result);
@@ -128,7 +132,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **deploymentId** | **Double**|  | |
+| **deploymentId** | **Integer**|  | |
 
 ### Return type
 
@@ -154,6 +158,8 @@ public class Example {
 > List&lt;Deployment&gt; getDeployments(appId)
 
 
+
+Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
 
 ### Example
 ```java

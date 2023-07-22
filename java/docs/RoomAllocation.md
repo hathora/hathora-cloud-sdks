@@ -2,6 +2,7 @@
 
 # RoomAllocation
 
+Metadata on allocated instances of a room.
 
 ## Properties
 
@@ -9,8 +10,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**unscheduledAt** | **OffsetDateTime** |  |  |
 |**scheduledAt** | **OffsetDateTime** |  |  |
-|**processId** | **String** |  |  |
-|**roomAllocationId** | **String** |  |  |
+|**processId** | **String** | System generated unique identifier to a runtime instance of your game server. |  |
+|**roomAllocationId** | **String** | System generated unique identifier to an allocated instance of a room. |  |
 
 
 

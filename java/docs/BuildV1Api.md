@@ -17,6 +17,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Generate a new &#x60;buildId&#x60; for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. You need &#x60;buildId&#x60; to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+
 ### Example
 ```java
 // Import classes:
@@ -76,7 +78,6 @@ public class Example {
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **404** |  |  -  |
-| **422** |  |  -  |
 | **500** |  |  -  |
 
 <a name="deleteBuild"></a>
@@ -84,6 +85,8 @@ public class Example {
 > deleteBuild(appId, buildId)
 
 
+
+Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
 
 ### Example
 ```java
@@ -106,7 +109,7 @@ public class Example {
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    Double buildId = 3.4D; // Double | 
+    Integer buildId = 56; // Integer | 
     try {
       apiInstance.deleteBuild(appId, buildId);
     } catch (ApiException e) {
@@ -125,7 +128,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **buildId** | **Double**|  | |
+| **buildId** | **Integer**|  | |
 
 ### Return type
 
@@ -154,6 +157,8 @@ null (empty response body)
 
 
 
+Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -175,7 +180,7 @@ public class Example {
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    Double buildId = 3.4D; // Double | 
+    Integer buildId = 56; // Integer | 
     try {
       Build result = apiInstance.getBuildInfo(appId, buildId);
       System.out.println(result);
@@ -195,7 +200,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **buildId** | **Double**|  | |
+| **buildId** | **Integer**|  | |
 
 ### Return type
 
@@ -221,6 +226,8 @@ public class Example {
 > List&lt;Build&gt; getBuilds(appId)
 
 
+
+Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
 
 ### Example
 ```java
@@ -288,6 +295,8 @@ public class Example {
 
 
 
+Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Pass in &#x60;buildId&#x60; generated from Create Build.
+
 ### Example
 ```java
 // Import classes:
@@ -309,7 +318,7 @@ public class Example {
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    Double buildId = 3.4D; // Double | 
+    Integer buildId = 56; // Integer | 
     File _file = new File("/path/to/file"); // File | 
     try {
       byte[] result = apiInstance.runBuild(appId, buildId, _file);
@@ -330,7 +339,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **buildId** | **Double**|  | |
+| **buildId** | **Integer**|  | |
 | **_file** | **File**|  | |
 
 ### Return type

@@ -13,6 +13,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -35,10 +37,10 @@ public class Example {
     MetricsV1Api apiInstance = new MetricsV1Api(defaultClient);
     String appId = "appId_example"; // String | 
     String processId = "processId_example"; // String | 
-    List<MetricName> metrics = Arrays.asList(); // List<MetricName> | 
-    Integer end = 56; // Integer | 
-    Integer start = 56; // Integer | 
-    Integer step = 60; // Integer | 
+    List<MetricName> metrics = Arrays.asList(); // List<MetricName> | Available metrics to query over time.
+    Double end = 3.4D; // Double | Unix timestamp. Default is current time.
+    Double start = 3.4D; // Double | Unix timestamp. Default is -1 hour from `end`.
+    Integer step = 56; // Integer | 
     try {
       RecordPartialMetricNameMetricValueArray result = apiInstance.getMetrics(appId, processId, metrics, end, start, step);
       System.out.println(result);
@@ -59,10 +61,10 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
 | **processId** | **String**|  | |
-| **metrics** | [**List&lt;MetricName&gt;**](MetricName.md)|  | [optional] |
-| **end** | **Integer**|  | [optional] |
-| **start** | **Integer**|  | [optional] |
-| **step** | **Integer**|  | [optional] [default to 60] |
+| **metrics** | [**List&lt;MetricName&gt;**](MetricName.md)| Available metrics to query over time. | [optional] |
+| **end** | **Double**| Unix timestamp. Default is current time. | [optional] |
+| **start** | **Double**| Unix timestamp. Default is -1 hour from &#x60;end&#x60;. | [optional] |
+| **step** | **Integer**|  | [optional] |
 
 ### Return type
 

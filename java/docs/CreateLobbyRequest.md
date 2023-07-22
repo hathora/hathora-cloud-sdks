@@ -7,19 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**visibility** | [**VisibilityEnum**](#VisibilityEnum) |  |  |
-|**initialConfig** | **Object** |  |  |
+|**visibility** | **LobbyVisibility** |  |  |
+|**initialConfig** | **Object** | User input to initialize the game state. Object must be smaller than 64KB. |  |
 |**region** | **Region** |  |  |
-
-
-
-## Enum: VisibilityEnum
-
-| Name | Value |
-|---- | -----|
-| PUBLIC | &quot;public&quot; |
-| PRIVATE | &quot;private&quot; |
-| LOCAL | &quot;local&quot; |
 
 
 

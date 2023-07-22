@@ -2,6 +2,7 @@
 
 # ContainerPort
 
+A container port object represents the transport configruations for how your server will listen.
 
 ## Properties
 
@@ -9,7 +10,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**transportType** | **TransportType** |  |  |
 |**port** | **Integer** |  |  |
-|**name** | **String** |  |  |
+|**name** | **String** | Readable name for the port. |  |
 
 
 

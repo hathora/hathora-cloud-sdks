@@ -1,4 +1,5 @@
 # Hathora.Cloud.Sdk.Model.TransportType
+Transport type specifies the underlying communication protocol to the exposed port.
 
 ## Properties
 

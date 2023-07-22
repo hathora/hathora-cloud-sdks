@@ -13,6 +13,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Returns an array of all regions with a host and port that a client can directly ping.
+
 ### Example
 ```java
 // Import classes:

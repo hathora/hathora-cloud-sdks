@@ -1,4 +1,5 @@
 # Hathora.Cloud.Sdk.Model.MetricName
+Available metrics to query over time.
 
 ## Properties
 

@@ -5,8 +5,8 @@ From T, pick a set of properties whose keys are in the union K
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppId** | **string** |  | 
-**RoomId** | **string** |  | 
+**AppId** | **string** | System generated unique identifier for an application. | 
+**RoomId** | **string** | Unique identifier to a game session or match. Use either a system generated ID or pass in your own. | 
 **Status** | **RoomStatus** |  | 
 **CurrentAllocation** | [**RoomAllocation**](RoomAllocation.md) |  | 
 

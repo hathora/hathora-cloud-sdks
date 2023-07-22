@@ -8,9 +8,11 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="getmetrics"></a>
 # **GetMetrics**
-> RecordPartialMetricNameMetricValueArray GetMetrics (string appId, string processId, List<MetricName> metrics = null, int? end = null, int? start = null, int? step = null)
+> RecordPartialMetricNameMetricValueArray GetMetrics (string appId, string processId, List<MetricName> metrics = null, double? end = null, double? start = null, int? step = null)
 
 
+
+Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 
 ### Example
 ```csharp
@@ -34,10 +36,10 @@ namespace Example
             var apiInstance = new MetricsV1Api(config);
             var appId = "appId_example";  // string | 
             var processId = "processId_example";  // string | 
-            var metrics = new List<MetricName>(); // List<MetricName> |  (optional) 
-            var end = 56;  // int? |  (optional) 
-            var start = 56;  // int? |  (optional) 
-            var step = 60;  // int? |  (optional)  (default to 60)
+            var metrics = new List<MetricName>(); // List<MetricName> | Available metrics to query over time. (optional) 
+            var end = 1.2D;  // double? | Unix timestamp. Default is current time. (optional) 
+            var start = 1.2D;  // double? | Unix timestamp. Default is -1 hour from `end`. (optional) 
+            var step = 56;  // int? |  (optional) 
 
             try
             {
@@ -80,10 +82,10 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
 | **processId** | **string** |  |  |
-| **metrics** | [**List&lt;MetricName&gt;**](MetricName.md) |  | [optional]  |
-| **end** | **int?** |  | [optional]  |
-| **start** | **int?** |  | [optional]  |
-| **step** | **int?** |  | [optional] [default to 60] |
+| **metrics** | [**List&lt;MetricName&gt;**](MetricName.md) | Available metrics to query over time. | [optional]  |
+| **end** | **double?** | Unix timestamp. Default is current time. | [optional]  |
+| **start** | **double?** | Unix timestamp. Default is -1 hour from &#x60;end&#x60;. | [optional]  |
+| **step** | **int?** |  | [optional]  |
 
 ### Return type
 

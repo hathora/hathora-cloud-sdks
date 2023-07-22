@@ -1,4 +1,5 @@
 # Hathora.Cloud.Sdk.Model.ExposedPort
+Connection information to an exposed port on an active process.
 
 ## Properties
 

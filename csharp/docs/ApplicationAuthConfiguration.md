@@ -1,4 +1,5 @@
 # Hathora.Cloud.Sdk.Model.ApplicationAuthConfiguration
+Used to authenticate player requests. Use your own authentication or Hathora's Auth Client.
 
 ## Properties
 

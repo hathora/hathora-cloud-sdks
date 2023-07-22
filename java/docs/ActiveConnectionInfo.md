@@ -11,7 +11,7 @@
 |**transportType** | **TransportType** |  |  |
 |**port** | **Double** |  |  |
 |**host** | **String** |  |  |
-|**roomId** | **String** |  |  |
+|**roomId** | **String** | Unique identifier to a game session or match. Use either a system generated ID or pass in your own. |  |
 
 
 

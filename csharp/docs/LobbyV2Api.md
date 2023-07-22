@@ -18,6 +18,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -414,6 +416,8 @@ No authorization required
 
 
 
+Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -504,6 +508,8 @@ No authorization required
 
 
 
+Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -522,7 +528,7 @@ namespace Example
             config.BasePath = "https://api.hathora.dev";
             var apiInstance = new LobbyV2Api(config);
             var appId = "appId_example";  // string | 
-            var region = (Region) "Seattle";  // Region? |  (optional) 
+            var region = (Region) "Seattle";  // Region? | Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional) 
 
             try
             {
@@ -564,7 +570,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **region** | **Region?** |  | [optional]  |
+| **region** | **Region?** | Region to filter by. If omitted, active public lobbies in all regions will be returned. | [optional]  |
 
 ### Return type
 
@@ -592,6 +598,8 @@ No authorization required
 > Lobby SetLobbyState (string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest)
 
 
+
+Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
 
 ### Example
 ```csharp

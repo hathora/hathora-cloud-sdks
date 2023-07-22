@@ -1,14 +1,45 @@
 openapi: 3.0.0
 info:
   contact: {}
+  description: Welcome to the Hathora Cloud API documentation! Learn how to use the
+    Hathora Cloud APIs to build and scale your game servers globally.
   title: Hathora Cloud API
   version: 0.0.1
 servers:
 - url: https://api.hathora.dev
 - url: /
+tags:
+- description: "Operations that allow you manage your [applications](https://hathora.dev/docs/concepts/hathora-entities#application)."
+  name: AppV1
+- description: "Operations that allow you to configure authentication for your [applications](https://hathora.dev/docs/concepts/hathora-entities#application)."
+  name: AuthV1
+- description: "Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
+  name: BuildV1
+- description: "Operations that allow you configure and manage an application's [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
+    \ at runtime."
+  name: DeploymentV1
+- description: Service that allows clients to directly ping all Hathora regions to
+    get latency information
+  name: DiscoveryV1
+- description: "Operations to create and manage [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby)."
+  name: LobbyV2
+- description: "Operations to get logs by [applications](https://hathora.dev/docs/concepts/hathora-entities#application),\
+    \ [processes](https://hathora.dev/docs/concepts/hathora-entities#process), and\
+    \ [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment).\
+    \ We store 20GB of logs data."
+  name: LogV1
+- description: "Operations to get metrics by [process](https://hathora.dev/docs/concepts/hathora-entities#process).\
+    \ We store 72 hours of metrics data."
+  name: MetricsV1
+- description: "Operations to get data on active and stopped [processes](https://hathora.dev/docs/concepts/hathora-entities#process)."
+  name: ProcessesV1
+- description: "Operations to create, manage, and connect to [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)."
+  name: RoomV2
 paths:
   /apps/v1/list:
     get:
+      description: "Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ An application is uniquely identified by an `appId`."
       operationId: GetApps
       parameters: []
       responses:
@@ -26,6 +57,7 @@ paths:
       - AppV1
   /apps/v1/create:
     post:
+      description: "Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application)."
       operationId: CreateApp
       parameters: []
       requestBody:
@@ -59,6 +91,8 @@ paths:
       - AppV1
   /apps/v1/update/{appId}:
     post:
+      description: "Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`."
       operationId: UpdateApp
       parameters:
       - explode: false
@@ -99,6 +133,8 @@ paths:
       - AppV1
   /apps/v1/info/{appId}:
     get:
+      description: "Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`."
       operationId: GetAppInfo
       parameters:
       - explode: false
@@ -127,6 +163,8 @@ paths:
       - AppV1
   /apps/v1/delete/{appId}:
     delete:
+      description: "Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`. Your organization will lose access to this application."
       operationId: DeleteApp
       parameters:
       - explode: false
@@ -254,8 +292,110 @@ paths:
       security: []
       tags:
       - AuthV1
+  /billing/v1/balance:
+    get:
+      operationId: GetBalance
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: double
+                type: number
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - BillingV1
+  /billing/v1/paymentmethod:
+    get:
+      operationId: GetPaymentMethod
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethod'
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - BillingV1
+  /billing/v1/customerportalurl:
+    post:
+      operationId: InitStripeCustomerPortalUrl
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerPortalUrl'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - BillingV1
+  /billing/v1/invoices:
+    get:
+      operationId: GetInvoices
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Invoice'
+                type: array
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security:
+      - auth0: []
+      tags:
+      - BillingV1
   /builds/v1/{appId}/list:
     get:
+      description: "Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
+        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`."
       operationId: GetBuilds
       parameters:
       - explode: false
@@ -286,6 +426,8 @@ paths:
       - BuildV1
   /builds/v1/{appId}/info/{buildId}:
     get:
+      description: "Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
+        \ using `appId` and `buildId`."
       operationId: GetBuildInfo
       parameters:
       - explode: false
@@ -321,6 +463,8 @@ paths:
       - BuildV1
   /builds/v1/{appId}/create:
     post:
+      description: "Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
       operationId: CreateBuild
       parameters:
       - explode: false
@@ -343,12 +487,6 @@ paths:
               schema:
                 type: string
           description: ""
-        "422":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: ""
         "500":
           content:
             application/json:
@@ -361,6 +499,9 @@ paths:
       - BuildV1
   /builds/v1/{appId}/run/{buildId}:
     post:
+      description: "Provide a tarball that will generate a container image for an\
+        \ existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`. Pass in `buildId` generated from Create Build."
       operationId: RunBuild
       parameters:
       - explode: false
@@ -409,6 +550,9 @@ paths:
       - BuildV1
   /builds/v1/{appId}/delete/{buildId}:
     delete:
+      description: "Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
+        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId` and `buildId`."
       operationId: DeleteBuild
       parameters:
       - explode: false
@@ -452,6 +596,9 @@ paths:
       - BuildV1
   /deployments/v1/{appId}/list:
     get:
+      description: "Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
+        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`."
       operationId: GetDeployments
       parameters:
       - explode: false
@@ -482,6 +629,8 @@ paths:
       - DeploymentV1
   /deployments/v1/{appId}/info/{deploymentId}:
     get:
+      description: "Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
+        \ using `appId`."
       operationId: GetDeploymentInfo
       parameters:
       - explode: false
@@ -517,6 +666,9 @@ paths:
       - DeploymentV1
   /deployments/v1/{appId}/create/{buildId}:
     post:
+      description: "Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
+        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ and [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
       operationId: CreateDeployment
       parameters:
       - explode: false
@@ -570,6 +722,8 @@ paths:
       - DeploymentV1
   /discovery/v1/ping:
     get:
+      description: Returns an array of all regions with a host and port that a client
+        can directly ping.
       operationId: GetPingServiceEndpoints
       parameters: []
       responses:
@@ -1036,6 +1190,9 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/create:
     post:
+      description: "Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
+        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`."
       operationId: CreateLobby
       parameters:
       - explode: false
@@ -1113,6 +1270,9 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/list/public:
     get:
+      description: "Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
+        \ for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`. Filter the array by optionally passing in a `region`."
       operationId: ListActivePublicLobbies
       parameters:
       - explode: false
@@ -1122,7 +1282,9 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
-      - explode: true
+      - description: "Region to filter by. If omitted, active public lobbies in all\
+          \ regions will be returned."
+        explode: true
         in: query
         name: region
         required: false
@@ -1143,6 +1305,8 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/info/{roomId}:
     get:
+      description: "Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
+        \ using `appId` and `roomId`."
       operationId: GetLobbyInfo
       parameters:
       - explode: false
@@ -1177,6 +1341,9 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/setState/{roomId}:
     post:
+      description: "Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
+        \ using `appId` and `roomId`. State is intended to be set by the server and\
+        \ must be smaller than 1MB."
       operationId: SetLobbyState
       parameters:
       - explode: false
@@ -1224,6 +1391,8 @@ paths:
       - LobbyV2
   /logs/v1/{appId}/all:
     get:
+      description: "Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`."
       operationId: GetLogsForApp
       parameters:
       - explode: false
@@ -1238,8 +1407,7 @@ paths:
         name: follow
         required: false
         schema:
-          default: false
-          type: boolean
+          $ref: '#/components/schemas/LogsFollow'
         style: form
       - explode: true
         in: query
@@ -1275,6 +1443,8 @@ paths:
       - LogV1
   /logs/v1/{appId}/process/{processId}:
     get:
+      description: "Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ using `appId` and `processId`."
       operationId: GetLogsForProcess
       parameters:
       - explode: false
@@ -1296,8 +1466,7 @@ paths:
         name: follow
         required: false
         schema:
-          default: false
-          type: boolean
+          $ref: '#/components/schemas/LogsFollow'
         style: form
       - explode: true
         in: query
@@ -1326,6 +1495,8 @@ paths:
       - LogV1
   /logs/v1/{appId}/deployment/{deploymentId}:
     get:
+      description: "Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
+        \ using `appId` and `deploymentId`."
       operationId: GetLogsForDeployment
       parameters:
       - explode: false
@@ -1347,8 +1518,7 @@ paths:
         name: follow
         required: false
         schema:
-          default: false
-          type: boolean
+          $ref: '#/components/schemas/LogsFollow'
         style: form
       - explode: true
         in: query
@@ -1375,8 +1545,36 @@ paths:
       - auth0: []
       tags:
       - LogV1
+  /management/v1/sendverificationemail:
+    post:
+      operationId: SendVerificationEmail
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerificationEmailRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationEmailResponse'
+          description: Ok
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+      security: []
+      tags:
+      - ManagementV1
   /metrics/v1/{appId}/process/{processId}:
     get:
+      description: "Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ using `appId` and `processId`."
       operationId: GetMetrics
       parameters:
       - explode: false
@@ -1393,7 +1591,8 @@ paths:
         schema:
           $ref: '#/components/schemas/ProcessId'
         style: simple
-      - explode: true
+      - description: Available metrics to query over time.
+        explode: true
         in: query
         name: metrics
         required: false
@@ -1406,30 +1605,30 @@ paths:
             $ref: '#/components/schemas/MetricName'
           type: array
         style: form
-      - explode: true
+      - description: Unix timestamp. Default is current time.
+        explode: true
         in: query
         name: end
         required: false
         schema:
-          format: int32
-          type: integer
+          format: double
+          type: number
         style: form
-      - explode: true
+      - description: Unix timestamp. Default is -1 hour from `end`.
+        explode: true
         in: query
         name: start
         required: false
         schema:
-          format: int32
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
         name: step
         required: false
         schema:
-          default: 60
-          format: int32
-          type: integer
+          $ref: '#/components/schemas/MetricsStep'
         style: form
       responses:
         "200":
@@ -1456,6 +1655,9 @@ paths:
       - MetricsV1
   /processes/v1/{appId}/list/running:
     get:
+      description: "Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`. Filter the array by optionally passing in a region."
       operationId: GetRunningProcesses
       parameters:
       - explode: false
@@ -1493,6 +1695,9 @@ paths:
       - ProcessesV1
   /processes/v1/{appId}/list/stopped:
     get:
+      description: "Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId`. Filter the array by optionally passing in a region."
       operationId: GetStoppedProcesses
       parameters:
       - explode: false
@@ -1530,6 +1735,8 @@ paths:
       - ProcessesV1
   /processes/v1/{appId}/info/{processId}:
     get:
+      description: "Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ using `appId` and `processId`."
       operationId: GetProcessInfo
       parameters:
       - explode: false
@@ -1596,6 +1803,12 @@ paths:
                 $ref: '#/components/schemas/RoomId'
           description: ""
         "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
+        "403":
           content:
             application/json:
               schema:
@@ -1854,6 +2067,9 @@ paths:
       - RoomV1
   /rooms/v2/{appId}/create:
     post:
+      description: "Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+        \ using `appId` and `region`."
       operationId: CreateRoom
       parameters:
       - explode: false
@@ -1889,6 +2105,12 @@ paths:
               schema:
                 type: string
           description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "404":
           content:
             application/json:
@@ -1907,6 +2129,8 @@ paths:
       - RoomV2
   /rooms/v2/{appId}/info/{roomId}:
     get:
+      description: "Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ using `appId` and `roomId`."
       operationId: GetRoomInfo
       parameters:
       - explode: false
@@ -1942,6 +2166,9 @@ paths:
       - RoomV2
   /rooms/v2/{appId}/list/{processId}/active:
     get:
+      description: "Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ using `appId` and `processId`."
       operationId: GetActiveRoomsForProcess
       parameters:
       - explode: false
@@ -1979,6 +2206,9 @@ paths:
       - RoomV2
   /rooms/v2/{appId}/list/{processId}/inactive:
     get:
+      description: "Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ using `appId` and `processId`."
       operationId: GetInactiveRoomsForProcess
       parameters:
       - explode: false
@@ -2016,6 +2246,8 @@ paths:
       - RoomV2
   /rooms/v2/{appId}/destroy/{roomId}:
     post:
+      description: "Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ using `appId` and `roomId`. All associated metadata is deleted."
       operationId: DestroyRoom
       parameters:
       - explode: false
@@ -2053,6 +2285,9 @@ paths:
       - RoomV2
   /rooms/v2/{appId}/suspend/{roomId}:
     post:
+      description: "Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ using `appId` and `roomId`. The room is unallocated from the process but\
+        \ can be rescheduled later using the same `roomId`."
       operationId: SuspendRoom
       parameters:
       - explode: false
@@ -2090,6 +2325,8 @@ paths:
       - RoomV2
   /rooms/v2/{appId}/connectioninfo/{roomId}:
     get:
+      description: "Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ using `appId` and `roomId`. Clients can call this endpoint without authentication."
       operationId: GetConnectionInfo
       parameters:
       - explode: false
@@ -2141,22 +2378,35 @@ components:
   requestBodies: {}
   responses: {}
   schemas:
+    AppName:
+      description: Readable name for an application. Must be unique within an organization.
+      example: minecraft
+      maxLength: 32
+      pattern: "^[a-z0-9-]+$"
+      type: string
+    AppId:
+      description: System generated unique identifier for an application.
+      example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+      type: string
     Record_string.never_:
       description: Construct a type with a set of properties K of type T
       properties: {}
       type: object
     OrgId:
+      description: System generated unique identifier for an organization.
+      example: google-oauth2|107030234048588177467
       type: string
     Application:
+      description: An application object is the top level namespace for the game server.
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         deletedAt: 2000-01-23T04:56:07.000+00:00
-        createdBy: createdBy
-        appName: appName
-        appId: appId
-        appSecret: appSecret
-        deletedBy: deletedBy
-        orgId: orgId
+        createdBy: dev@hathora.dev
+        appName: minecraft
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
+        appSecret: secret-6f706e83-0ec1-437a-9a46-7d4281eb2f39
+        deletedBy: dev@hathora.dev
+        orgId: google-oauth2|107030234048588177467
         authConfiguration:
           nickname: "{}"
           anonymous: "{}"
@@ -2164,26 +2414,43 @@ components:
             clientId: clientId
       properties:
         deletedBy:
+          description: Email address for the user that deleted the application.
+          example: dev@hathora.dev
           nullable: true
           type: string
         deletedAt:
+          description: When the application was deleted.
           format: date-time
           nullable: true
           type: string
         createdAt:
+          description: When the application was created.
           format: date-time
           type: string
         createdBy:
+          description: Email address for the user that deleted the application.
+          example: dev@hathora.dev
           type: string
         orgId:
+          description: System generated unique identifier for an organization.
+          example: google-oauth2|107030234048588177467
           type: string
         authConfiguration:
           $ref: '#/components/schemas/Application_authConfiguration'
         appSecret:
+          description: Secret that is used for identity and access management.
+          example: secret-6f706e83-0ec1-437a-9a46-7d4281eb2f39
           type: string
         appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
         appName:
+          description: Readable name for an application. Must be unique within an
+            organization.
+          example: minecraft
+          maxLength: 32
+          pattern: "^[a-z0-9-]+$"
           type: string
       required:
       - appId
@@ -2196,37 +2463,41 @@ components:
       - deletedBy
       - orgId
       type: object
-    AppId:
-      type: string
-    BuildId:
-      format: double
-      type: number
     DeploymentId:
-      format: double
-      type: number
+      description: System generated id for a deployment. Increments by 1.
+      example: 1
+      format: int32
+      type: integer
     TransportType:
+      description: Transport type specifies the underlying communication protocol
+        to the exposed port.
       enum:
       - tcp
       - udp
       - tls
       type: string
     ContainerPort:
+      description: A container port object represents the transport configruations
+        for how your server will listen.
       example:
-        port: 39501
-        name: name
+        port: 8000
+        name: default
         transportType: null
       properties:
         transportType:
           $ref: '#/components/schemas/TransportType'
         port:
+          example: 8000
           format: int32
           maximum: 65535
           minimum: 1
           type: integer
         name:
+          description: Readable name for the port.
+          example: default
           maxLength: 100
           minLength: 1
-          pattern: "^[a-zA-Z0-9_-]*$"
+          pattern: "^[a-z][a-z0-9-]*$"
           type: string
       required:
       - name
@@ -2234,81 +2505,138 @@ components:
       - transportType
       type: object
     PlanName:
+      description: |-
+        A plan defines how much CPU and memory is required to run an instance of your game server.
+
+        `tiny`: shared core, 1gb memory
+
+        `small`: 1 core, 2gb memory
+
+        `medium`: 2 core, 4gb memory
+
+        `large`: 4 core, 8gb memory
       enum:
       - tiny
       - small
       - medium
       - large
+      example: tiny
       type: string
+    NumRoomsPerProcess:
+      description: "Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ can be scheduled in a process."
+      example: 3
+      format: int32
+      maxLength: 10000
+      minimum: 1
+      type: integer
     Deployment:
+      description: Deployment is a versioned configuration for a build that describes
+        runtime behavior.
       example:
-        requestedCPU: 5.637376656633329
+        requestedCPU: 0.5
         defaultContainerPort:
-          port: 39501
-          name: name
+          port: 8000
+          name: default
           transportType: null
-        roomsPerProcess: 0.8008281904610115
-        planName: null
-        buildId: 7.061401241503109
+        roomsPerProcess: 3
+        planName: tiny
+        buildId: 1
         env:
-        - name: name
-          value: value
-        - name: name
-          value: value
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
         createdAt: 2000-01-23T04:56:07.000+00:00
         additionalContainerPorts:
-        - port: 39501
-          name: name
-          transportType: null
-        - port: 39501
-          name: name
-          transportType: null
-        createdBy: createdBy
-        deploymentId: 2.3021358869347655
-        appId: appId
-        containerPort: 1.4658129805029452
-        transportType: null
-        requestedMemoryMB: 5.962133916683182
+          transportType: tcp
+          port: 4000
+          name: debug
+        createdBy: dev@hathora.dev
+        deploymentId: 1
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
+        containerPort: 0.8008281904610115
+        transportType: tcp
+        requestedMemoryMB: 1024
       properties:
         env:
+          description: The environment variable that our process will have access
+            to at runtime.
           items:
             $ref: '#/components/schemas/Deployment_env_inner'
+          maxItems: 100
           type: array
         roomsPerProcess:
-          format: double
-          type: number
+          description: "Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
+            \ can be scheduled in a process."
+          example: 3
+          format: int32
+          maxLength: 10000
+          minimum: 1
+          type: integer
         planName:
           $ref: '#/components/schemas/PlanName'
         additionalContainerPorts:
+          description: Additional ports your server listens on.
+          example:
+            transportType: tcp
+            port: 4000
+            name: debug
           items:
             $ref: '#/components/schemas/ContainerPort'
+          maxItems: 2
           type: array
         defaultContainerPort:
           $ref: '#/components/schemas/ContainerPort'
         transportType:
-          $ref: '#/components/schemas/TransportType'
+          deprecated: true
+          enum:
+          - tcp
+          - udp
+          - tls
+          type: string
         containerPort:
           deprecated: true
           format: double
           type: number
         createdAt:
+          description: When the deployment was created.
           format: date-time
           type: string
         createdBy:
+          description: Email address for the user that created the deployment.
+          example: dev@hathora.dev
           type: string
         requestedMemoryMB:
+          description: The amount of memory allocated to your process.
+          example: 1024
           format: double
           type: number
         requestedCPU:
+          description: The number of cores allocated to your process.
+          example: 0.5
           format: double
           type: number
         deploymentId:
-          format: double
-          type: number
+          description: System generated id for a deployment. Increments by 1.
+          example: 1
+          format: int32
+          type: integer
         buildId:
-          format: double
-          type: number
+          description: System generated id for a build associated with this deployment.
+            Increments by 1.
+          example: 1
+          format: int32
+          type: integer
         appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
       required:
       - additionalContainerPorts
@@ -2332,7 +2660,7 @@ components:
       - $ref: '#/components/schemas/ApplicationWithDeployment_allOf'
     AppConfig:
       example:
-        appName: appName
+        appName: minecraft
         authConfiguration:
           nickname: "{}"
           anonymous: "{}"
@@ -2340,8 +2668,11 @@ components:
             clientId: clientId
       properties:
         authConfiguration:
-          $ref: '#/components/schemas/Application_authConfiguration'
+          $ref: '#/components/schemas/AppConfig_authConfiguration'
         appName:
+          description: Readable name for an application. Must be unique within an
+            organization.
+          example: minecraft
           maxLength: 32
           pattern: "^[a-z0-9-]+$"
           type: string
@@ -2376,7 +2707,127 @@ components:
       required:
       - idToken
       type: object
+    CardBrand:
+      enum:
+      - amex
+      - cartes_bancaires
+      - diners
+      - discover
+      - jcb
+      - mastercard
+      - visa
+      - unionpay
+      - card
+      type: string
+    CardPaymentMethod:
+      example:
+        last4: last4
+        brand: null
+      properties:
+        last4:
+          type: string
+        brand:
+          $ref: '#/components/schemas/CardBrand'
+      required:
+      - brand
+      - last4
+      type: object
+    AchPaymentMethod:
+      example:
+        last4: last4
+        bankName: bankName
+      properties:
+        last4:
+          type: string
+        bankName:
+          type: string
+      type: object
+    LinkPaymentMethod:
+      example:
+        email: email
+      properties:
+        email:
+          type: string
+      type: object
+    Partial__card-CardPaymentMethod--ach-AchPaymentMethod--link-LinkPaymentMethod--__:
+      description: Make all properties in T optional
+      example:
+        ach:
+          last4: last4
+          bankName: bankName
+        link:
+          email: email
+        card:
+          last4: last4
+          brand: null
+      properties:
+        card:
+          $ref: '#/components/schemas/CardPaymentMethod'
+        ach:
+          $ref: '#/components/schemas/AchPaymentMethod'
+        link:
+          $ref: '#/components/schemas/LinkPaymentMethod'
+      type: object
+    PaymentMethod:
+      $ref: '#/components/schemas/Partial__card-CardPaymentMethod--ach-AchPaymentMethod--link-LinkPaymentMethod--__'
+    CustomerPortalUrl:
+      example:
+        returnUrl: returnUrl
+      properties:
+        returnUrl:
+          type: string
+      required:
+      - returnUrl
+      type: object
+    Invoice:
+      description: Billing types
+      example:
+        amountDue: 0.8008281904610115
+        pdfUrl: pdfUrl
+        month: 1.4658129805029452
+        year: 6.027456183070403
+        dueDate: 2000-01-23T04:56:07.000+00:00
+        id: id
+        status: pending
+      properties:
+        status:
+          enum:
+          - pending
+          - paid
+          - overdue
+          type: string
+        amountDue:
+          format: double
+          type: number
+        pdfUrl:
+          type: string
+        dueDate:
+          format: date-time
+          type: string
+        year:
+          format: double
+          type: number
+        month:
+          format: double
+          type: number
+        id:
+          type: string
+      required:
+      - amountDue
+      - dueDate
+      - id
+      - month
+      - pdfUrl
+      - status
+      - year
+      type: object
+    BuildId:
+      description: System generated id for a build. Increments by 1.
+      example: 1
+      format: int32
+      type: integer
     Region:
+      description: Available regions to request a game server.
       enum:
       - Seattle
       - Washington_DC
@@ -2390,6 +2841,8 @@ components:
       - Sao_Paulo
       type: string
     Build:
+      description: Build is a versioned artifact for a game server's container image
+        and its data.
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         deletedAt: 2000-01-23T04:56:07.000+00:00
@@ -2398,22 +2851,34 @@ components:
           containerTag: containerTag
         - region: null
           containerTag: containerTag
-        createdBy: createdBy
-        appId: appId
+        createdBy: dev@hathora.dev
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         startedAt: 2000-01-23T04:56:07.000+00:00
-        buildId: 6.027456183070403
+        buildId: 1
         imageSize: 0.8008281904610115
         status: created
         finishedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         regionalContainerTags:
+          description: An alias for the container image in our regional registries.
           items:
             $ref: '#/components/schemas/Build_regionalContainerTags_inner'
           type: array
         imageSize:
+          description: Image size in MB.
           format: double
           type: number
         status:
+          description: |-
+            Status of creating a build.
+
+            `created`: a new `buildId` was generated
+
+            `running`: the container image is being built
+
+            `succeeded`: the container image was successfully built and stored in our registry
+
+            `failed`: there was an issue creating and storing the container image in our container registry
           enum:
           - created
           - running
@@ -2421,26 +2886,36 @@ components:
           - failed
           type: string
         deletedAt:
+          description: When the container image was deleted.
           format: date-time
           nullable: true
           type: string
         finishedAt:
+          description: When the container image finished being built.
           format: date-time
           nullable: true
           type: string
         startedAt:
+          description: When the container image starts getting built.
           format: date-time
           nullable: true
           type: string
         createdAt:
+          description: When a new `buildId` is generated.
           format: date-time
           type: string
         createdBy:
+          description: Email address for the user that created the build.
+          example: dev@hathora.dev
           type: string
         buildId:
-          format: double
-          type: number
+          description: System generated id for a build. Increments by 1.
+          example: 1
+          format: int32
+          type: integer
         appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
       required:
       - appId
@@ -2455,43 +2930,51 @@ components:
       - status
       type: object
     DeploymentConfig:
+      description: User specified deployment configuration for your application at
+        runtime.
       example:
-        roomsPerProcess: 801
+        roomsPerProcess: 3
         additionalContainerPorts:
-        - port: 39501
-          name: name
+        - port: 8000
+          name: default
           transportType: null
-        - port: 39501
-          name: name
+        - port: 8000
+          name: default
           transportType: null
-        planName: null
-        containerPort: 39501
+        planName: tiny
+        containerPort: 4000
         transportType: null
         env:
-        - name: name
-          value: value
-        - name: name
-          value: value
-        - name: name
-          value: value
-        - name: name
-          value: value
-        - name: name
-          value: value
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
+        - name: EULA
+          value: "TRUE"
       properties:
         env:
+          description: The environment variable that our process will have access
+            to at runtime.
           items:
-            $ref: '#/components/schemas/DeploymentConfig_env_inner'
+            $ref: '#/components/schemas/Deployment_env_inner'
           maxItems: 100
           type: array
         roomsPerProcess:
+          description: "Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
+            \ can be scheduled in a process."
+          example: 3
           format: int32
-          maximum: 10000
+          maxLength: 10000
           minimum: 1
           type: integer
         planName:
           $ref: '#/components/schemas/PlanName'
         additionalContainerPorts:
+          description: Additional ports your server listens on.
           items:
             $ref: '#/components/schemas/ContainerPort'
           maxItems: 2
@@ -2499,6 +2982,8 @@ components:
         transportType:
           $ref: '#/components/schemas/TransportType'
         containerPort:
+          description: Default port the server listens on.
+          example: 4000
           format: int32
           maximum: 65535
           minimum: 1
@@ -2515,49 +3000,84 @@ components:
         $ref: '#/components/schemas/DiscoveryResponse_inner'
       type: array
     RoomId:
+      description: Unique identifier to a game session or match. Use either a system
+        generated ID or pass in your own.
+      example: 2swovpy1fnunu
       maxLength: 100
       minLength: 1
       pattern: "^[a-zA-Z0-9_-]*$"
       type: string
+    LobbyVisibility:
+      description: |-
+        Types of lobbies a player can create.
+
+        `private`: the player who created the room must share the roomId with their friends
+
+        `public`: visible in the public lobby list, anyone can join
+
+        `local`: for testing with a server running locally
+      enum:
+      - private
+      - public
+      - local
+      example: private
+      type: string
+    LobbyInitialConfig:
+      additionalProperties: false
+      description: User input to initialize the game state. Object must be smaller
+        than 64KB.
+      type: object
     Lobby:
+      description: A lobby object allows you to store and manage metadata for your
+        rooms.
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         visibility: private
-        createdBy: createdBy
+        createdBy: dev@hathora.dev
         initialConfig: "{}"
-        appId: appId
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         state: "{}"
         region: null
-        local: true
-        roomId: roomId
+        local: false
+        roomId: 2swovpy1fnunu
       properties:
         state:
           additionalProperties: false
+          description: JSON blob to store metadata for a room. Must be smaller than
+            1MB.
           type: object
         initialConfig:
           additionalProperties: false
+          description: User input to initialize the game state. Object must be smaller
+            than 64KB.
           type: object
         createdAt:
+          description: When the lobby was created.
           format: date-time
           type: string
         createdBy:
+          description: Email address for the user that created the lobby.
+          example: dev@hathora.dev
           type: string
         local:
+          deprecated: true
+          example: false
           type: boolean
         visibility:
-          enum:
-          - private
-          - public
-          - local
-          type: string
+          $ref: '#/components/schemas/LobbyVisibility'
         region:
           $ref: '#/components/schemas/Region'
         roomId:
+          description: Unique identifier to a game session or match. Use either a
+            system generated ID or pass in your own.
+          example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]*$"
           type: string
         appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
       required:
       - appId
@@ -2571,18 +3091,16 @@ components:
       type: object
     CreateLobbyRequest:
       example:
-        visibility: public
+        visibility: private
         initialConfig: "{}"
         region: null
       properties:
         visibility:
-          enum:
-          - public
-          - private
-          - local
-          type: string
+          $ref: '#/components/schemas/LobbyVisibility'
         initialConfig:
           additionalProperties: false
+          description: User input to initialize the game state. Object must be smaller
+            than 64KB.
           type: object
         region:
           $ref: '#/components/schemas/Region'
@@ -2597,17 +3115,48 @@ components:
       properties:
         state:
           additionalProperties: false
+          description: JSON blob to store metadata for a room. Must be smaller than
+            1MB.
           type: object
       required:
       - state
       type: object
+    LogsFollow:
+      default: false
+      description: Stream logs in realtime.
+      type: boolean
     TailLines:
+      description: Number of lines to return from most recent logs history.
       format: int32
       maximum: 10000
       minimum: 1
       type: integer
     ProcessId:
+      description: System generated unique identifier to a runtime instance of your
+        game server.
+      example: cbfcddd2-0006-43ae-996c-995fff7bed2e
       type: string
+    VerificationEmailResponse:
+      example:
+        status: success
+      properties:
+        status:
+          enum:
+          - success
+          nullable: false
+          type: string
+      required:
+      - status
+      type: object
+    VerificationEmailRequest:
+      example:
+        userId: userId
+      properties:
+        userId:
+          type: string
+      required:
+      - userId
+      type: object
     MetricValue:
       example:
         value: 0.8008281904610115
@@ -2667,18 +3216,24 @@ components:
     MetricsResponse:
       $ref: '#/components/schemas/Record_Partial_MetricName_.MetricValue-Array_'
     MetricName:
+      description: Available metrics to query over time.
       enum:
       - cpu
       - memory
       - rate_egress
       - total_egress
       type: string
+    MetricsStep:
+      description: Width of time in seconds to group data.
+      format: int32
+      type: integer
     ExposedPort:
+      description: Connection information to an exposed port on an active process.
       example:
-        port: 5.637376656633329
-        host: host
-        name: name
-        transportType: null
+        host: 1.proxy.hathora.dev
+        name: default
+        port: 34567
+        transportType: tcp
       properties:
         transportType:
           $ref: '#/components/schemas/TransportType'
@@ -2696,74 +3251,105 @@ components:
       - transportType
       type: object
     Process:
+      description: A process object represents a runtime instance of your game server
+        and its metadata.
       example:
-        egressedBytes: 0.8008281904610115
+        egressedBytes: 435
         idleSince: 2000-01-23T04:56:07.000+00:00
         terminatedAt: 2000-01-23T04:56:07.000+00:00
-        roomsPerProcess: 5.962133916683182
+        roomsPerProcess: 3
         exposedPort:
-          port: 5.637376656633329
-          host: host
-          name: name
-          transportType: null
+          host: 1.proxy.hathora.dev
+          name: default
+          port: 34567
+          transportType: tcp
         startedAt: 2000-01-23T04:56:07.000+00:00
         stoppingAt: 2000-01-23T04:56:07.000+00:00
-        activeConnections: 6.027456183070403
-        port: 2.3021358869347655
-        processId: processId
+        roomSlotsAvailableUpdatedAt: 2000-01-23T04:56:07.000+00:00
+        activeConnections: 10
+        port: 0.8008281904610115
+        processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
         startingAt: 2000-01-23T04:56:07.000+00:00
+        activeConnectionsUpdatedAt: 2000-01-23T04:56:07.000+00:00
         draining: true
-        deploymentId: 7.061401241503109
-        appId: appId
+        deploymentId: 1
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         host: host
         additionalExposedPorts:
-        - port: 5.637376656633329
-          host: host
-          name: name
-          transportType: null
-        - port: 5.637376656633329
-          host: host
-          name: name
-          transportType: null
+        - host: 1.proxy.hathora.dev
+          name: debug
+          port: 72941
+          transportType: tcp
         region: null
-        roomSlotsAvailable: 1.4658129805029452
+        roomSlotsAvailable: 1
       properties:
         egressedBytes:
+          description: Measures network traffic leaving the process in bytes.
+          example: 435
           format: double
           type: number
         idleSince:
+          deprecated: true
           format: date-time
           nullable: true
           type: string
+        activeConnectionsUpdatedAt:
+          format: date-time
+          type: string
         activeConnections:
+          description: Tracks the number of active connections to a process.
+          example: 10
           format: double
           type: number
+        roomSlotsAvailableUpdatedAt:
+          format: date-time
+          type: string
         roomSlotsAvailable:
+          description: Tracks the number of room slots available on the process.
+          example: 1
           format: double
           type: number
         draining:
+          description: Process in drain will not accept any new rooms.
           type: boolean
         terminatedAt:
+          description: When the process has been terminated.
           format: date-time
           nullable: true
           type: string
         stoppingAt:
+          description: When the process is issued to stop. We use this to determine
+            when we should stop billing.
           format: date-time
           nullable: true
           type: string
         startedAt:
+          description: When the process bound to the specified port. We use this to
+            determine when we should start billing.
           format: date-time
           nullable: true
           type: string
         startingAt:
+          description: When the process started being provisioned.
           format: date-time
           type: string
         roomsPerProcess:
-          format: double
-          type: number
+          description: "Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
+            \ can be scheduled in a process."
+          example: 3
+          format: int32
+          maxLength: 10000
+          minimum: 1
+          type: integer
         additionalExposedPorts:
+          example:
+          - host: 1.proxy.hathora.dev
+            name: debug
+            port: 72941
+            transportType: tcp
           items:
             $ref: '#/components/schemas/ExposedPort'
+          maxItems: 2
           type: array
         exposedPort:
           $ref: '#/components/schemas/ExposedPort'
@@ -2777,14 +3363,22 @@ components:
         region:
           $ref: '#/components/schemas/Region'
         processId:
+          description: System generated unique identifier to a runtime instance of
+            your game server.
+          example: cbfcddd2-0006-43ae-996c-995fff7bed2e
           type: string
         deploymentId:
-          format: double
-          type: number
+          description: System generated id for a deployment. Increments by 1.
+          example: 1
+          format: int32
+          type: integer
         appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
       required:
       - activeConnections
+      - activeConnectionsUpdatedAt
       - additionalExposedPorts
       - appId
       - deploymentId
@@ -2796,6 +3390,7 @@ components:
       - processId
       - region
       - roomSlotsAvailable
+      - roomSlotsAvailableUpdatedAt
       - roomsPerProcess
       - startedAt
       - startingAt
@@ -2803,20 +3398,35 @@ components:
       - terminatedAt
       type: object
     RoomStatus:
+      description: |-
+        The allocation status of a room.
+
+        `scheduling`: a process is not allocated yet and the room is waiting to be scheduled
+
+        `active`: ready to accept connections
+
+        `suspended`: room is unallocated from the process but can be rescheduled later with the same `roomId`
+
+        `destroyed`: all associated metadata is deleted
       enum:
       - scheduling
       - active
       - suspended
       - destroyed
+      example: active
       type: string
     RoomAllocationId:
+      description: System generated unique identifier to an allocated instance of
+        a room.
+      example: e3a0aa32-1711-4036-acfa-008b96061a78
       type: string
     RoomAllocation:
+      description: Metadata on allocated instances of a room.
       example:
         unscheduledAt: 2000-01-23T04:56:07.000+00:00
-        processId: processId
+        processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
         scheduledAt: 2000-01-23T04:56:07.000+00:00
-        roomAllocationId: roomAllocationId
+        roomAllocationId: e3a0aa32-1711-4036-acfa-008b96061a78
       properties:
         unscheduledAt:
           format: date-time
@@ -2826,8 +3436,14 @@ components:
           format: date-time
           type: string
         processId:
+          description: System generated unique identifier to a runtime instance of
+            your game server.
+          example: cbfcddd2-0006-43ae-996c-995fff7bed2e
           type: string
         roomAllocationId:
+          description: System generated unique identifier to an allocated instance
+            of a room.
+          example: e3a0aa32-1711-4036-acfa-008b96061a78
           type: string
       required:
       - processId
@@ -2839,8 +3455,13 @@ components:
       description: "From T, pick a set of properties whose keys are in the union K"
       properties:
         appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
         roomId:
+          description: Unique identifier to a game session or match. Use either a
+            system generated ID or pass in your own.
+          example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]*$"
@@ -2875,20 +3496,21 @@ components:
       - region
       type: object
     Room:
+      description: A room object represents a game session or match.
       example:
         allocations:
         - unscheduledAt: 2000-01-23T04:56:07.000+00:00
-          processId: processId
+          processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
           scheduledAt: 2000-01-23T04:56:07.000+00:00
-          roomAllocationId: roomAllocationId
+          roomAllocationId: e3a0aa32-1711-4036-acfa-008b96061a78
         - unscheduledAt: 2000-01-23T04:56:07.000+00:00
-          processId: processId
+          processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
           scheduledAt: 2000-01-23T04:56:07.000+00:00
-          roomAllocationId: roomAllocationId
-        appId: appId
+          roomAllocationId: e3a0aa32-1711-4036-acfa-008b96061a78
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         currentAllocation: ""
-        roomId: roomId
-        status: null
+        roomId: 2swovpy1fnunu
+        status: active
       properties:
         currentAllocation:
           allOf:
@@ -2901,11 +3523,16 @@ components:
             $ref: '#/components/schemas/RoomAllocation'
           type: array
         roomId:
+          description: Unique identifier to a game session or match. Use either a
+            system generated ID or pass in your own.
+          example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]*$"
           type: string
         appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
       required:
       - allocations
@@ -2922,6 +3549,9 @@ components:
           nullable: false
           type: string
         roomId:
+          description: Unique identifier to a game session or match. Use either a
+            system generated ID or pass in your own.
+          example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]*$"
@@ -2945,6 +3575,9 @@ components:
         host:
           type: string
         roomId:
+          description: Unique identifier to a game session or match. Use either a
+            system generated ID or pass in your own.
+          example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]*$"
@@ -2960,28 +3593,32 @@ components:
       anyOf:
       - $ref: '#/components/schemas/StartingConnectionInfo'
       - $ref: '#/components/schemas/ActiveConnectionInfo'
+      description: Connection information to the default port.
     ConnectionInfoV2:
+      description: Connection information for the default and additional ports.
       example:
         exposedPort:
-          port: 5.637376656633329
-          host: host
-          name: name
-          transportType: null
+          host: 1.proxy.hathora.dev
+          name: default
+          port: 34567
+          transportType: tcp
         additionalExposedPorts:
-        - port: 5.637376656633329
-          host: host
-          name: name
-          transportType: null
-        - port: 5.637376656633329
-          host: host
-          name: name
-          transportType: null
-        roomId: roomId
+        - host: 1.proxy.hathora.dev
+          name: debug
+          port: 72941
+          transportType: tcp
+        roomId: 2swovpy1fnunu
         status: starting
       properties:
         additionalExposedPorts:
+          example:
+          - host: 1.proxy.hathora.dev
+            name: debug
+            port: 72941
+            transportType: tcp
           items:
             $ref: '#/components/schemas/ExposedPort'
+          maxItems: 2
           type: array
         exposedPort:
           $ref: '#/components/schemas/ExposedPort'
@@ -2991,6 +3628,9 @@ components:
           - active
           type: string
         roomId:
+          description: Unique identifier to a game session or match. Use either a
+            system generated ID or pass in your own.
+          example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]*$"
@@ -3012,6 +3652,8 @@ components:
       properties:
         initialConfig:
           additionalProperties: false
+          description: User input to initialize the game state. Object must be smaller
+            than 64KB.
           type: object
         region:
           $ref: '#/components/schemas/Region'
@@ -3029,6 +3671,8 @@ components:
       - clientId
       type: object
     Application_authConfiguration:
+      description: Used to authenticate player requests. Use your own authentication
+        or Hathora's Auth Client.
       example:
         nickname: "{}"
         anonymous: "{}"
@@ -3048,12 +3692,18 @@ components:
       type: object
     Deployment_env_inner:
       example:
-        name: name
-        value: value
+        name: EULA
+        value: "TRUE"
       properties:
         value:
+          example: "TRUE"
+          maxLength: 5000
           type: string
         name:
+          example: EULA
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z_][a-zA-Z0-9_]*$"
           type: string
       required:
       - name
@@ -3067,6 +3717,24 @@ components:
       - deployment
       type: object
       example: null
+    AppConfig_authConfiguration:
+      example:
+        nickname: "{}"
+        anonymous: "{}"
+        google:
+          clientId: clientId
+      properties:
+        google:
+          $ref: '#/components/schemas/Application_authConfiguration_google'
+        nickname:
+          description: Construct a type with a set of properties K of type T
+          properties: {}
+          type: object
+        anonymous:
+          description: Construct a type with a set of properties K of type T
+          properties: {}
+          type: object
+      type: object
     Build_regionalContainerTags_inner:
       example:
         region: null
@@ -3079,23 +3747,6 @@ components:
       required:
       - containerTag
       - region
-      type: object
-    DeploymentConfig_env_inner:
-      example:
-        name: name
-        value: value
-      properties:
-        value:
-          maxLength: 5000
-          type: string
-        name:
-          maxLength: 100
-          minLength: 1
-          pattern: "^[a-zA-Z_][a-zA-Z0-9_]*$"
-          type: string
-      required:
-      - name
-      - value
       type: object
     DiscoveryResponse_inner:
       example:

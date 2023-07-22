@@ -19,6 +19,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -82,6 +84,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **400** |  |  -  |
+| **403** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 
@@ -90,6 +93,8 @@ public class Example {
 > destroyRoom(appId, roomId)
 
 
+
+Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
 
 ### Example
 ```java
@@ -159,6 +164,8 @@ null (empty response body)
 
 
 
+Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -227,6 +234,8 @@ public class Example {
 
 
 
+Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+
 ### Example
 ```java
 // Import classes:
@@ -291,6 +300,8 @@ No authorization required
 > List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getInactiveRoomsForProcess(appId, processId)
 
 
+
+Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
 
 ### Example
 ```java
@@ -360,6 +371,8 @@ public class Example {
 
 
 
+Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -427,6 +440,8 @@ public class Example {
 > suspendRoom(appId, roomId)
 
 
+
+Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
 
 ### Example
 ```java

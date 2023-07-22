@@ -10,9 +10,11 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createdeployment"></a>
 # **CreateDeployment**
-> Deployment CreateDeployment (string appId, double buildId, DeploymentConfig deploymentConfig)
+> Deployment CreateDeployment (string appId, int buildId, DeploymentConfig deploymentConfig)
 
 
+
+Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
 
 ### Example
 ```csharp
@@ -35,7 +37,7 @@ namespace Example
 
             var apiInstance = new DeploymentV1Api(config);
             var appId = "appId_example";  // string | 
-            var buildId = 1.2D;  // double | 
+            var buildId = 56;  // int | 
             var deploymentConfig = new DeploymentConfig(); // DeploymentConfig | 
 
             try
@@ -78,7 +80,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **buildId** | **double** |  |  |
+| **buildId** | **int** |  |  |
 | **deploymentConfig** | [**DeploymentConfig**](DeploymentConfig.md) |  |  |
 
 ### Return type
@@ -107,9 +109,11 @@ catch (ApiException e)
 
 <a name="getdeploymentinfo"></a>
 # **GetDeploymentInfo**
-> Deployment GetDeploymentInfo (string appId, double deploymentId)
+> Deployment GetDeploymentInfo (string appId, int deploymentId)
 
 
+
+Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
 
 ### Example
 ```csharp
@@ -132,7 +136,7 @@ namespace Example
 
             var apiInstance = new DeploymentV1Api(config);
             var appId = "appId_example";  // string | 
-            var deploymentId = 1.2D;  // double | 
+            var deploymentId = 56;  // int | 
 
             try
             {
@@ -174,7 +178,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **deploymentId** | **double** |  |  |
+| **deploymentId** | **int** |  |  |
 
 ### Return type
 
@@ -203,6 +207,8 @@ catch (ApiException e)
 > List&lt;Deployment&gt; GetDeployments (string appId)
 
 
+
+Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
 
 ### Example
 ```csharp

@@ -14,6 +14,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -107,9 +109,11 @@ catch (ApiException e)
 
 <a name="getlogsfordeployment"></a>
 # **GetLogsForDeployment**
-> byte[] GetLogsForDeployment (string appId, double deploymentId, bool? follow = null, int? tailLines = null)
+> byte[] GetLogsForDeployment (string appId, int deploymentId, bool? follow = null, int? tailLines = null)
 
 
+
+Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
 
 ### Example
 ```csharp
@@ -132,7 +136,7 @@ namespace Example
 
             var apiInstance = new LogV1Api(config);
             var appId = "appId_example";  // string | 
-            var deploymentId = 1.2D;  // double | 
+            var deploymentId = 56;  // int | 
             var follow = false;  // bool? |  (optional)  (default to false)
             var tailLines = 56;  // int? |  (optional) 
 
@@ -176,7 +180,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **deploymentId** | **double** |  |  |
+| **deploymentId** | **int** |  |  |
 | **follow** | **bool?** |  | [optional] [default to false] |
 | **tailLines** | **int?** |  | [optional]  |
 
@@ -207,6 +211,8 @@ catch (ApiException e)
 > byte[] GetLogsForProcess (string appId, string processId, bool? follow = null, int? tailLines = null)
 
 
+
+Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 
 ### Example
 ```csharp

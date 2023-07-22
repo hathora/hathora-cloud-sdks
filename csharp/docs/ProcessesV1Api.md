@@ -14,6 +14,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -107,6 +109,8 @@ catch (ApiException e)
 
 
 
+Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -199,6 +203,8 @@ catch (ApiException e)
 > List&lt;Process&gt; GetStoppedProcesses (string appId, Region? region = null)
 
 
+
+Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
 
 ### Example
 ```csharp

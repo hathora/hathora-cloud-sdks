@@ -18,6 +18,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `region`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -104,6 +106,7 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **400** |  |  -  |
+| **403** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 
@@ -114,6 +117,8 @@ catch (ApiException e)
 > void DestroyRoom (string appId, string roomId)
 
 
+
+Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. All associated metadata is deleted.
 
 ### Example
 ```csharp
@@ -204,6 +209,8 @@ void (empty response body)
 > List&lt;PickRoomExcludeKeyofRoomAllocations&gt; GetActiveRoomsForProcess (string appId, string processId)
 
 
+
+Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 
 ### Example
 ```csharp
@@ -298,6 +305,8 @@ catch (ApiException e)
 
 
 
+Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. Clients can call this endpoint without authentication.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -389,6 +398,8 @@ No authorization required
 > List&lt;PickRoomExcludeKeyofRoomAllocations&gt; GetInactiveRoomsForProcess (string appId, string processId)
 
 
+
+Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
 
 ### Example
 ```csharp
@@ -483,6 +494,8 @@ catch (ApiException e)
 
 
 
+Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -575,6 +588,8 @@ catch (ApiException e)
 > void SuspendRoom (string appId, string roomId)
 
 
+
+Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. The room is unallocated from the process but can be rescheduled later using the same `roomId`.
 
 ### Example
 ```csharp

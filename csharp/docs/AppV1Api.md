@@ -16,6 +16,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -108,6 +110,8 @@ catch (ApiException e)
 
 
 
+Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -195,6 +199,8 @@ void (empty response body)
 > Application GetAppInfo (string appId)
 
 
+
+Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
 
 ### Example
 ```csharp
@@ -287,6 +293,8 @@ catch (ApiException e)
 
 
 
+Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -371,6 +379,8 @@ This endpoint does not need any parameter.
 > Application UpdateApp (string appId, AppConfig appConfig)
 
 
+
+Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
 
 ### Example
 ```csharp

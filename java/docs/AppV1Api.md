@@ -17,6 +17,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+
 ### Example
 ```java
 // Import classes:
@@ -84,6 +86,8 @@ public class Example {
 
 
 
+Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Your organization will lose access to this application.
+
 ### Example
 ```java
 // Import classes:
@@ -149,6 +153,8 @@ null (empty response body)
 > Application getAppInfo(appId)
 
 
+
+Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
 
 ### Example
 ```java
@@ -216,6 +222,8 @@ public class Example {
 
 
 
+Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an &#x60;appId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -276,6 +284,8 @@ This endpoint does not need any parameter.
 > Application updateApp(appId, appConfig)
 
 
+
+Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
 
 ### Example
 ```java

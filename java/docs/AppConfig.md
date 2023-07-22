@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**authConfiguration** | [**ApplicationAuthConfiguration**](ApplicationAuthConfiguration.md) |  |  |
-|**appName** | **String** |  |  |
+|**authConfiguration** | [**AppConfigAuthConfiguration**](AppConfigAuthConfiguration.md) |  |  |
+|**appName** | **String** | Readable name for an application. Must be unique within an organization. |  |
 
 
 

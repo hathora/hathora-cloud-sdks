@@ -15,6 +15,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -87,6 +89,8 @@ public class Example {
 
 
 
+Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60; and &#x60;deploymentId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -108,7 +112,7 @@ public class Example {
 
     LogV1Api apiInstance = new LogV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    Double deploymentId = 3.4D; // Double | 
+    Integer deploymentId = 56; // Integer | 
     Boolean follow = false; // Boolean | 
     Integer tailLines = 56; // Integer | 
     try {
@@ -130,7 +134,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **deploymentId** | **Double**|  | |
+| **deploymentId** | **Integer**|  | |
 | **follow** | **Boolean**|  | [optional] [default to false] |
 | **tailLines** | **Integer**|  | [optional] |
 
@@ -158,6 +162,8 @@ public class Example {
 > byte[] getLogsForProcess(appId, processId, follow, tailLines)
 
 
+
+Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
 
 ### Example
 ```java

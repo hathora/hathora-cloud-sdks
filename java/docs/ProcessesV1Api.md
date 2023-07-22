@@ -15,6 +15,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+
 ### Example
 ```java
 // Import classes:
@@ -83,6 +85,8 @@ public class Example {
 
 
 
+Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
+
 ### Example
 ```java
 // Import classes:
@@ -150,6 +154,8 @@ public class Example {
 > List&lt;Process&gt; getStoppedProcesses(appId, region)
 
 
+
+Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
 
 ### Example
 ```java

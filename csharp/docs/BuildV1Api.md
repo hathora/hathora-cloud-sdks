@@ -16,6 +16,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -98,16 +100,17 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **404** |  |  -  |
-| **422** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="deletebuild"></a>
 # **DeleteBuild**
-> void DeleteBuild (string appId, double buildId)
+> void DeleteBuild (string appId, int buildId)
 
 
+
+Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
 
 ### Example
 ```csharp
@@ -130,7 +133,7 @@ namespace Example
 
             var apiInstance = new BuildV1Api(config);
             var appId = "appId_example";  // string | 
-            var buildId = 1.2D;  // double | 
+            var buildId = 56;  // int | 
 
             try
             {
@@ -168,7 +171,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **buildId** | **double** |  |  |
+| **buildId** | **int** |  |  |
 
 ### Return type
 
@@ -196,9 +199,11 @@ void (empty response body)
 
 <a name="getbuildinfo"></a>
 # **GetBuildInfo**
-> Build GetBuildInfo (string appId, double buildId)
+> Build GetBuildInfo (string appId, int buildId)
 
 
+
+Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
 
 ### Example
 ```csharp
@@ -221,7 +226,7 @@ namespace Example
 
             var apiInstance = new BuildV1Api(config);
             var appId = "appId_example";  // string | 
-            var buildId = 1.2D;  // double | 
+            var buildId = 56;  // int | 
 
             try
             {
@@ -263,7 +268,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **buildId** | **double** |  |  |
+| **buildId** | **int** |  |  |
 
 ### Return type
 
@@ -292,6 +297,8 @@ catch (ApiException e)
 > List&lt;Build&gt; GetBuilds (string appId)
 
 
+
+Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
 
 ### Example
 ```csharp
@@ -380,9 +387,11 @@ catch (ApiException e)
 
 <a name="runbuild"></a>
 # **RunBuild**
-> byte[] RunBuild (string appId, double buildId, System.IO.Stream file)
+> byte[] RunBuild (string appId, int buildId, System.IO.Stream file)
 
 
+
+Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
 
 ### Example
 ```csharp
@@ -405,7 +414,7 @@ namespace Example
 
             var apiInstance = new BuildV1Api(config);
             var appId = "appId_example";  // string | 
-            var buildId = 1.2D;  // double | 
+            var buildId = 56;  // int | 
             var file = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream | 
 
             try
@@ -448,7 +457,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **buildId** | **double** |  |  |
+| **buildId** | **int** |  |  |
 | **file** | **System.IO.Stream****System.IO.Stream** |  |  |
 
 ### Return type
