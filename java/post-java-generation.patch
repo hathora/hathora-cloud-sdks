@@ -1,0 +1,38 @@
+From 9b27bb4cc5ee3d50ffc3f111baf3508109e0a350 Mon Sep 17 00:00:00 2001
+From: Siddharth Dhulipalla <dsiddharth@gmail.com>
+Date: Thu, 3 Aug 2023 11:25:59 -0400
+Subject: [PATCH] disable JSON object validation
+
+---
+ .../client/model/PickRoomExcludeKeyofRoomAllocations.java       | 2 --
+ java/src/main/java/com/hathora/client/model/Room.java           | 2 --
+ 3 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/java/src/main/java/com/hathora/client/model/PickRoomExcludeKeyofRoomAllocations.java b/java/src/main/java/com/hathora/client/model/PickRoomExcludeKeyofRoomAllocations.java
+index 14936ea..b74583e 100644
+--- a/java/src/main/java/com/hathora/client/model/PickRoomExcludeKeyofRoomAllocations.java
++++ b/java/src/main/java/com/hathora/client/model/PickRoomExcludeKeyofRoomAllocations.java
+@@ -292,8 +292,6 @@ public class PickRoomExcludeKeyofRoomAllocations {
+       if (!jsonObj.get("roomId").isJsonPrimitive()) {
+         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
+       }
+-      // validate the required field `currentAllocation`
+-      RoomAllocation.validateJsonObject(jsonObj.getAsJsonObject("currentAllocation"));
+   }
+ 
+   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+diff --git a/java/src/main/java/com/hathora/client/model/Room.java b/java/src/main/java/com/hathora/client/model/Room.java
+index 4b50d2a..7d2be1f 100644
+--- a/java/src/main/java/com/hathora/client/model/Room.java
++++ b/java/src/main/java/com/hathora/client/model/Room.java
+@@ -326,8 +326,6 @@ public class Room {
+           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+         }
+       }
+-      // validate the required field `currentAllocation`
+-      RoomAllocation.validateJsonObject(jsonObj.getAsJsonObject("currentAllocation"));
+       // ensure the json data is an array
+       if (!jsonObj.get("allocations").isJsonArray()) {
+         throw new IllegalArgumentException(String.format("Expected the field `allocations` to be an array in the JSON string but got `%s`", jsonObj.get("allocations").toString()));
+2.39.2 (Apple Git-143)
+
