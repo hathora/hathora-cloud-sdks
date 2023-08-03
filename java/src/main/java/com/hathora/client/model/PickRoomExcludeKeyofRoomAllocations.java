@@ -41,6 +41,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import org.openapitools.jackson.nullable.JsonNullable;
+
 import java.util.Set;
 
 import com.hathora.client.JSON;
@@ -64,7 +67,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
 
   public static final String SERIALIZED_NAME_CURRENT_ALLOCATION = "currentAllocation";
   @SerializedName(SERIALIZED_NAME_CURRENT_ALLOCATION)
-  private RoomAllocation currentAllocation;
+  private JsonNullable<RoomAllocation> currentAllocation;
 
   public PickRoomExcludeKeyofRoomAllocations() {
   }
