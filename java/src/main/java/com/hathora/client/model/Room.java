@@ -43,9 +43,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import org.openapitools.jackson.nullable.JsonNullable;
-
 import java.util.Set;
 
 import com.hathora.client.JSON;
@@ -57,7 +54,7 @@ import com.hathora.client.JSON;
 public class Room {
   public static final String SERIALIZED_NAME_CURRENT_ALLOCATION = "currentAllocation";
   @SerializedName(SERIALIZED_NAME_CURRENT_ALLOCATION)
-  private JsonNullable<RoomAllocation> currentAllocation;
+  private RoomAllocation currentAllocation;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -78,7 +75,7 @@ public class Room {
   public Room() {
   }
 
-  public Room currentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
+  public Room currentAllocation(RoomAllocation currentAllocation) {
     
     this.currentAllocation = currentAllocation;
     return this;
@@ -90,12 +87,12 @@ public class Room {
   **/
   @javax.annotation.Nullable
 
-  public JsonNullable<RoomAllocation> getCurrentAllocation() {
+  public RoomAllocation getCurrentAllocation() {
     return currentAllocation;
   }
 
 
-  public void setCurrentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
+  public void setCurrentAllocation(RoomAllocation currentAllocation) {
     this.currentAllocation = currentAllocation;
   }
 

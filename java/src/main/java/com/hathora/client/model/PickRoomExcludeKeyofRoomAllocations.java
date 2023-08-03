@@ -30,7 +30,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
@@ -42,9 +41,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import org.openapitools.jackson.nullable.JsonNullable;
-
 import java.util.Set;
 
 import com.hathora.client.JSON;
@@ -68,7 +64,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
 
   public static final String SERIALIZED_NAME_CURRENT_ALLOCATION = "currentAllocation";
   @SerializedName(SERIALIZED_NAME_CURRENT_ALLOCATION)
-  private JsonNullable<RoomAllocation> currentAllocation;
+  private RoomAllocation currentAllocation;
 
   public PickRoomExcludeKeyofRoomAllocations() {
   }
@@ -139,7 +135,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
   }
 
 
-  public PickRoomExcludeKeyofRoomAllocations currentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
+  public PickRoomExcludeKeyofRoomAllocations currentAllocation(RoomAllocation currentAllocation) {
     
     this.currentAllocation = currentAllocation;
     return this;
@@ -151,12 +147,12 @@ public class PickRoomExcludeKeyofRoomAllocations {
   **/
   @javax.annotation.Nullable
 
-  public JsonNullable<RoomAllocation> getCurrentAllocation() {
+  public RoomAllocation getCurrentAllocation() {
     return currentAllocation;
   }
 
 
-  public void setCurrentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
+  public void setCurrentAllocation(RoomAllocation currentAllocation) {
     this.currentAllocation = currentAllocation;
   }
 
