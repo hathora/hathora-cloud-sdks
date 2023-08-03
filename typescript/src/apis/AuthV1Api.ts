@@ -18,7 +18,7 @@ import type {
   LoginGoogleRequest,
   LoginNicknameRequest,
   LoginResponse,
-} from '../models';
+} from '../models/index';
 import {
     LoginGoogleRequestFromJSON,
     LoginGoogleRequestToJSON,
@@ -26,7 +26,7 @@ import {
     LoginNicknameRequestToJSON,
     LoginResponseFromJSON,
     LoginResponseToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface LoginAnonymousRequest {
     appId: string;

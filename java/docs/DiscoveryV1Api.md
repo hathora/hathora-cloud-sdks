@@ -7,7 +7,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**getPingServiceEndpoints**](DiscoveryV1Api.md#getPingServiceEndpoints) | **GET** /discovery/v1/ping |  |
 
 
-<a name="getPingServiceEndpoints"></a>
+<a id="getPingServiceEndpoints"></a>
 # **getPingServiceEndpoints**
 > List&lt;DiscoveryResponseInner&gt; getPingServiceEndpoints()
 

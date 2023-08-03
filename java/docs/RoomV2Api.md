@@ -13,7 +13,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**suspendRoom**](RoomV2Api.md#suspendRoom) | **POST** /rooms/v2/{appId}/suspend/{roomId} |  |
 
 
-<a name="createRoom"></a>
+<a id="createRoom"></a>
 # **createRoom**
 > ConnectionInfoV2 createRoom(appId, createRoomRequest, roomId)
 
@@ -88,7 +88,7 @@ public class Example {
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="destroyRoom"></a>
+<a id="destroyRoom"></a>
 # **destroyRoom**
 > destroyRoom(appId, roomId)
 
@@ -158,7 +158,7 @@ null (empty response body)
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getActiveRoomsForProcess"></a>
+<a id="getActiveRoomsForProcess"></a>
 # **getActiveRoomsForProcess**
 > List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getActiveRoomsForProcess(appId, processId)
 
@@ -228,7 +228,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getConnectionInfo"></a>
+<a id="getConnectionInfo"></a>
 # **getConnectionInfo**
 > ConnectionInfoV2 getConnectionInfo(appId, roomId)
 
@@ -295,7 +295,7 @@ No authorization required
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getInactiveRoomsForProcess"></a>
+<a id="getInactiveRoomsForProcess"></a>
 # **getInactiveRoomsForProcess**
 > List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getInactiveRoomsForProcess(appId, processId)
 
@@ -365,7 +365,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getRoomInfo"></a>
+<a id="getRoomInfo"></a>
 # **getRoomInfo**
 > Room getRoomInfo(appId, roomId)
 
@@ -435,7 +435,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="suspendRoom"></a>
+<a id="suspendRoom"></a>
 # **suspendRoom**
 > suspendRoom(appId, roomId)
 

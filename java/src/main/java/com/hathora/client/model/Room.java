@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -86,7 +90,6 @@ public class Room {
    * @return currentAllocation
   **/
   @javax.annotation.Nullable
-
   public RoomAllocation getCurrentAllocation() {
     return currentAllocation;
   }
@@ -108,7 +111,6 @@ public class Room {
    * @return status
   **/
   @javax.annotation.Nonnull
-
   public RoomStatus getStatus() {
     return status;
   }
@@ -138,7 +140,6 @@ public class Room {
    * @return allocations
   **/
   @javax.annotation.Nonnull
-
   public List<RoomAllocation> getAllocations() {
     return allocations;
   }
@@ -160,7 +161,6 @@ public class Room {
    * @return roomId
   **/
   @javax.annotation.Nonnull
-
   public String getRoomId() {
     return roomId;
   }
@@ -182,7 +182,6 @@ public class Room {
    * @return appId
   **/
   @javax.annotation.Nonnull
-
   public String getAppId() {
     return appId;
   }
@@ -308,26 +307,27 @@ public class Room {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Room
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Room
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Room.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Room.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Room is not found in the empty JSON string", Room.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Room.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `currentAllocation`
-      RoomAllocation.validateJsonObject(jsonObj.getAsJsonObject("currentAllocation"));
+      RoomAllocation.validateJsonElement(jsonObj.get("currentAllocation"));
       // ensure the json data is an array
       if (!jsonObj.get("allocations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `allocations` to be an array in the JSON string but got `%s`", jsonObj.get("allocations").toString()));
@@ -336,7 +336,7 @@ public class Room {
       JsonArray jsonArrayallocations = jsonObj.getAsJsonArray("allocations");
       // validate the required field `allocations` (array)
       for (int i = 0; i < jsonArrayallocations.size(); i++) {
-        RoomAllocation.validateJsonObject(jsonArrayallocations.get(i).getAsJsonObject());
+        RoomAllocation.validateJsonElement(jsonArrayallocations.get(i));
       };
       if (!jsonObj.get("roomId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
@@ -383,8 +383,9 @@ public class Room {
 
            @Override
            public Room read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Room instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

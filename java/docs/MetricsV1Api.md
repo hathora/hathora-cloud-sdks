@@ -7,7 +7,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**getMetrics**](MetricsV1Api.md#getMetrics) | **GET** /metrics/v1/{appId}/process/{processId} |  |
 
 
-<a name="getMetrics"></a>
+<a id="getMetrics"></a>
 # **getMetrics**
 > RecordPartialMetricNameMetricValueArray getMetrics(appId, processId, metrics, end, start, step)
 

@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   Deployment,
   DeploymentConfig,
-} from '../models';
+} from '../models/index';
 import {
     DeploymentFromJSON,
     DeploymentToJSON,
     DeploymentConfigFromJSON,
     DeploymentConfigToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreateDeploymentRequest {
     appId: string;

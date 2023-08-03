@@ -13,7 +13,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**suspendRoomDeprecated**](RoomV1Api.md#suspendRoomDeprecated) | **POST** /rooms/v1/{appId}/suspend/{roomId} |  |
 
 
-<a name="createRoomDeprecated"></a>
+<a id="createRoomDeprecated"></a>
 # **createRoomDeprecated**
 > String createRoomDeprecated(appId, createRoomRequest, roomId)
 
@@ -86,7 +86,7 @@ public class Example {
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="destroyRoomDeprecated"></a>
+<a id="destroyRoomDeprecated"></a>
 # **destroyRoomDeprecated**
 > destroyRoomDeprecated(appId, roomId)
 
@@ -154,7 +154,7 @@ null (empty response body)
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getActiveRoomsForProcessDeprecated"></a>
+<a id="getActiveRoomsForProcessDeprecated"></a>
 # **getActiveRoomsForProcessDeprecated**
 > List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getActiveRoomsForProcessDeprecated(appId, processId)
 
@@ -222,7 +222,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getConnectionInfoDeprecated"></a>
+<a id="getConnectionInfoDeprecated"></a>
 # **getConnectionInfoDeprecated**
 > ConnectionInfo getConnectionInfoDeprecated(appId, roomId)
 
@@ -287,7 +287,7 @@ No authorization required
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getInactiveRoomsForProcessDeprecated"></a>
+<a id="getInactiveRoomsForProcessDeprecated"></a>
 # **getInactiveRoomsForProcessDeprecated**
 > List&lt;PickRoomExcludeKeyofRoomAllocations&gt; getInactiveRoomsForProcessDeprecated(appId, processId)
 
@@ -355,7 +355,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getRoomInfoDeprecated"></a>
+<a id="getRoomInfoDeprecated"></a>
 # **getRoomInfoDeprecated**
 > Room getRoomInfoDeprecated(appId, roomId)
 
@@ -423,7 +423,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="suspendRoomDeprecated"></a>
+<a id="suspendRoomDeprecated"></a>
 # **suspendRoomDeprecated**
 > suspendRoomDeprecated(appId, roomId)
 

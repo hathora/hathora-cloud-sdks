@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -89,7 +93,6 @@ public class RecordPartialMetricNameMetricValueArray {
    * @return cpu
   **/
   @javax.annotation.Nullable
-
   public List<MetricValue> getCpu() {
     return cpu;
   }
@@ -119,7 +122,6 @@ public class RecordPartialMetricNameMetricValueArray {
    * @return memory
   **/
   @javax.annotation.Nullable
-
   public List<MetricValue> getMemory() {
     return memory;
   }
@@ -149,7 +151,6 @@ public class RecordPartialMetricNameMetricValueArray {
    * @return rateEgress
   **/
   @javax.annotation.Nullable
-
   public List<MetricValue> getRateEgress() {
     return rateEgress;
   }
@@ -179,7 +180,6 @@ public class RecordPartialMetricNameMetricValueArray {
    * @return totalEgress
   **/
   @javax.annotation.Nullable
-
   public List<MetricValue> getTotalEgress() {
     return totalEgress;
   }
@@ -297,17 +297,18 @@ public class RecordPartialMetricNameMetricValueArray {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to RecordPartialMetricNameMetricValueArray
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to RecordPartialMetricNameMetricValueArray
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!RecordPartialMetricNameMetricValueArray.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!RecordPartialMetricNameMetricValueArray.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in RecordPartialMetricNameMetricValueArray is not found in the empty JSON string", RecordPartialMetricNameMetricValueArray.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (jsonObj.get("cpu") != null && !jsonObj.get("cpu").isJsonNull()) {
         JsonArray jsonArraycpu = jsonObj.getAsJsonArray("cpu");
         if (jsonArraycpu != null) {
@@ -318,7 +319,7 @@ public class RecordPartialMetricNameMetricValueArray {
 
           // validate the optional field `cpu` (array)
           for (int i = 0; i < jsonArraycpu.size(); i++) {
-            MetricValue.validateJsonObject(jsonArraycpu.get(i).getAsJsonObject());
+            MetricValue.validateJsonElement(jsonArraycpu.get(i));
           };
         }
       }
@@ -332,7 +333,7 @@ public class RecordPartialMetricNameMetricValueArray {
 
           // validate the optional field `memory` (array)
           for (int i = 0; i < jsonArraymemory.size(); i++) {
-            MetricValue.validateJsonObject(jsonArraymemory.get(i).getAsJsonObject());
+            MetricValue.validateJsonElement(jsonArraymemory.get(i));
           };
         }
       }
@@ -346,7 +347,7 @@ public class RecordPartialMetricNameMetricValueArray {
 
           // validate the optional field `rate_egress` (array)
           for (int i = 0; i < jsonArrayrateEgress.size(); i++) {
-            MetricValue.validateJsonObject(jsonArrayrateEgress.get(i).getAsJsonObject());
+            MetricValue.validateJsonElement(jsonArrayrateEgress.get(i));
           };
         }
       }
@@ -360,7 +361,7 @@ public class RecordPartialMetricNameMetricValueArray {
 
           // validate the optional field `total_egress` (array)
           for (int i = 0; i < jsonArraytotalEgress.size(); i++) {
-            MetricValue.validateJsonObject(jsonArraytotalEgress.get(i).getAsJsonObject());
+            MetricValue.validateJsonElement(jsonArraytotalEgress.get(i));
           };
         }
       }
@@ -403,8 +404,9 @@ public class RecordPartialMetricNameMetricValueArray {
 
            @Override
            public RecordPartialMetricNameMetricValueArray read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              RecordPartialMetricNameMetricValueArray instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

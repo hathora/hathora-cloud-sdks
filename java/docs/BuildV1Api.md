@@ -11,7 +11,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**runBuild**](BuildV1Api.md#runBuild) | **POST** /builds/v1/{appId}/run/{buildId} |  |
 
 
-<a name="createBuild"></a>
+<a id="createBuild"></a>
 # **createBuild**
 > Build createBuild(appId)
 
@@ -80,7 +80,7 @@ public class Example {
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="deleteBuild"></a>
+<a id="deleteBuild"></a>
 # **deleteBuild**
 > deleteBuild(appId, buildId)
 
@@ -151,7 +151,7 @@ null (empty response body)
 | **422** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getBuildInfo"></a>
+<a id="getBuildInfo"></a>
 # **getBuildInfo**
 > Build getBuildInfo(appId, buildId)
 
@@ -221,7 +221,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getBuilds"></a>
+<a id="getBuilds"></a>
 # **getBuilds**
 > List&lt;Build&gt; getBuilds(appId)
 
@@ -289,7 +289,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="runBuild"></a>
+<a id="runBuild"></a>
 # **runBuild**
 > byte[] runBuild(appId, buildId, _file)
 

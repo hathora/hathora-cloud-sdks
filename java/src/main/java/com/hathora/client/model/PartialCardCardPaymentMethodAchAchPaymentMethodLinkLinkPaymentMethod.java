@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -77,7 +81,6 @@ public class PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMetho
    * @return card
   **/
   @javax.annotation.Nullable
-
   public CardPaymentMethod getCard() {
     return card;
   }
@@ -99,7 +102,6 @@ public class PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMetho
    * @return ach
   **/
   @javax.annotation.Nullable
-
   public AchPaymentMethod getAch() {
     return ach;
   }
@@ -121,7 +123,6 @@ public class PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMetho
    * @return link
   **/
   @javax.annotation.Nullable
-
   public LinkPaymentMethod getLink() {
     return link;
   }
@@ -236,28 +237,29 @@ public class PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMetho
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod is not found in the empty JSON string", PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.openapiRequiredFields.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `card`
       if (jsonObj.get("card") != null && !jsonObj.get("card").isJsonNull()) {
-        CardPaymentMethod.validateJsonObject(jsonObj.getAsJsonObject("card"));
+        CardPaymentMethod.validateJsonElement(jsonObj.get("card"));
       }
       // validate the optional field `ach`
       if (jsonObj.get("ach") != null && !jsonObj.get("ach").isJsonNull()) {
-        AchPaymentMethod.validateJsonObject(jsonObj.getAsJsonObject("ach"));
+        AchPaymentMethod.validateJsonElement(jsonObj.get("ach"));
       }
       // validate the optional field `link`
       if (jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull()) {
-        LinkPaymentMethod.validateJsonObject(jsonObj.getAsJsonObject("link"));
+        LinkPaymentMethod.validateJsonElement(jsonObj.get("link"));
       }
   }
 
@@ -298,8 +300,9 @@ public class PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMetho
 
            @Override
            public PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

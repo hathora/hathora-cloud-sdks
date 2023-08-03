@@ -7,7 +7,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**sendVerificationEmail**](ManagementV1Api.md#sendVerificationEmail) | **POST** /management/v1/sendverificationemail |  |
 
 
-<a name="sendVerificationEmail"></a>
+<a id="sendVerificationEmail"></a>
 # **sendVerificationEmail**
 > VerificationEmailResponse sendVerificationEmail(verificationEmailRequest)
 

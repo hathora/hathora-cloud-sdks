@@ -183,7 +183,6 @@ Class | Method | HTTP request | Description
  - [ApplicationAuthConfiguration](docs/ApplicationAuthConfiguration.md)
  - [ApplicationAuthConfigurationGoogle](docs/ApplicationAuthConfigurationGoogle.md)
  - [ApplicationWithDeployment](docs/ApplicationWithDeployment.md)
- - [ApplicationWithDeploymentAllOf](docs/ApplicationWithDeploymentAllOf.md)
  - [Build](docs/Build.md)
  - [BuildRegionalContainerTagsInner](docs/BuildRegionalContainerTagsInner.md)
  - [CardBrand](docs/CardBrand.md)
@@ -214,7 +213,6 @@ Class | Method | HTTP request | Description
  - [PlanName](docs/PlanName.md)
  - [Process](docs/Process.md)
  - [ProcessWithRooms](docs/ProcessWithRooms.md)
- - [ProcessWithRoomsAllOf](docs/ProcessWithRoomsAllOf.md)
  - [RecordPartialMetricNameMetricValueArray](docs/RecordPartialMetricNameMetricValueArray.md)
  - [Region](docs/Region.md)
  - [Room](docs/Room.md)
@@ -227,12 +225,15 @@ Class | Method | HTTP request | Description
  - [VerificationEmailResponse](docs/VerificationEmailResponse.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+
 Authentication schemes defined for the API:
+<a id="auth0"></a>
 ### auth0
 
-- **Type**: HTTP basic authentication
+- **Type**: HTTP Bearer Token authentication (JWT)
 
 
 ## Recommendation

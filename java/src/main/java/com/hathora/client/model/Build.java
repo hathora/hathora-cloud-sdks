@@ -36,6 +36,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -165,7 +169,6 @@ public class Build {
    * @return regionalContainerTags
   **/
   @javax.annotation.Nonnull
-
   public List<BuildRegionalContainerTagsInner> getRegionalContainerTags() {
     return regionalContainerTags;
   }
@@ -187,7 +190,6 @@ public class Build {
    * @return imageSize
   **/
   @javax.annotation.Nonnull
-
   public Double getImageSize() {
     return imageSize;
   }
@@ -209,7 +211,6 @@ public class Build {
    * @return status
   **/
   @javax.annotation.Nonnull
-
   public StatusEnum getStatus() {
     return status;
   }
@@ -231,7 +232,6 @@ public class Build {
    * @return deletedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getDeletedAt() {
     return deletedAt;
   }
@@ -253,7 +253,6 @@ public class Build {
    * @return finishedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getFinishedAt() {
     return finishedAt;
   }
@@ -275,7 +274,6 @@ public class Build {
    * @return startedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStartedAt() {
     return startedAt;
   }
@@ -297,7 +295,6 @@ public class Build {
    * @return createdAt
   **/
   @javax.annotation.Nonnull
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -319,7 +316,6 @@ public class Build {
    * @return createdBy
   **/
   @javax.annotation.Nonnull
-
   public String getCreatedBy() {
     return createdBy;
   }
@@ -341,7 +337,6 @@ public class Build {
    * @return buildId
   **/
   @javax.annotation.Nonnull
-
   public Integer getBuildId() {
     return buildId;
   }
@@ -363,7 +358,6 @@ public class Build {
    * @return appId
   **/
   @javax.annotation.Nonnull
-
   public String getAppId() {
     return appId;
   }
@@ -509,24 +503,25 @@ public class Build {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Build
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Build
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Build.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Build.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Build is not found in the empty JSON string", Build.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Build.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("regionalContainerTags").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `regionalContainerTags` to be an array in the JSON string but got `%s`", jsonObj.get("regionalContainerTags").toString()));
@@ -535,7 +530,7 @@ public class Build {
       JsonArray jsonArrayregionalContainerTags = jsonObj.getAsJsonArray("regionalContainerTags");
       // validate the required field `regionalContainerTags` (array)
       for (int i = 0; i < jsonArrayregionalContainerTags.size(); i++) {
-        BuildRegionalContainerTagsInner.validateJsonObject(jsonArrayregionalContainerTags.get(i).getAsJsonObject());
+        BuildRegionalContainerTagsInner.validateJsonElement(jsonArrayregionalContainerTags.get(i));
       };
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
@@ -585,8 +580,9 @@ public class Build {
 
            @Override
            public Build read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Build instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

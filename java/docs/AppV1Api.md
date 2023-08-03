@@ -11,7 +11,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**updateApp**](AppV1Api.md#updateApp) | **POST** /apps/v1/update/{appId} |  |
 
 
-<a name="createApp"></a>
+<a id="createApp"></a>
 # **createApp**
 > Application createApp(appConfig)
 
@@ -80,7 +80,7 @@ public class Example {
 | **422** |  |  -  |
 | **500** |  |  -  |
 
-<a name="deleteApp"></a>
+<a id="deleteApp"></a>
 # **deleteApp**
 > deleteApp(appId)
 
@@ -148,7 +148,7 @@ null (empty response body)
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getAppInfo"></a>
+<a id="getAppInfo"></a>
 # **getAppInfo**
 > Application getAppInfo(appId)
 
@@ -216,7 +216,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getApps"></a>
+<a id="getApps"></a>
 # **getApps**
 > List&lt;ApplicationWithDeployment&gt; getApps()
 
@@ -279,7 +279,7 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 
-<a name="updateApp"></a>
+<a id="updateApp"></a>
 # **updateApp**
 > Application updateApp(appId, appConfig)
 

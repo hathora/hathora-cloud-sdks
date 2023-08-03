@@ -9,7 +9,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**getLogsForProcess**](LogV1Api.md#getLogsForProcess) | **GET** /logs/v1/{appId}/process/{processId} |  |
 
 
-<a name="getLogsForApp"></a>
+<a id="getLogsForApp"></a>
 # **getLogsForApp**
 > byte[] getLogsForApp(appId, follow, tailLines, region)
 
@@ -83,7 +83,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getLogsForDeployment"></a>
+<a id="getLogsForDeployment"></a>
 # **getLogsForDeployment**
 > byte[] getLogsForDeployment(appId, deploymentId, follow, tailLines)
 
@@ -157,7 +157,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getLogsForProcess"></a>
+<a id="getLogsForProcess"></a>
 # **getLogsForProcess**
 > byte[] getLogsForProcess(appId, processId, follow, tailLines)
 

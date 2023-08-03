@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -100,7 +104,6 @@ public class Application {
    * @return deletedBy
   **/
   @javax.annotation.Nullable
-
   public String getDeletedBy() {
     return deletedBy;
   }
@@ -122,7 +125,6 @@ public class Application {
    * @return deletedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getDeletedAt() {
     return deletedAt;
   }
@@ -144,7 +146,6 @@ public class Application {
    * @return createdAt
   **/
   @javax.annotation.Nonnull
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -166,7 +167,6 @@ public class Application {
    * @return createdBy
   **/
   @javax.annotation.Nonnull
-
   public String getCreatedBy() {
     return createdBy;
   }
@@ -188,7 +188,6 @@ public class Application {
    * @return orgId
   **/
   @javax.annotation.Nonnull
-
   public String getOrgId() {
     return orgId;
   }
@@ -210,7 +209,6 @@ public class Application {
    * @return authConfiguration
   **/
   @javax.annotation.Nonnull
-
   public ApplicationAuthConfiguration getAuthConfiguration() {
     return authConfiguration;
   }
@@ -232,7 +230,6 @@ public class Application {
    * @return appSecret
   **/
   @javax.annotation.Nonnull
-
   public String getAppSecret() {
     return appSecret;
   }
@@ -254,7 +251,6 @@ public class Application {
    * @return appId
   **/
   @javax.annotation.Nonnull
-
   public String getAppId() {
     return appId;
   }
@@ -276,7 +272,6 @@ public class Application {
    * @return appName
   **/
   @javax.annotation.Nonnull
-
   public String getAppName() {
     return appName;
   }
@@ -418,25 +413,26 @@ public class Application {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Application
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to Application
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Application.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Application.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in Application is not found in the empty JSON string", Application.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Application.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
-      if (!jsonObj.get("deletedBy").isJsonPrimitive()) {
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("deletedBy") != null && !jsonObj.get("deletedBy").isJsonNull()) && !jsonObj.get("deletedBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deletedBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deletedBy").toString()));
       }
       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
@@ -446,7 +442,7 @@ public class Application {
         throw new IllegalArgumentException(String.format("Expected the field `orgId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("orgId").toString()));
       }
       // validate the required field `authConfiguration`
-      ApplicationAuthConfiguration.validateJsonObject(jsonObj.getAsJsonObject("authConfiguration"));
+      ApplicationAuthConfiguration.validateJsonElement(jsonObj.get("authConfiguration"));
       if (!jsonObj.get("appSecret").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appSecret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appSecret").toString()));
       }
@@ -495,8 +491,9 @@ public class Application {
 
            @Override
            public Application read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              Application instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -100,7 +104,6 @@ public class DeploymentConfig {
    * @return env
   **/
   @javax.annotation.Nonnull
-
   public List<DeploymentEnvInner> getEnv() {
     return env;
   }
@@ -123,7 +126,6 @@ public class DeploymentConfig {
    * @return roomsPerProcess
   **/
   @javax.annotation.Nonnull
-
   public Integer getRoomsPerProcess() {
     return roomsPerProcess;
   }
@@ -145,7 +147,6 @@ public class DeploymentConfig {
    * @return planName
   **/
   @javax.annotation.Nonnull
-
   public PlanName getPlanName() {
     return planName;
   }
@@ -175,7 +176,6 @@ public class DeploymentConfig {
    * @return additionalContainerPorts
   **/
   @javax.annotation.Nullable
-
   public List<ContainerPort> getAdditionalContainerPorts() {
     return additionalContainerPorts;
   }
@@ -197,7 +197,6 @@ public class DeploymentConfig {
    * @return transportType
   **/
   @javax.annotation.Nonnull
-
   public TransportType getTransportType() {
     return transportType;
   }
@@ -221,7 +220,6 @@ public class DeploymentConfig {
    * @return containerPort
   **/
   @javax.annotation.Nonnull
-
   public Integer getContainerPort() {
     return containerPort;
   }
@@ -350,24 +348,25 @@ public class DeploymentConfig {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DeploymentConfig
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to DeploymentConfig
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!DeploymentConfig.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!DeploymentConfig.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in DeploymentConfig is not found in the empty JSON string", DeploymentConfig.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : DeploymentConfig.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("env").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `env` to be an array in the JSON string but got `%s`", jsonObj.get("env").toString()));
@@ -376,7 +375,7 @@ public class DeploymentConfig {
       JsonArray jsonArrayenv = jsonObj.getAsJsonArray("env");
       // validate the required field `env` (array)
       for (int i = 0; i < jsonArrayenv.size(); i++) {
-        DeploymentEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
+        DeploymentEnvInner.validateJsonElement(jsonArrayenv.get(i));
       };
       if (jsonObj.get("additionalContainerPorts") != null && !jsonObj.get("additionalContainerPorts").isJsonNull()) {
         JsonArray jsonArrayadditionalContainerPorts = jsonObj.getAsJsonArray("additionalContainerPorts");
@@ -388,7 +387,7 @@ public class DeploymentConfig {
 
           // validate the optional field `additionalContainerPorts` (array)
           for (int i = 0; i < jsonArrayadditionalContainerPorts.size(); i++) {
-            ContainerPort.validateJsonObject(jsonArrayadditionalContainerPorts.get(i).getAsJsonObject());
+            ContainerPort.validateJsonElement(jsonArrayadditionalContainerPorts.get(i));
           };
         }
       }
@@ -431,8 +430,9 @@ public class DeploymentConfig {
 
            @Override
            public DeploymentConfig read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              DeploymentConfig instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

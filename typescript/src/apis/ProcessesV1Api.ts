@@ -18,7 +18,7 @@ import type {
   Process,
   ProcessWithRooms,
   Region,
-} from '../models';
+} from '../models/index';
 import {
     ProcessFromJSON,
     ProcessToJSON,
@@ -26,7 +26,7 @@ import {
     ProcessWithRoomsToJSON,
     RegionFromJSON,
     RegionToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetProcessInfoRequest {
     appId: string;

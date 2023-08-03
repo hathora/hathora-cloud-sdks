@@ -18,7 +18,7 @@ import type {
   AppConfig,
   Application,
   ApplicationWithDeployment,
-} from '../models';
+} from '../models/index';
 import {
     AppConfigFromJSON,
     AppConfigToJSON,
@@ -26,7 +26,7 @@ import {
     ApplicationToJSON,
     ApplicationWithDeploymentFromJSON,
     ApplicationWithDeploymentToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreateAppRequest {
     appConfig: AppConfig;

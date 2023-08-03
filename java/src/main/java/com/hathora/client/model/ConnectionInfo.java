@@ -25,7 +25,7 @@ import com.hathora.client.model.StartingConnectionInfo;
 import com.hathora.client.model.TransportType;
 import java.io.IOException;
 
-import javax.ws.rs.core.GenericType;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -101,15 +101,15 @@ public class ConnectionInfo extends AbstractOpenApiSchema {
                 @Override
                 public ConnectionInfo read(JsonReader in) throws IOException {
                     Object deserialized = null;
-                    JsonObject jsonObject = elementAdapter.read(in).getAsJsonObject();
+                    JsonElement jsonElement = elementAdapter.read(in);
 
                     // deserialize ActiveConnectionInfo
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        ActiveConnectionInfo.validateJsonObject(jsonObject);
+                        ActiveConnectionInfo.validateJsonElement(jsonElement);
                         log.log(Level.FINER, "Input data matches schema 'ActiveConnectionInfo'");
                         ConnectionInfo ret = new ConnectionInfo();
-                        ret.setActualInstance(adapterActiveConnectionInfo.fromJsonTree(jsonObject));
+                        ret.setActualInstance(adapterActiveConnectionInfo.fromJsonTree(jsonElement));
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
@@ -119,10 +119,10 @@ public class ConnectionInfo extends AbstractOpenApiSchema {
                     // deserialize StartingConnectionInfo
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        StartingConnectionInfo.validateJsonObject(jsonObject);
+                        StartingConnectionInfo.validateJsonElement(jsonElement);
                         log.log(Level.FINER, "Input data matches schema 'StartingConnectionInfo'");
                         ConnectionInfo ret = new ConnectionInfo();
-                        ret.setActualInstance(adapterStartingConnectionInfo.fromJsonTree(jsonObject));
+                        ret.setActualInstance(adapterStartingConnectionInfo.fromJsonTree(jsonElement));
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
@@ -130,14 +130,14 @@ public class ConnectionInfo extends AbstractOpenApiSchema {
                     }
 
 
-                    throw new IOException(String.format("Failed deserialization for ConnectionInfo: no class matched. JSON: %s", jsonObject.toString()));
+                    throw new IOException(String.format("Failed deserialization for ConnectionInfo: no class matched. JSON: %s", jsonElement.toString()));
                 }
             }.nullSafe();
         }
     }
 
     // store a list of schema names defined in anyOf
-    public static final Map<String, GenericType> schemas = new HashMap<String, GenericType>();
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
 
     public ConnectionInfo() {
         super("anyOf", Boolean.FALSE);
@@ -154,14 +154,12 @@ public class ConnectionInfo extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("ActiveConnectionInfo", new GenericType<ActiveConnectionInfo>() {
-        });
-        schemas.put("StartingConnectionInfo", new GenericType<StartingConnectionInfo>() {
-        });
+        schemas.put("ActiveConnectionInfo", ActiveConnectionInfo.class);
+        schemas.put("StartingConnectionInfo", StartingConnectionInfo.class);
     }
 
     @Override
-    public Map<String, GenericType> getSchemas() {
+    public Map<String, Class<?>> getSchemas() {
         return ConnectionInfo.schemas;
     }
 
@@ -223,17 +221,17 @@ public class ConnectionInfo extends AbstractOpenApiSchema {
 
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ConnectionInfo
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ConnectionInfo
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     // validate anyOf schemas one by one
     int validCount = 0;
     // validate the json string with ActiveConnectionInfo
     try {
-      ActiveConnectionInfo.validateJsonObject(jsonObj);
+      ActiveConnectionInfo.validateJsonElement(jsonElement);
       return; // return earlier as at least one schema is valid with respect to the Json object
       //validCount++;
     } catch (Exception e) {
@@ -241,14 +239,14 @@ public class ConnectionInfo extends AbstractOpenApiSchema {
     }
     // validate the json string with StartingConnectionInfo
     try {
-      StartingConnectionInfo.validateJsonObject(jsonObj);
+      StartingConnectionInfo.validateJsonElement(jsonElement);
       return; // return earlier as at least one schema is valid with respect to the Json object
       //validCount++;
     } catch (Exception e) {
       // continue to the next one
     }
     if (validCount == 0) {
-      throw new IOException(String.format("The JSON string is invalid for ConnectionInfo with anyOf schemas: ActiveConnectionInfo, StartingConnectionInfo. JSON: %s", jsonObj.toString()));
+      throw new IOException(String.format("The JSON string is invalid for ConnectionInfo with anyOf schemas: ActiveConnectionInfo, StartingConnectionInfo. JSON: %s", jsonElement.toString()));
     }
   }
 

@@ -18,7 +18,7 @@ import type {
   CustomerPortalUrl,
   Invoice,
   PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod,
-} from '../models';
+} from '../models/index';
 import {
     CustomerPortalUrlFromJSON,
     CustomerPortalUrlToJSON,
@@ -26,7 +26,7 @@ import {
     InvoiceToJSON,
     PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethodFromJSON,
     PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethodToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface InitStripeCustomerPortalUrlRequest {
     customerPortalUrl: CustomerPortalUrl;

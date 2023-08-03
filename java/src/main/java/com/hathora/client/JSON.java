@@ -101,7 +101,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ApplicationAuthConfiguration.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ApplicationAuthConfigurationGoogle.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ApplicationWithDeployment.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ApplicationWithDeploymentAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Build.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.BuildRegionalContainerTagsInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CardPaymentMethod.CustomTypeAdapterFactory());
@@ -128,7 +127,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Process.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ProcessWithRooms.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ProcessWithRoomsAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.RecordPartialMetricNameMetricValueArray.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Room.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.RoomAllocation.CustomTypeAdapterFactory());

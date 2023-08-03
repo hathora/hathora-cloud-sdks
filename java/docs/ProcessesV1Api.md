@@ -9,7 +9,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**getStoppedProcesses**](ProcessesV1Api.md#getStoppedProcesses) | **GET** /processes/v1/{appId}/list/stopped |  |
 
 
-<a name="getProcessInfo"></a>
+<a id="getProcessInfo"></a>
 # **getProcessInfo**
 > Process getProcessInfo(appId, processId)
 
@@ -79,7 +79,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getRunningProcesses"></a>
+<a id="getRunningProcesses"></a>
 # **getRunningProcesses**
 > List&lt;ProcessWithRooms&gt; getRunningProcesses(appId, region)
 
@@ -149,7 +149,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getStoppedProcesses"></a>
+<a id="getStoppedProcesses"></a>
 # **getStoppedProcesses**
 > List&lt;Process&gt; getStoppedProcesses(appId, region)
 

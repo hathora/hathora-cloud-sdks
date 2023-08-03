@@ -35,6 +35,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -136,7 +140,6 @@ public class ConnectionInfoV2 {
    * @return additionalExposedPorts
   **/
   @javax.annotation.Nonnull
-
   public List<ExposedPort> getAdditionalExposedPorts() {
     return additionalExposedPorts;
   }
@@ -158,7 +161,6 @@ public class ConnectionInfoV2 {
    * @return exposedPort
   **/
   @javax.annotation.Nullable
-
   public ExposedPort getExposedPort() {
     return exposedPort;
   }
@@ -180,7 +182,6 @@ public class ConnectionInfoV2 {
    * @return status
   **/
   @javax.annotation.Nonnull
-
   public StatusEnum getStatus() {
     return status;
   }
@@ -202,7 +203,6 @@ public class ConnectionInfoV2 {
    * @return roomId
   **/
   @javax.annotation.Nonnull
-
   public String getRoomId() {
     return roomId;
   }
@@ -323,24 +323,25 @@ public class ConnectionInfoV2 {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ConnectionInfoV2
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ConnectionInfoV2
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ConnectionInfoV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ConnectionInfoV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ConnectionInfoV2 is not found in the empty JSON string", ConnectionInfoV2.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConnectionInfoV2.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("additionalExposedPorts").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `additionalExposedPorts` to be an array in the JSON string but got `%s`", jsonObj.get("additionalExposedPorts").toString()));
@@ -349,11 +350,11 @@ public class ConnectionInfoV2 {
       JsonArray jsonArrayadditionalExposedPorts = jsonObj.getAsJsonArray("additionalExposedPorts");
       // validate the required field `additionalExposedPorts` (array)
       for (int i = 0; i < jsonArrayadditionalExposedPorts.size(); i++) {
-        ExposedPort.validateJsonObject(jsonArrayadditionalExposedPorts.get(i).getAsJsonObject());
+        ExposedPort.validateJsonElement(jsonArrayadditionalExposedPorts.get(i));
       };
       // validate the optional field `exposedPort`
       if (jsonObj.get("exposedPort") != null && !jsonObj.get("exposedPort").isJsonNull()) {
-        ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
+        ExposedPort.validateJsonElement(jsonObj.get("exposedPort"));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
@@ -400,8 +401,9 @@ public class ConnectionInfoV2 {
 
            @Override
            public ConnectionInfoV2 read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ConnectionInfoV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

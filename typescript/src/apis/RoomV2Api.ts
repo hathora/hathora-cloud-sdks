@@ -19,7 +19,7 @@ import type {
   CreateRoomRequest,
   PickRoomExcludeKeyofRoomAllocations,
   Room,
-} from '../models';
+} from '../models/index';
 import {
     ConnectionInfoV2FromJSON,
     ConnectionInfoV2ToJSON,
@@ -29,7 +29,7 @@ import {
     PickRoomExcludeKeyofRoomAllocationsToJSON,
     RoomFromJSON,
     RoomToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreateRoomOperationRequest {
     appId: string;

@@ -9,7 +9,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**loginNickname**](AuthV1Api.md#loginNickname) | **POST** /auth/v1/{appId}/login/nickname |  |
 
 
-<a name="loginAnonymous"></a>
+<a id="loginAnonymous"></a>
 # **loginAnonymous**
 > LoginResponse loginAnonymous(appId)
 
@@ -70,7 +70,7 @@ No authorization required
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="loginGoogle"></a>
+<a id="loginGoogle"></a>
 # **loginGoogle**
 > LoginResponse loginGoogle(appId, loginGoogleRequest)
 
@@ -134,7 +134,7 @@ No authorization required
 | **401** |  |  -  |
 | **404** |  |  -  |
 
-<a name="loginNickname"></a>
+<a id="loginNickname"></a>
 # **loginNickname**
 > LoginResponse loginNickname(appId, loginNicknameRequest)
 

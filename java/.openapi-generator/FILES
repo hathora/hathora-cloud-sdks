@@ -9,7 +9,6 @@ docs/Application.md
 docs/ApplicationAuthConfiguration.md
 docs/ApplicationAuthConfigurationGoogle.md
 docs/ApplicationWithDeployment.md
-docs/ApplicationWithDeploymentAllOf.md
 docs/AuthV1Api.md
 docs/BillingV1Api.md
 docs/Build.md
@@ -50,7 +49,6 @@ docs/PickRoomExcludeKeyofRoomAllocations.md
 docs/PlanName.md
 docs/Process.md
 docs/ProcessWithRooms.md
-docs/ProcessWithRoomsAllOf.md
 docs/ProcessesV1Api.md
 docs/RecordPartialMetricNameMetricValueArray.md
 docs/Region.md
@@ -104,7 +102,6 @@ src/main/java/com/hathora/client/model/Application.java
 src/main/java/com/hathora/client/model/ApplicationAuthConfiguration.java
 src/main/java/com/hathora/client/model/ApplicationAuthConfigurationGoogle.java
 src/main/java/com/hathora/client/model/ApplicationWithDeployment.java
-src/main/java/com/hathora/client/model/ApplicationWithDeploymentAllOf.java
 src/main/java/com/hathora/client/model/Build.java
 src/main/java/com/hathora/client/model/BuildRegionalContainerTagsInner.java
 src/main/java/com/hathora/client/model/CardBrand.java
@@ -135,7 +132,6 @@ src/main/java/com/hathora/client/model/PickRoomExcludeKeyofRoomAllocations.java
 src/main/java/com/hathora/client/model/PlanName.java
 src/main/java/com/hathora/client/model/Process.java
 src/main/java/com/hathora/client/model/ProcessWithRooms.java
-src/main/java/com/hathora/client/model/ProcessWithRoomsAllOf.java
 src/main/java/com/hathora/client/model/RecordPartialMetricNameMetricValueArray.java
 src/main/java/com/hathora/client/model/Region.java
 src/main/java/com/hathora/client/model/Room.java

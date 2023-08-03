@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   VerificationEmailRequest,
   VerificationEmailResponse,
-} from '../models';
+} from '../models/index';
 import {
     VerificationEmailRequestFromJSON,
     VerificationEmailRequestToJSON,
     VerificationEmailResponseFromJSON,
     VerificationEmailResponseToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface SendVerificationEmailRequest {
     verificationEmailRequest: VerificationEmailRequest;

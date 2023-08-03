@@ -2725,7 +2725,12 @@ components:
     ApplicationWithDeployment:
       allOf:
       - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationWithDeployment_allOf'
+      - properties:
+          deployment:
+            $ref: '#/components/schemas/Deployment'
+        required:
+        - deployment
+        type: object
     AppConfig:
       example:
         appName: minecraft
@@ -3553,7 +3558,18 @@ components:
     ProcessWithRooms:
       allOf:
       - $ref: '#/components/schemas/Process'
-      - $ref: '#/components/schemas/ProcessWithRooms_allOf'
+      - properties:
+          rooms:
+            items:
+              $ref: '#/components/schemas/RoomWithoutAllocations'
+            type: array
+          totalRooms:
+            format: double
+            type: number
+        required:
+        - rooms
+        - totalRooms
+        type: object
     CreateRoomRequest:
       example:
         region: null
@@ -3777,14 +3793,6 @@ components:
       - name
       - value
       type: object
-    ApplicationWithDeployment_allOf:
-      properties:
-        deployment:
-          $ref: '#/components/schemas/Deployment'
-      required:
-      - deployment
-      type: object
-      example: null
     AppConfig_authConfiguration:
       example:
         nickname: "{}"
@@ -3834,20 +3842,6 @@ components:
       - port
       - region
       type: object
-    ProcessWithRooms_allOf:
-      properties:
-        rooms:
-          items:
-            $ref: '#/components/schemas/RoomWithoutAllocations'
-          type: array
-        totalRooms:
-          format: double
-          type: number
-      required:
-      - rooms
-      - totalRooms
-      type: object
-      example: null
   securitySchemes:
     auth0:
       bearerFormat: JWT

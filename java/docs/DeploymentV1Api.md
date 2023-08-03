@@ -9,7 +9,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**getDeployments**](DeploymentV1Api.md#getDeployments) | **GET** /deployments/v1/{appId}/list |  |
 
 
-<a name="createDeployment"></a>
+<a id="createDeployment"></a>
 # **createDeployment**
 > Deployment createDeployment(appId, buildId, deploymentConfig)
 
@@ -83,7 +83,7 @@ public class Example {
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getDeploymentInfo"></a>
+<a id="getDeploymentInfo"></a>
 # **getDeploymentInfo**
 > Deployment getDeploymentInfo(appId, deploymentId)
 
@@ -153,7 +153,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getDeployments"></a>
+<a id="getDeployments"></a>
 # **getDeployments**
 > List&lt;Deployment&gt; getDeployments(appId)
 

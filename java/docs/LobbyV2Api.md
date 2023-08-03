@@ -13,7 +13,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**setLobbyState**](LobbyV2Api.md#setLobbyState) | **POST** /lobby/v2/{appId}/setState/{roomId} |  |
 
 
-<a name="createLobby"></a>
+<a id="createLobby"></a>
 # **createLobby**
 > Lobby createLobby(appId, authorization, createLobbyRequest, roomId)
 
@@ -87,7 +87,7 @@ No authorization required
 | **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="createLocalLobby"></a>
+<a id="createLocalLobby"></a>
 # **createLocalLobby**
 > Lobby createLocalLobby(appId, authorization, createPrivateLobbyRequest, roomId)
 
@@ -159,7 +159,7 @@ No authorization required
 | **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="createPrivateLobby"></a>
+<a id="createPrivateLobby"></a>
 # **createPrivateLobby**
 > Lobby createPrivateLobby(appId, authorization, createPrivateLobbyRequest, roomId)
 
@@ -231,7 +231,7 @@ No authorization required
 | **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="createPublicLobby"></a>
+<a id="createPublicLobby"></a>
 # **createPublicLobby**
 > Lobby createPublicLobby(appId, authorization, createPrivateLobbyRequest, roomId)
 
@@ -303,7 +303,7 @@ No authorization required
 | **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getLobbyInfo"></a>
+<a id="getLobbyInfo"></a>
 # **getLobbyInfo**
 > Lobby getLobbyInfo(appId, roomId)
 
@@ -368,7 +368,7 @@ No authorization required
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="listActivePublicLobbies"></a>
+<a id="listActivePublicLobbies"></a>
 # **listActivePublicLobbies**
 > List&lt;Lobby&gt; listActivePublicLobbies(appId, region)
 
@@ -432,7 +432,7 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 
-<a name="setLobbyState"></a>
+<a id="setLobbyState"></a>
 # **setLobbyState**
 > Lobby setLobbyState(appId, roomId, setLobbyStateRequest)
 

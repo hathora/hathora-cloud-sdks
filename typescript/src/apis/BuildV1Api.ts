@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   Build,
-} from '../models';
+} from '../models/index';
 import {
     BuildFromJSON,
     BuildToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreateBuildRequest {
     appId: string;

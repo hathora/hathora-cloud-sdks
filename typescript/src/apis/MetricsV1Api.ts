@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   MetricName,
   RecordPartialMetricNameMetricValueArray,
-} from '../models';
+} from '../models/index';
 import {
     MetricNameFromJSON,
     MetricNameToJSON,
     RecordPartialMetricNameMetricValueArrayFromJSON,
     RecordPartialMetricNameMetricValueArrayToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetMetricsRequest {
     appId: string;

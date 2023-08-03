@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   Region,
-} from '../models';
+} from '../models/index';
 import {
     RegionFromJSON,
     RegionToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetLogsForAppRequest {
     appId: string;

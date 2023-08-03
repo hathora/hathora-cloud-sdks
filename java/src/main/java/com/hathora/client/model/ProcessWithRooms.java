@@ -38,6 +38,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -59,6 +63,7 @@ public class ProcessWithRooms {
   private Double egressedBytes;
 
   public static final String SERIALIZED_NAME_IDLE_SINCE = "idleSince";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_IDLE_SINCE)
   private OffsetDateTime idleSince;
 
@@ -111,10 +116,12 @@ public class ProcessWithRooms {
   private ExposedPort exposedPort;
 
   public static final String SERIALIZED_NAME_PORT = "port";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_PORT)
   private Double port;
 
   public static final String SERIALIZED_NAME_HOST = "host";
+  @Deprecated
   @SerializedName(SERIALIZED_NAME_HOST)
   private String host;
 
@@ -156,7 +163,6 @@ public class ProcessWithRooms {
    * @return egressedBytes
   **/
   @javax.annotation.Nonnull
-
   public Double getEgressedBytes() {
     return egressedBytes;
   }
@@ -167,6 +173,7 @@ public class ProcessWithRooms {
   }
 
 
+  @Deprecated
   public ProcessWithRooms idleSince(OffsetDateTime idleSince) {
     
     this.idleSince = idleSince;
@@ -180,12 +187,12 @@ public class ProcessWithRooms {
   **/
   @Deprecated
   @javax.annotation.Nullable
-
   public OffsetDateTime getIdleSince() {
     return idleSince;
   }
 
 
+  @Deprecated
   public void setIdleSince(OffsetDateTime idleSince) {
     this.idleSince = idleSince;
   }
@@ -202,7 +209,6 @@ public class ProcessWithRooms {
    * @return activeConnectionsUpdatedAt
   **/
   @javax.annotation.Nonnull
-
   public OffsetDateTime getActiveConnectionsUpdatedAt() {
     return activeConnectionsUpdatedAt;
   }
@@ -224,7 +230,6 @@ public class ProcessWithRooms {
    * @return activeConnections
   **/
   @javax.annotation.Nonnull
-
   public Double getActiveConnections() {
     return activeConnections;
   }
@@ -246,7 +251,6 @@ public class ProcessWithRooms {
    * @return roomSlotsAvailableUpdatedAt
   **/
   @javax.annotation.Nonnull
-
   public OffsetDateTime getRoomSlotsAvailableUpdatedAt() {
     return roomSlotsAvailableUpdatedAt;
   }
@@ -268,7 +272,6 @@ public class ProcessWithRooms {
    * @return roomSlotsAvailable
   **/
   @javax.annotation.Nonnull
-
   public Double getRoomSlotsAvailable() {
     return roomSlotsAvailable;
   }
@@ -290,7 +293,6 @@ public class ProcessWithRooms {
    * @return draining
   **/
   @javax.annotation.Nonnull
-
   public Boolean getDraining() {
     return draining;
   }
@@ -312,7 +314,6 @@ public class ProcessWithRooms {
    * @return terminatedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getTerminatedAt() {
     return terminatedAt;
   }
@@ -334,7 +335,6 @@ public class ProcessWithRooms {
    * @return stoppingAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStoppingAt() {
     return stoppingAt;
   }
@@ -356,7 +356,6 @@ public class ProcessWithRooms {
    * @return startedAt
   **/
   @javax.annotation.Nullable
-
   public OffsetDateTime getStartedAt() {
     return startedAt;
   }
@@ -378,7 +377,6 @@ public class ProcessWithRooms {
    * @return startingAt
   **/
   @javax.annotation.Nonnull
-
   public OffsetDateTime getStartingAt() {
     return startingAt;
   }
@@ -401,7 +399,6 @@ public class ProcessWithRooms {
    * @return roomsPerProcess
   **/
   @javax.annotation.Nonnull
-
   public Integer getRoomsPerProcess() {
     return roomsPerProcess;
   }
@@ -431,7 +428,6 @@ public class ProcessWithRooms {
    * @return additionalExposedPorts
   **/
   @javax.annotation.Nonnull
-
   public List<ExposedPort> getAdditionalExposedPorts() {
     return additionalExposedPorts;
   }
@@ -453,7 +449,6 @@ public class ProcessWithRooms {
    * @return exposedPort
   **/
   @javax.annotation.Nullable
-
   public ExposedPort getExposedPort() {
     return exposedPort;
   }
@@ -464,6 +459,7 @@ public class ProcessWithRooms {
   }
 
 
+  @Deprecated
   public ProcessWithRooms port(Double port) {
     
     this.port = port;
@@ -477,17 +473,18 @@ public class ProcessWithRooms {
   **/
   @Deprecated
   @javax.annotation.Nonnull
-
   public Double getPort() {
     return port;
   }
 
 
+  @Deprecated
   public void setPort(Double port) {
     this.port = port;
   }
 
 
+  @Deprecated
   public ProcessWithRooms host(String host) {
     
     this.host = host;
@@ -501,12 +498,12 @@ public class ProcessWithRooms {
   **/
   @Deprecated
   @javax.annotation.Nonnull
-
   public String getHost() {
     return host;
   }
 
 
+  @Deprecated
   public void setHost(String host) {
     this.host = host;
   }
@@ -523,7 +520,6 @@ public class ProcessWithRooms {
    * @return region
   **/
   @javax.annotation.Nonnull
-
   public Region getRegion() {
     return region;
   }
@@ -545,7 +541,6 @@ public class ProcessWithRooms {
    * @return processId
   **/
   @javax.annotation.Nonnull
-
   public String getProcessId() {
     return processId;
   }
@@ -567,7 +562,6 @@ public class ProcessWithRooms {
    * @return deploymentId
   **/
   @javax.annotation.Nonnull
-
   public Integer getDeploymentId() {
     return deploymentId;
   }
@@ -589,7 +583,6 @@ public class ProcessWithRooms {
    * @return appId
   **/
   @javax.annotation.Nonnull
-
   public String getAppId() {
     return appId;
   }
@@ -619,7 +612,6 @@ public class ProcessWithRooms {
    * @return rooms
   **/
   @javax.annotation.Nonnull
-
   public List<PickRoomExcludeKeyofRoomAllocations> getRooms() {
     return rooms;
   }
@@ -641,7 +633,6 @@ public class ProcessWithRooms {
    * @return totalRooms
   **/
   @javax.annotation.Nonnull
-
   public Double getTotalRooms() {
     return totalRooms;
   }
@@ -834,24 +825,25 @@ public class ProcessWithRooms {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ProcessWithRooms
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to ProcessWithRooms
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ProcessWithRooms.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!ProcessWithRooms.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in ProcessWithRooms is not found in the empty JSON string", ProcessWithRooms.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ProcessWithRooms.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("additionalExposedPorts").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `additionalExposedPorts` to be an array in the JSON string but got `%s`", jsonObj.get("additionalExposedPorts").toString()));
@@ -860,11 +852,11 @@ public class ProcessWithRooms {
       JsonArray jsonArrayadditionalExposedPorts = jsonObj.getAsJsonArray("additionalExposedPorts");
       // validate the required field `additionalExposedPorts` (array)
       for (int i = 0; i < jsonArrayadditionalExposedPorts.size(); i++) {
-        ExposedPort.validateJsonObject(jsonArrayadditionalExposedPorts.get(i).getAsJsonObject());
+        ExposedPort.validateJsonElement(jsonArrayadditionalExposedPorts.get(i));
       };
       // validate the optional field `exposedPort`
       if (jsonObj.get("exposedPort") != null && !jsonObj.get("exposedPort").isJsonNull()) {
-        ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
+        ExposedPort.validateJsonElement(jsonObj.get("exposedPort"));
       }
       if (!jsonObj.get("host").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
@@ -883,7 +875,7 @@ public class ProcessWithRooms {
       JsonArray jsonArrayrooms = jsonObj.getAsJsonArray("rooms");
       // validate the required field `rooms` (array)
       for (int i = 0; i < jsonArrayrooms.size(); i++) {
-        PickRoomExcludeKeyofRoomAllocations.validateJsonObject(jsonArrayrooms.get(i).getAsJsonObject());
+        PickRoomExcludeKeyofRoomAllocations.validateJsonElement(jsonArrayrooms.get(i));
       };
   }
 
@@ -924,8 +916,9 @@ public class ProcessWithRooms {
 
            @Override
            public ProcessWithRooms read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              ProcessWithRooms instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {

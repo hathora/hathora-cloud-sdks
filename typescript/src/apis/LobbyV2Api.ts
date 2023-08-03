@@ -20,7 +20,7 @@ import type {
   Lobby,
   Region,
   SetLobbyStateRequest,
-} from '../models';
+} from '../models/index';
 import {
     CreateLobbyRequestFromJSON,
     CreateLobbyRequestToJSON,
@@ -32,7 +32,7 @@ import {
     RegionToJSON,
     SetLobbyStateRequestFromJSON,
     SetLobbyStateRequestToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreateLobbyOperationRequest {
     appId: string;

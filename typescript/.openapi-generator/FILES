@@ -24,7 +24,6 @@ src/models/Application.ts
 src/models/ApplicationAuthConfiguration.ts
 src/models/ApplicationAuthConfigurationGoogle.ts
 src/models/ApplicationWithDeployment.ts
-src/models/ApplicationWithDeploymentAllOf.ts
 src/models/Build.ts
 src/models/BuildRegionalContainerTagsInner.ts
 src/models/CardBrand.ts
@@ -55,7 +54,6 @@ src/models/PickRoomExcludeKeyofRoomAllocations.ts
 src/models/PlanName.ts
 src/models/Process.ts
 src/models/ProcessWithRooms.ts
-src/models/ProcessWithRoomsAllOf.ts
 src/models/RecordPartialMetricNameMetricValueArray.ts
 src/models/Region.ts
 src/models/Room.ts

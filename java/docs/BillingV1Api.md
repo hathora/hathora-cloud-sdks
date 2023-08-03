@@ -10,7 +10,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**initStripeCustomerPortalUrl**](BillingV1Api.md#initStripeCustomerPortalUrl) | **POST** /billing/v1/customerportalurl |  |
 
 
-<a name="getBalance"></a>
+<a id="getBalance"></a>
 # **getBalance**
 > Double getBalance()
 
@@ -72,7 +72,7 @@ This endpoint does not need any parameter.
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getInvoices"></a>
+<a id="getInvoices"></a>
 # **getInvoices**
 > List&lt;Invoice&gt; getInvoices()
 
@@ -134,7 +134,7 @@ This endpoint does not need any parameter.
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="getPaymentMethod"></a>
+<a id="getPaymentMethod"></a>
 # **getPaymentMethod**
 > PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod getPaymentMethod()
 
@@ -197,7 +197,7 @@ This endpoint does not need any parameter.
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="initStripeCustomerPortalUrl"></a>
+<a id="initStripeCustomerPortalUrl"></a>
 # **initStripeCustomerPortalUrl**
 > String initStripeCustomerPortalUrl(customerPortalUrl)
 

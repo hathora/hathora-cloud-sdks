@@ -9,7 +9,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**listActivePublicLobbiesDeprecated**](LobbyV1Api.md#listActivePublicLobbiesDeprecated) | **GET** /lobby/v1/{appId}/list |  |
 
 
-<a name="createPrivateLobbyDeprecated"></a>
+<a id="createPrivateLobbyDeprecated"></a>
 # **createPrivateLobbyDeprecated**
 > String createPrivateLobbyDeprecated(appId, authorization, region, local)
 
@@ -81,7 +81,7 @@ No authorization required
 | **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="createPublicLobbyDeprecated"></a>
+<a id="createPublicLobbyDeprecated"></a>
 # **createPublicLobbyDeprecated**
 > String createPublicLobbyDeprecated(appId, authorization, region, local)
 
@@ -153,7 +153,7 @@ No authorization required
 | **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="listActivePublicLobbiesDeprecated"></a>
+<a id="listActivePublicLobbiesDeprecated"></a>
 # **listActivePublicLobbiesDeprecated**
 > List&lt;Lobby&gt; listActivePublicLobbiesDeprecated(appId, authorization, local, region)
 

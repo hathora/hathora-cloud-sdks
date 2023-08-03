@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   Lobby,
   Region,
-} from '../models';
+} from '../models/index';
 import {
     LobbyFromJSON,
     LobbyToJSON,
     RegionFromJSON,
     RegionToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface CreatePrivateLobbyDeprecatedRequest {
     appId: string;

@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   DiscoveryResponseInner,
-} from '../models';
+} from '../models/index';
 import {
     DiscoveryResponseInnerFromJSON,
     DiscoveryResponseInnerToJSON,
-} from '../models';
+} from '../models/index';
 
 /**
  * DiscoveryV1Api - interface

@@ -34,6 +34,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -80,7 +84,6 @@ public class PickRoomExcludeKeyofRoomAllocations {
    * @return appId
   **/
   @javax.annotation.Nonnull
-
   public String getAppId() {
     return appId;
   }
@@ -102,7 +105,6 @@ public class PickRoomExcludeKeyofRoomAllocations {
    * @return roomId
   **/
   @javax.annotation.Nonnull
-
   public String getRoomId() {
     return roomId;
   }
@@ -124,7 +126,6 @@ public class PickRoomExcludeKeyofRoomAllocations {
    * @return status
   **/
   @javax.annotation.Nonnull
-
   public RoomStatus getStatus() {
     return status;
   }
@@ -146,7 +147,6 @@ public class PickRoomExcludeKeyofRoomAllocations {
    * @return currentAllocation
   **/
   @javax.annotation.Nullable
-
   public RoomAllocation getCurrentAllocation() {
     return currentAllocation;
   }
@@ -268,24 +268,25 @@ public class PickRoomExcludeKeyofRoomAllocations {
   }
 
  /**
-  * Validates the JSON Object and throws an exception if issues found
+  * Validates the JSON Element and throws an exception if issues found
   *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to PickRoomExcludeKeyofRoomAllocations
+  * @param jsonElement JSON Element
+  * @throws IOException if the JSON Element is invalid with respect to PickRoomExcludeKeyofRoomAllocations
   */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!PickRoomExcludeKeyofRoomAllocations.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!PickRoomExcludeKeyofRoomAllocations.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in PickRoomExcludeKeyofRoomAllocations is not found in the empty JSON string", PickRoomExcludeKeyofRoomAllocations.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PickRoomExcludeKeyofRoomAllocations.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("appId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appId").toString()));
       }
@@ -293,7 +294,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
       }
       // validate the required field `currentAllocation`
-      RoomAllocation.validateJsonObject(jsonObj.getAsJsonObject("currentAllocation"));
+      RoomAllocation.validateJsonElement(jsonObj.get("currentAllocation"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -333,8 +334,9 @@ public class PickRoomExcludeKeyofRoomAllocations {
 
            @Override
            public PickRoomExcludeKeyofRoomAllocations read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
              PickRoomExcludeKeyofRoomAllocations instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
