@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "generate": "npx @openapitools/openapi-generator-cli generate && ./csharp/post-csharp.sh"
+    "generate": "npx @openapitools/openapi-generator-cli generate && ./csharp/post-csharp.sh && ./java/post-java.sh"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0"
