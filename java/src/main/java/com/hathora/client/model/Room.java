@@ -78,7 +78,7 @@ public class Room {
   public Room() {
   }
 
-  public Room currentAllocation(RoomAllocation currentAllocation) {
+  public Room currentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
     
     this.currentAllocation = currentAllocation;
     return this;
@@ -90,12 +90,12 @@ public class Room {
   **/
   @javax.annotation.Nullable
 
-  public RoomAllocation getCurrentAllocation() {
+  public JsonNullable<RoomAllocation> getCurrentAllocation() {
     return currentAllocation;
   }
 
 
-  public void setCurrentAllocation(RoomAllocation currentAllocation) {
+  public void setCurrentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
     this.currentAllocation = currentAllocation;
   }
 

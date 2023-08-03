@@ -30,6 +30,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapterFactory;
@@ -138,7 +139,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
   }
 
 
-  public PickRoomExcludeKeyofRoomAllocations currentAllocation(RoomAllocation currentAllocation) {
+  public PickRoomExcludeKeyofRoomAllocations currentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
     
     this.currentAllocation = currentAllocation;
     return this;
@@ -150,12 +151,12 @@ public class PickRoomExcludeKeyofRoomAllocations {
   **/
   @javax.annotation.Nullable
 
-  public RoomAllocation getCurrentAllocation() {
+  public JsonNullable<RoomAllocation> getCurrentAllocation() {
     return currentAllocation;
   }
 
 
-  public void setCurrentAllocation(RoomAllocation currentAllocation) {
+  public void setCurrentAllocation(JsonNullable<RoomAllocation> currentAllocation) {
     this.currentAllocation = currentAllocation;
   }
 
