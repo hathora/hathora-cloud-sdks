@@ -36,3 +36,5 @@ settings.gradle
 .travis.yml
 .gitignore
 src/main/AndroidManifest.xml
+post-java-generation.patch
+post-java.sh
