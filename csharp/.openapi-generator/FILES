@@ -67,9 +67,6 @@ docs/VerificationEmailRequest.md
 docs/VerificationEmailResponse.md
 git_push.sh
 src/Hathora.Cloud.Sdk.Test/Hathora.Cloud.Sdk.Test.asmdef
-src/Hathora.Cloud.Sdk.Test/Model/AuthConfigurationGoogleTests.cs
-src/Hathora.Cloud.Sdk.Test/Model/AuthConfigurationTests.cs
-src/Hathora.Cloud.Sdk.Test/Model/CreateBuildRequestTests.cs
 src/Hathora.Cloud.Sdk/Api/AppV1Api.cs
 src/Hathora.Cloud.Sdk/Api/AuthV1Api.cs
 src/Hathora.Cloud.Sdk/Api/BillingV1Api.cs
