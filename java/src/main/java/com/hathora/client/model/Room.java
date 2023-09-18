@@ -356,8 +356,6 @@ public class Room {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the required field `currentAllocation`
-      RoomAllocation.validateJsonObject(jsonObj.getAsJsonObject("currentAllocation"));
       // ensure the json data is an array
       if (!jsonObj.get("allocations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `allocations` to be an array in the JSON string but got `%s`", jsonObj.get("allocations").toString()));

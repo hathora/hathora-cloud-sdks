@@ -325,8 +325,6 @@ public class PickRoomExcludeKeyofRoomAllocations {
       if (!jsonObj.get("roomConfig").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roomConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomConfig").toString()));
       }
-      // validate the required field `currentAllocation`
-      RoomAllocation.validateJsonObject(jsonObj.getAsJsonObject("currentAllocation"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
