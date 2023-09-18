@@ -23,6 +23,33 @@
 				"type": "object",
 				"description": "Construct a type with a set of properties K of type T"
 			},
+			"AuthConfiguration": {
+				"properties": {
+					"google": {
+						"properties": {
+							"clientId": {
+								"type": "string",
+								"description": "A Google generated token representing the developer's credentials for [Google's API Console](https://console.cloud.google.com/apis/dashboard?pli=1&project=discourse-login-388921). Learn how to get a `clientId` [here](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid)."
+							}
+						},
+						"required": [
+							"clientId"
+						],
+						"type": "object",
+						"description": "Enable google auth for your application."
+					},
+					"nickname": {
+						"$ref": "#/components/schemas/Record_string.never_",
+						"description": "Enable nickname auth for your application."
+					},
+					"anonymous": {
+						"$ref": "#/components/schemas/Record_string.never_",
+						"description": "Enable anonymous auth for your application."
+					}
+				},
+				"type": "object",
+				"description": "Configure [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service) for your application. Use Hathora's built-in auth providers or use your own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider)."
+			},
 			"OrgId": {
 				"type": "string",
 				"example": "google-oauth2|107030234048588177467",
@@ -56,24 +83,7 @@
 						"$ref": "#/components/schemas/OrgId"
 					},
 					"authConfiguration": {
-						"properties": {
-							"google": {
-								"properties": {
-									"clientId": {
-										"type": "string"
-									}
-								},
-								"required": ["clientId"],
-								"type": "object"
-							},
-							"nickname": {
-								"$ref": "#/components/schemas/Record_string.never_"
-							},
-							"anonymous": {
-								"$ref": "#/components/schemas/Record_string.never_"
-							}
-						},
-						"type": "object",
+						"$ref": "#/components/schemas/AuthConfiguration",
 						"description": "Used to authenticate player requests. Use your own authentication or Hathora's Auth Client."
 					},
 					"appSecret": {
@@ -102,6 +112,12 @@
 				"type": "object",
 				"description": "An application object is the top level namespace for the game server."
 			},
+			"BuildId": {
+				"type": "integer",
+				"format": "int32",
+				"example": 1,
+				"description": "System generated id for a build. Increments by 1."
+			},
 			"DeploymentId": {
 				"type": "integer",
 				"format": "int32",
@@ -110,7 +126,11 @@
 			},
 			"TransportType": {
 				"type": "string",
-				"enum": ["tcp", "udp", "tls"],
+				"enum": [
+					"tcp",
+					"udp",
+					"tls"
+				],
 				"description": "Transport type specifies the underlying communication protocol to the exposed port."
 			},
 			"ContainerPort": {
@@ -134,13 +154,22 @@
 						"pattern": "^[a-z][a-z0-9-]*$"
 					}
 				},
-				"required": ["transportType", "port", "name"],
+				"required": [
+					"transportType",
+					"port",
+					"name"
+				],
 				"type": "object",
 				"description": "A container port object represents the transport configruations for how your server will listen."
 			},
 			"PlanName": {
 				"type": "string",
-				"enum": ["tiny", "small", "medium", "large"],
+				"enum": [
+					"tiny",
+					"small",
+					"medium",
+					"large"
+				],
 				"example": "tiny",
 				"description": "A plan defines how much CPU and memory is required to run an instance of your game server.\n\n`tiny`: shared core, 1gb memory\n\n`small`: 1 core, 2gb memory\n\n`medium`: 2 core, 4gb memory\n\n`large`: 4 core, 8gb memory"
 			},
@@ -150,7 +179,7 @@
 				"example": 3,
 				"description": "Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.",
 				"minimum": 1,
-				"maxLength": 10000
+				"maximum": 10000
 			},
 			"Deployment": {
 				"properties": {
@@ -170,7 +199,10 @@
 									"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
 								}
 							},
-							"required": ["value", "name"],
+							"required": [
+								"value",
+								"name"
+							],
 							"type": "object"
 						},
 						"type": "array",
@@ -202,7 +234,11 @@
 					},
 					"transportType": {
 						"type": "string",
-						"enum": ["tcp", "udp", "tls"],
+						"enum": [
+							"tcp",
+							"udp",
+							"tls"
+						],
 						"deprecated": true
 					},
 					"containerPort": {
@@ -236,10 +272,7 @@
 						"$ref": "#/components/schemas/DeploymentId"
 					},
 					"buildId": {
-						"type": "integer",
-						"format": "int32",
-						"description": "System generated id for a build associated with this deployment. Increments by 1.",
-						"example": 1
+						"$ref": "#/components/schemas/BuildId"
 					},
 					"appId": {
 						"$ref": "#/components/schemas/AppId"
@@ -275,7 +308,9 @@
 								"$ref": "#/components/schemas/Deployment"
 							}
 						},
-						"required": ["deployment"],
+						"required": [
+							"deployment"
+						],
 						"type": "object"
 					}
 				]
@@ -283,62 +318,70 @@
 			"AppConfig": {
 				"properties": {
 					"authConfiguration": {
-						"properties": {
-							"google": {
-								"properties": {
-									"clientId": {
-										"type": "string"
-									}
-								},
-								"required": ["clientId"],
-								"type": "object"
-							},
-							"nickname": {
-								"$ref": "#/components/schemas/Record_string.never_"
-							},
-							"anonymous": {
-								"$ref": "#/components/schemas/Record_string.never_"
-							}
-						},
-						"type": "object"
+						"$ref": "#/components/schemas/AuthConfiguration"
 					},
 					"appName": {
 						"$ref": "#/components/schemas/AppName"
 					}
 				},
-				"required": ["authConfiguration", "appName"],
+				"required": [
+					"authConfiguration",
+					"appName"
+				],
 				"type": "object"
 			},
 			"LoginResponse": {
 				"properties": {
 					"token": {
-						"type": "string"
+						"type": "string",
+						"description": "A unique Hathora-signed JWT player token.",
+						"example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYW5vbnltb3VzIiwiaWQiOiJ3aDA4eWN3eTJwOSIsIm5hbWUiOiJqaXR0ZXJ5LXNhbG1vbi1ndWxsIiwiaWF0IjoxNjg5MzQ5MTk3fQ.-LzlPhZw2tw0ycZ229IRHwwmINGKWNPFMDrXOphLjEk"
 					}
 				},
-				"required": ["token"],
+				"required": [
+					"token"
+				],
 				"type": "object"
 			},
 			"LoginNicknameRequest": {
 				"properties": {
 					"nickname": {
-						"type": "string"
+						"type": "string",
+						"description": "An alias to represent a player.",
+						"example": "squiddytwoshoes"
 					}
 				},
-				"required": ["nickname"],
+				"required": [
+					"nickname"
+				],
 				"type": "object"
 			},
 			"LoginGoogleRequest": {
 				"properties": {
 					"idToken": {
-						"type": "string"
+						"type": "string",
+						"description": "A Google-signed OIDC ID token representing a player's authenticated identity. Learn how to get an `idToken` [here](https://cloud.google.com/docs/authentication/get-id-token).",
+						"example": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImZkNDhhNzUxMzhkOWQ0OGYwYWE2MzVlZjU2OWM0ZTE5NmY3YWU4ZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0NTQyMzMwNzI3MTU2MTMzNzc2IiwiZW1haWwiOiJocGFdkeivmeuzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidno1NGhhdTNxbnVR"
 					}
 				},
-				"required": ["idToken"],
+				"required": [
+					"idToken"
+				],
 				"type": "object"
 			},
 			"CardBrand": {
 				"type": "string",
-				"enum": ["amex", "cartes_bancaires", "diners", "discover", "jcb", "mastercard", "visa", "unionpay", "card"]
+				"enum": [
+					"amex",
+					"cartes_bancaires",
+					"diners",
+					"discover",
+					"jcb",
+					"mastercard",
+					"visa",
+					"unionpay",
+					"card"
+				]
 			},
 			"CardPaymentMethod": {
 				"properties": {
@@ -349,7 +392,10 @@
 						"$ref": "#/components/schemas/CardBrand"
 					}
 				},
-				"required": ["last4", "brand"],
+				"required": [
+					"last4",
+					"brand"
+				],
 				"type": "object"
 			},
 			"AchPaymentMethod": {
@@ -395,14 +441,20 @@
 						"type": "string"
 					}
 				},
-				"required": ["returnUrl"],
+				"required": [
+					"returnUrl"
+				],
 				"type": "object"
 			},
 			"Invoice": {
 				"properties": {
 					"status": {
 						"type": "string",
-						"enum": ["pending", "paid", "overdue"]
+						"enum": [
+							"pending",
+							"paid",
+							"overdue"
+						]
 					},
 					"amountDue": {
 						"type": "number",
@@ -427,15 +479,17 @@
 						"type": "string"
 					}
 				},
-				"required": ["status", "amountDue", "pdfUrl", "dueDate", "year", "month", "id"],
+				"required": [
+					"status",
+					"amountDue",
+					"pdfUrl",
+					"dueDate",
+					"year",
+					"month",
+					"id"
+				],
 				"type": "object",
 				"description": "Billing types"
-			},
-			"BuildId": {
-				"type": "integer",
-				"format": "int32",
-				"example": 1,
-				"description": "System generated id for a build. Increments by 1."
 			},
 			"Region": {
 				"type": "string",
@@ -450,11 +504,24 @@
 					"Tokyo",
 					"Sydney",
 					"Sao_Paulo"
-				],
-				"description": "Available regions to request a game server."
+				]
+			},
+			"BuildTag": {
+				"type": "string",
+				"example": "0.1.14-14c793",
+				"description": "Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).",
+				"maxLength": 1000
 			},
 			"Build": {
 				"properties": {
+					"buildTag": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/BuildTag"
+							}
+						],
+						"nullable": true
+					},
 					"regionalContainerTags": {
 						"items": {
 							"properties": {
@@ -465,44 +532,52 @@
 									"$ref": "#/components/schemas/Region"
 								}
 							},
-							"required": ["containerTag", "region"],
+							"required": [
+								"containerTag",
+								"region"
+							],
 							"type": "object"
 						},
 						"type": "array",
-						"description": "An alias for the container image in our regional registries."
+						"description": "Identifiers for the containers stored in Hathora's registries."
 					},
 					"imageSize": {
 						"type": "number",
 						"format": "double",
-						"description": "Image size in MB."
+						"description": "The size (in bytes) of the Docker image built by Hathora."
 					},
 					"status": {
 						"type": "string",
-						"enum": ["created", "running", "succeeded", "failed"],
-						"description": "Status of creating a build.\n\n`created`: a new `buildId` was generated\n\n`running`: the container image is being built\n\n`succeeded`: the container image was successfully built and stored in our registry\n\n`failed`: there was an issue creating and storing the container image in our container registry"
+						"enum": [
+							"created",
+							"running",
+							"succeeded",
+							"failed"
+						],
+						"description": "Current status of your build.\n\n`created`: a build was created but not yet run\n\n`running`: the build process is actively executing\n\n`succeeded`: the game server artifact was successfully built and stored in the Hathora registries\n\n`failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`"
 					},
 					"deletedAt": {
 						"type": "string",
 						"format": "date-time",
 						"nullable": true,
-						"description": "When the container image was deleted."
+						"description": "When the build was deleted."
 					},
 					"finishedAt": {
 						"type": "string",
 						"format": "date-time",
 						"nullable": true,
-						"description": "When the container image finished being built."
+						"description": "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing."
 					},
 					"startedAt": {
 						"type": "string",
 						"format": "date-time",
 						"nullable": true,
-						"description": "When the container image starts getting built."
+						"description": "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called."
 					},
 					"createdAt": {
 						"type": "string",
 						"format": "date-time",
-						"description": "When a new `buildId` is generated."
+						"description": "When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called."
 					},
 					"createdBy": {
 						"type": "string",
@@ -517,6 +592,7 @@
 					}
 				},
 				"required": [
+					"buildTag",
 					"regionalContainerTags",
 					"imageSize",
 					"status",
@@ -529,7 +605,15 @@
 					"appId"
 				],
 				"type": "object",
-				"description": "Build is a versioned artifact for a game server's container image and its data."
+				"description": "A build represents a game server artifact and its associated metadata."
+			},
+			"CreateBuildRequest": {
+				"properties": {
+					"buildTag": {
+						"$ref": "#/components/schemas/BuildTag"
+					}
+				},
+				"type": "object"
 			},
 			"DeploymentConfig": {
 				"properties": {
@@ -549,7 +633,10 @@
 									"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
 								}
 							},
-							"required": ["value", "name"],
+							"required": [
+								"value",
+								"name"
+							],
 							"type": "object"
 						},
 						"type": "array",
@@ -582,7 +669,13 @@
 						"maximum": 65535
 					}
 				},
-				"required": ["env", "roomsPerProcess", "planName", "transportType", "containerPort"],
+				"required": [
+					"env",
+					"roomsPerProcess",
+					"planName",
+					"transportType",
+					"containerPort"
+				],
 				"type": "object",
 				"description": "User specified deployment configuration for your application at runtime."
 			},
@@ -600,10 +693,21 @@
 							"$ref": "#/components/schemas/Region"
 						}
 					},
-					"required": ["port", "host", "region"],
+					"required": [
+						"port",
+						"host",
+						"region"
+					],
 					"type": "object"
 				},
-				"type": "array"
+				"type": "array",
+				"example": [
+					{
+						"region": "Seattle",
+						"host": "ping.hathora.dev",
+						"port": 2000
+					}
+				]
 			},
 			"RoomId": {
 				"type": "string",
@@ -615,7 +719,11 @@
 			},
 			"LobbyVisibility": {
 				"type": "string",
-				"enum": ["private", "public", "local"],
+				"enum": [
+					"private",
+					"public",
+					"local"
+				],
 				"example": "private",
 				"description": "Types of lobbies a player can create.\n\n`private`: the player who created the room must share the roomId with their friends\n\n`public`: visible in the public lobby list, anyone can join\n\n`local`: for testing with a server running locally"
 			},
@@ -662,7 +770,16 @@
 						"$ref": "#/components/schemas/AppId"
 					}
 				},
-				"required": ["initialConfig", "createdAt", "createdBy", "local", "visibility", "region", "roomId", "appId"],
+				"required": [
+					"initialConfig",
+					"createdAt",
+					"createdBy",
+					"local",
+					"visibility",
+					"region",
+					"roomId",
+					"appId"
+				],
 				"type": "object",
 				"description": "A lobby object allows you to store and manage metadata for your rooms."
 			},
@@ -678,7 +795,11 @@
 						"$ref": "#/components/schemas/Region"
 					}
 				},
-				"required": ["visibility", "initialConfig", "region"],
+				"required": [
+					"visibility",
+					"initialConfig",
+					"region"
+				],
 				"type": "object"
 			},
 			"SetLobbyStateRequest": {
@@ -689,7 +810,9 @@
 						"description": "JSON blob to store metadata for a room. Must be smaller than 1MB."
 					}
 				},
-				"required": ["state"],
+				"required": [
+					"state"
+				],
 				"type": "object"
 			},
 			"LogsFollow": {
@@ -703,7 +826,7 @@
 				"default": "100",
 				"description": "Number of lines to return from most recent logs history.",
 				"minimum": 1,
-				"maximum": 10000
+				"maximum": 5000
 			},
 			"ProcessId": {
 				"type": "string",
@@ -714,11 +837,15 @@
 				"properties": {
 					"status": {
 						"type": "string",
-						"enum": ["success"],
+						"enum": [
+							"success"
+						],
 						"nullable": false
 					}
 				},
-				"required": ["status"],
+				"required": [
+					"status"
+				],
 				"type": "object"
 			},
 			"VerificationEmailRequest": {
@@ -727,7 +854,9 @@
 						"type": "string"
 					}
 				},
-				"required": ["userId"],
+				"required": [
+					"userId"
+				],
 				"type": "object"
 			},
 			"MetricValue": {
@@ -741,7 +870,10 @@
 						"format": "double"
 					}
 				},
-				"required": ["value", "timestamp"],
+				"required": [
+					"value",
+					"timestamp"
+				],
 				"type": "object"
 			},
 			"Record_Partial_MetricName_.MetricValue-Array_": {
@@ -769,6 +901,12 @@
 							"$ref": "#/components/schemas/MetricValue"
 						},
 						"type": "array"
+					},
+					"active_connections": {
+						"items": {
+							"$ref": "#/components/schemas/MetricValue"
+						},
+						"type": "array"
 					}
 				},
 				"type": "object",
@@ -779,7 +917,13 @@
 			},
 			"MetricName": {
 				"type": "string",
-				"enum": ["cpu", "memory", "rate_egress", "total_egress"],
+				"enum": [
+					"cpu",
+					"memory",
+					"rate_egress",
+					"total_egress",
+					"active_connections"
+				],
 				"description": "Available metrics to query over time."
 			},
 			"MetricsStep": {
@@ -804,7 +948,12 @@
 						"type": "string"
 					}
 				},
-				"required": ["transportType", "port", "host", "name"],
+				"required": [
+					"transportType",
+					"port",
+					"host",
+					"name"
+				],
 				"type": "object",
 				"example": {
 					"host": "1.proxy.hathora.dev",
@@ -812,7 +961,7 @@
 					"port": 34567,
 					"transportType": "tcp"
 				},
-				"description": "Connection information to an exposed port on an active process."
+				"description": "Connection details for an active process."
 			},
 			"Process": {
 				"properties": {
@@ -830,7 +979,8 @@
 					},
 					"activeConnectionsUpdatedAt": {
 						"type": "string",
-						"format": "date-time"
+						"format": "date-time",
+						"deprecated": true
 					},
 					"activeConnections": {
 						"type": "number",
@@ -838,15 +988,25 @@
 						"description": "Tracks the number of active connections to a process.",
 						"example": 10
 					},
-					"roomSlotsAvailableUpdatedAt": {
+					"roomsAllocatedUpdatedAt": {
 						"type": "string",
 						"format": "date-time"
+					},
+					"roomsAllocated": {
+						"type": "number",
+						"format": "double",
+						"description": "Tracks the number of rooms that have been allocated to the process.",
+						"example": 1
+					},
+					"roomSlotsAvailableUpdatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"deprecated": true
 					},
 					"roomSlotsAvailable": {
 						"type": "number",
 						"format": "double",
-						"description": "Tracks the number of room slots available on the process.",
-						"example": 1
+						"deprecated": true
 					},
 					"draining": {
 						"type": "boolean",
@@ -923,6 +1083,8 @@
 					"idleSince",
 					"activeConnectionsUpdatedAt",
 					"activeConnections",
+					"roomsAllocatedUpdatedAt",
+					"roomsAllocated",
 					"roomSlotsAvailableUpdatedAt",
 					"roomSlotsAvailable",
 					"draining",
@@ -942,9 +1104,20 @@
 				"type": "object",
 				"description": "A process object represents a runtime instance of your game server and its metadata."
 			},
+			"RoomConfig": {
+				"type": "string",
+				"example": "{\"name\":\"my-room\"}",
+				"description": "Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).",
+				"maxLength": 10000
+			},
 			"RoomStatus": {
 				"type": "string",
-				"enum": ["scheduling", "active", "suspended", "destroyed"],
+				"enum": [
+					"scheduling",
+					"active",
+					"suspended",
+					"destroyed"
+				],
 				"example": "active",
 				"description": "The allocation status of a room.\n\n`scheduling`: a process is not allocated yet and the room is waiting to be scheduled\n\n`active`: ready to accept connections\n\n`suspended`: room is unallocated from the process but can be rescheduled later with the same `roomId`\n\n`destroyed`: all associated metadata is deleted"
 			},
@@ -971,9 +1144,14 @@
 						"$ref": "#/components/schemas/RoomAllocationId"
 					}
 				},
-				"required": ["unscheduledAt", "scheduledAt", "processId", "roomAllocationId"],
+				"required": [
+					"unscheduledAt",
+					"scheduledAt",
+					"processId",
+					"roomAllocationId"
+				],
 				"type": "object",
-				"description": "Metadata on allocated instances of a room."
+				"description": "Metadata on an allocated instance of a room."
 			},
 			"Pick_Room.Exclude_keyofRoom.allocations__": {
 				"properties": {
@@ -982,6 +1160,14 @@
 					},
 					"roomId": {
 						"$ref": "#/components/schemas/RoomId"
+					},
+					"roomConfig": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/RoomConfig"
+							}
+						],
+						"nullable": true
 					},
 					"status": {
 						"$ref": "#/components/schemas/RoomStatus"
@@ -995,7 +1181,13 @@
 						"nullable": true
 					}
 				},
-				"required": ["appId", "roomId", "status", "currentAllocation"],
+				"required": [
+					"appId",
+					"roomId",
+					"roomConfig",
+					"status",
+					"currentAllocation"
+				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
@@ -1024,18 +1216,26 @@
 								"format": "double"
 							}
 						},
-						"required": ["rooms", "totalRooms"],
+						"required": [
+							"rooms",
+							"totalRooms"
+						],
 						"type": "object"
 					}
 				]
 			},
 			"CreateRoomRequest": {
 				"properties": {
+					"roomConfig": {
+						"$ref": "#/components/schemas/RoomConfig"
+					},
 					"region": {
 						"$ref": "#/components/schemas/Region"
 					}
 				},
-				"required": ["region"],
+				"required": [
+					"region"
+				],
 				"type": "object"
 			},
 			"Room": {
@@ -1057,6 +1257,14 @@
 						},
 						"type": "array"
 					},
+					"roomConfig": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/RoomConfig"
+							}
+						],
+						"nullable": true
+					},
 					"roomId": {
 						"$ref": "#/components/schemas/RoomId"
 					},
@@ -1064,7 +1272,14 @@
 						"$ref": "#/components/schemas/AppId"
 					}
 				},
-				"required": ["currentAllocation", "status", "allocations", "roomId", "appId"],
+				"required": [
+					"currentAllocation",
+					"status",
+					"allocations",
+					"roomConfig",
+					"roomId",
+					"appId"
+				],
 				"type": "object",
 				"description": "A room object represents a game session or match."
 			},
@@ -1072,21 +1287,28 @@
 				"properties": {
 					"status": {
 						"type": "string",
-						"enum": ["starting"],
+						"enum": [
+							"starting"
+						],
 						"nullable": false
 					},
 					"roomId": {
 						"$ref": "#/components/schemas/RoomId"
 					}
 				},
-				"required": ["status", "roomId"],
+				"required": [
+					"status",
+					"roomId"
+				],
 				"type": "object"
 			},
 			"ActiveConnectionInfo": {
 				"properties": {
 					"status": {
 						"type": "string",
-						"enum": ["active"],
+						"enum": [
+							"active"
+						],
 						"nullable": false
 					},
 					"transportType": {
@@ -1103,7 +1325,13 @@
 						"$ref": "#/components/schemas/RoomId"
 					}
 				},
-				"required": ["status", "transportType", "port", "host", "roomId"],
+				"required": [
+					"status",
+					"transportType",
+					"port",
+					"host",
+					"roomId"
+				],
 				"type": "object"
 			},
 			"ConnectionInfo": {
@@ -1139,19 +1367,28 @@
 					},
 					"status": {
 						"type": "string",
-						"enum": ["starting", "active"]
+						"enum": [
+							"starting",
+							"active"
+						],
+						"description": "`exposedPort` will only be available when the `status` of a room is \"active\".",
+						"example": "active"
 					},
 					"roomId": {
 						"$ref": "#/components/schemas/RoomId"
 					}
 				},
-				"required": ["additionalExposedPorts", "status", "roomId"],
+				"required": [
+					"additionalExposedPorts",
+					"status",
+					"roomId"
+				],
 				"type": "object",
 				"description": "Connection information for the default and additional ports."
 			}
 		},
 		"securitySchemes": {
-			"auth0": {
+			"hathoraDevToken": {
 				"type": "http",
 				"scheme": "bearer",
 				"bearerFormat": "JWT"
@@ -1185,10 +1422,12 @@
 					}
 				},
 				"description": "Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.",
-				"tags": ["AppV1"],
+				"tags": [
+					"AppV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": []
@@ -1230,10 +1469,12 @@
 					}
 				},
 				"description": "Create a new [application](https://hathora.dev/docs/concepts/hathora-entities#application).",
-				"tags": ["AppV1"],
+				"tags": [
+					"AppV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [],
@@ -1285,10 +1526,12 @@
 					}
 				},
 				"description": "Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
-				"tags": ["AppV1"],
+				"tags": [
+					"AppV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -1339,10 +1582,12 @@
 					}
 				},
 				"description": "Get details for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
-				"tags": ["AppV1"],
+				"tags": [
+					"AppV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -1386,10 +1631,12 @@
 					}
 				},
 				"description": "Delete an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Your organization will lose access to this application.",
-				"tags": ["AppV1"],
+				"tags": [
+					"AppV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -1429,7 +1676,10 @@
 						}
 					}
 				},
-				"tags": ["AuthV1"],
+				"description": "Returns a unique player token for an anonymous user.",
+				"tags": [
+					"AuthV1"
+				],
 				"security": [],
 				"parameters": [
 					{
@@ -1468,7 +1718,10 @@
 						}
 					}
 				},
-				"tags": ["AuthV1"],
+				"description": "Returns a unique player token with a specified nickname for a user.",
+				"tags": [
+					"AuthV1"
+				],
 				"security": [],
 				"parameters": [
 					{
@@ -1527,7 +1780,10 @@
 						}
 					}
 				},
-				"tags": ["AuthV1"],
+				"description": "Returns a unique player token using a Google-signed OIDC `idToken`.",
+				"tags": [
+					"AuthV1"
+				],
 				"security": [],
 				"parameters": [
 					{
@@ -1577,10 +1833,12 @@
 						}
 					}
 				},
-				"tags": ["BillingV1"],
+				"tags": [
+					"BillingV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": []
@@ -1621,10 +1879,12 @@
 						}
 					}
 				},
-				"tags": ["BillingV1"],
+				"tags": [
+					"BillingV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": []
@@ -1655,10 +1915,12 @@
 						}
 					}
 				},
-				"tags": ["BillingV1"],
+				"tags": [
+					"BillingV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [],
@@ -1702,10 +1964,12 @@
 						}
 					}
 				},
-				"tags": ["BillingV1"],
+				"tags": [
+					"BillingV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": []
@@ -1739,11 +2003,13 @@
 						}
 					}
 				},
-				"description": "Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
-				"tags": ["BuildV1"],
+				"description": "Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).",
+				"tags": [
+					"BuildV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -1783,11 +2049,13 @@
 						}
 					}
 				},
-				"description": "Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.",
-				"tags": ["BuildV1"],
+				"description": "Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).",
+				"tags": [
+					"BuildV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -1845,11 +2113,13 @@
 						}
 					}
 				},
-				"description": "Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).",
-				"tags": ["BuildV1"],
+				"description": "Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.",
+				"tags": [
+					"BuildV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -1861,7 +2131,17 @@
 							"$ref": "#/components/schemas/AppId"
 						}
 					}
-				]
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateBuildRequest"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/builds/v1/{appId}/run/{buildId}": {
@@ -1900,11 +2180,13 @@
 						}
 					}
 				},
-				"description": "Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.",
-				"tags": ["BuildV1"],
+				"description": "Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).",
+				"tags": [
+					"BuildV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -1937,7 +2219,9 @@
 										"format": "binary"
 									}
 								},
-								"required": ["file"]
+								"required": [
+									"file"
+								]
 							}
 						}
 					}
@@ -1982,11 +2266,13 @@
 						}
 					}
 				},
-				"description": "Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.",
-				"tags": ["BuildV1"],
+				"description": "Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.",
+				"tags": [
+					"BuildV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -2037,11 +2323,13 @@
 						}
 					}
 				},
-				"description": "Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
-				"tags": ["DeploymentV1"],
+				"description": "Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).",
+				"tags": [
+					"DeploymentV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -2081,11 +2369,13 @@
 						}
 					}
 				},
-				"description": "Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.",
-				"tags": ["DeploymentV1"],
+				"description": "Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).",
+				"tags": [
+					"DeploymentV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -2153,11 +2443,13 @@
 						}
 					}
 				},
-				"description": "Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).",
-				"tags": ["DeploymentV1"],
+				"description": "Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.",
+				"tags": [
+					"DeploymentV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -2205,8 +2497,10 @@
 						}
 					}
 				},
-				"description": "Returns an array of all regions with a host and port that a client can directly ping.",
-				"tags": ["DiscoveryV1"],
+				"description": "Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.",
+				"tags": [
+					"DiscoveryV1"
+				],
 				"security": [],
 				"parameters": []
 			}
@@ -2286,7 +2580,9 @@
 						}
 					}
 				},
-				"tags": ["LobbyV1"],
+				"tags": [
+					"LobbyV1"
+				],
 				"deprecated": true,
 				"security": [],
 				"parameters": [
@@ -2401,7 +2697,9 @@
 						}
 					}
 				},
-				"tags": ["LobbyV1"],
+				"tags": [
+					"LobbyV1"
+				],
 				"deprecated": true,
 				"security": [],
 				"parameters": [
@@ -2479,7 +2777,9 @@
 						}
 					}
 				},
-				"tags": ["LobbyV1"],
+				"tags": [
+					"LobbyV1"
+				],
 				"deprecated": true,
 				"security": [],
 				"parameters": [
@@ -2594,7 +2894,9 @@
 						}
 					}
 				},
-				"tags": ["LobbyV2"],
+				"tags": [
+					"LobbyV2"
+				],
 				"deprecated": true,
 				"security": [],
 				"parameters": [
@@ -2636,7 +2938,10 @@
 										"$ref": "#/components/schemas/Region"
 									}
 								},
-								"required": ["initialConfig", "region"],
+								"required": [
+									"initialConfig",
+									"region"
+								],
 								"type": "object"
 							}
 						}
@@ -2719,7 +3024,9 @@
 						}
 					}
 				},
-				"tags": ["LobbyV2"],
+				"tags": [
+					"LobbyV2"
+				],
 				"deprecated": true,
 				"security": [],
 				"parameters": [
@@ -2761,7 +3068,10 @@
 										"$ref": "#/components/schemas/Region"
 									}
 								},
-								"required": ["initialConfig", "region"],
+								"required": [
+									"initialConfig",
+									"region"
+								],
 								"type": "object"
 							}
 						}
@@ -2844,7 +3154,9 @@
 						}
 					}
 				},
-				"tags": ["LobbyV2"],
+				"tags": [
+					"LobbyV2"
+				],
 				"deprecated": true,
 				"security": [],
 				"parameters": [
@@ -2886,7 +3198,10 @@
 										"$ref": "#/components/schemas/Region"
 									}
 								},
-								"required": ["initialConfig", "region"],
+								"required": [
+									"initialConfig",
+									"region"
+								],
 								"type": "object"
 							}
 						}
@@ -2969,8 +3284,10 @@
 						}
 					}
 				},
-				"description": "Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
-				"tags": ["LobbyV2"],
+				"description": "Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
+				"tags": [
+					"LobbyV2"
+				],
 				"security": [],
 				"parameters": [
 					{
@@ -3028,8 +3345,10 @@
 						}
 					}
 				},
-				"description": "Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.",
-				"tags": ["LobbyV2"],
+				"description": "Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.",
+				"tags": [
+					"LobbyV2"
+				],
 				"security": [],
 				"parameters": [
 					{
@@ -3077,8 +3396,10 @@
 						}
 					}
 				},
-				"description": "Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.",
-				"tags": ["LobbyV2"],
+				"description": "Get details for an existing lobby using `appId` and `roomId`.",
+				"tags": [
+					"LobbyV2"
+				],
 				"security": [],
 				"parameters": [
 					{
@@ -3135,11 +3456,13 @@
 						}
 					}
 				},
-				"description": "Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.",
-				"tags": ["LobbyV2"],
+				"description": "Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.",
+				"tags": [
+					"LobbyV2"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3199,10 +3522,13 @@
 					}
 				},
 				"description": "Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
-				"tags": ["LogV1"],
+				"tags": [
+					"LogV1"
+				],
+				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3265,13 +3591,25 @@
 								}
 							}
 						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
 					}
 				},
 				"description": "Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.",
-				"tags": ["LogV1"],
+				"tags": [
+					"LogV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3337,10 +3675,13 @@
 					}
 				},
 				"description": "Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.",
-				"tags": ["LogV1"],
+				"tags": [
+					"LogV1"
+				],
+				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3404,7 +3745,9 @@
 						}
 					}
 				},
-				"tags": ["ManagementV1"],
+				"tags": [
+					"ManagementV1"
+				],
 				"security": [],
 				"parameters": [],
 				"requestBody": {
@@ -3452,13 +3795,25 @@
 								}
 							}
 						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
 					}
 				},
 				"description": "Get metrics for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.",
-				"tags": ["MetricsV1"],
+				"tags": [
+					"MetricsV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3484,7 +3839,11 @@
 						"name": "metrics",
 						"required": false,
 						"schema": {
-							"default": ["cpu", "memory", "rate_egress"],
+							"default": [
+								"cpu",
+								"memory",
+								"rate_egress"
+							],
 							"type": "array",
 							"items": {
 								"$ref": "#/components/schemas/MetricName"
@@ -3551,10 +3910,12 @@
 					}
 				},
 				"description": "Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.",
-				"tags": ["ProcessesV1"],
+				"tags": [
+					"ProcessesV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3606,10 +3967,12 @@
 					}
 				},
 				"description": "Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.",
-				"tags": ["ProcessesV1"],
+				"tags": [
+					"ProcessesV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3655,13 +4018,25 @@
 								}
 							}
 						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
 					}
 				},
 				"description": "Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.",
-				"tags": ["ProcessesV1"],
+				"tags": [
+					"ProcessesV1"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3708,6 +4083,16 @@
 							}
 						}
 					},
+					"402": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
 					"403": {
 						"description": "",
 						"content": {
@@ -3739,11 +4124,13 @@
 						}
 					}
 				},
-				"tags": ["RoomV1"],
+				"tags": [
+					"RoomV1"
+				],
 				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3801,11 +4188,13 @@
 						}
 					}
 				},
-				"tags": ["RoomV1"],
+				"tags": [
+					"RoomV1"
+				],
 				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3856,11 +4245,13 @@
 						}
 					}
 				},
-				"tags": ["RoomV1"],
+				"tags": [
+					"RoomV1"
+				],
 				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3911,11 +4302,13 @@
 						}
 					}
 				},
-				"tags": ["RoomV1"],
+				"tags": [
+					"RoomV1"
+				],
 				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -3966,11 +4359,13 @@
 						}
 					}
 				},
-				"tags": ["RoomV1"],
+				"tags": [
+					"RoomV1"
+				],
 				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4021,11 +4416,13 @@
 						}
 					}
 				},
-				"tags": ["RoomV1"],
+				"tags": [
+					"RoomV1"
+				],
 				"deprecated": true,
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4093,7 +4490,9 @@
 						}
 					}
 				},
-				"tags": ["RoomV1"],
+				"tags": [
+					"RoomV1"
+				],
 				"deprecated": true,
 				"security": [],
 				"parameters": [
@@ -4140,6 +4539,16 @@
 							}
 						}
 					},
+					"402": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
 					"403": {
 						"description": "",
 						"content": {
@@ -4171,11 +4580,13 @@
 						}
 					}
 				},
-				"description": "Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `region`.",
-				"tags": ["RoomV2"],
+				"description": "Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.",
+				"tags": [
+					"RoomV2"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4233,11 +4644,13 @@
 						}
 					}
 				},
-				"description": "Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`.",
-				"tags": ["RoomV2"],
+				"description": "Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).",
+				"tags": [
+					"RoomV2"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4288,11 +4701,13 @@
 						}
 					}
 				},
-				"description": "Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.",
-				"tags": ["RoomV2"],
+				"description": "Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).",
+				"tags": [
+					"RoomV2"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4343,11 +4758,13 @@
 						}
 					}
 				},
-				"description": "Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.",
-				"tags": ["RoomV2"],
+				"description": "Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).",
+				"tags": [
+					"RoomV2"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4398,11 +4815,13 @@
 						}
 					}
 				},
-				"description": "Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. All associated metadata is deleted.",
-				"tags": ["RoomV2"],
+				"description": "Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.",
+				"tags": [
+					"RoomV2"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4453,11 +4872,13 @@
 						}
 					}
 				},
-				"description": "Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. The room is unallocated from the process but can be rescheduled later using the same `roomId`.",
-				"tags": ["RoomV2"],
+				"description": "Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.",
+				"tags": [
+					"RoomV2"
+				],
 				"security": [
 					{
-						"auth0": []
+						"hathoraDevToken": []
 					}
 				],
 				"parameters": [
@@ -4525,8 +4946,10 @@
 						}
 					}
 				},
-				"description": "Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. Clients can call this endpoint without authentication.",
-				"tags": ["RoomV2"],
+				"description": "Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.",
+				"tags": [
+					"RoomV2"
+				],
 				"security": [],
 				"parameters": [
 					{
@@ -4564,11 +4987,11 @@
 		},
 		{
 			"name": "AuthV1",
-			"description": "Operations that allow you to configure authentication for your [applications](https://hathora.dev/docs/concepts/hathora-entities#application)."
+			"description": "Operations that allow you to generate a Hathora-signed [JSON web token (JWT)](https://jwt.io/) for [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service)."
 		},
 		{
 			"name": "BuildV1",
-			"description": "Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
+			"description": "Operations that allow you create and manage your [builds](https://hathora.dev/docs/concepts/hathora-entities#build)."
 		},
 		{
 			"name": "DeploymentV1",

@@ -31,9 +31,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BillingV1Api apiInstance = new BillingV1Api(defaultClient);
     try {
@@ -59,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -93,9 +93,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BillingV1Api apiInstance = new BillingV1Api(defaultClient);
     try {
@@ -121,7 +121,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -155,9 +155,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BillingV1Api apiInstance = new BillingV1Api(defaultClient);
     try {
@@ -183,7 +183,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -218,9 +218,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BillingV1Api apiInstance = new BillingV1Api(defaultClient);
     CustomerPortalUrl customerPortalUrl = new CustomerPortalUrl(); // CustomerPortalUrl | 
@@ -250,7 +250,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

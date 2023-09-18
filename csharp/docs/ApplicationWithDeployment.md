@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **DateTime** | When the application was created. | 
 **CreatedBy** | **string** | Email address for the user that deleted the application. | 
 **OrgId** | **string** | System generated unique identifier for an organization. | 
-**AuthConfiguration** | [**ApplicationAuthConfiguration**](ApplicationAuthConfiguration.md) |  | 
+**AuthConfiguration** | [**AuthConfiguration**](AuthConfiguration.md) |  | 
 **AppSecret** | **string** | Secret that is used for identity and access management. | 
 **AppId** | **string** | System generated unique identifier for an application. | 
 **AppName** | **string** | Readable name for an application. Must be unique within an organization. | 

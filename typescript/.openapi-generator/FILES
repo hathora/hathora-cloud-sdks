@@ -19,12 +19,11 @@ src/index.ts
 src/models/AchPaymentMethod.ts
 src/models/ActiveConnectionInfo.ts
 src/models/AppConfig.ts
-src/models/AppConfigAuthConfiguration.ts
 src/models/Application.ts
-src/models/ApplicationAuthConfiguration.ts
-src/models/ApplicationAuthConfigurationGoogle.ts
 src/models/ApplicationWithDeployment.ts
 src/models/ApplicationWithDeploymentAllOf.ts
+src/models/AuthConfiguration.ts
+src/models/AuthConfigurationGoogle.ts
 src/models/Build.ts
 src/models/BuildRegionalContainerTagsInner.ts
 src/models/CardBrand.ts
@@ -32,6 +31,7 @@ src/models/CardPaymentMethod.ts
 src/models/ConnectionInfo.ts
 src/models/ConnectionInfoV2.ts
 src/models/ContainerPort.ts
+src/models/CreateBuildRequest.ts
 src/models/CreateLobbyRequest.ts
 src/models/CreatePrivateLobbyRequest.ts
 src/models/CreateRoomRequest.ts

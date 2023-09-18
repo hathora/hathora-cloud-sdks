@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { ApplicationAuthConfiguration } from './ApplicationAuthConfiguration';
+import type { AuthConfiguration } from './AuthConfiguration';
 import {
-    ApplicationAuthConfigurationFromJSON,
-    ApplicationAuthConfigurationFromJSONTyped,
-    ApplicationAuthConfigurationToJSON,
-} from './ApplicationAuthConfiguration';
+    AuthConfigurationFromJSON,
+    AuthConfigurationFromJSONTyped,
+    AuthConfigurationToJSON,
+} from './AuthConfiguration';
 import type { Deployment } from './Deployment';
 import {
     DeploymentFromJSON,
@@ -64,10 +64,10 @@ export interface ApplicationWithDeployment {
     orgId: string;
     /**
      * 
-     * @type {ApplicationAuthConfiguration}
+     * @type {AuthConfiguration}
      * @memberof ApplicationWithDeployment
      */
-    authConfiguration: ApplicationAuthConfiguration;
+    authConfiguration: AuthConfiguration;
     /**
      * Secret that is used for identity and access management.
      * @type {string}
@@ -128,7 +128,7 @@ export function ApplicationWithDeploymentFromJSONTyped(json: any, ignoreDiscrimi
         'createdAt': (new Date(json['createdAt'])),
         'createdBy': json['createdBy'],
         'orgId': json['orgId'],
-        'authConfiguration': ApplicationAuthConfigurationFromJSON(json['authConfiguration']),
+        'authConfiguration': AuthConfigurationFromJSON(json['authConfiguration']),
         'appSecret': json['appSecret'],
         'appId': json['appId'],
         'appName': json['appName'],
@@ -150,7 +150,7 @@ export function ApplicationWithDeploymentToJSON(value?: ApplicationWithDeploymen
         'createdAt': (value.createdAt.toISOString()),
         'createdBy': value.createdBy,
         'orgId': value.orgId,
-        'authConfiguration': ApplicationAuthConfigurationToJSON(value.authConfiguration),
+        'authConfiguration': AuthConfigurationToJSON(value.authConfiguration),
         'appSecret': value.appSecret,
         'appId': value.appId,
         'appName': value.appName,

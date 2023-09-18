@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 namespace Hathora.Cloud.Sdk.Model
 {
     /// <summary>
-    /// Connection information to an exposed port on an active process.
+    /// Connection details for an active process.
     /// </summary>
     [DataContract(Name = "ExposedPort")]
     public partial class ExposedPort : IEquatable<ExposedPort>

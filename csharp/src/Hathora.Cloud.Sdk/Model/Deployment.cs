@@ -92,7 +92,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="requestedMemoryMB">The amount of memory allocated to your process. (required).</param>
         /// <param name="requestedCPU">The number of cores allocated to your process. (required).</param>
         /// <param name="deploymentId">System generated id for a deployment. Increments by 1. (required).</param>
-        /// <param name="buildId">System generated id for a build associated with this deployment. Increments by 1. (required).</param>
+        /// <param name="buildId">System generated id for a build. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
         public Deployment(List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), TransportTypeEnum transportType = default(TransportTypeEnum), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), double requestedMemoryMB = default(double), double requestedCPU = default(double), int deploymentId = default(int), int buildId = default(int), string appId = default(string))
         {
@@ -213,9 +213,9 @@ namespace Hathora.Cloud.Sdk.Model
         public int DeploymentId { get; set; }
 
         /// <summary>
-        /// System generated id for a build associated with this deployment. Increments by 1.
+        /// System generated id for a build. Increments by 1.
         /// </summary>
-        /// <value>System generated id for a build associated with this deployment. Increments by 1.</value>
+        /// <value>System generated id for a build. Increments by 1.</value>
         /// <example>1</example>
         [DataMember(Name = "buildId", IsRequired = true, EmitDefaultValue = true)]
         public int BuildId { get; set; }

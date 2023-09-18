@@ -14,6 +14,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Returns a unique player token for an anonymous user.
+
 ### Example
 ```csharp
 using System.Collections.Generic;
@@ -101,6 +103,8 @@ No authorization required
 > LoginResponse LoginGoogle (string appId, LoginGoogleRequest loginGoogleRequest)
 
 
+
+Returns a unique player token using a Google-signed OIDC `idToken`.
 
 ### Example
 ```csharp
@@ -192,6 +196,8 @@ No authorization required
 > LoginResponse LoginNickname (string appId, LoginNicknameRequest loginNicknameRequest)
 
 
+
+Returns a unique player token with a specified nickname for a user.
 
 ### Example
 ```csharp

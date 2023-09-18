@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { ApplicationAuthConfiguration } from './ApplicationAuthConfiguration';
+import type { AuthConfiguration } from './AuthConfiguration';
 import {
-    ApplicationAuthConfigurationFromJSON,
-    ApplicationAuthConfigurationFromJSONTyped,
-    ApplicationAuthConfigurationToJSON,
-} from './ApplicationAuthConfiguration';
+    AuthConfigurationFromJSON,
+    AuthConfigurationFromJSONTyped,
+    AuthConfigurationToJSON,
+} from './AuthConfiguration';
 
 /**
  * An application object is the top level namespace for the game server.
@@ -58,10 +58,10 @@ export interface Application {
     orgId: string;
     /**
      * 
-     * @type {ApplicationAuthConfiguration}
+     * @type {AuthConfiguration}
      * @memberof Application
      */
-    authConfiguration: ApplicationAuthConfiguration;
+    authConfiguration: AuthConfiguration;
     /**
      * Secret that is used for identity and access management.
      * @type {string}
@@ -115,7 +115,7 @@ export function ApplicationFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'createdAt': (new Date(json['createdAt'])),
         'createdBy': json['createdBy'],
         'orgId': json['orgId'],
-        'authConfiguration': ApplicationAuthConfigurationFromJSON(json['authConfiguration']),
+        'authConfiguration': AuthConfigurationFromJSON(json['authConfiguration']),
         'appSecret': json['appSecret'],
         'appId': json['appId'],
         'appName': json['appName'],
@@ -136,7 +136,7 @@ export function ApplicationToJSON(value?: Application | null): any {
         'createdAt': (value.createdAt.toISOString()),
         'createdBy': value.createdBy,
         'orgId': value.orgId,
-        'authConfiguration': ApplicationAuthConfigurationToJSON(value.authConfiguration),
+        'authConfiguration': AuthConfigurationToJSON(value.authConfiguration),
         'appSecret': value.appSecret,
         'appId': value.appId,
         'appName': value.appName,

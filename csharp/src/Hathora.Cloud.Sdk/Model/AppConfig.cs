@@ -43,7 +43,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <param name="authConfiguration">authConfiguration (required).</param>
         /// <param name="appName">Readable name for an application. Must be unique within an organization. (required).</param>
-        public AppConfig(AppConfigAuthConfiguration authConfiguration = default(AppConfigAuthConfiguration), string appName = default(string))
+        public AppConfig(AuthConfiguration authConfiguration = default(AuthConfiguration), string appName = default(string))
         {
             // to ensure "authConfiguration" is required (not null)
             if (authConfiguration == null)
@@ -64,7 +64,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets AuthConfiguration
         /// </summary>
         [DataMember(Name = "authConfiguration", IsRequired = true, EmitDefaultValue = true)]
-        public AppConfigAuthConfiguration AuthConfiguration { get; set; }
+        public AuthConfiguration AuthConfiguration { get; set; }
 
         /// <summary>
         /// Readable name for an application. Must be unique within an organization.

@@ -21,57 +21,63 @@ import {
 } from './BuildRegionalContainerTagsInner';
 
 /**
- * Build is a versioned artifact for a game server's container image and its data.
+ * A build represents a game server artifact and its associated metadata.
  * @export
  * @interface Build
  */
 export interface Build {
     /**
-     * An alias for the container image in our regional registries.
+     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+     * @type {string}
+     * @memberof Build
+     */
+    buildTag: string | null;
+    /**
+     * Identifiers for the containers stored in Hathora's registries.
      * @type {Array<BuildRegionalContainerTagsInner>}
      * @memberof Build
      */
     regionalContainerTags: Array<BuildRegionalContainerTagsInner>;
     /**
-     * Image size in MB.
+     * The size (in bytes) of the Docker image built by Hathora.
      * @type {number}
      * @memberof Build
      */
     imageSize: number;
     /**
-     * Status of creating a build.
+     * Current status of your build.
      * 
-     * `created`: a new `buildId` was generated
+     * `created`: a build was created but not yet run
      * 
-     * `running`: the container image is being built
+     * `running`: the build process is actively executing
      * 
-     * `succeeded`: the container image was successfully built and stored in our registry
+     * `succeeded`: the game server artifact was successfully built and stored in the Hathora registries
      * 
-     * `failed`: there was an issue creating and storing the container image in our container registry
+     * `failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`
      * @type {string}
      * @memberof Build
      */
     status: BuildStatusEnum;
     /**
-     * When the container image was deleted.
+     * When the build was deleted.
      * @type {Date}
      * @memberof Build
      */
     deletedAt: Date | null;
     /**
-     * When the container image finished being built.
+     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
      * @type {Date}
      * @memberof Build
      */
     finishedAt: Date | null;
     /**
-     * When the container image starts getting built.
+     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
      * @type {Date}
      * @memberof Build
      */
     startedAt: Date | null;
     /**
-     * When a new `buildId` is generated.
+     * When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
      * @type {Date}
      * @memberof Build
      */
@@ -114,6 +120,7 @@ export type BuildStatusEnum = typeof BuildStatusEnum[keyof typeof BuildStatusEnu
  */
 export function instanceOfBuild(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "buildTag" in value;
     isInstance = isInstance && "regionalContainerTags" in value;
     isInstance = isInstance && "imageSize" in value;
     isInstance = isInstance && "status" in value;
@@ -138,6 +145,7 @@ export function BuildFromJSONTyped(json: any, ignoreDiscriminator: boolean): Bui
     }
     return {
         
+        'buildTag': json['buildTag'],
         'regionalContainerTags': ((json['regionalContainerTags'] as Array<any>).map(BuildRegionalContainerTagsInnerFromJSON)),
         'imageSize': json['imageSize'],
         'status': json['status'],
@@ -160,6 +168,7 @@ export function BuildToJSON(value?: Build | null): any {
     }
     return {
         
+        'buildTag': value.buildTag,
         'regionalContainerTags': ((value.regionalContainerTags as Array<any>).map(BuildRegionalContainerTagsInnerToJSON)),
         'imageSize': value.imageSize,
         'status': value.status,

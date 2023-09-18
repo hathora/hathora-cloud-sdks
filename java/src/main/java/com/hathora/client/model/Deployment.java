@@ -201,6 +201,7 @@ public class Deployment {
    /**
    * Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
    * minimum: 1
+   * maximum: 10000
    * @return roomsPerProcess
   **/
   @javax.annotation.Nonnull
@@ -454,7 +455,7 @@ public class Deployment {
   }
 
    /**
-   * System generated id for a build associated with this deployment. Increments by 1.
+   * System generated id for a build. Increments by 1.
    * @return buildId
   **/
   @javax.annotation.Nonnull

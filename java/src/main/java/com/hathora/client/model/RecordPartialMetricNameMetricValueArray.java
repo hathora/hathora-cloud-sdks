@@ -67,6 +67,10 @@ public class RecordPartialMetricNameMetricValueArray {
   @SerializedName(SERIALIZED_NAME_TOTAL_EGRESS)
   private List<MetricValue> totalEgress;
 
+  public static final String SERIALIZED_NAME_ACTIVE_CONNECTIONS = "active_connections";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_CONNECTIONS)
+  private List<MetricValue> activeConnections;
+
   public RecordPartialMetricNameMetricValueArray() {
   }
 
@@ -189,6 +193,36 @@ public class RecordPartialMetricNameMetricValueArray {
     this.totalEgress = totalEgress;
   }
 
+
+  public RecordPartialMetricNameMetricValueArray activeConnections(List<MetricValue> activeConnections) {
+    
+    this.activeConnections = activeConnections;
+    return this;
+  }
+
+  public RecordPartialMetricNameMetricValueArray addActiveConnectionsItem(MetricValue activeConnectionsItem) {
+    if (this.activeConnections == null) {
+      this.activeConnections = new ArrayList<>();
+    }
+    this.activeConnections.add(activeConnectionsItem);
+    return this;
+  }
+
+   /**
+   * Get activeConnections
+   * @return activeConnections
+  **/
+  @javax.annotation.Nullable
+
+  public List<MetricValue> getActiveConnections() {
+    return activeConnections;
+  }
+
+
+  public void setActiveConnections(List<MetricValue> activeConnections) {
+    this.activeConnections = activeConnections;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -247,13 +281,14 @@ public class RecordPartialMetricNameMetricValueArray {
     return Objects.equals(this.cpu, recordPartialMetricNameMetricValueArray.cpu) &&
         Objects.equals(this.memory, recordPartialMetricNameMetricValueArray.memory) &&
         Objects.equals(this.rateEgress, recordPartialMetricNameMetricValueArray.rateEgress) &&
-        Objects.equals(this.totalEgress, recordPartialMetricNameMetricValueArray.totalEgress)&&
+        Objects.equals(this.totalEgress, recordPartialMetricNameMetricValueArray.totalEgress) &&
+        Objects.equals(this.activeConnections, recordPartialMetricNameMetricValueArray.activeConnections)&&
         Objects.equals(this.additionalProperties, recordPartialMetricNameMetricValueArray.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cpu, memory, rateEgress, totalEgress, additionalProperties);
+    return Objects.hash(cpu, memory, rateEgress, totalEgress, activeConnections, additionalProperties);
   }
 
   @Override
@@ -264,6 +299,7 @@ public class RecordPartialMetricNameMetricValueArray {
     sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
     sb.append("    rateEgress: ").append(toIndentedString(rateEgress)).append("\n");
     sb.append("    totalEgress: ").append(toIndentedString(totalEgress)).append("\n");
+    sb.append("    activeConnections: ").append(toIndentedString(activeConnections)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -291,6 +327,7 @@ public class RecordPartialMetricNameMetricValueArray {
     openapiFields.add("memory");
     openapiFields.add("rate_egress");
     openapiFields.add("total_egress");
+    openapiFields.add("active_connections");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -361,6 +398,20 @@ public class RecordPartialMetricNameMetricValueArray {
           // validate the optional field `total_egress` (array)
           for (int i = 0; i < jsonArraytotalEgress.size(); i++) {
             MetricValue.validateJsonObject(jsonArraytotalEgress.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("active_connections") != null && !jsonObj.get("active_connections").isJsonNull()) {
+        JsonArray jsonArrayactiveConnections = jsonObj.getAsJsonArray("active_connections");
+        if (jsonArrayactiveConnections != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("active_connections").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `active_connections` to be an array in the JSON string but got `%s`", jsonObj.get("active_connections").toString()));
+          }
+
+          // validate the optional field `active_connections` (array)
+          for (int i = 0; i < jsonArrayactiveConnections.size(); i++) {
+            MetricValue.validateJsonObject(jsonArrayactiveConnections.get(i).getAsJsonObject());
           };
         }
       }

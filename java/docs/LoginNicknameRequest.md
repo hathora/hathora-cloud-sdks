@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**nickname** | **String** |  |  |
+|**nickname** | **String** | An alias to represent a player. |  |
 
 
 

@@ -49,12 +49,38 @@ import com.hathora.client.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateRoomRequest {
+  public static final String SERIALIZED_NAME_ROOM_CONFIG = "roomConfig";
+  @SerializedName(SERIALIZED_NAME_ROOM_CONFIG)
+  private String roomConfig;
+
   public static final String SERIALIZED_NAME_REGION = "region";
   @SerializedName(SERIALIZED_NAME_REGION)
   private Region region;
 
   public CreateRoomRequest() {
   }
+
+  public CreateRoomRequest roomConfig(String roomConfig) {
+    
+    this.roomConfig = roomConfig;
+    return this;
+  }
+
+   /**
+   * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+   * @return roomConfig
+  **/
+  @javax.annotation.Nullable
+
+  public String getRoomConfig() {
+    return roomConfig;
+  }
+
+
+  public void setRoomConfig(String roomConfig) {
+    this.roomConfig = roomConfig;
+  }
+
 
   public CreateRoomRequest region(Region region) {
     
@@ -132,19 +158,21 @@ public class CreateRoomRequest {
       return false;
     }
     CreateRoomRequest createRoomRequest = (CreateRoomRequest) o;
-    return Objects.equals(this.region, createRoomRequest.region)&&
+    return Objects.equals(this.roomConfig, createRoomRequest.roomConfig) &&
+        Objects.equals(this.region, createRoomRequest.region)&&
         Objects.equals(this.additionalProperties, createRoomRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(region, additionalProperties);
+    return Objects.hash(roomConfig, region, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateRoomRequest {\n");
+    sb.append("    roomConfig: ").append(toIndentedString(roomConfig)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -169,6 +197,7 @@ public class CreateRoomRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("roomConfig");
     openapiFields.add("region");
 
     // a set of required properties/fields (JSON key names)
@@ -194,6 +223,9 @@ public class CreateRoomRequest {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if ((jsonObj.get("roomConfig") != null && !jsonObj.get("roomConfig").isJsonNull()) && !jsonObj.get("roomConfig").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `roomConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomConfig").toString()));
       }
   }
 

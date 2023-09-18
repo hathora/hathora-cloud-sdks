@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hathora.client.model.AppConfigAuthConfiguration;
+import com.hathora.client.model.AuthConfiguration;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -51,7 +51,7 @@ import com.hathora.client.JSON;
 public class AppConfig {
   public static final String SERIALIZED_NAME_AUTH_CONFIGURATION = "authConfiguration";
   @SerializedName(SERIALIZED_NAME_AUTH_CONFIGURATION)
-  private AppConfigAuthConfiguration authConfiguration;
+  private AuthConfiguration authConfiguration;
 
   public static final String SERIALIZED_NAME_APP_NAME = "appName";
   @SerializedName(SERIALIZED_NAME_APP_NAME)
@@ -60,7 +60,7 @@ public class AppConfig {
   public AppConfig() {
   }
 
-  public AppConfig authConfiguration(AppConfigAuthConfiguration authConfiguration) {
+  public AppConfig authConfiguration(AuthConfiguration authConfiguration) {
     
     this.authConfiguration = authConfiguration;
     return this;
@@ -72,12 +72,12 @@ public class AppConfig {
   **/
   @javax.annotation.Nonnull
 
-  public AppConfigAuthConfiguration getAuthConfiguration() {
+  public AuthConfiguration getAuthConfiguration() {
     return authConfiguration;
   }
 
 
-  public void setAuthConfiguration(AppConfigAuthConfiguration authConfiguration) {
+  public void setAuthConfiguration(AuthConfiguration authConfiguration) {
     this.authConfiguration = authConfiguration;
   }
 
@@ -226,7 +226,7 @@ public class AppConfig {
         }
       }
       // validate the required field `authConfiguration`
-      AppConfigAuthConfiguration.validateJsonObject(jsonObj.getAsJsonObject("authConfiguration"));
+      AuthConfiguration.validateJsonObject(jsonObj.getAsJsonObject("authConfiguration"));
       if (!jsonObj.get("appName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appName").toString()));
       }

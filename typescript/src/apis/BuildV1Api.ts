@@ -16,14 +16,18 @@
 import * as runtime from '../runtime';
 import type {
   Build,
+  CreateBuildRequest,
 } from '../models';
 import {
     BuildFromJSON,
     BuildToJSON,
+    CreateBuildRequestFromJSON,
+    CreateBuildRequestToJSON,
 } from '../models';
 
-export interface CreateBuildRequest {
+export interface CreateBuildOperationRequest {
     appId: string;
+    createBuildRequest: CreateBuildRequest;
 }
 
 export interface DeleteBuildRequest {
@@ -54,21 +58,22 @@ export interface RunBuildRequest {
  */
 export interface BuildV1ApiInterface {
     /**
-     * Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      * @param {string} appId 
+     * @param {CreateBuildRequest} createBuildRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BuildV1ApiInterface
      */
-    createBuildRaw(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
+    createBuildRaw(requestParameters: CreateBuildOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
 
     /**
-     * Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    createBuild(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
+    createBuild(appId: string, createBuildRequest: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
 
     /**
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      * @param {string} appId 
      * @param {number} buildId 
      * @param {*} [options] Override http request option.
@@ -78,12 +83,12 @@ export interface BuildV1ApiInterface {
     deleteBuildRaw(requestParameters: DeleteBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      */
     deleteBuild(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
     /**
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      * @param {string} appId 
      * @param {number} buildId 
      * @param {*} [options] Override http request option.
@@ -93,12 +98,12 @@ export interface BuildV1ApiInterface {
     getBuildInfoRaw(requestParameters: GetBuildInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
 
     /**
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
     getBuildInfo(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
 
     /**
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param {string} appId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -107,12 +112,12 @@ export interface BuildV1ApiInterface {
     getBuildsRaw(requestParameters: GetBuildsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Build>>>;
 
     /**
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     getBuilds(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>>;
 
     /**
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      * @param {string} appId 
      * @param {number} buildId 
      * @param {Blob} file 
@@ -123,7 +128,7 @@ export interface BuildV1ApiInterface {
     runBuildRaw(requestParameters: RunBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
 
     /**
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
     runBuild(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
@@ -135,20 +140,26 @@ export interface BuildV1ApiInterface {
 export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
     /**
-     * Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    async createBuildRaw(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
+    async createBuildRaw(requestParameters: CreateBuildOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createBuild.');
+        }
+
+        if (requestParameters.createBuildRequest === null || requestParameters.createBuildRequest === undefined) {
+            throw new runtime.RequiredError('createBuildRequest','Required parameter requestParameters.createBuildRequest was null or undefined when calling createBuild.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -159,21 +170,22 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuildRequestToJSON(requestParameters.createBuildRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuildFromJSON(jsonValue));
     }
 
     /**
-     * Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    async createBuild(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
-        const response = await this.createBuildRaw({ appId: appId }, initOverrides);
+    async createBuild(appId: string, createBuildRequest: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
+        const response = await this.createBuildRaw({ appId: appId, createBuildRequest: createBuildRequest }, initOverrides);
         return await response.value();
     }
 
     /**
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      */
     async deleteBuildRaw(requestParameters: DeleteBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -190,7 +202,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -207,14 +219,14 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     }
 
     /**
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      */
     async deleteBuild(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteBuildRaw({ appId: appId, buildId: buildId }, initOverrides);
     }
 
     /**
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
     async getBuildInfoRaw(requestParameters: GetBuildInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -231,7 +243,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -248,7 +260,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     }
 
     /**
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
     async getBuildInfo(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
         const response = await this.getBuildInfoRaw({ appId: appId, buildId: buildId }, initOverrides);
@@ -256,7 +268,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     }
 
     /**
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     async getBuildsRaw(requestParameters: GetBuildsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Build>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -269,7 +281,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -286,7 +298,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     }
 
     /**
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     async getBuilds(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>> {
         const response = await this.getBuildsRaw({ appId: appId }, initOverrides);
@@ -294,7 +306,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     }
 
     /**
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
     async runBuildRaw(requestParameters: RunBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -315,7 +327,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -357,7 +369,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     }
 
     /**
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
     async runBuild(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
         const response = await this.runBuildRaw({ appId: appId, buildId: buildId, file: file }, initOverrides);

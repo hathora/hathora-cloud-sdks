@@ -86,7 +86,7 @@ export interface SetLobbyStateOperationRequest {
  */
 export interface LobbyV2ApiInterface {
     /**
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      * @param {string} appId 
      * @param {string} authorization 
      * @param {CreateLobbyRequest} createLobbyRequest 
@@ -98,7 +98,7 @@ export interface LobbyV2ApiInterface {
     createLobbyRaw(requestParameters: CreateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
 
     /**
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     createLobby(appId: string, authorization: string, createLobbyRequest: CreateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
@@ -154,7 +154,7 @@ export interface LobbyV2ApiInterface {
     createPublicLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.
+     * Get details for an existing lobby using `appId` and `roomId`.
      * @param {string} appId 
      * @param {string} roomId 
      * @param {*} [options] Override http request option.
@@ -164,12 +164,12 @@ export interface LobbyV2ApiInterface {
     getLobbyInfoRaw(requestParameters: GetLobbyInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
 
     /**
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.
+     * Get details for an existing lobby using `appId` and `roomId`.
      */
     getLobbyInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
      * @param {string} appId 
      * @param {Region} [region] Region to filter by. If omitted, active public lobbies in all regions will be returned.
      * @param {*} [options] Override http request option.
@@ -179,12 +179,12 @@ export interface LobbyV2ApiInterface {
     listActivePublicLobbiesRaw(requestParameters: ListActivePublicLobbiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>>;
 
     /**
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
      */
     listActivePublicLobbies(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
 
     /**
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
      * @param {string} appId 
      * @param {string} roomId 
      * @param {SetLobbyStateRequest} setLobbyStateRequest 
@@ -195,7 +195,7 @@ export interface LobbyV2ApiInterface {
     setLobbyStateRaw(requestParameters: SetLobbyStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
 
     /**
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
      */
     setLobbyState(appId: string, roomId: string, setLobbyStateRequest: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
@@ -207,7 +207,7 @@ export interface LobbyV2ApiInterface {
 export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     async createLobbyRaw(requestParameters: CreateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -248,7 +248,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
     async createLobby(appId: string, authorization: string, createLobbyRequest: CreateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
         const response = await this.createLobbyRaw({ appId: appId, authorization: authorization, createLobbyRequest: createLobbyRequest, roomId: roomId }, initOverrides);
@@ -397,7 +397,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.
+     * Get details for an existing lobby using `appId` and `roomId`.
      */
     async getLobbyInfoRaw(requestParameters: GetLobbyInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -423,7 +423,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.
+     * Get details for an existing lobby using `appId` and `roomId`.
      */
     async getLobbyInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
         const response = await this.getLobbyInfoRaw({ appId: appId, roomId: roomId }, initOverrides);
@@ -431,7 +431,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
      */
     async listActivePublicLobbiesRaw(requestParameters: ListActivePublicLobbiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -457,7 +457,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
      */
     async listActivePublicLobbies(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
         const response = await this.listActivePublicLobbiesRaw({ appId: appId, region: region }, initOverrides);
@@ -465,7 +465,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
      */
     async setLobbyStateRaw(requestParameters: SetLobbyStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -488,7 +488,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -506,7 +506,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
      */
     async setLobbyState(appId: string, roomId: string, setLobbyStateRequest: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
         const response = await this.setLobbyStateRaw({ appId: appId, roomId: roomId, setLobbyStateRequest: setLobbyStateRequest }, initOverrides);

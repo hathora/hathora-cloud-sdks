@@ -51,7 +51,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
         /// <param name="appName">Readable name for an application. Must be unique within an organization. (required).</param>
         /// <param name="deployment">deployment (required).</param>
-        public ApplicationWithDeployment(string deletedBy = default(string), DateTime? deletedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), string orgId = default(string), ApplicationAuthConfiguration authConfiguration = default(ApplicationAuthConfiguration), string appSecret = default(string), string appId = default(string), string appName = default(string), Deployment deployment = default(Deployment))
+        public ApplicationWithDeployment(string deletedBy = default(string), DateTime? deletedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), string orgId = default(string), AuthConfiguration authConfiguration = default(AuthConfiguration), string appSecret = default(string), string appId = default(string), string appName = default(string), Deployment deployment = default(Deployment))
         {
             // to ensure "deletedBy" is required (not null)
             if (deletedBy == null)
@@ -153,7 +153,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets AuthConfiguration
         /// </summary>
         [DataMember(Name = "authConfiguration", IsRequired = true, EmitDefaultValue = true)]
-        public ApplicationAuthConfiguration AuthConfiguration { get; set; }
+        public AuthConfiguration AuthConfiguration { get; set; }
 
         /// <summary>
         /// Secret that is used for identity and access management.

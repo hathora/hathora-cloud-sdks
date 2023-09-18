@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 namespace Hathora.Cloud.Sdk.Model
 {
     /// <summary>
-    /// Metadata on allocated instances of a room.
+    /// Metadata on an allocated instance of a room.
     /// </summary>
     [DataContract(Name = "RoomAllocation")]
     public partial class RoomAllocation : IEquatable<RoomAllocation>

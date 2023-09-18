@@ -32,9 +32,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     ProcessesV1Api apiInstance = new ProcessesV1Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -66,7 +66,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -78,6 +78,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **404** |  |  -  |
+| **500** |  |  -  |
 
 <a name="getRunningProcesses"></a>
 # **getRunningProcesses**
@@ -102,9 +103,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     ProcessesV1Api apiInstance = new ProcessesV1Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -136,7 +137,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -172,9 +173,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     ProcessesV1Api apiInstance = new ProcessesV1Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -206,7 +207,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

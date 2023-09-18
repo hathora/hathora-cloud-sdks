@@ -62,7 +62,7 @@ public class LoginNicknameRequest {
   }
 
    /**
-   * Get nickname
+   * An alias to represent a player.
    * @return nickname
   **/
   @javax.annotation.Nonnull

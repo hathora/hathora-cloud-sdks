@@ -2,7 +2,7 @@
 
 # RoomAllocation
 
-Metadata on allocated instances of a room.
+Metadata on an allocated instance of a room.
 
 ## Properties
 

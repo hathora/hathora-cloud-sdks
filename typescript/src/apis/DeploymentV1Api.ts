@@ -48,7 +48,7 @@ export interface GetDeploymentsRequest {
  */
 export interface DeploymentV1ApiInterface {
     /**
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      * @param {string} appId 
      * @param {number} buildId 
      * @param {DeploymentConfig} deploymentConfig 
@@ -59,12 +59,12 @@ export interface DeploymentV1ApiInterface {
     createDeploymentRaw(requestParameters: CreateDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
 
     /**
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
     createDeployment(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
     /**
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      * @param {string} appId 
      * @param {number} deploymentId 
      * @param {*} [options] Override http request option.
@@ -74,12 +74,12 @@ export interface DeploymentV1ApiInterface {
     getDeploymentInfoRaw(requestParameters: GetDeploymentInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
 
     /**
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      */
     getDeploymentInfo(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
     /**
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param {string} appId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -88,7 +88,7 @@ export interface DeploymentV1ApiInterface {
     getDeploymentsRaw(requestParameters: GetDeploymentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Deployment>>>;
 
     /**
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>>;
 
@@ -100,7 +100,7 @@ export interface DeploymentV1ApiInterface {
 export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiInterface {
 
     /**
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
     async createDeploymentRaw(requestParameters: CreateDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -123,7 +123,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -141,7 +141,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     }
 
     /**
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
     async createDeployment(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
         const response = await this.createDeploymentRaw({ appId: appId, buildId: buildId, deploymentConfig: deploymentConfig }, initOverrides);
@@ -149,7 +149,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     }
 
     /**
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      */
     async getDeploymentInfoRaw(requestParameters: GetDeploymentInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -166,7 +166,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -183,7 +183,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     }
 
     /**
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      */
     async getDeploymentInfo(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
         const response = await this.getDeploymentInfoRaw({ appId: appId, deploymentId: deploymentId }, initOverrides);
@@ -191,7 +191,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     }
 
     /**
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     async getDeploymentsRaw(requestParameters: GetDeploymentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Deployment>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -204,7 +204,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -221,7 +221,7 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     }
 
     /**
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     async getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>> {
         const response = await this.getDeploymentsRaw({ appId: appId }, initOverrides);

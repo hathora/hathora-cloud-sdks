@@ -20,7 +20,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface LoginGoogleRequest {
     /**
-     * 
+     * A Google-signed OIDC ID token representing a player's authenticated identity. Learn how to get an `idToken` [here](https://cloud.google.com/docs/authentication/get-id-token).
      * @type {string}
      * @memberof LoginGoogleRequest
      */

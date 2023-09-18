@@ -41,7 +41,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginNicknameRequest" /> class.
         /// </summary>
-        /// <param name="nickname">nickname (required).</param>
+        /// <param name="nickname">An alias to represent a player. (required).</param>
         public LoginNicknameRequest(string nickname = default(string))
         {
             // to ensure "nickname" is required (not null)
@@ -54,8 +54,10 @@ namespace Hathora.Cloud.Sdk.Model
         }
 
         /// <summary>
-        /// Gets or Sets Nickname
+        /// An alias to represent a player.
         /// </summary>
+        /// <value>An alias to represent a player.</value>
+        /// <example>&quot;squiddytwoshoes&quot;</example>
         [DataMember(Name = "nickname", IsRequired = true, EmitDefaultValue = true)]
         public string Nickname { get; set; }
 

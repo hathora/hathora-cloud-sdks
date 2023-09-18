@@ -45,7 +45,7 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * Connection information to an exposed port on an active process.
+ * Connection details for an active process.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExposedPort {

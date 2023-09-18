@@ -31,8 +31,9 @@ namespace Hathora.Cloud.Sdk.Model
     public partial class ConnectionInfoV2 : IEquatable<ConnectionInfoV2>
     {
         /// <summary>
-        /// Defines Status
+        /// &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
         /// </summary>
+        /// <value>&#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum StatusEnum
         {
@@ -52,8 +53,10 @@ namespace Hathora.Cloud.Sdk.Model
 
 
         /// <summary>
-        /// Gets or Sets Status
+        /// &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
         /// </summary>
+        /// <value>&#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.</value>
+        /// <example>&quot;active&quot;</example>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
         public StatusEnum Status { get; set; }
         /// <summary>
@@ -69,7 +72,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <param name="additionalExposedPorts">additionalExposedPorts (required).</param>
         /// <param name="exposedPort">exposedPort.</param>
-        /// <param name="status">status (required).</param>
+        /// <param name="status">&#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;. (required).</param>
         /// <param name="roomId">Unique identifier to a game session or match. Use either a system generated ID or pass in your own. (required).</param>
         public ConnectionInfoV2(List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), StatusEnum status = default(StatusEnum), string roomId = default(string))
         {

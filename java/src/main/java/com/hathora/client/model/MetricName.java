@@ -35,7 +35,9 @@ public enum MetricName {
   
   RATE_EGRESS("rate_egress"),
   
-  TOTAL_EGRESS("total_egress");
+  TOTAL_EGRESS("total_egress"),
+  
+  ACTIVE_CONNECTIONS("active_connections");
 
   private String value;
 

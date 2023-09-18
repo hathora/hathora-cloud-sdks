@@ -25,9 +25,8 @@ using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 namespace Hathora.Cloud.Sdk.Model
 {
     /// <summary>
-    /// Available regions to request a game server.
+    /// Defines Region
     /// </summary>
-    /// <value>Available regions to request a game server.</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Region
     {

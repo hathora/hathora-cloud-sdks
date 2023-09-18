@@ -91,9 +91,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     AppV1Api apiInstance = new AppV1Api(defaultClient);
     AppConfig appConfig = new AppConfig(); // AppConfig | 
@@ -178,12 +178,11 @@ Class | Method | HTTP request | Description
  - [AchPaymentMethod](docs/AchPaymentMethod.md)
  - [ActiveConnectionInfo](docs/ActiveConnectionInfo.md)
  - [AppConfig](docs/AppConfig.md)
- - [AppConfigAuthConfiguration](docs/AppConfigAuthConfiguration.md)
  - [Application](docs/Application.md)
- - [ApplicationAuthConfiguration](docs/ApplicationAuthConfiguration.md)
- - [ApplicationAuthConfigurationGoogle](docs/ApplicationAuthConfigurationGoogle.md)
  - [ApplicationWithDeployment](docs/ApplicationWithDeployment.md)
  - [ApplicationWithDeploymentAllOf](docs/ApplicationWithDeploymentAllOf.md)
+ - [AuthConfiguration](docs/AuthConfiguration.md)
+ - [AuthConfigurationGoogle](docs/AuthConfigurationGoogle.md)
  - [Build](docs/Build.md)
  - [BuildRegionalContainerTagsInner](docs/BuildRegionalContainerTagsInner.md)
  - [CardBrand](docs/CardBrand.md)
@@ -191,6 +190,7 @@ Class | Method | HTTP request | Description
  - [ConnectionInfo](docs/ConnectionInfo.md)
  - [ConnectionInfoV2](docs/ConnectionInfoV2.md)
  - [ContainerPort](docs/ContainerPort.md)
+ - [CreateBuildRequest](docs/CreateBuildRequest.md)
  - [CreateLobbyRequest](docs/CreateLobbyRequest.md)
  - [CreatePrivateLobbyRequest](docs/CreatePrivateLobbyRequest.md)
  - [CreateRoomRequest](docs/CreateRoomRequest.md)
@@ -230,7 +230,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### auth0
+### hathoraDevToken
 
 - **Type**: HTTP basic authentication
 

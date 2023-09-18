@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **RequestedMemoryMB** | **double** | The amount of memory allocated to your process. | 
 **RequestedCPU** | **double** | The number of cores allocated to your process. | 
 **DeploymentId** | **int** | System generated id for a deployment. Increments by 1. | 
-**BuildId** | **int** | System generated id for a build associated with this deployment. Increments by 1. | 
+**BuildId** | **int** | System generated id for a build. Increments by 1. | 
 **AppId** | **string** | System generated unique identifier for an application. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

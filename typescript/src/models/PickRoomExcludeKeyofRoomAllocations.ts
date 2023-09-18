@@ -45,6 +45,12 @@ export interface PickRoomExcludeKeyofRoomAllocations {
      */
     roomId: string;
     /**
+     * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+     * @type {string}
+     * @memberof PickRoomExcludeKeyofRoomAllocations
+     */
+    roomConfig: string | null;
+    /**
      * 
      * @type {RoomStatus}
      * @memberof PickRoomExcludeKeyofRoomAllocations
@@ -65,6 +71,7 @@ export function instanceOfPickRoomExcludeKeyofRoomAllocations(value: object): bo
     let isInstance = true;
     isInstance = isInstance && "appId" in value;
     isInstance = isInstance && "roomId" in value;
+    isInstance = isInstance && "roomConfig" in value;
     isInstance = isInstance && "status" in value;
     isInstance = isInstance && "currentAllocation" in value;
 
@@ -83,6 +90,7 @@ export function PickRoomExcludeKeyofRoomAllocationsFromJSONTyped(json: any, igno
         
         'appId': json['appId'],
         'roomId': json['roomId'],
+        'roomConfig': json['roomConfig'],
         'status': RoomStatusFromJSON(json['status']),
         'currentAllocation': RoomAllocationFromJSON(json['currentAllocation']),
     };
@@ -99,6 +107,7 @@ export function PickRoomExcludeKeyofRoomAllocationsToJSON(value?: PickRoomExclud
         
         'appId': value.appId,
         'roomId': value.roomId,
+        'roomConfig': value.roomConfig,
         'status': RoomStatusToJSON(value.status),
         'currentAllocation': RoomAllocationToJSON(value.currentAllocation),
     };

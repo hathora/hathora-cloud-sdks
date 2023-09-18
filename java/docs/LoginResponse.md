@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**token** | **String** |  |  |
+|**token** | **String** | A unique Hathora-signed JWT player token. |  |
 
 
 

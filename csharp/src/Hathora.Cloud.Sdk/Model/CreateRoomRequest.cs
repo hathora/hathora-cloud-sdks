@@ -47,12 +47,22 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRoomRequest" /> class.
         /// </summary>
+        /// <param name="roomConfig">Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo)..</param>
         /// <param name="region">region (required).</param>
-        public CreateRoomRequest(Region region = default(Region))
+        public CreateRoomRequest(string roomConfig = default(string), Region region = default(Region))
         {
             this.Region = region;
+            this.RoomConfig = roomConfig;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+        /// </summary>
+        /// <value>Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).</value>
+        /// <example>&quot;{&quot;name&quot;:&quot;my-room&quot;}&quot;</example>
+        [DataMember(Name = "roomConfig", EmitDefaultValue = false)]
+        public string RoomConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -68,6 +78,7 @@ namespace Hathora.Cloud.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateRoomRequest {\n");
+            sb.Append("  RoomConfig: ").Append(RoomConfig).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
@@ -106,6 +117,11 @@ namespace Hathora.Cloud.Sdk.Model
             }
             return 
                 (
+                    this.RoomConfig == input.RoomConfig ||
+                    (this.RoomConfig != null &&
+                    this.RoomConfig.Equals(input.RoomConfig))
+                ) && 
+                (
                     this.Region == input.Region ||
                     this.Region.Equals(input.Region)
                 )
@@ -121,6 +137,10 @@ namespace Hathora.Cloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.RoomConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.RoomConfig.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Region.GetHashCode();
                 if (this.AdditionalProperties != null)
                 {

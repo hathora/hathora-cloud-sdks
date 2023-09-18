@@ -13,5 +13,7 @@
 
 * `TOTAL_EGRESS` (value: `"total_egress"`)
 
+* `ACTIVE_CONNECTIONS` (value: `"active_connections"`)
+
 
 

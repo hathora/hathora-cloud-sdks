@@ -62,7 +62,7 @@ public class LoginGoogleRequest {
   }
 
    /**
-   * Get idToken
+   * A Google-signed OIDC ID token representing a player&#39;s authenticated identity. Learn how to get an &#x60;idToken&#x60; [here](https://cloud.google.com/docs/authentication/get-id-token).
    * @return idToken
   **/
   @javax.annotation.Nonnull

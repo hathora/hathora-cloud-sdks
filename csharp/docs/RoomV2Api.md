@@ -18,7 +18,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
-Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `region`.
+Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
 
 ### Example
 ```csharp
@@ -36,7 +36,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new RoomV2Api(config);
@@ -93,7 +93,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -106,6 +106,7 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **400** |  |  -  |
+| **402** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
@@ -118,7 +119,7 @@ catch (ApiException e)
 
 
 
-Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. All associated metadata is deleted.
+Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
 
 ### Example
 ```csharp
@@ -136,7 +137,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new RoomV2Api(config);
@@ -187,7 +188,7 @@ void (empty response body)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -210,7 +211,7 @@ void (empty response body)
 
 
 
-Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 
 ### Example
 ```csharp
@@ -228,7 +229,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new RoomV2Api(config);
@@ -283,7 +284,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -305,7 +306,7 @@ catch (ApiException e)
 
 
 
-Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. Clients can call this endpoint without authentication.
+Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
 
 ### Example
 ```csharp
@@ -399,7 +400,7 @@ No authorization required
 
 
 
-Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 
 ### Example
 ```csharp
@@ -417,7 +418,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new RoomV2Api(config);
@@ -472,7 +473,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -494,7 +495,7 @@ catch (ApiException e)
 
 
 
-Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`.
+Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
 
 ### Example
 ```csharp
@@ -512,7 +513,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new RoomV2Api(config);
@@ -567,7 +568,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -589,7 +590,7 @@ catch (ApiException e)
 
 
 
-Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using `appId` and `roomId`. The room is unallocated from the process but can be rescheduled later using the same `roomId`.
+Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
 
 ### Example
 ```csharp
@@ -607,7 +608,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new RoomV2Api(config);
@@ -658,7 +659,7 @@ void (empty response body)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

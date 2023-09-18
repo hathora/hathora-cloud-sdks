@@ -19,7 +19,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
-Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
 
 ### Example
 ```java
@@ -309,7 +309,7 @@ No authorization required
 
 
 
-Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
 
 ### Example
 ```java
@@ -374,7 +374,7 @@ No authorization required
 
 
 
-Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
 
 ### Example
 ```java
@@ -438,7 +438,7 @@ No authorization required
 
 
 
-Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
 
 ### Example
 ```java
@@ -455,9 +455,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     LobbyV2Api apiInstance = new LobbyV2Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -491,7 +491,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

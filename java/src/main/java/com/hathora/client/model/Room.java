@@ -64,6 +64,10 @@ public class Room {
   @SerializedName(SERIALIZED_NAME_ALLOCATIONS)
   private List<RoomAllocation> allocations = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_ROOM_CONFIG = "roomConfig";
+  @SerializedName(SERIALIZED_NAME_ROOM_CONFIG)
+  private String roomConfig;
+
   public static final String SERIALIZED_NAME_ROOM_ID = "roomId";
   @SerializedName(SERIALIZED_NAME_ROOM_ID)
   private String roomId;
@@ -146,6 +150,28 @@ public class Room {
 
   public void setAllocations(List<RoomAllocation> allocations) {
     this.allocations = allocations;
+  }
+
+
+  public Room roomConfig(String roomConfig) {
+    
+    this.roomConfig = roomConfig;
+    return this;
+  }
+
+   /**
+   * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+   * @return roomConfig
+  **/
+  @javax.annotation.Nullable
+
+  public String getRoomConfig() {
+    return roomConfig;
+  }
+
+
+  public void setRoomConfig(String roomConfig) {
+    this.roomConfig = roomConfig;
   }
 
 
@@ -250,6 +276,7 @@ public class Room {
     return Objects.equals(this.currentAllocation, room.currentAllocation) &&
         Objects.equals(this.status, room.status) &&
         Objects.equals(this.allocations, room.allocations) &&
+        Objects.equals(this.roomConfig, room.roomConfig) &&
         Objects.equals(this.roomId, room.roomId) &&
         Objects.equals(this.appId, room.appId)&&
         Objects.equals(this.additionalProperties, room.additionalProperties);
@@ -257,7 +284,7 @@ public class Room {
 
   @Override
   public int hashCode() {
-    return Objects.hash(currentAllocation, status, allocations, roomId, appId, additionalProperties);
+    return Objects.hash(currentAllocation, status, allocations, roomConfig, roomId, appId, additionalProperties);
   }
 
   @Override
@@ -267,6 +294,7 @@ public class Room {
     sb.append("    currentAllocation: ").append(toIndentedString(currentAllocation)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    allocations: ").append(toIndentedString(allocations)).append("\n");
+    sb.append("    roomConfig: ").append(toIndentedString(roomConfig)).append("\n");
     sb.append("    roomId: ").append(toIndentedString(roomId)).append("\n");
     sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -295,6 +323,7 @@ public class Room {
     openapiFields.add("currentAllocation");
     openapiFields.add("status");
     openapiFields.add("allocations");
+    openapiFields.add("roomConfig");
     openapiFields.add("roomId");
     openapiFields.add("appId");
 
@@ -303,6 +332,7 @@ public class Room {
     openapiRequiredFields.add("currentAllocation");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("allocations");
+    openapiRequiredFields.add("roomConfig");
     openapiRequiredFields.add("roomId");
     openapiRequiredFields.add("appId");
   }
@@ -326,6 +356,8 @@ public class Room {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the required field `currentAllocation`
+      RoomAllocation.validateJsonObject(jsonObj.getAsJsonObject("currentAllocation"));
       // ensure the json data is an array
       if (!jsonObj.get("allocations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `allocations` to be an array in the JSON string but got `%s`", jsonObj.get("allocations").toString()));
@@ -336,6 +368,9 @@ public class Room {
       for (int i = 0; i < jsonArrayallocations.size(); i++) {
         RoomAllocation.validateJsonObject(jsonArrayallocations.get(i).getAsJsonObject());
       };
+      if (!jsonObj.get("roomConfig").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `roomConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomConfig").toString()));
+      }
       if (!jsonObj.get("roomId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
       }

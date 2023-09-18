@@ -134,7 +134,7 @@ public class DeploymentV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -161,7 +161,7 @@ public class DeploymentV1Api {
 
     /**
      * 
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      * @param appId  (required)
      * @param buildId  (required)
      * @param deploymentConfig  (required)
@@ -183,7 +183,7 @@ public class DeploymentV1Api {
 
     /**
      * 
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      * @param appId  (required)
      * @param buildId  (required)
      * @param deploymentConfig  (required)
@@ -206,7 +206,7 @@ public class DeploymentV1Api {
 
     /**
      *  (asynchronously)
-     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      * @param appId  (required)
      * @param buildId  (required)
      * @param deploymentConfig  (required)
@@ -285,7 +285,7 @@ public class DeploymentV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -307,7 +307,7 @@ public class DeploymentV1Api {
 
     /**
      * 
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      * @param appId  (required)
      * @param deploymentId  (required)
      * @return Deployment
@@ -326,7 +326,7 @@ public class DeploymentV1Api {
 
     /**
      * 
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      * @param appId  (required)
      * @param deploymentId  (required)
      * @return ApiResponse&lt;Deployment&gt;
@@ -346,7 +346,7 @@ public class DeploymentV1Api {
 
     /**
      *  (asynchronously)
-     * Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+     * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      * @param appId  (required)
      * @param deploymentId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -420,7 +420,7 @@ public class DeploymentV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -437,7 +437,7 @@ public class DeploymentV1Api {
 
     /**
      * 
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param appId  (required)
      * @return List&lt;Deployment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -455,7 +455,7 @@ public class DeploymentV1Api {
 
     /**
      * 
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param appId  (required)
      * @return ApiResponse&lt;List&lt;Deployment&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -474,7 +474,7 @@ public class DeploymentV1Api {
 
     /**
      *  (asynchronously)
-     * Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param appId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

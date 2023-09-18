@@ -45,7 +45,7 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * Metadata on allocated instances of a room.
+ * Metadata on an allocated instance of a room.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RoomAllocation {

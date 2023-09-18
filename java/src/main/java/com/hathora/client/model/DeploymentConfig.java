@@ -120,6 +120,7 @@ public class DeploymentConfig {
    /**
    * Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
    * minimum: 1
+   * maximum: 10000
    * @return roomsPerProcess
   **/
   @javax.annotation.Nonnull

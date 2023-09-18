@@ -51,8 +51,10 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="idleSince">idleSince (required).</param>
         /// <param name="activeConnectionsUpdatedAt">activeConnectionsUpdatedAt (required).</param>
         /// <param name="activeConnections">Tracks the number of active connections to a process. (required).</param>
+        /// <param name="roomsAllocatedUpdatedAt">roomsAllocatedUpdatedAt (required).</param>
+        /// <param name="roomsAllocated">Tracks the number of rooms that have been allocated to the process. (required).</param>
         /// <param name="roomSlotsAvailableUpdatedAt">roomSlotsAvailableUpdatedAt (required).</param>
-        /// <param name="roomSlotsAvailable">Tracks the number of room slots available on the process. (required).</param>
+        /// <param name="roomSlotsAvailable">roomSlotsAvailable (required).</param>
         /// <param name="draining">Process in drain will not accept any new rooms. (required).</param>
         /// <param name="terminatedAt">When the process has been terminated. (required).</param>
         /// <param name="stoppingAt">When the process is issued to stop. We use this to determine when we should stop billing. (required).</param>
@@ -67,7 +69,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="processId">System generated unique identifier to a runtime instance of your game server. (required).</param>
         /// <param name="deploymentId">System generated id for a deployment. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Process(double egressedBytes = default(double), DateTime? idleSince = default(DateTime?), DateTime activeConnectionsUpdatedAt = default(DateTime), double activeConnections = default(double), DateTime roomSlotsAvailableUpdatedAt = default(DateTime), double roomSlotsAvailable = default(double), bool draining = default(bool), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime startingAt = default(DateTime), int roomsPerProcess = default(int), List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), double port = default(double), string host = default(string), Region region = default(Region), string processId = default(string), int deploymentId = default(int), string appId = default(string))
+        public Process(double egressedBytes = default(double), DateTime? idleSince = default(DateTime?), DateTime activeConnectionsUpdatedAt = default(DateTime), double activeConnections = default(double), DateTime roomsAllocatedUpdatedAt = default(DateTime), double roomsAllocated = default(double), DateTime roomSlotsAvailableUpdatedAt = default(DateTime), double roomSlotsAvailable = default(double), bool draining = default(bool), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime startingAt = default(DateTime), int roomsPerProcess = default(int), List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), double port = default(double), string host = default(string), Region region = default(Region), string processId = default(string), int deploymentId = default(int), string appId = default(string))
         {
             this.EgressedBytes = egressedBytes;
             // to ensure "idleSince" is required (not null)
@@ -78,6 +80,8 @@ namespace Hathora.Cloud.Sdk.Model
             this.IdleSince = idleSince;
             this.ActiveConnectionsUpdatedAt = activeConnectionsUpdatedAt;
             this.ActiveConnections = activeConnections;
+            this.RoomsAllocatedUpdatedAt = roomsAllocatedUpdatedAt;
+            this.RoomsAllocated = roomsAllocated;
             this.RoomSlotsAvailableUpdatedAt = roomSlotsAvailableUpdatedAt;
             this.RoomSlotsAvailable = roomSlotsAvailable;
             this.Draining = draining;
@@ -151,6 +155,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets ActiveConnectionsUpdatedAt
         /// </summary>
         [DataMember(Name = "activeConnectionsUpdatedAt", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public DateTime ActiveConnectionsUpdatedAt { get; set; }
 
         /// <summary>
@@ -162,17 +167,31 @@ namespace Hathora.Cloud.Sdk.Model
         public double ActiveConnections { get; set; }
 
         /// <summary>
+        /// Gets or Sets RoomsAllocatedUpdatedAt
+        /// </summary>
+        [DataMember(Name = "roomsAllocatedUpdatedAt", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime RoomsAllocatedUpdatedAt { get; set; }
+
+        /// <summary>
+        /// Tracks the number of rooms that have been allocated to the process.
+        /// </summary>
+        /// <value>Tracks the number of rooms that have been allocated to the process.</value>
+        /// <example>1</example>
+        [DataMember(Name = "roomsAllocated", IsRequired = true, EmitDefaultValue = true)]
+        public double RoomsAllocated { get; set; }
+
+        /// <summary>
         /// Gets or Sets RoomSlotsAvailableUpdatedAt
         /// </summary>
         [DataMember(Name = "roomSlotsAvailableUpdatedAt", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public DateTime RoomSlotsAvailableUpdatedAt { get; set; }
 
         /// <summary>
-        /// Tracks the number of room slots available on the process.
+        /// Gets or Sets RoomSlotsAvailable
         /// </summary>
-        /// <value>Tracks the number of room slots available on the process.</value>
-        /// <example>1</example>
         [DataMember(Name = "roomSlotsAvailable", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public double RoomSlotsAvailable { get; set; }
 
         /// <summary>
@@ -286,6 +305,8 @@ namespace Hathora.Cloud.Sdk.Model
             sb.Append("  IdleSince: ").Append(IdleSince).Append("\n");
             sb.Append("  ActiveConnectionsUpdatedAt: ").Append(ActiveConnectionsUpdatedAt).Append("\n");
             sb.Append("  ActiveConnections: ").Append(ActiveConnections).Append("\n");
+            sb.Append("  RoomsAllocatedUpdatedAt: ").Append(RoomsAllocatedUpdatedAt).Append("\n");
+            sb.Append("  RoomsAllocated: ").Append(RoomsAllocated).Append("\n");
             sb.Append("  RoomSlotsAvailableUpdatedAt: ").Append(RoomSlotsAvailableUpdatedAt).Append("\n");
             sb.Append("  RoomSlotsAvailable: ").Append(RoomSlotsAvailable).Append("\n");
             sb.Append("  Draining: ").Append(Draining).Append("\n");
@@ -355,6 +376,15 @@ namespace Hathora.Cloud.Sdk.Model
                 (
                     this.ActiveConnections == input.ActiveConnections ||
                     this.ActiveConnections.Equals(input.ActiveConnections)
+                ) && 
+                (
+                    this.RoomsAllocatedUpdatedAt == input.RoomsAllocatedUpdatedAt ||
+                    (this.RoomsAllocatedUpdatedAt != null &&
+                    this.RoomsAllocatedUpdatedAt.Equals(input.RoomsAllocatedUpdatedAt))
+                ) && 
+                (
+                    this.RoomsAllocated == input.RoomsAllocated ||
+                    this.RoomsAllocated.Equals(input.RoomsAllocated)
                 ) && 
                 (
                     this.RoomSlotsAvailableUpdatedAt == input.RoomSlotsAvailableUpdatedAt ||
@@ -453,6 +483,11 @@ namespace Hathora.Cloud.Sdk.Model
                     hashCode = (hashCode * 59) + this.ActiveConnectionsUpdatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ActiveConnections.GetHashCode();
+                if (this.RoomsAllocatedUpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.RoomsAllocatedUpdatedAt.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.RoomsAllocated.GetHashCode();
                 if (this.RoomSlotsAvailableUpdatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.RoomSlotsAvailableUpdatedAt.GetHashCode();

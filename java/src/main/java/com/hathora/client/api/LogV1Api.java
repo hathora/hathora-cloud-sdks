@@ -88,7 +88,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLogsForAppCall(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -143,10 +145,11 @@ public class LogV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLogsForAppValidateBeforeCall(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -173,7 +176,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public byte[] getLogsForApp(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
         ApiResponse<byte[]> localVarResp = getLogsForAppWithHttpInfo(appId, follow, tailLines, region);
         return localVarResp.getData();
@@ -194,7 +199,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<byte[]> getLogsForAppWithHttpInfo(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
         okhttp3.Call localVarCall = getLogsForAppValidateBeforeCall(appId, follow, tailLines, region, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
@@ -217,7 +224,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLogsForAppAsync(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback<byte[]> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForAppValidateBeforeCall(appId, follow, tailLines, region, _callback);
@@ -240,7 +249,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLogsForDeploymentCall(String appId, Integer deploymentId, Boolean follow, Integer tailLines, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -292,10 +303,11 @@ public class LogV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLogsForDeploymentValidateBeforeCall(String appId, Integer deploymentId, Boolean follow, Integer tailLines, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -327,7 +339,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public byte[] getLogsForDeployment(String appId, Integer deploymentId, Boolean follow, Integer tailLines) throws ApiException {
         ApiResponse<byte[]> localVarResp = getLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
         return localVarResp.getData();
@@ -348,7 +362,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<byte[]> getLogsForDeploymentWithHttpInfo(String appId, Integer deploymentId, Boolean follow, Integer tailLines) throws ApiException {
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
@@ -371,7 +387,9 @@ public class LogV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLogsForDeploymentAsync(String appId, Integer deploymentId, Boolean follow, Integer tailLines, final ApiCallback<byte[]> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, _callback);
@@ -393,6 +411,7 @@ public class LogV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLogsForProcessCall(String appId, String processId, Boolean follow, Integer tailLines, final ApiCallback _callback) throws ApiException {
@@ -446,7 +465,7 @@ public class LogV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -480,6 +499,7 @@ public class LogV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public byte[] getLogsForProcess(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
@@ -501,6 +521,7 @@ public class LogV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<byte[]> getLogsForProcessWithHttpInfo(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
@@ -524,6 +545,7 @@ public class LogV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLogsForProcessAsync(String appId, String processId, Boolean follow, Integer tailLines, final ApiCallback<byte[]> _callback) throws ApiException {
