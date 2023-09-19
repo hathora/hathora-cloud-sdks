@@ -55,6 +55,7 @@ export interface ProcessWithRooms {
      * 
      * @type {Date}
      * @memberof ProcessWithRooms
+     * @deprecated
      */
     activeConnectionsUpdatedAt: Date;
     /**
@@ -68,11 +69,25 @@ export interface ProcessWithRooms {
      * @type {Date}
      * @memberof ProcessWithRooms
      */
-    roomSlotsAvailableUpdatedAt: Date;
+    roomsAllocatedUpdatedAt: Date;
     /**
-     * Tracks the number of room slots available on the process.
+     * Tracks the number of rooms that have been allocated to the process.
      * @type {number}
      * @memberof ProcessWithRooms
+     */
+    roomsAllocated: number;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ProcessWithRooms
+     * @deprecated
+     */
+    roomSlotsAvailableUpdatedAt: Date;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProcessWithRooms
+     * @deprecated
      */
     roomSlotsAvailable: number;
     /**
@@ -184,6 +199,8 @@ export function instanceOfProcessWithRooms(value: object): boolean {
     isInstance = isInstance && "idleSince" in value;
     isInstance = isInstance && "activeConnectionsUpdatedAt" in value;
     isInstance = isInstance && "activeConnections" in value;
+    isInstance = isInstance && "roomsAllocatedUpdatedAt" in value;
+    isInstance = isInstance && "roomsAllocated" in value;
     isInstance = isInstance && "roomSlotsAvailableUpdatedAt" in value;
     isInstance = isInstance && "roomSlotsAvailable" in value;
     isInstance = isInstance && "draining" in value;
@@ -219,6 +236,8 @@ export function ProcessWithRoomsFromJSONTyped(json: any, ignoreDiscriminator: bo
         'idleSince': (json['idleSince'] === null ? null : new Date(json['idleSince'])),
         'activeConnectionsUpdatedAt': (new Date(json['activeConnectionsUpdatedAt'])),
         'activeConnections': json['activeConnections'],
+        'roomsAllocatedUpdatedAt': (new Date(json['roomsAllocatedUpdatedAt'])),
+        'roomsAllocated': json['roomsAllocated'],
         'roomSlotsAvailableUpdatedAt': (new Date(json['roomSlotsAvailableUpdatedAt'])),
         'roomSlotsAvailable': json['roomSlotsAvailable'],
         'draining': json['draining'],
@@ -253,6 +272,8 @@ export function ProcessWithRoomsToJSON(value?: ProcessWithRooms | null): any {
         'idleSince': (value.idleSince === null ? null : value.idleSince.toISOString()),
         'activeConnectionsUpdatedAt': (value.activeConnectionsUpdatedAt.toISOString()),
         'activeConnections': value.activeConnections,
+        'roomsAllocatedUpdatedAt': (value.roomsAllocatedUpdatedAt.toISOString()),
+        'roomsAllocated': value.roomsAllocated,
         'roomSlotsAvailableUpdatedAt': (value.roomSlotsAvailableUpdatedAt.toISOString()),
         'roomSlotsAvailable': value.roomSlotsAvailable,
         'draining': value.draining,

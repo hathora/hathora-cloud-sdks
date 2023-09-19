@@ -91,6 +91,7 @@ public class MetricsV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMetricsCall(String appId, String processId, List<MetricName> metrics, Double end, Double start, Integer step, final ApiCallback _callback) throws ApiException {
@@ -151,7 +152,7 @@ public class MetricsV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -188,6 +189,7 @@ public class MetricsV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public RecordPartialMetricNameMetricValueArray getMetrics(String appId, String processId, List<MetricName> metrics, Double end, Double start, Integer step) throws ApiException {
@@ -212,6 +214,7 @@ public class MetricsV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<RecordPartialMetricNameMetricValueArray> getMetricsWithHttpInfo(String appId, String processId, List<MetricName> metrics, Double end, Double start, Integer step) throws ApiException {
@@ -238,6 +241,7 @@ public class MetricsV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMetricsAsync(String appId, String processId, List<MetricName> metrics, Double end, Double start, Integer step, final ApiCallback<RecordPartialMetricNameMetricValueArray> _callback) throws ApiException {

@@ -50,6 +50,12 @@ export interface RecordPartialMetricNameMetricValueArray {
      * @memberof RecordPartialMetricNameMetricValueArray
      */
     totalEgress?: Array<MetricValue>;
+    /**
+     * 
+     * @type {Array<MetricValue>}
+     * @memberof RecordPartialMetricNameMetricValueArray
+     */
+    activeConnections?: Array<MetricValue>;
 }
 
 /**
@@ -75,6 +81,7 @@ export function RecordPartialMetricNameMetricValueArrayFromJSONTyped(json: any, 
         'memory': !exists(json, 'memory') ? undefined : ((json['memory'] as Array<any>).map(MetricValueFromJSON)),
         'rateEgress': !exists(json, 'rate_egress') ? undefined : ((json['rate_egress'] as Array<any>).map(MetricValueFromJSON)),
         'totalEgress': !exists(json, 'total_egress') ? undefined : ((json['total_egress'] as Array<any>).map(MetricValueFromJSON)),
+        'activeConnections': !exists(json, 'active_connections') ? undefined : ((json['active_connections'] as Array<any>).map(MetricValueFromJSON)),
     };
 }
 
@@ -91,6 +98,7 @@ export function RecordPartialMetricNameMetricValueArrayToJSON(value?: RecordPart
         'memory': value.memory === undefined ? undefined : ((value.memory as Array<any>).map(MetricValueToJSON)),
         'rate_egress': value.rateEgress === undefined ? undefined : ((value.rateEgress as Array<any>).map(MetricValueToJSON)),
         'total_egress': value.totalEgress === undefined ? undefined : ((value.totalEgress as Array<any>).map(MetricValueToJSON)),
+        'active_connections': value.activeConnections === undefined ? undefined : ((value.activeConnections as Array<any>).map(MetricValueToJSON)),
     };
 }
 

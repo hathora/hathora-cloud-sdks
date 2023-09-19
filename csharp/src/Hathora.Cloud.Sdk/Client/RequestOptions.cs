@@ -27,6 +27,11 @@ namespace Hathora.Cloud.Sdk.Client
         public Dictionary<string, string> PathParameters { get; set; }
 
         /// <summary>
+        /// File parameters to be sent along with the request.
+        /// </summary>
+        public Multimap<string, FileParameter> FileParameters { get; set; }
+
+        /// <summary>
         /// Query parameters to be applied to the request.
         /// Keys may have 1 or more values associated.
         /// </summary>
@@ -42,11 +47,6 @@ namespace Hathora.Cloud.Sdk.Client
         /// Form parameters to be sent along with the request.
         /// </summary>
         public Dictionary<string, string> FormParameters { get; set; }
-
-        /// <summary>
-        /// File parameters to be sent along with the request.
-        /// </summary>
-        public Multimap<string, FileParameter> FileParameters { get; set; }
 
         /// <summary>
         /// Cookies to be sent along with the request.

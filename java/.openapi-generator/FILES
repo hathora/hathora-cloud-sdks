@@ -3,13 +3,12 @@ api/openapi.yaml
 docs/AchPaymentMethod.md
 docs/ActiveConnectionInfo.md
 docs/AppConfig.md
-docs/AppConfigAuthConfiguration.md
 docs/AppV1Api.md
 docs/Application.md
-docs/ApplicationAuthConfiguration.md
-docs/ApplicationAuthConfigurationGoogle.md
 docs/ApplicationWithDeployment.md
 docs/ApplicationWithDeploymentAllOf.md
+docs/AuthConfiguration.md
+docs/AuthConfigurationGoogle.md
 docs/AuthV1Api.md
 docs/BillingV1Api.md
 docs/Build.md
@@ -20,6 +19,7 @@ docs/CardPaymentMethod.md
 docs/ConnectionInfo.md
 docs/ConnectionInfoV2.md
 docs/ContainerPort.md
+docs/CreateBuildRequest.md
 docs/CreateLobbyRequest.md
 docs/CreatePrivateLobbyRequest.md
 docs/CreateRoomRequest.md
@@ -99,12 +99,11 @@ src/main/java/com/hathora/client/model/AbstractOpenApiSchema.java
 src/main/java/com/hathora/client/model/AchPaymentMethod.java
 src/main/java/com/hathora/client/model/ActiveConnectionInfo.java
 src/main/java/com/hathora/client/model/AppConfig.java
-src/main/java/com/hathora/client/model/AppConfigAuthConfiguration.java
 src/main/java/com/hathora/client/model/Application.java
-src/main/java/com/hathora/client/model/ApplicationAuthConfiguration.java
-src/main/java/com/hathora/client/model/ApplicationAuthConfigurationGoogle.java
 src/main/java/com/hathora/client/model/ApplicationWithDeployment.java
 src/main/java/com/hathora/client/model/ApplicationWithDeploymentAllOf.java
+src/main/java/com/hathora/client/model/AuthConfiguration.java
+src/main/java/com/hathora/client/model/AuthConfigurationGoogle.java
 src/main/java/com/hathora/client/model/Build.java
 src/main/java/com/hathora/client/model/BuildRegionalContainerTagsInner.java
 src/main/java/com/hathora/client/model/CardBrand.java
@@ -112,6 +111,7 @@ src/main/java/com/hathora/client/model/CardPaymentMethod.java
 src/main/java/com/hathora/client/model/ConnectionInfo.java
 src/main/java/com/hathora/client/model/ConnectionInfoV2.java
 src/main/java/com/hathora/client/model/ContainerPort.java
+src/main/java/com/hathora/client/model/CreateBuildRequest.java
 src/main/java/com/hathora/client/model/CreateLobbyRequest.java
 src/main/java/com/hathora/client/model/CreatePrivateLobbyRequest.java
 src/main/java/com/hathora/client/model/CreateRoomRequest.java

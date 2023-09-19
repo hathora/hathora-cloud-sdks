@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { AppConfigAuthConfiguration } from './AppConfigAuthConfiguration';
+import type { AuthConfiguration } from './AuthConfiguration';
 import {
-    AppConfigAuthConfigurationFromJSON,
-    AppConfigAuthConfigurationFromJSONTyped,
-    AppConfigAuthConfigurationToJSON,
-} from './AppConfigAuthConfiguration';
+    AuthConfigurationFromJSON,
+    AuthConfigurationFromJSONTyped,
+    AuthConfigurationToJSON,
+} from './AuthConfiguration';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface AppConfig {
     /**
      * 
-     * @type {AppConfigAuthConfiguration}
+     * @type {AuthConfiguration}
      * @memberof AppConfig
      */
-    authConfiguration: AppConfigAuthConfiguration;
+    authConfiguration: AuthConfiguration;
     /**
      * Readable name for an application. Must be unique within an organization.
      * @type {string}
@@ -61,7 +61,7 @@ export function AppConfigFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'authConfiguration': AppConfigAuthConfigurationFromJSON(json['authConfiguration']),
+        'authConfiguration': AuthConfigurationFromJSON(json['authConfiguration']),
         'appName': json['appName'],
     };
 }
@@ -75,7 +75,7 @@ export function AppConfigToJSON(value?: AppConfig | null): any {
     }
     return {
         
-        'authConfiguration': AppConfigAuthConfigurationToJSON(value.authConfiguration),
+        'authConfiguration': AuthConfigurationToJSON(value.authConfiguration),
         'appName': value.appName,
     };
 }

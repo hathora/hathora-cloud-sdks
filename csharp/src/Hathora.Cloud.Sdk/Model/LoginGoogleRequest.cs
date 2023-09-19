@@ -41,7 +41,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginGoogleRequest" /> class.
         /// </summary>
-        /// <param name="idToken">idToken (required).</param>
+        /// <param name="idToken">A Google-signed OIDC ID token representing a player&#39;s authenticated identity. Learn how to get an &#x60;idToken&#x60; [here](https://cloud.google.com/docs/authentication/get-id-token). (required).</param>
         public LoginGoogleRequest(string idToken = default(string))
         {
             // to ensure "idToken" is required (not null)
@@ -54,8 +54,10 @@ namespace Hathora.Cloud.Sdk.Model
         }
 
         /// <summary>
-        /// Gets or Sets IdToken
+        /// A Google-signed OIDC ID token representing a player&#39;s authenticated identity. Learn how to get an &#x60;idToken&#x60; [here](https://cloud.google.com/docs/authentication/get-id-token).
         /// </summary>
+        /// <value>A Google-signed OIDC ID token representing a player&#39;s authenticated identity. Learn how to get an &#x60;idToken&#x60; [here](https://cloud.google.com/docs/authentication/get-id-token).</value>
+        /// <example>&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6ImZkNDhhNzUxMzhkOWQ0OGYwYWE2MzVlZjU2OWM0ZTE5NmY3YWU4ZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0NTQyMzMwNzI3MTU2MTMzNzc2IiwiZW1haWwiOiJocGFdkeivmeuzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidno1NGhhdTNxbnVR&quot;</example>
         [DataMember(Name = "idToken", IsRequired = true, EmitDefaultValue = true)]
         public string IdToken { get; set; }
 

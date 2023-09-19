@@ -4,13 +4,12 @@ api/openapi.yaml
 docs/AchPaymentMethod.md
 docs/ActiveConnectionInfo.md
 docs/AppConfig.md
-docs/AppConfigAuthConfiguration.md
 docs/AppV1Api.md
 docs/Application.md
-docs/ApplicationAuthConfiguration.md
-docs/ApplicationAuthConfigurationGoogle.md
 docs/ApplicationWithDeployment.md
 docs/ApplicationWithDeploymentAllOf.md
+docs/AuthConfiguration.md
+docs/AuthConfigurationGoogle.md
 docs/AuthV1Api.md
 docs/BillingV1Api.md
 docs/Build.md
@@ -21,6 +20,7 @@ docs/CardPaymentMethod.md
 docs/ConnectionInfo.md
 docs/ConnectionInfoV2.md
 docs/ContainerPort.md
+docs/CreateBuildRequest.md
 docs/CreateLobbyRequest.md
 docs/CreatePrivateLobbyRequest.md
 docs/CreateRoomRequest.md
@@ -103,12 +103,11 @@ src/Hathora.Cloud.Sdk/Model/AbstractOpenAPISchema.cs
 src/Hathora.Cloud.Sdk/Model/AchPaymentMethod.cs
 src/Hathora.Cloud.Sdk/Model/ActiveConnectionInfo.cs
 src/Hathora.Cloud.Sdk/Model/AppConfig.cs
-src/Hathora.Cloud.Sdk/Model/AppConfigAuthConfiguration.cs
 src/Hathora.Cloud.Sdk/Model/Application.cs
-src/Hathora.Cloud.Sdk/Model/ApplicationAuthConfiguration.cs
-src/Hathora.Cloud.Sdk/Model/ApplicationAuthConfigurationGoogle.cs
 src/Hathora.Cloud.Sdk/Model/ApplicationWithDeployment.cs
 src/Hathora.Cloud.Sdk/Model/ApplicationWithDeploymentAllOf.cs
+src/Hathora.Cloud.Sdk/Model/AuthConfiguration.cs
+src/Hathora.Cloud.Sdk/Model/AuthConfigurationGoogle.cs
 src/Hathora.Cloud.Sdk/Model/Build.cs
 src/Hathora.Cloud.Sdk/Model/BuildRegionalContainerTagsInner.cs
 src/Hathora.Cloud.Sdk/Model/CardBrand.cs
@@ -116,6 +115,7 @@ src/Hathora.Cloud.Sdk/Model/CardPaymentMethod.cs
 src/Hathora.Cloud.Sdk/Model/ConnectionInfo.cs
 src/Hathora.Cloud.Sdk/Model/ConnectionInfoV2.cs
 src/Hathora.Cloud.Sdk/Model/ContainerPort.cs
+src/Hathora.Cloud.Sdk/Model/CreateBuildRequest.cs
 src/Hathora.Cloud.Sdk/Model/CreateLobbyRequest.cs
 src/Hathora.Cloud.Sdk/Model/CreatePrivateLobbyRequest.cs
 src/Hathora.Cloud.Sdk/Model/CreateRoomRequest.cs

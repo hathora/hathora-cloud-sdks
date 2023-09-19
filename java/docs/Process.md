@@ -12,8 +12,10 @@ A process object represents a runtime instance of your game server and its metad
 |**idleSince** | **OffsetDateTime** |  |  |
 |**activeConnectionsUpdatedAt** | **OffsetDateTime** |  |  |
 |**activeConnections** | **Double** | Tracks the number of active connections to a process. |  |
+|**roomsAllocatedUpdatedAt** | **OffsetDateTime** |  |  |
+|**roomsAllocated** | **Double** | Tracks the number of rooms that have been allocated to the process. |  |
 |**roomSlotsAvailableUpdatedAt** | **OffsetDateTime** |  |  |
-|**roomSlotsAvailable** | **Double** | Tracks the number of room slots available on the process. |  |
+|**roomSlotsAvailable** | **Double** |  |  |
 |**draining** | **Boolean** | Process in drain will not accept any new rooms. |  |
 |**terminatedAt** | **OffsetDateTime** | When the process has been terminated. |  |
 |**stoppingAt** | **OffsetDateTime** | When the process is issued to stop. We use this to determine when we should stop billing. |  |

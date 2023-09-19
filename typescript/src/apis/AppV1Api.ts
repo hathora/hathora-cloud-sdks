@@ -145,7 +145,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -184,7 +184,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -221,7 +221,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -255,7 +255,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -299,7 +299,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;

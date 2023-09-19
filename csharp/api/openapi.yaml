@@ -11,9 +11,10 @@ servers:
 tags:
 - description: "Operations that allow you manage your [applications](https://hathora.dev/docs/concepts/hathora-entities#application)."
   name: AppV1
-- description: "Operations that allow you to configure authentication for your [applications](https://hathora.dev/docs/concepts/hathora-entities#application)."
+- description: "Operations that allow you to generate a Hathora-signed [JSON web token\
+    \ (JWT)](https://jwt.io/) for [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service)."
   name: AuthV1
-- description: "Operations that allow you create and manage your [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
+- description: "Operations that allow you create and manage your [builds](https://hathora.dev/docs/concepts/hathora-entities#build)."
   name: BuildV1
 - description: "Operations that allow you configure and manage an application's [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
     \ at runtime."
@@ -52,7 +53,7 @@ paths:
                 type: array
           description: Ok
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - AppV1
   /apps/v1/create:
@@ -86,7 +87,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - AppV1
   /apps/v1/update/{appId}:
@@ -128,7 +129,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - AppV1
   /apps/v1/info/{appId}:
@@ -158,7 +159,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - AppV1
   /apps/v1/delete/{appId}:
@@ -190,11 +191,12 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - AppV1
   /auth/v1/{appId}/login/anonymous:
     post:
+      description: Returns a unique player token for an anonymous user.
       operationId: LoginAnonymous
       parameters:
       - explode: false
@@ -222,6 +224,7 @@ paths:
       - AuthV1
   /auth/v1/{appId}/login/nickname:
     post:
+      description: Returns a unique player token with a specified nickname for a user.
       operationId: LoginNickname
       parameters:
       - explode: false
@@ -255,6 +258,7 @@ paths:
       - AuthV1
   /auth/v1/{appId}/login/google:
     post:
+      description: Returns a unique player token using a Google-signed OIDC `idToken`.
       operationId: LoginGoogle
       parameters:
       - explode: false
@@ -311,7 +315,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BillingV1
   /billing/v1/paymentmethod:
@@ -338,7 +342,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BillingV1
   /billing/v1/customerportalurl:
@@ -365,7 +369,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BillingV1
   /billing/v1/invoices:
@@ -388,14 +392,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BillingV1
   /builds/v1/{appId}/list:
     get:
-      description: "Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
-        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`."
+      description: "Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build)\
+        \ for an [application](https://hathora.dev/docs/concepts/hathora-entities#application)."
       operationId: GetBuilds
       parameters:
       - explode: false
@@ -421,13 +424,12 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BuildV1
   /builds/v1/{appId}/info/{buildId}:
     get:
-      description: "Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
-        \ using `appId` and `buildId`."
+      description: "Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
       operationId: GetBuildInfo
       parameters:
       - explode: false
@@ -458,13 +460,15 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BuildV1
   /builds/v1/{appId}/create:
     post:
-      description: "Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
+      description: "Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build).\
+        \ Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild)\
+        \ to build the game server artifact. You can optionally pass in a `buildTag`\
+        \ to associate an external version with a build."
       operationId: CreateBuild
       parameters:
       - explode: false
@@ -474,6 +478,12 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBuildRequest'
+        required: true
       responses:
         "201":
           content:
@@ -494,14 +504,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BuildV1
   /builds/v1/{appId}/run/{buildId}:
     post:
-      description: "Provide a tarball that will generate a container image for an\
-        \ existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`. Pass in `buildId` generated from Create Build."
+      description: "Builds a game server artifact from a tarball you provide. Pass\
+        \ in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild)."
       operationId: RunBuild
       parameters:
       - explode: false
@@ -545,14 +554,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BuildV1
   /builds/v1/{appId}/delete/{buildId}:
     delete:
-      description: "Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build)\
-        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId` and `buildId`."
+      description: "Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build).\
+        \ All associated metadata is deleted."
       operationId: DeleteBuild
       parameters:
       - explode: false
@@ -591,14 +599,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - BuildV1
   /deployments/v1/{appId}/list:
     get:
-      description: "Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
-        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`."
+      description: "Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
+        \ for an [application](https://hathora.dev/docs/concepts/hathora-entities#application)."
       operationId: GetDeployments
       parameters:
       - explode: false
@@ -624,13 +631,12 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - DeploymentV1
   /deployments/v1/{appId}/info/{deploymentId}:
     get:
-      description: "Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
-        \ using `appId`."
+      description: "Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)."
       operationId: GetDeploymentInfo
       parameters:
       - explode: false
@@ -661,14 +667,14 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - DeploymentV1
   /deployments/v1/{appId}/create/{buildId}:
     post:
-      description: "Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
-        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ and [build](https://hathora.dev/docs/concepts/hathora-entities#build)."
+      description: "Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).\
+        \ Creating a new deployment means all new rooms created will use the latest\
+        \ deployment configuration, but existing games in progress will not be affected."
       operationId: CreateDeployment
       parameters:
       - explode: false
@@ -717,13 +723,15 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - DeploymentV1
   /discovery/v1/ping:
     get:
-      description: Returns an array of all regions with a host and port that a client
-        can directly ping.
+      description: "Returns an array of all regions with a host and port that a client\
+        \ can directly ping. Open a websocket connection to `wss://<host>:<port>/ws`\
+        \ and send a packet. To calculate ping, measure the time it takes to get an\
+        \ echo packet back."
       operationId: GetPingServiceEndpoints
       parameters: []
       responses:
@@ -1190,8 +1198,7 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/create:
     post:
-      description: "Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
-        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+      description: "Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
         \ using `appId`."
       operationId: CreateLobby
       parameters:
@@ -1270,8 +1277,7 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/list/public:
     get:
-      description: "Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
-        \ for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
+      description: "Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
         \ using `appId`. Filter the array by optionally passing in a `region`."
       operationId: ListActivePublicLobbies
       parameters:
@@ -1305,8 +1311,7 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/info/{roomId}:
     get:
-      description: "Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
-        \ using `appId` and `roomId`."
+      description: Get details for an existing lobby using `appId` and `roomId`.
       operationId: GetLobbyInfo
       parameters:
       - explode: false
@@ -1341,9 +1346,8 @@ paths:
       - LobbyV2
   /lobby/v2/{appId}/setState/{roomId}:
     post:
-      description: "Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby)\
-        \ using `appId` and `roomId`. State is intended to be set by the server and\
-        \ must be smaller than 1MB."
+      description: Set the state of a lobby using `appId` and `roomId`. State is intended
+        to be set by the server and must be smaller than 1MB.
       operationId: SetLobbyState
       parameters:
       - explode: false
@@ -1386,11 +1390,12 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - LobbyV2
   /logs/v1/{appId}/all:
     get:
+      deprecated: true
       description: "Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
         \ using `appId`."
       operationId: GetLogsForApp
@@ -1438,7 +1443,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - LogV1
   /logs/v1/{appId}/process/{processId}:
@@ -1489,12 +1494,19 @@ paths:
               schema:
                 type: string
           description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - LogV1
   /logs/v1/{appId}/deployment/{deploymentId}:
     get:
+      deprecated: true
       description: "Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
         \ using `appId` and `deploymentId`."
       operationId: GetLogsForDeployment
@@ -1542,7 +1554,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - LogV1
   /management/v1/sendverificationemail:
@@ -1649,8 +1661,14 @@ paths:
               schema:
                 type: string
           description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - MetricsV1
   /processes/v1/{appId}/list/running:
@@ -1690,7 +1708,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - ProcessesV1
   /processes/v1/{appId}/list/stopped:
@@ -1730,7 +1748,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - ProcessesV1
   /processes/v1/{appId}/info/{processId}:
@@ -1766,8 +1784,14 @@ paths:
               schema:
                 type: string
           description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - ProcessesV1
   /rooms/v1/{appId}/create:
@@ -1808,6 +1832,12 @@ paths:
               schema:
                 type: string
           description: ""
+        "402":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "403":
           content:
             application/json:
@@ -1827,7 +1857,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV1
   /rooms/v1/{appId}/info/{roomId}:
@@ -1863,7 +1893,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV1
   /rooms/v1/{appId}/list/{processId}/active:
@@ -1901,7 +1931,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV1
   /rooms/v1/{appId}/list/{processId}/inactive:
@@ -1939,7 +1969,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV1
   /rooms/v1/{appId}/destroy/{roomId}:
@@ -1977,7 +2007,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV1
   /rooms/v1/{appId}/suspend/{roomId}:
@@ -2015,7 +2045,7 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV1
   /rooms/v1/{appId}/connectioninfo/{roomId}:
@@ -2068,8 +2098,9 @@ paths:
   /rooms/v2/{appId}/create:
     post:
       description: "Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
-        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId` and `region`."
+        \ for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo)\
+        \ endpoint to get connection details for an active room."
       operationId: CreateRoom
       parameters:
       - explode: false
@@ -2105,6 +2136,12 @@ paths:
               schema:
                 type: string
           description: ""
+        "402":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ""
         "403":
           content:
             application/json:
@@ -2124,13 +2161,12 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV2
   /rooms/v2/{appId}/info/{roomId}:
     get:
-      description: "Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
-        \ using `appId` and `roomId`."
+      description: "Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room)."
       operationId: GetRoomInfo
       parameters:
       - explode: false
@@ -2161,14 +2197,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV2
   /rooms/v2/{appId}/list/{processId}/active:
     get:
       description: "Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
-        \ for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
-        \ using `appId` and `processId`."
+        \ for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process)."
       operationId: GetActiveRoomsForProcess
       parameters:
       - explode: false
@@ -2201,14 +2236,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV2
   /rooms/v2/{appId}/list/{processId}/inactive:
     get:
       description: "Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
-        \ for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
-        \ using `appId` and `processId`."
+        \ for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process)."
       operationId: GetInactiveRoomsForProcess
       parameters:
       - explode: false
@@ -2241,13 +2275,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV2
   /rooms/v2/{appId}/destroy/{roomId}:
     post:
-      description: "Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
-        \ using `appId` and `roomId`. All associated metadata is deleted."
+      description: "Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room).\
+        \ All associated metadata is deleted."
       operationId: DestroyRoom
       parameters:
       - explode: false
@@ -2280,14 +2314,14 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV2
   /rooms/v2/{appId}/suspend/{roomId}:
     post:
-      description: "Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
-        \ using `appId` and `roomId`. The room is unallocated from the process but\
-        \ can be rescheduled later using the same `roomId`."
+      description: "Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room).\
+        \ The room is unallocated from the process but can be rescheduled later using\
+        \ the same `roomId`."
       operationId: SuspendRoom
       parameters:
       - explode: false
@@ -2320,13 +2354,13 @@ paths:
                 type: string
           description: ""
       security:
-      - auth0: []
+      - hathoraDevToken: []
       tags:
       - RoomV2
   /rooms/v2/{appId}/connectioninfo/{roomId}:
     get:
-      description: "Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
-        \ using `appId` and `roomId`. Clients can call this endpoint without authentication."
+      description: "Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room).\
+        \ Clients can call this endpoint without authentication."
       operationId: GetConnectionInfo
       parameters:
       - explode: false
@@ -2392,6 +2426,27 @@ components:
       description: Construct a type with a set of properties K of type T
       properties: {}
       type: object
+    AuthConfiguration:
+      description: "Configure [player authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service)\
+        \ for your application. Use Hathora's built-in auth providers or use your\
+        \ own [custom authentication](https://hathora.dev/docs/lobbies-and-matchmaking/auth-service#custom-auth-provider)."
+      example:
+        nickname: "{}"
+        anonymous: "{}"
+        google:
+          clientId: clientId
+      properties:
+        google:
+          $ref: '#/components/schemas/AuthConfiguration_google'
+        nickname:
+          description: Construct a type with a set of properties K of type T
+          properties: {}
+          type: object
+        anonymous:
+          description: Construct a type with a set of properties K of type T
+          properties: {}
+          type: object
+      type: object
     OrgId:
       description: System generated unique identifier for an organization.
       example: google-oauth2|107030234048588177467
@@ -2436,7 +2491,7 @@ components:
           example: google-oauth2|107030234048588177467
           type: string
         authConfiguration:
-          $ref: '#/components/schemas/Application_authConfiguration'
+          $ref: '#/components/schemas/AuthConfiguration'
         appSecret:
           description: Secret that is used for identity and access management.
           example: secret-6f706e83-0ec1-437a-9a46-7d4281eb2f39
@@ -2463,6 +2518,11 @@ components:
       - deletedBy
       - orgId
       type: object
+    BuildId:
+      description: System generated id for a build. Increments by 1.
+      example: 1
+      format: int32
+      type: integer
     DeploymentId:
       description: System generated id for a deployment. Increments by 1.
       example: 1
@@ -2527,7 +2587,7 @@ components:
         \ can be scheduled in a process."
       example: 3
       format: int32
-      maxLength: 10000
+      maximum: 10000
       minimum: 1
       type: integer
     Deployment:
@@ -2577,7 +2637,7 @@ components:
             \ can be scheduled in a process."
           example: 3
           format: int32
-          maxLength: 10000
+          maximum: 10000
           minimum: 1
           type: integer
         planName:
@@ -2629,8 +2689,7 @@ components:
           format: int32
           type: integer
         buildId:
-          description: System generated id for a build associated with this deployment.
-            Increments by 1.
+          description: System generated id for a build. Increments by 1.
           example: 1
           format: int32
           type: integer
@@ -2668,7 +2727,7 @@ components:
             clientId: clientId
       properties:
         authConfiguration:
-          $ref: '#/components/schemas/AppConfig_authConfiguration'
+          $ref: '#/components/schemas/AuthConfiguration'
         appName:
           description: Readable name for an application. Must be unique within an
             organization.
@@ -2682,27 +2741,34 @@ components:
       type: object
     LoginResponse:
       example:
-        token: token
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYW5vbnltb3VzIiwiaWQiOiJ3aDA4eWN3eTJwOSIsIm5hbWUiOiJqaXR0ZXJ5LXNhbG1vbi1ndWxsIiwiaWF0IjoxNjg5MzQ5MTk3fQ.-LzlPhZw2tw0ycZ229IRHwwmINGKWNPFMDrXOphLjEk
       properties:
         token:
+          description: A unique Hathora-signed JWT player token.
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYW5vbnltb3VzIiwiaWQiOiJ3aDA4eWN3eTJwOSIsIm5hbWUiOiJqaXR0ZXJ5LXNhbG1vbi1ndWxsIiwiaWF0IjoxNjg5MzQ5MTk3fQ.-LzlPhZw2tw0ycZ229IRHwwmINGKWNPFMDrXOphLjEk
           type: string
       required:
       - token
       type: object
     LoginNicknameRequest:
       example:
-        nickname: nickname
+        nickname: squiddytwoshoes
       properties:
         nickname:
+          description: An alias to represent a player.
+          example: squiddytwoshoes
           type: string
       required:
       - nickname
       type: object
     LoginGoogleRequest:
       example:
-        idToken: idToken
+        idToken: eyJhbGciOiJSUzI1NiIsImtpZCI6ImZkNDhhNzUxMzhkOWQ0OGYwYWE2MzVlZjU2OWM0ZTE5NmY3YWU4ZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0NTQyMzMwNzI3MTU2MTMzNzc2IiwiZW1haWwiOiJocGFdkeivmeuzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidno1NGhhdTNxbnVR
       properties:
         idToken:
+          description: "A Google-signed OIDC ID token representing a player's authenticated\
+            \ identity. Learn how to get an `idToken` [here](https://cloud.google.com/docs/authentication/get-id-token)."
+          example: eyJhbGciOiJSUzI1NiIsImtpZCI6ImZkNDhhNzUxMzhkOWQ0OGYwYWE2MzVlZjU2OWM0ZTE5NmY3YWU4ZDYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiODQ4NDEyODI2Nzg4LW00bXNyYjZxNDRkbTJ1ZTNrZ3Z1aTBmcTdrZGE1NWxzLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE0NTQyMzMwNzI3MTU2MTMzNzc2IiwiZW1haWwiOiJocGFdkeivmeuzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidno1NGhhdTNxbnVR
           type: string
       required:
       - idToken
@@ -2821,13 +2887,7 @@ components:
       - status
       - year
       type: object
-    BuildId:
-      description: System generated id for a build. Increments by 1.
-      example: 1
-      format: int32
-      type: integer
     Region:
-      description: Available regions to request a game server.
       enum:
       - Seattle
       - Washington_DC
@@ -2840,12 +2900,18 @@ components:
       - Sydney
       - Sao_Paulo
       type: string
+    BuildTag:
+      description: "Tag to associate an external version with a build. It is accessible\
+        \ via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo)."
+      example: 0.1.14-14c793
+      maxLength: 1000
+      type: string
     Build:
-      description: Build is a versioned artifact for a game server's container image
-        and its data.
+      description: A build represents a game server artifact and its associated metadata.
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         deletedAt: 2000-01-23T04:56:07.000+00:00
+        buildTag: ""
         regionalContainerTags:
         - region: null
           containerTag: containerTag
@@ -2859,26 +2925,30 @@ components:
         status: created
         finishedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        buildTag:
+          allOf:
+          - $ref: '#/components/schemas/BuildTag'
+          nullable: true
         regionalContainerTags:
-          description: An alias for the container image in our regional registries.
+          description: Identifiers for the containers stored in Hathora's registries.
           items:
             $ref: '#/components/schemas/Build_regionalContainerTags_inner'
           type: array
         imageSize:
-          description: Image size in MB.
+          description: The size (in bytes) of the Docker image built by Hathora.
           format: double
           type: number
         status:
           description: |-
-            Status of creating a build.
+            Current status of your build.
 
-            `created`: a new `buildId` was generated
+            `created`: a build was created but not yet run
 
-            `running`: the container image is being built
+            `running`: the build process is actively executing
 
-            `succeeded`: the container image was successfully built and stored in our registry
+            `succeeded`: the game server artifact was successfully built and stored in the Hathora registries
 
-            `failed`: there was an issue creating and storing the container image in our container registry
+            `failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`
           enum:
           - created
           - running
@@ -2886,22 +2956,25 @@ components:
           - failed
           type: string
         deletedAt:
-          description: When the container image was deleted.
+          description: When the build was deleted.
           format: date-time
           nullable: true
           type: string
         finishedAt:
-          description: When the container image finished being built.
+          description: "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild)\
+            \ finished executing."
           format: date-time
           nullable: true
           type: string
         startedAt:
-          description: When the container image starts getting built.
+          description: "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild)\
+            \ is called."
           format: date-time
           nullable: true
           type: string
         createdAt:
-          description: When a new `buildId` is generated.
+          description: "When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild)\
+            \ is called."
           format: date-time
           type: string
         createdBy:
@@ -2920,6 +2993,7 @@ components:
       required:
       - appId
       - buildId
+      - buildTag
       - createdAt
       - createdBy
       - deletedAt
@@ -2928,6 +3002,17 @@ components:
       - regionalContainerTags
       - startedAt
       - status
+      type: object
+    CreateBuildRequest:
+      example:
+        buildTag: 0.1.14-14c793
+      properties:
+        buildTag:
+          description: "Tag to associate an external version with a build. It is accessible\
+            \ via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo)."
+          example: 0.1.14-14c793
+          maxLength: 1000
+          type: string
       type: object
     DeploymentConfig:
       description: User specified deployment configuration for your application at
@@ -2968,7 +3053,7 @@ components:
             \ can be scheduled in a process."
           example: 3
           format: int32
-          maxLength: 10000
+          maximum: 10000
           minimum: 1
           type: integer
         planName:
@@ -2996,6 +3081,10 @@ components:
       - transportType
       type: object
     DiscoveryResponse:
+      example:
+      - region: Seattle
+        host: ping.hathora.dev
+        port: 2000
       items:
         $ref: '#/components/schemas/DiscoveryResponse_inner'
       type: array
@@ -3128,7 +3217,7 @@ components:
     TailLines:
       description: Number of lines to return from most recent logs history.
       format: int32
-      maximum: 10000
+      maximum: 5000
       minimum: 1
       type: integer
     ProcessId:
@@ -3195,6 +3284,11 @@ components:
           timestamp: 6.027456183070403
         - value: 0.8008281904610115
           timestamp: 6.027456183070403
+        active_connections:
+        - value: 0.8008281904610115
+          timestamp: 6.027456183070403
+        - value: 0.8008281904610115
+          timestamp: 6.027456183070403
       properties:
         cpu:
           items:
@@ -3212,6 +3306,10 @@ components:
           items:
             $ref: '#/components/schemas/MetricValue'
           type: array
+        active_connections:
+          items:
+            $ref: '#/components/schemas/MetricValue'
+          type: array
       type: object
     MetricsResponse:
       $ref: '#/components/schemas/Record_Partial_MetricName_.MetricValue-Array_'
@@ -3222,13 +3320,14 @@ components:
       - memory
       - rate_egress
       - total_egress
+      - active_connections
       type: string
     MetricsStep:
       description: Width of time in seconds to group data.
       format: int32
       type: integer
     ExposedPort:
-      description: Connection information to an exposed port on an active process.
+      description: Connection details for an active process.
       example:
         host: 1.proxy.hathora.dev
         name: default
@@ -3264,10 +3363,12 @@ components:
           port: 34567
           transportType: tcp
         startedAt: 2000-01-23T04:56:07.000+00:00
+        roomsAllocated: 1
+        roomsAllocatedUpdatedAt: 2000-01-23T04:56:07.000+00:00
         stoppingAt: 2000-01-23T04:56:07.000+00:00
         roomSlotsAvailableUpdatedAt: 2000-01-23T04:56:07.000+00:00
         activeConnections: 10
-        port: 0.8008281904610115
+        port: 6.027456183070403
         processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
         startingAt: 2000-01-23T04:56:07.000+00:00
         activeConnectionsUpdatedAt: 2000-01-23T04:56:07.000+00:00
@@ -3281,7 +3382,7 @@ components:
           port: 72941
           transportType: tcp
         region: null
-        roomSlotsAvailable: 1
+        roomSlotsAvailable: 0.8008281904610115
       properties:
         egressedBytes:
           description: Measures network traffic leaving the process in bytes.
@@ -3294,6 +3395,7 @@ components:
           nullable: true
           type: string
         activeConnectionsUpdatedAt:
+          deprecated: true
           format: date-time
           type: string
         activeConnections:
@@ -3301,12 +3403,21 @@ components:
           example: 10
           format: double
           type: number
+        roomsAllocatedUpdatedAt:
+          format: date-time
+          type: string
+        roomsAllocated:
+          description: Tracks the number of rooms that have been allocated to the
+            process.
+          example: 1
+          format: double
+          type: number
         roomSlotsAvailableUpdatedAt:
+          deprecated: true
           format: date-time
           type: string
         roomSlotsAvailable:
-          description: Tracks the number of room slots available on the process.
-          example: 1
+          deprecated: true
           format: double
           type: number
         draining:
@@ -3338,7 +3449,7 @@ components:
             \ can be scheduled in a process."
           example: 3
           format: int32
-          maxLength: 10000
+          maximum: 10000
           minimum: 1
           type: integer
         additionalExposedPorts:
@@ -3391,12 +3502,20 @@ components:
       - region
       - roomSlotsAvailable
       - roomSlotsAvailableUpdatedAt
+      - roomsAllocated
+      - roomsAllocatedUpdatedAt
       - roomsPerProcess
       - startedAt
       - startingAt
       - stoppingAt
       - terminatedAt
       type: object
+    RoomConfig:
+      description: "Optional configuration parameters for the room. Can be any string\
+        \ including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo)."
+      example: "{\"name\":\"my-room\"}"
+      maxLength: 10000
+      type: string
     RoomStatus:
       description: |-
         The allocation status of a room.
@@ -3421,7 +3540,7 @@ components:
       example: e3a0aa32-1711-4036-acfa-008b96061a78
       type: string
     RoomAllocation:
-      description: Metadata on allocated instances of a room.
+      description: Metadata on an allocated instance of a room.
       example:
         unscheduledAt: 2000-01-23T04:56:07.000+00:00
         processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
@@ -3466,6 +3585,10 @@ components:
           minLength: 1
           pattern: "^[a-zA-Z0-9_-]*$"
           type: string
+        roomConfig:
+          allOf:
+          - $ref: '#/components/schemas/RoomConfig'
+          nullable: true
         status:
           $ref: '#/components/schemas/RoomStatus'
         currentAllocation:
@@ -3475,6 +3598,7 @@ components:
       required:
       - appId
       - currentAllocation
+      - roomConfig
       - roomId
       - status
       type: object
@@ -3488,8 +3612,16 @@ components:
       - $ref: '#/components/schemas/ProcessWithRooms_allOf'
     CreateRoomRequest:
       example:
+        roomConfig: "{\"name\":\"my-room\"}"
         region: null
       properties:
+        roomConfig:
+          description: "Optional configuration parameters for the room. Can be any\
+            \ string including stringified JSON. It is accessible from the room via\
+            \ [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo)."
+          example: "{\"name\":\"my-room\"}"
+          maxLength: 10000
+          type: string
         region:
           $ref: '#/components/schemas/Region'
       required:
@@ -3498,6 +3630,7 @@ components:
     Room:
       description: A room object represents a game session or match.
       example:
+        roomConfig: ""
         allocations:
         - unscheduledAt: 2000-01-23T04:56:07.000+00:00
           processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
@@ -3522,6 +3655,10 @@ components:
           items:
             $ref: '#/components/schemas/RoomAllocation'
           type: array
+        roomConfig:
+          allOf:
+          - $ref: '#/components/schemas/RoomConfig'
+          nullable: true
         roomId:
           description: Unique identifier to a game session or match. Use either a
             system generated ID or pass in your own.
@@ -3538,6 +3675,7 @@ components:
       - allocations
       - appId
       - currentAllocation
+      - roomConfig
       - roomId
       - status
       type: object
@@ -3608,7 +3746,7 @@ components:
           port: 72941
           transportType: tcp
         roomId: 2swovpy1fnunu
-        status: starting
+        status: active
       properties:
         additionalExposedPorts:
           example:
@@ -3623,9 +3761,12 @@ components:
         exposedPort:
           $ref: '#/components/schemas/ExposedPort'
         status:
+          description: '`exposedPort` will only be available when the `status` of
+            a room is "active".'
           enum:
           - starting
           - active
+          example: active
           type: string
         roomId:
           description: Unique identifier to a game session or match. Use either a
@@ -3661,34 +3802,18 @@ components:
       - initialConfig
       - region
       type: object
-    Application_authConfiguration_google:
+    AuthConfiguration_google:
+      description: Enable google auth for your application.
       example:
         clientId: clientId
       properties:
         clientId:
+          description: "A Google generated token representing the developer's credentials\
+            \ for [Google's API Console](https://console.cloud.google.com/apis/dashboard?pli=1&project=discourse-login-388921).\
+            \ Learn how to get a `clientId` [here](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid)."
           type: string
       required:
       - clientId
-      type: object
-    Application_authConfiguration:
-      description: Used to authenticate player requests. Use your own authentication
-        or Hathora's Auth Client.
-      example:
-        nickname: "{}"
-        anonymous: "{}"
-        google:
-          clientId: clientId
-      properties:
-        google:
-          $ref: '#/components/schemas/Application_authConfiguration_google'
-        nickname:
-          description: Construct a type with a set of properties K of type T
-          properties: {}
-          type: object
-        anonymous:
-          description: Construct a type with a set of properties K of type T
-          properties: {}
-          type: object
       type: object
     Deployment_env_inner:
       example:
@@ -3717,24 +3842,6 @@ components:
       - deployment
       type: object
       example: null
-    AppConfig_authConfiguration:
-      example:
-        nickname: "{}"
-        anonymous: "{}"
-        google:
-          clientId: clientId
-      properties:
-        google:
-          $ref: '#/components/schemas/Application_authConfiguration_google'
-        nickname:
-          description: Construct a type with a set of properties K of type T
-          properties: {}
-          type: object
-        anonymous:
-          description: Construct a type with a set of properties K of type T
-          properties: {}
-          type: object
-      type: object
     Build_regionalContainerTags_inner:
       example:
         region: null
@@ -3749,10 +3856,6 @@ components:
       - region
       type: object
     DiscoveryResponse_inner:
-      example:
-        port: 0.8008281904610115
-        host: host
-        region: null
       properties:
         port:
           format: double
@@ -3781,7 +3884,7 @@ components:
       type: object
       example: null
   securitySchemes:
-    auth0:
+    hathoraDevToken:
       bearerFormat: JWT
       scheme: bearer
       type: http

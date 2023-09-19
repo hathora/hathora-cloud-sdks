@@ -18,7 +18,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
-Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
 
 ### Example
 ```csharp
@@ -416,7 +416,7 @@ No authorization required
 
 
 
-Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`.
+Get details for an existing lobby using `appId` and `roomId`.
 
 ### Example
 ```csharp
@@ -508,7 +508,7 @@ No authorization required
 
 
 
-Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
 
 ### Example
 ```csharp
@@ -599,7 +599,7 @@ No authorization required
 
 
 
-Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
 
 ### Example
 ```csharp
@@ -617,7 +617,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new LobbyV2Api(config);
@@ -674,7 +674,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

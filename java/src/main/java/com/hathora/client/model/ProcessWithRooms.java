@@ -70,6 +70,14 @@ public class ProcessWithRooms {
   @SerializedName(SERIALIZED_NAME_ACTIVE_CONNECTIONS)
   private Double activeConnections;
 
+  public static final String SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT = "roomsAllocatedUpdatedAt";
+  @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT)
+  private OffsetDateTime roomsAllocatedUpdatedAt;
+
+  public static final String SERIALIZED_NAME_ROOMS_ALLOCATED = "roomsAllocated";
+  @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED)
+  private Double roomsAllocated;
+
   public static final String SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT = "roomSlotsAvailableUpdatedAt";
   @SerializedName(SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT)
   private OffsetDateTime roomSlotsAvailableUpdatedAt;
@@ -200,7 +208,9 @@ public class ProcessWithRooms {
    /**
    * Get activeConnectionsUpdatedAt
    * @return activeConnectionsUpdatedAt
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public OffsetDateTime getActiveConnectionsUpdatedAt() {
@@ -235,6 +245,50 @@ public class ProcessWithRooms {
   }
 
 
+  public ProcessWithRooms roomsAllocatedUpdatedAt(OffsetDateTime roomsAllocatedUpdatedAt) {
+    
+    this.roomsAllocatedUpdatedAt = roomsAllocatedUpdatedAt;
+    return this;
+  }
+
+   /**
+   * Get roomsAllocatedUpdatedAt
+   * @return roomsAllocatedUpdatedAt
+  **/
+  @javax.annotation.Nonnull
+
+  public OffsetDateTime getRoomsAllocatedUpdatedAt() {
+    return roomsAllocatedUpdatedAt;
+  }
+
+
+  public void setRoomsAllocatedUpdatedAt(OffsetDateTime roomsAllocatedUpdatedAt) {
+    this.roomsAllocatedUpdatedAt = roomsAllocatedUpdatedAt;
+  }
+
+
+  public ProcessWithRooms roomsAllocated(Double roomsAllocated) {
+    
+    this.roomsAllocated = roomsAllocated;
+    return this;
+  }
+
+   /**
+   * Tracks the number of rooms that have been allocated to the process.
+   * @return roomsAllocated
+  **/
+  @javax.annotation.Nonnull
+
+  public Double getRoomsAllocated() {
+    return roomsAllocated;
+  }
+
+
+  public void setRoomsAllocated(Double roomsAllocated) {
+    this.roomsAllocated = roomsAllocated;
+  }
+
+
   public ProcessWithRooms roomSlotsAvailableUpdatedAt(OffsetDateTime roomSlotsAvailableUpdatedAt) {
     
     this.roomSlotsAvailableUpdatedAt = roomSlotsAvailableUpdatedAt;
@@ -244,7 +298,9 @@ public class ProcessWithRooms {
    /**
    * Get roomSlotsAvailableUpdatedAt
    * @return roomSlotsAvailableUpdatedAt
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public OffsetDateTime getRoomSlotsAvailableUpdatedAt() {
@@ -264,9 +320,11 @@ public class ProcessWithRooms {
   }
 
    /**
-   * Tracks the number of room slots available on the process.
+   * Get roomSlotsAvailable
    * @return roomSlotsAvailable
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public Double getRoomSlotsAvailable() {
@@ -398,6 +456,7 @@ public class ProcessWithRooms {
    /**
    * Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
    * minimum: 1
+   * maximum: 10000
    * @return roomsPerProcess
   **/
   @javax.annotation.Nonnull
@@ -710,6 +769,8 @@ public class ProcessWithRooms {
         Objects.equals(this.idleSince, processWithRooms.idleSince) &&
         Objects.equals(this.activeConnectionsUpdatedAt, processWithRooms.activeConnectionsUpdatedAt) &&
         Objects.equals(this.activeConnections, processWithRooms.activeConnections) &&
+        Objects.equals(this.roomsAllocatedUpdatedAt, processWithRooms.roomsAllocatedUpdatedAt) &&
+        Objects.equals(this.roomsAllocated, processWithRooms.roomsAllocated) &&
         Objects.equals(this.roomSlotsAvailableUpdatedAt, processWithRooms.roomSlotsAvailableUpdatedAt) &&
         Objects.equals(this.roomSlotsAvailable, processWithRooms.roomSlotsAvailable) &&
         Objects.equals(this.draining, processWithRooms.draining) &&
@@ -733,7 +794,7 @@ public class ProcessWithRooms {
 
   @Override
   public int hashCode() {
-    return Objects.hash(egressedBytes, idleSince, activeConnectionsUpdatedAt, activeConnections, roomSlotsAvailableUpdatedAt, roomSlotsAvailable, draining, terminatedAt, stoppingAt, startedAt, startingAt, roomsPerProcess, additionalExposedPorts, exposedPort, port, host, region, processId, deploymentId, appId, rooms, totalRooms, additionalProperties);
+    return Objects.hash(egressedBytes, idleSince, activeConnectionsUpdatedAt, activeConnections, roomsAllocatedUpdatedAt, roomsAllocated, roomSlotsAvailableUpdatedAt, roomSlotsAvailable, draining, terminatedAt, stoppingAt, startedAt, startingAt, roomsPerProcess, additionalExposedPorts, exposedPort, port, host, region, processId, deploymentId, appId, rooms, totalRooms, additionalProperties);
   }
 
   @Override
@@ -744,6 +805,8 @@ public class ProcessWithRooms {
     sb.append("    idleSince: ").append(toIndentedString(idleSince)).append("\n");
     sb.append("    activeConnectionsUpdatedAt: ").append(toIndentedString(activeConnectionsUpdatedAt)).append("\n");
     sb.append("    activeConnections: ").append(toIndentedString(activeConnections)).append("\n");
+    sb.append("    roomsAllocatedUpdatedAt: ").append(toIndentedString(roomsAllocatedUpdatedAt)).append("\n");
+    sb.append("    roomsAllocated: ").append(toIndentedString(roomsAllocated)).append("\n");
     sb.append("    roomSlotsAvailableUpdatedAt: ").append(toIndentedString(roomSlotsAvailableUpdatedAt)).append("\n");
     sb.append("    roomSlotsAvailable: ").append(toIndentedString(roomSlotsAvailable)).append("\n");
     sb.append("    draining: ").append(toIndentedString(draining)).append("\n");
@@ -789,6 +852,8 @@ public class ProcessWithRooms {
     openapiFields.add("idleSince");
     openapiFields.add("activeConnectionsUpdatedAt");
     openapiFields.add("activeConnections");
+    openapiFields.add("roomsAllocatedUpdatedAt");
+    openapiFields.add("roomsAllocated");
     openapiFields.add("roomSlotsAvailableUpdatedAt");
     openapiFields.add("roomSlotsAvailable");
     openapiFields.add("draining");
@@ -814,6 +879,8 @@ public class ProcessWithRooms {
     openapiRequiredFields.add("idleSince");
     openapiRequiredFields.add("activeConnectionsUpdatedAt");
     openapiRequiredFields.add("activeConnections");
+    openapiRequiredFields.add("roomsAllocatedUpdatedAt");
+    openapiRequiredFields.add("roomsAllocated");
     openapiRequiredFields.add("roomSlotsAvailableUpdatedAt");
     openapiRequiredFields.add("roomSlotsAvailable");
     openapiRequiredFields.add("draining");

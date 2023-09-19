@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppId** | **string** | System generated unique identifier for an application. | 
 **RoomId** | **string** | Unique identifier to a game session or match. Use either a system generated ID or pass in your own. | 
+**RoomConfig** | **string** | Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo). | 
 **Status** | **RoomStatus** |  | 
 **CurrentAllocation** | [**RoomAllocation**](RoomAllocation.md) |  | 
 

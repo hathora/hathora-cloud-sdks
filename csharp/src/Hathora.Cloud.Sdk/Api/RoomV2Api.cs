@@ -30,7 +30,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -43,7 +43,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -55,7 +55,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -67,7 +67,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -78,7 +78,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -90,7 +90,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -101,7 +101,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        /// Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -113,7 +113,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        /// Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -124,7 +124,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -136,7 +136,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -147,7 +147,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -159,7 +159,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -170,7 +170,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -182,7 +182,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -202,7 +202,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -216,7 +216,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        /// Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -229,7 +229,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -242,7 +242,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        /// Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -254,7 +254,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -267,7 +267,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -279,7 +279,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        /// Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -292,7 +292,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        /// Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -304,7 +304,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -317,7 +317,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        /// Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -329,7 +329,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -342,7 +342,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -354,7 +354,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -367,7 +367,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        /// Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -520,7 +520,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -534,7 +534,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -575,7 +575,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
             localVarRequestOptions.Data = createRoomRequest;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -595,7 +595,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -615,7 +615,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+        ///  Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -659,7 +659,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
             localVarRequestOptions.Data = createRoomRequest;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -686,7 +686,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -698,7 +698,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -733,7 +733,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -753,7 +753,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -771,7 +771,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+        ///  Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -809,7 +809,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -836,7 +836,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -849,7 +849,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -884,7 +884,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -904,7 +904,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -923,7 +923,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -961,7 +961,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -988,7 +988,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        ///  Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1001,7 +1001,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        ///  Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1050,7 +1050,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        ///  Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1069,7 +1069,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+        ///  Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1128,7 +1128,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1141,7 +1141,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1176,7 +1176,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1196,7 +1196,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1215,7 +1215,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+        ///  Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1253,7 +1253,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1280,7 +1280,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1293,7 +1293,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1328,7 +1328,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1348,7 +1348,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1367,7 +1367,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1405,7 +1405,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1432,7 +1432,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1444,7 +1444,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1479,7 +1479,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1499,7 +1499,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1517,7 +1517,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+        ///  Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1555,7 +1555,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

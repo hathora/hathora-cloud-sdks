@@ -39,7 +39,7 @@ export interface ConnectionInfoV2 {
      */
     exposedPort?: ExposedPort;
     /**
-     * 
+     * `exposedPort` will only be available when the `status` of a room is "active".
      * @type {string}
      * @memberof ConnectionInfoV2
      */

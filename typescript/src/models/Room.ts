@@ -51,6 +51,12 @@ export interface Room {
      */
     allocations: Array<RoomAllocation>;
     /**
+     * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+     * @type {string}
+     * @memberof Room
+     */
+    roomConfig: string | null;
+    /**
      * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
      * @type {string}
      * @memberof Room
@@ -72,6 +78,7 @@ export function instanceOfRoom(value: object): boolean {
     isInstance = isInstance && "currentAllocation" in value;
     isInstance = isInstance && "status" in value;
     isInstance = isInstance && "allocations" in value;
+    isInstance = isInstance && "roomConfig" in value;
     isInstance = isInstance && "roomId" in value;
     isInstance = isInstance && "appId" in value;
 
@@ -91,6 +98,7 @@ export function RoomFromJSONTyped(json: any, ignoreDiscriminator: boolean): Room
         'currentAllocation': RoomAllocationFromJSON(json['currentAllocation']),
         'status': RoomStatusFromJSON(json['status']),
         'allocations': ((json['allocations'] as Array<any>).map(RoomAllocationFromJSON)),
+        'roomConfig': json['roomConfig'],
         'roomId': json['roomId'],
         'appId': json['appId'],
     };
@@ -108,6 +116,7 @@ export function RoomToJSON(value?: Room | null): any {
         'currentAllocation': RoomAllocationToJSON(value.currentAllocation),
         'status': RoomStatusToJSON(value.status),
         'allocations': ((value.allocations as Array<any>).map(RoomAllocationToJSON)),
+        'roomConfig': value.roomConfig,
         'roomId': value.roomId,
         'appId': value.appId,
     };

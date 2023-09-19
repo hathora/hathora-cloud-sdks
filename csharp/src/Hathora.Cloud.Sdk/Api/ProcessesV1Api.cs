@@ -372,7 +372,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -449,7 +449,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -523,7 +523,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -599,7 +599,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -673,7 +673,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -749,7 +749,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

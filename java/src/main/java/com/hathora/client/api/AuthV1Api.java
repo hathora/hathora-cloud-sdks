@@ -146,7 +146,7 @@ public class AuthV1Api {
 
     /**
      * 
-     * 
+     * Returns a unique player token for an anonymous user.
      * @param appId  (required)
      * @return LoginResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -164,7 +164,7 @@ public class AuthV1Api {
 
     /**
      * 
-     * 
+     * Returns a unique player token for an anonymous user.
      * @param appId  (required)
      * @return ApiResponse&lt;LoginResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -183,7 +183,7 @@ public class AuthV1Api {
 
     /**
      *  (asynchronously)
-     * 
+     * Returns a unique player token for an anonymous user.
      * @param appId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -281,7 +281,7 @@ public class AuthV1Api {
 
     /**
      * 
-     * 
+     * Returns a unique player token using a Google-signed OIDC &#x60;idToken&#x60;.
      * @param appId  (required)
      * @param loginGoogleRequest  (required)
      * @return LoginResponse
@@ -301,7 +301,7 @@ public class AuthV1Api {
 
     /**
      * 
-     * 
+     * Returns a unique player token using a Google-signed OIDC &#x60;idToken&#x60;.
      * @param appId  (required)
      * @param loginGoogleRequest  (required)
      * @return ApiResponse&lt;LoginResponse&gt;
@@ -322,7 +322,7 @@ public class AuthV1Api {
 
     /**
      *  (asynchronously)
-     * 
+     * Returns a unique player token using a Google-signed OIDC &#x60;idToken&#x60;.
      * @param appId  (required)
      * @param loginGoogleRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -421,7 +421,7 @@ public class AuthV1Api {
 
     /**
      * 
-     * 
+     * Returns a unique player token with a specified nickname for a user.
      * @param appId  (required)
      * @param loginNicknameRequest  (required)
      * @return LoginResponse
@@ -440,7 +440,7 @@ public class AuthV1Api {
 
     /**
      * 
-     * 
+     * Returns a unique player token with a specified nickname for a user.
      * @param appId  (required)
      * @param loginNicknameRequest  (required)
      * @return ApiResponse&lt;LoginResponse&gt;
@@ -460,7 +460,7 @@ public class AuthV1Api {
 
     /**
      *  (asynchronously)
-     * 
+     * Returns a unique player token with a specified nickname for a user.
      * @param appId  (required)
      * @param loginNicknameRequest  (required)
      * @param _callback The callback to be executed when the API call finishes

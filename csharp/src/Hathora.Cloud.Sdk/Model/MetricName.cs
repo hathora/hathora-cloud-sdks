@@ -53,7 +53,13 @@ namespace Hathora.Cloud.Sdk.Model
         /// Enum TotalEgress for value: total_egress
         /// </summary>
         [EnumMember(Value = "total_egress")]
-        TotalEgress = 4
+        TotalEgress = 4,
+
+        /// <summary>
+        /// Enum ActiveConnections for value: active_connections
+        /// </summary>
+        [EnumMember(Value = "active_connections")]
+        ActiveConnections = 5
 
     }
 

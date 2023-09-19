@@ -366,7 +366,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -429,7 +429,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -490,7 +490,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -553,7 +553,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -614,7 +614,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -677,7 +677,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -746,7 +746,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             localVarRequestOptions.Data = customerPortalUrl;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -817,7 +817,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             localVarRequestOptions.Data = customerPortalUrl;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

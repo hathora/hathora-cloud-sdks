@@ -60,7 +60,7 @@ public class ConnectionInfoV2 {
   private ExposedPort exposedPort;
 
   /**
-   * Gets or Sets status
+   * &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -176,7 +176,7 @@ public class ConnectionInfoV2 {
   }
 
    /**
-   * Get status
+   * &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
    * @return status
   **/
   @javax.annotation.Nonnull

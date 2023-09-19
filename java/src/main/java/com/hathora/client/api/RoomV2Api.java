@@ -89,6 +89,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
@@ -140,7 +141,7 @@ public class RoomV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -162,7 +163,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      * @param appId  (required)
      * @param createRoomRequest  (required)
      * @param roomId  (optional)
@@ -173,6 +174,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
@@ -185,7 +187,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      * @param appId  (required)
      * @param createRoomRequest  (required)
      * @param roomId  (optional)
@@ -196,6 +198,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
@@ -209,7 +212,7 @@ public class RoomV2Api {
 
     /**
      *  (asynchronously)
-     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;region&#x60;.
+     * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      * @param appId  (required)
      * @param createRoomRequest  (required)
      * @param roomId  (optional)
@@ -221,6 +224,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
@@ -290,7 +294,7 @@ public class RoomV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -312,7 +316,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
      * @param appId  (required)
      * @param roomId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -330,7 +334,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
      * @param appId  (required)
      * @param roomId  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -350,7 +354,7 @@ public class RoomV2Api {
 
     /**
      *  (asynchronously)
-     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. All associated metadata is deleted.
+     * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -426,7 +430,7 @@ public class RoomV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -448,7 +452,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @return List&lt;PickRoomExcludeKeyofRoomAllocations&gt;
@@ -467,7 +471,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @return ApiResponse&lt;List&lt;PickRoomExcludeKeyofRoomAllocations&gt;&gt;
@@ -487,7 +491,7 @@ public class RoomV2Api {
 
     /**
      *  (asynchronously)
-     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get all active [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -587,7 +591,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+     * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
      * @param appId  (required)
      * @param roomId  (required)
      * @return ConnectionInfoV2
@@ -608,7 +612,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+     * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
      * @param appId  (required)
      * @param roomId  (required)
      * @return ApiResponse&lt;ConnectionInfoV2&gt;
@@ -630,7 +634,7 @@ public class RoomV2Api {
 
     /**
      *  (asynchronously)
-     * Get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. Clients can call this endpoint without authentication.
+     * Poll this endpoint to get connection details to a [room](https://hathora.dev/docs/concepts/hathora-entities#room). Clients can call this endpoint without authentication.
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -708,7 +712,7 @@ public class RoomV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -730,7 +734,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @return List&lt;PickRoomExcludeKeyofRoomAllocations&gt;
@@ -749,7 +753,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @return ApiResponse&lt;List&lt;PickRoomExcludeKeyofRoomAllocations&gt;&gt;
@@ -769,7 +773,7 @@ public class RoomV2Api {
 
     /**
      *  (asynchronously)
-     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get all inactive [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) for a given [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -845,7 +849,7 @@ public class RoomV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -867,7 +871,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
      * @param appId  (required)
      * @param roomId  (required)
      * @return Room
@@ -886,7 +890,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
      * @param appId  (required)
      * @param roomId  (required)
      * @return ApiResponse&lt;Room&gt;
@@ -906,7 +910,7 @@ public class RoomV2Api {
 
     /**
      *  (asynchronously)
-     * Get details for an existing [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Retreive current and historical allocation data for a [room](https://hathora.dev/docs/concepts/hathora-entities#room).
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -983,7 +987,7 @@ public class RoomV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1005,7 +1009,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
      * @param appId  (required)
      * @param roomId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1023,7 +1027,7 @@ public class RoomV2Api {
 
     /**
      * 
-     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
      * @param appId  (required)
      * @param roomId  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1043,7 +1047,7 @@ public class RoomV2Api {
 
     /**
      *  (asynchronously)
-     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room) using &#x60;appId&#x60; and &#x60;roomId&#x60;. The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
+     * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same &#x60;roomId&#x60;.
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback The callback to be executed when the API call finishes

@@ -38,6 +38,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>byte[]</returns>
+        [Obsolete]
         byte[] GetLogsForApp(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?));
 
         /// <summary>
@@ -52,6 +53,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
+        [Obsolete]
         ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?));
         /// <summary>
         /// 
@@ -65,6 +67,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <returns>byte[]</returns>
+        [Obsolete]
         byte[] GetLogsForDeployment(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?));
 
         /// <summary>
@@ -79,6 +82,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
+        [Obsolete]
         ApiResponse<byte[]> GetLogsForDeploymentWithHttpInfo(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?));
         /// <summary>
         /// 
@@ -129,6 +133,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -144,6 +149,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
@@ -158,6 +164,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<byte[]> GetLogsForDeploymentAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -173,6 +180,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForDeploymentWithHttpInfoAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
@@ -356,6 +364,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>byte[]</returns>
+        [Obsolete]
         public byte[] GetLogsForApp(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = GetLogsForAppWithHttpInfo(appId, follow, tailLines, region);
@@ -371,6 +380,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
+        [Obsolete]
         public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
@@ -408,7 +418,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -437,6 +447,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetLogsForAppWithHttpInfoAsync(appId, follow, tailLines, region, cancellationToken);
@@ -458,6 +469,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
@@ -497,7 +509,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -532,6 +544,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <returns>byte[]</returns>
+        [Obsolete]
         public byte[] GetLogsForDeployment(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = GetLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
@@ -547,6 +560,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <returns>ApiResponse of byte[]</returns>
+        [Obsolete]
         public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForDeploymentWithHttpInfo(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?))
         {
             // verify the required parameter 'appId' is set
@@ -581,7 +595,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -610,6 +624,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<byte[]> GetLogsForDeploymentAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetLogsForDeploymentWithHttpInfoAsync(appId, deploymentId, follow, tailLines, cancellationToken);
@@ -631,6 +646,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForDeploymentWithHttpInfoAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
@@ -667,7 +683,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -755,7 +771,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -845,7 +861,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "tailLines", tailLines));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

@@ -14,7 +14,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
-Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
 
 ### Example
 ```csharp
@@ -32,7 +32,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DeploymentV1Api(config);
@@ -89,7 +89,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -113,7 +113,7 @@ catch (ApiException e)
 
 
 
-Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId`.
+Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
 
 ### Example
 ```csharp
@@ -131,7 +131,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DeploymentV1Api(config);
@@ -186,7 +186,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -208,7 +208,7 @@ catch (ApiException e)
 
 
 
-Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 
 ### Example
 ```csharp
@@ -226,7 +226,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DeploymentV1Api(config);
@@ -279,7 +279,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

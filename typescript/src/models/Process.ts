@@ -49,6 +49,7 @@ export interface Process {
      * 
      * @type {Date}
      * @memberof Process
+     * @deprecated
      */
     activeConnectionsUpdatedAt: Date;
     /**
@@ -62,11 +63,25 @@ export interface Process {
      * @type {Date}
      * @memberof Process
      */
-    roomSlotsAvailableUpdatedAt: Date;
+    roomsAllocatedUpdatedAt: Date;
     /**
-     * Tracks the number of room slots available on the process.
+     * Tracks the number of rooms that have been allocated to the process.
      * @type {number}
      * @memberof Process
+     */
+    roomsAllocated: number;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Process
+     * @deprecated
+     */
+    roomSlotsAvailableUpdatedAt: Date;
+    /**
+     * 
+     * @type {number}
+     * @memberof Process
+     * @deprecated
      */
     roomSlotsAvailable: number;
     /**
@@ -166,6 +181,8 @@ export function instanceOfProcess(value: object): boolean {
     isInstance = isInstance && "idleSince" in value;
     isInstance = isInstance && "activeConnectionsUpdatedAt" in value;
     isInstance = isInstance && "activeConnections" in value;
+    isInstance = isInstance && "roomsAllocatedUpdatedAt" in value;
+    isInstance = isInstance && "roomsAllocated" in value;
     isInstance = isInstance && "roomSlotsAvailableUpdatedAt" in value;
     isInstance = isInstance && "roomSlotsAvailable" in value;
     isInstance = isInstance && "draining" in value;
@@ -199,6 +216,8 @@ export function ProcessFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'idleSince': (json['idleSince'] === null ? null : new Date(json['idleSince'])),
         'activeConnectionsUpdatedAt': (new Date(json['activeConnectionsUpdatedAt'])),
         'activeConnections': json['activeConnections'],
+        'roomsAllocatedUpdatedAt': (new Date(json['roomsAllocatedUpdatedAt'])),
+        'roomsAllocated': json['roomsAllocated'],
         'roomSlotsAvailableUpdatedAt': (new Date(json['roomSlotsAvailableUpdatedAt'])),
         'roomSlotsAvailable': json['roomSlotsAvailable'],
         'draining': json['draining'],
@@ -231,6 +250,8 @@ export function ProcessToJSON(value?: Process | null): any {
         'idleSince': (value.idleSince === null ? null : value.idleSince.toISOString()),
         'activeConnectionsUpdatedAt': (value.activeConnectionsUpdatedAt.toISOString()),
         'activeConnections': value.activeConnections,
+        'roomsAllocatedUpdatedAt': (value.roomsAllocatedUpdatedAt.toISOString()),
+        'roomsAllocated': value.roomsAllocated,
         'roomSlotsAvailableUpdatedAt': (value.roomSlotsAvailableUpdatedAt.toISOString()),
         'roomSlotsAvailable': value.roomSlotsAvailable,
         'draining': value.draining,

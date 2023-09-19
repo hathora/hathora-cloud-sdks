@@ -30,7 +30,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -43,7 +43,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -55,7 +55,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        /// Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -67,7 +67,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        /// Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -78,7 +78,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -89,7 +89,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -108,7 +108,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -122,7 +122,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        /// Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -135,7 +135,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        /// Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -148,7 +148,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        /// Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -160,7 +160,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -172,7 +172,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -324,7 +324,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -338,7 +338,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -376,7 +376,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("buildId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(buildId)); // path parameter
             localVarRequestOptions.Data = deploymentConfig;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -396,7 +396,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -416,7 +416,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) and [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+        ///  Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -457,7 +457,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("buildId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(buildId)); // path parameter
             localVarRequestOptions.Data = deploymentConfig;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -484,7 +484,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        ///  Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -497,7 +497,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        ///  Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -528,7 +528,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deploymentId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(deploymentId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -548,7 +548,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        ///  Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -567,7 +567,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using &#x60;appId&#x60;.
+        ///  Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -601,7 +601,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deploymentId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(deploymentId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -628,7 +628,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -640,7 +640,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -669,7 +669,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -689,7 +689,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -707,7 +707,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -739,7 +739,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

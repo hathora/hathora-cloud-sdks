@@ -13,11 +13,11 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createBuild"></a>
 # **createBuild**
-> Build createBuild(appId)
+> Build createBuild(appId, createBuildRequest)
 
 
 
-Generate a new &#x60;buildId&#x60; for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. You need &#x60;buildId&#x60; to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a &#x60;buildId&#x60; that you must pass to [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a &#x60;buildTag&#x60; to associate an external version with a build.
 
 ### Example
 ```java
@@ -34,14 +34,15 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
+    CreateBuildRequest createBuildRequest = new CreateBuildRequest(); // CreateBuildRequest | 
     try {
-      Build result = apiInstance.createBuild(appId);
+      Build result = apiInstance.createBuild(appId, createBuildRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BuildV1Api#createBuild");
@@ -59,6 +60,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
+| **createBuildRequest** | [**CreateBuildRequest**](CreateBuildRequest.md)|  | |
 
 ### Return type
 
@@ -66,11 +68,11 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -86,7 +88,7 @@ public class Example {
 
 
 
-Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
 
 ### Example
 ```java
@@ -103,9 +105,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -136,7 +138,7 @@ null (empty response body)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -157,7 +159,7 @@ null (empty response body)
 
 
 
-Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
 
 ### Example
 ```java
@@ -174,9 +176,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -208,7 +210,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -227,7 +229,7 @@ public class Example {
 
 
 
-Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 
 ### Example
 ```java
@@ -244,9 +246,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -276,7 +278,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -295,7 +297,7 @@ public class Example {
 
 
 
-Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Pass in &#x60;buildId&#x60; generated from Create Build.
+Builds a game server artifact from a tarball you provide. Pass in the &#x60;buildId&#x60; generated from [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
 
 ### Example
 ```java
@@ -312,9 +314,9 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
     
-    // Configure HTTP bearer authorization: auth0
-    HttpBearerAuth auth0 = (HttpBearerAuth) defaultClient.getAuthentication("auth0");
-    auth0.setBearerToken("BEARER TOKEN");
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
@@ -348,7 +350,7 @@ public class Example {
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Available regions to request a game server.
+ * Gets or Sets Region
  */
 @JsonAdapter(Region.Adapter.class)
 public enum Region {

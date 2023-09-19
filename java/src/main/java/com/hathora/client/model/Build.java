@@ -48,10 +48,14 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * Build is a versioned artifact for a game server&#39;s container image and its data.
+ * A build represents a game server artifact and its associated metadata.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Build {
+  public static final String SERIALIZED_NAME_BUILD_TAG = "buildTag";
+  @SerializedName(SERIALIZED_NAME_BUILD_TAG)
+  private String buildTag;
+
   public static final String SERIALIZED_NAME_REGIONAL_CONTAINER_TAGS = "regionalContainerTags";
   @SerializedName(SERIALIZED_NAME_REGIONAL_CONTAINER_TAGS)
   private List<BuildRegionalContainerTagsInner> regionalContainerTags = new ArrayList<>();
@@ -61,7 +65,7 @@ public class Build {
   private Double imageSize;
 
   /**
-   * Status of creating a build.  &#x60;created&#x60;: a new &#x60;buildId&#x60; was generated  &#x60;running&#x60;: the container image is being built  &#x60;succeeded&#x60;: the container image was successfully built and stored in our registry  &#x60;failed&#x60;: there was an issue creating and storing the container image in our container registry
+   * Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -146,6 +150,28 @@ public class Build {
   public Build() {
   }
 
+  public Build buildTag(String buildTag) {
+    
+    this.buildTag = buildTag;
+    return this;
+  }
+
+   /**
+   * Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+   * @return buildTag
+  **/
+  @javax.annotation.Nullable
+
+  public String getBuildTag() {
+    return buildTag;
+  }
+
+
+  public void setBuildTag(String buildTag) {
+    this.buildTag = buildTag;
+  }
+
+
   public Build regionalContainerTags(List<BuildRegionalContainerTagsInner> regionalContainerTags) {
     
     this.regionalContainerTags = regionalContainerTags;
@@ -161,7 +187,7 @@ public class Build {
   }
 
    /**
-   * An alias for the container image in our regional registries.
+   * Identifiers for the containers stored in Hathora&#39;s registries.
    * @return regionalContainerTags
   **/
   @javax.annotation.Nonnull
@@ -183,7 +209,7 @@ public class Build {
   }
 
    /**
-   * Image size in MB.
+   * The size (in bytes) of the Docker image built by Hathora.
    * @return imageSize
   **/
   @javax.annotation.Nonnull
@@ -205,7 +231,7 @@ public class Build {
   }
 
    /**
-   * Status of creating a build.  &#x60;created&#x60;: a new &#x60;buildId&#x60; was generated  &#x60;running&#x60;: the container image is being built  &#x60;succeeded&#x60;: the container image was successfully built and stored in our registry  &#x60;failed&#x60;: there was an issue creating and storing the container image in our container registry
+   * Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;
    * @return status
   **/
   @javax.annotation.Nonnull
@@ -227,7 +253,7 @@ public class Build {
   }
 
    /**
-   * When the container image was deleted.
+   * When the build was deleted.
    * @return deletedAt
   **/
   @javax.annotation.Nullable
@@ -249,7 +275,7 @@ public class Build {
   }
 
    /**
-   * When the container image finished being built.
+   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
    * @return finishedAt
   **/
   @javax.annotation.Nullable
@@ -271,7 +297,7 @@ public class Build {
   }
 
    /**
-   * When the container image starts getting built.
+   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
    * @return startedAt
   **/
   @javax.annotation.Nullable
@@ -293,7 +319,7 @@ public class Build {
   }
 
    /**
-   * When a new &#x60;buildId&#x60; is generated.
+   * When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -428,7 +454,8 @@ public class Build {
       return false;
     }
     Build build = (Build) o;
-    return Objects.equals(this.regionalContainerTags, build.regionalContainerTags) &&
+    return Objects.equals(this.buildTag, build.buildTag) &&
+        Objects.equals(this.regionalContainerTags, build.regionalContainerTags) &&
         Objects.equals(this.imageSize, build.imageSize) &&
         Objects.equals(this.status, build.status) &&
         Objects.equals(this.deletedAt, build.deletedAt) &&
@@ -443,13 +470,14 @@ public class Build {
 
   @Override
   public int hashCode() {
-    return Objects.hash(regionalContainerTags, imageSize, status, deletedAt, finishedAt, startedAt, createdAt, createdBy, buildId, appId, additionalProperties);
+    return Objects.hash(buildTag, regionalContainerTags, imageSize, status, deletedAt, finishedAt, startedAt, createdAt, createdBy, buildId, appId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Build {\n");
+    sb.append("    buildTag: ").append(toIndentedString(buildTag)).append("\n");
     sb.append("    regionalContainerTags: ").append(toIndentedString(regionalContainerTags)).append("\n");
     sb.append("    imageSize: ").append(toIndentedString(imageSize)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -483,6 +511,7 @@ public class Build {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("buildTag");
     openapiFields.add("regionalContainerTags");
     openapiFields.add("imageSize");
     openapiFields.add("status");
@@ -496,6 +525,7 @@ public class Build {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("buildTag");
     openapiRequiredFields.add("regionalContainerTags");
     openapiRequiredFields.add("imageSize");
     openapiRequiredFields.add("status");
@@ -526,6 +556,9 @@ public class Build {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if (!jsonObj.get("buildTag").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `buildTag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buildTag").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("regionalContainerTags").isJsonArray()) {

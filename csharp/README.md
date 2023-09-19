@@ -60,7 +60,7 @@ namespace Hathora.Cloud.SdkExample
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AppV1Api(config);
@@ -152,12 +152,11 @@ Class | Method | HTTP request | Description
  - [Model.AchPaymentMethod](AchPaymentMethod.md)
  - [Model.ActiveConnectionInfo](ActiveConnectionInfo.md)
  - [Model.AppConfig](AppConfig.md)
- - [Model.AppConfigAuthConfiguration](AppConfigAuthConfiguration.md)
  - [Model.Application](Application.md)
- - [Model.ApplicationAuthConfiguration](ApplicationAuthConfiguration.md)
- - [Model.ApplicationAuthConfigurationGoogle](ApplicationAuthConfigurationGoogle.md)
  - [Model.ApplicationWithDeployment](ApplicationWithDeployment.md)
  - [Model.ApplicationWithDeploymentAllOf](ApplicationWithDeploymentAllOf.md)
+ - [Model.AuthConfiguration](AuthConfiguration.md)
+ - [Model.AuthConfigurationGoogle](AuthConfigurationGoogle.md)
  - [Model.Build](Build.md)
  - [Model.BuildRegionalContainerTagsInner](BuildRegionalContainerTagsInner.md)
  - [Model.CardBrand](CardBrand.md)
@@ -165,6 +164,7 @@ Class | Method | HTTP request | Description
  - [Model.ConnectionInfo](ConnectionInfo.md)
  - [Model.ConnectionInfoV2](ConnectionInfoV2.md)
  - [Model.ContainerPort](ContainerPort.md)
+ - [Model.CreateBuildRequest](CreateBuildRequest.md)
  - [Model.CreateLobbyRequest](CreateLobbyRequest.md)
  - [Model.CreatePrivateLobbyRequest](CreatePrivateLobbyRequest.md)
  - [Model.CreateRoomRequest](CreateRoomRequest.md)
@@ -204,8 +204,8 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
-<a name="auth0"></a>
-### auth0
+<a name="hathoraDevToken"></a>
+### hathoraDevToken
 
 - **Type**: Bearer Authentication
 

@@ -30,7 +30,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -44,7 +44,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -135,7 +135,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -147,7 +147,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -158,7 +158,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -170,7 +170,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -181,7 +181,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -194,7 +194,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -215,7 +215,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -230,7 +230,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -337,7 +337,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -350,7 +350,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -362,7 +362,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -375,7 +375,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -387,7 +387,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -401,7 +401,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -555,7 +555,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -570,7 +570,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -631,7 +631,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -652,7 +652,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1239,7 +1239,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1252,7 +1252,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1301,7 +1301,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1320,7 +1320,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1379,7 +1379,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1392,7 +1392,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1440,7 +1440,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1459,7 +1459,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1517,7 +1517,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1531,7 +1531,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1573,7 +1573,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
             localVarRequestOptions.Data = setLobbyStateRequest;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -1593,7 +1593,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1613,7 +1613,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
@@ -1658,7 +1658,7 @@ namespace Hathora.Cloud.Sdk.Api
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
             localVarRequestOptions.Data = setLobbyStateRequest;
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

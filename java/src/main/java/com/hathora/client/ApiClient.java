@@ -104,7 +104,7 @@ public class ApiClient {
         initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("auth0", new HttpBearerAuth("bearer"));
+        authentications.put("hathoraDevToken", new HttpBearerAuth("bearer"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -120,7 +120,7 @@ public class ApiClient {
         httpClient = client;
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("auth0", new HttpBearerAuth("bearer"));
+        authentications.put("hathoraDevToken", new HttpBearerAuth("bearer"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }

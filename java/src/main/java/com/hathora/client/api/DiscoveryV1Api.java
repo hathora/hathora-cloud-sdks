@@ -136,7 +136,7 @@ public class DiscoveryV1Api {
 
     /**
      * 
-     * Returns an array of all regions with a host and port that a client can directly ping.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      * @return List&lt;DiscoveryResponseInner&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -152,7 +152,7 @@ public class DiscoveryV1Api {
 
     /**
      * 
-     * Returns an array of all regions with a host and port that a client can directly ping.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      * @return ApiResponse&lt;List&lt;DiscoveryResponseInner&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -169,7 +169,7 @@ public class DiscoveryV1Api {
 
     /**
      *  (asynchronously)
-     * Returns an array of all regions with a host and port that a client can directly ping.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

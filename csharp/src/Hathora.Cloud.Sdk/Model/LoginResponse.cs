@@ -41,7 +41,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginResponse" /> class.
         /// </summary>
-        /// <param name="token">token (required).</param>
+        /// <param name="token">A unique Hathora-signed JWT player token. (required).</param>
         public LoginResponse(string token = default(string))
         {
             // to ensure "token" is required (not null)
@@ -54,8 +54,10 @@ namespace Hathora.Cloud.Sdk.Model
         }
 
         /// <summary>
-        /// Gets or Sets Token
+        /// A unique Hathora-signed JWT player token.
         /// </summary>
+        /// <value>A unique Hathora-signed JWT player token.</value>
+        /// <example>&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYW5vbnltb3VzIiwiaWQiOiJ3aDA4eWN3eTJwOSIsIm5hbWUiOiJqaXR0ZXJ5LXNhbG1vbi1ndWxsIiwiaWF0IjoxNjg5MzQ5MTk3fQ.-LzlPhZw2tw0ycZ229IRHwwmINGKWNPFMDrXOphLjEk&quot;</example>
         [DataMember(Name = "token", IsRequired = true, EmitDefaultValue = true)]
         public string Token { get; set; }
 

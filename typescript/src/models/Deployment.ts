@@ -113,7 +113,7 @@ export interface Deployment {
      */
     deploymentId: number;
     /**
-     * System generated id for a build associated with this deployment. Increments by 1.
+     * System generated id for a build. Increments by 1.
      * @type {number}
      * @memberof Deployment
      */

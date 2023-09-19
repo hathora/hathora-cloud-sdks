@@ -20,7 +20,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface LoginResponse {
     /**
-     * 
+     * A unique Hathora-signed JWT player token.
      * @type {string}
      * @memberof LoginResponse
      */

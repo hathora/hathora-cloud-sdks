@@ -58,6 +58,10 @@ public class PickRoomExcludeKeyofRoomAllocations {
   @SerializedName(SERIALIZED_NAME_ROOM_ID)
   private String roomId;
 
+  public static final String SERIALIZED_NAME_ROOM_CONFIG = "roomConfig";
+  @SerializedName(SERIALIZED_NAME_ROOM_CONFIG)
+  private String roomConfig;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private RoomStatus status;
@@ -110,6 +114,28 @@ public class PickRoomExcludeKeyofRoomAllocations {
 
   public void setRoomId(String roomId) {
     this.roomId = roomId;
+  }
+
+
+  public PickRoomExcludeKeyofRoomAllocations roomConfig(String roomConfig) {
+    
+    this.roomConfig = roomConfig;
+    return this;
+  }
+
+   /**
+   * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+   * @return roomConfig
+  **/
+  @javax.annotation.Nullable
+
+  public String getRoomConfig() {
+    return roomConfig;
+  }
+
+
+  public void setRoomConfig(String roomConfig) {
+    this.roomConfig = roomConfig;
   }
 
 
@@ -213,6 +239,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
     PickRoomExcludeKeyofRoomAllocations pickRoomExcludeKeyofRoomAllocations = (PickRoomExcludeKeyofRoomAllocations) o;
     return Objects.equals(this.appId, pickRoomExcludeKeyofRoomAllocations.appId) &&
         Objects.equals(this.roomId, pickRoomExcludeKeyofRoomAllocations.roomId) &&
+        Objects.equals(this.roomConfig, pickRoomExcludeKeyofRoomAllocations.roomConfig) &&
         Objects.equals(this.status, pickRoomExcludeKeyofRoomAllocations.status) &&
         Objects.equals(this.currentAllocation, pickRoomExcludeKeyofRoomAllocations.currentAllocation)&&
         Objects.equals(this.additionalProperties, pickRoomExcludeKeyofRoomAllocations.additionalProperties);
@@ -220,7 +247,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
 
   @Override
   public int hashCode() {
-    return Objects.hash(appId, roomId, status, currentAllocation, additionalProperties);
+    return Objects.hash(appId, roomId, roomConfig, status, currentAllocation, additionalProperties);
   }
 
   @Override
@@ -229,6 +256,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
     sb.append("class PickRoomExcludeKeyofRoomAllocations {\n");
     sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
     sb.append("    roomId: ").append(toIndentedString(roomId)).append("\n");
+    sb.append("    roomConfig: ").append(toIndentedString(roomConfig)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    currentAllocation: ").append(toIndentedString(currentAllocation)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -256,6 +284,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
     openapiFields = new HashSet<String>();
     openapiFields.add("appId");
     openapiFields.add("roomId");
+    openapiFields.add("roomConfig");
     openapiFields.add("status");
     openapiFields.add("currentAllocation");
 
@@ -263,6 +292,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("appId");
     openapiRequiredFields.add("roomId");
+    openapiRequiredFields.add("roomConfig");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("currentAllocation");
   }
@@ -291,6 +321,9 @@ public class PickRoomExcludeKeyofRoomAllocations {
       }
       if (!jsonObj.get("roomId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
+      }
+      if (!jsonObj.get("roomConfig").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `roomConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomConfig").toString()));
       }
   }
 

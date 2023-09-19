@@ -49,9 +49,10 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
         /// <param name="roomId">Unique identifier to a game session or match. Use either a system generated ID or pass in your own. (required).</param>
+        /// <param name="roomConfig">Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo). (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="currentAllocation">currentAllocation (required).</param>
-        public PickRoomExcludeKeyofRoomAllocations(string appId = default(string), string roomId = default(string), RoomStatus status = default(RoomStatus), RoomAllocation currentAllocation = default(RoomAllocation))
+        public PickRoomExcludeKeyofRoomAllocations(string appId = default(string), string roomId = default(string), string roomConfig = default(string), RoomStatus status = default(RoomStatus), RoomAllocation currentAllocation = default(RoomAllocation))
         {
             // to ensure "appId" is required (not null)
             if (appId == null)
@@ -65,6 +66,12 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("roomId is a required property for PickRoomExcludeKeyofRoomAllocations and cannot be null");
             }
             this.RoomId = roomId;
+            // to ensure "roomConfig" is required (not null)
+            if (roomConfig == null)
+            {
+                throw new ArgumentNullException("roomConfig is a required property for PickRoomExcludeKeyofRoomAllocations and cannot be null");
+            }
+            this.RoomConfig = roomConfig;
             this.Status = status;
             // to ensure "currentAllocation" is required (not null)
             if (currentAllocation == null)
@@ -92,6 +99,14 @@ namespace Hathora.Cloud.Sdk.Model
         public string RoomId { get; set; }
 
         /// <summary>
+        /// Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+        /// </summary>
+        /// <value>Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).</value>
+        /// <example>&quot;{&quot;name&quot;:&quot;my-room&quot;}&quot;</example>
+        [DataMember(Name = "roomConfig", IsRequired = true, EmitDefaultValue = true)]
+        public string RoomConfig { get; set; }
+
+        /// <summary>
         /// Gets or Sets CurrentAllocation
         /// </summary>
         [DataMember(Name = "currentAllocation", IsRequired = true, EmitDefaultValue = true)]
@@ -113,6 +128,7 @@ namespace Hathora.Cloud.Sdk.Model
             sb.Append("class PickRoomExcludeKeyofRoomAllocations {\n");
             sb.Append("  AppId: ").Append(AppId).Append("\n");
             sb.Append("  RoomId: ").Append(RoomId).Append("\n");
+            sb.Append("  RoomConfig: ").Append(RoomConfig).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  CurrentAllocation: ").Append(CurrentAllocation).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
@@ -162,6 +178,11 @@ namespace Hathora.Cloud.Sdk.Model
                     this.RoomId.Equals(input.RoomId))
                 ) && 
                 (
+                    this.RoomConfig == input.RoomConfig ||
+                    (this.RoomConfig != null &&
+                    this.RoomConfig.Equals(input.RoomConfig))
+                ) && 
+                (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
                 ) && 
@@ -189,6 +210,10 @@ namespace Hathora.Cloud.Sdk.Model
                 if (this.RoomId != null)
                 {
                     hashCode = (hashCode * 59) + this.RoomId.GetHashCode();
+                }
+                if (this.RoomConfig != null)
+                {
+                    hashCode = (hashCode * 59) + this.RoomConfig.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 if (this.CurrentAllocation != null)

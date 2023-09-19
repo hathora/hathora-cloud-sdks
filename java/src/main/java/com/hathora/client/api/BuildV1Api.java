@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.hathora.client.model.Build;
+import com.hathora.client.model.CreateBuildRequest;
 import java.io.File;
 
 import java.lang.reflect.Type;
@@ -77,6 +78,7 @@ public class BuildV1Api {
     /**
      * Build call for createBuild
      * @param appId  (required)
+     * @param createBuildRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -88,7 +90,7 @@ public class BuildV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBuildCall(String appId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createBuildCall(String appId, CreateBuildRequest createBuildRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -102,7 +104,7 @@ public class BuildV1Api {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = createBuildRequest;
 
         // create path and map variables
         String localVarPath = "/builds/v1/{appId}/create"
@@ -123,31 +125,38 @@ public class BuildV1Api {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createBuildValidateBeforeCall(String appId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createBuildValidateBeforeCall(String appId, CreateBuildRequest createBuildRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling createBuild(Async)");
         }
 
-        return createBuildCall(appId, _callback);
+        // verify the required parameter 'createBuildRequest' is set
+        if (createBuildRequest == null) {
+            throw new ApiException("Missing the required parameter 'createBuildRequest' when calling createBuild(Async)");
+        }
+
+        return createBuildCall(appId, createBuildRequest, _callback);
 
     }
 
     /**
      * 
-     * Generate a new &#x60;buildId&#x60; for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. You need &#x60;buildId&#x60; to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a &#x60;buildId&#x60; that you must pass to [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a &#x60;buildTag&#x60; to associate an external version with a build.
      * @param appId  (required)
+     * @param createBuildRequest  (required)
      * @return Build
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -158,15 +167,16 @@ public class BuildV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Build createBuild(String appId) throws ApiException {
-        ApiResponse<Build> localVarResp = createBuildWithHttpInfo(appId);
+    public Build createBuild(String appId, CreateBuildRequest createBuildRequest) throws ApiException {
+        ApiResponse<Build> localVarResp = createBuildWithHttpInfo(appId, createBuildRequest);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Generate a new &#x60;buildId&#x60; for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. You need &#x60;buildId&#x60; to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a &#x60;buildId&#x60; that you must pass to [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a &#x60;buildTag&#x60; to associate an external version with a build.
      * @param appId  (required)
+     * @param createBuildRequest  (required)
      * @return ApiResponse&lt;Build&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -177,16 +187,17 @@ public class BuildV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Build> createBuildWithHttpInfo(String appId) throws ApiException {
-        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, null);
+    public ApiResponse<Build> createBuildWithHttpInfo(String appId, CreateBuildRequest createBuildRequest) throws ApiException {
+        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, createBuildRequest, null);
         Type localVarReturnType = new TypeToken<Build>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Generate a new &#x60;buildId&#x60; for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. You need &#x60;buildId&#x60; to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a &#x60;buildId&#x60; that you must pass to [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a &#x60;buildTag&#x60; to associate an external version with a build.
      * @param appId  (required)
+     * @param createBuildRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -198,9 +209,9 @@ public class BuildV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBuildAsync(String appId, final ApiCallback<Build> _callback) throws ApiException {
+    public okhttp3.Call createBuildAsync(String appId, CreateBuildRequest createBuildRequest, final ApiCallback<Build> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, _callback);
+        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, createBuildRequest, _callback);
         Type localVarReturnType = new TypeToken<Build>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -263,7 +274,7 @@ public class BuildV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -285,7 +296,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      * @param appId  (required)
      * @param buildId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -304,7 +315,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      * @param appId  (required)
      * @param buildId  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -325,7 +336,7 @@ public class BuildV1Api {
 
     /**
      *  (asynchronously)
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      * @param appId  (required)
      * @param buildId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -402,7 +413,7 @@ public class BuildV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -424,7 +435,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      * @param appId  (required)
      * @param buildId  (required)
      * @return Build
@@ -443,7 +454,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      * @param appId  (required)
      * @param buildId  (required)
      * @return ApiResponse&lt;Build&gt;
@@ -463,7 +474,7 @@ public class BuildV1Api {
 
     /**
      *  (asynchronously)
-     * Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using &#x60;appId&#x60; and &#x60;buildId&#x60;.
+     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      * @param appId  (required)
      * @param buildId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -537,7 +548,7 @@ public class BuildV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -554,7 +565,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param appId  (required)
      * @return List&lt;Build&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -572,7 +583,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param appId  (required)
      * @return ApiResponse&lt;List&lt;Build&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -591,7 +602,7 @@ public class BuildV1Api {
 
     /**
      *  (asynchronously)
-     * Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param appId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -674,7 +685,7 @@ public class BuildV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -701,7 +712,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Pass in &#x60;buildId&#x60; generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the &#x60;buildId&#x60; generated from [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      * @param appId  (required)
      * @param buildId  (required)
      * @param _file  (required)
@@ -722,7 +733,7 @@ public class BuildV1Api {
 
     /**
      * 
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Pass in &#x60;buildId&#x60; generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the &#x60;buildId&#x60; generated from [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      * @param appId  (required)
      * @param buildId  (required)
      * @param _file  (required)
@@ -744,7 +755,7 @@ public class BuildV1Api {
 
     /**
      *  (asynchronously)
-     * Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Pass in &#x60;buildId&#x60; generated from Create Build.
+     * Builds a game server artifact from a tarball you provide. Pass in the &#x60;buildId&#x60; generated from [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      * @param appId  (required)
      * @param buildId  (required)
      * @param _file  (required)

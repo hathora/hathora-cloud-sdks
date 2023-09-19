@@ -20,7 +20,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface LoginNicknameRequest {
     /**
-     * 
+     * An alias to represent a player.
      * @type {string}
      * @memberof LoginNicknameRequest
      */

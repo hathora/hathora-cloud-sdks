@@ -57,6 +57,7 @@ export interface LogV1ApiInterface {
      * @param {number} [tailLines] 
      * @param {Region} [region] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LogV1ApiInterface
      */
@@ -74,6 +75,7 @@ export interface LogV1ApiInterface {
      * @param {boolean} [follow] 
      * @param {number} [tailLines] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LogV1ApiInterface
      */
@@ -134,7 +136,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -188,7 +190,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
@@ -242,7 +244,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
+            const tokenString = await token("hathoraDevToken", []);
 
             if (tokenString) {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;

@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **IdleSince** | **DateTime?** |  | 
 **ActiveConnectionsUpdatedAt** | **DateTime** |  | 
 **ActiveConnections** | **double** | Tracks the number of active connections to a process. | 
+**RoomsAllocatedUpdatedAt** | **DateTime** |  | 
+**RoomsAllocated** | **double** | Tracks the number of rooms that have been allocated to the process. | 
 **RoomSlotsAvailableUpdatedAt** | **DateTime** |  | 
-**RoomSlotsAvailable** | **double** | Tracks the number of room slots available on the process. | 
+**RoomSlotsAvailable** | **double** |  | 
 **Draining** | **bool** | Process in drain will not accept any new rooms. | 
 **TerminatedAt** | **DateTime?** | When the process has been terminated. | 
 **StoppingAt** | **DateTime?** | When the process is issued to stop. We use this to determine when we should stop billing. | 

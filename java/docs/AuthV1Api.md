@@ -15,6 +15,8 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
+Returns a unique player token for an anonymous user.
+
 ### Example
 ```java
 // Import classes:
@@ -75,6 +77,8 @@ No authorization required
 > LoginResponse loginGoogle(appId, loginGoogleRequest)
 
 
+
+Returns a unique player token using a Google-signed OIDC &#x60;idToken&#x60;.
 
 ### Example
 ```java
@@ -139,6 +143,8 @@ No authorization required
 > LoginResponse loginNickname(appId, loginNicknameRequest)
 
 
+
+Returns a unique player token with a specified nickname for a user.
 
 ### Example
 ```java

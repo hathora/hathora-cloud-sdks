@@ -14,7 +14,7 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Metadata on allocated instances of a room.
+ * Metadata on an allocated instance of a room.
  * @export
  * @interface RoomAllocation
  */

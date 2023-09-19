@@ -14,7 +14,7 @@
 
 
 /**
- * Available regions to request a game server.
+ * 
  * @export
  */
 export const Region = {

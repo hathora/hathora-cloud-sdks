@@ -30,7 +30,7 @@ import {
  */
 export interface DiscoveryV1ApiInterface {
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DiscoveryV1ApiInterface
@@ -38,7 +38,7 @@ export interface DiscoveryV1ApiInterface {
     getPingServiceEndpointsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DiscoveryResponseInner>>>;
 
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      */
     getPingServiceEndpoints(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DiscoveryResponseInner>>;
 
@@ -50,7 +50,7 @@ export interface DiscoveryV1ApiInterface {
 export class DiscoveryV1Api extends runtime.BaseAPI implements DiscoveryV1ApiInterface {
 
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      */
     async getPingServiceEndpointsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DiscoveryResponseInner>>> {
         const queryParameters: any = {};
@@ -68,7 +68,7 @@ export class DiscoveryV1Api extends runtime.BaseAPI implements DiscoveryV1ApiInt
     }
 
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping.
+     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      */
     async getPingServiceEndpoints(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DiscoveryResponseInner>> {
         const response = await this.getPingServiceEndpointsRaw(initOverrides);

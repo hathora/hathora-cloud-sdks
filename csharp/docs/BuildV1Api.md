@@ -12,11 +12,11 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createbuild"></a>
 # **CreateBuild**
-> Build CreateBuild (string appId)
+> Build CreateBuild (string appId, CreateBuildRequest createBuildRequest)
 
 
 
-Generate a new `buildId` for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. You need `buildId` to run a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
 
 ### Example
 ```csharp
@@ -34,15 +34,16 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuildV1Api(config);
             var appId = "appId_example";  // string | 
+            var createBuildRequest = new CreateBuildRequest(); // CreateBuildRequest | 
 
             try
             {
-                Build result = apiInstance.CreateBuild(appId);
+                Build result = apiInstance.CreateBuild(appId, createBuildRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -62,7 +63,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Build> response = apiInstance.CreateBuildWithHttpInfo(appId);
+    ApiResponse<Build> response = apiInstance.CreateBuildWithHttpInfo(appId, createBuildRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -80,6 +81,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
+| **createBuildRequest** | [**CreateBuildRequest**](CreateBuildRequest.md) |  |  |
 
 ### Return type
 
@@ -87,11 +89,11 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -110,7 +112,7 @@ catch (ApiException e)
 
 
 
-Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId` and `buildId`.
+Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
 
 ### Example
 ```csharp
@@ -128,7 +130,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuildV1Api(config);
@@ -179,7 +181,7 @@ void (empty response body)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -203,7 +205,7 @@ void (empty response body)
 
 
 
-Get details for an existing [build](https://hathora.dev/docs/concepts/hathora-entities#build) using `appId` and `buildId`.
+Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
 
 ### Example
 ```csharp
@@ -221,7 +223,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuildV1Api(config);
@@ -276,7 +278,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -298,7 +300,7 @@ catch (ApiException e)
 
 
 
-Returns an array of [build](https://hathora.dev/docs/concepts/hathora-entities#build) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
 
 ### Example
 ```csharp
@@ -316,7 +318,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuildV1Api(config);
@@ -369,7 +371,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 
@@ -391,7 +393,7 @@ catch (ApiException e)
 
 
 
-Provide a tarball that will generate a container image for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Pass in `buildId` generated from Create Build.
+Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
 
 ### Example
 ```csharp
@@ -409,7 +411,7 @@ namespace Example
         {
             Configuration config = new Configuration();
             config.BasePath = "https://api.hathora.dev";
-            // Configure Bearer token for authorization: auth0
+            // Configure Bearer token for authorization: hathoraDevToken
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuildV1Api(config);
@@ -466,7 +468,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[auth0](../README.md#auth0)
+[hathoraDevToken](../README.md#hathoraDevToken)
 
 ### HTTP request headers
 

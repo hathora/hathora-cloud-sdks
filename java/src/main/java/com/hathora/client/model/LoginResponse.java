@@ -62,7 +62,7 @@ public class LoginResponse {
   }
 
    /**
-   * Get token
+   * A unique Hathora-signed JWT player token.
    * @return token
   **/
   @javax.annotation.Nonnull

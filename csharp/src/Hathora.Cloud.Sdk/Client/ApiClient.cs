@@ -147,7 +147,7 @@ namespace Hathora.Cloud.Sdk.Client
                     throw new ApiException((int)request.responseCode, request.error, text);
                 }
             }
-
+            
             if (type != typeof(System.Object) && request.responseCode >= 200 && request.responseCode < 300)
             {
                 throw new UnexpectedResponseException(request, type);
@@ -277,6 +277,7 @@ namespace Hathora.Cloud.Sdk.Client
                     formData.Add(new MultipartFormDataSection(formParameter.Key, formParameter.Value));
                 }
 
+                request = UnityWebRequest.Post(uri, formData);
                 if (options.FileParameters != null && options.FileParameters.Count > 0)
                 {
                     foreach (var fileParam in options.FileParameters)
@@ -440,7 +441,7 @@ namespace Hathora.Cloud.Sdk.Client
                 {
                     await tsc.Task;
                 }
-
+                
                 if (request.result == UnityWebRequest.Result.ConnectionError ||
                     request.result == UnityWebRequest.Result.DataProcessingError)
                 {

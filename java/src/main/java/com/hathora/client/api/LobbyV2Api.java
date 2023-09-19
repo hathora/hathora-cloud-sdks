@@ -175,7 +175,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
      * @param appId  (required)
      * @param authorization  (required)
      * @param createLobbyRequest  (required)
@@ -201,7 +201,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
      * @param appId  (required)
      * @param authorization  (required)
      * @param createLobbyRequest  (required)
@@ -228,7 +228,7 @@ public class LobbyV2Api {
 
     /**
      *  (asynchronously)
-     * Create a new [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
      * @param appId  (required)
      * @param authorization  (required)
      * @param createLobbyRequest  (required)
@@ -894,7 +894,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
      * @param appId  (required)
      * @param roomId  (required)
      * @return Lobby
@@ -913,7 +913,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
      * @param appId  (required)
      * @param roomId  (required)
      * @return ApiResponse&lt;Lobby&gt;
@@ -933,7 +933,7 @@ public class LobbyV2Api {
 
     /**
      *  (asynchronously)
-     * Get details for an existing [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1028,7 +1028,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)
      * @return List&lt;Lobby&gt;
@@ -1046,7 +1046,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)
      * @return ApiResponse&lt;List&lt;Lobby&gt;&gt;
@@ -1065,7 +1065,7 @@ public class LobbyV2Api {
 
     /**
      *  (asynchronously)
-     * Get all active [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby) for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1143,7 +1143,7 @@ public class LobbyV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "auth0" };
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1170,7 +1170,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
      * @param appId  (required)
      * @param roomId  (required)
      * @param setLobbyStateRequest  (required)
@@ -1191,7 +1191,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
      * @param appId  (required)
      * @param roomId  (required)
      * @param setLobbyStateRequest  (required)
@@ -1213,7 +1213,7 @@ public class LobbyV2Api {
 
     /**
      *  (asynchronously)
-     * Set the state of a [lobby](https://hathora.dev/docs/concepts/hathora-entities#lobby) using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
      * @param appId  (required)
      * @param roomId  (required)
      * @param setLobbyStateRequest  (required)

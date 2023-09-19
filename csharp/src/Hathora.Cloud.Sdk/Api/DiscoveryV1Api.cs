@@ -30,7 +30,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping.
+        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;DiscoveryResponseInner&gt;</returns>
@@ -40,7 +40,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping.
+        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;DiscoveryResponseInner&gt;</returns>
@@ -58,7 +58,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping.
+        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -69,7 +69,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping.
+        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -220,7 +220,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping.
+        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;DiscoveryResponseInner&gt;</returns>
@@ -231,7 +231,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping.
+        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;DiscoveryResponseInner&gt;</returns>
@@ -268,7 +268,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping.
+        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -285,7 +285,7 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping.
+        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

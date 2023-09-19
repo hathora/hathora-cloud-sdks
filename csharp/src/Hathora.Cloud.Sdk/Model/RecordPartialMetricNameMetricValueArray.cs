@@ -37,12 +37,14 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="memory">memory.</param>
         /// <param name="rateEgress">rateEgress.</param>
         /// <param name="totalEgress">totalEgress.</param>
-        public RecordPartialMetricNameMetricValueArray(List<MetricValue> cpu = default(List<MetricValue>), List<MetricValue> memory = default(List<MetricValue>), List<MetricValue> rateEgress = default(List<MetricValue>), List<MetricValue> totalEgress = default(List<MetricValue>))
+        /// <param name="activeConnections">activeConnections.</param>
+        public RecordPartialMetricNameMetricValueArray(List<MetricValue> cpu = default(List<MetricValue>), List<MetricValue> memory = default(List<MetricValue>), List<MetricValue> rateEgress = default(List<MetricValue>), List<MetricValue> totalEgress = default(List<MetricValue>), List<MetricValue> activeConnections = default(List<MetricValue>))
         {
             this.Cpu = cpu;
             this.Memory = memory;
             this.RateEgress = rateEgress;
             this.TotalEgress = totalEgress;
+            this.ActiveConnections = activeConnections;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -71,6 +73,12 @@ namespace Hathora.Cloud.Sdk.Model
         public List<MetricValue> TotalEgress { get; set; }
 
         /// <summary>
+        /// Gets or Sets ActiveConnections
+        /// </summary>
+        [DataMember(Name = "active_connections", EmitDefaultValue = false)]
+        public List<MetricValue> ActiveConnections { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -88,6 +96,7 @@ namespace Hathora.Cloud.Sdk.Model
             sb.Append("  Memory: ").Append(Memory).Append("\n");
             sb.Append("  RateEgress: ").Append(RateEgress).Append("\n");
             sb.Append("  TotalEgress: ").Append(TotalEgress).Append("\n");
+            sb.Append("  ActiveConnections: ").Append(ActiveConnections).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -147,6 +156,12 @@ namespace Hathora.Cloud.Sdk.Model
                     this.TotalEgress != null &&
                     input.TotalEgress != null &&
                     this.TotalEgress.SequenceEqual(input.TotalEgress)
+                ) && 
+                (
+                    this.ActiveConnections == input.ActiveConnections ||
+                    this.ActiveConnections != null &&
+                    input.ActiveConnections != null &&
+                    this.ActiveConnections.SequenceEqual(input.ActiveConnections)
                 )
                 && (this.AdditionalProperties.Count == input.AdditionalProperties.Count && !this.AdditionalProperties.Except(input.AdditionalProperties).Any());
         }
@@ -175,6 +190,10 @@ namespace Hathora.Cloud.Sdk.Model
                 if (this.TotalEgress != null)
                 {
                     hashCode = (hashCode * 59) + this.TotalEgress.GetHashCode();
+                }
+                if (this.ActiveConnections != null)
+                {
+                    hashCode = (hashCode * 59) + this.ActiveConnections.GetHashCode();
                 }
                 if (this.AdditionalProperties != null)
                 {

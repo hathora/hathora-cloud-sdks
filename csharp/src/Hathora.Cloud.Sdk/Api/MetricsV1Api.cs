@@ -316,7 +316,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "step", step));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {
@@ -417,7 +417,7 @@ namespace Hathora.Cloud.Sdk.Api
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "step", step));
             }
 
-            // authentication (auth0) required
+            // authentication (hathoraDevToken) required
             // bearer authentication required
             if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
             {

@@ -27,6 +27,12 @@ import {
  */
 export interface CreateRoomRequest {
     /**
+     * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+     * @type {string}
+     * @memberof CreateRoomRequest
+     */
+    roomConfig?: string;
+    /**
      * 
      * @type {Region}
      * @memberof CreateRoomRequest
@@ -54,6 +60,7 @@ export function CreateRoomRequestFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
+        'roomConfig': !exists(json, 'roomConfig') ? undefined : json['roomConfig'],
         'region': RegionFromJSON(json['region']),
     };
 }
@@ -67,6 +74,7 @@ export function CreateRoomRequestToJSON(value?: CreateRoomRequest | null): any {
     }
     return {
         
+        'roomConfig': value.roomConfig,
         'region': RegionToJSON(value.region),
     };
 }
