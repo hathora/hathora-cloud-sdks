@@ -366,9 +366,6 @@ public class Room {
       for (int i = 0; i < jsonArrayallocations.size(); i++) {
         RoomAllocation.validateJsonObject(jsonArrayallocations.get(i).getAsJsonObject());
       };
-      if (!jsonObj.get("roomConfig").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `roomConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomConfig").toString()));
-      }
       if (!jsonObj.get("roomId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
       }
