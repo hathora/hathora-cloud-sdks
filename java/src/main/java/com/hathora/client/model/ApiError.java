@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hathora.client.model.TransportType;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -45,114 +44,36 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * Connection details for an active process.
+ * ApiError
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExposedPort {
-  public static final String SERIALIZED_NAME_TRANSPORT_TYPE = "transportType";
-  @SerializedName(SERIALIZED_NAME_TRANSPORT_TYPE)
-  private TransportType transportType;
+public class ApiError {
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
 
-  public static final String SERIALIZED_NAME_PORT = "port";
-  @SerializedName(SERIALIZED_NAME_PORT)
-  private Integer port;
-
-  public static final String SERIALIZED_NAME_HOST = "host";
-  @SerializedName(SERIALIZED_NAME_HOST)
-  private String host;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public ExposedPort() {
+  public ApiError() {
   }
 
-  public ExposedPort transportType(TransportType transportType) {
+  public ApiError message(String message) {
     
-    this.transportType = transportType;
+    this.message = message;
     return this;
   }
 
    /**
-   * Get transportType
-   * @return transportType
+   * Get message
+   * @return message
   **/
   @javax.annotation.Nonnull
 
-  public TransportType getTransportType() {
-    return transportType;
+  public String getMessage() {
+    return message;
   }
 
 
-  public void setTransportType(TransportType transportType) {
-    this.transportType = transportType;
-  }
-
-
-  public ExposedPort port(Integer port) {
-    
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Get port
-   * @return port
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-
-  public ExposedPort host(String host) {
-    
-    this.host = host;
-    return this;
-  }
-
-   /**
-   * Get host
-   * @return host
-  **/
-  @javax.annotation.Nonnull
-
-  public String getHost() {
-    return host;
-  }
-
-
-  public void setHost(String host) {
-    this.host = host;
-  }
-
-
-  public ExposedPort name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
   /**
@@ -168,9 +89,9 @@ public class ExposedPort {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExposedPort instance itself
+   * @return the ApiError instance itself
    */
-  public ExposedPort putAdditionalProperty(String key, Object value) {
+  public ApiError putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -209,27 +130,21 @@ public class ExposedPort {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExposedPort exposedPort = (ExposedPort) o;
-    return Objects.equals(this.transportType, exposedPort.transportType) &&
-        Objects.equals(this.port, exposedPort.port) &&
-        Objects.equals(this.host, exposedPort.host) &&
-        Objects.equals(this.name, exposedPort.name)&&
-        Objects.equals(this.additionalProperties, exposedPort.additionalProperties);
+    ApiError apiError = (ApiError) o;
+    return Objects.equals(this.message, apiError.message)&&
+        Objects.equals(this.additionalProperties, apiError.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transportType, port, host, name, additionalProperties);
+    return Objects.hash(message, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExposedPort {\n");
-    sb.append("    transportType: ").append(toIndentedString(transportType)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    host: ").append(toIndentedString(host)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class ApiError {\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -253,43 +168,34 @@ public class ExposedPort {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("transportType");
-    openapiFields.add("port");
-    openapiFields.add("host");
-    openapiFields.add("name");
+    openapiFields.add("message");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("transportType");
-    openapiRequiredFields.add("port");
-    openapiRequiredFields.add("host");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("message");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExposedPort
+  * @throws IOException if the JSON Object is invalid with respect to ApiError
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExposedPort.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExposedPort is not found in the empty JSON string", ExposedPort.openapiRequiredFields.toString()));
+        if (!ApiError.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ApiError is not found in the empty JSON string", ApiError.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExposedPort.openapiRequiredFields) {
+      for (String requiredField : ApiError.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("host").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
   }
 
@@ -297,16 +203,16 @@ public class ExposedPort {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExposedPort.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExposedPort' and its subtypes
+       if (!ApiError.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ApiError' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExposedPort> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExposedPort.class));
+       final TypeAdapter<ApiError> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ApiError.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExposedPort>() {
+       return (TypeAdapter<T>) new TypeAdapter<ApiError>() {
            @Override
-           public void write(JsonWriter out, ExposedPort value) throws IOException {
+           public void write(JsonWriter out, ApiError value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -329,11 +235,11 @@ public class ExposedPort {
            }
 
            @Override
-           public ExposedPort read(JsonReader in) throws IOException {
+           public ApiError read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExposedPort instance = thisAdapter.fromJsonTree(jsonObj);
+             ApiError instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -360,18 +266,18 @@ public class ExposedPort {
   }
 
  /**
-  * Create an instance of ExposedPort given an JSON string
+  * Create an instance of ApiError given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExposedPort
-  * @throws IOException if the JSON string is invalid with respect to ExposedPort
+  * @return An instance of ApiError
+  * @throws IOException if the JSON string is invalid with respect to ApiError
   */
-  public static ExposedPort fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExposedPort.class);
+  public static ApiError fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ApiError.class);
   }
 
  /**
-  * Convert an instance of ExposedPort to an JSON string
+  * Convert an instance of ApiError to an JSON string
   *
   * @return JSON string
   */

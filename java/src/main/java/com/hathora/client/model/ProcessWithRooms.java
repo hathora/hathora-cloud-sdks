@@ -56,7 +56,7 @@ import com.hathora.client.JSON;
 public class ProcessWithRooms {
   public static final String SERIALIZED_NAME_EGRESSED_BYTES = "egressedBytes";
   @SerializedName(SERIALIZED_NAME_EGRESSED_BYTES)
-  private Double egressedBytes;
+  private Integer egressedBytes;
 
   public static final String SERIALIZED_NAME_IDLE_SINCE = "idleSince";
   @SerializedName(SERIALIZED_NAME_IDLE_SINCE)
@@ -68,7 +68,7 @@ public class ProcessWithRooms {
 
   public static final String SERIALIZED_NAME_ACTIVE_CONNECTIONS = "activeConnections";
   @SerializedName(SERIALIZED_NAME_ACTIVE_CONNECTIONS)
-  private Double activeConnections;
+  private Integer activeConnections;
 
   public static final String SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT = "roomsAllocatedUpdatedAt";
   @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT)
@@ -76,7 +76,7 @@ public class ProcessWithRooms {
 
   public static final String SERIALIZED_NAME_ROOMS_ALLOCATED = "roomsAllocated";
   @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED)
-  private Double roomsAllocated;
+  private Integer roomsAllocated;
 
   public static final String SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT = "roomSlotsAvailableUpdatedAt";
   @SerializedName(SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT)
@@ -148,12 +148,12 @@ public class ProcessWithRooms {
 
   public static final String SERIALIZED_NAME_TOTAL_ROOMS = "totalRooms";
   @SerializedName(SERIALIZED_NAME_TOTAL_ROOMS)
-  private Double totalRooms;
+  private Integer totalRooms;
 
   public ProcessWithRooms() {
   }
 
-  public ProcessWithRooms egressedBytes(Double egressedBytes) {
+  public ProcessWithRooms egressedBytes(Integer egressedBytes) {
     
     this.egressedBytes = egressedBytes;
     return this;
@@ -165,12 +165,12 @@ public class ProcessWithRooms {
   **/
   @javax.annotation.Nonnull
 
-  public Double getEgressedBytes() {
+  public Integer getEgressedBytes() {
     return egressedBytes;
   }
 
 
-  public void setEgressedBytes(Double egressedBytes) {
+  public void setEgressedBytes(Integer egressedBytes) {
     this.egressedBytes = egressedBytes;
   }
 
@@ -223,7 +223,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms activeConnections(Double activeConnections) {
+  public ProcessWithRooms activeConnections(Integer activeConnections) {
     
     this.activeConnections = activeConnections;
     return this;
@@ -235,12 +235,12 @@ public class ProcessWithRooms {
   **/
   @javax.annotation.Nonnull
 
-  public Double getActiveConnections() {
+  public Integer getActiveConnections() {
     return activeConnections;
   }
 
 
-  public void setActiveConnections(Double activeConnections) {
+  public void setActiveConnections(Integer activeConnections) {
     this.activeConnections = activeConnections;
   }
 
@@ -267,7 +267,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms roomsAllocated(Double roomsAllocated) {
+  public ProcessWithRooms roomsAllocated(Integer roomsAllocated) {
     
     this.roomsAllocated = roomsAllocated;
     return this;
@@ -279,12 +279,12 @@ public class ProcessWithRooms {
   **/
   @javax.annotation.Nonnull
 
-  public Double getRoomsAllocated() {
+  public Integer getRoomsAllocated() {
     return roomsAllocated;
   }
 
 
-  public void setRoomsAllocated(Double roomsAllocated) {
+  public void setRoomsAllocated(Integer roomsAllocated) {
     this.roomsAllocated = roomsAllocated;
   }
 
@@ -689,7 +689,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms totalRooms(Double totalRooms) {
+  public ProcessWithRooms totalRooms(Integer totalRooms) {
     
     this.totalRooms = totalRooms;
     return this;
@@ -701,12 +701,12 @@ public class ProcessWithRooms {
   **/
   @javax.annotation.Nonnull
 
-  public Double getTotalRooms() {
+  public Integer getTotalRooms() {
     return totalRooms;
   }
 
 
-  public void setTotalRooms(Double totalRooms) {
+  public void setTotalRooms(Integer totalRooms) {
     this.totalRooms = totalRooms;
   }
 

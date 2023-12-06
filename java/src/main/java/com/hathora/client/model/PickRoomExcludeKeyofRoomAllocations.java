@@ -102,7 +102,7 @@ public class PickRoomExcludeKeyofRoomAllocations {
   }
 
    /**
-   * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+   * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique.
    * @return roomId
   **/
   @javax.annotation.Nonnull

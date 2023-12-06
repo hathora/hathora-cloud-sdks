@@ -31,6 +31,8 @@ public enum Region {
   
   SEATTLE("Seattle"),
   
+  LOS_ANGELES("Los_Angeles"),
+  
   WASHINGTON_DC("Washington_DC"),
   
   CHICAGO("Chicago"),

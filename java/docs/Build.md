@@ -9,8 +9,8 @@ A build represents a game server artifact and its associated metadata.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**buildTag** | **String** | Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo). |  |
-|**regionalContainerTags** | [**List&lt;BuildRegionalContainerTagsInner&gt;**](BuildRegionalContainerTagsInner.md) | Identifiers for the containers stored in Hathora&#39;s registries. |  |
-|**imageSize** | **Double** | The size (in bytes) of the Docker image built by Hathora. |  |
+|**regionalContainerTags** | [**List&lt;BuildRegionalContainerTagsInner&gt;**](BuildRegionalContainerTagsInner.md) |  |  |
+|**imageSize** | **Integer** | The size (in bytes) of the Docker image built by Hathora. |  |
 |**status** | [**StatusEnum**](#StatusEnum) | Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60; |  |
 |**deletedAt** | **OffsetDateTime** | When the build was deleted. |  |
 |**finishedAt** | **OffsetDateTime** | When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing. |  |

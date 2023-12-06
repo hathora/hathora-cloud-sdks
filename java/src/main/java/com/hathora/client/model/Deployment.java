@@ -141,7 +141,7 @@ public class Deployment {
 
   public static final String SERIALIZED_NAME_REQUESTED_MEMORY_M_B = "requestedMemoryMB";
   @SerializedName(SERIALIZED_NAME_REQUESTED_MEMORY_M_B)
-  private Double requestedMemoryMB;
+  private Integer requestedMemoryMB;
 
   public static final String SERIALIZED_NAME_REQUESTED_C_P_U = "requestedCPU";
   @SerializedName(SERIALIZED_NAME_REQUESTED_C_P_U)
@@ -382,7 +382,7 @@ public class Deployment {
   }
 
 
-  public Deployment requestedMemoryMB(Double requestedMemoryMB) {
+  public Deployment requestedMemoryMB(Integer requestedMemoryMB) {
     
     this.requestedMemoryMB = requestedMemoryMB;
     return this;
@@ -394,12 +394,12 @@ public class Deployment {
   **/
   @javax.annotation.Nonnull
 
-  public Double getRequestedMemoryMB() {
+  public Integer getRequestedMemoryMB() {
     return requestedMemoryMB;
   }
 
 
-  public void setRequestedMemoryMB(Double requestedMemoryMB) {
+  public void setRequestedMemoryMB(Integer requestedMemoryMB) {
     this.requestedMemoryMB = requestedMemoryMB;
   }
 

@@ -22,8 +22,8 @@ tags:
 - description: Service that allows clients to directly ping all Hathora regions to
     get latency information
   name: DiscoveryV1
-- description: "Operations to create and manage [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby)."
-  name: LobbyV2
+- description: "Operations to create and manage lobbies using our [Lobby Service](https://hathora.dev/docs/lobbies-and-matchmaking/lobby-service)."
+  name: LobbyV3
 - description: "Operations to get logs by [applications](https://hathora.dev/docs/concepts/hathora-entities#application),\
     \ [processes](https://hathora.dev/docs/concepts/hathora-entities#process), and\
     \ [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment).\
@@ -36,6 +36,12 @@ tags:
   name: ProcessesV1
 - description: "Operations to create, manage, and connect to [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)."
   name: RoomV2
+- description: "Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3)."
+  name: LobbyV1
+- description: "Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3)."
+  name: LobbyV2
+- description: "Deprecated. Use [RoomV2](https://hathora.dev/api#tag/RoomV2)."
+  name: RoomV1
 paths:
   /apps/v1/list:
     get:
@@ -79,13 +85,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -123,13 +129,19 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -161,7 +173,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -188,13 +200,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -224,7 +236,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
@@ -259,7 +271,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
@@ -295,13 +307,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
@@ -324,7 +336,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -346,13 +358,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -380,7 +392,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -405,7 +417,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -438,7 +450,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -475,7 +487,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -501,7 +513,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateBuildRequest'
+              $ref: '#/components/schemas/CreateBuildParams'
         required: true
       responses:
         "201":
@@ -514,13 +526,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -566,13 +578,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -607,19 +619,19 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -652,7 +664,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -689,7 +701,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -734,19 +746,19 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -785,13 +797,6 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
-      - explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
       - explode: true
         in: query
         name: region
@@ -818,39 +823,40 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "429":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
-      security: []
+      security:
+      - playerAuth: []
       tags:
       - LobbyV1
       x-accepts: application/json
@@ -866,13 +872,6 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
-      - explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
       - explode: true
         in: query
         name: region
@@ -899,46 +898,47 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "429":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
-      security: []
+      security:
+      - playerAuth: []
       tags:
       - LobbyV1
       x-accepts: application/json
   /lobby/v1/{appId}/list:
     get:
       deprecated: true
-      operationId: ListActivePublicLobbiesDeprecated
+      operationId: ListActivePublicLobbiesDeprecatedV1
       parameters:
       - explode: false
         in: path
@@ -946,13 +946,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/AppId'
-        style: simple
-      - explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
         style: simple
       - explode: true
         in: query
@@ -982,13 +975,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
@@ -1006,13 +999,6 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
-      - explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
       - explode: true
         in: query
         name: roomId
@@ -1037,39 +1023,40 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "429":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
-      security: []
+      security:
+      - playerAuth: []
       tags:
       - LobbyV2
       x-content-type: application/json
@@ -1086,13 +1073,6 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
-      - explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
       - explode: true
         in: query
         name: roomId
@@ -1117,39 +1097,40 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "429":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
-      security: []
+      security:
+      - playerAuth: []
       tags:
       - LobbyV2
       x-content-type: application/json
@@ -1166,13 +1147,6 @@ paths:
         schema:
           $ref: '#/components/schemas/AppId'
         style: simple
-      - explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
-        style: simple
       - explode: true
         in: query
         name: roomId
@@ -1197,48 +1171,53 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "429":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
-      security: []
+      security:
+      - playerAuth: []
       tags:
       - LobbyV2
       x-content-type: application/json
       x-accepts: application/json
   /lobby/v2/{appId}/create:
     post:
-      description: "Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`."
-      operationId: CreateLobby
+      deprecated: true
+      description: "Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ object. With a lobby, you get additional functionality like configuring\
+        \ the visibility of the room, managing the state of a match, and retrieving\
+        \ a list of public lobbies to display to players."
+      operationId: CreateLobbyDeprecated
       parameters:
       - explode: false
         in: path
@@ -1246,13 +1225,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/AppId'
-        style: simple
-      - explode: false
-        in: header
-        name: Authorization
-        required: true
-        schema:
-          type: string
         style: simple
       - explode: true
         in: query
@@ -1265,7 +1237,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateLobbyRequest'
+              $ref: '#/components/schemas/CreateLobbyParams'
         required: true
       responses:
         "201":
@@ -1278,48 +1250,51 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "429":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
-      security: []
+      security:
+      - playerAuth: []
       tags:
       - LobbyV2
       x-content-type: application/json
       x-accepts: application/json
   /lobby/v2/{appId}/list/public:
     get:
-      description: "Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`. Filter the array by optionally passing in a `region`."
-      operationId: ListActivePublicLobbies
+      deprecated: true
+      description: "Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ Filter by optionally passing in a `region`. Use this endpoint to display\
+        \ all public lobbies that a player can join in the game client."
+      operationId: ListActivePublicLobbiesDeprecatedV2
       parameters:
       - explode: false
         in: path
@@ -1352,7 +1327,8 @@ paths:
       x-accepts: application/json
   /lobby/v2/{appId}/info/{roomId}:
     get:
-      description: Get details for an existing lobby using `appId` and `roomId`.
+      deprecated: true
+      description: Get details for a lobby.
       operationId: GetLobbyInfo
       parameters:
       - explode: false
@@ -1380,7 +1356,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
@@ -1388,8 +1364,11 @@ paths:
       x-accepts: application/json
   /lobby/v2/{appId}/setState/{roomId}:
     post:
-      description: Set the state of a lobby using `appId` and `roomId`. State is intended
-        to be set by the server and must be smaller than 1MB.
+      deprecated: true
+      description: Set the state of a lobby. State is intended to be set by the server
+        and must be smaller than 1MB. Use this endpoint to store match data like live
+        player count to enforce max number of clients or persist end-game data (i.e.
+        winner or final scores).
       operationId: SetLobbyState
       parameters:
       - explode: false
@@ -1410,7 +1389,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SetLobbyStateRequest'
+              $ref: '#/components/schemas/SetLobbyStateParams'
         required: true
       responses:
         "200":
@@ -1423,19 +1402,212 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
       tags:
       - LobbyV2
       x-content-type: application/json
+      x-accepts: application/json
+  /lobby/v3/{appId}/create:
+    post:
+      description: "Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room)\
+        \ object. With a lobby, you get additional functionality like configuring\
+        \ the visibility of the room, managing the state of a match, and retrieving\
+        \ a list of public lobbies to display to players."
+      operationId: CreateLobby
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: true
+        in: query
+        name: shortCode
+        required: false
+        schema:
+          $ref: '#/components/schemas/ShortCode'
+        style: form
+      - explode: true
+        in: query
+        name: roomId
+        required: false
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLobbyV3Params'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LobbyV3'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - playerAuth: []
+      tags:
+      - LobbyV3
+      x-content-type: application/json
+      x-accepts: application/json
+  /lobby/v3/{appId}/list/public:
+    get:
+      description: "Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ Filter the array by optionally passing in a `region`. Use this endpoint\
+        \ to display all public lobbies that a player can join in the game client."
+      operationId: ListActivePublicLobbies
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - description: "If omitted, active public lobbies in all regions will be returned."
+        explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          $ref: '#/components/schemas/Region'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/LobbyV3'
+                type: array
+          description: Ok
+      security: []
+      tags:
+      - LobbyV3
+      x-accepts: application/json
+  /lobby/v3/{appId}/info/roomid/{roomId}:
+    get:
+      description: Get details for a lobby.
+      operationId: GetLobbyInfoByRoomId
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: roomId
+        required: true
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LobbyV3'
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security: []
+      tags:
+      - LobbyV3
+      x-accepts: application/json
+  /lobby/v3/{appId}/info/shortcode/{shortCode}:
+    get:
+      description: "Get details for a lobby. If 2 or more lobbies have the same `shortCode`,\
+        \ then the most recently created lobby will be returned."
+      operationId: GetLobbyInfoByShortCode
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: shortCode
+        required: true
+        schema:
+          $ref: '#/components/schemas/ShortCode'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LobbyV3'
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security: []
+      tags:
+      - LobbyV3
       x-accepts: application/json
   /logs/v1/{appId}/all:
     get:
@@ -1484,7 +1656,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1533,17 +1705,29 @@ paths:
                 format: byte
                 type: string
           description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "410":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1597,7 +1781,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1625,7 +1809,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
@@ -1702,19 +1886,19 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1723,9 +1907,9 @@ paths:
       x-accepts: application/json
   /processes/v1/{appId}/list/running:
     get:
-      description: "Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
-        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`. Filter the array by optionally passing in a region."
+      description: "Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ Filter the array by optionally passing in a `region`."
       operationId: GetRunningProcesses
       parameters:
       - explode: false
@@ -1755,7 +1939,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1764,9 +1948,9 @@ paths:
       x-accepts: application/json
   /processes/v1/{appId}/list/stopped:
     get:
-      description: "Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
-        \ objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application)\
-        \ using `appId`. Filter the array by optionally passing in a region."
+      description: "Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ Filter the array by optionally passing in a `region`."
       operationId: GetStoppedProcesses
       parameters:
       - explode: false
@@ -1796,7 +1980,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1805,8 +1989,7 @@ paths:
       x-accepts: application/json
   /processes/v1/{appId}/info/{processId}:
     get:
-      description: "Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
-        \ using `appId` and `processId`."
+      description: "Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process)."
       operationId: GetProcessInfo
       parameters:
       - explode: false
@@ -1834,13 +2017,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1870,7 +2053,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRoomRequest'
+              $ref: '#/components/schemas/CreateRoomParams'
         required: true
       responses:
         "201":
@@ -1883,31 +2066,31 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "402":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "403":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1945,7 +2128,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -1984,7 +2167,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2023,7 +2206,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2056,13 +2239,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2095,13 +2278,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2138,19 +2321,19 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
@@ -2182,7 +2365,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRoomRequest'
+              $ref: '#/components/schemas/CreateRoomParams'
         required: true
       responses:
         "201":
@@ -2195,31 +2378,31 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "402":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "403":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2257,7 +2440,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2297,7 +2480,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2337,7 +2520,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2371,13 +2554,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2412,13 +2595,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security:
       - hathoraDevToken: []
@@ -2456,23 +2639,68 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/ApiError'
           description: ""
       security: []
       tags:
       - RoomV2
+      x-accepts: application/json
+  /rooms/v2/{appId}/update/{roomId}:
+    post:
+      operationId: UpdateRoomConfig
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: roomId
+        required: true
+        schema:
+          $ref: '#/components/schemas/RoomId'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoomConfigParams'
+        required: true
+      responses:
+        "204":
+          description: No content
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - RoomV2
+      x-content-type: application/json
       x-accepts: application/json
 components:
   examples: {}
@@ -2745,8 +2973,8 @@ components:
         requestedMemoryMB:
           description: The amount of memory allocated to your process.
           example: 1024
-          format: double
-          type: number
+          format: int32
+          type: integer
         requestedCPU:
           description: The number of cores allocated to your process.
           example: 0.5
@@ -2807,6 +3035,13 @@ components:
       required:
       - appName
       - authConfiguration
+      type: object
+    ApiError:
+      properties:
+        message:
+          type: string
+      required:
+      - message
       type: object
     LoginResponse:
       example:
@@ -2959,6 +3194,7 @@ components:
     Region:
       enum:
       - Seattle
+      - Los_Angeles
       - Washington_DC
       - Chicago
       - London
@@ -2990,7 +3226,7 @@ components:
         appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         startedAt: 2000-01-23T04:56:07.000+00:00
         buildId: 1
-        imageSize: 0.8008281904610115
+        imageSize: 0
         status: created
         finishedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -2999,14 +3235,14 @@ components:
           - $ref: '#/components/schemas/BuildTag'
           nullable: true
         regionalContainerTags:
-          description: Identifiers for the containers stored in Hathora's registries.
+          deprecated: true
           items:
             $ref: '#/components/schemas/Build_regionalContainerTags_inner'
           type: array
         imageSize:
           description: The size (in bytes) of the Docker image built by Hathora.
-          format: double
-          type: number
+          format: int32
+          type: integer
         status:
           description: |-
             Current status of your build.
@@ -3072,7 +3308,7 @@ components:
       - startedAt
       - status
       type: object
-    CreateBuildRequest:
+    CreateBuildParams:
       example:
         buildTag: 0.1.14-14c793
       properties:
@@ -3158,8 +3394,9 @@ components:
         $ref: '#/components/schemas/DiscoveryResponse_inner'
       type: array
     RoomId:
-      description: Unique identifier to a game session or match. Use either a system
-        generated ID or pass in your own.
+      description: |-
+        Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+        Note: error will be returned if `roomId` is not globally unique.
       example: 2swovpy1fnunu
       maxLength: 100
       minLength: 1
@@ -3185,6 +3422,11 @@ components:
       description: User input to initialize the game state. Object must be smaller
         than 64KB.
       type: object
+    ShortCode:
+      description: User-defined identifier for a lobby.
+      example: LFG4
+      maxLength: 100
+      type: string
     Lobby:
       description: A lobby object allows you to store and manage metadata for your
         rooms.
@@ -3196,9 +3438,14 @@ components:
         appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         state: "{}"
         region: null
-        local: false
+        shortCode: ""
+        local: true
         roomId: 2swovpy1fnunu
       properties:
+        shortCode:
+          allOf:
+          - $ref: '#/components/schemas/ShortCode'
+          nullable: true
         state:
           additionalProperties: false
           description: JSON blob to store metadata for a room. Must be smaller than
@@ -3219,15 +3466,15 @@ components:
           type: string
         local:
           deprecated: true
-          example: false
           type: boolean
         visibility:
           $ref: '#/components/schemas/LobbyVisibility'
         region:
           $ref: '#/components/schemas/Region'
         roomId:
-          description: Unique identifier to a game session or match. Use either a
-            system generated ID or pass in your own.
+          description: |-
+            Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+            Note: error will be returned if `roomId` is not globally unique.
           example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
@@ -3245,9 +3492,10 @@ components:
       - local
       - region
       - roomId
+      - shortCode
       - visibility
       type: object
-    CreateLobbyRequest:
+    CreateLobbyParams:
       example:
         visibility: private
         initialConfig: "{}"
@@ -3267,7 +3515,7 @@ components:
       - region
       - visibility
       type: object
-    SetLobbyStateRequest:
+    SetLobbyStateParams:
       example:
         state: "{}"
       properties:
@@ -3279,12 +3527,97 @@ components:
       required:
       - state
       type: object
+    RoomConfig:
+      description: "Optional configuration parameters for the room. Can be any string\
+        \ including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo)."
+      example: "{\"name\":\"my-room\"}"
+      maxLength: 10000
+      type: string
+    LobbyV3:
+      description: A lobby object allows you to store and manage metadata for your
+        rooms.
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        roomConfig: ""
+        visibility: private
+        createdBy: dev@hathora.dev
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
+        region: null
+        shortCode: LFG4
+        roomId: 2swovpy1fnunu
+      properties:
+        shortCode:
+          description: User-defined identifier for a lobby.
+          example: LFG4
+          maxLength: 100
+          type: string
+        createdAt:
+          description: When the lobby was created.
+          format: date-time
+          type: string
+        createdBy:
+          description: Email address for the user that created the lobby.
+          example: dev@hathora.dev
+          type: string
+        roomConfig:
+          allOf:
+          - $ref: '#/components/schemas/RoomConfig'
+          nullable: true
+        visibility:
+          $ref: '#/components/schemas/LobbyVisibility'
+        region:
+          $ref: '#/components/schemas/Region'
+        roomId:
+          description: |-
+            Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+            Note: error will be returned if `roomId` is not globally unique.
+          example: 2swovpy1fnunu
+          maxLength: 100
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_-]*$"
+          type: string
+        appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+          type: string
+      required:
+      - appId
+      - createdAt
+      - createdBy
+      - region
+      - roomConfig
+      - roomId
+      - shortCode
+      - visibility
+      type: object
+    CreateLobbyV3Params:
+      example:
+        roomConfig: "{\"name\":\"my-room\"}"
+        visibility: private
+        region: null
+      properties:
+        visibility:
+          $ref: '#/components/schemas/LobbyVisibility'
+        roomConfig:
+          description: "Optional configuration parameters for the room. Can be any\
+            \ string including stringified JSON. It is accessible from the room via\
+            \ [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo)."
+          example: "{\"name\":\"my-room\"}"
+          maxLength: 10000
+          type: string
+        region:
+          $ref: '#/components/schemas/Region'
+      required:
+      - region
+      - visibility
+      type: object
     LogsFollow:
       default: false
       description: Stream logs in realtime.
       type: boolean
     TailLines:
       description: Number of lines to return from most recent logs history.
+      example: 100
       format: int32
       maximum: 5000
       minimum: 1
@@ -3406,8 +3739,8 @@ components:
         transportType:
           $ref: '#/components/schemas/TransportType'
         port:
-          format: double
-          type: number
+          format: int32
+          type: integer
         host:
           type: string
         name:
@@ -3456,8 +3789,8 @@ components:
         egressedBytes:
           description: Measures network traffic leaving the process in bytes.
           example: 435
-          format: double
-          type: number
+          format: int32
+          type: integer
         idleSince:
           deprecated: true
           format: date-time
@@ -3470,8 +3803,8 @@ components:
         activeConnections:
           description: Tracks the number of active connections to a process.
           example: 10
-          format: double
-          type: number
+          format: int32
+          type: integer
         roomsAllocatedUpdatedAt:
           format: date-time
           type: string
@@ -3479,8 +3812,8 @@ components:
           description: Tracks the number of rooms that have been allocated to the
             process.
           example: 1
-          format: double
-          type: number
+          format: int32
+          type: integer
         roomSlotsAvailableUpdatedAt:
           deprecated: true
           format: date-time
@@ -3579,12 +3912,6 @@ components:
       - stoppingAt
       - terminatedAt
       type: object
-    RoomConfig:
-      description: "Optional configuration parameters for the room. Can be any string\
-        \ including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo)."
-      example: "{\"name\":\"my-room\"}"
-      maxLength: 10000
-      type: string
     RoomStatus:
       description: |-
         The allocation status of a room.
@@ -3647,8 +3974,9 @@ components:
           example: app-af469a92-5b45-4565-b3c4-b79878de67d2
           type: string
         roomId:
-          description: Unique identifier to a game session or match. Use either a
-            system generated ID or pass in your own.
+          description: |-
+            Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+            Note: error will be returned if `roomId` is not globally unique.
           example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
@@ -3679,7 +4007,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/Process'
       - $ref: '#/components/schemas/ProcessWithRooms_allOf'
-    CreateRoomRequest:
+    CreateRoomParams:
       example:
         roomConfig: "{\"name\":\"my-room\"}"
         region: null
@@ -3729,8 +4057,9 @@ components:
           - $ref: '#/components/schemas/RoomConfig'
           nullable: true
         roomId:
-          description: Unique identifier to a game session or match. Use either a
-            system generated ID or pass in your own.
+          description: |-
+            Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+            Note: error will be returned if `roomId` is not globally unique.
           example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
@@ -3756,8 +4085,9 @@ components:
           nullable: false
           type: string
         roomId:
-          description: Unique identifier to a game session or match. Use either a
-            system generated ID or pass in your own.
+          description: |-
+            Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+            Note: error will be returned if `roomId` is not globally unique.
           example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
@@ -3782,8 +4112,9 @@ components:
         host:
           type: string
         roomId:
-          description: Unique identifier to a game session or match. Use either a
-            system generated ID or pass in your own.
+          description: |-
+            Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+            Note: error will be returned if `roomId` is not globally unique.
           example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
@@ -3838,8 +4169,9 @@ components:
           example: active
           type: string
         roomId:
-          description: Unique identifier to a game session or match. Use either a
-            system generated ID or pass in your own.
+          description: |-
+            Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+            Note: error will be returned if `roomId` is not globally unique.
           example: 2swovpy1fnunu
           maxLength: 100
           minLength: 1
@@ -3849,6 +4181,20 @@ components:
       - additionalExposedPorts
       - roomId
       - status
+      type: object
+    UpdateRoomConfigParams:
+      example:
+        roomConfig: "{\"name\":\"my-room\"}"
+      properties:
+        roomConfig:
+          description: "Optional configuration parameters for the room. Can be any\
+            \ string including stringified JSON. It is accessible from the room via\
+            \ [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo)."
+          example: "{\"name\":\"my-room\"}"
+          maxLength: 10000
+          type: string
+      required:
+      - roomConfig
       type: object
     RunBuild_request:
       properties:
@@ -3945,8 +4291,8 @@ components:
             $ref: '#/components/schemas/RoomWithoutAllocations'
           type: array
         totalRooms:
-          format: double
-          type: number
+          format: int32
+          type: integer
       required:
       - rooms
       - totalRooms
@@ -3957,4 +4303,14 @@ components:
       bearerFormat: JWT
       scheme: bearer
       type: http
+    playerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+x-speakeasy-globals:
+  parameters:
+  - in: path
+    name: appId
+    schema:
+      $ref: '#/components/schemas/AppId'
 

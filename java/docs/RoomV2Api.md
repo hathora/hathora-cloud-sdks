@@ -11,11 +11,12 @@ All URIs are relative to *https://api.hathora.dev*
 | [**getInactiveRoomsForProcess**](RoomV2Api.md#getInactiveRoomsForProcess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive |  |
 | [**getRoomInfo**](RoomV2Api.md#getRoomInfo) | **GET** /rooms/v2/{appId}/info/{roomId} |  |
 | [**suspendRoom**](RoomV2Api.md#suspendRoom) | **POST** /rooms/v2/{appId}/suspend/{roomId} |  |
+| [**updateRoomConfig**](RoomV2Api.md#updateRoomConfig) | **POST** /rooms/v2/{appId}/update/{roomId} |  |
 
 
 <a name="createRoom"></a>
 # **createRoom**
-> ConnectionInfoV2 createRoom(appId, createRoomRequest, roomId)
+> ConnectionInfoV2 createRoom(appId, createRoomParams, roomId)
 
 
 
@@ -42,10 +43,10 @@ public class Example {
 
     RoomV2Api apiInstance = new RoomV2Api(defaultClient);
     String appId = "appId_example"; // String | 
-    CreateRoomRequest createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
+    CreateRoomParams createRoomParams = new CreateRoomParams(); // CreateRoomParams | 
     String roomId = "roomId_example"; // String | 
     try {
-      ConnectionInfoV2 result = apiInstance.createRoom(appId, createRoomRequest, roomId);
+      ConnectionInfoV2 result = apiInstance.createRoom(appId, createRoomParams, roomId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RoomV2Api#createRoom");
@@ -63,7 +64,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md)|  | |
+| **createRoomParams** | [**CreateRoomParams**](CreateRoomParams.md)|  | |
 | **roomId** | **String**|  | [optional] |
 
 ### Return type
@@ -497,6 +498,76 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **404** |  |  -  |
+| **500** |  |  -  |
+
+<a name="updateRoomConfig"></a>
+# **updateRoomConfig**
+> updateRoomConfig(appId, roomId, updateRoomConfigParams)
+
+
+
+### Example
+```java
+// Import classes:
+import com.hathora.client.ApiClient;
+import com.hathora.client.ApiException;
+import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
+import com.hathora.client.models.*;
+import com.hathora.client.api.RoomV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
+
+    RoomV2Api apiInstance = new RoomV2Api(defaultClient);
+    String appId = "appId_example"; // String | 
+    String roomId = "roomId_example"; // String | 
+    UpdateRoomConfigParams updateRoomConfigParams = new UpdateRoomConfigParams(); // UpdateRoomConfigParams | 
+    try {
+      apiInstance.updateRoomConfig(appId, roomId, updateRoomConfigParams);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling RoomV2Api#updateRoomConfig");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**|  | |
+| **roomId** | **String**|  | |
+| **updateRoomConfigParams** | [**UpdateRoomConfigParams**](UpdateRoomConfigParams.md)|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

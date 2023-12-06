@@ -62,7 +62,7 @@ public class Example {
 | **appId** | **String**|  | |
 | **follow** | **Boolean**|  | [optional] [default to false] |
 | **tailLines** | **Integer**|  | [optional] |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
 
 ### Return type
 
@@ -229,6 +229,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** |  |  -  |
 | **404** |  |  -  |
+| **410** |  |  -  |
 | **500** |  |  -  |
 

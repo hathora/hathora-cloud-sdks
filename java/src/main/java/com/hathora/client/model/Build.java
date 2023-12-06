@@ -62,7 +62,7 @@ public class Build {
 
   public static final String SERIALIZED_NAME_IMAGE_SIZE = "imageSize";
   @SerializedName(SERIALIZED_NAME_IMAGE_SIZE)
-  private Double imageSize;
+  private Integer imageSize;
 
   /**
    * Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;
@@ -187,9 +187,11 @@ public class Build {
   }
 
    /**
-   * Identifiers for the containers stored in Hathora&#39;s registries.
+   * Get regionalContainerTags
    * @return regionalContainerTags
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public List<BuildRegionalContainerTagsInner> getRegionalContainerTags() {
@@ -202,7 +204,7 @@ public class Build {
   }
 
 
-  public Build imageSize(Double imageSize) {
+  public Build imageSize(Integer imageSize) {
     
     this.imageSize = imageSize;
     return this;
@@ -214,12 +216,12 @@ public class Build {
   **/
   @javax.annotation.Nonnull
 
-  public Double getImageSize() {
+  public Integer getImageSize() {
     return imageSize;
   }
 
 
-  public void setImageSize(Double imageSize) {
+  public void setImageSize(Integer imageSize) {
     this.imageSize = imageSize;
   }
 

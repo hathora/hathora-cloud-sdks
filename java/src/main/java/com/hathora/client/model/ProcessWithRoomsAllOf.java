@@ -57,7 +57,7 @@ public class ProcessWithRoomsAllOf {
 
   public static final String SERIALIZED_NAME_TOTAL_ROOMS = "totalRooms";
   @SerializedName(SERIALIZED_NAME_TOTAL_ROOMS)
-  private Double totalRooms;
+  private Integer totalRooms;
 
   public ProcessWithRoomsAllOf() {
   }
@@ -92,7 +92,7 @@ public class ProcessWithRoomsAllOf {
   }
 
 
-  public ProcessWithRoomsAllOf totalRooms(Double totalRooms) {
+  public ProcessWithRoomsAllOf totalRooms(Integer totalRooms) {
     
     this.totalRooms = totalRooms;
     return this;
@@ -104,12 +104,12 @@ public class ProcessWithRoomsAllOf {
   **/
   @javax.annotation.Nonnull
 
-  public Double getTotalRooms() {
+  public Integer getTotalRooms() {
     return totalRooms;
   }
 
 
-  public void setTotalRooms(Double totalRooms) {
+  public void setTotalRooms(Integer totalRooms) {
     this.totalRooms = totalRooms;
   }
 

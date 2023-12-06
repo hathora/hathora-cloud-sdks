@@ -95,6 +95,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.AchPaymentMethod.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ActiveConnectionInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ApiError.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.AppConfig.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Application.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ApplicationWithDeployment.CustomTypeAdapterFactory());
@@ -107,10 +108,11 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ConnectionInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ConnectionInfoV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ContainerPort.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateBuildRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateLobbyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateBuildParams.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateLobbyParams.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateLobbyV3Params.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreatePrivateLobbyRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateRoomRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateRoomParams.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CustomerPortalUrl.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Deployment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.DeploymentConfig.CustomTypeAdapterFactory());
@@ -120,6 +122,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Invoice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.LinkPaymentMethod.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Lobby.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.LobbyV3.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.LoginGoogleRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.LoginNicknameRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.LoginResponse.CustomTypeAdapterFactory());
@@ -132,8 +135,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.RecordPartialMetricNameMetricValueArray.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Room.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.RoomAllocation.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.SetLobbyStateRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.SetLobbyStateParams.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.StartingConnectionInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.UpdateRoomConfigParams.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.VerificationEmailRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.VerificationEmailResponse.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();

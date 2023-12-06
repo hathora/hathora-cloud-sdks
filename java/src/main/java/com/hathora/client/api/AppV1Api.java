@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.ApiError;
 import com.hathora.client.model.AppConfig;
 import com.hathora.client.model.Application;
 import com.hathora.client.model.ApplicationWithDeployment;
@@ -585,6 +586,7 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -662,6 +664,7 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -682,6 +685,7 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -704,6 +708,7 @@ public class AppV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */

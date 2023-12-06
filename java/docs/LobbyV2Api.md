@@ -4,22 +4,22 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createLobby**](LobbyV2Api.md#createLobby) | **POST** /lobby/v2/{appId}/create |  |
+| [**createLobbyDeprecated**](LobbyV2Api.md#createLobbyDeprecated) | **POST** /lobby/v2/{appId}/create |  |
 | [**createLocalLobby**](LobbyV2Api.md#createLocalLobby) | **POST** /lobby/v2/{appId}/create/local |  |
 | [**createPrivateLobby**](LobbyV2Api.md#createPrivateLobby) | **POST** /lobby/v2/{appId}/create/private |  |
 | [**createPublicLobby**](LobbyV2Api.md#createPublicLobby) | **POST** /lobby/v2/{appId}/create/public |  |
 | [**getLobbyInfo**](LobbyV2Api.md#getLobbyInfo) | **GET** /lobby/v2/{appId}/info/{roomId} |  |
-| [**listActivePublicLobbies**](LobbyV2Api.md#listActivePublicLobbies) | **GET** /lobby/v2/{appId}/list/public |  |
+| [**listActivePublicLobbiesDeprecatedV2**](LobbyV2Api.md#listActivePublicLobbiesDeprecatedV2) | **GET** /lobby/v2/{appId}/list/public |  |
 | [**setLobbyState**](LobbyV2Api.md#setLobbyState) | **POST** /lobby/v2/{appId}/setState/{roomId} |  |
 
 
-<a name="createLobby"></a>
-# **createLobby**
-> Lobby createLobby(appId, authorization, createLobbyRequest, roomId)
+<a name="createLobbyDeprecated"></a>
+# **createLobbyDeprecated**
+> Lobby createLobbyDeprecated(appId, createLobbyParams, roomId)
 
 
 
-Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
 
 ### Example
 ```java
@@ -27,6 +27,7 @@ Create a new lobby for an existing [application](https://hathora.dev/docs/concep
 import com.hathora.client.ApiClient;
 import com.hathora.client.ApiException;
 import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
 import com.hathora.client.models.*;
 import com.hathora.client.api.LobbyV2Api;
 
@@ -34,17 +35,20 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: playerAuth
+    HttpBearerAuth playerAuth = (HttpBearerAuth) defaultClient.getAuthentication("playerAuth");
+    playerAuth.setBearerToken("BEARER TOKEN");
 
     LobbyV2Api apiInstance = new LobbyV2Api(defaultClient);
     String appId = "appId_example"; // String | 
-    String authorization = "authorization_example"; // String | 
-    CreateLobbyRequest createLobbyRequest = new CreateLobbyRequest(); // CreateLobbyRequest | 
+    CreateLobbyParams createLobbyParams = new CreateLobbyParams(); // CreateLobbyParams | 
     String roomId = "roomId_example"; // String | 
     try {
-      Lobby result = apiInstance.createLobby(appId, authorization, createLobbyRequest, roomId);
+      Lobby result = apiInstance.createLobbyDeprecated(appId, createLobbyParams, roomId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LobbyV2Api#createLobby");
+      System.err.println("Exception when calling LobbyV2Api#createLobbyDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -59,8 +63,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **authorization** | **String**|  | |
-| **createLobbyRequest** | [**CreateLobbyRequest**](CreateLobbyRequest.md)|  | |
+| **createLobbyParams** | [**CreateLobbyParams**](CreateLobbyParams.md)|  | |
 | **roomId** | **String**|  | [optional] |
 
 ### Return type
@@ -69,7 +72,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[playerAuth](../README.md#playerAuth)
 
 ### HTTP request headers
 
@@ -89,7 +92,7 @@ No authorization required
 
 <a name="createLocalLobby"></a>
 # **createLocalLobby**
-> Lobby createLocalLobby(appId, authorization, createPrivateLobbyRequest, roomId)
+> Lobby createLocalLobby(appId, createPrivateLobbyRequest, roomId)
 
 
 
@@ -99,6 +102,7 @@ No authorization required
 import com.hathora.client.ApiClient;
 import com.hathora.client.ApiException;
 import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
 import com.hathora.client.models.*;
 import com.hathora.client.api.LobbyV2Api;
 
@@ -106,14 +110,17 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: playerAuth
+    HttpBearerAuth playerAuth = (HttpBearerAuth) defaultClient.getAuthentication("playerAuth");
+    playerAuth.setBearerToken("BEARER TOKEN");
 
     LobbyV2Api apiInstance = new LobbyV2Api(defaultClient);
     String appId = "appId_example"; // String | 
-    String authorization = "authorization_example"; // String | 
     CreatePrivateLobbyRequest createPrivateLobbyRequest = new CreatePrivateLobbyRequest(); // CreatePrivateLobbyRequest | 
     String roomId = "roomId_example"; // String | 
     try {
-      Lobby result = apiInstance.createLocalLobby(appId, authorization, createPrivateLobbyRequest, roomId);
+      Lobby result = apiInstance.createLocalLobby(appId, createPrivateLobbyRequest, roomId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LobbyV2Api#createLocalLobby");
@@ -131,7 +138,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **authorization** | **String**|  | |
 | **createPrivateLobbyRequest** | [**CreatePrivateLobbyRequest**](CreatePrivateLobbyRequest.md)|  | |
 | **roomId** | **String**|  | [optional] |
 
@@ -141,7 +147,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[playerAuth](../README.md#playerAuth)
 
 ### HTTP request headers
 
@@ -161,7 +167,7 @@ No authorization required
 
 <a name="createPrivateLobby"></a>
 # **createPrivateLobby**
-> Lobby createPrivateLobby(appId, authorization, createPrivateLobbyRequest, roomId)
+> Lobby createPrivateLobby(appId, createPrivateLobbyRequest, roomId)
 
 
 
@@ -171,6 +177,7 @@ No authorization required
 import com.hathora.client.ApiClient;
 import com.hathora.client.ApiException;
 import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
 import com.hathora.client.models.*;
 import com.hathora.client.api.LobbyV2Api;
 
@@ -178,14 +185,17 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: playerAuth
+    HttpBearerAuth playerAuth = (HttpBearerAuth) defaultClient.getAuthentication("playerAuth");
+    playerAuth.setBearerToken("BEARER TOKEN");
 
     LobbyV2Api apiInstance = new LobbyV2Api(defaultClient);
     String appId = "appId_example"; // String | 
-    String authorization = "authorization_example"; // String | 
     CreatePrivateLobbyRequest createPrivateLobbyRequest = new CreatePrivateLobbyRequest(); // CreatePrivateLobbyRequest | 
     String roomId = "roomId_example"; // String | 
     try {
-      Lobby result = apiInstance.createPrivateLobby(appId, authorization, createPrivateLobbyRequest, roomId);
+      Lobby result = apiInstance.createPrivateLobby(appId, createPrivateLobbyRequest, roomId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LobbyV2Api#createPrivateLobby");
@@ -203,7 +213,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **authorization** | **String**|  | |
 | **createPrivateLobbyRequest** | [**CreatePrivateLobbyRequest**](CreatePrivateLobbyRequest.md)|  | |
 | **roomId** | **String**|  | [optional] |
 
@@ -213,7 +222,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[playerAuth](../README.md#playerAuth)
 
 ### HTTP request headers
 
@@ -233,7 +242,7 @@ No authorization required
 
 <a name="createPublicLobby"></a>
 # **createPublicLobby**
-> Lobby createPublicLobby(appId, authorization, createPrivateLobbyRequest, roomId)
+> Lobby createPublicLobby(appId, createPrivateLobbyRequest, roomId)
 
 
 
@@ -243,6 +252,7 @@ No authorization required
 import com.hathora.client.ApiClient;
 import com.hathora.client.ApiException;
 import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
 import com.hathora.client.models.*;
 import com.hathora.client.api.LobbyV2Api;
 
@@ -250,14 +260,17 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: playerAuth
+    HttpBearerAuth playerAuth = (HttpBearerAuth) defaultClient.getAuthentication("playerAuth");
+    playerAuth.setBearerToken("BEARER TOKEN");
 
     LobbyV2Api apiInstance = new LobbyV2Api(defaultClient);
     String appId = "appId_example"; // String | 
-    String authorization = "authorization_example"; // String | 
     CreatePrivateLobbyRequest createPrivateLobbyRequest = new CreatePrivateLobbyRequest(); // CreatePrivateLobbyRequest | 
     String roomId = "roomId_example"; // String | 
     try {
-      Lobby result = apiInstance.createPublicLobby(appId, authorization, createPrivateLobbyRequest, roomId);
+      Lobby result = apiInstance.createPublicLobby(appId, createPrivateLobbyRequest, roomId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LobbyV2Api#createPublicLobby");
@@ -275,7 +288,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **authorization** | **String**|  | |
 | **createPrivateLobbyRequest** | [**CreatePrivateLobbyRequest**](CreatePrivateLobbyRequest.md)|  | |
 | **roomId** | **String**|  | [optional] |
 
@@ -285,7 +297,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[playerAuth](../README.md#playerAuth)
 
 ### HTTP request headers
 
@@ -309,7 +321,7 @@ No authorization required
 
 
 
-Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+Get details for a lobby.
 
 ### Example
 ```java
@@ -368,13 +380,13 @@ No authorization required
 | **200** | Ok |  -  |
 | **404** |  |  -  |
 
-<a name="listActivePublicLobbies"></a>
-# **listActivePublicLobbies**
-> List&lt;Lobby&gt; listActivePublicLobbies(appId, region)
+<a name="listActivePublicLobbiesDeprecatedV2"></a>
+# **listActivePublicLobbiesDeprecatedV2**
+> List&lt;Lobby&gt; listActivePublicLobbiesDeprecatedV2(appId, region)
 
 
 
-Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
 
 ### Example
 ```java
@@ -394,10 +406,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     Region region = Region.fromValue("Seattle"); // Region | Region to filter by. If omitted, active public lobbies in all regions will be returned.
     try {
-      List<Lobby> result = apiInstance.listActivePublicLobbies(appId, region);
+      List<Lobby> result = apiInstance.listActivePublicLobbiesDeprecatedV2(appId, region);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LobbyV2Api#listActivePublicLobbies");
+      System.err.println("Exception when calling LobbyV2Api#listActivePublicLobbiesDeprecatedV2");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -412,7 +424,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **region** | [**Region**](.md)| Region to filter by. If omitted, active public lobbies in all regions will be returned. | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)| Region to filter by. If omitted, active public lobbies in all regions will be returned. | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
 
 ### Return type
 
@@ -434,11 +446,11 @@ No authorization required
 
 <a name="setLobbyState"></a>
 # **setLobbyState**
-> Lobby setLobbyState(appId, roomId, setLobbyStateRequest)
+> Lobby setLobbyState(appId, roomId, setLobbyStateParams)
 
 
 
-Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
 
 ### Example
 ```java
@@ -462,9 +474,9 @@ public class Example {
     LobbyV2Api apiInstance = new LobbyV2Api(defaultClient);
     String appId = "appId_example"; // String | 
     String roomId = "roomId_example"; // String | 
-    SetLobbyStateRequest setLobbyStateRequest = new SetLobbyStateRequest(); // SetLobbyStateRequest | 
+    SetLobbyStateParams setLobbyStateParams = new SetLobbyStateParams(); // SetLobbyStateParams | 
     try {
-      Lobby result = apiInstance.setLobbyState(appId, roomId, setLobbyStateRequest);
+      Lobby result = apiInstance.setLobbyState(appId, roomId, setLobbyStateParams);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LobbyV2Api#setLobbyState");
@@ -483,7 +495,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
 | **roomId** | **String**|  | |
-| **setLobbyStateRequest** | [**SetLobbyStateRequest**](SetLobbyStateRequest.md)|  | |
+| **setLobbyStateParams** | [**SetLobbyStateParams**](SetLobbyStateParams.md)|  | |
 
 ### Return type
 

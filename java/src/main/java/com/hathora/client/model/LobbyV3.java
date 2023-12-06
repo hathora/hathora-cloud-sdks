@@ -20,11 +20,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hathora.client.model.RoomAllocation;
-import com.hathora.client.model.RoomStatus;
+import com.hathora.client.model.LobbyVisibility;
+import com.hathora.client.model.Region;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,25 +47,33 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * A room object represents a game session or match.
+ * A lobby object allows you to store and manage metadata for your rooms.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class Room {
-  public static final String SERIALIZED_NAME_CURRENT_ALLOCATION = "currentAllocation";
-  @SerializedName(SERIALIZED_NAME_CURRENT_ALLOCATION)
-  private RoomAllocation currentAllocation;
+public class LobbyV3 {
+  public static final String SERIALIZED_NAME_SHORT_CODE = "shortCode";
+  @SerializedName(SERIALIZED_NAME_SHORT_CODE)
+  private String shortCode;
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private RoomStatus status;
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
 
-  public static final String SERIALIZED_NAME_ALLOCATIONS = "allocations";
-  @SerializedName(SERIALIZED_NAME_ALLOCATIONS)
-  private List<RoomAllocation> allocations = new ArrayList<>();
+  public static final String SERIALIZED_NAME_CREATED_BY = "createdBy";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY)
+  private String createdBy;
 
   public static final String SERIALIZED_NAME_ROOM_CONFIG = "roomConfig";
   @SerializedName(SERIALIZED_NAME_ROOM_CONFIG)
   private String roomConfig;
+
+  public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
+  @SerializedName(SERIALIZED_NAME_VISIBILITY)
+  private LobbyVisibility visibility;
+
+  public static final String SERIALIZED_NAME_REGION = "region";
+  @SerializedName(SERIALIZED_NAME_REGION)
+  private Region region;
 
   public static final String SERIALIZED_NAME_ROOM_ID = "roomId";
   @SerializedName(SERIALIZED_NAME_ROOM_ID)
@@ -76,84 +83,76 @@ public class Room {
   @SerializedName(SERIALIZED_NAME_APP_ID)
   private String appId;
 
-  public Room() {
+  public LobbyV3() {
   }
 
-  public Room currentAllocation(RoomAllocation currentAllocation) {
+  public LobbyV3 shortCode(String shortCode) {
     
-    this.currentAllocation = currentAllocation;
+    this.shortCode = shortCode;
     return this;
   }
 
    /**
-   * Get currentAllocation
-   * @return currentAllocation
-  **/
-  @javax.annotation.Nullable
-
-  public RoomAllocation getCurrentAllocation() {
-    return currentAllocation;
-  }
-
-
-  public void setCurrentAllocation(RoomAllocation currentAllocation) {
-    this.currentAllocation = currentAllocation;
-  }
-
-
-  public Room status(RoomStatus status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
+   * User-defined identifier for a lobby.
+   * @return shortCode
   **/
   @javax.annotation.Nonnull
 
-  public RoomStatus getStatus() {
-    return status;
+  public String getShortCode() {
+    return shortCode;
   }
 
 
-  public void setStatus(RoomStatus status) {
-    this.status = status;
+  public void setShortCode(String shortCode) {
+    this.shortCode = shortCode;
   }
 
 
-  public Room allocations(List<RoomAllocation> allocations) {
+  public LobbyV3 createdAt(OffsetDateTime createdAt) {
     
-    this.allocations = allocations;
-    return this;
-  }
-
-  public Room addAllocationsItem(RoomAllocation allocationsItem) {
-    if (this.allocations == null) {
-      this.allocations = new ArrayList<>();
-    }
-    this.allocations.add(allocationsItem);
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * Get allocations
-   * @return allocations
+   * When the lobby was created.
+   * @return createdAt
   **/
   @javax.annotation.Nonnull
 
-  public List<RoomAllocation> getAllocations() {
-    return allocations;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setAllocations(List<RoomAllocation> allocations) {
-    this.allocations = allocations;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
-  public Room roomConfig(String roomConfig) {
+  public LobbyV3 createdBy(String createdBy) {
+    
+    this.createdBy = createdBy;
+    return this;
+  }
+
+   /**
+   * Email address for the user that created the lobby.
+   * @return createdBy
+  **/
+  @javax.annotation.Nonnull
+
+  public String getCreatedBy() {
+    return createdBy;
+  }
+
+
+  public void setCreatedBy(String createdBy) {
+    this.createdBy = createdBy;
+  }
+
+
+  public LobbyV3 roomConfig(String roomConfig) {
     
     this.roomConfig = roomConfig;
     return this;
@@ -175,7 +174,51 @@ public class Room {
   }
 
 
-  public Room roomId(String roomId) {
+  public LobbyV3 visibility(LobbyVisibility visibility) {
+    
+    this.visibility = visibility;
+    return this;
+  }
+
+   /**
+   * Get visibility
+   * @return visibility
+  **/
+  @javax.annotation.Nonnull
+
+  public LobbyVisibility getVisibility() {
+    return visibility;
+  }
+
+
+  public void setVisibility(LobbyVisibility visibility) {
+    this.visibility = visibility;
+  }
+
+
+  public LobbyV3 region(Region region) {
+    
+    this.region = region;
+    return this;
+  }
+
+   /**
+   * Get region
+   * @return region
+  **/
+  @javax.annotation.Nonnull
+
+  public Region getRegion() {
+    return region;
+  }
+
+
+  public void setRegion(Region region) {
+    this.region = region;
+  }
+
+
+  public LobbyV3 roomId(String roomId) {
     
     this.roomId = roomId;
     return this;
@@ -197,7 +240,7 @@ public class Room {
   }
 
 
-  public Room appId(String appId) {
+  public LobbyV3 appId(String appId) {
     
     this.appId = appId;
     return this;
@@ -231,9 +274,9 @@ public class Room {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the Room instance itself
+   * @return the LobbyV3 instance itself
    */
-  public Room putAdditionalProperty(String key, Object value) {
+  public LobbyV3 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -272,29 +315,33 @@ public class Room {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Room room = (Room) o;
-    return Objects.equals(this.currentAllocation, room.currentAllocation) &&
-        Objects.equals(this.status, room.status) &&
-        Objects.equals(this.allocations, room.allocations) &&
-        Objects.equals(this.roomConfig, room.roomConfig) &&
-        Objects.equals(this.roomId, room.roomId) &&
-        Objects.equals(this.appId, room.appId)&&
-        Objects.equals(this.additionalProperties, room.additionalProperties);
+    LobbyV3 lobbyV3 = (LobbyV3) o;
+    return Objects.equals(this.shortCode, lobbyV3.shortCode) &&
+        Objects.equals(this.createdAt, lobbyV3.createdAt) &&
+        Objects.equals(this.createdBy, lobbyV3.createdBy) &&
+        Objects.equals(this.roomConfig, lobbyV3.roomConfig) &&
+        Objects.equals(this.visibility, lobbyV3.visibility) &&
+        Objects.equals(this.region, lobbyV3.region) &&
+        Objects.equals(this.roomId, lobbyV3.roomId) &&
+        Objects.equals(this.appId, lobbyV3.appId)&&
+        Objects.equals(this.additionalProperties, lobbyV3.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(currentAllocation, status, allocations, roomConfig, roomId, appId, additionalProperties);
+    return Objects.hash(shortCode, createdAt, createdBy, roomConfig, visibility, region, roomId, appId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Room {\n");
-    sb.append("    currentAllocation: ").append(toIndentedString(currentAllocation)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    allocations: ").append(toIndentedString(allocations)).append("\n");
+    sb.append("class LobbyV3 {\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    roomConfig: ").append(toIndentedString(roomConfig)).append("\n");
+    sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    roomId: ").append(toIndentedString(roomId)).append("\n");
     sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -320,19 +367,23 @@ public class Room {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("currentAllocation");
-    openapiFields.add("status");
-    openapiFields.add("allocations");
+    openapiFields.add("shortCode");
+    openapiFields.add("createdAt");
+    openapiFields.add("createdBy");
     openapiFields.add("roomConfig");
+    openapiFields.add("visibility");
+    openapiFields.add("region");
     openapiFields.add("roomId");
     openapiFields.add("appId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("currentAllocation");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("allocations");
+    openapiRequiredFields.add("shortCode");
+    openapiRequiredFields.add("createdAt");
+    openapiRequiredFields.add("createdBy");
     openapiRequiredFields.add("roomConfig");
+    openapiRequiredFields.add("visibility");
+    openapiRequiredFields.add("region");
     openapiRequiredFields.add("roomId");
     openapiRequiredFields.add("appId");
   }
@@ -341,31 +392,30 @@ public class Room {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Room
+  * @throws IOException if the JSON Object is invalid with respect to LobbyV3
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!Room.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Room is not found in the empty JSON string", Room.openapiRequiredFields.toString()));
+        if (!LobbyV3.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LobbyV3 is not found in the empty JSON string", LobbyV3.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Room.openapiRequiredFields) {
+      for (String requiredField : LobbyV3.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("allocations").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `allocations` to be an array in the JSON string but got `%s`", jsonObj.get("allocations").toString()));
+      if (!jsonObj.get("shortCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shortCode").toString()));
       }
-
-      JsonArray jsonArrayallocations = jsonObj.getAsJsonArray("allocations");
-      // validate the required field `allocations` (array)
-      for (int i = 0; i < jsonArrayallocations.size(); i++) {
-        RoomAllocation.validateJsonObject(jsonArrayallocations.get(i).getAsJsonObject());
-      };
+      if (!jsonObj.get("createdBy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
+      }
+      if (!jsonObj.get("roomConfig").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `roomConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomConfig").toString()));
+      }
       if (!jsonObj.get("roomId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
       }
@@ -378,16 +428,16 @@ public class Room {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Room.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Room' and its subtypes
+       if (!LobbyV3.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LobbyV3' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Room> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Room.class));
+       final TypeAdapter<LobbyV3> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LobbyV3.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Room>() {
+       return (TypeAdapter<T>) new TypeAdapter<LobbyV3>() {
            @Override
-           public void write(JsonWriter out, Room value) throws IOException {
+           public void write(JsonWriter out, LobbyV3 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -410,11 +460,11 @@ public class Room {
            }
 
            @Override
-           public Room read(JsonReader in) throws IOException {
+           public LobbyV3 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             Room instance = thisAdapter.fromJsonTree(jsonObj);
+             LobbyV3 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -441,18 +491,18 @@ public class Room {
   }
 
  /**
-  * Create an instance of Room given an JSON string
+  * Create an instance of LobbyV3 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of Room
-  * @throws IOException if the JSON string is invalid with respect to Room
+  * @return An instance of LobbyV3
+  * @throws IOException if the JSON string is invalid with respect to LobbyV3
   */
-  public static Room fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Room.class);
+  public static LobbyV3 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LobbyV3.class);
   }
 
  /**
-  * Convert an instance of Room to an JSON string
+  * Convert an instance of LobbyV3 to an JSON string
   *
   * @return JSON string
   */

@@ -2,6 +2,7 @@ README.md
 api/openapi.yaml
 docs/AchPaymentMethod.md
 docs/ActiveConnectionInfo.md
+docs/ApiError.md
 docs/AppConfig.md
 docs/AppV1Api.md
 docs/Application.md
@@ -19,10 +20,11 @@ docs/CardPaymentMethod.md
 docs/ConnectionInfo.md
 docs/ConnectionInfoV2.md
 docs/ContainerPort.md
-docs/CreateBuildRequest.md
-docs/CreateLobbyRequest.md
+docs/CreateBuildParams.md
+docs/CreateLobbyParams.md
+docs/CreateLobbyV3Params.md
 docs/CreatePrivateLobbyRequest.md
-docs/CreateRoomRequest.md
+docs/CreateRoomParams.md
 docs/CustomerPortalUrl.md
 docs/Deployment.md
 docs/DeploymentConfig.md
@@ -36,6 +38,8 @@ docs/LinkPaymentMethod.md
 docs/Lobby.md
 docs/LobbyV1Api.md
 docs/LobbyV2Api.md
+docs/LobbyV3.md
+docs/LobbyV3Api.md
 docs/LobbyVisibility.md
 docs/LogV1Api.md
 docs/LoginGoogleRequest.md
@@ -59,9 +63,10 @@ docs/RoomAllocation.md
 docs/RoomStatus.md
 docs/RoomV1Api.md
 docs/RoomV2Api.md
-docs/SetLobbyStateRequest.md
+docs/SetLobbyStateParams.md
 docs/StartingConnectionInfo.md
 docs/TransportType.md
+docs/UpdateRoomConfigParams.md
 docs/VerificationEmailRequest.md
 docs/VerificationEmailResponse.md
 src/main/java/com/hathora/client/ApiCallback.java
@@ -85,6 +90,7 @@ src/main/java/com/hathora/client/api/DeploymentV1Api.java
 src/main/java/com/hathora/client/api/DiscoveryV1Api.java
 src/main/java/com/hathora/client/api/LobbyV1Api.java
 src/main/java/com/hathora/client/api/LobbyV2Api.java
+src/main/java/com/hathora/client/api/LobbyV3Api.java
 src/main/java/com/hathora/client/api/LogV1Api.java
 src/main/java/com/hathora/client/api/ManagementV1Api.java
 src/main/java/com/hathora/client/api/MetricsV1Api.java
@@ -98,6 +104,7 @@ src/main/java/com/hathora/client/auth/HttpBearerAuth.java
 src/main/java/com/hathora/client/model/AbstractOpenApiSchema.java
 src/main/java/com/hathora/client/model/AchPaymentMethod.java
 src/main/java/com/hathora/client/model/ActiveConnectionInfo.java
+src/main/java/com/hathora/client/model/ApiError.java
 src/main/java/com/hathora/client/model/AppConfig.java
 src/main/java/com/hathora/client/model/Application.java
 src/main/java/com/hathora/client/model/ApplicationWithDeployment.java
@@ -111,10 +118,11 @@ src/main/java/com/hathora/client/model/CardPaymentMethod.java
 src/main/java/com/hathora/client/model/ConnectionInfo.java
 src/main/java/com/hathora/client/model/ConnectionInfoV2.java
 src/main/java/com/hathora/client/model/ContainerPort.java
-src/main/java/com/hathora/client/model/CreateBuildRequest.java
-src/main/java/com/hathora/client/model/CreateLobbyRequest.java
+src/main/java/com/hathora/client/model/CreateBuildParams.java
+src/main/java/com/hathora/client/model/CreateLobbyParams.java
+src/main/java/com/hathora/client/model/CreateLobbyV3Params.java
 src/main/java/com/hathora/client/model/CreatePrivateLobbyRequest.java
-src/main/java/com/hathora/client/model/CreateRoomRequest.java
+src/main/java/com/hathora/client/model/CreateRoomParams.java
 src/main/java/com/hathora/client/model/CustomerPortalUrl.java
 src/main/java/com/hathora/client/model/Deployment.java
 src/main/java/com/hathora/client/model/DeploymentConfig.java
@@ -124,6 +132,7 @@ src/main/java/com/hathora/client/model/ExposedPort.java
 src/main/java/com/hathora/client/model/Invoice.java
 src/main/java/com/hathora/client/model/LinkPaymentMethod.java
 src/main/java/com/hathora/client/model/Lobby.java
+src/main/java/com/hathora/client/model/LobbyV3.java
 src/main/java/com/hathora/client/model/LobbyVisibility.java
 src/main/java/com/hathora/client/model/LoginGoogleRequest.java
 src/main/java/com/hathora/client/model/LoginNicknameRequest.java
@@ -141,8 +150,9 @@ src/main/java/com/hathora/client/model/Region.java
 src/main/java/com/hathora/client/model/Room.java
 src/main/java/com/hathora/client/model/RoomAllocation.java
 src/main/java/com/hathora/client/model/RoomStatus.java
-src/main/java/com/hathora/client/model/SetLobbyStateRequest.java
+src/main/java/com/hathora/client/model/SetLobbyStateParams.java
 src/main/java/com/hathora/client/model/StartingConnectionInfo.java
 src/main/java/com/hathora/client/model/TransportType.java
+src/main/java/com/hathora/client/model/UpdateRoomConfigParams.java
 src/main/java/com/hathora/client/model/VerificationEmailRequest.java
 src/main/java/com/hathora/client/model/VerificationEmailResponse.java

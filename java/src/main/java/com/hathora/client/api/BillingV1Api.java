@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.ApiError;
 import com.hathora.client.model.CustomerPortalUrl;
 import com.hathora.client.model.Invoice;
 import com.hathora.client.model.PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod;

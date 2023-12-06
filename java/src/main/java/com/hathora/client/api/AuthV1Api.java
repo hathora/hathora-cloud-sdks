@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.ApiError;
 import com.hathora.client.model.LoginGoogleRequest;
 import com.hathora.client.model.LoginNicknameRequest;
 import com.hathora.client.model.LoginResponse;
