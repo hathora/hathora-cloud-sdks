@@ -13,7 +13,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createBuild"></a>
 # **createBuild**
-> Build createBuild(appId, createBuildRequest)
+> Build createBuild(appId, createBuildParams)
 
 
 
@@ -40,9 +40,9 @@ public class Example {
 
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    CreateBuildRequest createBuildRequest = new CreateBuildRequest(); // CreateBuildRequest | 
+    CreateBuildParams createBuildParams = new CreateBuildParams(); // CreateBuildParams | 
     try {
-      Build result = apiInstance.createBuild(appId, createBuildRequest);
+      Build result = apiInstance.createBuild(appId, createBuildParams);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BuildV1Api#createBuild");
@@ -60,7 +60,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **createBuildRequest** | [**CreateBuildRequest**](CreateBuildRequest.md)|  | |
+| **createBuildParams** | [**CreateBuildParams**](CreateBuildParams.md)|  | |
 
 ### Return type
 

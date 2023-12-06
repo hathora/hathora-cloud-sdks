@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.ApiError;
 import com.hathora.client.model.Process;
 import com.hathora.client.model.ProcessWithRooms;
 import com.hathora.client.model.Region;
@@ -154,7 +155,7 @@ public class ProcessesV1Api {
 
     /**
      * 
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @return Process
@@ -174,7 +175,7 @@ public class ProcessesV1Api {
 
     /**
      * 
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @return ApiResponse&lt;Process&gt;
@@ -195,7 +196,7 @@ public class ProcessesV1Api {
 
     /**
      *  (asynchronously)
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using &#x60;appId&#x60; and &#x60;processId&#x60;.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param appId  (required)
      * @param processId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -292,7 +293,7 @@ public class ProcessesV1Api {
 
     /**
      * 
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region  (optional)
      * @return List&lt;ProcessWithRooms&gt;
@@ -311,7 +312,7 @@ public class ProcessesV1Api {
 
     /**
      * 
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region  (optional)
      * @return ApiResponse&lt;List&lt;ProcessWithRooms&gt;&gt;
@@ -331,7 +332,7 @@ public class ProcessesV1Api {
 
     /**
      *  (asynchronously)
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -427,7 +428,7 @@ public class ProcessesV1Api {
 
     /**
      * 
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region  (optional)
      * @return List&lt;Process&gt;
@@ -446,7 +447,7 @@ public class ProcessesV1Api {
 
     /**
      * 
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region  (optional)
      * @return ApiResponse&lt;List&lt;Process&gt;&gt;
@@ -466,7 +467,7 @@ public class ProcessesV1Api {
 
     /**
      *  (asynchronously)
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;.
      * @param appId  (required)
      * @param region  (optional)
      * @param _callback The callback to be executed when the API call finishes

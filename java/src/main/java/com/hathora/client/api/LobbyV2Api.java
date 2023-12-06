@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.hathora.client.model.CreateLobbyRequest;
+import com.hathora.client.model.ApiError;
+import com.hathora.client.model.CreateLobbyParams;
 import com.hathora.client.model.CreatePrivateLobbyRequest;
 import com.hathora.client.model.Lobby;
 import com.hathora.client.model.Region;
-import com.hathora.client.model.SetLobbyStateRequest;
+import com.hathora.client.model.SetLobbyStateParams;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -78,10 +79,9 @@ public class LobbyV2Api {
     }
 
     /**
-     * Build call for createLobby
+     * Build call for createLobbyDeprecated
      * @param appId  (required)
-     * @param authorization  (required)
-     * @param createLobbyRequest  (required)
+     * @param createLobbyParams  (required)
      * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -97,8 +97,10 @@ public class LobbyV2Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createLobbyCall(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createLobbyDeprecatedCall(String appId, CreateLobbyParams createLobbyParams, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -112,7 +114,7 @@ public class LobbyV2Api {
             basePath = null;
         }
 
-        Object localVarPostBody = createLobbyRequest;
+        Object localVarPostBody = createLobbyParams;
 
         // create path and map variables
         String localVarPath = "/lobby/v2/{appId}/create"
@@ -126,10 +128,6 @@ public class LobbyV2Api {
 
         if (roomId != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("roomId", roomId));
-        }
-
-        if (authorization != null) {
-            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
         }
 
         final String[] localVarAccepts = {
@@ -148,37 +146,32 @@ public class LobbyV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "playerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLobbyValidateBeforeCall(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLobbyDeprecatedValidateBeforeCall(String appId, CreateLobbyParams createLobbyParams, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling createLobby(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling createLobbyDeprecated(Async)");
         }
 
-        // verify the required parameter 'authorization' is set
-        if (authorization == null) {
-            throw new ApiException("Missing the required parameter 'authorization' when calling createLobby(Async)");
+        // verify the required parameter 'createLobbyParams' is set
+        if (createLobbyParams == null) {
+            throw new ApiException("Missing the required parameter 'createLobbyParams' when calling createLobbyDeprecated(Async)");
         }
 
-        // verify the required parameter 'createLobbyRequest' is set
-        if (createLobbyRequest == null) {
-            throw new ApiException("Missing the required parameter 'createLobbyRequest' when calling createLobby(Async)");
-        }
-
-        return createLobbyCall(appId, authorization, createLobbyRequest, roomId, _callback);
+        return createLobbyDeprecatedCall(appId, createLobbyParams, roomId, _callback);
 
     }
 
     /**
      * 
-     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      * @param appId  (required)
-     * @param authorization  (required)
-     * @param createLobbyRequest  (required)
+     * @param createLobbyParams  (required)
      * @param roomId  (optional)
      * @return Lobby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -193,18 +186,19 @@ public class LobbyV2Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Lobby createLobby(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId) throws ApiException {
-        ApiResponse<Lobby> localVarResp = createLobbyWithHttpInfo(appId, authorization, createLobbyRequest, roomId);
+    @Deprecated
+    public Lobby createLobbyDeprecated(String appId, CreateLobbyParams createLobbyParams, String roomId) throws ApiException {
+        ApiResponse<Lobby> localVarResp = createLobbyDeprecatedWithHttpInfo(appId, createLobbyParams, roomId);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      * @param appId  (required)
-     * @param authorization  (required)
-     * @param createLobbyRequest  (required)
+     * @param createLobbyParams  (required)
      * @param roomId  (optional)
      * @return ApiResponse&lt;Lobby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -219,19 +213,20 @@ public class LobbyV2Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Lobby> createLobbyWithHttpInfo(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = createLobbyValidateBeforeCall(appId, authorization, createLobbyRequest, roomId, null);
+    @Deprecated
+    public ApiResponse<Lobby> createLobbyDeprecatedWithHttpInfo(String appId, CreateLobbyParams createLobbyParams, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createLobbyDeprecatedValidateBeforeCall(appId, createLobbyParams, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      * @param appId  (required)
-     * @param authorization  (required)
-     * @param createLobbyRequest  (required)
+     * @param createLobbyParams  (required)
      * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -247,10 +242,12 @@ public class LobbyV2Api {
         <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createLobbyAsync(String appId, String authorization, CreateLobbyRequest createLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createLobbyDeprecatedAsync(String appId, CreateLobbyParams createLobbyParams, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createLobbyValidateBeforeCall(appId, authorization, createLobbyRequest, roomId, _callback);
+        okhttp3.Call localVarCall = createLobbyDeprecatedValidateBeforeCall(appId, createLobbyParams, roomId, _callback);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -258,7 +255,6 @@ public class LobbyV2Api {
     /**
      * Build call for createLocalLobby
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
@@ -278,7 +274,7 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call createLocalLobbyCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createLocalLobbyCall(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -308,10 +304,6 @@ public class LobbyV2Api {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("roomId", roomId));
         }
 
-        if (authorization != null) {
-            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -328,21 +320,16 @@ public class LobbyV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "playerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLocalLobbyValidateBeforeCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLocalLobbyValidateBeforeCall(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling createLocalLobby(Async)");
-        }
-
-        // verify the required parameter 'authorization' is set
-        if (authorization == null) {
-            throw new ApiException("Missing the required parameter 'authorization' when calling createLocalLobby(Async)");
         }
 
         // verify the required parameter 'createPrivateLobbyRequest' is set
@@ -350,7 +337,7 @@ public class LobbyV2Api {
             throw new ApiException("Missing the required parameter 'createPrivateLobbyRequest' when calling createLocalLobby(Async)");
         }
 
-        return createLocalLobbyCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
+        return createLocalLobbyCall(appId, createPrivateLobbyRequest, roomId, _callback);
 
     }
 
@@ -358,7 +345,6 @@ public class LobbyV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @return Lobby
@@ -377,8 +363,8 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public Lobby createLocalLobby(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
-        ApiResponse<Lobby> localVarResp = createLocalLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
+    public Lobby createLocalLobby(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
+        ApiResponse<Lobby> localVarResp = createLocalLobbyWithHttpInfo(appId, createPrivateLobbyRequest, roomId);
         return localVarResp.getData();
     }
 
@@ -386,7 +372,6 @@ public class LobbyV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @return ApiResponse&lt;Lobby&gt;
@@ -405,8 +390,8 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<Lobby> createLocalLobbyWithHttpInfo(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = createLocalLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, null);
+    public ApiResponse<Lobby> createLocalLobbyWithHttpInfo(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createLocalLobbyValidateBeforeCall(appId, createPrivateLobbyRequest, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -415,7 +400,6 @@ public class LobbyV2Api {
      *  (asynchronously)
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -435,9 +419,9 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call createLocalLobbyAsync(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
+    public okhttp3.Call createLocalLobbyAsync(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createLocalLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
+        okhttp3.Call localVarCall = createLocalLobbyValidateBeforeCall(appId, createPrivateLobbyRequest, roomId, _callback);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -445,7 +429,6 @@ public class LobbyV2Api {
     /**
      * Build call for createPrivateLobby
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
@@ -465,7 +448,7 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call createPrivateLobbyCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createPrivateLobbyCall(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -495,10 +478,6 @@ public class LobbyV2Api {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("roomId", roomId));
         }
 
-        if (authorization != null) {
-            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -515,21 +494,16 @@ public class LobbyV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "playerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPrivateLobbyValidateBeforeCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPrivateLobbyValidateBeforeCall(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling createPrivateLobby(Async)");
-        }
-
-        // verify the required parameter 'authorization' is set
-        if (authorization == null) {
-            throw new ApiException("Missing the required parameter 'authorization' when calling createPrivateLobby(Async)");
         }
 
         // verify the required parameter 'createPrivateLobbyRequest' is set
@@ -537,7 +511,7 @@ public class LobbyV2Api {
             throw new ApiException("Missing the required parameter 'createPrivateLobbyRequest' when calling createPrivateLobby(Async)");
         }
 
-        return createPrivateLobbyCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
+        return createPrivateLobbyCall(appId, createPrivateLobbyRequest, roomId, _callback);
 
     }
 
@@ -545,7 +519,6 @@ public class LobbyV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @return Lobby
@@ -564,8 +537,8 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public Lobby createPrivateLobby(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
-        ApiResponse<Lobby> localVarResp = createPrivateLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
+    public Lobby createPrivateLobby(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
+        ApiResponse<Lobby> localVarResp = createPrivateLobbyWithHttpInfo(appId, createPrivateLobbyRequest, roomId);
         return localVarResp.getData();
     }
 
@@ -573,7 +546,6 @@ public class LobbyV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @return ApiResponse&lt;Lobby&gt;
@@ -592,8 +564,8 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<Lobby> createPrivateLobbyWithHttpInfo(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = createPrivateLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, null);
+    public ApiResponse<Lobby> createPrivateLobbyWithHttpInfo(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createPrivateLobbyValidateBeforeCall(appId, createPrivateLobbyRequest, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -602,7 +574,6 @@ public class LobbyV2Api {
      *  (asynchronously)
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -622,9 +593,9 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call createPrivateLobbyAsync(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
+    public okhttp3.Call createPrivateLobbyAsync(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPrivateLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
+        okhttp3.Call localVarCall = createPrivateLobbyValidateBeforeCall(appId, createPrivateLobbyRequest, roomId, _callback);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -632,7 +603,6 @@ public class LobbyV2Api {
     /**
      * Build call for createPublicLobby
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
@@ -652,7 +622,7 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call createPublicLobbyCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createPublicLobbyCall(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -682,10 +652,6 @@ public class LobbyV2Api {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("roomId", roomId));
         }
 
-        if (authorization != null) {
-            localVarHeaderParams.put("Authorization", localVarApiClient.parameterToString(authorization));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -702,21 +668,16 @@ public class LobbyV2Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "playerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPublicLobbyValidateBeforeCall(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPublicLobbyValidateBeforeCall(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling createPublicLobby(Async)");
-        }
-
-        // verify the required parameter 'authorization' is set
-        if (authorization == null) {
-            throw new ApiException("Missing the required parameter 'authorization' when calling createPublicLobby(Async)");
         }
 
         // verify the required parameter 'createPrivateLobbyRequest' is set
@@ -724,7 +685,7 @@ public class LobbyV2Api {
             throw new ApiException("Missing the required parameter 'createPrivateLobbyRequest' when calling createPublicLobby(Async)");
         }
 
-        return createPublicLobbyCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
+        return createPublicLobbyCall(appId, createPrivateLobbyRequest, roomId, _callback);
 
     }
 
@@ -732,7 +693,6 @@ public class LobbyV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @return Lobby
@@ -751,8 +711,8 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public Lobby createPublicLobby(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
-        ApiResponse<Lobby> localVarResp = createPublicLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
+    public Lobby createPublicLobby(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
+        ApiResponse<Lobby> localVarResp = createPublicLobbyWithHttpInfo(appId, createPrivateLobbyRequest, roomId);
         return localVarResp.getData();
     }
 
@@ -760,7 +720,6 @@ public class LobbyV2Api {
      * 
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @return ApiResponse&lt;Lobby&gt;
@@ -779,8 +738,8 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<Lobby> createPublicLobbyWithHttpInfo(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = createPublicLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, null);
+    public ApiResponse<Lobby> createPublicLobbyWithHttpInfo(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createPublicLobbyValidateBeforeCall(appId, createPrivateLobbyRequest, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -789,7 +748,6 @@ public class LobbyV2Api {
      *  (asynchronously)
      * 
      * @param appId  (required)
-     * @param authorization  (required)
      * @param createPrivateLobbyRequest  (required)
      * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -809,9 +767,9 @@ public class LobbyV2Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call createPublicLobbyAsync(String appId, String authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
+    public okhttp3.Call createPublicLobbyAsync(String appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPublicLobbyValidateBeforeCall(appId, authorization, createPrivateLobbyRequest, roomId, _callback);
+        okhttp3.Call localVarCall = createPublicLobbyValidateBeforeCall(appId, createPrivateLobbyRequest, roomId, _callback);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -829,7 +787,9 @@ public class LobbyV2Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLobbyInfoCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -876,6 +836,7 @@ public class LobbyV2Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLobbyInfoValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -894,7 +855,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Get details for a lobby.
      * @param appId  (required)
      * @param roomId  (required)
      * @return Lobby
@@ -905,7 +866,9 @@ public class LobbyV2Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public Lobby getLobbyInfo(String appId, String roomId) throws ApiException {
         ApiResponse<Lobby> localVarResp = getLobbyInfoWithHttpInfo(appId, roomId);
         return localVarResp.getData();
@@ -913,7 +876,7 @@ public class LobbyV2Api {
 
     /**
      * 
-     * Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Get details for a lobby.
      * @param appId  (required)
      * @param roomId  (required)
      * @return ApiResponse&lt;Lobby&gt;
@@ -924,7 +887,9 @@ public class LobbyV2Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<Lobby> getLobbyInfoWithHttpInfo(String appId, String roomId) throws ApiException {
         okhttp3.Call localVarCall = getLobbyInfoValidateBeforeCall(appId, roomId, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
@@ -933,7 +898,7 @@ public class LobbyV2Api {
 
     /**
      *  (asynchronously)
-     * Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+     * Get details for a lobby.
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -945,7 +910,9 @@ public class LobbyV2Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getLobbyInfoAsync(String appId, String roomId, final ApiCallback<Lobby> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLobbyInfoValidateBeforeCall(appId, roomId, _callback);
@@ -954,7 +921,7 @@ public class LobbyV2Api {
         return localVarCall;
     }
     /**
-     * Build call for listActivePublicLobbies
+     * Build call for listActivePublicLobbiesDeprecatedV2
      * @param appId  (required)
      * @param region Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)
      * @param _callback Callback for upload/download progress
@@ -965,8 +932,10 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call listActivePublicLobbiesCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call listActivePublicLobbiesDeprecatedV2Call(String appId, Region region, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1015,20 +984,21 @@ public class LobbyV2Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listActivePublicLobbiesValidateBeforeCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listActivePublicLobbiesDeprecatedV2ValidateBeforeCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling listActivePublicLobbies(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling listActivePublicLobbiesDeprecatedV2(Async)");
         }
 
-        return listActivePublicLobbiesCall(appId, region, _callback);
+        return listActivePublicLobbiesDeprecatedV2Call(appId, region, _callback);
 
     }
 
     /**
      * 
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
      * @param appId  (required)
      * @param region Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)
      * @return List&lt;Lobby&gt;
@@ -1038,15 +1008,17 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public List<Lobby> listActivePublicLobbies(String appId, Region region) throws ApiException {
-        ApiResponse<List<Lobby>> localVarResp = listActivePublicLobbiesWithHttpInfo(appId, region);
+    @Deprecated
+    public List<Lobby> listActivePublicLobbiesDeprecatedV2(String appId, Region region) throws ApiException {
+        ApiResponse<List<Lobby>> localVarResp = listActivePublicLobbiesDeprecatedV2WithHttpInfo(appId, region);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
      * @param appId  (required)
      * @param region Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)
      * @return ApiResponse&lt;List&lt;Lobby&gt;&gt;
@@ -1056,16 +1028,18 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<List<Lobby>> listActivePublicLobbiesWithHttpInfo(String appId, Region region) throws ApiException {
-        okhttp3.Call localVarCall = listActivePublicLobbiesValidateBeforeCall(appId, region, null);
+    @Deprecated
+    public ApiResponse<List<Lobby>> listActivePublicLobbiesDeprecatedV2WithHttpInfo(String appId, Region region) throws ApiException {
+        okhttp3.Call localVarCall = listActivePublicLobbiesDeprecatedV2ValidateBeforeCall(appId, region, null);
         Type localVarReturnType = new TypeToken<List<Lobby>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
      * @param appId  (required)
      * @param region Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1076,10 +1050,12 @@ public class LobbyV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call listActivePublicLobbiesAsync(String appId, Region region, final ApiCallback<List<Lobby>> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call listActivePublicLobbiesDeprecatedV2Async(String appId, Region region, final ApiCallback<List<Lobby>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listActivePublicLobbiesValidateBeforeCall(appId, region, _callback);
+        okhttp3.Call localVarCall = listActivePublicLobbiesDeprecatedV2ValidateBeforeCall(appId, region, _callback);
         Type localVarReturnType = new TypeToken<List<Lobby>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1088,7 +1064,7 @@ public class LobbyV2Api {
      * Build call for setLobbyState
      * @param appId  (required)
      * @param roomId  (required)
-     * @param setLobbyStateRequest  (required)
+     * @param setLobbyStateParams  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1099,8 +1075,10 @@ public class LobbyV2Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call setLobbyStateCall(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call setLobbyStateCall(String appId, String roomId, SetLobbyStateParams setLobbyStateParams, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1114,7 +1092,7 @@ public class LobbyV2Api {
             basePath = null;
         }
 
-        Object localVarPostBody = setLobbyStateRequest;
+        Object localVarPostBody = setLobbyStateParams;
 
         // create path and map variables
         String localVarPath = "/lobby/v2/{appId}/setState/{roomId}"
@@ -1147,8 +1125,9 @@ public class LobbyV2Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setLobbyStateValidateBeforeCall(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setLobbyStateValidateBeforeCall(String appId, String roomId, SetLobbyStateParams setLobbyStateParams, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling setLobbyState(Async)");
@@ -1159,21 +1138,21 @@ public class LobbyV2Api {
             throw new ApiException("Missing the required parameter 'roomId' when calling setLobbyState(Async)");
         }
 
-        // verify the required parameter 'setLobbyStateRequest' is set
-        if (setLobbyStateRequest == null) {
-            throw new ApiException("Missing the required parameter 'setLobbyStateRequest' when calling setLobbyState(Async)");
+        // verify the required parameter 'setLobbyStateParams' is set
+        if (setLobbyStateParams == null) {
+            throw new ApiException("Missing the required parameter 'setLobbyStateParams' when calling setLobbyState(Async)");
         }
 
-        return setLobbyStateCall(appId, roomId, setLobbyStateRequest, _callback);
+        return setLobbyStateCall(appId, roomId, setLobbyStateParams, _callback);
 
     }
 
     /**
      * 
-     * Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      * @param appId  (required)
      * @param roomId  (required)
-     * @param setLobbyStateRequest  (required)
+     * @param setLobbyStateParams  (required)
      * @return Lobby
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1183,18 +1162,20 @@ public class LobbyV2Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Lobby setLobbyState(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest) throws ApiException {
-        ApiResponse<Lobby> localVarResp = setLobbyStateWithHttpInfo(appId, roomId, setLobbyStateRequest);
+    @Deprecated
+    public Lobby setLobbyState(String appId, String roomId, SetLobbyStateParams setLobbyStateParams) throws ApiException {
+        ApiResponse<Lobby> localVarResp = setLobbyStateWithHttpInfo(appId, roomId, setLobbyStateParams);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      * @param appId  (required)
      * @param roomId  (required)
-     * @param setLobbyStateRequest  (required)
+     * @param setLobbyStateParams  (required)
      * @return ApiResponse&lt;Lobby&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1204,19 +1185,21 @@ public class LobbyV2Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Lobby> setLobbyStateWithHttpInfo(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest) throws ApiException {
-        okhttp3.Call localVarCall = setLobbyStateValidateBeforeCall(appId, roomId, setLobbyStateRequest, null);
+    @Deprecated
+    public ApiResponse<Lobby> setLobbyStateWithHttpInfo(String appId, String roomId, SetLobbyStateParams setLobbyStateParams) throws ApiException {
+        okhttp3.Call localVarCall = setLobbyStateValidateBeforeCall(appId, roomId, setLobbyStateParams, null);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      * @param appId  (required)
      * @param roomId  (required)
-     * @param setLobbyStateRequest  (required)
+     * @param setLobbyStateParams  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1227,10 +1210,12 @@ public class LobbyV2Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call setLobbyStateAsync(String appId, String roomId, SetLobbyStateRequest setLobbyStateRequest, final ApiCallback<Lobby> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call setLobbyStateAsync(String appId, String roomId, SetLobbyStateParams setLobbyStateParams, final ApiCallback<Lobby> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setLobbyStateValidateBeforeCall(appId, roomId, setLobbyStateRequest, _callback);
+        okhttp3.Call localVarCall = setLobbyStateValidateBeforeCall(appId, roomId, setLobbyStateParams, _callback);
         Type localVarReturnType = new TypeToken<Lobby>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -9,7 +9,7 @@ Connection details for an active process.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**transportType** | **TransportType** |  |  |
-|**port** | **Double** |  |  |
+|**port** | **Integer** |  |  |
 |**host** | **String** |  |  |
 |**name** | **String** |  |  |
 

@@ -7,6 +7,8 @@
 
 * `SEATTLE` (value: `"Seattle"`)
 
+* `LOS_ANGELES` (value: `"Los_Angeles"`)
+
 * `WASHINGTON_DC` (value: `"Washington_DC"`)
 
 * `CHICAGO` (value: `"Chicago"`)

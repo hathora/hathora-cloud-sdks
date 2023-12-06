@@ -27,10 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.ApiError;
 import com.hathora.client.model.ConnectionInfoV2;
-import com.hathora.client.model.CreateRoomRequest;
+import com.hathora.client.model.CreateRoomParams;
 import com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations;
 import com.hathora.client.model.Room;
+import com.hathora.client.model.UpdateRoomConfigParams;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -79,7 +81,7 @@ public class RoomV2Api {
     /**
      * Build call for createRoom
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomParams  (required)
      * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -95,7 +97,7 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createRoomCall(String appId, CreateRoomParams createRoomParams, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -109,7 +111,7 @@ public class RoomV2Api {
             basePath = null;
         }
 
-        Object localVarPostBody = createRoomRequest;
+        Object localVarPostBody = createRoomParams;
 
         // create path and map variables
         String localVarPath = "/rooms/v2/{appId}/create"
@@ -146,18 +148,18 @@ public class RoomV2Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createRoomValidateBeforeCall(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRoomValidateBeforeCall(String appId, CreateRoomParams createRoomParams, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling createRoom(Async)");
         }
 
-        // verify the required parameter 'createRoomRequest' is set
-        if (createRoomRequest == null) {
-            throw new ApiException("Missing the required parameter 'createRoomRequest' when calling createRoom(Async)");
+        // verify the required parameter 'createRoomParams' is set
+        if (createRoomParams == null) {
+            throw new ApiException("Missing the required parameter 'createRoomParams' when calling createRoom(Async)");
         }
 
-        return createRoomCall(appId, createRoomRequest, roomId, _callback);
+        return createRoomCall(appId, createRoomParams, roomId, _callback);
 
     }
 
@@ -165,7 +167,7 @@ public class RoomV2Api {
      * 
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomParams  (required)
      * @param roomId  (optional)
      * @return ConnectionInfoV2
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -180,8 +182,8 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectionInfoV2 createRoom(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
-        ApiResponse<ConnectionInfoV2> localVarResp = createRoomWithHttpInfo(appId, createRoomRequest, roomId);
+    public ConnectionInfoV2 createRoom(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
+        ApiResponse<ConnectionInfoV2> localVarResp = createRoomWithHttpInfo(appId, createRoomParams, roomId);
         return localVarResp.getData();
     }
 
@@ -189,7 +191,7 @@ public class RoomV2Api {
      * 
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomParams  (required)
      * @param roomId  (optional)
      * @return ApiResponse&lt;ConnectionInfoV2&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -204,8 +206,8 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectionInfoV2> createRoomWithHttpInfo(String appId, CreateRoomRequest createRoomRequest, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, null);
+    public ApiResponse<ConnectionInfoV2> createRoomWithHttpInfo(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomParams, roomId, null);
         Type localVarReturnType = new TypeToken<ConnectionInfoV2>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -214,7 +216,7 @@ public class RoomV2Api {
      *  (asynchronously)
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [&#x60;GetConnectionInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      * @param appId  (required)
-     * @param createRoomRequest  (required)
+     * @param createRoomParams  (required)
      * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -230,9 +232,9 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomAsync(String appId, CreateRoomRequest createRoomRequest, String roomId, final ApiCallback<ConnectionInfoV2> _callback) throws ApiException {
+    public okhttp3.Call createRoomAsync(String appId, CreateRoomParams createRoomParams, String roomId, final ApiCallback<ConnectionInfoV2> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomRequest, roomId, _callback);
+        okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomParams, roomId, _callback);
         Type localVarReturnType = new TypeToken<ConnectionInfoV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1064,6 +1066,153 @@ public class RoomV2Api {
     public okhttp3.Call suspendRoomAsync(String appId, String roomId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = suspendRoomValidateBeforeCall(appId, roomId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for updateRoomConfig
+     * @param appId  (required)
+     * @param roomId  (required)
+     * @param updateRoomConfigParams  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateRoomConfigCall(String appId, String roomId, UpdateRoomConfigParams updateRoomConfigParams, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateRoomConfigParams;
+
+        // create path and map variables
+        String localVarPath = "/rooms/v2/{appId}/update/{roomId}"
+            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()))
+            .replace("{" + "roomId" + "}", localVarApiClient.escapeString(roomId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateRoomConfigValidateBeforeCall(String appId, String roomId, UpdateRoomConfigParams updateRoomConfigParams, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling updateRoomConfig(Async)");
+        }
+
+        // verify the required parameter 'roomId' is set
+        if (roomId == null) {
+            throw new ApiException("Missing the required parameter 'roomId' when calling updateRoomConfig(Async)");
+        }
+
+        // verify the required parameter 'updateRoomConfigParams' is set
+        if (updateRoomConfigParams == null) {
+            throw new ApiException("Missing the required parameter 'updateRoomConfigParams' when calling updateRoomConfig(Async)");
+        }
+
+        return updateRoomConfigCall(appId, roomId, updateRoomConfigParams, _callback);
+
+    }
+
+    /**
+     * 
+     * 
+     * @param appId  (required)
+     * @param roomId  (required)
+     * @param updateRoomConfigParams  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public void updateRoomConfig(String appId, String roomId, UpdateRoomConfigParams updateRoomConfigParams) throws ApiException {
+        updateRoomConfigWithHttpInfo(appId, roomId, updateRoomConfigParams);
+    }
+
+    /**
+     * 
+     * 
+     * @param appId  (required)
+     * @param roomId  (required)
+     * @param updateRoomConfigParams  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> updateRoomConfigWithHttpInfo(String appId, String roomId, UpdateRoomConfigParams updateRoomConfigParams) throws ApiException {
+        okhttp3.Call localVarCall = updateRoomConfigValidateBeforeCall(appId, roomId, updateRoomConfigParams, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param appId  (required)
+     * @param roomId  (required)
+     * @param updateRoomConfigParams  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call updateRoomConfigAsync(String appId, String roomId, UpdateRoomConfigParams updateRoomConfigParams, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateRoomConfigValidateBeforeCall(appId, roomId, updateRoomConfigParams, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

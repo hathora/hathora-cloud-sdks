@@ -28,9 +28,9 @@ import java.io.IOException;
 
 
 import com.hathora.client.model.ApiError;
-import com.hathora.client.model.Build;
-import com.hathora.client.model.CreateBuildParams;
-import java.io.File;
+import com.hathora.client.model.CreateLobbyV3Params;
+import com.hathora.client.model.LobbyV3;
+import com.hathora.client.model.Region;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -39,16 +39,16 @@ import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
 
-public class BuildV1Api {
+public class LobbyV3Api {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public BuildV1Api() {
+    public LobbyV3Api() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public BuildV1Api(ApiClient apiClient) {
+    public LobbyV3Api(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -77,9 +77,11 @@ public class BuildV1Api {
     }
 
     /**
-     * Build call for createBuild
+     * Build call for createLobby
      * @param appId  (required)
-     * @param createBuildParams  (required)
+     * @param createLobbyV3Params  (required)
+     * @param shortCode  (optional)
+     * @param roomId  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,11 +89,15 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBuildCall(String appId, CreateBuildParams createBuildParams, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createLobbyCall(String appId, CreateLobbyV3Params createLobbyV3Params, String shortCode, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -105,10 +111,10 @@ public class BuildV1Api {
             basePath = null;
         }
 
-        Object localVarPostBody = createBuildParams;
+        Object localVarPostBody = createLobbyV3Params;
 
         // create path and map variables
-        String localVarPath = "/builds/v1/{appId}/create"
+        String localVarPath = "/lobby/v3/{appId}/create"
             .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -117,6 +123,14 @@ public class BuildV1Api {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (shortCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("shortCode", shortCode));
+        }
+
+        if (roomId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("roomId", roomId));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -133,72 +147,86 @@ public class BuildV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
+        String[] localVarAuthNames = new String[] { "playerAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createBuildValidateBeforeCall(String appId, CreateBuildParams createBuildParams, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLobbyValidateBeforeCall(String appId, CreateLobbyV3Params createLobbyV3Params, String shortCode, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling createBuild(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling createLobby(Async)");
         }
 
-        // verify the required parameter 'createBuildParams' is set
-        if (createBuildParams == null) {
-            throw new ApiException("Missing the required parameter 'createBuildParams' when calling createBuild(Async)");
+        // verify the required parameter 'createLobbyV3Params' is set
+        if (createLobbyV3Params == null) {
+            throw new ApiException("Missing the required parameter 'createLobbyV3Params' when calling createLobby(Async)");
         }
 
-        return createBuildCall(appId, createBuildParams, _callback);
+        return createLobbyCall(appId, createLobbyV3Params, shortCode, roomId, _callback);
 
     }
 
     /**
      * 
-     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a &#x60;buildId&#x60; that you must pass to [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a &#x60;buildTag&#x60; to associate an external version with a build.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      * @param appId  (required)
-     * @param createBuildParams  (required)
-     * @return Build
+     * @param createLobbyV3Params  (required)
+     * @param shortCode  (optional)
+     * @param roomId  (optional)
+     * @return LobbyV3
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Build createBuild(String appId, CreateBuildParams createBuildParams) throws ApiException {
-        ApiResponse<Build> localVarResp = createBuildWithHttpInfo(appId, createBuildParams);
+    public LobbyV3 createLobby(String appId, CreateLobbyV3Params createLobbyV3Params, String shortCode, String roomId) throws ApiException {
+        ApiResponse<LobbyV3> localVarResp = createLobbyWithHttpInfo(appId, createLobbyV3Params, shortCode, roomId);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a &#x60;buildId&#x60; that you must pass to [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a &#x60;buildTag&#x60; to associate an external version with a build.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      * @param appId  (required)
-     * @param createBuildParams  (required)
-     * @return ApiResponse&lt;Build&gt;
+     * @param createLobbyV3Params  (required)
+     * @param shortCode  (optional)
+     * @param roomId  (optional)
+     * @return ApiResponse&lt;LobbyV3&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Build> createBuildWithHttpInfo(String appId, CreateBuildParams createBuildParams) throws ApiException {
-        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, createBuildParams, null);
-        Type localVarReturnType = new TypeToken<Build>(){}.getType();
+    public ApiResponse<LobbyV3> createLobbyWithHttpInfo(String appId, CreateLobbyV3Params createLobbyV3Params, String shortCode, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = createLobbyValidateBeforeCall(appId, createLobbyV3Params, shortCode, roomId, null);
+        Type localVarReturnType = new TypeToken<LobbyV3>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a &#x60;buildId&#x60; that you must pass to [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a &#x60;buildTag&#x60; to associate an external version with a build.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      * @param appId  (required)
-     * @param createBuildParams  (required)
+     * @param createLobbyV3Params  (required)
+     * @param shortCode  (optional)
+     * @param roomId  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -206,162 +234,25 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createBuildAsync(String appId, CreateBuildParams createBuildParams, final ApiCallback<Build> _callback) throws ApiException {
+    public okhttp3.Call createLobbyAsync(String appId, CreateLobbyV3Params createLobbyV3Params, String shortCode, String roomId, final ApiCallback<LobbyV3> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, createBuildParams, _callback);
-        Type localVarReturnType = new TypeToken<Build>(){}.getType();
+        okhttp3.Call localVarCall = createLobbyValidateBeforeCall(appId, createLobbyV3Params, shortCode, roomId, _callback);
+        Type localVarReturnType = new TypeToken<LobbyV3>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteBuild
+     * Build call for getLobbyInfoByRoomId
      * @param appId  (required)
-     * @param buildId  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteBuildCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/builds/v1/{appId}/delete/{buildId}"
-            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()))
-            .replace("{" + "buildId" + "}", localVarApiClient.escapeString(buildId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteBuildValidateBeforeCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling deleteBuild(Async)");
-        }
-
-        // verify the required parameter 'buildId' is set
-        if (buildId == null) {
-            throw new ApiException("Missing the required parameter 'buildId' when calling deleteBuild(Async)");
-        }
-
-        return deleteBuildCall(appId, buildId, _callback);
-
-    }
-
-    /**
-     * 
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
-     * @param appId  (required)
-     * @param buildId  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteBuild(String appId, Integer buildId) throws ApiException {
-        deleteBuildWithHttpInfo(appId, buildId);
-    }
-
-    /**
-     * 
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
-     * @param appId  (required)
-     * @param buildId  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteBuildWithHttpInfo(String appId, Integer buildId) throws ApiException {
-        okhttp3.Call localVarCall = deleteBuildValidateBeforeCall(appId, buildId, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     *  (asynchronously)
-     * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
-     * @param appId  (required)
-     * @param buildId  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteBuildAsync(String appId, Integer buildId, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteBuildValidateBeforeCall(appId, buildId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getBuildInfo
-     * @param appId  (required)
-     * @param buildId  (required)
+     * @param roomId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -372,7 +263,7 @@ public class BuildV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBuildInfoCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLobbyInfoByRoomIdCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -389,9 +280,9 @@ public class BuildV1Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/builds/v1/{appId}/info/{buildId}"
+        String localVarPath = "/lobby/v3/{appId}/info/roomid/{roomId}"
             .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()))
-            .replace("{" + "buildId" + "}", localVarApiClient.escapeString(buildId.toString()));
+            .replace("{" + "roomId" + "}", localVarApiClient.escapeString(roomId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -414,32 +305,32 @@ public class BuildV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBuildInfoValidateBeforeCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLobbyInfoByRoomIdValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getBuildInfo(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getLobbyInfoByRoomId(Async)");
         }
 
-        // verify the required parameter 'buildId' is set
-        if (buildId == null) {
-            throw new ApiException("Missing the required parameter 'buildId' when calling getBuildInfo(Async)");
+        // verify the required parameter 'roomId' is set
+        if (roomId == null) {
+            throw new ApiException("Missing the required parameter 'roomId' when calling getLobbyInfoByRoomId(Async)");
         }
 
-        return getBuildInfoCall(appId, buildId, _callback);
+        return getLobbyInfoByRoomIdCall(appId, roomId, _callback);
 
     }
 
     /**
      * 
-     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Get details for a lobby.
      * @param appId  (required)
-     * @param buildId  (required)
-     * @return Build
+     * @param roomId  (required)
+     * @return LobbyV3
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -448,17 +339,17 @@ public class BuildV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Build getBuildInfo(String appId, Integer buildId) throws ApiException {
-        ApiResponse<Build> localVarResp = getBuildInfoWithHttpInfo(appId, buildId);
+    public LobbyV3 getLobbyInfoByRoomId(String appId, String roomId) throws ApiException {
+        ApiResponse<LobbyV3> localVarResp = getLobbyInfoByRoomIdWithHttpInfo(appId, roomId);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Get details for a lobby.
      * @param appId  (required)
-     * @param buildId  (required)
-     * @return ApiResponse&lt;Build&gt;
+     * @param roomId  (required)
+     * @return ApiResponse&lt;LobbyV3&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -467,17 +358,17 @@ public class BuildV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Build> getBuildInfoWithHttpInfo(String appId, Integer buildId) throws ApiException {
-        okhttp3.Call localVarCall = getBuildInfoValidateBeforeCall(appId, buildId, null);
-        Type localVarReturnType = new TypeToken<Build>(){}.getType();
+    public ApiResponse<LobbyV3> getLobbyInfoByRoomIdWithHttpInfo(String appId, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = getLobbyInfoByRoomIdValidateBeforeCall(appId, roomId, null);
+        Type localVarReturnType = new TypeToken<LobbyV3>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
+     * Get details for a lobby.
      * @param appId  (required)
-     * @param buildId  (required)
+     * @param roomId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -488,16 +379,17 @@ public class BuildV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBuildInfoAsync(String appId, Integer buildId, final ApiCallback<Build> _callback) throws ApiException {
+    public okhttp3.Call getLobbyInfoByRoomIdAsync(String appId, String roomId, final ApiCallback<LobbyV3> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBuildInfoValidateBeforeCall(appId, buildId, _callback);
-        Type localVarReturnType = new TypeToken<Build>(){}.getType();
+        okhttp3.Call localVarCall = getLobbyInfoByRoomIdValidateBeforeCall(appId, roomId, _callback);
+        Type localVarReturnType = new TypeToken<LobbyV3>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getBuilds
+     * Build call for getLobbyInfoByShortCode
      * @param appId  (required)
+     * @param shortCode  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -508,7 +400,7 @@ public class BuildV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBuildsCall(String appId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLobbyInfoByShortCodeCall(String appId, String shortCode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -525,7 +417,143 @@ public class BuildV1Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/builds/v1/{appId}/list"
+        String localVarPath = "/lobby/v3/{appId}/info/shortcode/{shortCode}"
+            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()))
+            .replace("{" + "shortCode" + "}", localVarApiClient.escapeString(shortCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLobbyInfoByShortCodeValidateBeforeCall(String appId, String shortCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling getLobbyInfoByShortCode(Async)");
+        }
+
+        // verify the required parameter 'shortCode' is set
+        if (shortCode == null) {
+            throw new ApiException("Missing the required parameter 'shortCode' when calling getLobbyInfoByShortCode(Async)");
+        }
+
+        return getLobbyInfoByShortCodeCall(appId, shortCode, _callback);
+
+    }
+
+    /**
+     * 
+     * Get details for a lobby. If 2 or more lobbies have the same &#x60;shortCode&#x60;, then the most recently created lobby will be returned.
+     * @param appId  (required)
+     * @param shortCode  (required)
+     * @return LobbyV3
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public LobbyV3 getLobbyInfoByShortCode(String appId, String shortCode) throws ApiException {
+        ApiResponse<LobbyV3> localVarResp = getLobbyInfoByShortCodeWithHttpInfo(appId, shortCode);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get details for a lobby. If 2 or more lobbies have the same &#x60;shortCode&#x60;, then the most recently created lobby will be returned.
+     * @param appId  (required)
+     * @param shortCode  (required)
+     * @return ApiResponse&lt;LobbyV3&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LobbyV3> getLobbyInfoByShortCodeWithHttpInfo(String appId, String shortCode) throws ApiException {
+        okhttp3.Call localVarCall = getLobbyInfoByShortCodeValidateBeforeCall(appId, shortCode, null);
+        Type localVarReturnType = new TypeToken<LobbyV3>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get details for a lobby. If 2 or more lobbies have the same &#x60;shortCode&#x60;, then the most recently created lobby will be returned.
+     * @param appId  (required)
+     * @param shortCode  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getLobbyInfoByShortCodeAsync(String appId, String shortCode, final ApiCallback<LobbyV3> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLobbyInfoByShortCodeValidateBeforeCall(appId, shortCode, _callback);
+        Type localVarReturnType = new TypeToken<LobbyV3>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listActivePublicLobbies
+     * @param appId  (required)
+     * @param region If omitted, active public lobbies in all regions will be returned. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listActivePublicLobbiesCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/lobby/v3/{appId}/list/public"
             .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -534,6 +562,10 @@ public class BuildV1Api {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (region != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("region", region));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -549,62 +581,63 @@ public class BuildV1Api {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
+        String[] localVarAuthNames = new String[] {  };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBuildsValidateBeforeCall(String appId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listActivePublicLobbiesValidateBeforeCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getBuilds(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling listActivePublicLobbies(Async)");
         }
 
-        return getBuildsCall(appId, _callback);
+        return listActivePublicLobbiesCall(appId, region, _callback);
 
     }
 
     /**
      * 
-     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
      * @param appId  (required)
-     * @return List&lt;Build&gt;
+     * @param region If omitted, active public lobbies in all regions will be returned. (optional)
+     * @return List&lt;LobbyV3&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public List<Build> getBuilds(String appId) throws ApiException {
-        ApiResponse<List<Build>> localVarResp = getBuildsWithHttpInfo(appId);
+    public List<LobbyV3> listActivePublicLobbies(String appId, Region region) throws ApiException {
+        ApiResponse<List<LobbyV3>> localVarResp = listActivePublicLobbiesWithHttpInfo(appId, region);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
      * @param appId  (required)
-     * @return ApiResponse&lt;List&lt;Build&gt;&gt;
+     * @param region If omitted, active public lobbies in all regions will be returned. (optional)
+     * @return ApiResponse&lt;List&lt;LobbyV3&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Build>> getBuildsWithHttpInfo(String appId) throws ApiException {
-        okhttp3.Call localVarCall = getBuildsValidateBeforeCall(appId, null);
-        Type localVarReturnType = new TypeToken<List<Build>>(){}.getType();
+    public ApiResponse<List<LobbyV3>> listActivePublicLobbiesWithHttpInfo(String appId, Region region) throws ApiException {
+        okhttp3.Call localVarCall = listActivePublicLobbiesValidateBeforeCall(appId, region, null);
+        Type localVarReturnType = new TypeToken<List<LobbyV3>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
      * @param appId  (required)
+     * @param region If omitted, active public lobbies in all regions will be returned. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -612,169 +645,12 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBuildsAsync(String appId, final ApiCallback<List<Build>> _callback) throws ApiException {
+    public okhttp3.Call listActivePublicLobbiesAsync(String appId, Region region, final ApiCallback<List<LobbyV3>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBuildsValidateBeforeCall(appId, _callback);
-        Type localVarReturnType = new TypeToken<List<Build>>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for runBuild
-     * @param appId  (required)
-     * @param buildId  (required)
-     * @param _file  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call runBuildCall(String appId, Integer buildId, File _file, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/builds/v1/{appId}/run/{buildId}"
-            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()))
-            .replace("{" + "buildId" + "}", localVarApiClient.escapeString(buildId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (_file != null) {
-            localVarFormParams.put("file", _file);
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "multipart/form-data"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call runBuildValidateBeforeCall(String appId, Integer buildId, File _file, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling runBuild(Async)");
-        }
-
-        // verify the required parameter 'buildId' is set
-        if (buildId == null) {
-            throw new ApiException("Missing the required parameter 'buildId' when calling runBuild(Async)");
-        }
-
-        // verify the required parameter '_file' is set
-        if (_file == null) {
-            throw new ApiException("Missing the required parameter '_file' when calling runBuild(Async)");
-        }
-
-        return runBuildCall(appId, buildId, _file, _callback);
-
-    }
-
-    /**
-     * 
-     * Builds a game server artifact from a tarball you provide. Pass in the &#x60;buildId&#x60; generated from [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
-     * @param appId  (required)
-     * @param buildId  (required)
-     * @param _file  (required)
-     * @return byte[]
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public byte[] runBuild(String appId, Integer buildId, File _file) throws ApiException {
-        ApiResponse<byte[]> localVarResp = runBuildWithHttpInfo(appId, buildId, _file);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Builds a game server artifact from a tarball you provide. Pass in the &#x60;buildId&#x60; generated from [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
-     * @param appId  (required)
-     * @param buildId  (required)
-     * @param _file  (required)
-     * @return ApiResponse&lt;byte[]&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<byte[]> runBuildWithHttpInfo(String appId, Integer buildId, File _file) throws ApiException {
-        okhttp3.Call localVarCall = runBuildValidateBeforeCall(appId, buildId, _file, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Builds a game server artifact from a tarball you provide. Pass in the &#x60;buildId&#x60; generated from [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
-     * @param appId  (required)
-     * @param buildId  (required)
-     * @param _file  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call runBuildAsync(String appId, Integer buildId, File _file, final ApiCallback<byte[]> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = runBuildValidateBeforeCall(appId, buildId, _file, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        okhttp3.Call localVarCall = listActivePublicLobbiesValidateBeforeCall(appId, region, _callback);
+        Type localVarReturnType = new TypeToken<List<LobbyV3>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

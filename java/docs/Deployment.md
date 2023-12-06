@@ -17,7 +17,7 @@ Deployment is a versioned configuration for a build that describes runtime behav
 |**containerPort** | **Double** |  |  |
 |**createdAt** | **OffsetDateTime** | When the deployment was created. |  |
 |**createdBy** | **String** | Email address for the user that created the deployment. |  |
-|**requestedMemoryMB** | **Double** | The amount of memory allocated to your process. |  |
+|**requestedMemoryMB** | **Integer** | The amount of memory allocated to your process. |  |
 |**requestedCPU** | **Double** | The number of cores allocated to your process. |  |
 |**deploymentId** | **Integer** | System generated id for a deployment. Increments by 1. |  |
 |**buildId** | **Integer** | System generated id for a build. Increments by 1. |  |

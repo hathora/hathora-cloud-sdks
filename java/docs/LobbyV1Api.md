@@ -6,12 +6,12 @@ All URIs are relative to *https://api.hathora.dev*
 |------------- | ------------- | -------------|
 | [**createPrivateLobbyDeprecated**](LobbyV1Api.md#createPrivateLobbyDeprecated) | **POST** /lobby/v1/{appId}/create/private |  |
 | [**createPublicLobbyDeprecated**](LobbyV1Api.md#createPublicLobbyDeprecated) | **POST** /lobby/v1/{appId}/create/public |  |
-| [**listActivePublicLobbiesDeprecated**](LobbyV1Api.md#listActivePublicLobbiesDeprecated) | **GET** /lobby/v1/{appId}/list |  |
+| [**listActivePublicLobbiesDeprecatedV1**](LobbyV1Api.md#listActivePublicLobbiesDeprecatedV1) | **GET** /lobby/v1/{appId}/list |  |
 
 
 <a name="createPrivateLobbyDeprecated"></a>
 # **createPrivateLobbyDeprecated**
-> String createPrivateLobbyDeprecated(appId, authorization, region, local)
+> String createPrivateLobbyDeprecated(appId, region, local)
 
 
 
@@ -21,6 +21,7 @@ All URIs are relative to *https://api.hathora.dev*
 import com.hathora.client.ApiClient;
 import com.hathora.client.ApiException;
 import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
 import com.hathora.client.models.*;
 import com.hathora.client.api.LobbyV1Api;
 
@@ -28,14 +29,17 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: playerAuth
+    HttpBearerAuth playerAuth = (HttpBearerAuth) defaultClient.getAuthentication("playerAuth");
+    playerAuth.setBearerToken("BEARER TOKEN");
 
     LobbyV1Api apiInstance = new LobbyV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    String authorization = "authorization_example"; // String | 
     Region region = Region.fromValue("Seattle"); // Region | 
     Boolean local = false; // Boolean | 
     try {
-      String result = apiInstance.createPrivateLobbyDeprecated(appId, authorization, region, local);
+      String result = apiInstance.createPrivateLobbyDeprecated(appId, region, local);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LobbyV1Api#createPrivateLobbyDeprecated");
@@ -53,8 +57,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **authorization** | **String**|  | |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
 | **local** | **Boolean**|  | [optional] [default to false] |
 
 ### Return type
@@ -63,7 +66,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[playerAuth](../README.md#playerAuth)
 
 ### HTTP request headers
 
@@ -83,7 +86,7 @@ No authorization required
 
 <a name="createPublicLobbyDeprecated"></a>
 # **createPublicLobbyDeprecated**
-> String createPublicLobbyDeprecated(appId, authorization, region, local)
+> String createPublicLobbyDeprecated(appId, region, local)
 
 
 
@@ -93,6 +96,7 @@ No authorization required
 import com.hathora.client.ApiClient;
 import com.hathora.client.ApiException;
 import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
 import com.hathora.client.models.*;
 import com.hathora.client.api.LobbyV1Api;
 
@@ -100,14 +104,17 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: playerAuth
+    HttpBearerAuth playerAuth = (HttpBearerAuth) defaultClient.getAuthentication("playerAuth");
+    playerAuth.setBearerToken("BEARER TOKEN");
 
     LobbyV1Api apiInstance = new LobbyV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    String authorization = "authorization_example"; // String | 
     Region region = Region.fromValue("Seattle"); // Region | 
     Boolean local = false; // Boolean | 
     try {
-      String result = apiInstance.createPublicLobbyDeprecated(appId, authorization, region, local);
+      String result = apiInstance.createPublicLobbyDeprecated(appId, region, local);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LobbyV1Api#createPublicLobbyDeprecated");
@@ -125,8 +132,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **authorization** | **String**|  | |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
 | **local** | **Boolean**|  | [optional] [default to false] |
 
 ### Return type
@@ -135,7 +141,7 @@ public class Example {
 
 ### Authorization
 
-No authorization required
+[playerAuth](../README.md#playerAuth)
 
 ### HTTP request headers
 
@@ -153,9 +159,9 @@ No authorization required
 | **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="listActivePublicLobbiesDeprecated"></a>
-# **listActivePublicLobbiesDeprecated**
-> List&lt;Lobby&gt; listActivePublicLobbiesDeprecated(appId, authorization, local, region)
+<a name="listActivePublicLobbiesDeprecatedV1"></a>
+# **listActivePublicLobbiesDeprecatedV1**
+> List&lt;Lobby&gt; listActivePublicLobbiesDeprecatedV1(appId, local, region)
 
 
 
@@ -175,14 +181,13 @@ public class Example {
 
     LobbyV1Api apiInstance = new LobbyV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    String authorization = "authorization_example"; // String | 
     Boolean local = false; // Boolean | 
     Region region = Region.fromValue("Seattle"); // Region | 
     try {
-      List<Lobby> result = apiInstance.listActivePublicLobbiesDeprecated(appId, authorization, local, region);
+      List<Lobby> result = apiInstance.listActivePublicLobbiesDeprecatedV1(appId, local, region);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LobbyV1Api#listActivePublicLobbiesDeprecated");
+      System.err.println("Exception when calling LobbyV1Api#listActivePublicLobbiesDeprecatedV1");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -197,9 +202,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **authorization** | **String**|  | |
 | **local** | **Boolean**|  | [optional] [default to false] |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
 
 ### Return type
 

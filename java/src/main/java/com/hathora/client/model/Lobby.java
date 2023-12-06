@@ -51,6 +51,10 @@ import com.hathora.client.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Lobby {
+  public static final String SERIALIZED_NAME_SHORT_CODE = "shortCode";
+  @SerializedName(SERIALIZED_NAME_SHORT_CODE)
+  private String shortCode;
+
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private Object state;
@@ -89,6 +93,28 @@ public class Lobby {
 
   public Lobby() {
   }
+
+  public Lobby shortCode(String shortCode) {
+    
+    this.shortCode = shortCode;
+    return this;
+  }
+
+   /**
+   * User-defined identifier for a lobby.
+   * @return shortCode
+  **/
+  @javax.annotation.Nullable
+
+  public String getShortCode() {
+    return shortCode;
+  }
+
+
+  public void setShortCode(String shortCode) {
+    this.shortCode = shortCode;
+  }
+
 
   public Lobby state(Object state) {
     
@@ -253,7 +279,7 @@ public class Lobby {
   }
 
    /**
-   * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+   * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique.
    * @return roomId
   **/
   @javax.annotation.Nonnull
@@ -344,7 +370,8 @@ public class Lobby {
       return false;
     }
     Lobby lobby = (Lobby) o;
-    return Objects.equals(this.state, lobby.state) &&
+    return Objects.equals(this.shortCode, lobby.shortCode) &&
+        Objects.equals(this.state, lobby.state) &&
         Objects.equals(this.initialConfig, lobby.initialConfig) &&
         Objects.equals(this.createdAt, lobby.createdAt) &&
         Objects.equals(this.createdBy, lobby.createdBy) &&
@@ -358,13 +385,14 @@ public class Lobby {
 
   @Override
   public int hashCode() {
-    return Objects.hash(state, initialConfig, createdAt, createdBy, local, visibility, region, roomId, appId, additionalProperties);
+    return Objects.hash(shortCode, state, initialConfig, createdAt, createdBy, local, visibility, region, roomId, appId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Lobby {\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    initialConfig: ").append(toIndentedString(initialConfig)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -397,6 +425,7 @@ public class Lobby {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("shortCode");
     openapiFields.add("state");
     openapiFields.add("initialConfig");
     openapiFields.add("createdAt");
@@ -409,6 +438,7 @@ public class Lobby {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("shortCode");
     openapiRequiredFields.add("initialConfig");
     openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("createdBy");
@@ -437,6 +467,9 @@ public class Lobby {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
+      }
+      if (!jsonObj.get("shortCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shortCode").toString()));
       }
       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));

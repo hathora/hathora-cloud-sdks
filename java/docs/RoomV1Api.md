@@ -15,7 +15,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createRoomDeprecated"></a>
 # **createRoomDeprecated**
-> String createRoomDeprecated(appId, createRoomRequest, roomId)
+> String createRoomDeprecated(appId, createRoomParams, roomId)
 
 
 
@@ -40,10 +40,10 @@ public class Example {
 
     RoomV1Api apiInstance = new RoomV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    CreateRoomRequest createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
+    CreateRoomParams createRoomParams = new CreateRoomParams(); // CreateRoomParams | 
     String roomId = "roomId_example"; // String | 
     try {
-      String result = apiInstance.createRoomDeprecated(appId, createRoomRequest, roomId);
+      String result = apiInstance.createRoomDeprecated(appId, createRoomParams, roomId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RoomV1Api#createRoomDeprecated");
@@ -61,7 +61,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md)|  | |
+| **createRoomParams** | [**CreateRoomParams**](CreateRoomParams.md)|  | |
 | **roomId** | **String**|  | [optional] |
 
 ### Return type

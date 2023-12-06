@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.hathora.client.model.ApiError;
 import com.hathora.client.model.VerificationEmailRequest;
 import com.hathora.client.model.VerificationEmailResponse;
 

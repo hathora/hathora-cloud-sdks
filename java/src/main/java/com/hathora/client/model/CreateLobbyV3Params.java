@@ -20,7 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.hathora.client.model.TransportType;
+import com.hathora.client.model.LobbyVisibility;
+import com.hathora.client.model.Region;
 import java.io.IOException;
 
 import com.google.gson.Gson;
@@ -45,114 +46,88 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * Connection details for an active process.
+ * CreateLobbyV3Params
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExposedPort {
-  public static final String SERIALIZED_NAME_TRANSPORT_TYPE = "transportType";
-  @SerializedName(SERIALIZED_NAME_TRANSPORT_TYPE)
-  private TransportType transportType;
+public class CreateLobbyV3Params {
+  public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
+  @SerializedName(SERIALIZED_NAME_VISIBILITY)
+  private LobbyVisibility visibility;
 
-  public static final String SERIALIZED_NAME_PORT = "port";
-  @SerializedName(SERIALIZED_NAME_PORT)
-  private Integer port;
+  public static final String SERIALIZED_NAME_ROOM_CONFIG = "roomConfig";
+  @SerializedName(SERIALIZED_NAME_ROOM_CONFIG)
+  private String roomConfig;
 
-  public static final String SERIALIZED_NAME_HOST = "host";
-  @SerializedName(SERIALIZED_NAME_HOST)
-  private String host;
+  public static final String SERIALIZED_NAME_REGION = "region";
+  @SerializedName(SERIALIZED_NAME_REGION)
+  private Region region;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
-  public ExposedPort() {
+  public CreateLobbyV3Params() {
   }
 
-  public ExposedPort transportType(TransportType transportType) {
+  public CreateLobbyV3Params visibility(LobbyVisibility visibility) {
     
-    this.transportType = transportType;
+    this.visibility = visibility;
     return this;
   }
 
    /**
-   * Get transportType
-   * @return transportType
+   * Get visibility
+   * @return visibility
   **/
   @javax.annotation.Nonnull
 
-  public TransportType getTransportType() {
-    return transportType;
+  public LobbyVisibility getVisibility() {
+    return visibility;
   }
 
 
-  public void setTransportType(TransportType transportType) {
-    this.transportType = transportType;
+  public void setVisibility(LobbyVisibility visibility) {
+    this.visibility = visibility;
   }
 
 
-  public ExposedPort port(Integer port) {
+  public CreateLobbyV3Params roomConfig(String roomConfig) {
     
-    this.port = port;
+    this.roomConfig = roomConfig;
     return this;
   }
 
    /**
-   * Get port
-   * @return port
+   * Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).
+   * @return roomConfig
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
 
-  public Integer getPort() {
-    return port;
+  public String getRoomConfig() {
+    return roomConfig;
   }
 
 
-  public void setPort(Integer port) {
-    this.port = port;
+  public void setRoomConfig(String roomConfig) {
+    this.roomConfig = roomConfig;
   }
 
 
-  public ExposedPort host(String host) {
+  public CreateLobbyV3Params region(Region region) {
     
-    this.host = host;
+    this.region = region;
     return this;
   }
 
    /**
-   * Get host
-   * @return host
+   * Get region
+   * @return region
   **/
   @javax.annotation.Nonnull
 
-  public String getHost() {
-    return host;
+  public Region getRegion() {
+    return region;
   }
 
 
-  public void setHost(String host) {
-    this.host = host;
-  }
-
-
-  public ExposedPort name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
+  public void setRegion(Region region) {
+    this.region = region;
   }
 
   /**
@@ -168,9 +143,9 @@ public class ExposedPort {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ExposedPort instance itself
+   * @return the CreateLobbyV3Params instance itself
    */
-  public ExposedPort putAdditionalProperty(String key, Object value) {
+  public CreateLobbyV3Params putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -209,27 +184,25 @@ public class ExposedPort {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExposedPort exposedPort = (ExposedPort) o;
-    return Objects.equals(this.transportType, exposedPort.transportType) &&
-        Objects.equals(this.port, exposedPort.port) &&
-        Objects.equals(this.host, exposedPort.host) &&
-        Objects.equals(this.name, exposedPort.name)&&
-        Objects.equals(this.additionalProperties, exposedPort.additionalProperties);
+    CreateLobbyV3Params createLobbyV3Params = (CreateLobbyV3Params) o;
+    return Objects.equals(this.visibility, createLobbyV3Params.visibility) &&
+        Objects.equals(this.roomConfig, createLobbyV3Params.roomConfig) &&
+        Objects.equals(this.region, createLobbyV3Params.region)&&
+        Objects.equals(this.additionalProperties, createLobbyV3Params.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transportType, port, host, name, additionalProperties);
+    return Objects.hash(visibility, roomConfig, region, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExposedPort {\n");
-    sb.append("    transportType: ").append(toIndentedString(transportType)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    host: ").append(toIndentedString(host)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class CreateLobbyV3Params {\n");
+    sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
+    sb.append("    roomConfig: ").append(toIndentedString(roomConfig)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -253,43 +226,37 @@ public class ExposedPort {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("transportType");
-    openapiFields.add("port");
-    openapiFields.add("host");
-    openapiFields.add("name");
+    openapiFields.add("visibility");
+    openapiFields.add("roomConfig");
+    openapiFields.add("region");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("transportType");
-    openapiRequiredFields.add("port");
-    openapiRequiredFields.add("host");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("visibility");
+    openapiRequiredFields.add("region");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ExposedPort
+  * @throws IOException if the JSON Object is invalid with respect to CreateLobbyV3Params
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ExposedPort.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExposedPort is not found in the empty JSON string", ExposedPort.openapiRequiredFields.toString()));
+        if (!CreateLobbyV3Params.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateLobbyV3Params is not found in the empty JSON string", CreateLobbyV3Params.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExposedPort.openapiRequiredFields) {
+      for (String requiredField : CreateLobbyV3Params.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("host").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
-      }
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("roomConfig") != null && !jsonObj.get("roomConfig").isJsonNull()) && !jsonObj.get("roomConfig").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `roomConfig` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomConfig").toString()));
       }
   }
 
@@ -297,16 +264,16 @@ public class ExposedPort {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExposedPort.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExposedPort' and its subtypes
+       if (!CreateLobbyV3Params.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateLobbyV3Params' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExposedPort> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExposedPort.class));
+       final TypeAdapter<CreateLobbyV3Params> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateLobbyV3Params.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExposedPort>() {
+       return (TypeAdapter<T>) new TypeAdapter<CreateLobbyV3Params>() {
            @Override
-           public void write(JsonWriter out, ExposedPort value) throws IOException {
+           public void write(JsonWriter out, CreateLobbyV3Params value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -329,11 +296,11 @@ public class ExposedPort {
            }
 
            @Override
-           public ExposedPort read(JsonReader in) throws IOException {
+           public CreateLobbyV3Params read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ExposedPort instance = thisAdapter.fromJsonTree(jsonObj);
+             CreateLobbyV3Params instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -360,18 +327,18 @@ public class ExposedPort {
   }
 
  /**
-  * Create an instance of ExposedPort given an JSON string
+  * Create an instance of CreateLobbyV3Params given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExposedPort
-  * @throws IOException if the JSON string is invalid with respect to ExposedPort
+  * @return An instance of CreateLobbyV3Params
+  * @throws IOException if the JSON string is invalid with respect to CreateLobbyV3Params
   */
-  public static ExposedPort fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExposedPort.class);
+  public static CreateLobbyV3Params fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateLobbyV3Params.class);
   }
 
  /**
-  * Convert an instance of ExposedPort to an JSON string
+  * Convert an instance of CreateLobbyV3Params to an JSON string
   *
   * @return JSON string
   */

@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**egressedBytes** | **Double** | Measures network traffic leaving the process in bytes. |  |
+|**egressedBytes** | **Integer** | Measures network traffic leaving the process in bytes. |  |
 |**idleSince** | **OffsetDateTime** |  |  |
 |**activeConnectionsUpdatedAt** | **OffsetDateTime** |  |  |
-|**activeConnections** | **Double** | Tracks the number of active connections to a process. |  |
+|**activeConnections** | **Integer** | Tracks the number of active connections to a process. |  |
 |**roomsAllocatedUpdatedAt** | **OffsetDateTime** |  |  |
-|**roomsAllocated** | **Double** | Tracks the number of rooms that have been allocated to the process. |  |
+|**roomsAllocated** | **Integer** | Tracks the number of rooms that have been allocated to the process. |  |
 |**roomSlotsAvailableUpdatedAt** | **OffsetDateTime** |  |  |
 |**roomSlotsAvailable** | **Double** |  |  |
 |**draining** | **Boolean** | Process in drain will not accept any new rooms. |  |
@@ -30,7 +30,7 @@
 |**deploymentId** | **Integer** | System generated id for a deployment. Increments by 1. |  |
 |**appId** | **String** | System generated unique identifier for an application. |  |
 |**rooms** | [**List&lt;PickRoomExcludeKeyofRoomAllocations&gt;**](PickRoomExcludeKeyofRoomAllocations.md) |  |  |
-|**totalRooms** | **Double** |  |  |
+|**totalRooms** | **Integer** |  |  |
 
 
 

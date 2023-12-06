@@ -55,7 +55,7 @@ import com.hathora.client.JSON;
 public class Process {
   public static final String SERIALIZED_NAME_EGRESSED_BYTES = "egressedBytes";
   @SerializedName(SERIALIZED_NAME_EGRESSED_BYTES)
-  private Double egressedBytes;
+  private Integer egressedBytes;
 
   public static final String SERIALIZED_NAME_IDLE_SINCE = "idleSince";
   @SerializedName(SERIALIZED_NAME_IDLE_SINCE)
@@ -67,7 +67,7 @@ public class Process {
 
   public static final String SERIALIZED_NAME_ACTIVE_CONNECTIONS = "activeConnections";
   @SerializedName(SERIALIZED_NAME_ACTIVE_CONNECTIONS)
-  private Double activeConnections;
+  private Integer activeConnections;
 
   public static final String SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT = "roomsAllocatedUpdatedAt";
   @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT)
@@ -75,7 +75,7 @@ public class Process {
 
   public static final String SERIALIZED_NAME_ROOMS_ALLOCATED = "roomsAllocated";
   @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED)
-  private Double roomsAllocated;
+  private Integer roomsAllocated;
 
   public static final String SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT = "roomSlotsAvailableUpdatedAt";
   @SerializedName(SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT)
@@ -144,7 +144,7 @@ public class Process {
   public Process() {
   }
 
-  public Process egressedBytes(Double egressedBytes) {
+  public Process egressedBytes(Integer egressedBytes) {
     
     this.egressedBytes = egressedBytes;
     return this;
@@ -156,12 +156,12 @@ public class Process {
   **/
   @javax.annotation.Nonnull
 
-  public Double getEgressedBytes() {
+  public Integer getEgressedBytes() {
     return egressedBytes;
   }
 
 
-  public void setEgressedBytes(Double egressedBytes) {
+  public void setEgressedBytes(Integer egressedBytes) {
     this.egressedBytes = egressedBytes;
   }
 
@@ -214,7 +214,7 @@ public class Process {
   }
 
 
-  public Process activeConnections(Double activeConnections) {
+  public Process activeConnections(Integer activeConnections) {
     
     this.activeConnections = activeConnections;
     return this;
@@ -226,12 +226,12 @@ public class Process {
   **/
   @javax.annotation.Nonnull
 
-  public Double getActiveConnections() {
+  public Integer getActiveConnections() {
     return activeConnections;
   }
 
 
-  public void setActiveConnections(Double activeConnections) {
+  public void setActiveConnections(Integer activeConnections) {
     this.activeConnections = activeConnections;
   }
 
@@ -258,7 +258,7 @@ public class Process {
   }
 
 
-  public Process roomsAllocated(Double roomsAllocated) {
+  public Process roomsAllocated(Integer roomsAllocated) {
     
     this.roomsAllocated = roomsAllocated;
     return this;
@@ -270,12 +270,12 @@ public class Process {
   **/
   @javax.annotation.Nonnull
 
-  public Double getRoomsAllocated() {
+  public Integer getRoomsAllocated() {
     return roomsAllocated;
   }
 
 
-  public void setRoomsAllocated(Double roomsAllocated) {
+  public void setRoomsAllocated(Integer roomsAllocated) {
     this.roomsAllocated = roomsAllocated;
   }
 
