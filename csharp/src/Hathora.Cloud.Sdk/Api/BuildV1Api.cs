@@ -34,9 +34,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <returns>Build</returns>
-        Build CreateBuild(string appId, CreateBuildRequest createBuildRequest);
+        Build CreateBuild(string appId, CreateBuildParams createBuildParams);
 
         /// <summary>
         /// 
@@ -46,9 +46,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <returns>ApiResponse of Build</returns>
-        ApiResponse<Build> CreateBuildWithHttpInfo(string appId, CreateBuildRequest createBuildRequest);
+        ApiResponse<Build> CreateBuildWithHttpInfo(string appId, CreateBuildParams createBuildParams);
         /// <summary>
         /// 
         /// </summary>
@@ -158,10 +158,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Build</returns>
-        System.Threading.Tasks.Task<Build> CreateBuildAsync(string appId, CreateBuildRequest createBuildRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Build> CreateBuildAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -171,10 +171,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Build)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Build>> CreateBuildWithHttpInfoAsync(string appId, CreateBuildRequest createBuildRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Build>> CreateBuildWithHttpInfoAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -424,11 +424,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <returns>Build</returns>
-        public Build CreateBuild(string appId, CreateBuildRequest createBuildRequest)
+        public Build CreateBuild(string appId, CreateBuildParams createBuildParams)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = CreateBuildWithHttpInfo(appId, createBuildRequest);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = CreateBuildWithHttpInfo(appId, createBuildParams);
             return localVarResponse.Data;
         }
 
@@ -437,17 +437,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <returns>ApiResponse of Build</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Build> CreateBuildWithHttpInfo(string appId, CreateBuildRequest createBuildRequest)
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Build> CreateBuildWithHttpInfo(string appId, CreateBuildParams createBuildParams)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->CreateBuild");
 
-            // verify the required parameter 'createBuildRequest' is set
-            if (createBuildRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildRequest' when calling BuildV1Api->CreateBuild");
+            // verify the required parameter 'createBuildParams' is set
+            if (createBuildParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildParams' when calling BuildV1Api->CreateBuild");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -467,7 +467,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-            localVarRequestOptions.Data = createBuildRequest;
+            localVarRequestOptions.Data = createBuildParams;
 
             // authentication (hathoraDevToken) required
             // bearer authentication required
@@ -493,12 +493,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Build</returns>
-        public async System.Threading.Tasks.Task<Build> CreateBuildAsync(string appId, CreateBuildRequest createBuildRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Build> CreateBuildAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateBuildWithHttpInfoAsync(appId, createBuildRequest, cancellationToken);
+            var task = CreateBuildWithHttpInfoAsync(appId, createBuildParams, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -512,18 +512,18 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createBuildRequest"></param>
+        /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Build)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Build>> CreateBuildWithHttpInfoAsync(string appId, CreateBuildRequest createBuildRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Build>> CreateBuildWithHttpInfoAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->CreateBuild");
 
-            // verify the required parameter 'createBuildRequest' is set
-            if (createBuildRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildRequest' when calling BuildV1Api->CreateBuild");
+            // verify the required parameter 'createBuildParams' is set
+            if (createBuildParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildParams' when calling BuildV1Api->CreateBuild");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -545,7 +545,7 @@ namespace Hathora.Cloud.Sdk.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-            localVarRequestOptions.Data = createBuildRequest;
+            localVarRequestOptions.Data = createBuildParams;
 
             // authentication (hathoraDevToken) required
             // bearer authentication required

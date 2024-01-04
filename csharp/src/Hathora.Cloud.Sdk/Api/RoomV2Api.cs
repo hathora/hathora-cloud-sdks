@@ -34,10 +34,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>ConnectionInfoV2</returns>
-        ConnectionInfoV2 CreateRoom(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string));
+        /// <returns>CreateRoomResponse</returns>
+        CreateRoomResponse CreateRoom(string appId, CreateRoomParams createRoomParams, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -47,10 +47,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>ApiResponse of ConnectionInfoV2</returns>
-        ApiResponse<ConnectionInfoV2> CreateRoomWithHttpInfo(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string));
+        /// <returns>ApiResponse of CreateRoomResponse</returns>
+        ApiResponse<CreateRoomResponse> CreateRoomWithHttpInfo(string appId, CreateRoomParams createRoomParams, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -189,6 +189,28 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="roomId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> SuspendRoomWithHttpInfo(string appId, string roomId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <returns></returns>
+        void UpdateRoomConfig(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdateRoomConfigWithHttpInfo(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams);
         #endregion Synchronous Operations
     }
 
@@ -206,11 +228,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConnectionInfoV2</returns>
-        System.Threading.Tasks.Task<ConnectionInfoV2> CreateRoomAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateRoomResponse</returns>
+        System.Threading.Tasks.Task<CreateRoomResponse> CreateRoomAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -220,11 +242,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConnectionInfoV2)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConnectionInfoV2>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (CreateRoomResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateRoomResponse>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -375,6 +397,33 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> SuspendRoomWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdateRoomConfigAsync(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateRoomConfigWithHttpInfoAsync(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -524,12 +573,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>ConnectionInfoV2</returns>
-        public ConnectionInfoV2 CreateRoom(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string))
+        /// <returns>CreateRoomResponse</returns>
+        public CreateRoomResponse CreateRoom(string appId, CreateRoomParams createRoomParams, string roomId = default(string))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfoV2> localVarResponse = CreateRoomWithHttpInfo(appId, createRoomRequest, roomId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> localVarResponse = CreateRoomWithHttpInfo(appId, createRoomParams, roomId);
             return localVarResponse.Data;
         }
 
@@ -538,18 +587,18 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>ApiResponse of ConnectionInfoV2</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfoV2> CreateRoomWithHttpInfo(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string))
+        /// <returns>ApiResponse of CreateRoomResponse</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> CreateRoomWithHttpInfo(string appId, CreateRoomParams createRoomParams, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->CreateRoom");
 
-            // verify the required parameter 'createRoomRequest' is set
-            if (createRoomRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomRequest' when calling RoomV2Api->CreateRoom");
+            // verify the required parameter 'createRoomParams' is set
+            if (createRoomParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomParams' when calling RoomV2Api->CreateRoom");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -573,7 +622,7 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.Data = createRoomRequest;
+            localVarRequestOptions.Data = createRoomParams;
 
             // authentication (hathoraDevToken) required
             // bearer authentication required
@@ -583,7 +632,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ConnectionInfoV2>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateRoomResponse>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -599,17 +648,17 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConnectionInfoV2</returns>
-        public async System.Threading.Tasks.Task<ConnectionInfoV2> CreateRoomAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateRoomResponse</returns>
+        public async System.Threading.Tasks.Task<CreateRoomResponse> CreateRoomAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateRoomWithHttpInfoAsync(appId, createRoomRequest, roomId, cancellationToken);
+            var task = CreateRoomWithHttpInfoAsync(appId, createRoomParams, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfoV2> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfoV2> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -619,19 +668,19 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="createRoomRequest"></param>
+        /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConnectionInfoV2)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<ConnectionInfoV2>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomRequest createRoomRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateRoomResponse)</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->CreateRoom");
 
-            // verify the required parameter 'createRoomRequest' is set
-            if (createRoomRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomRequest' when calling RoomV2Api->CreateRoom");
+            // verify the required parameter 'createRoomParams' is set
+            if (createRoomParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createRoomParams' when calling RoomV2Api->CreateRoom");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -657,7 +706,7 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.Data = createRoomRequest;
+            localVarRequestOptions.Data = createRoomParams;
 
             // authentication (hathoraDevToken) required
             // bearer authentication required
@@ -668,7 +717,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.PostAsync<ConnectionInfoV2>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.PostAsync<CreateRoomResponse>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -1575,6 +1624,172 @@ namespace Hathora.Cloud.Sdk.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SuspendRoom", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <returns></returns>
+        public void UpdateRoomConfig(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams)
+        {
+            UpdateRoomConfigWithHttpInfo(appId, roomId, updateRoomConfigParams);
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> UpdateRoomConfigWithHttpInfo(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->UpdateRoomConfig");
+
+            // verify the required parameter 'roomId' is set
+            if (roomId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV2Api->UpdateRoomConfig");
+
+            // verify the required parameter 'updateRoomConfigParams' is set
+            if (updateRoomConfigParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'updateRoomConfigParams' when calling RoomV2Api->UpdateRoomConfig");
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
+            localVarRequestOptions.Data = updateRoomConfigParams;
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/rooms/v2/{appId}/update/{roomId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateRoomConfig", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdateRoomConfigAsync(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var task = UpdateRoomConfigWithHttpInfoAsync(appId, roomId, updateRoomConfigParams, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            await task.ConfigureAwait(false);
+#else
+            await task;
+#endif
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="roomId"></param>
+        /// <param name="updateRoomConfigParams"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> UpdateRoomConfigWithHttpInfoAsync(string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->UpdateRoomConfig");
+
+            // verify the required parameter 'roomId' is set
+            if (roomId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV2Api->UpdateRoomConfig");
+
+            // verify the required parameter 'updateRoomConfigParams' is set
+            if (updateRoomConfigParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'updateRoomConfigParams' when calling RoomV2Api->UpdateRoomConfig");
+
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
+            localVarRequestOptions.Data = updateRoomConfigParams;
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var task = this.AsynchronousClient.PostAsync<Object>("/rooms/v2/{appId}/update/{roomId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateRoomConfig", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

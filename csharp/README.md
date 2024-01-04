@@ -114,14 +114,19 @@ Class | Method | HTTP request | Description
 *DiscoveryV1Api* | [**GetPingServiceEndpoints**](DiscoveryV1Api.md#getpingserviceendpoints) | **GET** /discovery/v1/ping | 
 *LobbyV1Api* | [**CreatePrivateLobbyDeprecated**](LobbyV1Api.md#createprivatelobbydeprecated) | **POST** /lobby/v1/{appId}/create/private | 
 *LobbyV1Api* | [**CreatePublicLobbyDeprecated**](LobbyV1Api.md#createpubliclobbydeprecated) | **POST** /lobby/v1/{appId}/create/public | 
-*LobbyV1Api* | [**ListActivePublicLobbiesDeprecated**](LobbyV1Api.md#listactivepubliclobbiesdeprecated) | **GET** /lobby/v1/{appId}/list | 
-*LobbyV2Api* | [**CreateLobby**](LobbyV2Api.md#createlobby) | **POST** /lobby/v2/{appId}/create | 
+*LobbyV1Api* | [**ListActivePublicLobbiesDeprecatedV1**](LobbyV1Api.md#listactivepubliclobbiesdeprecatedv1) | **GET** /lobby/v1/{appId}/list | 
+*LobbyV2Api* | [**CreateLobbyDeprecated**](LobbyV2Api.md#createlobbydeprecated) | **POST** /lobby/v2/{appId}/create | 
 *LobbyV2Api* | [**CreateLocalLobby**](LobbyV2Api.md#createlocallobby) | **POST** /lobby/v2/{appId}/create/local | 
 *LobbyV2Api* | [**CreatePrivateLobby**](LobbyV2Api.md#createprivatelobby) | **POST** /lobby/v2/{appId}/create/private | 
 *LobbyV2Api* | [**CreatePublicLobby**](LobbyV2Api.md#createpubliclobby) | **POST** /lobby/v2/{appId}/create/public | 
 *LobbyV2Api* | [**GetLobbyInfo**](LobbyV2Api.md#getlobbyinfo) | **GET** /lobby/v2/{appId}/info/{roomId} | 
-*LobbyV2Api* | [**ListActivePublicLobbies**](LobbyV2Api.md#listactivepubliclobbies) | **GET** /lobby/v2/{appId}/list/public | 
+*LobbyV2Api* | [**ListActivePublicLobbiesDeprecatedV2**](LobbyV2Api.md#listactivepubliclobbiesdeprecatedv2) | **GET** /lobby/v2/{appId}/list/public | 
 *LobbyV2Api* | [**SetLobbyState**](LobbyV2Api.md#setlobbystate) | **POST** /lobby/v2/{appId}/setState/{roomId} | 
+*LobbyV3Api* | [**CreateLobby**](LobbyV3Api.md#createlobby) | **POST** /lobby/v3/{appId}/create | 
+*LobbyV3Api* | [**GetLobbyInfoByRoomId**](LobbyV3Api.md#getlobbyinfobyroomid) | **GET** /lobby/v3/{appId}/info/roomid/{roomId} | 
+*LobbyV3Api* | [**GetLobbyInfoByShortCode**](LobbyV3Api.md#getlobbyinfobyshortcode) | **GET** /lobby/v3/{appId}/info/shortcode/{shortCode} | 
+*LobbyV3Api* | [**ListActivePublicLobbies**](LobbyV3Api.md#listactivepubliclobbies) | **GET** /lobby/v3/{appId}/list/public | 
+*LogV1Api* | [**DownloadLogForProcess**](LogV1Api.md#downloadlogforprocess) | **GET** /logs/v1/{appId}/process/{processId}/download | 
 *LogV1Api* | [**GetLogsForApp**](LogV1Api.md#getlogsforapp) | **GET** /logs/v1/{appId}/all | 
 *LogV1Api* | [**GetLogsForDeployment**](LogV1Api.md#getlogsfordeployment) | **GET** /logs/v1/{appId}/deployment/{deploymentId} | 
 *LogV1Api* | [**GetLogsForProcess**](LogV1Api.md#getlogsforprocess) | **GET** /logs/v1/{appId}/process/{processId} | 
@@ -144,6 +149,7 @@ Class | Method | HTTP request | Description
 *RoomV2Api* | [**GetInactiveRoomsForProcess**](RoomV2Api.md#getinactiveroomsforprocess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive | 
 *RoomV2Api* | [**GetRoomInfo**](RoomV2Api.md#getroominfo) | **GET** /rooms/v2/{appId}/info/{roomId} | 
 *RoomV2Api* | [**SuspendRoom**](RoomV2Api.md#suspendroom) | **POST** /rooms/v2/{appId}/suspend/{roomId} | 
+*RoomV2Api* | [**UpdateRoomConfig**](RoomV2Api.md#updateroomconfig) | **POST** /rooms/v2/{appId}/update/{roomId} | 
 
 
 <a name="documentation-for-models"></a>
@@ -151,6 +157,7 @@ Class | Method | HTTP request | Description
 
  - [Model.AchPaymentMethod](AchPaymentMethod.md)
  - [Model.ActiveConnectionInfo](ActiveConnectionInfo.md)
+ - [Model.ApiError](ApiError.md)
  - [Model.AppConfig](AppConfig.md)
  - [Model.Application](Application.md)
  - [Model.ApplicationWithDeployment](ApplicationWithDeployment.md)
@@ -164,10 +171,13 @@ Class | Method | HTTP request | Description
  - [Model.ConnectionInfo](ConnectionInfo.md)
  - [Model.ConnectionInfoV2](ConnectionInfoV2.md)
  - [Model.ContainerPort](ContainerPort.md)
- - [Model.CreateBuildRequest](CreateBuildRequest.md)
- - [Model.CreateLobbyRequest](CreateLobbyRequest.md)
+ - [Model.CreateBuildParams](CreateBuildParams.md)
+ - [Model.CreateLobbyParams](CreateLobbyParams.md)
+ - [Model.CreateLobbyV3Params](CreateLobbyV3Params.md)
  - [Model.CreatePrivateLobbyRequest](CreatePrivateLobbyRequest.md)
- - [Model.CreateRoomRequest](CreateRoomRequest.md)
+ - [Model.CreateRoomParams](CreateRoomParams.md)
+ - [Model.CreateRoomResponse](CreateRoomResponse.md)
+ - [Model.CreateRoomResponseAllOf](CreateRoomResponseAllOf.md)
  - [Model.CustomerPortalUrl](CustomerPortalUrl.md)
  - [Model.Deployment](Deployment.md)
  - [Model.DeploymentConfig](DeploymentConfig.md)
@@ -177,6 +187,7 @@ Class | Method | HTTP request | Description
  - [Model.Invoice](Invoice.md)
  - [Model.LinkPaymentMethod](LinkPaymentMethod.md)
  - [Model.Lobby](Lobby.md)
+ - [Model.LobbyV3](LobbyV3.md)
  - [Model.LobbyVisibility](LobbyVisibility.md)
  - [Model.LoginGoogleRequest](LoginGoogleRequest.md)
  - [Model.LoginNicknameRequest](LoginNicknameRequest.md)
@@ -194,9 +205,10 @@ Class | Method | HTTP request | Description
  - [Model.Room](Room.md)
  - [Model.RoomAllocation](RoomAllocation.md)
  - [Model.RoomStatus](RoomStatus.md)
- - [Model.SetLobbyStateRequest](SetLobbyStateRequest.md)
+ - [Model.SetLobbyStateParams](SetLobbyStateParams.md)
  - [Model.StartingConnectionInfo](StartingConnectionInfo.md)
  - [Model.TransportType](TransportType.md)
+ - [Model.UpdateRoomConfigParams](UpdateRoomConfigParams.md)
  - [Model.VerificationEmailRequest](VerificationEmailRequest.md)
  - [Model.VerificationEmailResponse](VerificationEmailResponse.md)
 
@@ -206,6 +218,11 @@ Class | Method | HTTP request | Description
 
 <a name="hathoraDevToken"></a>
 ### hathoraDevToken
+
+- **Type**: Bearer Authentication
+
+<a name="playerAuth"></a>
+### playerAuth
 
 - **Type**: Bearer Authentication
 

@@ -113,6 +113,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateLobbyV3Params.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreatePrivateLobbyRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateRoomParams.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateRoomResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CreateRoomResponseAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.CustomerPortalUrl.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Deployment.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.DeploymentConfig.CustomTypeAdapterFactory());

@@ -82,7 +82,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Initializes a new instance of the <see cref="Build" /> class.
         /// </summary>
         /// <param name="buildTag">Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo). (required).</param>
-        /// <param name="regionalContainerTags">Identifiers for the containers stored in Hathora&#39;s registries. (required).</param>
+        /// <param name="regionalContainerTags">regionalContainerTags (required).</param>
         /// <param name="imageSize">The size (in bytes) of the Docker image built by Hathora. (required).</param>
         /// <param name="status">Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60; (required).</param>
         /// <param name="deletedAt">When the build was deleted. (required).</param>
@@ -92,7 +92,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="createdBy">Email address for the user that created the build. (required).</param>
         /// <param name="buildId">System generated id for a build. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Build(string buildTag = default(string), List<BuildRegionalContainerTagsInner> regionalContainerTags = default(List<BuildRegionalContainerTagsInner>), double imageSize = default(double), StatusEnum status = default(StatusEnum), DateTime? deletedAt = default(DateTime?), DateTime? finishedAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), int buildId = default(int), string appId = default(string))
+        public Build(string buildTag = default(string), List<BuildRegionalContainerTagsInner> regionalContainerTags = default(List<BuildRegionalContainerTagsInner>), int imageSize = default(int), StatusEnum status = default(StatusEnum), DateTime? deletedAt = default(DateTime?), DateTime? finishedAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), int buildId = default(int), string appId = default(string))
         {
             // to ensure "buildTag" is required (not null)
             if (buildTag == null)
@@ -152,10 +152,10 @@ namespace Hathora.Cloud.Sdk.Model
         public string BuildTag { get; set; }
 
         /// <summary>
-        /// Identifiers for the containers stored in Hathora&#39;s registries.
+        /// Gets or Sets RegionalContainerTags
         /// </summary>
-        /// <value>Identifiers for the containers stored in Hathora&#39;s registries.</value>
         [DataMember(Name = "regionalContainerTags", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public List<BuildRegionalContainerTagsInner> RegionalContainerTags { get; set; }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <value>The size (in bytes) of the Docker image built by Hathora.</value>
         [DataMember(Name = "imageSize", IsRequired = true, EmitDefaultValue = true)]
-        public double ImageSize { get; set; }
+        public int ImageSize { get; set; }
 
         /// <summary>
         /// When the build was deleted.

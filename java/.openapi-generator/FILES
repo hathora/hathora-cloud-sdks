@@ -25,6 +25,8 @@ docs/CreateLobbyParams.md
 docs/CreateLobbyV3Params.md
 docs/CreatePrivateLobbyRequest.md
 docs/CreateRoomParams.md
+docs/CreateRoomResponse.md
+docs/CreateRoomResponseAllOf.md
 docs/CustomerPortalUrl.md
 docs/Deployment.md
 docs/DeploymentConfig.md
@@ -123,6 +125,8 @@ src/main/java/com/hathora/client/model/CreateLobbyParams.java
 src/main/java/com/hathora/client/model/CreateLobbyV3Params.java
 src/main/java/com/hathora/client/model/CreatePrivateLobbyRequest.java
 src/main/java/com/hathora/client/model/CreateRoomParams.java
+src/main/java/com/hathora/client/model/CreateRoomResponse.java
+src/main/java/com/hathora/client/model/CreateRoomResponseAllOf.java
 src/main/java/com/hathora/client/model/CustomerPortalUrl.java
 src/main/java/com/hathora/client/model/Deployment.java
 src/main/java/com/hathora/client/model/DeploymentConfig.java

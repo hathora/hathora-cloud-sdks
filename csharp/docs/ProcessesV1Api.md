@@ -14,7 +14,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 
 
-Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
 
 ### Example
 ```csharp
@@ -110,7 +110,7 @@ catch (ApiException e)
 
 
 
-Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
 
 ### Example
 ```csharp
@@ -205,7 +205,7 @@ catch (ApiException e)
 
 
 
-Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
 
 ### Example
 ```csharp

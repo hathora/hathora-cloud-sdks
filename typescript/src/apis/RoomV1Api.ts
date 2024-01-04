@@ -15,16 +15,19 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   ConnectionInfo,
-  CreateRoomRequest,
+  CreateRoomParams,
   PickRoomExcludeKeyofRoomAllocations,
   Room,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     ConnectionInfoFromJSON,
     ConnectionInfoToJSON,
-    CreateRoomRequestFromJSON,
-    CreateRoomRequestToJSON,
+    CreateRoomParamsFromJSON,
+    CreateRoomParamsToJSON,
     PickRoomExcludeKeyofRoomAllocationsFromJSON,
     PickRoomExcludeKeyofRoomAllocationsToJSON,
     RoomFromJSON,
@@ -33,7 +36,7 @@ import {
 
 export interface CreateRoomDeprecatedRequest {
     appId: string;
-    createRoomRequest: CreateRoomRequest;
+    createRoomParams: CreateRoomParams;
     roomId?: string;
 }
 
@@ -77,7 +80,7 @@ export interface RoomV1ApiInterface {
     /**
      * 
      * @param {string} appId 
-     * @param {CreateRoomRequest} createRoomRequest 
+     * @param {CreateRoomParams} createRoomParams 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
      * @deprecated
@@ -88,7 +91,7 @@ export interface RoomV1ApiInterface {
 
     /**
      */
-    createRoomDeprecated(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createRoomDeprecated(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
@@ -194,8 +197,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createRoomDeprecated.');
         }
 
-        if (requestParameters.createRoomRequest === null || requestParameters.createRoomRequest === undefined) {
-            throw new runtime.RequiredError('createRoomRequest','Required parameter requestParameters.createRoomRequest was null or undefined when calling createRoomDeprecated.');
+        if (requestParameters.createRoomParams === null || requestParameters.createRoomParams === undefined) {
+            throw new runtime.RequiredError('createRoomParams','Required parameter requestParameters.createRoomParams was null or undefined when calling createRoomDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -221,7 +224,7 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateRoomRequestToJSON(requestParameters.createRoomRequest),
+            body: CreateRoomParamsToJSON(requestParameters.createRoomParams),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -233,8 +236,8 @@ export class RoomV1Api extends runtime.BaseAPI implements RoomV1ApiInterface {
 
     /**
      */
-    async createRoomDeprecated(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createRoomDeprecatedRaw({ appId: appId, createRoomRequest: createRoomRequest, roomId: roomId }, initOverrides);
+    async createRoomDeprecated(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createRoomDeprecatedRaw({ appId: appId, createRoomParams: createRoomParams, roomId: roomId }, initOverrides);
         return await response.value();
     }
 

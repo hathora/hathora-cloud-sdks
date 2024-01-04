@@ -31,12 +31,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>string</returns>
         [Obsolete]
-        string CreatePrivateLobbyDeprecated(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?));
+        string CreatePrivateLobbyDeprecated(string appId, Region? region = default(Region?), bool? local = default(bool?));
 
         /// <summary>
         /// 
@@ -46,23 +45,21 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>ApiResponse of string</returns>
         [Obsolete]
-        ApiResponse<string> CreatePrivateLobbyDeprecatedWithHttpInfo(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?));
+        ApiResponse<string> CreatePrivateLobbyDeprecatedWithHttpInfo(string appId, Region? region = default(Region?), bool? local = default(bool?));
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>string</returns>
         [Obsolete]
-        string CreatePublicLobbyDeprecated(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?));
+        string CreatePublicLobbyDeprecated(string appId, Region? region = default(Region?), bool? local = default(bool?));
 
         /// <summary>
         /// 
@@ -72,23 +69,21 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>ApiResponse of string</returns>
         [Obsolete]
-        ApiResponse<string> CreatePublicLobbyDeprecatedWithHttpInfo(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?));
+        ApiResponse<string> CreatePublicLobbyDeprecatedWithHttpInfo(string appId, Region? region = default(Region?), bool? local = default(bool?));
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>List&lt;Lobby&gt;</returns>
         [Obsolete]
-        List<Lobby> ListActivePublicLobbiesDeprecated(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?));
+        List<Lobby> ListActivePublicLobbiesDeprecatedV1(string appId, bool? local = default(bool?), Region? region = default(Region?));
 
         /// <summary>
         /// 
@@ -98,12 +93,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of List&lt;Lobby&gt;</returns>
         [Obsolete]
-        ApiResponse<List<Lobby>> ListActivePublicLobbiesDeprecatedWithHttpInfo(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?));
+        ApiResponse<List<Lobby>> ListActivePublicLobbiesDeprecatedV1WithHttpInfo(string appId, bool? local = default(bool?), Region? region = default(Region?));
         #endregion Synchronous Operations
     }
 
@@ -121,13 +115,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<string> CreatePrivateLobbyDeprecatedAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> CreatePrivateLobbyDeprecatedAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -137,13 +130,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<string>> CreatePrivateLobbyDeprecatedWithHttpInfoAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> CreatePrivateLobbyDeprecatedWithHttpInfoAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -152,13 +144,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<string> CreatePublicLobbyDeprecatedAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> CreatePublicLobbyDeprecatedAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -168,13 +159,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<string>> CreatePublicLobbyDeprecatedWithHttpInfoAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> CreatePublicLobbyDeprecatedWithHttpInfoAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -183,13 +173,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Lobby&gt;</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesDeprecatedAsync(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesDeprecatedV1Async(string appId, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -199,13 +188,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Lobby&gt;)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<List<Lobby>>> ListActivePublicLobbiesDeprecatedWithHttpInfoAsync(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<List<Lobby>>> ListActivePublicLobbiesDeprecatedV1WithHttpInfoAsync(string appId, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -355,14 +343,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>string</returns>
         [Obsolete]
-        public string CreatePrivateLobbyDeprecated(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?))
+        public string CreatePrivateLobbyDeprecated(string appId, Region? region = default(Region?), bool? local = default(bool?))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = CreatePrivateLobbyDeprecatedWithHttpInfo(appId, authorization, region, local);
+            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = CreatePrivateLobbyDeprecatedWithHttpInfo(appId, region, local);
             return localVarResponse.Data;
         }
 
@@ -371,20 +358,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>ApiResponse of string</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreatePrivateLobbyDeprecatedWithHttpInfo(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreatePrivateLobbyDeprecatedWithHttpInfo(string appId, Region? region = default(Region?), bool? local = default(bool?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->CreatePrivateLobbyDeprecated");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV1Api->CreatePrivateLobbyDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -411,8 +393,13 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "local", local));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<string>("/lobby/v1/{appId}/create/private", localVarRequestOptions, this.Configuration);
@@ -431,15 +418,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<string> CreatePrivateLobbyDeprecatedAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> CreatePrivateLobbyDeprecatedAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreatePrivateLobbyDeprecatedWithHttpInfoAsync(appId, authorization, region, local, cancellationToken);
+            var task = CreatePrivateLobbyDeprecatedWithHttpInfoAsync(appId, region, local, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -453,21 +439,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreatePrivateLobbyDeprecatedWithHttpInfoAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreatePrivateLobbyDeprecatedWithHttpInfoAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->CreatePrivateLobbyDeprecated");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV1Api->CreatePrivateLobbyDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -496,8 +477,13 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "local", local));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
 
@@ -523,14 +509,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>string</returns>
         [Obsolete]
-        public string CreatePublicLobbyDeprecated(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?))
+        public string CreatePublicLobbyDeprecated(string appId, Region? region = default(Region?), bool? local = default(bool?))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = CreatePublicLobbyDeprecatedWithHttpInfo(appId, authorization, region, local);
+            Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = CreatePublicLobbyDeprecatedWithHttpInfo(appId, region, local);
             return localVarResponse.Data;
         }
 
@@ -539,20 +524,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <returns>ApiResponse of string</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreatePublicLobbyDeprecatedWithHttpInfo(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<string> CreatePublicLobbyDeprecatedWithHttpInfo(string appId, Region? region = default(Region?), bool? local = default(bool?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->CreatePublicLobbyDeprecated");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV1Api->CreatePublicLobbyDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -579,8 +559,13 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "local", local));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<string>("/lobby/v1/{appId}/create/public", localVarRequestOptions, this.Configuration);
@@ -599,15 +584,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<string> CreatePublicLobbyDeprecatedAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> CreatePublicLobbyDeprecatedAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreatePublicLobbyDeprecatedWithHttpInfoAsync(appId, authorization, region, local, cancellationToken);
+            var task = CreatePublicLobbyDeprecatedWithHttpInfoAsync(appId, region, local, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<string> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -621,21 +605,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="region"> (optional)</param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreatePublicLobbyDeprecatedWithHttpInfoAsync(string appId, string authorization, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<string>> CreatePublicLobbyDeprecatedWithHttpInfoAsync(string appId, Region? region = default(Region?), bool? local = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->CreatePublicLobbyDeprecated");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV1Api->CreatePublicLobbyDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -664,8 +643,13 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "local", local));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
 
@@ -691,14 +675,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>List&lt;Lobby&gt;</returns>
         [Obsolete]
-        public List<Lobby> ListActivePublicLobbiesDeprecated(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?))
+        public List<Lobby> ListActivePublicLobbiesDeprecatedV1(string appId, bool? local = default(bool?), Region? region = default(Region?))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = ListActivePublicLobbiesDeprecatedWithHttpInfo(appId, authorization, local, region);
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = ListActivePublicLobbiesDeprecatedV1WithHttpInfo(appId, local, region);
             return localVarResponse.Data;
         }
 
@@ -707,20 +690,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of List&lt;Lobby&gt;</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> ListActivePublicLobbiesDeprecatedWithHttpInfo(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> ListActivePublicLobbiesDeprecatedV1WithHttpInfo(string appId, bool? local = default(bool?), Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->ListActivePublicLobbiesDeprecated");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV1Api->ListActivePublicLobbiesDeprecated");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->ListActivePublicLobbiesDeprecatedV1");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -747,7 +725,6 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
 
 
             // make the HTTP request
@@ -755,7 +732,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListActivePublicLobbiesDeprecated", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListActivePublicLobbiesDeprecatedV1", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -767,15 +744,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Lobby&gt;</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesDeprecatedAsync(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesDeprecatedV1Async(string appId, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = ListActivePublicLobbiesDeprecatedWithHttpInfoAsync(appId, authorization, local, region, cancellationToken);
+            var task = ListActivePublicLobbiesDeprecatedV1WithHttpInfoAsync(appId, local, region, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -789,21 +765,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="local"> (optional, default to false)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Lobby&gt;)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>>> ListActivePublicLobbiesDeprecatedWithHttpInfoAsync(string appId, string authorization, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>>> ListActivePublicLobbiesDeprecatedV1WithHttpInfoAsync(string appId, bool? local = default(bool?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->ListActivePublicLobbiesDeprecated");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV1Api->ListActivePublicLobbiesDeprecated");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV1Api->ListActivePublicLobbiesDeprecatedV1");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -832,7 +803,6 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "region", region));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
 
 
             // make the HTTP request
@@ -847,7 +817,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListActivePublicLobbiesDeprecated", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListActivePublicLobbiesDeprecatedV1", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

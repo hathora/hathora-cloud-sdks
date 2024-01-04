@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EgressedBytes** | **double** | Measures network traffic leaving the process in bytes. | 
+**EgressedBytes** | **int** | Measures network traffic leaving the process in bytes. | 
 **IdleSince** | **DateTime?** |  | 
 **ActiveConnectionsUpdatedAt** | **DateTime** |  | 
-**ActiveConnections** | **double** | Tracks the number of active connections to a process. | 
+**ActiveConnections** | **int** | Tracks the number of active connections to a process. | 
 **RoomsAllocatedUpdatedAt** | **DateTime** |  | 
-**RoomsAllocated** | **double** | Tracks the number of rooms that have been allocated to the process. | 
+**RoomsAllocated** | **int** | Tracks the number of rooms that have been allocated to the process. | 
 **RoomSlotsAvailableUpdatedAt** | **DateTime** |  | 
 **RoomSlotsAvailable** | **double** |  | 
 **Draining** | **bool** | Process in drain will not accept any new rooms. | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **DeploymentId** | **int** | System generated id for a deployment. Increments by 1. | 
 **AppId** | **string** | System generated unique identifier for an application. | 
 **Rooms** | [**List&lt;PickRoomExcludeKeyofRoomAllocations&gt;**](PickRoomExcludeKeyofRoomAllocations.md) |  | 
-**TotalRooms** | **double** |  | 
+**TotalRooms** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

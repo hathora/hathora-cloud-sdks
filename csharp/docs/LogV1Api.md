@@ -4,9 +4,108 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**DownloadLogForProcess**](LogV1Api.md#downloadlogforprocess) | **GET** /logs/v1/{appId}/process/{processId}/download |  |
 | [**GetLogsForApp**](LogV1Api.md#getlogsforapp) | **GET** /logs/v1/{appId}/all |  |
 | [**GetLogsForDeployment**](LogV1Api.md#getlogsfordeployment) | **GET** /logs/v1/{appId}/deployment/{deploymentId} |  |
 | [**GetLogsForProcess**](LogV1Api.md#getlogsforprocess) | **GET** /logs/v1/{appId}/process/{processId} |  |
+
+<a name="downloadlogforprocess"></a>
+# **DownloadLogForProcess**
+> byte[] DownloadLogForProcess (string appId, string processId)
+
+
+
+Download entire log file for a stopped process.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Hathora.Cloud.Sdk.Api;
+using Hathora.Cloud.Sdk.Client;
+using Hathora.Cloud.Sdk.Model;
+
+namespace Example
+{
+    public class DownloadLogForProcessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.hathora.dev";
+            // Configure Bearer token for authorization: hathoraDevToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new LogV1Api(config);
+            var appId = "appId_example";  // string | 
+            var processId = "processId_example";  // string | 
+
+            try
+            {
+                byte[] result = apiInstance.DownloadLogForProcess(appId, processId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LogV1Api.DownloadLogForProcess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DownloadLogForProcessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<byte[]> response = apiInstance.DownloadLogForProcessWithHttpInfo(appId, processId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling LogV1Api.DownloadLogForProcessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **appId** | **string** |  |  |
+| **processId** | **string** |  |  |
+
+### Return type
+
+**byte[]**
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **400** |  |  -  |
+| **404** |  |  -  |
+| **410** |  |  -  |
+| **500** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getlogsforapp"></a>
 # **GetLogsForApp**
@@ -301,7 +400,9 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** |  |  -  |
 | **404** |  |  -  |
+| **410** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

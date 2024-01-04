@@ -15,10 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   MetricName,
   RecordPartialMetricNameMetricValueArray,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     MetricNameFromJSON,
     MetricNameToJSON,
     RecordPartialMetricNameMetricValueArrayFromJSON,

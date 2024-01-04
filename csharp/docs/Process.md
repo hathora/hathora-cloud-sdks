@@ -5,12 +5,12 @@ A process object represents a runtime instance of your game server and its metad
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EgressedBytes** | **double** | Measures network traffic leaving the process in bytes. | 
+**EgressedBytes** | **int** | Measures network traffic leaving the process in bytes. | 
 **IdleSince** | **DateTime?** |  | 
 **ActiveConnectionsUpdatedAt** | **DateTime** |  | 
-**ActiveConnections** | **double** | Tracks the number of active connections to a process. | 
+**ActiveConnections** | **int** | Tracks the number of active connections to a process. | 
 **RoomsAllocatedUpdatedAt** | **DateTime** |  | 
-**RoomsAllocated** | **double** | Tracks the number of rooms that have been allocated to the process. | 
+**RoomsAllocated** | **int** | Tracks the number of rooms that have been allocated to the process. | 
 **RoomSlotsAvailableUpdatedAt** | **DateTime** |  | 
 **RoomSlotsAvailable** | **double** |  | 
 **Draining** | **bool** | Process in drain will not accept any new rooms. | 

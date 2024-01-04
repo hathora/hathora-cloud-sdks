@@ -37,58 +37,64 @@ namespace Hathora.Cloud.Sdk.Model
         Seattle = 1,
 
         /// <summary>
+        /// Enum LosAngeles for value: Los_Angeles
+        /// </summary>
+        [EnumMember(Value = "Los_Angeles")]
+        LosAngeles = 2,
+
+        /// <summary>
         /// Enum WashingtonDC for value: Washington_DC
         /// </summary>
         [EnumMember(Value = "Washington_DC")]
-        WashingtonDC = 2,
+        WashingtonDC = 3,
 
         /// <summary>
         /// Enum Chicago for value: Chicago
         /// </summary>
         [EnumMember(Value = "Chicago")]
-        Chicago = 3,
+        Chicago = 4,
 
         /// <summary>
         /// Enum London for value: London
         /// </summary>
         [EnumMember(Value = "London")]
-        London = 4,
+        London = 5,
 
         /// <summary>
         /// Enum Frankfurt for value: Frankfurt
         /// </summary>
         [EnumMember(Value = "Frankfurt")]
-        Frankfurt = 5,
+        Frankfurt = 6,
 
         /// <summary>
         /// Enum Mumbai for value: Mumbai
         /// </summary>
         [EnumMember(Value = "Mumbai")]
-        Mumbai = 6,
+        Mumbai = 7,
 
         /// <summary>
         /// Enum Singapore for value: Singapore
         /// </summary>
         [EnumMember(Value = "Singapore")]
-        Singapore = 7,
+        Singapore = 8,
 
         /// <summary>
         /// Enum Tokyo for value: Tokyo
         /// </summary>
         [EnumMember(Value = "Tokyo")]
-        Tokyo = 8,
+        Tokyo = 9,
 
         /// <summary>
         /// Enum Sydney for value: Sydney
         /// </summary>
         [EnumMember(Value = "Sydney")]
-        Sydney = 9,
+        Sydney = 10,
 
         /// <summary>
         /// Enum SaoPaulo for value: Sao_Paulo
         /// </summary>
         [EnumMember(Value = "Sao_Paulo")]
-        SaoPaulo = 10
+        SaoPaulo = 11
 
     }
 

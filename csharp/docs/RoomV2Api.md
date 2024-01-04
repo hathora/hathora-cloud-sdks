@@ -11,10 +11,11 @@ All URIs are relative to *https://api.hathora.dev*
 | [**GetInactiveRoomsForProcess**](RoomV2Api.md#getinactiveroomsforprocess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive |  |
 | [**GetRoomInfo**](RoomV2Api.md#getroominfo) | **GET** /rooms/v2/{appId}/info/{roomId} |  |
 | [**SuspendRoom**](RoomV2Api.md#suspendroom) | **POST** /rooms/v2/{appId}/suspend/{roomId} |  |
+| [**UpdateRoomConfig**](RoomV2Api.md#updateroomconfig) | **POST** /rooms/v2/{appId}/update/{roomId} |  |
 
 <a name="createroom"></a>
 # **CreateRoom**
-> ConnectionInfoV2 CreateRoom (string appId, CreateRoomRequest createRoomRequest, string roomId = null)
+> CreateRoomResponse CreateRoom (string appId, CreateRoomParams createRoomParams, string roomId = null)
 
 
 
@@ -41,12 +42,12 @@ namespace Example
 
             var apiInstance = new RoomV2Api(config);
             var appId = "appId_example";  // string | 
-            var createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
+            var createRoomParams = new CreateRoomParams(); // CreateRoomParams | 
             var roomId = "roomId_example";  // string |  (optional) 
 
             try
             {
-                ConnectionInfoV2 result = apiInstance.CreateRoom(appId, createRoomRequest, roomId);
+                CreateRoomResponse result = apiInstance.CreateRoom(appId, createRoomParams, roomId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -66,7 +67,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<ConnectionInfoV2> response = apiInstance.CreateRoomWithHttpInfo(appId, createRoomRequest, roomId);
+    ApiResponse<CreateRoomResponse> response = apiInstance.CreateRoomWithHttpInfo(appId, createRoomParams, roomId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -84,12 +85,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md) |  |  |
+| **createRoomParams** | [**CreateRoomParams**](CreateRoomParams.md) |  |  |
 | **roomId** | **string** |  | [optional]  |
 
 ### Return type
 
-[**ConnectionInfoV2**](ConnectionInfoV2.md)
+[**CreateRoomResponse**](CreateRoomResponse.md)
 
 ### Authorization
 
@@ -664,6 +665,98 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **404** |  |  -  |
+| **500** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="updateroomconfig"></a>
+# **UpdateRoomConfig**
+> void UpdateRoomConfig (string appId, string roomId, UpdateRoomConfigParams updateRoomConfigParams)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Hathora.Cloud.Sdk.Api;
+using Hathora.Cloud.Sdk.Client;
+using Hathora.Cloud.Sdk.Model;
+
+namespace Example
+{
+    public class UpdateRoomConfigExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.hathora.dev";
+            // Configure Bearer token for authorization: hathoraDevToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new RoomV2Api(config);
+            var appId = "appId_example";  // string | 
+            var roomId = "roomId_example";  // string | 
+            var updateRoomConfigParams = new UpdateRoomConfigParams(); // UpdateRoomConfigParams | 
+
+            try
+            {
+                apiInstance.UpdateRoomConfig(appId, roomId, updateRoomConfigParams);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling RoomV2Api.UpdateRoomConfig: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateRoomConfigWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.UpdateRoomConfigWithHttpInfo(appId, roomId, updateRoomConfigParams);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling RoomV2Api.UpdateRoomConfigWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **appId** | **string** |  |  |
+| **roomId** | **string** |  |  |
+| **updateRoomConfigParams** | [**UpdateRoomConfigParams**](UpdateRoomConfigParams.md) |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

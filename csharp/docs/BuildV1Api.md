@@ -12,7 +12,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createbuild"></a>
 # **CreateBuild**
-> Build CreateBuild (string appId, CreateBuildRequest createBuildRequest)
+> Build CreateBuild (string appId, CreateBuildParams createBuildParams)
 
 
 
@@ -39,11 +39,11 @@ namespace Example
 
             var apiInstance = new BuildV1Api(config);
             var appId = "appId_example";  // string | 
-            var createBuildRequest = new CreateBuildRequest(); // CreateBuildRequest | 
+            var createBuildParams = new CreateBuildParams(); // CreateBuildParams | 
 
             try
             {
-                Build result = apiInstance.CreateBuild(appId, createBuildRequest);
+                Build result = apiInstance.CreateBuild(appId, createBuildParams);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -63,7 +63,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<Build> response = apiInstance.CreateBuildWithHttpInfo(appId, createBuildRequest);
+    ApiResponse<Build> response = apiInstance.CreateBuildWithHttpInfo(appId, createBuildParams);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -81,7 +81,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **createBuildRequest** | [**CreateBuildRequest**](CreateBuildRequest.md) |  |  |
+| **createBuildParams** | [**CreateBuildParams**](CreateBuildParams.md) |  |  |
 
 ### Return type
 

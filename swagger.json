@@ -10,7 +10,7 @@
 				"type": "string",
 				"example": "minecraft",
 				"description": "Readable name for an application. Must be unique within an organization.",
-				"maxLength": 32,
+				"maxLength": 64,
 				"pattern": "^[a-z0-9-]+$"
 			},
 			"AppId": {
@@ -257,8 +257,8 @@
 						"example": "dev@hathora.dev"
 					},
 					"requestedMemoryMB": {
-						"type": "number",
-						"format": "double",
+						"type": "integer",
+						"format": "int32",
 						"description": "The amount of memory allocated to your process.",
 						"example": 1024
 					},
@@ -327,6 +327,17 @@
 				"required": [
 					"authConfiguration",
 					"appName"
+				],
+				"type": "object"
+			},
+			"ApiError": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
 				],
 				"type": "object"
 			},
@@ -495,6 +506,7 @@
 				"type": "string",
 				"enum": [
 					"Seattle",
+					"Los_Angeles",
 					"Washington_DC",
 					"Chicago",
 					"London",
@@ -539,11 +551,11 @@
 							"type": "object"
 						},
 						"type": "array",
-						"description": "Identifiers for the containers stored in Hathora's registries."
+						"deprecated": true
 					},
 					"imageSize": {
-						"type": "number",
-						"format": "double",
+						"type": "integer",
+						"format": "int32",
 						"description": "The size (in bytes) of the Docker image built by Hathora."
 					},
 					"status": {
@@ -607,7 +619,7 @@
 				"type": "object",
 				"description": "A build represents a game server artifact and its associated metadata."
 			},
-			"CreateBuildRequest": {
+			"CreateBuildParams": {
 				"properties": {
 					"buildTag": {
 						"$ref": "#/components/schemas/BuildTag"
@@ -712,7 +724,7 @@
 			"RoomId": {
 				"type": "string",
 				"example": "2swovpy1fnunu",
-				"description": "Unique identifier to a game session or match. Use either a system generated ID or pass in your own.",
+				"description": "Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.\nNote: error will be returned if `roomId` is not globally unique.",
 				"minLength": 1,
 				"maxLength": 100,
 				"pattern": "^[a-zA-Z0-9_-]*$"
@@ -732,8 +744,22 @@
 				"type": "object",
 				"description": "User input to initialize the game state. Object must be smaller than 64KB."
 			},
+			"ShortCode": {
+				"type": "string",
+				"example": "LFG4",
+				"description": "User-defined identifier for a lobby.",
+				"maxLength": 100
+			},
 			"Lobby": {
 				"properties": {
+					"shortCode": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/ShortCode"
+							}
+						],
+						"nullable": true
+					},
 					"state": {
 						"additionalProperties": false,
 						"type": "object",
@@ -754,7 +780,6 @@
 					},
 					"local": {
 						"type": "boolean",
-						"example": "false",
 						"deprecated": true
 					},
 					"visibility": {
@@ -771,6 +796,7 @@
 					}
 				},
 				"required": [
+					"shortCode",
 					"initialConfig",
 					"createdAt",
 					"createdBy",
@@ -783,7 +809,7 @@
 				"type": "object",
 				"description": "A lobby object allows you to store and manage metadata for your rooms."
 			},
-			"CreateLobbyRequest": {
+			"CreateLobbyParams": {
 				"properties": {
 					"visibility": {
 						"$ref": "#/components/schemas/LobbyVisibility"
@@ -802,7 +828,7 @@
 				],
 				"type": "object"
 			},
-			"SetLobbyStateRequest": {
+			"SetLobbyStateParams": {
 				"properties": {
 					"state": {
 						"additionalProperties": false,
@@ -815,6 +841,81 @@
 				],
 				"type": "object"
 			},
+			"RoomConfig": {
+				"type": "string",
+				"example": "{\"name\":\"my-room\"}",
+				"description": "Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).",
+				"maxLength": 10000
+			},
+			"LobbyV3": {
+				"properties": {
+					"shortCode": {
+						"$ref": "#/components/schemas/ShortCode",
+						"description": "User defined identifier for a lobby, defaults to `roomId`"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "When the lobby was created."
+					},
+					"createdBy": {
+						"type": "string",
+						"description": "Email address for the user that created the lobby.",
+						"example": "dev@hathora.dev"
+					},
+					"roomConfig": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/RoomConfig"
+							}
+						],
+						"nullable": true
+					},
+					"visibility": {
+						"$ref": "#/components/schemas/LobbyVisibility"
+					},
+					"region": {
+						"$ref": "#/components/schemas/Region"
+					},
+					"roomId": {
+						"$ref": "#/components/schemas/RoomId",
+						"description": "Hathora generated identifier for a room, unique for a given application (including stopped rooms)"
+					},
+					"appId": {
+						"$ref": "#/components/schemas/AppId"
+					}
+				},
+				"required": [
+					"shortCode",
+					"createdAt",
+					"createdBy",
+					"roomConfig",
+					"visibility",
+					"region",
+					"roomId",
+					"appId"
+				],
+				"type": "object",
+				"description": "A lobby object allows you to store and manage metadata for your rooms."
+			},
+			"CreateLobbyV3Params": {
+				"properties": {
+					"visibility": {
+						"$ref": "#/components/schemas/LobbyVisibility"
+					},
+					"roomConfig": {
+						"$ref": "#/components/schemas/RoomConfig"
+					},
+					"region": {
+						"$ref": "#/components/schemas/Region"
+					}
+				},
+				"required": [
+					"visibility",
+					"region"
+				],
+				"type": "object"
+			},
 			"LogsFollow": {
 				"type": "boolean",
 				"default": "false",
@@ -824,6 +925,7 @@
 				"type": "integer",
 				"format": "int32",
 				"default": "100",
+				"example": 100,
 				"description": "Number of lines to return from most recent logs history.",
 				"minimum": 1,
 				"maximum": 5000
@@ -938,8 +1040,8 @@
 						"$ref": "#/components/schemas/TransportType"
 					},
 					"port": {
-						"type": "number",
-						"format": "double"
+						"type": "integer",
+						"format": "int32"
 					},
 					"host": {
 						"type": "string"
@@ -966,8 +1068,8 @@
 			"Process": {
 				"properties": {
 					"egressedBytes": {
-						"type": "number",
-						"format": "double",
+						"type": "integer",
+						"format": "int32",
 						"description": "Measures network traffic leaving the process in bytes.",
 						"example": 435
 					},
@@ -983,8 +1085,8 @@
 						"deprecated": true
 					},
 					"activeConnections": {
-						"type": "number",
-						"format": "double",
+						"type": "integer",
+						"format": "int32",
 						"description": "Tracks the number of active connections to a process.",
 						"example": 10
 					},
@@ -993,8 +1095,8 @@
 						"format": "date-time"
 					},
 					"roomsAllocated": {
-						"type": "number",
-						"format": "double",
+						"type": "integer",
+						"format": "int32",
 						"description": "Tracks the number of rooms that have been allocated to the process.",
 						"example": 1
 					},
@@ -1104,12 +1206,6 @@
 				"type": "object",
 				"description": "A process object represents a runtime instance of your game server and its metadata."
 			},
-			"RoomConfig": {
-				"type": "string",
-				"example": "{\"name\":\"my-room\"}",
-				"description": "Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [`GetRoomInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo).",
-				"maxLength": 10000
-			},
 			"RoomStatus": {
 				"type": "string",
 				"enum": [
@@ -1212,8 +1308,8 @@
 								"type": "array"
 							},
 							"totalRooms": {
-								"type": "number",
-								"format": "double"
+								"type": "integer",
+								"format": "int32"
 							}
 						},
 						"required": [
@@ -1224,7 +1320,7 @@
 					}
 				]
 			},
-			"CreateRoomRequest": {
+			"CreateRoomParams": {
 				"properties": {
 					"roomConfig": {
 						"$ref": "#/components/schemas/RoomConfig"
@@ -1385,10 +1481,44 @@
 				],
 				"type": "object",
 				"description": "Connection information for the default and additional ports."
+			},
+			"CreateRoomResponse": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/ConnectionInfoV2"
+					},
+					{
+						"properties": {
+							"processId": {
+								"$ref": "#/components/schemas/ProcessId"
+							}
+						},
+						"required": [
+							"processId"
+						],
+						"type": "object"
+					}
+				]
+			},
+			"UpdateRoomConfigParams": {
+				"properties": {
+					"roomConfig": {
+						"$ref": "#/components/schemas/RoomConfig"
+					}
+				},
+				"required": [
+					"roomConfig"
+				],
+				"type": "object"
 			}
 		},
 		"securitySchemes": {
 			"hathoraDevToken": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			},
+			"playerAuth": {
 				"type": "http",
 				"scheme": "bearer",
 				"bearerFormat": "JWT"
@@ -1452,7 +1582,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1462,7 +1592,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1509,7 +1639,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1519,7 +1659,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1575,7 +1715,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1614,7 +1754,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1624,7 +1764,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1670,7 +1810,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1712,7 +1852,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1764,7 +1904,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1774,7 +1914,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1827,7 +1967,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1863,7 +2003,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1873,7 +2013,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1909,7 +2049,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1958,7 +2098,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -1997,7 +2137,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2043,7 +2183,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2097,7 +2237,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2107,7 +2247,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2137,7 +2277,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/CreateBuildRequest"
+								"$ref": "#/components/schemas/CreateBuildParams"
 							}
 						}
 					}
@@ -2164,7 +2304,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2174,7 +2314,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2240,7 +2380,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2250,7 +2390,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2260,7 +2400,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2317,7 +2457,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2363,7 +2503,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2417,7 +2557,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2427,7 +2567,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2437,7 +2577,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2524,7 +2664,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2534,7 +2674,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2544,7 +2684,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2554,7 +2694,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2564,7 +2704,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2574,7 +2714,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2584,7 +2724,11 @@
 					"LobbyV1"
 				],
 				"deprecated": true,
-				"security": [],
+				"security": [
+					{
+						"playerAuth": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -2592,14 +2736,6 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/AppId"
-						}
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"schema": {
-							"type": "string"
 						}
 					},
 					{
@@ -2641,7 +2777,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2651,7 +2787,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2661,7 +2797,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2671,7 +2807,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2681,7 +2817,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2691,7 +2827,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2701,7 +2837,11 @@
 					"LobbyV1"
 				],
 				"deprecated": true,
-				"security": [],
+				"security": [
+					{
+						"playerAuth": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -2709,14 +2849,6 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/AppId"
-						}
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"schema": {
-							"type": "string"
 						}
 					},
 					{
@@ -2741,7 +2873,7 @@
 		},
 		"/lobby/v1/{appId}/list": {
 			"get": {
-				"operationId": "ListActivePublicLobbiesDeprecated",
+				"operationId": "ListActivePublicLobbiesDeprecatedV1",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -2761,7 +2893,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2771,7 +2903,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2789,14 +2921,6 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/AppId"
-						}
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"schema": {
-							"type": "string"
 						}
 					},
 					{
@@ -2838,7 +2962,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2848,7 +2972,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2858,7 +2982,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2868,7 +2992,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2878,7 +3002,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2888,7 +3012,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2898,7 +3022,11 @@
 					"LobbyV2"
 				],
 				"deprecated": true,
-				"security": [],
+				"security": [
+					{
+						"playerAuth": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -2906,14 +3034,6 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/AppId"
-						}
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"schema": {
-							"type": "string"
 						}
 					},
 					{
@@ -2968,7 +3088,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2978,7 +3098,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2988,7 +3108,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -2998,7 +3118,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3008,7 +3128,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3018,7 +3138,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3028,7 +3148,11 @@
 					"LobbyV2"
 				],
 				"deprecated": true,
-				"security": [],
+				"security": [
+					{
+						"playerAuth": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -3036,14 +3160,6 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/AppId"
-						}
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"schema": {
-							"type": "string"
 						}
 					},
 					{
@@ -3098,7 +3214,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3108,7 +3224,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3118,7 +3234,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3128,7 +3244,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3138,7 +3254,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3148,7 +3264,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3158,7 +3274,11 @@
 					"LobbyV2"
 				],
 				"deprecated": true,
-				"security": [],
+				"security": [
+					{
+						"playerAuth": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -3166,14 +3286,6 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/AppId"
-						}
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"schema": {
-							"type": "string"
 						}
 					},
 					{
@@ -3211,7 +3323,7 @@
 		},
 		"/lobby/v2/{appId}/create": {
 			"post": {
-				"operationId": "CreateLobby",
+				"operationId": "CreateLobbyDeprecated",
 				"responses": {
 					"201": {
 						"description": "",
@@ -3228,7 +3340,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3238,7 +3350,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3248,7 +3360,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3258,7 +3370,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3268,7 +3380,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3278,17 +3390,22 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
 					}
 				},
-				"description": "Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.",
+				"description": "Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.",
 				"tags": [
 					"LobbyV2"
 				],
-				"security": [],
+				"deprecated": true,
+				"security": [
+					{
+						"playerAuth": []
+					}
+				],
 				"parameters": [
 					{
 						"in": "path",
@@ -3296,14 +3413,6 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/AppId"
-						}
-					},
-					{
-						"in": "header",
-						"name": "Authorization",
-						"required": true,
-						"schema": {
-							"type": "string"
 						}
 					},
 					{
@@ -3320,7 +3429,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/CreateLobbyRequest"
+								"$ref": "#/components/schemas/CreateLobbyParams"
 							}
 						}
 					}
@@ -3329,7 +3438,7 @@
 		},
 		"/lobby/v2/{appId}/list/public": {
 			"get": {
-				"operationId": "ListActivePublicLobbies",
+				"operationId": "ListActivePublicLobbiesDeprecatedV2",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -3345,10 +3454,11 @@
 						}
 					}
 				},
-				"description": "Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.",
+				"description": "Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.",
 				"tags": [
 					"LobbyV2"
 				],
+				"deprecated": true,
 				"security": [],
 				"parameters": [
 					{
@@ -3390,16 +3500,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
 					}
 				},
-				"description": "Get details for an existing lobby using `appId` and `roomId`.",
+				"description": "Get details for a lobby.",
 				"tags": [
 					"LobbyV2"
 				],
+				"deprecated": true,
 				"security": [],
 				"parameters": [
 					{
@@ -3440,7 +3551,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3450,16 +3561,17 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
 					}
 				},
-				"description": "Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.",
+				"description": "Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).",
 				"tags": [
 					"LobbyV2"
 				],
+				"deprecated": true,
 				"security": [
 					{
 						"hathoraDevToken": []
@@ -3488,11 +3600,277 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/SetLobbyStateRequest"
+								"$ref": "#/components/schemas/SetLobbyStateParams"
 							}
 						}
 					}
 				}
+			}
+		},
+		"/lobby/v3/{appId}/create": {
+			"post": {
+				"operationId": "CreateLobby",
+				"responses": {
+					"201": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LobbyV3"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.",
+				"tags": [
+					"LobbyV3"
+				],
+				"security": [
+					{
+						"playerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "query",
+						"name": "shortCode",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/ShortCode"
+						}
+					},
+					{
+						"in": "query",
+						"name": "roomId",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/RoomId"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateLobbyV3Params"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/lobby/v3/{appId}/list/public": {
+			"get": {
+				"operationId": "ListActivePublicLobbies",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/LobbyV3"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.",
+				"tags": [
+					"LobbyV3"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"description": "If omitted, active public lobbies in all regions will be returned.",
+						"in": "query",
+						"name": "region",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/Region"
+						}
+					}
+				]
+			}
+		},
+		"/lobby/v3/{appId}/info/roomid/{roomId}": {
+			"get": {
+				"operationId": "GetLobbyInfoByRoomId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LobbyV3"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get details for a lobby.",
+				"tags": [
+					"LobbyV3"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "path",
+						"name": "roomId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/RoomId"
+						}
+					}
+				]
+			}
+		},
+		"/lobby/v3/{appId}/info/shortcode/{shortCode}": {
+			"get": {
+				"operationId": "GetLobbyInfoByShortCode",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LobbyV3"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get details for a lobby. If 2 or more lobbies have the same `shortCode`, then the most recently created lobby will be returned.",
+				"tags": [
+					"LobbyV3"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "path",
+						"name": "shortCode",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/ShortCode"
+						}
+					}
+				]
 			}
 		},
 		"/logs/v1/{appId}/all": {
@@ -3515,7 +3893,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3582,12 +3960,32 @@
 							}
 						}
 					},
+					"400": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
 					"404": {
 						"description": "",
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"410": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3597,7 +3995,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3648,6 +4046,91 @@
 				]
 			}
 		},
+		"/logs/v1/{appId}/process/{processId}/download": {
+			"get": {
+				"operationId": "DownloadLogForProcess",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"text/plain": {
+								"schema": {
+									"type": "string",
+									"format": "byte"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"410": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Download entire log file for a stopped process.",
+				"tags": [
+					"LogV1"
+				],
+				"security": [
+					{
+						"hathoraDevToken": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "path",
+						"name": "processId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/ProcessId"
+						}
+					}
+				]
+			}
+		},
 		"/logs/v1/{appId}/deployment/{deploymentId}": {
 			"get": {
 				"operationId": "GetLogsForDeployment",
@@ -3668,7 +4151,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3739,7 +4222,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3781,7 +4264,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3791,7 +4274,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3801,7 +4284,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -3903,13 +4386,13 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
 					}
 				},
-				"description": "Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.",
+				"description": "Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.",
 				"tags": [
 					"ProcessesV1"
 				],
@@ -3960,13 +4443,13 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
 					}
 				},
-				"description": "Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.",
+				"description": "Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.",
 				"tags": [
 					"ProcessesV1"
 				],
@@ -4014,7 +4497,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4024,13 +4507,13 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
 					}
 				},
-				"description": "Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.",
+				"description": "Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).",
 				"tags": [
 					"ProcessesV1"
 				],
@@ -4078,7 +4561,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4088,7 +4571,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4098,7 +4581,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4108,7 +4591,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4118,7 +4601,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4156,7 +4639,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/CreateRoomRequest"
+								"$ref": "#/components/schemas/CreateRoomParams"
 							}
 						}
 					}
@@ -4182,7 +4665,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4239,7 +4722,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4296,7 +4779,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4343,7 +4826,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4353,7 +4836,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4400,7 +4883,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4410,7 +4893,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4464,7 +4947,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4474,7 +4957,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4484,7 +4967,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4524,7 +5007,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/ConnectionInfoV2"
+									"$ref": "#/components/schemas/CreateRoomResponse"
 								}
 							}
 						}
@@ -4534,7 +5017,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4544,7 +5027,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4554,7 +5037,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4564,7 +5047,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4574,7 +5057,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4612,7 +5095,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/CreateRoomRequest"
+								"$ref": "#/components/schemas/CreateRoomParams"
 							}
 						}
 					}
@@ -4638,7 +5121,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4695,7 +5178,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4752,7 +5235,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4799,7 +5282,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4809,7 +5292,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4856,7 +5339,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4866,7 +5349,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4920,7 +5403,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4930,7 +5413,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4940,7 +5423,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "string"
+									"$ref": "#/components/schemas/ApiError"
 								}
 							}
 						}
@@ -4969,6 +5452,72 @@
 						}
 					}
 				]
+			}
+		},
+		"/rooms/v2/{appId}/update/{roomId}": {
+			"post": {
+				"operationId": "UpdateRoomConfig",
+				"responses": {
+					"204": {
+						"description": "No content"
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"RoomV2"
+				],
+				"security": [
+					{
+						"hathoraDevToken": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "path",
+						"name": "roomId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/RoomId"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateRoomConfigParams"
+							}
+						}
+					}
+				}
 			}
 		}
 	},
@@ -5002,8 +5551,8 @@
 			"description": "Service that allows clients to directly ping all Hathora regions to get latency information"
 		},
 		{
-			"name": "LobbyV2",
-			"description": "Operations to create and manage [lobbies](https://hathora.dev/docs/concepts/hathora-entities#lobby)."
+			"name": "LobbyV3",
+			"description": "Operations to create and manage lobbies using our [Lobby Service](https://hathora.dev/docs/lobbies-and-matchmaking/lobby-service)."
 		},
 		{
 			"name": "LogV1",
@@ -5020,6 +5569,29 @@
 		{
 			"name": "RoomV2",
 			"description": "Operations to create, manage, and connect to [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)."
+		},
+		{
+			"name": "LobbyV1",
+			"description": "Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3)."
+		},
+		{
+			"name": "LobbyV2",
+			"description": "Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3)."
+		},
+		{
+			"name": "RoomV1",
+			"description": "Deprecated. Use [RoomV2](https://hathora.dev/api#tag/RoomV2)."
 		}
-	]
+	],
+	"x-speakeasy-globals": {
+		"parameters": [
+			{
+				"in": "path",
+				"name": "appId",
+				"schema": {
+					"$ref": "#/components/schemas/AppId"
+				}
+			}
+		]
+	}
 }

@@ -51,7 +51,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="port">port (required).</param>
         /// <param name="host">host (required).</param>
         /// <param name="name">name (required).</param>
-        public ExposedPort(TransportType transportType = default(TransportType), double port = default(double), string host = default(string), string name = default(string))
+        public ExposedPort(TransportType transportType = default(TransportType), int port = default(int), string host = default(string), string name = default(string))
         {
             this.TransportType = transportType;
             this.Port = port;
@@ -74,7 +74,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets Port
         /// </summary>
         [DataMember(Name = "port", IsRequired = true, EmitDefaultValue = true)]
-        public double Port { get; set; }
+        public int Port { get; set; }
 
         /// <summary>
         /// Gets or Sets Host

@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *LobbyV3Api* | [**getLobbyInfoByRoomId**](docs/LobbyV3Api.md#getLobbyInfoByRoomId) | **GET** /lobby/v3/{appId}/info/roomid/{roomId} | 
 *LobbyV3Api* | [**getLobbyInfoByShortCode**](docs/LobbyV3Api.md#getLobbyInfoByShortCode) | **GET** /lobby/v3/{appId}/info/shortcode/{shortCode} | 
 *LobbyV3Api* | [**listActivePublicLobbies**](docs/LobbyV3Api.md#listActivePublicLobbies) | **GET** /lobby/v3/{appId}/list/public | 
+*LogV1Api* | [**downloadLogForProcess**](docs/LogV1Api.md#downloadLogForProcess) | **GET** /logs/v1/{appId}/process/{processId}/download | 
 *LogV1Api* | [**getLogsForApp**](docs/LogV1Api.md#getLogsForApp) | **GET** /logs/v1/{appId}/all | 
 *LogV1Api* | [**getLogsForDeployment**](docs/LogV1Api.md#getLogsForDeployment) | **GET** /logs/v1/{appId}/deployment/{deploymentId} | 
 *LogV1Api* | [**getLogsForProcess**](docs/LogV1Api.md#getLogsForProcess) | **GET** /logs/v1/{appId}/process/{processId} | 
@@ -201,6 +202,8 @@ Class | Method | HTTP request | Description
  - [CreateLobbyV3Params](docs/CreateLobbyV3Params.md)
  - [CreatePrivateLobbyRequest](docs/CreatePrivateLobbyRequest.md)
  - [CreateRoomParams](docs/CreateRoomParams.md)
+ - [CreateRoomResponse](docs/CreateRoomResponse.md)
+ - [CreateRoomResponseAllOf](docs/CreateRoomResponseAllOf.md)
  - [CustomerPortalUrl](docs/CustomerPortalUrl.md)
  - [Deployment](docs/Deployment.md)
  - [DeploymentConfig](docs/DeploymentConfig.md)

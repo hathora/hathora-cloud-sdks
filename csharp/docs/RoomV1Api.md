@@ -14,7 +14,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="createroomdeprecated"></a>
 # **CreateRoomDeprecated**
-> string CreateRoomDeprecated (string appId, CreateRoomRequest createRoomRequest, string roomId = null)
+> string CreateRoomDeprecated (string appId, CreateRoomParams createRoomParams, string roomId = null)
 
 
 
@@ -39,12 +39,12 @@ namespace Example
 
             var apiInstance = new RoomV1Api(config);
             var appId = "appId_example";  // string | 
-            var createRoomRequest = new CreateRoomRequest(); // CreateRoomRequest | 
+            var createRoomParams = new CreateRoomParams(); // CreateRoomParams | 
             var roomId = "roomId_example";  // string |  (optional) 
 
             try
             {
-                string result = apiInstance.CreateRoomDeprecated(appId, createRoomRequest, roomId);
+                string result = apiInstance.CreateRoomDeprecated(appId, createRoomParams, roomId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -64,7 +64,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<string> response = apiInstance.CreateRoomDeprecatedWithHttpInfo(appId, createRoomRequest, roomId);
+    ApiResponse<string> response = apiInstance.CreateRoomDeprecatedWithHttpInfo(appId, createRoomParams, roomId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -82,7 +82,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **createRoomRequest** | [**CreateRoomRequest**](CreateRoomRequest.md) |  |  |
+| **createRoomParams** | [**CreateRoomParams**](CreateRoomParams.md) |  |  |
 | **roomId** | **string** |  | [optional]  |
 
 ### Return type

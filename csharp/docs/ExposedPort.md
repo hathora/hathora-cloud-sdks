@@ -6,7 +6,7 @@ Connection details for an active process.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TransportType** | **TransportType** |  | 
-**Port** | **double** |  | 
+**Port** | **int** |  | 
 **Host** | **string** |  | 
 **Name** | **string** |  | 
 

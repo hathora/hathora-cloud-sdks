@@ -15,11 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   AppConfig,
   Application,
   ApplicationWithDeployment,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     AppConfigFromJSON,
     AppConfigToJSON,
     ApplicationFromJSON,

@@ -15,11 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   CustomerPortalUrl,
   Invoice,
   PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     CustomerPortalUrlFromJSON,
     CustomerPortalUrlToJSON,
     InvoiceFromJSON,

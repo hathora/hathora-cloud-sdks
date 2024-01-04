@@ -8,6 +8,7 @@ export * from './DeploymentV1Api';
 export * from './DiscoveryV1Api';
 export * from './LobbyV1Api';
 export * from './LobbyV2Api';
+export * from './LobbyV3Api';
 export * from './LogV1Api';
 export * from './ManagementV1Api';
 export * from './MetricsV1Api';

@@ -15,25 +15,34 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   ConnectionInfoV2,
-  CreateRoomRequest,
+  CreateRoomParams,
+  CreateRoomResponse,
   PickRoomExcludeKeyofRoomAllocations,
   Room,
+  UpdateRoomConfigParams,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     ConnectionInfoV2FromJSON,
     ConnectionInfoV2ToJSON,
-    CreateRoomRequestFromJSON,
-    CreateRoomRequestToJSON,
+    CreateRoomParamsFromJSON,
+    CreateRoomParamsToJSON,
+    CreateRoomResponseFromJSON,
+    CreateRoomResponseToJSON,
     PickRoomExcludeKeyofRoomAllocationsFromJSON,
     PickRoomExcludeKeyofRoomAllocationsToJSON,
     RoomFromJSON,
     RoomToJSON,
+    UpdateRoomConfigParamsFromJSON,
+    UpdateRoomConfigParamsToJSON,
 } from '../models';
 
-export interface CreateRoomOperationRequest {
+export interface CreateRoomRequest {
     appId: string;
-    createRoomRequest: CreateRoomRequest;
+    createRoomParams: CreateRoomParams;
     roomId?: string;
 }
 
@@ -67,6 +76,12 @@ export interface SuspendRoomRequest {
     roomId: string;
 }
 
+export interface UpdateRoomConfigRequest {
+    appId: string;
+    roomId: string;
+    updateRoomConfigParams: UpdateRoomConfigParams;
+}
+
 /**
  * RoomV2Api - interface
  * 
@@ -77,18 +92,18 @@ export interface RoomV2ApiInterface {
     /**
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      * @param {string} appId 
-     * @param {CreateRoomRequest} createRoomRequest 
+     * @param {CreateRoomParams} createRoomParams 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RoomV2ApiInterface
      */
-    createRoomRaw(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfoV2>>;
+    createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRoomResponse>>;
 
     /**
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      */
-    createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfoV2>;
+    createRoom(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRoomResponse>;
 
     /**
      * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
@@ -180,6 +195,21 @@ export interface RoomV2ApiInterface {
      */
     suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
+    /**
+     * 
+     * @param {string} appId 
+     * @param {string} roomId 
+     * @param {UpdateRoomConfigParams} updateRoomConfigParams 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoomV2ApiInterface
+     */
+    updateRoomConfigRaw(requestParameters: UpdateRoomConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     */
+    updateRoomConfig(appId: string, roomId: string, updateRoomConfigParams: UpdateRoomConfigParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+
 }
 
 /**
@@ -190,13 +220,13 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
     /**
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      */
-    async createRoomRaw(requestParameters: CreateRoomOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ConnectionInfoV2>> {
+    async createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRoomResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createRoom.');
         }
 
-        if (requestParameters.createRoomRequest === null || requestParameters.createRoomRequest === undefined) {
-            throw new runtime.RequiredError('createRoomRequest','Required parameter requestParameters.createRoomRequest was null or undefined when calling createRoom.');
+        if (requestParameters.createRoomParams === null || requestParameters.createRoomParams === undefined) {
+            throw new runtime.RequiredError('createRoomParams','Required parameter requestParameters.createRoomParams was null or undefined when calling createRoom.');
         }
 
         const queryParameters: any = {};
@@ -222,17 +252,17 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateRoomRequestToJSON(requestParameters.createRoomRequest),
+            body: CreateRoomParamsToJSON(requestParameters.createRoomParams),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ConnectionInfoV2FromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateRoomResponseFromJSON(jsonValue));
     }
 
     /**
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      */
-    async createRoom(appId: string, createRoomRequest: CreateRoomRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ConnectionInfoV2> {
-        const response = await this.createRoomRaw({ appId: appId, createRoomRequest: createRoomRequest, roomId: roomId }, initOverrides);
+    async createRoom(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRoomResponse> {
+        const response = await this.createRoomRaw({ appId: appId, createRoomParams: createRoomParams, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -476,6 +506,52 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
      */
     async suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.suspendRoomRaw({ appId: appId, roomId: roomId }, initOverrides);
+    }
+
+    /**
+     */
+    async updateRoomConfigRaw(requestParameters: UpdateRoomConfigRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling updateRoomConfig.');
+        }
+
+        if (requestParameters.roomId === null || requestParameters.roomId === undefined) {
+            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling updateRoomConfig.');
+        }
+
+        if (requestParameters.updateRoomConfigParams === null || requestParameters.updateRoomConfigParams === undefined) {
+            throw new runtime.RequiredError('updateRoomConfigParams','Required parameter requestParameters.updateRoomConfigParams was null or undefined when calling updateRoomConfig.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("hathoraDevToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/rooms/v2/{appId}/update/{roomId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))).replace(`{${"roomId"}}`, encodeURIComponent(String(requestParameters.roomId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateRoomConfigParamsToJSON(requestParameters.updateRoomConfigParams),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateRoomConfig(appId: string, roomId: string, updateRoomConfigParams: UpdateRoomConfigParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.updateRoomConfigRaw({ appId: appId, roomId: roomId, updateRoomConfigParams: updateRoomConfigParams }, initOverrides);
     }
 
 }

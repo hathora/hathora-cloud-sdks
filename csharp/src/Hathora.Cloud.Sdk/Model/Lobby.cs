@@ -53,6 +53,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Lobby" /> class.
         /// </summary>
+        /// <param name="shortCode">User-defined identifier for a lobby. (required).</param>
         /// <param name="state">JSON blob to store metadata for a room. Must be smaller than 1MB..</param>
         /// <param name="initialConfig">User input to initialize the game state. Object must be smaller than 64KB. (required).</param>
         /// <param name="createdAt">When the lobby was created. (required).</param>
@@ -60,10 +61,16 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="local">local (required).</param>
         /// <param name="visibility">visibility (required).</param>
         /// <param name="region">region (required).</param>
-        /// <param name="roomId">Unique identifier to a game session or match. Use either a system generated ID or pass in your own. (required).</param>
+        /// <param name="roomId">Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Lobby(Object state = default(Object), Object initialConfig = default(Object), DateTime createdAt = default(DateTime), string createdBy = default(string), bool local = default(bool), LobbyVisibility visibility = default(LobbyVisibility), Region region = default(Region), string roomId = default(string), string appId = default(string))
+        public Lobby(string shortCode = default(string), Object state = default(Object), Object initialConfig = default(Object), DateTime createdAt = default(DateTime), string createdBy = default(string), bool local = default(bool), LobbyVisibility visibility = default(LobbyVisibility), Region region = default(Region), string roomId = default(string), string appId = default(string))
         {
+            // to ensure "shortCode" is required (not null)
+            if (shortCode == null)
+            {
+                throw new ArgumentNullException("shortCode is a required property for Lobby and cannot be null");
+            }
+            this.ShortCode = shortCode;
             // to ensure "initialConfig" is required (not null)
             if (initialConfig == null)
             {
@@ -97,6 +104,14 @@ namespace Hathora.Cloud.Sdk.Model
         }
 
         /// <summary>
+        /// User-defined identifier for a lobby.
+        /// </summary>
+        /// <value>User-defined identifier for a lobby.</value>
+        /// <example>&quot;LFG4&quot;</example>
+        [DataMember(Name = "shortCode", IsRequired = true, EmitDefaultValue = true)]
+        public string ShortCode { get; set; }
+
+        /// <summary>
         /// JSON blob to store metadata for a room. Must be smaller than 1MB.
         /// </summary>
         /// <value>JSON blob to store metadata for a room. Must be smaller than 1MB.</value>
@@ -128,15 +143,14 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Gets or Sets Local
         /// </summary>
-        /// <example>false</example>
         [DataMember(Name = "local", IsRequired = true, EmitDefaultValue = true)]
         [Obsolete]
         public bool Local { get; set; }
 
         /// <summary>
-        /// Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+        /// Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique.
         /// </summary>
-        /// <value>Unique identifier to a game session or match. Use either a system generated ID or pass in your own.</value>
+        /// <value>Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique.</value>
         /// <example>&quot;2swovpy1fnunu&quot;</example>
         [DataMember(Name = "roomId", IsRequired = true, EmitDefaultValue = true)]
         public string RoomId { get; set; }
@@ -163,6 +177,7 @@ namespace Hathora.Cloud.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Lobby {\n");
+            sb.Append("  ShortCode: ").Append(ShortCode).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  InitialConfig: ").Append(InitialConfig).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -208,6 +223,11 @@ namespace Hathora.Cloud.Sdk.Model
                 return false;
             }
             return 
+                (
+                    this.ShortCode == input.ShortCode ||
+                    (this.ShortCode != null &&
+                    this.ShortCode.Equals(input.ShortCode))
+                ) && 
                 (
                     this.State == input.State ||
                     (this.State != null &&
@@ -262,6 +282,10 @@ namespace Hathora.Cloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ShortCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShortCode.GetHashCode();
+                }
                 if (this.State != null)
                 {
                     hashCode = (hashCode * 59) + this.State.GetHashCode();
