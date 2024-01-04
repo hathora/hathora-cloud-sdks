@@ -15,10 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   VerificationEmailRequest,
   VerificationEmailResponse,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     VerificationEmailRequestFromJSON,
     VerificationEmailRequestToJSON,
     VerificationEmailResponseFromJSON,

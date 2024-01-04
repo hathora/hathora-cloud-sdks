@@ -33,6 +33,12 @@ import {
  */
 export interface Lobby {
     /**
+     * User-defined identifier for a lobby.
+     * @type {string}
+     * @memberof Lobby
+     */
+    shortCode: string | null;
+    /**
      * JSON blob to store metadata for a room. Must be smaller than 1MB.
      * @type {object}
      * @memberof Lobby
@@ -76,7 +82,8 @@ export interface Lobby {
      */
     region: Region;
     /**
-     * Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+     * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
+     * Note: error will be returned if `roomId` is not globally unique.
      * @type {string}
      * @memberof Lobby
      */
@@ -94,6 +101,7 @@ export interface Lobby {
  */
 export function instanceOfLobby(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "shortCode" in value;
     isInstance = isInstance && "initialConfig" in value;
     isInstance = isInstance && "createdAt" in value;
     isInstance = isInstance && "createdBy" in value;
@@ -116,6 +124,7 @@ export function LobbyFromJSONTyped(json: any, ignoreDiscriminator: boolean): Lob
     }
     return {
         
+        'shortCode': json['shortCode'],
         'state': !exists(json, 'state') ? undefined : json['state'],
         'initialConfig': json['initialConfig'],
         'createdAt': (new Date(json['createdAt'])),
@@ -137,6 +146,7 @@ export function LobbyToJSON(value?: Lobby | null): any {
     }
     return {
         
+        'shortCode': value.shortCode,
         'state': value.state,
         'initialConfig': value.initialConfig,
         'createdAt': (value.createdAt.toISOString()),

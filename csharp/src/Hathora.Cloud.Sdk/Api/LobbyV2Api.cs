@@ -30,66 +30,39 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>Lobby</returns>
-        Lobby CreateLobby(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string));
+        [Obsolete]
+        Lobby CreateLobbyDeprecated(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of Lobby</returns>
-        ApiResponse<Lobby> CreateLobbyWithHttpInfo(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string));
+        [Obsolete]
+        ApiResponse<Lobby> CreateLobbyDeprecatedWithHttpInfo(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>Lobby</returns>
         [Obsolete]
-        Lobby CreateLocalLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createPrivateLobbyRequest"></param>
-        /// <param name="roomId"> (optional)</param>
-        /// <returns>ApiResponse of Lobby</returns>
-        [Obsolete]
-        ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createPrivateLobbyRequest"></param>
-        /// <param name="roomId"> (optional)</param>
-        /// <returns>Lobby</returns>
-        [Obsolete]
-        Lobby CreatePrivateLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
+        Lobby CreateLocalLobby(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -99,23 +72,21 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of Lobby</returns>
         [Obsolete]
-        ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
+        ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>Lobby</returns>
         [Obsolete]
-        Lobby CreatePublicLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
+        Lobby CreatePrivateLobby(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -125,83 +96,112 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of Lobby</returns>
         [Obsolete]
-        ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
+        ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="createPrivateLobbyRequest"></param>
+        /// <param name="roomId"> (optional)</param>
+        /// <returns>Lobby</returns>
+        [Obsolete]
+        Lobby CreatePublicLobby(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
+
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// 
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="createPrivateLobbyRequest"></param>
+        /// <param name="roomId"> (optional)</param>
+        /// <returns>ApiResponse of Lobby</returns>
+        [Obsolete]
+        ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Get details for a lobby.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns>Lobby</returns>
+        [Obsolete]
         Lobby GetLobbyInfo(string appId, string roomId);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Get details for a lobby.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns>ApiResponse of Lobby</returns>
+        [Obsolete]
         ApiResponse<Lobby> GetLobbyInfoWithHttpInfo(string appId, string roomId);
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <returns>List&lt;Lobby&gt;</returns>
-        List<Lobby> ListActivePublicLobbies(string appId, Region? region = default(Region?));
+        [Obsolete]
+        List<Lobby> ListActivePublicLobbiesDeprecatedV2(string appId, Region? region = default(Region?));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <returns>ApiResponse of List&lt;Lobby&gt;</returns>
-        ApiResponse<List<Lobby>> ListActivePublicLobbiesWithHttpInfo(string appId, Region? region = default(Region?));
+        [Obsolete]
+        ApiResponse<List<Lobby>> ListActivePublicLobbiesDeprecatedV2WithHttpInfo(string appId, Region? region = default(Region?));
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <returns>Lobby</returns>
-        Lobby SetLobbyState(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest);
+        [Obsolete]
+        Lobby SetLobbyState(string appId, string roomId, SetLobbyStateParams setLobbyStateParams);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <returns>ApiResponse of Lobby</returns>
-        ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest);
+        [Obsolete]
+        ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateParams setLobbyStateParams);
         #endregion Synchronous Operations
     }
 
@@ -215,31 +215,31 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        System.Threading.Tasks.Task<Lobby> CreateLobbyAsync(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Lobby> CreateLobbyDeprecatedAsync(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        /// Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreateLobbyWithHttpInfoAsync(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreateLobbyDeprecatedWithHttpInfoAsync(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -248,44 +248,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createPrivateLobbyRequest"></param>
-        /// <param name="roomId"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Lobby)</returns>
-        [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createPrivateLobbyRequest"></param>
-        /// <param name="roomId"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Lobby</returns>
-        [Obsolete]
-        System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -295,13 +263,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -310,13 +277,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -326,90 +292,124 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// 
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="createPrivateLobbyRequest"></param>
+        /// <param name="roomId"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of Lobby</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="createPrivateLobbyRequest"></param>
+        /// <param name="roomId"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (Lobby)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Get details for a lobby.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<Lobby> GetLobbyInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        /// Get details for a lobby.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<Lobby>> GetLobbyInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Lobby&gt;</returns>
-        System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesDeprecatedV2Async(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        /// Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Lobby&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Lobby>>> ListActivePublicLobbiesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<List<Lobby>>> ListActivePublicLobbiesDeprecatedV2WithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateParams setLobbyStateParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        /// Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateParams setLobbyStateParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -555,42 +555,38 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>Lobby</returns>
-        public Lobby CreateLobby(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string))
+        [Obsolete]
+        public Lobby CreateLobbyDeprecated(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreateLobbyWithHttpInfo(appId, authorization, createLobbyRequest, roomId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreateLobbyDeprecatedWithHttpInfo(appId, createLobbyParams, roomId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of Lobby</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreateLobbyWithHttpInfo(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string))
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreateLobbyDeprecatedWithHttpInfo(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLobby");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLobbyDeprecated");
 
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreateLobby");
-
-            // verify the required parameter 'createLobbyRequest' is set
-            if (createLobbyRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createLobbyRequest' when calling LobbyV2Api->CreateLobby");
+            // verify the required parameter 'createLobbyParams' is set
+            if (createLobbyParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createLobbyParams' when calling LobbyV2Api->CreateLobbyDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -614,16 +610,21 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
-            localVarRequestOptions.Data = createLobbyRequest;
+            localVarRequestOptions.Data = createLobbyParams;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/create", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateLobby", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateLobbyDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -631,18 +632,18 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        public async System.Threading.Tasks.Task<Lobby> CreateLobbyAsync(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Lobby> CreateLobbyDeprecatedAsync(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateLobbyWithHttpInfoAsync(appId, authorization, createLobbyRequest, roomId, cancellationToken);
+            var task = CreateLobbyDeprecatedWithHttpInfoAsync(appId, createLobbyParams, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -652,28 +653,24 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;.
+        ///  Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
-        /// <param name="createLobbyRequest"></param>
+        /// <param name="createLobbyParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreateLobbyWithHttpInfoAsync(string appId, string authorization, CreateLobbyRequest createLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreateLobbyDeprecatedWithHttpInfoAsync(string appId, CreateLobbyParams createLobbyParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLobby");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLobbyDeprecated");
 
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreateLobby");
-
-            // verify the required parameter 'createLobbyRequest' is set
-            if (createLobbyRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createLobbyRequest' when calling LobbyV2Api->CreateLobby");
+            // verify the required parameter 'createLobbyParams' is set
+            if (createLobbyParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createLobbyParams' when calling LobbyV2Api->CreateLobbyDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -699,9 +696,14 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
-            localVarRequestOptions.Data = createLobbyRequest;
+            localVarRequestOptions.Data = createLobbyParams;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
 
@@ -715,7 +717,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateLobby", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateLobbyDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -727,14 +729,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>Lobby</returns>
         [Obsolete]
-        public Lobby CreateLocalLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
+        public Lobby CreateLocalLobby(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreateLocalLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreateLocalLobbyWithHttpInfo(appId, createPrivateLobbyRequest, roomId);
             return localVarResponse.Data;
         }
 
@@ -743,20 +744,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of Lobby</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreateLocalLobbyWithHttpInfo(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLocalLobby");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreateLocalLobby");
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
@@ -784,9 +780,14 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/create/local", localVarRequestOptions, this.Configuration);
@@ -805,15 +806,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> CreateLocalLobbyAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateLocalLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, cancellationToken);
+            var task = CreateLocalLobbyWithHttpInfoAsync(appId, createPrivateLobbyRequest, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -827,21 +827,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreateLocalLobbyWithHttpInfoAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreateLocalLobby");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreateLocalLobby");
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
@@ -871,9 +866,14 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
 
@@ -899,14 +899,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>Lobby</returns>
         [Obsolete]
-        public Lobby CreatePrivateLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
+        public Lobby CreatePrivateLobby(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreatePrivateLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreatePrivateLobbyWithHttpInfo(appId, createPrivateLobbyRequest, roomId);
             return localVarResponse.Data;
         }
 
@@ -915,20 +914,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of Lobby</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePrivateLobbyWithHttpInfo(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePrivateLobby");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePrivateLobby");
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
@@ -956,9 +950,14 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/create/private", localVarRequestOptions, this.Configuration);
@@ -977,15 +976,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> CreatePrivateLobbyAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreatePrivateLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, cancellationToken);
+            var task = CreatePrivateLobbyWithHttpInfoAsync(appId, createPrivateLobbyRequest, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -999,21 +997,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePrivateLobbyWithHttpInfoAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePrivateLobby");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePrivateLobby");
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
@@ -1043,9 +1036,14 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
 
@@ -1071,14 +1069,13 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>Lobby</returns>
         [Obsolete]
-        public Lobby CreatePublicLobby(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
+        public Lobby CreatePublicLobby(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreatePublicLobbyWithHttpInfo(appId, authorization, createPrivateLobbyRequest, roomId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = CreatePublicLobbyWithHttpInfo(appId, createPrivateLobbyRequest, roomId);
             return localVarResponse.Data;
         }
 
@@ -1087,20 +1084,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <returns>ApiResponse of Lobby</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> CreatePublicLobbyWithHttpInfo(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePublicLobby");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePublicLobby");
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
@@ -1128,9 +1120,14 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<Lobby>("/lobby/v2/{appId}/create/public", localVarRequestOptions, this.Configuration);
@@ -1149,15 +1146,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Lobby> CreatePublicLobbyAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreatePublicLobbyWithHttpInfoAsync(appId, authorization, createPrivateLobbyRequest, roomId, cancellationToken);
+            var task = CreatePublicLobbyWithHttpInfoAsync(appId, createPrivateLobbyRequest, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -1171,21 +1167,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
-        /// <param name="authorization"></param>
         /// <param name="createPrivateLobbyRequest"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, string authorization, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> CreatePublicLobbyWithHttpInfoAsync(string appId, CreatePrivateLobbyRequest createPrivateLobbyRequest, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->CreatePublicLobby");
-
-            // verify the required parameter 'authorization' is set
-            if (authorization == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'authorization' when calling LobbyV2Api->CreatePublicLobby");
 
             // verify the required parameter 'createPrivateLobbyRequest' is set
             if (createPrivateLobbyRequest == null)
@@ -1215,9 +1206,14 @@ namespace Hathora.Cloud.Sdk.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToMultiMap("", "roomId", roomId));
             }
-            localVarRequestOptions.HeaderParameters.Add("Authorization", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(authorization)); // header parameter
             localVarRequestOptions.Data = createPrivateLobbyRequest;
 
+            // authentication (playerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
 
             // make the HTTP request
 
@@ -1239,12 +1235,13 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for a lobby.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns>Lobby</returns>
+        [Obsolete]
         public Lobby GetLobbyInfo(string appId, string roomId)
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = GetLobbyInfoWithHttpInfo(appId, roomId);
@@ -1252,12 +1249,13 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for a lobby.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns>ApiResponse of Lobby</returns>
+        [Obsolete]
         public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> GetLobbyInfoWithHttpInfo(string appId, string roomId)
         {
             // verify the required parameter 'appId' is set
@@ -1301,13 +1299,14 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for a lobby.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Lobby> GetLobbyInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetLobbyInfoWithHttpInfoAsync(appId, roomId, cancellationToken);
@@ -1320,13 +1319,14 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get details for an existing lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;.
+        ///  Get details for a lobby.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> GetLobbyInfoWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
@@ -1379,30 +1379,32 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <returns>List&lt;Lobby&gt;</returns>
-        public List<Lobby> ListActivePublicLobbies(string appId, Region? region = default(Region?))
+        [Obsolete]
+        public List<Lobby> ListActivePublicLobbiesDeprecatedV2(string appId, Region? region = default(Region?))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = ListActivePublicLobbiesWithHttpInfo(appId, region);
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = ListActivePublicLobbiesDeprecatedV2WithHttpInfo(appId, region);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <returns>ApiResponse of List&lt;Lobby&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> ListActivePublicLobbiesWithHttpInfo(string appId, Region? region = default(Region?))
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> ListActivePublicLobbiesDeprecatedV2WithHttpInfo(string appId, Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->ListActivePublicLobbies");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->ListActivePublicLobbiesDeprecatedV2");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1432,7 +1434,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListActivePublicLobbies", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListActivePublicLobbiesDeprecatedV2", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1440,16 +1442,17 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Lobby&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<List<Lobby>> ListActivePublicLobbiesDeprecatedV2Async(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = ListActivePublicLobbiesWithHttpInfoAsync(appId, region, cancellationToken);
+            var task = ListActivePublicLobbiesDeprecatedV2WithHttpInfoAsync(appId, region, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -1459,18 +1462,19 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using &#x60;appId&#x60;. Filter the array by optionally passing in a &#x60;region&#x60;.
+        ///  Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a &#x60;region&#x60;. Use this endpoint to display all public lobbies that a player can join in the game client.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="region">Region to filter by. If omitted, active public lobbies in all regions will be returned. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Lobby&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>>> ListActivePublicLobbiesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Lobby>>> ListActivePublicLobbiesDeprecatedV2WithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->ListActivePublicLobbies");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling LobbyV2Api->ListActivePublicLobbiesDeprecatedV2");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1509,7 +1513,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListActivePublicLobbies", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListActivePublicLobbiesDeprecatedV2", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1517,28 +1521,30 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <returns>Lobby</returns>
-        public Lobby SetLobbyState(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest)
+        [Obsolete]
+        public Lobby SetLobbyState(string appId, string roomId, SetLobbyStateParams setLobbyStateParams)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = SetLobbyStateWithHttpInfo(appId, roomId, setLobbyStateRequest);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = SetLobbyStateWithHttpInfo(appId, roomId, setLobbyStateParams);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <returns>ApiResponse of Lobby</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> SetLobbyStateWithHttpInfo(string appId, string roomId, SetLobbyStateParams setLobbyStateParams)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1548,9 +1554,9 @@ namespace Hathora.Cloud.Sdk.Api
             if (roomId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling LobbyV2Api->SetLobbyState");
 
-            // verify the required parameter 'setLobbyStateRequest' is set
-            if (setLobbyStateRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'setLobbyStateRequest' when calling LobbyV2Api->SetLobbyState");
+            // verify the required parameter 'setLobbyStateParams' is set
+            if (setLobbyStateParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'setLobbyStateParams' when calling LobbyV2Api->SetLobbyState");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1571,7 +1577,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-            localVarRequestOptions.Data = setLobbyStateRequest;
+            localVarRequestOptions.Data = setLobbyStateParams;
 
             // authentication (hathoraDevToken) required
             // bearer authentication required
@@ -1593,17 +1599,18 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Lobby</returns>
-        public async System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Lobby> SetLobbyStateAsync(string appId, string roomId, SetLobbyStateParams setLobbyStateParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = SetLobbyStateWithHttpInfoAsync(appId, roomId, setLobbyStateRequest, cancellationToken);
+            var task = SetLobbyStateWithHttpInfoAsync(appId, roomId, setLobbyStateParams, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Lobby> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -1613,15 +1620,16 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Set the state of a lobby using &#x60;appId&#x60; and &#x60;roomId&#x60;. State is intended to be set by the server and must be smaller than 1MB.
+        ///  Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
-        /// <param name="setLobbyStateRequest"></param>
+        /// <param name="setLobbyStateParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Lobby)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateRequest setLobbyStateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Lobby>> SetLobbyStateWithHttpInfoAsync(string appId, string roomId, SetLobbyStateParams setLobbyStateParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1631,9 +1639,9 @@ namespace Hathora.Cloud.Sdk.Api
             if (roomId == null)
                 throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling LobbyV2Api->SetLobbyState");
 
-            // verify the required parameter 'setLobbyStateRequest' is set
-            if (setLobbyStateRequest == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'setLobbyStateRequest' when calling LobbyV2Api->SetLobbyState");
+            // verify the required parameter 'setLobbyStateParams' is set
+            if (setLobbyStateParams == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'setLobbyStateParams' when calling LobbyV2Api->SetLobbyState");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1656,7 +1664,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
             localVarRequestOptions.PathParameters.Add("roomId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(roomId)); // path parameter
-            localVarRequestOptions.Data = setLobbyStateRequest;
+            localVarRequestOptions.Data = setLobbyStateParams;
 
             // authentication (hathoraDevToken) required
             // bearer authentication required

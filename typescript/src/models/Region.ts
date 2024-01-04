@@ -19,6 +19,7 @@
  */
 export const Region = {
     Seattle: 'Seattle',
+    LosAngeles: 'Los_Angeles',
     WashingtonDc: 'Washington_DC',
     Chicago: 'Chicago',
     London: 'London',

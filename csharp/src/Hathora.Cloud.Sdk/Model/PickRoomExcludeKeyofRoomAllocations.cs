@@ -48,7 +48,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Initializes a new instance of the <see cref="PickRoomExcludeKeyofRoomAllocations" /> class.
         /// </summary>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        /// <param name="roomId">Unique identifier to a game session or match. Use either a system generated ID or pass in your own. (required).</param>
+        /// <param name="roomId">Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique. (required).</param>
         /// <param name="roomConfig">Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo). (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="currentAllocation">currentAllocation (required).</param>
@@ -91,9 +91,9 @@ namespace Hathora.Cloud.Sdk.Model
         public string AppId { get; set; }
 
         /// <summary>
-        /// Unique identifier to a game session or match. Use either a system generated ID or pass in your own.
+        /// Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique.
         /// </summary>
-        /// <value>Unique identifier to a game session or match. Use either a system generated ID or pass in your own.</value>
+        /// <value>Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique.</value>
         /// <example>&quot;2swovpy1fnunu&quot;</example>
         [DataMember(Name = "roomId", IsRequired = true, EmitDefaultValue = true)]
         public string RoomId { get; set; }

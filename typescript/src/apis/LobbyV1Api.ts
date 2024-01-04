@@ -15,10 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   Lobby,
   Region,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     LobbyFromJSON,
     LobbyToJSON,
     RegionFromJSON,
@@ -27,21 +30,18 @@ import {
 
 export interface CreatePrivateLobbyDeprecatedRequest {
     appId: string;
-    authorization: string;
     region?: Region;
     local?: boolean;
 }
 
 export interface CreatePublicLobbyDeprecatedRequest {
     appId: string;
-    authorization: string;
     region?: Region;
     local?: boolean;
 }
 
-export interface ListActivePublicLobbiesDeprecatedRequest {
+export interface ListActivePublicLobbiesDeprecatedV1Request {
     appId: string;
-    authorization: string;
     local?: boolean;
     region?: Region;
 }
@@ -56,7 +56,6 @@ export interface LobbyV1ApiInterface {
     /**
      * 
      * @param {string} appId 
-     * @param {string} authorization 
      * @param {Region} [region] 
      * @param {boolean} [local] 
      * @param {*} [options] Override http request option.
@@ -68,12 +67,11 @@ export interface LobbyV1ApiInterface {
 
     /**
      */
-    createPrivateLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createPrivateLobbyDeprecated(appId: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
      * @param {string} appId 
-     * @param {string} authorization 
      * @param {Region} [region] 
      * @param {boolean} [local] 
      * @param {*} [options] Override http request option.
@@ -85,12 +83,11 @@ export interface LobbyV1ApiInterface {
 
     /**
      */
-    createPublicLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    createPublicLobbyDeprecated(appId: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
     /**
      * 
      * @param {string} appId 
-     * @param {string} authorization 
      * @param {boolean} [local] 
      * @param {Region} [region] 
      * @param {*} [options] Override http request option.
@@ -98,11 +95,11 @@ export interface LobbyV1ApiInterface {
      * @throws {RequiredError}
      * @memberof LobbyV1ApiInterface
      */
-    listActivePublicLobbiesDeprecatedRaw(requestParameters: ListActivePublicLobbiesDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>>;
+    listActivePublicLobbiesDeprecatedV1Raw(requestParameters: ListActivePublicLobbiesDeprecatedV1Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>>;
 
     /**
      */
-    listActivePublicLobbiesDeprecated(appId: string, authorization: string, local?: boolean, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
+    listActivePublicLobbiesDeprecatedV1(appId: string, local?: boolean, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
 
 }
 
@@ -118,10 +115,6 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createPrivateLobbyDeprecated.');
         }
 
-        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
-            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling createPrivateLobbyDeprecated.');
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters.region !== undefined) {
@@ -134,10 +127,14 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("playerAuth", []);
 
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
             path: `/lobby/v1/{appId}/create/private`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
             method: 'POST',
@@ -154,8 +151,8 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
     /**
      */
-    async createPrivateLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createPrivateLobbyDeprecatedRaw({ appId: appId, authorization: authorization, region: region, local: local }, initOverrides);
+    async createPrivateLobbyDeprecated(appId: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createPrivateLobbyDeprecatedRaw({ appId: appId, region: region, local: local }, initOverrides);
         return await response.value();
     }
 
@@ -164,10 +161,6 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
     async createPublicLobbyDeprecatedRaw(requestParameters: CreatePublicLobbyDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createPublicLobbyDeprecated.');
-        }
-
-        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
-            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling createPublicLobbyDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -182,10 +175,14 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("playerAuth", []);
 
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
             path: `/lobby/v1/{appId}/create/public`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
             method: 'POST',
@@ -202,20 +199,16 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
     /**
      */
-    async createPublicLobbyDeprecated(appId: string, authorization: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.createPublicLobbyDeprecatedRaw({ appId: appId, authorization: authorization, region: region, local: local }, initOverrides);
+    async createPublicLobbyDeprecated(appId: string, region?: Region, local?: boolean, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.createPublicLobbyDeprecatedRaw({ appId: appId, region: region, local: local }, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async listActivePublicLobbiesDeprecatedRaw(requestParameters: ListActivePublicLobbiesDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>> {
+    async listActivePublicLobbiesDeprecatedV1Raw(requestParameters: ListActivePublicLobbiesDeprecatedV1Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling listActivePublicLobbiesDeprecated.');
-        }
-
-        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
-            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling listActivePublicLobbiesDeprecated.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling listActivePublicLobbiesDeprecatedV1.');
         }
 
         const queryParameters: any = {};
@@ -230,10 +223,6 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
-
         const response = await this.request({
             path: `/lobby/v1/{appId}/list`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
             method: 'GET',
@@ -246,8 +235,8 @@ export class LobbyV1Api extends runtime.BaseAPI implements LobbyV1ApiInterface {
 
     /**
      */
-    async listActivePublicLobbiesDeprecated(appId: string, authorization: string, local?: boolean, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
-        const response = await this.listActivePublicLobbiesDeprecatedRaw({ appId: appId, authorization: authorization, local: local, region: region }, initOverrides);
+    async listActivePublicLobbiesDeprecatedV1(appId: string, local?: boolean, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
+        const response = await this.listActivePublicLobbiesDeprecatedV1Raw({ appId: appId, local: local, region: region }, initOverrides);
         return await response.value();
     }
 

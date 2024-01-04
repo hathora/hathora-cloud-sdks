@@ -15,11 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   LoginGoogleRequest,
   LoginNicknameRequest,
   LoginResponse,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     LoginGoogleRequestFromJSON,
     LoginGoogleRequestToJSON,
     LoginNicknameRequestFromJSON,

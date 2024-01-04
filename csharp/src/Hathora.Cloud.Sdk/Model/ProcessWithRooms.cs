@@ -71,7 +71,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
         /// <param name="rooms">rooms (required).</param>
         /// <param name="totalRooms">totalRooms (required).</param>
-        public ProcessWithRooms(double egressedBytes = default(double), DateTime? idleSince = default(DateTime?), DateTime activeConnectionsUpdatedAt = default(DateTime), double activeConnections = default(double), DateTime roomsAllocatedUpdatedAt = default(DateTime), double roomsAllocated = default(double), DateTime roomSlotsAvailableUpdatedAt = default(DateTime), double roomSlotsAvailable = default(double), bool draining = default(bool), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime startingAt = default(DateTime), int roomsPerProcess = default(int), List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), double port = default(double), string host = default(string), Region region = default(Region), string processId = default(string), int deploymentId = default(int), string appId = default(string), List<PickRoomExcludeKeyofRoomAllocations> rooms = default(List<PickRoomExcludeKeyofRoomAllocations>), double totalRooms = default(double))
+        public ProcessWithRooms(int egressedBytes = default(int), DateTime? idleSince = default(DateTime?), DateTime activeConnectionsUpdatedAt = default(DateTime), int activeConnections = default(int), DateTime roomsAllocatedUpdatedAt = default(DateTime), int roomsAllocated = default(int), DateTime roomSlotsAvailableUpdatedAt = default(DateTime), double roomSlotsAvailable = default(double), bool draining = default(bool), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime startingAt = default(DateTime), int roomsPerProcess = default(int), List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), double port = default(double), string host = default(string), Region region = default(Region), string processId = default(string), int deploymentId = default(int), string appId = default(string), List<PickRoomExcludeKeyofRoomAllocations> rooms = default(List<PickRoomExcludeKeyofRoomAllocations>), int totalRooms = default(int))
         {
             this.EgressedBytes = egressedBytes;
             // to ensure "idleSince" is required (not null)
@@ -151,7 +151,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <value>Measures network traffic leaving the process in bytes.</value>
         /// <example>435</example>
         [DataMember(Name = "egressedBytes", IsRequired = true, EmitDefaultValue = true)]
-        public double EgressedBytes { get; set; }
+        public int EgressedBytes { get; set; }
 
         /// <summary>
         /// Gets or Sets IdleSince
@@ -173,7 +173,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <value>Tracks the number of active connections to a process.</value>
         /// <example>10</example>
         [DataMember(Name = "activeConnections", IsRequired = true, EmitDefaultValue = true)]
-        public double ActiveConnections { get; set; }
+        public int ActiveConnections { get; set; }
 
         /// <summary>
         /// Gets or Sets RoomsAllocatedUpdatedAt
@@ -187,7 +187,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <value>Tracks the number of rooms that have been allocated to the process.</value>
         /// <example>1</example>
         [DataMember(Name = "roomsAllocated", IsRequired = true, EmitDefaultValue = true)]
-        public double RoomsAllocated { get; set; }
+        public int RoomsAllocated { get; set; }
 
         /// <summary>
         /// Gets or Sets RoomSlotsAvailableUpdatedAt
@@ -306,7 +306,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets TotalRooms
         /// </summary>
         [DataMember(Name = "totalRooms", IsRequired = true, EmitDefaultValue = true)]
-        public double TotalRooms { get; set; }
+        public int TotalRooms { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties

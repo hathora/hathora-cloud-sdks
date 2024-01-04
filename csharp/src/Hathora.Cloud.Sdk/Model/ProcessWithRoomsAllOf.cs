@@ -43,7 +43,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <param name="rooms">rooms (required).</param>
         /// <param name="totalRooms">totalRooms (required).</param>
-        public ProcessWithRoomsAllOf(List<PickRoomExcludeKeyofRoomAllocations> rooms = default(List<PickRoomExcludeKeyofRoomAllocations>), double totalRooms = default(double))
+        public ProcessWithRoomsAllOf(List<PickRoomExcludeKeyofRoomAllocations> rooms = default(List<PickRoomExcludeKeyofRoomAllocations>), int totalRooms = default(int))
         {
             // to ensure "rooms" is required (not null)
             if (rooms == null)
@@ -65,7 +65,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Gets or Sets TotalRooms
         /// </summary>
         [DataMember(Name = "totalRooms", IsRequired = true, EmitDefaultValue = true)]
-        public double TotalRooms { get; set; }
+        public int TotalRooms { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties

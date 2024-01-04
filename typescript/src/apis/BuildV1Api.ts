@@ -15,19 +15,22 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   Build,
-  CreateBuildRequest,
+  CreateBuildParams,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     BuildFromJSON,
     BuildToJSON,
-    CreateBuildRequestFromJSON,
-    CreateBuildRequestToJSON,
+    CreateBuildParamsFromJSON,
+    CreateBuildParamsToJSON,
 } from '../models';
 
-export interface CreateBuildOperationRequest {
+export interface CreateBuildRequest {
     appId: string;
-    createBuildRequest: CreateBuildRequest;
+    createBuildParams: CreateBuildParams;
 }
 
 export interface DeleteBuildRequest {
@@ -60,17 +63,17 @@ export interface BuildV1ApiInterface {
     /**
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      * @param {string} appId 
-     * @param {CreateBuildRequest} createBuildRequest 
+     * @param {CreateBuildParams} createBuildParams 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BuildV1ApiInterface
      */
-    createBuildRaw(requestParameters: CreateBuildOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
+    createBuildRaw(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
 
     /**
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    createBuild(appId: string, createBuildRequest: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
+    createBuild(appId: string, createBuildParams: CreateBuildParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
 
     /**
      * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
@@ -142,13 +145,13 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    async createBuildRaw(requestParameters: CreateBuildOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
+    async createBuildRaw(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createBuild.');
         }
 
-        if (requestParameters.createBuildRequest === null || requestParameters.createBuildRequest === undefined) {
-            throw new runtime.RequiredError('createBuildRequest','Required parameter requestParameters.createBuildRequest was null or undefined when calling createBuild.');
+        if (requestParameters.createBuildParams === null || requestParameters.createBuildParams === undefined) {
+            throw new runtime.RequiredError('createBuildParams','Required parameter requestParameters.createBuildParams was null or undefined when calling createBuild.');
         }
 
         const queryParameters: any = {};
@@ -170,7 +173,7 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateBuildRequestToJSON(requestParameters.createBuildRequest),
+            body: CreateBuildParamsToJSON(requestParameters.createBuildParams),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuildFromJSON(jsonValue));
@@ -179,8 +182,8 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    async createBuild(appId: string, createBuildRequest: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
-        const response = await this.createBuildRaw({ appId: appId, createBuildRequest: createBuildRequest }, initOverrides);
+    async createBuild(appId: string, createBuildParams: CreateBuildParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
+        const response = await this.createBuildRaw({ appId: appId, createBuildParams: createBuildParams }, initOverrides);
         return await response.value();
     }
 

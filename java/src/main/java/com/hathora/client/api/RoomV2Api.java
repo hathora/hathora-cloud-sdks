@@ -30,6 +30,7 @@ import java.io.IOException;
 import com.hathora.client.model.ApiError;
 import com.hathora.client.model.ConnectionInfoV2;
 import com.hathora.client.model.CreateRoomParams;
+import com.hathora.client.model.CreateRoomResponse;
 import com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations;
 import com.hathora.client.model.Room;
 import com.hathora.client.model.UpdateRoomConfigParams;
@@ -169,7 +170,7 @@ public class RoomV2Api {
      * @param appId  (required)
      * @param createRoomParams  (required)
      * @param roomId  (optional)
-     * @return ConnectionInfoV2
+     * @return CreateRoomResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -182,8 +183,8 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectionInfoV2 createRoom(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
-        ApiResponse<ConnectionInfoV2> localVarResp = createRoomWithHttpInfo(appId, createRoomParams, roomId);
+    public CreateRoomResponse createRoom(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
+        ApiResponse<CreateRoomResponse> localVarResp = createRoomWithHttpInfo(appId, createRoomParams, roomId);
         return localVarResp.getData();
     }
 
@@ -193,7 +194,7 @@ public class RoomV2Api {
      * @param appId  (required)
      * @param createRoomParams  (required)
      * @param roomId  (optional)
-     * @return ApiResponse&lt;ConnectionInfoV2&gt;
+     * @return ApiResponse&lt;CreateRoomResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -206,9 +207,9 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectionInfoV2> createRoomWithHttpInfo(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
+    public ApiResponse<CreateRoomResponse> createRoomWithHttpInfo(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
         okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomParams, roomId, null);
-        Type localVarReturnType = new TypeToken<ConnectionInfoV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateRoomResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -232,10 +233,10 @@ public class RoomV2Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomAsync(String appId, CreateRoomParams createRoomParams, String roomId, final ApiCallback<ConnectionInfoV2> _callback) throws ApiException {
+    public okhttp3.Call createRoomAsync(String appId, CreateRoomParams createRoomParams, String roomId, final ApiCallback<CreateRoomResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomParams, roomId, _callback);
-        Type localVarReturnType = new TypeToken<ConnectionInfoV2>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateRoomResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

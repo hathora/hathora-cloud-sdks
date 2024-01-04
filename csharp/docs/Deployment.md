@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **ContainerPort** | **double** |  | 
 **CreatedAt** | **DateTime** | When the deployment was created. | 
 **CreatedBy** | **string** | Email address for the user that created the deployment. | 
-**RequestedMemoryMB** | **double** | The amount of memory allocated to your process. | 
+**RequestedMemoryMB** | **int** | The amount of memory allocated to your process. | 
 **RequestedCPU** | **double** | The number of cores allocated to your process. | 
 **DeploymentId** | **int** | System generated id for a deployment. Increments by 1. | 
 **BuildId** | **int** | System generated id for a build. Increments by 1. | 

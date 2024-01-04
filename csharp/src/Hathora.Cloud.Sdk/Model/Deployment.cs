@@ -94,7 +94,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="deploymentId">System generated id for a deployment. Increments by 1. (required).</param>
         /// <param name="buildId">System generated id for a build. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Deployment(List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), TransportTypeEnum transportType = default(TransportTypeEnum), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), double requestedMemoryMB = default(double), double requestedCPU = default(double), int deploymentId = default(int), int buildId = default(int), string appId = default(string))
+        public Deployment(List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), TransportTypeEnum transportType = default(TransportTypeEnum), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), int requestedMemoryMB = default(int), double requestedCPU = default(double), int deploymentId = default(int), int buildId = default(int), string appId = default(string))
         {
             // to ensure "env" is required (not null)
             if (env == null)
@@ -194,7 +194,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <value>The amount of memory allocated to your process.</value>
         /// <example>1024</example>
         [DataMember(Name = "requestedMemoryMB", IsRequired = true, EmitDefaultValue = true)]
-        public double RequestedMemoryMB { get; set; }
+        public int RequestedMemoryMB { get; set; }
 
         /// <summary>
         /// The number of cores allocated to your process.

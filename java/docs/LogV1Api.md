@@ -4,10 +4,84 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**downloadLogForProcess**](LogV1Api.md#downloadLogForProcess) | **GET** /logs/v1/{appId}/process/{processId}/download |  |
 | [**getLogsForApp**](LogV1Api.md#getLogsForApp) | **GET** /logs/v1/{appId}/all |  |
 | [**getLogsForDeployment**](LogV1Api.md#getLogsForDeployment) | **GET** /logs/v1/{appId}/deployment/{deploymentId} |  |
 | [**getLogsForProcess**](LogV1Api.md#getLogsForProcess) | **GET** /logs/v1/{appId}/process/{processId} |  |
 
+
+<a name="downloadLogForProcess"></a>
+# **downloadLogForProcess**
+> byte[] downloadLogForProcess(appId, processId)
+
+
+
+Download entire log file for a stopped process.
+
+### Example
+```java
+// Import classes:
+import com.hathora.client.ApiClient;
+import com.hathora.client.ApiException;
+import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
+import com.hathora.client.models.*;
+import com.hathora.client.api.LogV1Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
+
+    LogV1Api apiInstance = new LogV1Api(defaultClient);
+    String appId = "appId_example"; // String | 
+    String processId = "processId_example"; // String | 
+    try {
+      byte[] result = apiInstance.downloadLogForProcess(appId, processId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogV1Api#downloadLogForProcess");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**|  | |
+| **processId** | **String**|  | |
+
+### Return type
+
+**byte[]**
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **400** |  |  -  |
+| **404** |  |  -  |
+| **410** |  |  -  |
+| **500** |  |  -  |
 
 <a name="getLogsForApp"></a>
 # **getLogsForApp**

@@ -15,11 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   Process,
   ProcessWithRooms,
   Region,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     ProcessFromJSON,
     ProcessToJSON,
     ProcessWithRoomsFromJSON,
@@ -51,7 +54,7 @@ export interface GetStoppedProcessesRequest {
  */
 export interface ProcessesV1ApiInterface {
     /**
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      * @param {string} appId 
      * @param {string} processId 
      * @param {*} [options] Override http request option.
@@ -61,12 +64,12 @@ export interface ProcessesV1ApiInterface {
     getProcessInfoRaw(requestParameters: GetProcessInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Process>>;
 
     /**
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Process>;
 
     /**
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      * @param {string} appId 
      * @param {Region} [region] 
      * @param {*} [options] Override http request option.
@@ -76,12 +79,12 @@ export interface ProcessesV1ApiInterface {
     getRunningProcessesRaw(requestParameters: GetRunningProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProcessWithRooms>>>;
 
     /**
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     getRunningProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProcessWithRooms>>;
 
     /**
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      * @param {string} appId 
      * @param {Region} [region] 
      * @param {*} [options] Override http request option.
@@ -91,7 +94,7 @@ export interface ProcessesV1ApiInterface {
     getStoppedProcessesRaw(requestParameters: GetStoppedProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Process>>>;
 
     /**
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     getStoppedProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Process>>;
 
@@ -103,7 +106,7 @@ export interface ProcessesV1ApiInterface {
 export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInterface {
 
     /**
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     async getProcessInfoRaw(requestParameters: GetProcessInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Process>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -137,7 +140,7 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
     }
 
     /**
-     * Get details for an existing [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
+     * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     async getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Process> {
         const response = await this.getProcessInfoRaw({ appId: appId, processId: processId }, initOverrides);
@@ -145,7 +148,7 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
     }
 
     /**
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     async getRunningProcessesRaw(requestParameters: GetRunningProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ProcessWithRooms>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -179,7 +182,7 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
     }
 
     /**
-     * Returns an array of active [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     async getRunningProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ProcessWithRooms>> {
         const response = await this.getRunningProcessesRaw({ appId: appId, region: region }, initOverrides);
@@ -187,7 +190,7 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
     }
 
     /**
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     async getStoppedProcessesRaw(requestParameters: GetStoppedProcessesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Process>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -221,7 +224,7 @@ export class ProcessesV1Api extends runtime.BaseAPI implements ProcessesV1ApiInt
     }
 
     /**
-     * Returns an array of stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a region.
+     * Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `region`.
      */
     async getStoppedProcesses(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Process>> {
         const response = await this.getStoppedProcessesRaw({ appId: appId, region: region }, initOverrides);

@@ -1734,6 +1734,62 @@ paths:
       tags:
       - LogV1
       x-accepts: application/json
+  /logs/v1/{appId}/process/{processId}/download:
+    get:
+      description: Download entire log file for a stopped process.
+      operationId: DownloadLogForProcess
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: processId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ProcessId'
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                format: byte
+                type: string
+          description: Ok
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "410":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - LogV1
+      x-accepts: application/json
   /logs/v1/{appId}/deployment/{deploymentId}:
     get:
       deprecated: true
@@ -2372,7 +2428,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConnectionInfoV2'
+                $ref: '#/components/schemas/CreateRoomResponse'
           description: ""
         "400":
           content:
@@ -2712,7 +2768,7 @@ components:
     AppName:
       description: Readable name for an application. Must be unique within an organization.
       example: minecraft
-      maxLength: 32
+      maxLength: 64
       pattern: "^[a-z0-9-]+$"
       type: string
     AppId:
@@ -2801,7 +2857,7 @@ components:
           description: Readable name for an application. Must be unique within an
             organization.
           example: minecraft
-          maxLength: 32
+          maxLength: 64
           pattern: "^[a-z0-9-]+$"
           type: string
       required:
@@ -3029,7 +3085,7 @@ components:
           description: Readable name for an application. Must be unique within an
             organization.
           example: minecraft
-          maxLength: 32
+          maxLength: 64
           pattern: "^[a-z0-9-]+$"
           type: string
       required:
@@ -4182,6 +4238,10 @@ components:
       - roomId
       - status
       type: object
+    CreateRoomResponse:
+      allOf:
+      - $ref: '#/components/schemas/ConnectionInfoV2'
+      - $ref: '#/components/schemas/CreateRoomResponse_allOf'
     UpdateRoomConfigParams:
       example:
         roomConfig: "{\"name\":\"my-room\"}"
@@ -4296,6 +4356,17 @@ components:
       required:
       - rooms
       - totalRooms
+      type: object
+      example: null
+    CreateRoomResponse_allOf:
+      properties:
+        processId:
+          description: System generated unique identifier to a runtime instance of
+            your game server.
+          example: cbfcddd2-0006-43ae-996c-995fff7bed2e
+          type: string
+      required:
+      - processId
       type: object
       example: null
   securitySchemes:

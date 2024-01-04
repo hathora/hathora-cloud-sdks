@@ -33,9 +33,10 @@ export interface Build {
      */
     buildTag: string | null;
     /**
-     * Identifiers for the containers stored in Hathora's registries.
+     * 
      * @type {Array<BuildRegionalContainerTagsInner>}
      * @memberof Build
+     * @deprecated
      */
     regionalContainerTags: Array<BuildRegionalContainerTagsInner>;
     /**

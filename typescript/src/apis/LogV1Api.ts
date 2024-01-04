@@ -15,12 +15,20 @@
 
 import * as runtime from '../runtime';
 import type {
+  ApiError,
   Region,
 } from '../models';
 import {
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
     RegionFromJSON,
     RegionToJSON,
 } from '../models';
+
+export interface DownloadLogForProcessRequest {
+    appId: string;
+    processId: string;
+}
 
 export interface GetLogsForAppRequest {
     appId: string;
@@ -50,6 +58,21 @@ export interface GetLogsForProcessRequest {
  * @interface LogV1ApiInterface
  */
 export interface LogV1ApiInterface {
+    /**
+     * Download entire log file for a stopped process.
+     * @param {string} appId 
+     * @param {string} processId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LogV1ApiInterface
+     */
+    downloadLogForProcessRaw(requestParameters: DownloadLogForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+
+    /**
+     * Download entire log file for a stopped process.
+     */
+    downloadLogForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+
     /**
      * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      * @param {string} appId 
@@ -109,6 +132,52 @@ export interface LogV1ApiInterface {
  * 
  */
 export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
+
+    /**
+     * Download entire log file for a stopped process.
+     */
+    async downloadLogForProcessRaw(requestParameters: DownloadLogForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling downloadLogForProcess.');
+        }
+
+        if (requestParameters.processId === null || requestParameters.processId === undefined) {
+            throw new runtime.RequiredError('processId','Required parameter requestParameters.processId was null or undefined when calling downloadLogForProcess.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("hathoraDevToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/logs/v1/{appId}/process/{processId}/download`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))).replace(`{${"processId"}}`, encodeURIComponent(String(requestParameters.processId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<string>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Download entire log file for a stopped process.
+     */
+    async downloadLogForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.downloadLogForProcessRaw({ appId: appId, processId: processId }, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.

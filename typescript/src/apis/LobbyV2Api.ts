@@ -15,49 +15,48 @@
 
 import * as runtime from '../runtime';
 import type {
-  CreateLobbyRequest,
+  ApiError,
+  CreateLobbyParams,
   CreatePrivateLobbyRequest,
   Lobby,
   Region,
-  SetLobbyStateRequest,
+  SetLobbyStateParams,
 } from '../models';
 import {
-    CreateLobbyRequestFromJSON,
-    CreateLobbyRequestToJSON,
+    ApiErrorFromJSON,
+    ApiErrorToJSON,
+    CreateLobbyParamsFromJSON,
+    CreateLobbyParamsToJSON,
     CreatePrivateLobbyRequestFromJSON,
     CreatePrivateLobbyRequestToJSON,
     LobbyFromJSON,
     LobbyToJSON,
     RegionFromJSON,
     RegionToJSON,
-    SetLobbyStateRequestFromJSON,
-    SetLobbyStateRequestToJSON,
+    SetLobbyStateParamsFromJSON,
+    SetLobbyStateParamsToJSON,
 } from '../models';
 
-export interface CreateLobbyOperationRequest {
+export interface CreateLobbyDeprecatedRequest {
     appId: string;
-    authorization: string;
-    createLobbyRequest: CreateLobbyRequest;
+    createLobbyParams: CreateLobbyParams;
     roomId?: string;
 }
 
 export interface CreateLocalLobbyRequest {
     appId: string;
-    authorization: string;
     createPrivateLobbyRequest: CreatePrivateLobbyRequest;
     roomId?: string;
 }
 
 export interface CreatePrivateLobbyOperationRequest {
     appId: string;
-    authorization: string;
     createPrivateLobbyRequest: CreatePrivateLobbyRequest;
     roomId?: string;
 }
 
 export interface CreatePublicLobbyRequest {
     appId: string;
-    authorization: string;
     createPrivateLobbyRequest: CreatePrivateLobbyRequest;
     roomId?: string;
 }
@@ -67,15 +66,15 @@ export interface GetLobbyInfoRequest {
     roomId: string;
 }
 
-export interface ListActivePublicLobbiesRequest {
+export interface ListActivePublicLobbiesDeprecatedV2Request {
     appId: string;
     region?: Region;
 }
 
-export interface SetLobbyStateOperationRequest {
+export interface SetLobbyStateRequest {
     appId: string;
     roomId: string;
-    setLobbyStateRequest: SetLobbyStateRequest;
+    setLobbyStateParams: SetLobbyStateParams;
 }
 
 /**
@@ -86,26 +85,25 @@ export interface SetLobbyStateOperationRequest {
  */
 export interface LobbyV2ApiInterface {
     /**
-     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      * @param {string} appId 
-     * @param {string} authorization 
-     * @param {CreateLobbyRequest} createLobbyRequest 
+     * @param {CreateLobbyParams} createLobbyParams 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV2ApiInterface
      */
-    createLobbyRaw(requestParameters: CreateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
+    createLobbyDeprecatedRaw(requestParameters: CreateLobbyDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
 
     /**
-     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      */
-    createLobby(appId: string, authorization: string, createLobbyRequest: CreateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    createLobbyDeprecated(appId: string, createLobbyParams: CreateLobbyParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
      * 
      * @param {string} appId 
-     * @param {string} authorization 
      * @param {CreatePrivateLobbyRequest} createPrivateLobbyRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
@@ -117,12 +115,11 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    createLocalLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    createLocalLobby(appId: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
      * 
      * @param {string} appId 
-     * @param {string} authorization 
      * @param {CreatePrivateLobbyRequest} createPrivateLobbyRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
@@ -134,12 +131,11 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    createPrivateLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    createPrivateLobby(appId: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
      * 
      * @param {string} appId 
-     * @param {string} authorization 
      * @param {CreatePrivateLobbyRequest} createPrivateLobbyRequest 
      * @param {string} [roomId] 
      * @param {*} [options] Override http request option.
@@ -151,53 +147,56 @@ export interface LobbyV2ApiInterface {
 
     /**
      */
-    createPublicLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    createPublicLobby(appId: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
-     * Get details for an existing lobby using `appId` and `roomId`.
+     * Get details for a lobby.
      * @param {string} appId 
      * @param {string} roomId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV2ApiInterface
      */
     getLobbyInfoRaw(requestParameters: GetLobbyInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
 
     /**
-     * Get details for an existing lobby using `appId` and `roomId`.
+     * Get details for a lobby.
      */
     getLobbyInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
     /**
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
      * @param {string} appId 
      * @param {Region} [region] Region to filter by. If omitted, active public lobbies in all regions will be returned.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV2ApiInterface
      */
-    listActivePublicLobbiesRaw(requestParameters: ListActivePublicLobbiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>>;
+    listActivePublicLobbiesDeprecatedV2Raw(requestParameters: ListActivePublicLobbiesDeprecatedV2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>>;
 
     /**
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
      */
-    listActivePublicLobbies(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
+    listActivePublicLobbiesDeprecatedV2(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>>;
 
     /**
-     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      * @param {string} appId 
      * @param {string} roomId 
-     * @param {SetLobbyStateRequest} setLobbyStateRequest 
+     * @param {SetLobbyStateParams} setLobbyStateParams 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof LobbyV2ApiInterface
      */
-    setLobbyStateRaw(requestParameters: SetLobbyStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
+    setLobbyStateRaw(requestParameters: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>>;
 
     /**
-     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      */
-    setLobbyState(appId: string, roomId: string, setLobbyStateRequest: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
+    setLobbyState(appId: string, roomId: string, setLobbyStateParams: SetLobbyStateParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby>;
 
 }
 
@@ -207,19 +206,15 @@ export interface LobbyV2ApiInterface {
 export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
-     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      */
-    async createLobbyRaw(requestParameters: CreateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
+    async createLobbyDeprecatedRaw(requestParameters: CreateLobbyDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createLobby.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createLobbyDeprecated.');
         }
 
-        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
-            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling createLobby.');
-        }
-
-        if (requestParameters.createLobbyRequest === null || requestParameters.createLobbyRequest === undefined) {
-            throw new runtime.RequiredError('createLobbyRequest','Required parameter requestParameters.createLobbyRequest was null or undefined when calling createLobby.');
+        if (requestParameters.createLobbyParams === null || requestParameters.createLobbyParams === undefined) {
+            throw new runtime.RequiredError('createLobbyParams','Required parameter requestParameters.createLobbyParams was null or undefined when calling createLobbyDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -232,26 +227,30 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("playerAuth", []);
 
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
             path: `/lobby/v2/{appId}/create`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: CreateLobbyRequestToJSON(requestParameters.createLobbyRequest),
+            body: CreateLobbyParamsToJSON(requestParameters.createLobbyParams),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => LobbyFromJSON(jsonValue));
     }
 
     /**
-     * Create a new lobby for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
+     * Create a new lobby for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). A lobby object is a wrapper around a [room](https://hathora.dev/docs/concepts/hathora-entities#room) object. With a lobby, you get additional functionality like configuring the visibility of the room, managing the state of a match, and retrieving a list of public lobbies to display to players.
      */
-    async createLobby(appId: string, authorization: string, createLobbyRequest: CreateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.createLobbyRaw({ appId: appId, authorization: authorization, createLobbyRequest: createLobbyRequest, roomId: roomId }, initOverrides);
+    async createLobbyDeprecated(appId: string, createLobbyParams: CreateLobbyParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.createLobbyDeprecatedRaw({ appId: appId, createLobbyParams: createLobbyParams, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -260,10 +259,6 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     async createLocalLobbyRaw(requestParameters: CreateLocalLobbyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createLocalLobby.');
-        }
-
-        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
-            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling createLocalLobby.');
         }
 
         if (requestParameters.createPrivateLobbyRequest === null || requestParameters.createPrivateLobbyRequest === undefined) {
@@ -280,10 +275,14 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("playerAuth", []);
 
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
             path: `/lobby/v2/{appId}/create/local`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
             method: 'POST',
@@ -297,8 +296,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async createLocalLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.createLocalLobbyRaw({ appId: appId, authorization: authorization, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
+    async createLocalLobby(appId: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.createLocalLobbyRaw({ appId: appId, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -307,10 +306,6 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     async createPrivateLobbyRaw(requestParameters: CreatePrivateLobbyOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createPrivateLobby.');
-        }
-
-        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
-            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling createPrivateLobby.');
         }
 
         if (requestParameters.createPrivateLobbyRequest === null || requestParameters.createPrivateLobbyRequest === undefined) {
@@ -327,10 +322,14 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("playerAuth", []);
 
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
             path: `/lobby/v2/{appId}/create/private`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
             method: 'POST',
@@ -344,8 +343,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async createPrivateLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.createPrivateLobbyRaw({ appId: appId, authorization: authorization, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
+    async createPrivateLobby(appId: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.createPrivateLobbyRaw({ appId: appId, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
@@ -354,10 +353,6 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     async createPublicLobbyRaw(requestParameters: CreatePublicLobbyRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createPublicLobby.');
-        }
-
-        if (requestParameters.authorization === null || requestParameters.authorization === undefined) {
-            throw new runtime.RequiredError('authorization','Required parameter requestParameters.authorization was null or undefined when calling createPublicLobby.');
         }
 
         if (requestParameters.createPrivateLobbyRequest === null || requestParameters.createPrivateLobbyRequest === undefined) {
@@ -374,10 +369,14 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (requestParameters.authorization !== undefined && requestParameters.authorization !== null) {
-            headerParameters['Authorization'] = String(requestParameters.authorization);
-        }
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("playerAuth", []);
 
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
             path: `/lobby/v2/{appId}/create/public`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
             method: 'POST',
@@ -391,13 +390,13 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
 
     /**
      */
-    async createPublicLobby(appId: string, authorization: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.createPublicLobbyRaw({ appId: appId, authorization: authorization, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
+    async createPublicLobby(appId: string, createPrivateLobbyRequest: CreatePrivateLobbyRequest, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.createPublicLobbyRaw({ appId: appId, createPrivateLobbyRequest: createPrivateLobbyRequest, roomId: roomId }, initOverrides);
         return await response.value();
     }
 
     /**
-     * Get details for an existing lobby using `appId` and `roomId`.
+     * Get details for a lobby.
      */
     async getLobbyInfoRaw(requestParameters: GetLobbyInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
@@ -423,7 +422,7 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Get details for an existing lobby using `appId` and `roomId`.
+     * Get details for a lobby.
      */
     async getLobbyInfo(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
         const response = await this.getLobbyInfoRaw({ appId: appId, roomId: roomId }, initOverrides);
@@ -431,11 +430,11 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
      */
-    async listActivePublicLobbiesRaw(requestParameters: ListActivePublicLobbiesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>> {
+    async listActivePublicLobbiesDeprecatedV2Raw(requestParameters: ListActivePublicLobbiesDeprecatedV2Request, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lobby>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling listActivePublicLobbies.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling listActivePublicLobbiesDeprecatedV2.');
         }
 
         const queryParameters: any = {};
@@ -457,17 +456,17 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
     }
 
     /**
-     * Get all active lobbies for a given [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`. Filter the array by optionally passing in a `region`.
+     * Get all active lobbies for a an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter by optionally passing in a `region`. Use this endpoint to display all public lobbies that a player can join in the game client.
      */
-    async listActivePublicLobbies(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
-        const response = await this.listActivePublicLobbiesRaw({ appId: appId, region: region }, initOverrides);
+    async listActivePublicLobbiesDeprecatedV2(appId: string, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lobby>> {
+        const response = await this.listActivePublicLobbiesDeprecatedV2Raw({ appId: appId, region: region }, initOverrides);
         return await response.value();
     }
 
     /**
-     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      */
-    async setLobbyStateRaw(requestParameters: SetLobbyStateOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
+    async setLobbyStateRaw(requestParameters: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Lobby>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling setLobbyState.');
         }
@@ -476,8 +475,8 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
             throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling setLobbyState.');
         }
 
-        if (requestParameters.setLobbyStateRequest === null || requestParameters.setLobbyStateRequest === undefined) {
-            throw new runtime.RequiredError('setLobbyStateRequest','Required parameter requestParameters.setLobbyStateRequest was null or undefined when calling setLobbyState.');
+        if (requestParameters.setLobbyStateParams === null || requestParameters.setLobbyStateParams === undefined) {
+            throw new runtime.RequiredError('setLobbyStateParams','Required parameter requestParameters.setLobbyStateParams was null or undefined when calling setLobbyState.');
         }
 
         const queryParameters: any = {};
@@ -499,17 +498,17 @@ export class LobbyV2Api extends runtime.BaseAPI implements LobbyV2ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: SetLobbyStateRequestToJSON(requestParameters.setLobbyStateRequest),
+            body: SetLobbyStateParamsToJSON(requestParameters.setLobbyStateParams),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => LobbyFromJSON(jsonValue));
     }
 
     /**
-     * Set the state of a lobby using `appId` and `roomId`. State is intended to be set by the server and must be smaller than 1MB.
+     * Set the state of a lobby. State is intended to be set by the server and must be smaller than 1MB. Use this endpoint to store match data like live player count to enforce max number of clients or persist end-game data (i.e. winner or final scores).
      */
-    async setLobbyState(appId: string, roomId: string, setLobbyStateRequest: SetLobbyStateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
-        const response = await this.setLobbyStateRaw({ appId: appId, roomId: roomId, setLobbyStateRequest: setLobbyStateRequest }, initOverrides);
+    async setLobbyState(appId: string, roomId: string, setLobbyStateParams: SetLobbyStateParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Lobby> {
+        const response = await this.setLobbyStateRaw({ appId: appId, roomId: roomId, setLobbyStateParams: setLobbyStateParams }, initOverrides);
         return await response.value();
     }
 
