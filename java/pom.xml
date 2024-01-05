@@ -5,7 +5,7 @@
     <artifactId>hathora-cloud-sdk</artifactId>
     <packaging>jar</packaging>
     <name>hathora-cloud-sdk</name>
-    <version>0.1.1</version>
+    <version>0.0.1</version>
     <url>https://github.com/hathora/hathora-cloud-sdks</url>
     <description>SDK to interact with Hathora Cloud</description>
     <scm>
@@ -230,22 +230,33 @@
                 </java>
               </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>sign-artifacts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <dependencies>
         <!-- @Nullable annotation -->
         <dependency>
@@ -339,14 +350,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spotless.version>2.27.2</spotless.version>
     </properties>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id><!-- Server config in settings.xml -->
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id><!-- Server config in settings.xml -->
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 </project>
