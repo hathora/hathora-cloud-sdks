@@ -173,6 +173,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <value>Tracks the number of active connections to a process.</value>
         /// <example>10</example>
         [DataMember(Name = "activeConnections", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public int ActiveConnections { get; set; }
 
         /// <summary>

@@ -1088,7 +1088,8 @@
 						"type": "integer",
 						"format": "int32",
 						"description": "Tracks the number of active connections to a process.",
-						"example": 10
+						"example": 10,
+						"deprecated": true
 					},
 					"roomsAllocatedUpdatedAt": {
 						"type": "string",
@@ -1319,6 +1320,102 @@
 						"type": "object"
 					}
 				]
+			},
+			"ProcessStatus": {
+				"type": "string",
+				"enum": [
+					"starting",
+					"running",
+					"draining",
+					"stopping",
+					"stopped",
+					"failed"
+				]
+			},
+			"ProcessV2": {
+				"properties": {
+					"status": {
+						"$ref": "#/components/schemas/ProcessStatus",
+						"description": "Process in drain will not accept any new rooms."
+					},
+					"roomsAllocated": {
+						"type": "integer",
+						"format": "int32",
+						"description": "Tracks the number of rooms that have been allocated to the process.",
+						"example": 1
+					},
+					"terminatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true,
+						"description": "When the process has been terminated."
+					},
+					"stoppingAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true,
+						"description": "When the process is issued to stop. We use this to determine when we should stop billing."
+					},
+					"startedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true,
+						"description": "When the process bound to the specified port. We use this to determine when we should start billing."
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "When the process started being provisioned."
+					},
+					"roomsPerProcess": {
+						"$ref": "#/components/schemas/NumRoomsPerProcess"
+					},
+					"additionalExposedPorts": {
+						"items": {
+							"$ref": "#/components/schemas/ExposedPort"
+						},
+						"type": "array",
+						"example": [
+							{
+								"host": "1.proxy.hathora.dev",
+								"name": "debug",
+								"port": 72941,
+								"transportType": "tcp"
+							}
+						],
+						"maxItems": 2
+					},
+					"exposedPort": {
+						"$ref": "#/components/schemas/ExposedPort"
+					},
+					"region": {
+						"$ref": "#/components/schemas/Region"
+					},
+					"processId": {
+						"$ref": "#/components/schemas/ProcessId"
+					},
+					"deploymentId": {
+						"$ref": "#/components/schemas/DeploymentId"
+					},
+					"appId": {
+						"$ref": "#/components/schemas/AppId"
+					}
+				},
+				"required": [
+					"status",
+					"roomsAllocated",
+					"terminatedAt",
+					"stoppingAt",
+					"startedAt",
+					"createdAt",
+					"roomsPerProcess",
+					"additionalExposedPorts",
+					"region",
+					"processId",
+					"deploymentId",
+					"appId"
+				],
+				"type": "object"
 			},
 			"CreateRoomParams": {
 				"properties": {
@@ -4396,6 +4493,7 @@
 				"tags": [
 					"ProcessesV1"
 				],
+				"deprecated": true,
 				"security": [
 					{
 						"hathoraDevToken": []
@@ -4453,6 +4551,7 @@
 				"tags": [
 					"ProcessesV1"
 				],
+				"deprecated": true,
 				"security": [
 					{
 						"hathoraDevToken": []
@@ -4480,7 +4579,7 @@
 		},
 		"/processes/v1/{appId}/info/{processId}": {
 			"get": {
-				"operationId": "GetProcessInfo",
+				"operationId": "GetProcessInfoDeprecated",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -4517,6 +4616,7 @@
 				"tags": [
 					"ProcessesV1"
 				],
+				"deprecated": true,
 				"security": [
 					{
 						"hathoraDevToken": []
@@ -4537,6 +4637,141 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/components/schemas/ProcessId"
+						}
+					}
+				]
+			}
+		},
+		"/processes/v2/{appId}/info/{processId}": {
+			"get": {
+				"operationId": "GetProcessInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ProcessV2"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).",
+				"tags": [
+					"ProcessesV2"
+				],
+				"security": [
+					{
+						"hathoraDevToken": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "path",
+						"name": "processId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/ProcessId"
+						}
+					}
+				]
+			}
+		},
+		"/processes/v2/{appId}/list/latest": {
+			"get": {
+				"operationId": "GetLatestProcesses",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/ProcessV2"
+									},
+									"type": "array"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"description": "Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.",
+				"tags": [
+					"ProcessesV2"
+				],
+				"security": [
+					{
+						"hathoraDevToken": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "appId",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/AppId"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/components/schemas/ProcessStatus"
+							}
+						}
+					},
+					{
+						"in": "query",
+						"name": "region",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/components/schemas/Region"
+							}
 						}
 					}
 				]

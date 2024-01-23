@@ -13,6 +13,7 @@ src/apis/LogV1Api.ts
 src/apis/ManagementV1Api.ts
 src/apis/MetricsV1Api.ts
 src/apis/ProcessesV1Api.ts
+src/apis/ProcessesV2Api.ts
 src/apis/RoomV1Api.ts
 src/apis/RoomV2Api.ts
 src/apis/index.ts
@@ -60,6 +61,8 @@ src/models/PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.
 src/models/PickRoomExcludeKeyofRoomAllocations.ts
 src/models/PlanName.ts
 src/models/Process.ts
+src/models/ProcessStatus.ts
+src/models/ProcessV2.ts
 src/models/ProcessWithRooms.ts
 src/models/ProcessWithRoomsAllOf.ts
 src/models/RecordPartialMetricNameMetricValueArray.ts

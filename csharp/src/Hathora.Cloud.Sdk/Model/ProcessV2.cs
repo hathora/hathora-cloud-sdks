@@ -25,11 +25,17 @@ using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 namespace Hathora.Cloud.Sdk.Model
 {
     /// <summary>
-    /// A process object represents a runtime instance of your game server and its metadata.
+    /// ProcessV2
     /// </summary>
-    [DataContract(Name = "Process")]
-    public partial class Process : IEquatable<Process>
+    [DataContract(Name = "ProcessV2")]
+    public partial class ProcessV2 : IEquatable<ProcessV2>
     {
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
+        public ProcessStatus Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Region
@@ -37,141 +43,76 @@ namespace Hathora.Cloud.Sdk.Model
         [DataMember(Name = "region", IsRequired = true, EmitDefaultValue = true)]
         public Region Region { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Process" /> class.
+        /// Initializes a new instance of the <see cref="ProcessV2" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Process()
+        protected ProcessV2()
         {
             this.AdditionalProperties = new Dictionary<string, object>();
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Process" /> class.
+        /// Initializes a new instance of the <see cref="ProcessV2" /> class.
         /// </summary>
-        /// <param name="egressedBytes">Measures network traffic leaving the process in bytes. (required).</param>
-        /// <param name="idleSince">idleSince (required).</param>
-        /// <param name="activeConnectionsUpdatedAt">activeConnectionsUpdatedAt (required).</param>
-        /// <param name="activeConnections">Tracks the number of active connections to a process. (required).</param>
-        /// <param name="roomsAllocatedUpdatedAt">roomsAllocatedUpdatedAt (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="roomsAllocated">Tracks the number of rooms that have been allocated to the process. (required).</param>
-        /// <param name="roomSlotsAvailableUpdatedAt">roomSlotsAvailableUpdatedAt (required).</param>
-        /// <param name="roomSlotsAvailable">roomSlotsAvailable (required).</param>
-        /// <param name="draining">Process in drain will not accept any new rooms. (required).</param>
         /// <param name="terminatedAt">When the process has been terminated. (required).</param>
         /// <param name="stoppingAt">When the process is issued to stop. We use this to determine when we should stop billing. (required).</param>
         /// <param name="startedAt">When the process bound to the specified port. We use this to determine when we should start billing. (required).</param>
-        /// <param name="startingAt">When the process started being provisioned. (required).</param>
+        /// <param name="createdAt">When the process started being provisioned. (required).</param>
         /// <param name="roomsPerProcess">Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. (required).</param>
         /// <param name="additionalExposedPorts">additionalExposedPorts (required).</param>
         /// <param name="exposedPort">exposedPort.</param>
-        /// <param name="port">port (required).</param>
-        /// <param name="host">host (required).</param>
         /// <param name="region">region (required).</param>
         /// <param name="processId">System generated unique identifier to a runtime instance of your game server. (required).</param>
         /// <param name="deploymentId">System generated id for a deployment. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Process(int egressedBytes = default(int), DateTime? idleSince = default(DateTime?), DateTime activeConnectionsUpdatedAt = default(DateTime), int activeConnections = default(int), DateTime roomsAllocatedUpdatedAt = default(DateTime), int roomsAllocated = default(int), DateTime roomSlotsAvailableUpdatedAt = default(DateTime), double roomSlotsAvailable = default(double), bool draining = default(bool), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime startingAt = default(DateTime), int roomsPerProcess = default(int), List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), double port = default(double), string host = default(string), Region region = default(Region), string processId = default(string), int deploymentId = default(int), string appId = default(string))
+        public ProcessV2(ProcessStatus status = default(ProcessStatus), int roomsAllocated = default(int), DateTime? terminatedAt = default(DateTime?), DateTime? stoppingAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime createdAt = default(DateTime), int roomsPerProcess = default(int), List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), Region region = default(Region), string processId = default(string), int deploymentId = default(int), string appId = default(string))
         {
-            this.EgressedBytes = egressedBytes;
-            // to ensure "idleSince" is required (not null)
-            if (idleSince == null)
-            {
-                throw new ArgumentNullException("idleSince is a required property for Process and cannot be null");
-            }
-            this.IdleSince = idleSince;
-            this.ActiveConnectionsUpdatedAt = activeConnectionsUpdatedAt;
-            this.ActiveConnections = activeConnections;
-            this.RoomsAllocatedUpdatedAt = roomsAllocatedUpdatedAt;
+            this.Status = status;
             this.RoomsAllocated = roomsAllocated;
-            this.RoomSlotsAvailableUpdatedAt = roomSlotsAvailableUpdatedAt;
-            this.RoomSlotsAvailable = roomSlotsAvailable;
-            this.Draining = draining;
             // to ensure "terminatedAt" is required (not null)
             if (terminatedAt == null)
             {
-                throw new ArgumentNullException("terminatedAt is a required property for Process and cannot be null");
+                throw new ArgumentNullException("terminatedAt is a required property for ProcessV2 and cannot be null");
             }
             this.TerminatedAt = terminatedAt;
             // to ensure "stoppingAt" is required (not null)
             if (stoppingAt == null)
             {
-                throw new ArgumentNullException("stoppingAt is a required property for Process and cannot be null");
+                throw new ArgumentNullException("stoppingAt is a required property for ProcessV2 and cannot be null");
             }
             this.StoppingAt = stoppingAt;
             // to ensure "startedAt" is required (not null)
             if (startedAt == null)
             {
-                throw new ArgumentNullException("startedAt is a required property for Process and cannot be null");
+                throw new ArgumentNullException("startedAt is a required property for ProcessV2 and cannot be null");
             }
             this.StartedAt = startedAt;
-            this.StartingAt = startingAt;
+            this.CreatedAt = createdAt;
             this.RoomsPerProcess = roomsPerProcess;
             // to ensure "additionalExposedPorts" is required (not null)
             if (additionalExposedPorts == null)
             {
-                throw new ArgumentNullException("additionalExposedPorts is a required property for Process and cannot be null");
+                throw new ArgumentNullException("additionalExposedPorts is a required property for ProcessV2 and cannot be null");
             }
             this.AdditionalExposedPorts = additionalExposedPorts;
-            this.Port = port;
-            // to ensure "host" is required (not null)
-            if (host == null)
-            {
-                throw new ArgumentNullException("host is a required property for Process and cannot be null");
-            }
-            this.Host = host;
             this.Region = region;
             // to ensure "processId" is required (not null)
             if (processId == null)
             {
-                throw new ArgumentNullException("processId is a required property for Process and cannot be null");
+                throw new ArgumentNullException("processId is a required property for ProcessV2 and cannot be null");
             }
             this.ProcessId = processId;
             this.DeploymentId = deploymentId;
             // to ensure "appId" is required (not null)
             if (appId == null)
             {
-                throw new ArgumentNullException("appId is a required property for Process and cannot be null");
+                throw new ArgumentNullException("appId is a required property for ProcessV2 and cannot be null");
             }
             this.AppId = appId;
             this.ExposedPort = exposedPort;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
-
-        /// <summary>
-        /// Measures network traffic leaving the process in bytes.
-        /// </summary>
-        /// <value>Measures network traffic leaving the process in bytes.</value>
-        /// <example>435</example>
-        [DataMember(Name = "egressedBytes", IsRequired = true, EmitDefaultValue = true)]
-        public int EgressedBytes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IdleSince
-        /// </summary>
-        [DataMember(Name = "idleSince", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public DateTime? IdleSince { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ActiveConnectionsUpdatedAt
-        /// </summary>
-        [DataMember(Name = "activeConnectionsUpdatedAt", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public DateTime ActiveConnectionsUpdatedAt { get; set; }
-
-        /// <summary>
-        /// Tracks the number of active connections to a process.
-        /// </summary>
-        /// <value>Tracks the number of active connections to a process.</value>
-        /// <example>10</example>
-        [DataMember(Name = "activeConnections", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public int ActiveConnections { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RoomsAllocatedUpdatedAt
-        /// </summary>
-        [DataMember(Name = "roomsAllocatedUpdatedAt", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime RoomsAllocatedUpdatedAt { get; set; }
 
         /// <summary>
         /// Tracks the number of rooms that have been allocated to the process.
@@ -180,27 +121,6 @@ namespace Hathora.Cloud.Sdk.Model
         /// <example>1</example>
         [DataMember(Name = "roomsAllocated", IsRequired = true, EmitDefaultValue = true)]
         public int RoomsAllocated { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RoomSlotsAvailableUpdatedAt
-        /// </summary>
-        [DataMember(Name = "roomSlotsAvailableUpdatedAt", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public DateTime RoomSlotsAvailableUpdatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RoomSlotsAvailable
-        /// </summary>
-        [DataMember(Name = "roomSlotsAvailable", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public double RoomSlotsAvailable { get; set; }
-
-        /// <summary>
-        /// Process in drain will not accept any new rooms.
-        /// </summary>
-        /// <value>Process in drain will not accept any new rooms.</value>
-        [DataMember(Name = "draining", IsRequired = true, EmitDefaultValue = true)]
-        public bool Draining { get; set; }
 
         /// <summary>
         /// When the process has been terminated.
@@ -227,8 +147,8 @@ namespace Hathora.Cloud.Sdk.Model
         /// When the process started being provisioned.
         /// </summary>
         /// <value>When the process started being provisioned.</value>
-        [DataMember(Name = "startingAt", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime StartingAt { get; set; }
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
         /// Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
@@ -249,20 +169,6 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         [DataMember(Name = "exposedPort", EmitDefaultValue = false)]
         public ExposedPort ExposedPort { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Port
-        /// </summary>
-        [DataMember(Name = "port", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public double Port { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Host
-        /// </summary>
-        [DataMember(Name = "host", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public string Host { get; set; }
 
         /// <summary>
         /// System generated unique identifier to a runtime instance of your game server.
@@ -301,25 +207,16 @@ namespace Hathora.Cloud.Sdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Process {\n");
-            sb.Append("  EgressedBytes: ").Append(EgressedBytes).Append("\n");
-            sb.Append("  IdleSince: ").Append(IdleSince).Append("\n");
-            sb.Append("  ActiveConnectionsUpdatedAt: ").Append(ActiveConnectionsUpdatedAt).Append("\n");
-            sb.Append("  ActiveConnections: ").Append(ActiveConnections).Append("\n");
-            sb.Append("  RoomsAllocatedUpdatedAt: ").Append(RoomsAllocatedUpdatedAt).Append("\n");
+            sb.Append("class ProcessV2 {\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  RoomsAllocated: ").Append(RoomsAllocated).Append("\n");
-            sb.Append("  RoomSlotsAvailableUpdatedAt: ").Append(RoomSlotsAvailableUpdatedAt).Append("\n");
-            sb.Append("  RoomSlotsAvailable: ").Append(RoomSlotsAvailable).Append("\n");
-            sb.Append("  Draining: ").Append(Draining).Append("\n");
             sb.Append("  TerminatedAt: ").Append(TerminatedAt).Append("\n");
             sb.Append("  StoppingAt: ").Append(StoppingAt).Append("\n");
             sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
-            sb.Append("  StartingAt: ").Append(StartingAt).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  RoomsPerProcess: ").Append(RoomsPerProcess).Append("\n");
             sb.Append("  AdditionalExposedPorts: ").Append(AdditionalExposedPorts).Append("\n");
             sb.Append("  ExposedPort: ").Append(ExposedPort).Append("\n");
-            sb.Append("  Port: ").Append(Port).Append("\n");
-            sb.Append("  Host: ").Append(Host).Append("\n");
             sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("  ProcessId: ").Append(ProcessId).Append("\n");
             sb.Append("  DeploymentId: ").Append(DeploymentId).Append("\n");
@@ -345,15 +242,15 @@ namespace Hathora.Cloud.Sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Process);
+            return this.Equals(input as ProcessV2);
         }
 
         /// <summary>
-        /// Returns true if Process instances are equal
+        /// Returns true if ProcessV2 instances are equal
         /// </summary>
-        /// <param name="input">Instance of Process to be compared</param>
+        /// <param name="input">Instance of ProcessV2 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Process input)
+        public bool Equals(ProcessV2 input)
         {
             if (input == null)
             {
@@ -361,44 +258,12 @@ namespace Hathora.Cloud.Sdk.Model
             }
             return 
                 (
-                    this.EgressedBytes == input.EgressedBytes ||
-                    this.EgressedBytes.Equals(input.EgressedBytes)
-                ) && 
-                (
-                    this.IdleSince == input.IdleSince ||
-                    (this.IdleSince != null &&
-                    this.IdleSince.Equals(input.IdleSince))
-                ) && 
-                (
-                    this.ActiveConnectionsUpdatedAt == input.ActiveConnectionsUpdatedAt ||
-                    (this.ActiveConnectionsUpdatedAt != null &&
-                    this.ActiveConnectionsUpdatedAt.Equals(input.ActiveConnectionsUpdatedAt))
-                ) && 
-                (
-                    this.ActiveConnections == input.ActiveConnections ||
-                    this.ActiveConnections.Equals(input.ActiveConnections)
-                ) && 
-                (
-                    this.RoomsAllocatedUpdatedAt == input.RoomsAllocatedUpdatedAt ||
-                    (this.RoomsAllocatedUpdatedAt != null &&
-                    this.RoomsAllocatedUpdatedAt.Equals(input.RoomsAllocatedUpdatedAt))
+                    this.Status == input.Status ||
+                    this.Status.Equals(input.Status)
                 ) && 
                 (
                     this.RoomsAllocated == input.RoomsAllocated ||
                     this.RoomsAllocated.Equals(input.RoomsAllocated)
-                ) && 
-                (
-                    this.RoomSlotsAvailableUpdatedAt == input.RoomSlotsAvailableUpdatedAt ||
-                    (this.RoomSlotsAvailableUpdatedAt != null &&
-                    this.RoomSlotsAvailableUpdatedAt.Equals(input.RoomSlotsAvailableUpdatedAt))
-                ) && 
-                (
-                    this.RoomSlotsAvailable == input.RoomSlotsAvailable ||
-                    this.RoomSlotsAvailable.Equals(input.RoomSlotsAvailable)
-                ) && 
-                (
-                    this.Draining == input.Draining ||
-                    this.Draining.Equals(input.Draining)
                 ) && 
                 (
                     this.TerminatedAt == input.TerminatedAt ||
@@ -416,9 +281,9 @@ namespace Hathora.Cloud.Sdk.Model
                     this.StartedAt.Equals(input.StartedAt))
                 ) && 
                 (
-                    this.StartingAt == input.StartingAt ||
-                    (this.StartingAt != null &&
-                    this.StartingAt.Equals(input.StartingAt))
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
                     this.RoomsPerProcess == input.RoomsPerProcess ||
@@ -434,15 +299,6 @@ namespace Hathora.Cloud.Sdk.Model
                     this.ExposedPort == input.ExposedPort ||
                     (this.ExposedPort != null &&
                     this.ExposedPort.Equals(input.ExposedPort))
-                ) && 
-                (
-                    this.Port == input.Port ||
-                    this.Port.Equals(input.Port)
-                ) && 
-                (
-                    this.Host == input.Host ||
-                    (this.Host != null &&
-                    this.Host.Equals(input.Host))
                 ) && 
                 (
                     this.Region == input.Region ||
@@ -474,27 +330,8 @@ namespace Hathora.Cloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.EgressedBytes.GetHashCode();
-                if (this.IdleSince != null)
-                {
-                    hashCode = (hashCode * 59) + this.IdleSince.GetHashCode();
-                }
-                if (this.ActiveConnectionsUpdatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.ActiveConnectionsUpdatedAt.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.ActiveConnections.GetHashCode();
-                if (this.RoomsAllocatedUpdatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.RoomsAllocatedUpdatedAt.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 hashCode = (hashCode * 59) + this.RoomsAllocated.GetHashCode();
-                if (this.RoomSlotsAvailableUpdatedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.RoomSlotsAvailableUpdatedAt.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.RoomSlotsAvailable.GetHashCode();
-                hashCode = (hashCode * 59) + this.Draining.GetHashCode();
                 if (this.TerminatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.TerminatedAt.GetHashCode();
@@ -507,9 +344,9 @@ namespace Hathora.Cloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.StartedAt.GetHashCode();
                 }
-                if (this.StartingAt != null)
+                if (this.CreatedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.StartingAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RoomsPerProcess.GetHashCode();
                 if (this.AdditionalExposedPorts != null)
@@ -519,11 +356,6 @@ namespace Hathora.Cloud.Sdk.Model
                 if (this.ExposedPort != null)
                 {
                     hashCode = (hashCode * 59) + this.ExposedPort.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Port.GetHashCode();
-                if (this.Host != null)
-                {
-                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Region.GetHashCode();
                 if (this.ProcessId != null)

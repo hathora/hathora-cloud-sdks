@@ -4,14 +4,14 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getProcessInfo**](ProcessesV1Api.md#getProcessInfo) | **GET** /processes/v1/{appId}/info/{processId} |  |
+| [**getProcessInfoDeprecated**](ProcessesV1Api.md#getProcessInfoDeprecated) | **GET** /processes/v1/{appId}/info/{processId} |  |
 | [**getRunningProcesses**](ProcessesV1Api.md#getRunningProcesses) | **GET** /processes/v1/{appId}/list/running |  |
 | [**getStoppedProcesses**](ProcessesV1Api.md#getStoppedProcesses) | **GET** /processes/v1/{appId}/list/stopped |  |
 
 
-<a name="getProcessInfo"></a>
-# **getProcessInfo**
-> Process getProcessInfo(appId, processId)
+<a name="getProcessInfoDeprecated"></a>
+# **getProcessInfoDeprecated**
+> Process getProcessInfoDeprecated(appId, processId)
 
 
 
@@ -40,10 +40,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     String processId = "processId_example"; // String | 
     try {
-      Process result = apiInstance.getProcessInfo(appId, processId);
+      Process result = apiInstance.getProcessInfoDeprecated(appId, processId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ProcessesV1Api#getProcessInfo");
+      System.err.println("Exception when calling ProcessesV1Api#getProcessInfoDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

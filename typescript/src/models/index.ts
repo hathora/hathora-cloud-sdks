@@ -43,6 +43,8 @@ export * from './PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentM
 export * from './PickRoomExcludeKeyofRoomAllocations';
 export * from './PlanName';
 export * from './Process';
+export * from './ProcessStatus';
+export * from './ProcessV2';
 export * from './ProcessWithRooms';
 export * from './ProcessWithRoomsAllOf';
 export * from './RecordPartialMetricNameMetricValueArray';

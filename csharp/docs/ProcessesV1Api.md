@@ -4,13 +4,13 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetProcessInfo**](ProcessesV1Api.md#getprocessinfo) | **GET** /processes/v1/{appId}/info/{processId} |  |
+| [**GetProcessInfoDeprecated**](ProcessesV1Api.md#getprocessinfodeprecated) | **GET** /processes/v1/{appId}/info/{processId} |  |
 | [**GetRunningProcesses**](ProcessesV1Api.md#getrunningprocesses) | **GET** /processes/v1/{appId}/list/running |  |
 | [**GetStoppedProcesses**](ProcessesV1Api.md#getstoppedprocesses) | **GET** /processes/v1/{appId}/list/stopped |  |
 
-<a name="getprocessinfo"></a>
-# **GetProcessInfo**
-> Process GetProcessInfo (string appId, string processId)
+<a name="getprocessinfodeprecated"></a>
+# **GetProcessInfoDeprecated**
+> Process GetProcessInfoDeprecated (string appId, string processId)
 
 
 
@@ -26,7 +26,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetProcessInfoExample
+    public class GetProcessInfoDeprecatedExample
     {
         public static void Main()
         {
@@ -41,12 +41,12 @@ namespace Example
 
             try
             {
-                Process result = apiInstance.GetProcessInfo(appId, processId);
+                Process result = apiInstance.GetProcessInfoDeprecated(appId, processId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ProcessesV1Api.GetProcessInfo: " + e.Message);
+                Debug.Print("Exception when calling ProcessesV1Api.GetProcessInfoDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -55,20 +55,20 @@ namespace Example
 }
 ```
 
-#### Using the GetProcessInfoWithHttpInfo variant
+#### Using the GetProcessInfoDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Process> response = apiInstance.GetProcessInfoWithHttpInfo(appId, processId);
+    ApiResponse<Process> response = apiInstance.GetProcessInfoDeprecatedWithHttpInfo(appId, processId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling ProcessesV1Api.GetProcessInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling ProcessesV1Api.GetProcessInfoDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

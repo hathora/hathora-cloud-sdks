@@ -132,9 +132,11 @@ Class | Method | HTTP request | Description
 *LogV1Api* | [**GetLogsForProcess**](LogV1Api.md#getlogsforprocess) | **GET** /logs/v1/{appId}/process/{processId} | 
 *ManagementV1Api* | [**SendVerificationEmail**](ManagementV1Api.md#sendverificationemail) | **POST** /management/v1/sendverificationemail | 
 *MetricsV1Api* | [**GetMetrics**](MetricsV1Api.md#getmetrics) | **GET** /metrics/v1/{appId}/process/{processId} | 
-*ProcessesV1Api* | [**GetProcessInfo**](ProcessesV1Api.md#getprocessinfo) | **GET** /processes/v1/{appId}/info/{processId} | 
+*ProcessesV1Api* | [**GetProcessInfoDeprecated**](ProcessesV1Api.md#getprocessinfodeprecated) | **GET** /processes/v1/{appId}/info/{processId} | 
 *ProcessesV1Api* | [**GetRunningProcesses**](ProcessesV1Api.md#getrunningprocesses) | **GET** /processes/v1/{appId}/list/running | 
 *ProcessesV1Api* | [**GetStoppedProcesses**](ProcessesV1Api.md#getstoppedprocesses) | **GET** /processes/v1/{appId}/list/stopped | 
+*ProcessesV2Api* | [**GetLatestProcesses**](ProcessesV2Api.md#getlatestprocesses) | **GET** /processes/v2/{appId}/list/latest | 
+*ProcessesV2Api* | [**GetProcessInfo**](ProcessesV2Api.md#getprocessinfo) | **GET** /processes/v2/{appId}/info/{processId} | 
 *RoomV1Api* | [**CreateRoomDeprecated**](RoomV1Api.md#createroomdeprecated) | **POST** /rooms/v1/{appId}/create | 
 *RoomV1Api* | [**DestroyRoomDeprecated**](RoomV1Api.md#destroyroomdeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
 *RoomV1Api* | [**GetActiveRoomsForProcessDeprecated**](RoomV1Api.md#getactiveroomsforprocessdeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
@@ -198,6 +200,8 @@ Class | Method | HTTP request | Description
  - [Model.PickRoomExcludeKeyofRoomAllocations](PickRoomExcludeKeyofRoomAllocations.md)
  - [Model.PlanName](PlanName.md)
  - [Model.Process](Process.md)
+ - [Model.ProcessStatus](ProcessStatus.md)
+ - [Model.ProcessV2](ProcessV2.md)
  - [Model.ProcessWithRooms](ProcessWithRooms.md)
  - [Model.ProcessWithRoomsAllOf](ProcessWithRoomsAllOf.md)
  - [Model.RecordPartialMetricNameMetricValueArray](RecordPartialMetricNameMetricValueArray.md)

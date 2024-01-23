@@ -62,6 +62,7 @@ export interface ProcessWithRooms {
      * Tracks the number of active connections to a process.
      * @type {number}
      * @memberof ProcessWithRooms
+     * @deprecated
      */
     activeConnections: number;
     /**

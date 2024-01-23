@@ -55,9 +55,12 @@ docs/PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.md
 docs/PickRoomExcludeKeyofRoomAllocations.md
 docs/PlanName.md
 docs/Process.md
+docs/ProcessStatus.md
+docs/ProcessV2.md
 docs/ProcessWithRooms.md
 docs/ProcessWithRoomsAllOf.md
 docs/ProcessesV1Api.md
+docs/ProcessesV2Api.md
 docs/RecordPartialMetricNameMetricValueArray.md
 docs/Region.md
 docs/Room.md
@@ -97,6 +100,7 @@ src/main/java/com/hathora/client/api/LogV1Api.java
 src/main/java/com/hathora/client/api/ManagementV1Api.java
 src/main/java/com/hathora/client/api/MetricsV1Api.java
 src/main/java/com/hathora/client/api/ProcessesV1Api.java
+src/main/java/com/hathora/client/api/ProcessesV2Api.java
 src/main/java/com/hathora/client/api/RoomV1Api.java
 src/main/java/com/hathora/client/api/RoomV2Api.java
 src/main/java/com/hathora/client/auth/ApiKeyAuth.java
@@ -147,6 +151,8 @@ src/main/java/com/hathora/client/model/PartialCardCardPaymentMethodAchAchPayment
 src/main/java/com/hathora/client/model/PickRoomExcludeKeyofRoomAllocations.java
 src/main/java/com/hathora/client/model/PlanName.java
 src/main/java/com/hathora/client/model/Process.java
+src/main/java/com/hathora/client/model/ProcessStatus.java
+src/main/java/com/hathora/client/model/ProcessV2.java
 src/main/java/com/hathora/client/model/ProcessWithRooms.java
 src/main/java/com/hathora/client/model/ProcessWithRoomsAllOf.java
 src/main/java/com/hathora/client/model/RecordPartialMetricNameMetricValueArray.java
