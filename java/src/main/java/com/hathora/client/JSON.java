@@ -132,6 +132,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.Process.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ProcessV2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ProcessWithRooms.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.ProcessWithRoomsAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.hathora.client.model.RecordPartialMetricNameMetricValueArray.CustomTypeAdapterFactory());

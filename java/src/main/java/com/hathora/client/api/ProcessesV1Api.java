@@ -77,7 +77,7 @@ public class ProcessesV1Api {
     }
 
     /**
-     * Build call for getProcessInfo
+     * Build call for getProcessInfoDeprecated
      * @param appId  (required)
      * @param processId  (required)
      * @param _callback Callback for upload/download progress
@@ -90,8 +90,10 @@ public class ProcessesV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getProcessInfoCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getProcessInfoDeprecatedCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,19 +139,20 @@ public class ProcessesV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProcessInfoValidateBeforeCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getProcessInfoDeprecatedValidateBeforeCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getProcessInfo(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getProcessInfoDeprecated(Async)");
         }
 
         // verify the required parameter 'processId' is set
         if (processId == null) {
-            throw new ApiException("Missing the required parameter 'processId' when calling getProcessInfo(Async)");
+            throw new ApiException("Missing the required parameter 'processId' when calling getProcessInfoDeprecated(Async)");
         }
 
-        return getProcessInfoCall(appId, processId, _callback);
+        return getProcessInfoDeprecatedCall(appId, processId, _callback);
 
     }
 
@@ -167,9 +170,11 @@ public class ProcessesV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Process getProcessInfo(String appId, String processId) throws ApiException {
-        ApiResponse<Process> localVarResp = getProcessInfoWithHttpInfo(appId, processId);
+    @Deprecated
+    public Process getProcessInfoDeprecated(String appId, String processId) throws ApiException {
+        ApiResponse<Process> localVarResp = getProcessInfoDeprecatedWithHttpInfo(appId, processId);
         return localVarResp.getData();
     }
 
@@ -187,9 +192,11 @@ public class ProcessesV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Process> getProcessInfoWithHttpInfo(String appId, String processId) throws ApiException {
-        okhttp3.Call localVarCall = getProcessInfoValidateBeforeCall(appId, processId, null);
+    @Deprecated
+    public ApiResponse<Process> getProcessInfoDeprecatedWithHttpInfo(String appId, String processId) throws ApiException {
+        okhttp3.Call localVarCall = getProcessInfoDeprecatedValidateBeforeCall(appId, processId, null);
         Type localVarReturnType = new TypeToken<Process>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -209,10 +216,12 @@ public class ProcessesV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getProcessInfoAsync(String appId, String processId, final ApiCallback<Process> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getProcessInfoDeprecatedAsync(String appId, String processId, final ApiCallback<Process> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getProcessInfoValidateBeforeCall(appId, processId, _callback);
+        okhttp3.Call localVarCall = getProcessInfoDeprecatedValidateBeforeCall(appId, processId, _callback);
         Type localVarReturnType = new TypeToken<Process>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -230,7 +239,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getRunningProcessesCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -280,6 +291,7 @@ public class ProcessesV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getRunningProcessesValidateBeforeCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -304,7 +316,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public List<ProcessWithRooms> getRunningProcesses(String appId, Region region) throws ApiException {
         ApiResponse<List<ProcessWithRooms>> localVarResp = getRunningProcessesWithHttpInfo(appId, region);
         return localVarResp.getData();
@@ -323,7 +337,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<List<ProcessWithRooms>> getRunningProcessesWithHttpInfo(String appId, Region region) throws ApiException {
         okhttp3.Call localVarCall = getRunningProcessesValidateBeforeCall(appId, region, null);
         Type localVarReturnType = new TypeToken<List<ProcessWithRooms>>(){}.getType();
@@ -344,7 +360,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getRunningProcessesAsync(String appId, Region region, final ApiCallback<List<ProcessWithRooms>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRunningProcessesValidateBeforeCall(appId, region, _callback);
@@ -365,7 +383,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getStoppedProcessesCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
@@ -415,6 +435,7 @@ public class ProcessesV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getStoppedProcessesValidateBeforeCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
@@ -439,7 +460,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public List<Process> getStoppedProcesses(String appId, Region region) throws ApiException {
         ApiResponse<List<Process>> localVarResp = getStoppedProcessesWithHttpInfo(appId, region);
         return localVarResp.getData();
@@ -458,7 +481,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<List<Process>> getStoppedProcessesWithHttpInfo(String appId, Region region) throws ApiException {
         okhttp3.Call localVarCall = getStoppedProcessesValidateBeforeCall(appId, region, null);
         Type localVarReturnType = new TypeToken<List<Process>>(){}.getType();
@@ -479,7 +504,9 @@ public class ProcessesV1Api {
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getStoppedProcessesAsync(String appId, Region region, final ApiCallback<List<Process>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getStoppedProcessesValidateBeforeCall(appId, region, _callback);

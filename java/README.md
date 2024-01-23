@@ -159,9 +159,11 @@ Class | Method | HTTP request | Description
 *LogV1Api* | [**getLogsForProcess**](docs/LogV1Api.md#getLogsForProcess) | **GET** /logs/v1/{appId}/process/{processId} | 
 *ManagementV1Api* | [**sendVerificationEmail**](docs/ManagementV1Api.md#sendVerificationEmail) | **POST** /management/v1/sendverificationemail | 
 *MetricsV1Api* | [**getMetrics**](docs/MetricsV1Api.md#getMetrics) | **GET** /metrics/v1/{appId}/process/{processId} | 
-*ProcessesV1Api* | [**getProcessInfo**](docs/ProcessesV1Api.md#getProcessInfo) | **GET** /processes/v1/{appId}/info/{processId} | 
+*ProcessesV1Api* | [**getProcessInfoDeprecated**](docs/ProcessesV1Api.md#getProcessInfoDeprecated) | **GET** /processes/v1/{appId}/info/{processId} | 
 *ProcessesV1Api* | [**getRunningProcesses**](docs/ProcessesV1Api.md#getRunningProcesses) | **GET** /processes/v1/{appId}/list/running | 
 *ProcessesV1Api* | [**getStoppedProcesses**](docs/ProcessesV1Api.md#getStoppedProcesses) | **GET** /processes/v1/{appId}/list/stopped | 
+*ProcessesV2Api* | [**getLatestProcesses**](docs/ProcessesV2Api.md#getLatestProcesses) | **GET** /processes/v2/{appId}/list/latest | 
+*ProcessesV2Api* | [**getProcessInfo**](docs/ProcessesV2Api.md#getProcessInfo) | **GET** /processes/v2/{appId}/info/{processId} | 
 *RoomV1Api* | [**createRoomDeprecated**](docs/RoomV1Api.md#createRoomDeprecated) | **POST** /rooms/v1/{appId}/create | 
 *RoomV1Api* | [**destroyRoomDeprecated**](docs/RoomV1Api.md#destroyRoomDeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
 *RoomV1Api* | [**getActiveRoomsForProcessDeprecated**](docs/RoomV1Api.md#getActiveRoomsForProcessDeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
@@ -224,6 +226,8 @@ Class | Method | HTTP request | Description
  - [PickRoomExcludeKeyofRoomAllocations](docs/PickRoomExcludeKeyofRoomAllocations.md)
  - [PlanName](docs/PlanName.md)
  - [Process](docs/Process.md)
+ - [ProcessStatus](docs/ProcessStatus.md)
+ - [ProcessV2](docs/ProcessV2.md)
  - [ProcessWithRooms](docs/ProcessWithRooms.md)
  - [ProcessWithRoomsAllOf](docs/ProcessWithRoomsAllOf.md)
  - [RecordPartialMetricNameMetricValueArray](docs/RecordPartialMetricNameMetricValueArray.md)

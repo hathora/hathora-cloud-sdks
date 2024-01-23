@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hathora.client.model.ExposedPort;
-import com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations;
+import com.hathora.client.model.ProcessStatus;
 import com.hathora.client.model.Region;
 import java.io.IOException;
 import java.time.OffsetDateTime;
@@ -50,45 +50,17 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * ProcessWithRooms
+ * ProcessV2
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ProcessWithRooms {
-  public static final String SERIALIZED_NAME_EGRESSED_BYTES = "egressedBytes";
-  @SerializedName(SERIALIZED_NAME_EGRESSED_BYTES)
-  private Integer egressedBytes;
-
-  public static final String SERIALIZED_NAME_IDLE_SINCE = "idleSince";
-  @SerializedName(SERIALIZED_NAME_IDLE_SINCE)
-  private OffsetDateTime idleSince;
-
-  public static final String SERIALIZED_NAME_ACTIVE_CONNECTIONS_UPDATED_AT = "activeConnectionsUpdatedAt";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_CONNECTIONS_UPDATED_AT)
-  private OffsetDateTime activeConnectionsUpdatedAt;
-
-  public static final String SERIALIZED_NAME_ACTIVE_CONNECTIONS = "activeConnections";
-  @SerializedName(SERIALIZED_NAME_ACTIVE_CONNECTIONS)
-  private Integer activeConnections;
-
-  public static final String SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT = "roomsAllocatedUpdatedAt";
-  @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED_UPDATED_AT)
-  private OffsetDateTime roomsAllocatedUpdatedAt;
+public class ProcessV2 {
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private ProcessStatus status;
 
   public static final String SERIALIZED_NAME_ROOMS_ALLOCATED = "roomsAllocated";
   @SerializedName(SERIALIZED_NAME_ROOMS_ALLOCATED)
   private Integer roomsAllocated;
-
-  public static final String SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT = "roomSlotsAvailableUpdatedAt";
-  @SerializedName(SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE_UPDATED_AT)
-  private OffsetDateTime roomSlotsAvailableUpdatedAt;
-
-  public static final String SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE = "roomSlotsAvailable";
-  @SerializedName(SERIALIZED_NAME_ROOM_SLOTS_AVAILABLE)
-  private Double roomSlotsAvailable;
-
-  public static final String SERIALIZED_NAME_DRAINING = "draining";
-  @SerializedName(SERIALIZED_NAME_DRAINING)
-  private Boolean draining;
 
   public static final String SERIALIZED_NAME_TERMINATED_AT = "terminatedAt";
   @SerializedName(SERIALIZED_NAME_TERMINATED_AT)
@@ -102,9 +74,9 @@ public class ProcessWithRooms {
   @SerializedName(SERIALIZED_NAME_STARTED_AT)
   private OffsetDateTime startedAt;
 
-  public static final String SERIALIZED_NAME_STARTING_AT = "startingAt";
-  @SerializedName(SERIALIZED_NAME_STARTING_AT)
-  private OffsetDateTime startingAt;
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
+  private OffsetDateTime createdAt;
 
   public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
   @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
@@ -117,14 +89,6 @@ public class ProcessWithRooms {
   public static final String SERIALIZED_NAME_EXPOSED_PORT = "exposedPort";
   @SerializedName(SERIALIZED_NAME_EXPOSED_PORT)
   private ExposedPort exposedPort;
-
-  public static final String SERIALIZED_NAME_PORT = "port";
-  @SerializedName(SERIALIZED_NAME_PORT)
-  private Double port;
-
-  public static final String SERIALIZED_NAME_HOST = "host";
-  @SerializedName(SERIALIZED_NAME_HOST)
-  private String host;
 
   public static final String SERIALIZED_NAME_REGION = "region";
   @SerializedName(SERIALIZED_NAME_REGION)
@@ -142,134 +106,32 @@ public class ProcessWithRooms {
   @SerializedName(SERIALIZED_NAME_APP_ID)
   private String appId;
 
-  public static final String SERIALIZED_NAME_ROOMS = "rooms";
-  @SerializedName(SERIALIZED_NAME_ROOMS)
-  private List<PickRoomExcludeKeyofRoomAllocations> rooms = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_TOTAL_ROOMS = "totalRooms";
-  @SerializedName(SERIALIZED_NAME_TOTAL_ROOMS)
-  private Integer totalRooms;
-
-  public ProcessWithRooms() {
+  public ProcessV2() {
   }
 
-  public ProcessWithRooms egressedBytes(Integer egressedBytes) {
+  public ProcessV2 status(ProcessStatus status) {
     
-    this.egressedBytes = egressedBytes;
+    this.status = status;
     return this;
   }
 
    /**
-   * Measures network traffic leaving the process in bytes.
-   * @return egressedBytes
+   * Get status
+   * @return status
   **/
   @javax.annotation.Nonnull
 
-  public Integer getEgressedBytes() {
-    return egressedBytes;
+  public ProcessStatus getStatus() {
+    return status;
   }
 
 
-  public void setEgressedBytes(Integer egressedBytes) {
-    this.egressedBytes = egressedBytes;
+  public void setStatus(ProcessStatus status) {
+    this.status = status;
   }
 
 
-  public ProcessWithRooms idleSince(OffsetDateTime idleSince) {
-    
-    this.idleSince = idleSince;
-    return this;
-  }
-
-   /**
-   * Get idleSince
-   * @return idleSince
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getIdleSince() {
-    return idleSince;
-  }
-
-
-  public void setIdleSince(OffsetDateTime idleSince) {
-    this.idleSince = idleSince;
-  }
-
-
-  public ProcessWithRooms activeConnectionsUpdatedAt(OffsetDateTime activeConnectionsUpdatedAt) {
-    
-    this.activeConnectionsUpdatedAt = activeConnectionsUpdatedAt;
-    return this;
-  }
-
-   /**
-   * Get activeConnectionsUpdatedAt
-   * @return activeConnectionsUpdatedAt
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getActiveConnectionsUpdatedAt() {
-    return activeConnectionsUpdatedAt;
-  }
-
-
-  public void setActiveConnectionsUpdatedAt(OffsetDateTime activeConnectionsUpdatedAt) {
-    this.activeConnectionsUpdatedAt = activeConnectionsUpdatedAt;
-  }
-
-
-  public ProcessWithRooms activeConnections(Integer activeConnections) {
-    
-    this.activeConnections = activeConnections;
-    return this;
-  }
-
-   /**
-   * Tracks the number of active connections to a process.
-   * @return activeConnections
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public Integer getActiveConnections() {
-    return activeConnections;
-  }
-
-
-  public void setActiveConnections(Integer activeConnections) {
-    this.activeConnections = activeConnections;
-  }
-
-
-  public ProcessWithRooms roomsAllocatedUpdatedAt(OffsetDateTime roomsAllocatedUpdatedAt) {
-    
-    this.roomsAllocatedUpdatedAt = roomsAllocatedUpdatedAt;
-    return this;
-  }
-
-   /**
-   * Get roomsAllocatedUpdatedAt
-   * @return roomsAllocatedUpdatedAt
-  **/
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getRoomsAllocatedUpdatedAt() {
-    return roomsAllocatedUpdatedAt;
-  }
-
-
-  public void setRoomsAllocatedUpdatedAt(OffsetDateTime roomsAllocatedUpdatedAt) {
-    this.roomsAllocatedUpdatedAt = roomsAllocatedUpdatedAt;
-  }
-
-
-  public ProcessWithRooms roomsAllocated(Integer roomsAllocated) {
+  public ProcessV2 roomsAllocated(Integer roomsAllocated) {
     
     this.roomsAllocated = roomsAllocated;
     return this;
@@ -291,77 +153,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms roomSlotsAvailableUpdatedAt(OffsetDateTime roomSlotsAvailableUpdatedAt) {
-    
-    this.roomSlotsAvailableUpdatedAt = roomSlotsAvailableUpdatedAt;
-    return this;
-  }
-
-   /**
-   * Get roomSlotsAvailableUpdatedAt
-   * @return roomSlotsAvailableUpdatedAt
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public OffsetDateTime getRoomSlotsAvailableUpdatedAt() {
-    return roomSlotsAvailableUpdatedAt;
-  }
-
-
-  public void setRoomSlotsAvailableUpdatedAt(OffsetDateTime roomSlotsAvailableUpdatedAt) {
-    this.roomSlotsAvailableUpdatedAt = roomSlotsAvailableUpdatedAt;
-  }
-
-
-  public ProcessWithRooms roomSlotsAvailable(Double roomSlotsAvailable) {
-    
-    this.roomSlotsAvailable = roomSlotsAvailable;
-    return this;
-  }
-
-   /**
-   * Get roomSlotsAvailable
-   * @return roomSlotsAvailable
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public Double getRoomSlotsAvailable() {
-    return roomSlotsAvailable;
-  }
-
-
-  public void setRoomSlotsAvailable(Double roomSlotsAvailable) {
-    this.roomSlotsAvailable = roomSlotsAvailable;
-  }
-
-
-  public ProcessWithRooms draining(Boolean draining) {
-    
-    this.draining = draining;
-    return this;
-  }
-
-   /**
-   * Process in drain will not accept any new rooms.
-   * @return draining
-  **/
-  @javax.annotation.Nonnull
-
-  public Boolean getDraining() {
-    return draining;
-  }
-
-
-  public void setDraining(Boolean draining) {
-    this.draining = draining;
-  }
-
-
-  public ProcessWithRooms terminatedAt(OffsetDateTime terminatedAt) {
+  public ProcessV2 terminatedAt(OffsetDateTime terminatedAt) {
     
     this.terminatedAt = terminatedAt;
     return this;
@@ -383,7 +175,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms stoppingAt(OffsetDateTime stoppingAt) {
+  public ProcessV2 stoppingAt(OffsetDateTime stoppingAt) {
     
     this.stoppingAt = stoppingAt;
     return this;
@@ -405,7 +197,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms startedAt(OffsetDateTime startedAt) {
+  public ProcessV2 startedAt(OffsetDateTime startedAt) {
     
     this.startedAt = startedAt;
     return this;
@@ -427,29 +219,29 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms startingAt(OffsetDateTime startingAt) {
+  public ProcessV2 createdAt(OffsetDateTime createdAt) {
     
-    this.startingAt = startingAt;
+    this.createdAt = createdAt;
     return this;
   }
 
    /**
    * When the process started being provisioned.
-   * @return startingAt
+   * @return createdAt
   **/
   @javax.annotation.Nonnull
 
-  public OffsetDateTime getStartingAt() {
-    return startingAt;
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
   }
 
 
-  public void setStartingAt(OffsetDateTime startingAt) {
-    this.startingAt = startingAt;
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
 
-  public ProcessWithRooms roomsPerProcess(Integer roomsPerProcess) {
+  public ProcessV2 roomsPerProcess(Integer roomsPerProcess) {
     
     this.roomsPerProcess = roomsPerProcess;
     return this;
@@ -473,13 +265,13 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms additionalExposedPorts(List<ExposedPort> additionalExposedPorts) {
+  public ProcessV2 additionalExposedPorts(List<ExposedPort> additionalExposedPorts) {
     
     this.additionalExposedPorts = additionalExposedPorts;
     return this;
   }
 
-  public ProcessWithRooms addAdditionalExposedPortsItem(ExposedPort additionalExposedPortsItem) {
+  public ProcessV2 addAdditionalExposedPortsItem(ExposedPort additionalExposedPortsItem) {
     if (this.additionalExposedPorts == null) {
       this.additionalExposedPorts = new ArrayList<>();
     }
@@ -503,7 +295,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms exposedPort(ExposedPort exposedPort) {
+  public ProcessV2 exposedPort(ExposedPort exposedPort) {
     
     this.exposedPort = exposedPort;
     return this;
@@ -525,55 +317,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms port(Double port) {
-    
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Get port
-   * @return port
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public Double getPort() {
-    return port;
-  }
-
-
-  public void setPort(Double port) {
-    this.port = port;
-  }
-
-
-  public ProcessWithRooms host(String host) {
-    
-    this.host = host;
-    return this;
-  }
-
-   /**
-   * Get host
-   * @return host
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public String getHost() {
-    return host;
-  }
-
-
-  public void setHost(String host) {
-    this.host = host;
-  }
-
-
-  public ProcessWithRooms region(Region region) {
+  public ProcessV2 region(Region region) {
     
     this.region = region;
     return this;
@@ -595,7 +339,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms processId(String processId) {
+  public ProcessV2 processId(String processId) {
     
     this.processId = processId;
     return this;
@@ -617,7 +361,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms deploymentId(Integer deploymentId) {
+  public ProcessV2 deploymentId(Integer deploymentId) {
     
     this.deploymentId = deploymentId;
     return this;
@@ -639,7 +383,7 @@ public class ProcessWithRooms {
   }
 
 
-  public ProcessWithRooms appId(String appId) {
+  public ProcessV2 appId(String appId) {
     
     this.appId = appId;
     return this;
@@ -660,58 +404,6 @@ public class ProcessWithRooms {
     this.appId = appId;
   }
 
-
-  public ProcessWithRooms rooms(List<PickRoomExcludeKeyofRoomAllocations> rooms) {
-    
-    this.rooms = rooms;
-    return this;
-  }
-
-  public ProcessWithRooms addRoomsItem(PickRoomExcludeKeyofRoomAllocations roomsItem) {
-    if (this.rooms == null) {
-      this.rooms = new ArrayList<>();
-    }
-    this.rooms.add(roomsItem);
-    return this;
-  }
-
-   /**
-   * Get rooms
-   * @return rooms
-  **/
-  @javax.annotation.Nonnull
-
-  public List<PickRoomExcludeKeyofRoomAllocations> getRooms() {
-    return rooms;
-  }
-
-
-  public void setRooms(List<PickRoomExcludeKeyofRoomAllocations> rooms) {
-    this.rooms = rooms;
-  }
-
-
-  public ProcessWithRooms totalRooms(Integer totalRooms) {
-    
-    this.totalRooms = totalRooms;
-    return this;
-  }
-
-   /**
-   * Get totalRooms
-   * @return totalRooms
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getTotalRooms() {
-    return totalRooms;
-  }
-
-
-  public void setTotalRooms(Integer totalRooms) {
-    this.totalRooms = totalRooms;
-  }
-
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -725,9 +417,9 @@ public class ProcessWithRooms {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the ProcessWithRooms instance itself
+   * @return the ProcessV2 instance itself
    */
-  public ProcessWithRooms putAdditionalProperty(String key, Object value) {
+  public ProcessV2 putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -766,67 +458,45 @@ public class ProcessWithRooms {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProcessWithRooms processWithRooms = (ProcessWithRooms) o;
-    return Objects.equals(this.egressedBytes, processWithRooms.egressedBytes) &&
-        Objects.equals(this.idleSince, processWithRooms.idleSince) &&
-        Objects.equals(this.activeConnectionsUpdatedAt, processWithRooms.activeConnectionsUpdatedAt) &&
-        Objects.equals(this.activeConnections, processWithRooms.activeConnections) &&
-        Objects.equals(this.roomsAllocatedUpdatedAt, processWithRooms.roomsAllocatedUpdatedAt) &&
-        Objects.equals(this.roomsAllocated, processWithRooms.roomsAllocated) &&
-        Objects.equals(this.roomSlotsAvailableUpdatedAt, processWithRooms.roomSlotsAvailableUpdatedAt) &&
-        Objects.equals(this.roomSlotsAvailable, processWithRooms.roomSlotsAvailable) &&
-        Objects.equals(this.draining, processWithRooms.draining) &&
-        Objects.equals(this.terminatedAt, processWithRooms.terminatedAt) &&
-        Objects.equals(this.stoppingAt, processWithRooms.stoppingAt) &&
-        Objects.equals(this.startedAt, processWithRooms.startedAt) &&
-        Objects.equals(this.startingAt, processWithRooms.startingAt) &&
-        Objects.equals(this.roomsPerProcess, processWithRooms.roomsPerProcess) &&
-        Objects.equals(this.additionalExposedPorts, processWithRooms.additionalExposedPorts) &&
-        Objects.equals(this.exposedPort, processWithRooms.exposedPort) &&
-        Objects.equals(this.port, processWithRooms.port) &&
-        Objects.equals(this.host, processWithRooms.host) &&
-        Objects.equals(this.region, processWithRooms.region) &&
-        Objects.equals(this.processId, processWithRooms.processId) &&
-        Objects.equals(this.deploymentId, processWithRooms.deploymentId) &&
-        Objects.equals(this.appId, processWithRooms.appId) &&
-        Objects.equals(this.rooms, processWithRooms.rooms) &&
-        Objects.equals(this.totalRooms, processWithRooms.totalRooms)&&
-        Objects.equals(this.additionalProperties, processWithRooms.additionalProperties);
+    ProcessV2 processV2 = (ProcessV2) o;
+    return Objects.equals(this.status, processV2.status) &&
+        Objects.equals(this.roomsAllocated, processV2.roomsAllocated) &&
+        Objects.equals(this.terminatedAt, processV2.terminatedAt) &&
+        Objects.equals(this.stoppingAt, processV2.stoppingAt) &&
+        Objects.equals(this.startedAt, processV2.startedAt) &&
+        Objects.equals(this.createdAt, processV2.createdAt) &&
+        Objects.equals(this.roomsPerProcess, processV2.roomsPerProcess) &&
+        Objects.equals(this.additionalExposedPorts, processV2.additionalExposedPorts) &&
+        Objects.equals(this.exposedPort, processV2.exposedPort) &&
+        Objects.equals(this.region, processV2.region) &&
+        Objects.equals(this.processId, processV2.processId) &&
+        Objects.equals(this.deploymentId, processV2.deploymentId) &&
+        Objects.equals(this.appId, processV2.appId)&&
+        Objects.equals(this.additionalProperties, processV2.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(egressedBytes, idleSince, activeConnectionsUpdatedAt, activeConnections, roomsAllocatedUpdatedAt, roomsAllocated, roomSlotsAvailableUpdatedAt, roomSlotsAvailable, draining, terminatedAt, stoppingAt, startedAt, startingAt, roomsPerProcess, additionalExposedPorts, exposedPort, port, host, region, processId, deploymentId, appId, rooms, totalRooms, additionalProperties);
+    return Objects.hash(status, roomsAllocated, terminatedAt, stoppingAt, startedAt, createdAt, roomsPerProcess, additionalExposedPorts, exposedPort, region, processId, deploymentId, appId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProcessWithRooms {\n");
-    sb.append("    egressedBytes: ").append(toIndentedString(egressedBytes)).append("\n");
-    sb.append("    idleSince: ").append(toIndentedString(idleSince)).append("\n");
-    sb.append("    activeConnectionsUpdatedAt: ").append(toIndentedString(activeConnectionsUpdatedAt)).append("\n");
-    sb.append("    activeConnections: ").append(toIndentedString(activeConnections)).append("\n");
-    sb.append("    roomsAllocatedUpdatedAt: ").append(toIndentedString(roomsAllocatedUpdatedAt)).append("\n");
+    sb.append("class ProcessV2 {\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    roomsAllocated: ").append(toIndentedString(roomsAllocated)).append("\n");
-    sb.append("    roomSlotsAvailableUpdatedAt: ").append(toIndentedString(roomSlotsAvailableUpdatedAt)).append("\n");
-    sb.append("    roomSlotsAvailable: ").append(toIndentedString(roomSlotsAvailable)).append("\n");
-    sb.append("    draining: ").append(toIndentedString(draining)).append("\n");
     sb.append("    terminatedAt: ").append(toIndentedString(terminatedAt)).append("\n");
     sb.append("    stoppingAt: ").append(toIndentedString(stoppingAt)).append("\n");
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
-    sb.append("    startingAt: ").append(toIndentedString(startingAt)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    roomsPerProcess: ").append(toIndentedString(roomsPerProcess)).append("\n");
     sb.append("    additionalExposedPorts: ").append(toIndentedString(additionalExposedPorts)).append("\n");
     sb.append("    exposedPort: ").append(toIndentedString(exposedPort)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    processId: ").append(toIndentedString(processId)).append("\n");
     sb.append("    deploymentId: ").append(toIndentedString(deploymentId)).append("\n");
     sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
-    sb.append("    rooms: ").append(toIndentedString(rooms)).append("\n");
-    sb.append("    totalRooms: ").append(toIndentedString(totalRooms)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -850,73 +520,51 @@ public class ProcessWithRooms {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("egressedBytes");
-    openapiFields.add("idleSince");
-    openapiFields.add("activeConnectionsUpdatedAt");
-    openapiFields.add("activeConnections");
-    openapiFields.add("roomsAllocatedUpdatedAt");
+    openapiFields.add("status");
     openapiFields.add("roomsAllocated");
-    openapiFields.add("roomSlotsAvailableUpdatedAt");
-    openapiFields.add("roomSlotsAvailable");
-    openapiFields.add("draining");
     openapiFields.add("terminatedAt");
     openapiFields.add("stoppingAt");
     openapiFields.add("startedAt");
-    openapiFields.add("startingAt");
+    openapiFields.add("createdAt");
     openapiFields.add("roomsPerProcess");
     openapiFields.add("additionalExposedPorts");
     openapiFields.add("exposedPort");
-    openapiFields.add("port");
-    openapiFields.add("host");
     openapiFields.add("region");
     openapiFields.add("processId");
     openapiFields.add("deploymentId");
     openapiFields.add("appId");
-    openapiFields.add("rooms");
-    openapiFields.add("totalRooms");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("egressedBytes");
-    openapiRequiredFields.add("idleSince");
-    openapiRequiredFields.add("activeConnectionsUpdatedAt");
-    openapiRequiredFields.add("activeConnections");
-    openapiRequiredFields.add("roomsAllocatedUpdatedAt");
+    openapiRequiredFields.add("status");
     openapiRequiredFields.add("roomsAllocated");
-    openapiRequiredFields.add("roomSlotsAvailableUpdatedAt");
-    openapiRequiredFields.add("roomSlotsAvailable");
-    openapiRequiredFields.add("draining");
     openapiRequiredFields.add("terminatedAt");
     openapiRequiredFields.add("stoppingAt");
     openapiRequiredFields.add("startedAt");
-    openapiRequiredFields.add("startingAt");
+    openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("roomsPerProcess");
     openapiRequiredFields.add("additionalExposedPorts");
-    openapiRequiredFields.add("port");
-    openapiRequiredFields.add("host");
     openapiRequiredFields.add("region");
     openapiRequiredFields.add("processId");
     openapiRequiredFields.add("deploymentId");
     openapiRequiredFields.add("appId");
-    openapiRequiredFields.add("rooms");
-    openapiRequiredFields.add("totalRooms");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ProcessWithRooms
+  * @throws IOException if the JSON Object is invalid with respect to ProcessV2
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!ProcessWithRooms.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ProcessWithRooms is not found in the empty JSON string", ProcessWithRooms.openapiRequiredFields.toString()));
+        if (!ProcessV2.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProcessV2 is not found in the empty JSON string", ProcessV2.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ProcessWithRooms.openapiRequiredFields) {
+      for (String requiredField : ProcessV2.openapiRequiredFields) {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
@@ -935,41 +583,28 @@ public class ProcessWithRooms {
       if (jsonObj.get("exposedPort") != null && !jsonObj.get("exposedPort").isJsonNull()) {
         ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
       }
-      if (!jsonObj.get("host").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
-      }
       if (!jsonObj.get("processId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `processId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processId").toString()));
       }
       if (!jsonObj.get("appId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appId").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("rooms").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rooms` to be an array in the JSON string but got `%s`", jsonObj.get("rooms").toString()));
-      }
-
-      JsonArray jsonArrayrooms = jsonObj.getAsJsonArray("rooms");
-      // validate the required field `rooms` (array)
-      for (int i = 0; i < jsonArrayrooms.size(); i++) {
-        PickRoomExcludeKeyofRoomAllocations.validateJsonObject(jsonArrayrooms.get(i).getAsJsonObject());
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ProcessWithRooms.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ProcessWithRooms' and its subtypes
+       if (!ProcessV2.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProcessV2' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ProcessWithRooms> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ProcessWithRooms.class));
+       final TypeAdapter<ProcessV2> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProcessV2.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ProcessWithRooms>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProcessV2>() {
            @Override
-           public void write(JsonWriter out, ProcessWithRooms value) throws IOException {
+           public void write(JsonWriter out, ProcessV2 value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -992,11 +627,11 @@ public class ProcessWithRooms {
            }
 
            @Override
-           public ProcessWithRooms read(JsonReader in) throws IOException {
+           public ProcessV2 read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             ProcessWithRooms instance = thisAdapter.fromJsonTree(jsonObj);
+             ProcessV2 instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -1023,18 +658,18 @@ public class ProcessWithRooms {
   }
 
  /**
-  * Create an instance of ProcessWithRooms given an JSON string
+  * Create an instance of ProcessV2 given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ProcessWithRooms
-  * @throws IOException if the JSON string is invalid with respect to ProcessWithRooms
+  * @return An instance of ProcessV2
+  * @throws IOException if the JSON string is invalid with respect to ProcessV2
   */
-  public static ProcessWithRooms fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ProcessWithRooms.class);
+  public static ProcessV2 fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProcessV2.class);
   }
 
  /**
-  * Convert an instance of ProcessWithRooms to an JSON string
+  * Convert an instance of ProcessV2 to an JSON string
   *
   * @return JSON string
   */

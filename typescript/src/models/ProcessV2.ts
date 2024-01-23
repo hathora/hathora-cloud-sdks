@@ -19,6 +19,12 @@ import {
     ExposedPortFromJSONTyped,
     ExposedPortToJSON,
 } from './ExposedPort';
+import type { ProcessStatus } from './ProcessStatus';
+import {
+    ProcessStatusFromJSON,
+    ProcessStatusFromJSONTyped,
+    ProcessStatusToJSON,
+} from './ProcessStatus';
 import type { Region } from './Region';
 import {
     RegionFromJSON,
@@ -27,174 +33,104 @@ import {
 } from './Region';
 
 /**
- * A process object represents a runtime instance of your game server and its metadata.
+ * 
  * @export
- * @interface Process
+ * @interface ProcessV2
  */
-export interface Process {
-    /**
-     * Measures network traffic leaving the process in bytes.
-     * @type {number}
-     * @memberof Process
-     */
-    egressedBytes: number;
+export interface ProcessV2 {
     /**
      * 
-     * @type {Date}
-     * @memberof Process
-     * @deprecated
+     * @type {ProcessStatus}
+     * @memberof ProcessV2
      */
-    idleSince: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Process
-     * @deprecated
-     */
-    activeConnectionsUpdatedAt: Date;
-    /**
-     * Tracks the number of active connections to a process.
-     * @type {number}
-     * @memberof Process
-     * @deprecated
-     */
-    activeConnections: number;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Process
-     */
-    roomsAllocatedUpdatedAt: Date;
+    status: ProcessStatus;
     /**
      * Tracks the number of rooms that have been allocated to the process.
      * @type {number}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     roomsAllocated: number;
     /**
-     * 
-     * @type {Date}
-     * @memberof Process
-     * @deprecated
-     */
-    roomSlotsAvailableUpdatedAt: Date;
-    /**
-     * 
-     * @type {number}
-     * @memberof Process
-     * @deprecated
-     */
-    roomSlotsAvailable: number;
-    /**
-     * Process in drain will not accept any new rooms.
-     * @type {boolean}
-     * @memberof Process
-     */
-    draining: boolean;
-    /**
      * When the process has been terminated.
      * @type {Date}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     terminatedAt: Date | null;
     /**
      * When the process is issued to stop. We use this to determine when we should stop billing.
      * @type {Date}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     stoppingAt: Date | null;
     /**
      * When the process bound to the specified port. We use this to determine when we should start billing.
      * @type {Date}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     startedAt: Date | null;
     /**
      * When the process started being provisioned.
      * @type {Date}
-     * @memberof Process
+     * @memberof ProcessV2
      */
-    startingAt: Date;
+    createdAt: Date;
     /**
      * Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
      * @type {number}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     roomsPerProcess: number;
     /**
      * 
      * @type {Array<ExposedPort>}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     additionalExposedPorts: Array<ExposedPort>;
     /**
      * 
      * @type {ExposedPort}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     exposedPort?: ExposedPort;
     /**
      * 
-     * @type {number}
-     * @memberof Process
-     * @deprecated
-     */
-    port: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Process
-     * @deprecated
-     */
-    host: string;
-    /**
-     * 
      * @type {Region}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     region: Region;
     /**
      * System generated unique identifier to a runtime instance of your game server.
      * @type {string}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     processId: string;
     /**
      * System generated id for a deployment. Increments by 1.
      * @type {number}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     deploymentId: number;
     /**
      * System generated unique identifier for an application.
      * @type {string}
-     * @memberof Process
+     * @memberof ProcessV2
      */
     appId: string;
 }
 
 /**
- * Check if a given object implements the Process interface.
+ * Check if a given object implements the ProcessV2 interface.
  */
-export function instanceOfProcess(value: object): boolean {
+export function instanceOfProcessV2(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "egressedBytes" in value;
-    isInstance = isInstance && "idleSince" in value;
-    isInstance = isInstance && "activeConnectionsUpdatedAt" in value;
-    isInstance = isInstance && "activeConnections" in value;
-    isInstance = isInstance && "roomsAllocatedUpdatedAt" in value;
+    isInstance = isInstance && "status" in value;
     isInstance = isInstance && "roomsAllocated" in value;
-    isInstance = isInstance && "roomSlotsAvailableUpdatedAt" in value;
-    isInstance = isInstance && "roomSlotsAvailable" in value;
-    isInstance = isInstance && "draining" in value;
     isInstance = isInstance && "terminatedAt" in value;
     isInstance = isInstance && "stoppingAt" in value;
     isInstance = isInstance && "startedAt" in value;
-    isInstance = isInstance && "startingAt" in value;
+    isInstance = isInstance && "createdAt" in value;
     isInstance = isInstance && "roomsPerProcess" in value;
     isInstance = isInstance && "additionalExposedPorts" in value;
-    isInstance = isInstance && "port" in value;
-    isInstance = isInstance && "host" in value;
     isInstance = isInstance && "region" in value;
     isInstance = isInstance && "processId" in value;
     isInstance = isInstance && "deploymentId" in value;
@@ -203,34 +139,25 @@ export function instanceOfProcess(value: object): boolean {
     return isInstance;
 }
 
-export function ProcessFromJSON(json: any): Process {
-    return ProcessFromJSONTyped(json, false);
+export function ProcessV2FromJSON(json: any): ProcessV2 {
+    return ProcessV2FromJSONTyped(json, false);
 }
 
-export function ProcessFromJSONTyped(json: any, ignoreDiscriminator: boolean): Process {
+export function ProcessV2FromJSONTyped(json: any, ignoreDiscriminator: boolean): ProcessV2 {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'egressedBytes': json['egressedBytes'],
-        'idleSince': (json['idleSince'] === null ? null : new Date(json['idleSince'])),
-        'activeConnectionsUpdatedAt': (new Date(json['activeConnectionsUpdatedAt'])),
-        'activeConnections': json['activeConnections'],
-        'roomsAllocatedUpdatedAt': (new Date(json['roomsAllocatedUpdatedAt'])),
+        'status': ProcessStatusFromJSON(json['status']),
         'roomsAllocated': json['roomsAllocated'],
-        'roomSlotsAvailableUpdatedAt': (new Date(json['roomSlotsAvailableUpdatedAt'])),
-        'roomSlotsAvailable': json['roomSlotsAvailable'],
-        'draining': json['draining'],
         'terminatedAt': (json['terminatedAt'] === null ? null : new Date(json['terminatedAt'])),
         'stoppingAt': (json['stoppingAt'] === null ? null : new Date(json['stoppingAt'])),
         'startedAt': (json['startedAt'] === null ? null : new Date(json['startedAt'])),
-        'startingAt': (new Date(json['startingAt'])),
+        'createdAt': (new Date(json['createdAt'])),
         'roomsPerProcess': json['roomsPerProcess'],
         'additionalExposedPorts': ((json['additionalExposedPorts'] as Array<any>).map(ExposedPortFromJSON)),
         'exposedPort': !exists(json, 'exposedPort') ? undefined : ExposedPortFromJSON(json['exposedPort']),
-        'port': json['port'],
-        'host': json['host'],
         'region': RegionFromJSON(json['region']),
         'processId': json['processId'],
         'deploymentId': json['deploymentId'],
@@ -238,7 +165,7 @@ export function ProcessFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
     };
 }
 
-export function ProcessToJSON(value?: Process | null): any {
+export function ProcessV2ToJSON(value?: ProcessV2 | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -247,24 +174,15 @@ export function ProcessToJSON(value?: Process | null): any {
     }
     return {
         
-        'egressedBytes': value.egressedBytes,
-        'idleSince': (value.idleSince === null ? null : value.idleSince.toISOString()),
-        'activeConnectionsUpdatedAt': (value.activeConnectionsUpdatedAt.toISOString()),
-        'activeConnections': value.activeConnections,
-        'roomsAllocatedUpdatedAt': (value.roomsAllocatedUpdatedAt.toISOString()),
+        'status': ProcessStatusToJSON(value.status),
         'roomsAllocated': value.roomsAllocated,
-        'roomSlotsAvailableUpdatedAt': (value.roomSlotsAvailableUpdatedAt.toISOString()),
-        'roomSlotsAvailable': value.roomSlotsAvailable,
-        'draining': value.draining,
         'terminatedAt': (value.terminatedAt === null ? null : value.terminatedAt.toISOString()),
         'stoppingAt': (value.stoppingAt === null ? null : value.stoppingAt.toISOString()),
         'startedAt': (value.startedAt === null ? null : value.startedAt.toISOString()),
-        'startingAt': (value.startingAt.toISOString()),
+        'createdAt': (value.createdAt.toISOString()),
         'roomsPerProcess': value.roomsPerProcess,
         'additionalExposedPorts': ((value.additionalExposedPorts as Array<any>).map(ExposedPortToJSON)),
         'exposedPort': ExposedPortToJSON(value.exposedPort),
-        'port': value.port,
-        'host': value.host,
         'region': RegionToJSON(value.region),
         'processId': value.processId,
         'deploymentId': value.deploymentId,

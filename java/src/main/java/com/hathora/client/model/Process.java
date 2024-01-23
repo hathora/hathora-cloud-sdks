@@ -223,7 +223,9 @@ public class Process {
    /**
    * Tracks the number of active connections to a process.
    * @return activeConnections
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nonnull
 
   public Integer getActiveConnections() {

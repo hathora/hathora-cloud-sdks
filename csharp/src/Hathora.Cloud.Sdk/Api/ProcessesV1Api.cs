@@ -36,7 +36,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <returns>Process</returns>
-        Process GetProcessInfo(string appId, string processId);
+        [Obsolete]
+        Process GetProcessInfoDeprecated(string appId, string processId);
 
         /// <summary>
         /// 
@@ -48,7 +49,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <returns>ApiResponse of Process</returns>
-        ApiResponse<Process> GetProcessInfoWithHttpInfo(string appId, string processId);
+        [Obsolete]
+        ApiResponse<Process> GetProcessInfoDeprecatedWithHttpInfo(string appId, string processId);
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +61,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>List&lt;ProcessWithRooms&gt;</returns>
+        [Obsolete]
         List<ProcessWithRooms> GetRunningProcesses(string appId, Region? region = default(Region?));
 
         /// <summary>
@@ -71,6 +74,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of List&lt;ProcessWithRooms&gt;</returns>
+        [Obsolete]
         ApiResponse<List<ProcessWithRooms>> GetRunningProcessesWithHttpInfo(string appId, Region? region = default(Region?));
         /// <summary>
         /// 
@@ -82,6 +86,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>List&lt;Process&gt;</returns>
+        [Obsolete]
         List<Process> GetStoppedProcesses(string appId, Region? region = default(Region?));
 
         /// <summary>
@@ -94,6 +99,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of List&lt;Process&gt;</returns>
+        [Obsolete]
         ApiResponse<List<Process>> GetStoppedProcessesWithHttpInfo(string appId, Region? region = default(Region?));
         #endregion Synchronous Operations
     }
@@ -115,7 +121,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Process</returns>
-        System.Threading.Tasks.Task<Process> GetProcessInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Process> GetProcessInfoDeprecatedAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -128,7 +135,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Process)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Process>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Process>> GetProcessInfoDeprecatedWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -140,6 +148,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;ProcessWithRooms&gt;</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<List<ProcessWithRooms>> GetRunningProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -153,6 +162,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;ProcessWithRooms&gt;)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<List<ProcessWithRooms>>> GetRunningProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
@@ -165,6 +175,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Process&gt;</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<List<Process>> GetStoppedProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -178,6 +189,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Process&gt;)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<List<Process>>> GetStoppedProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
@@ -330,9 +342,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <returns>Process</returns>
-        public Process GetProcessInfo(string appId, string processId)
+        [Obsolete]
+        public Process GetProcessInfoDeprecated(string appId, string processId)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Process> localVarResponse = GetProcessInfoWithHttpInfo(appId, processId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Process> localVarResponse = GetProcessInfoDeprecatedWithHttpInfo(appId, processId);
             return localVarResponse.Data;
         }
 
@@ -343,15 +356,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <returns>ApiResponse of Process</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Process> GetProcessInfoWithHttpInfo(string appId, string processId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Process> GetProcessInfoDeprecatedWithHttpInfo(string appId, string processId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetProcessInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetProcessInfoDeprecated");
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV1Api->GetProcessInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV1Api->GetProcessInfoDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -384,7 +398,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetProcessInfo", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetProcessInfoDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -399,9 +413,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Process</returns>
-        public async System.Threading.Tasks.Task<Process> GetProcessInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Process> GetProcessInfoDeprecatedAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = GetProcessInfoWithHttpInfoAsync(appId, processId, cancellationToken);
+            var task = GetProcessInfoDeprecatedWithHttpInfoAsync(appId, processId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Process> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -418,15 +433,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Process)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Process>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Process>> GetProcessInfoDeprecatedWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetProcessInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV1Api->GetProcessInfoDeprecated");
 
             // verify the required parameter 'processId' is set
             if (processId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV1Api->GetProcessInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV1Api->GetProcessInfoDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -468,7 +484,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetProcessInfo", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetProcessInfoDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -482,6 +498,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>List&lt;ProcessWithRooms&gt;</returns>
+        [Obsolete]
         public List<ProcessWithRooms> GetRunningProcesses(string appId, Region? region = default(Region?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> localVarResponse = GetRunningProcessesWithHttpInfo(appId, region);
@@ -495,6 +512,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of List&lt;ProcessWithRooms&gt;</returns>
+        [Obsolete]
         public Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>> GetRunningProcessesWithHttpInfo(string appId, Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
@@ -550,6 +568,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;ProcessWithRooms&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<ProcessWithRooms>> GetRunningProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetRunningProcessesWithHttpInfoAsync(appId, region, cancellationToken);
@@ -569,6 +588,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;ProcessWithRooms&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<ProcessWithRooms>>> GetRunningProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
@@ -632,6 +652,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>List&lt;Process&gt;</returns>
+        [Obsolete]
         public List<Process> GetStoppedProcesses(string appId, Region? region = default(Region?))
         {
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> localVarResponse = GetStoppedProcessesWithHttpInfo(appId, region);
@@ -645,6 +666,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="region"> (optional)</param>
         /// <returns>ApiResponse of List&lt;Process&gt;</returns>
+        [Obsolete]
         public Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>> GetStoppedProcessesWithHttpInfo(string appId, Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
@@ -700,6 +722,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Process&gt;</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<List<Process>> GetStoppedProcessesAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetStoppedProcessesWithHttpInfoAsync(appId, region, cancellationToken);
@@ -719,6 +742,7 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Process&gt;)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Process>>> GetStoppedProcessesWithHttpInfoAsync(string appId, Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set

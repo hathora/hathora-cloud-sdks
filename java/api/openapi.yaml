@@ -1963,6 +1963,7 @@ paths:
       x-accepts: application/json
   /processes/v1/{appId}/list/running:
     get:
+      deprecated: true
       description: "Retrieve 10 most recently started [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
         \ objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
         \ Filter the array by optionally passing in a `region`."
@@ -2004,6 +2005,7 @@ paths:
       x-accepts: application/json
   /processes/v1/{appId}/list/stopped:
     get:
+      deprecated: true
       description: "Retrieve 10 most recently stopped [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
         \ objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
         \ Filter the array by optionally passing in a `region`."
@@ -2045,8 +2047,9 @@ paths:
       x-accepts: application/json
   /processes/v1/{appId}/info/{processId}:
     get:
+      deprecated: true
       description: "Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process)."
-      operationId: GetProcessInfo
+      operationId: GetProcessInfoDeprecated
       parameters:
       - explode: false
         in: path
@@ -2085,6 +2088,101 @@ paths:
       - hathoraDevToken: []
       tags:
       - ProcessesV1
+      x-accepts: application/json
+  /processes/v2/{appId}/info/{processId}:
+    get:
+      description: "Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process)."
+      operationId: GetProcessInfo
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: processId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ProcessId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessV2'
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - ProcessesV2
+      x-accepts: application/json
+  /processes/v2/{appId}/list/latest:
+    get:
+      description: "Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).\
+        \ Filter the array by optionally passing in a `status` or `region`."
+      operationId: GetLatestProcesses
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/ProcessStatus'
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: region
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/Region'
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ProcessV2'
+                type: array
+          description: Ok
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - ProcessesV2
       x-accepts: application/json
   /rooms/v1/{appId}/create:
     post:
@@ -3857,6 +3955,7 @@ components:
           format: date-time
           type: string
         activeConnections:
+          deprecated: true
           description: Tracks the number of active connections to a process.
           example: 10
           format: int32
@@ -4063,6 +4162,118 @@ components:
       allOf:
       - $ref: '#/components/schemas/Process'
       - $ref: '#/components/schemas/ProcessWithRooms_allOf'
+    ProcessStatus:
+      enum:
+      - starting
+      - running
+      - draining
+      - stopping
+      - stopped
+      - failed
+      type: string
+    ProcessV2:
+      example:
+        terminatedAt: 2000-01-23T04:56:07.000+00:00
+        roomsPerProcess: 3
+        exposedPort:
+          host: 1.proxy.hathora.dev
+          name: default
+          port: 34567
+          transportType: tcp
+        startedAt: 2000-01-23T04:56:07.000+00:00
+        roomsAllocated: 1
+        stoppingAt: 2000-01-23T04:56:07.000+00:00
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        processId: cbfcddd2-0006-43ae-996c-995fff7bed2e
+        deploymentId: 1
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
+        additionalExposedPorts:
+        - host: 1.proxy.hathora.dev
+          name: debug
+          port: 72941
+          transportType: tcp
+        region: null
+        status: null
+      properties:
+        status:
+          $ref: '#/components/schemas/ProcessStatus'
+        roomsAllocated:
+          description: Tracks the number of rooms that have been allocated to the
+            process.
+          example: 1
+          format: int32
+          type: integer
+        terminatedAt:
+          description: When the process has been terminated.
+          format: date-time
+          nullable: true
+          type: string
+        stoppingAt:
+          description: When the process is issued to stop. We use this to determine
+            when we should stop billing.
+          format: date-time
+          nullable: true
+          type: string
+        startedAt:
+          description: When the process bound to the specified port. We use this to
+            determine when we should start billing.
+          format: date-time
+          nullable: true
+          type: string
+        createdAt:
+          description: When the process started being provisioned.
+          format: date-time
+          type: string
+        roomsPerProcess:
+          description: "Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)\
+            \ can be scheduled in a process."
+          example: 3
+          format: int32
+          maximum: 10000
+          minimum: 1
+          type: integer
+        additionalExposedPorts:
+          example:
+          - host: 1.proxy.hathora.dev
+            name: debug
+            port: 72941
+            transportType: tcp
+          items:
+            $ref: '#/components/schemas/ExposedPort'
+          maxItems: 2
+          type: array
+        exposedPort:
+          $ref: '#/components/schemas/ExposedPort'
+        region:
+          $ref: '#/components/schemas/Region'
+        processId:
+          description: System generated unique identifier to a runtime instance of
+            your game server.
+          example: cbfcddd2-0006-43ae-996c-995fff7bed2e
+          type: string
+        deploymentId:
+          description: System generated id for a deployment. Increments by 1.
+          example: 1
+          format: int32
+          type: integer
+        appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+          type: string
+      required:
+      - additionalExposedPorts
+      - appId
+      - createdAt
+      - deploymentId
+      - processId
+      - region
+      - roomsAllocated
+      - roomsPerProcess
+      - startedAt
+      - status
+      - stoppingAt
+      - terminatedAt
+      type: object
     CreateRoomParams:
       example:
         roomConfig: "{\"name\":\"my-room\"}"
