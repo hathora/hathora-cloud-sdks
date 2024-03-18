@@ -544,6 +544,7 @@ public class ProcessV2 {
     openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("roomsPerProcess");
     openapiRequiredFields.add("additionalExposedPorts");
+    openapiRequiredFields.add("exposedPort");
     openapiRequiredFields.add("region");
     openapiRequiredFields.add("processId");
     openapiRequiredFields.add("deploymentId");
@@ -579,10 +580,8 @@ public class ProcessV2 {
       for (int i = 0; i < jsonArrayadditionalExposedPorts.size(); i++) {
         ExposedPort.validateJsonObject(jsonArrayadditionalExposedPorts.get(i).getAsJsonObject());
       };
-      // validate the optional field `exposedPort`
-      if (jsonObj.get("exposedPort") != null && !jsonObj.get("exposedPort").isJsonNull()) {
-        ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
-      }
+      // validate the required field `exposedPort`
+      ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
       if (!jsonObj.get("processId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `processId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processId").toString()));
       }

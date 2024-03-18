@@ -43,6 +43,10 @@ export interface GetDeploymentsRequest {
     appId: string;
 }
 
+export interface GetLatestDeploymentRequest {
+    appId: string;
+}
+
 /**
  * DeploymentV1Api - interface
  * 
@@ -94,6 +98,20 @@ export interface DeploymentV1ApiInterface {
      * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
     getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>>;
+
+    /**
+     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * @param {string} appId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DeploymentV1ApiInterface
+     */
+    getLatestDeploymentRaw(requestParameters: GetLatestDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
+
+    /**
+     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     */
+    getLatestDeployment(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
 }
 
@@ -228,6 +246,44 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
      */
     async getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>> {
         const response = await this.getDeploymentsRaw({ appId: appId }, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     */
+    async getLatestDeploymentRaw(requestParameters: GetLatestDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getLatestDeployment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("hathoraDevToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/deployments/v1/{appId}/latest`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeploymentFromJSON(jsonValue));
+    }
+
+    /**
+     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     */
+    async getLatestDeployment(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
+        const response = await this.getLatestDeploymentRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 

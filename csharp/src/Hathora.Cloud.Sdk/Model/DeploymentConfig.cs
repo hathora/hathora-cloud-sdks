@@ -53,13 +53,14 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeploymentConfig" /> class.
         /// </summary>
+        /// <param name="idleTimeoutEnabled">Option to shut down processes that have had no new connections or rooms for five minutes. (default to true).</param>
         /// <param name="env">The environment variable that our process will have access to at runtime. (required).</param>
         /// <param name="roomsPerProcess">Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. (required).</param>
         /// <param name="planName">planName (required).</param>
         /// <param name="additionalContainerPorts">Additional ports your server listens on..</param>
         /// <param name="transportType">transportType (required).</param>
         /// <param name="containerPort">Default port the server listens on. (required).</param>
-        public DeploymentConfig(List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), TransportType transportType = default(TransportType), int containerPort = default(int))
+        public DeploymentConfig(bool idleTimeoutEnabled = true, List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), TransportType transportType = default(TransportType), int containerPort = default(int))
         {
             // to ensure "env" is required (not null)
             if (env == null)
@@ -71,9 +72,17 @@ namespace Hathora.Cloud.Sdk.Model
             this.PlanName = planName;
             this.TransportType = transportType;
             this.ContainerPort = containerPort;
+            this.IdleTimeoutEnabled = idleTimeoutEnabled;
             this.AdditionalContainerPorts = additionalContainerPorts;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Option to shut down processes that have had no new connections or rooms for five minutes.
+        /// </summary>
+        /// <value>Option to shut down processes that have had no new connections or rooms for five minutes.</value>
+        [DataMember(Name = "idleTimeoutEnabled", EmitDefaultValue = true)]
+        public bool IdleTimeoutEnabled { get; set; }
 
         /// <summary>
         /// The environment variable that our process will have access to at runtime.
@@ -119,6 +128,7 @@ namespace Hathora.Cloud.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class DeploymentConfig {\n");
+            sb.Append("  IdleTimeoutEnabled: ").Append(IdleTimeoutEnabled).Append("\n");
             sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("  RoomsPerProcess: ").Append(RoomsPerProcess).Append("\n");
             sb.Append("  PlanName: ").Append(PlanName).Append("\n");
@@ -162,6 +172,10 @@ namespace Hathora.Cloud.Sdk.Model
             }
             return 
                 (
+                    this.IdleTimeoutEnabled == input.IdleTimeoutEnabled ||
+                    this.IdleTimeoutEnabled.Equals(input.IdleTimeoutEnabled)
+                ) && 
+                (
                     this.Env == input.Env ||
                     this.Env != null &&
                     input.Env != null &&
@@ -201,6 +215,7 @@ namespace Hathora.Cloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.IdleTimeoutEnabled.GetHashCode();
                 if (this.Env != null)
                 {
                     hashCode = (hashCode * 59) + this.Env.GetHashCode();

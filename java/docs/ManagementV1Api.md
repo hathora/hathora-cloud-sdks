@@ -66,5 +66,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **500** |  |  -  |
 

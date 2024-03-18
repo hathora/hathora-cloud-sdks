@@ -57,7 +57,7 @@ export interface Lobby {
      */
     createdAt: Date;
     /**
-     * Email address for the user that created the lobby.
+     * UserId or email address for the user that created the lobby.
      * @type {string}
      * @memberof Lobby
      */

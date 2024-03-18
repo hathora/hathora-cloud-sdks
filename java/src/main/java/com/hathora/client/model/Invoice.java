@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.hathora.client.model.InvoiceStatus;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 
@@ -45,62 +46,13 @@ import java.util.Set;
 import com.hathora.client.JSON;
 
 /**
- * Billing types
+ * Invoice
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Invoice {
-  /**
-   * Gets or Sets status
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    PENDING("pending"),
-    
-    PAID("paid"),
-    
-    OVERDUE("overdue");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  private InvoiceStatus status;
 
   public static final String SERIALIZED_NAME_AMOUNT_DUE = "amountDue";
   @SerializedName(SERIALIZED_NAME_AMOUNT_DUE)
@@ -129,7 +81,7 @@ public class Invoice {
   public Invoice() {
   }
 
-  public Invoice status(StatusEnum status) {
+  public Invoice status(InvoiceStatus status) {
     
     this.status = status;
     return this;
@@ -141,12 +93,12 @@ public class Invoice {
   **/
   @javax.annotation.Nonnull
 
-  public StatusEnum getStatus() {
+  public InvoiceStatus getStatus() {
     return status;
   }
 
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(InvoiceStatus status) {
     this.status = status;
   }
 
@@ -423,9 +375,6 @@ public class Invoice {
         if (jsonObj.get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if (!jsonObj.get("pdfUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `pdfUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pdfUrl").toString()));

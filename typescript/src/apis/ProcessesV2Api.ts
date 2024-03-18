@@ -42,6 +42,11 @@ export interface GetProcessInfoRequest {
     processId: string;
 }
 
+export interface StopProcessRequest {
+    appId: string;
+    processId: string;
+}
+
 /**
  * ProcessesV2Api - interface
  * 
@@ -79,6 +84,21 @@ export interface ProcessesV2ApiInterface {
      * Get details for a [process](https://hathora.dev/docs/concepts/hathora-entities#process).
      */
     getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessV2>;
+
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     * @param {string} appId 
+     * @param {string} processId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProcessesV2ApiInterface
+     */
+    stopProcessRaw(requestParameters: StopProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     */
+    stopProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -173,6 +193,47 @@ export class ProcessesV2Api extends runtime.BaseAPI implements ProcessesV2ApiInt
     async getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessV2> {
         const response = await this.getProcessInfoRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     */
+    async stopProcessRaw(requestParameters: StopProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling stopProcess.');
+        }
+
+        if (requestParameters.processId === null || requestParameters.processId === undefined) {
+            throw new runtime.RequiredError('processId','Required parameter requestParameters.processId was null or undefined when calling stopProcess.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("hathoraDevToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/processes/v2/{appId}/stop/{processId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))).replace(`{${"processId"}}`, encodeURIComponent(String(requestParameters.processId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     */
+    async stopProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.stopProcessRaw({ appId: appId, processId: processId }, initOverrides);
     }
 
 }

@@ -79,9 +79,9 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **400** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **410** |  |  -  |
-| **500** |  |  -  |
 
 <a name="getLogsForApp"></a>
 # **getLogsForApp**
@@ -155,6 +155,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getLogsForDeployment"></a>
@@ -229,6 +230,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getLogsForProcess"></a>
@@ -304,6 +306,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **400** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **410** |  |  -  |
 | **500** |  |  -  |

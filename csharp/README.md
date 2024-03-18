@@ -111,6 +111,7 @@ Class | Method | HTTP request | Description
 *DeploymentV1Api* | [**CreateDeployment**](DeploymentV1Api.md#createdeployment) | **POST** /deployments/v1/{appId}/create/{buildId} | 
 *DeploymentV1Api* | [**GetDeploymentInfo**](DeploymentV1Api.md#getdeploymentinfo) | **GET** /deployments/v1/{appId}/info/{deploymentId} | 
 *DeploymentV1Api* | [**GetDeployments**](DeploymentV1Api.md#getdeployments) | **GET** /deployments/v1/{appId}/list | 
+*DeploymentV1Api* | [**GetLatestDeployment**](DeploymentV1Api.md#getlatestdeployment) | **GET** /deployments/v1/{appId}/latest | 
 *DiscoveryV1Api* | [**GetPingServiceEndpoints**](DiscoveryV1Api.md#getpingserviceendpoints) | **GET** /discovery/v1/ping | 
 *LobbyV1Api* | [**CreatePrivateLobbyDeprecated**](LobbyV1Api.md#createprivatelobbydeprecated) | **POST** /lobby/v1/{appId}/create/private | 
 *LobbyV1Api* | [**CreatePublicLobbyDeprecated**](LobbyV1Api.md#createpubliclobbydeprecated) | **POST** /lobby/v1/{appId}/create/public | 
@@ -132,11 +133,15 @@ Class | Method | HTTP request | Description
 *LogV1Api* | [**GetLogsForProcess**](LogV1Api.md#getlogsforprocess) | **GET** /logs/v1/{appId}/process/{processId} | 
 *ManagementV1Api* | [**SendVerificationEmail**](ManagementV1Api.md#sendverificationemail) | **POST** /management/v1/sendverificationemail | 
 *MetricsV1Api* | [**GetMetrics**](MetricsV1Api.md#getmetrics) | **GET** /metrics/v1/{appId}/process/{processId} | 
+*OrgTokensV1Api* | [**CreateOrgToken**](OrgTokensV1Api.md#createorgtoken) | **POST** /tokens/v1/orgs/{orgId}/create | 
+*OrgTokensV1Api* | [**GetOrgTokens**](OrgTokensV1Api.md#getorgtokens) | **GET** /tokens/v1/orgs/{orgId} | 
+*OrgTokensV1Api* | [**RevokeOrgToken**](OrgTokensV1Api.md#revokeorgtoken) | **POST** /tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke | 
 *ProcessesV1Api* | [**GetProcessInfoDeprecated**](ProcessesV1Api.md#getprocessinfodeprecated) | **GET** /processes/v1/{appId}/info/{processId} | 
 *ProcessesV1Api* | [**GetRunningProcesses**](ProcessesV1Api.md#getrunningprocesses) | **GET** /processes/v1/{appId}/list/running | 
 *ProcessesV1Api* | [**GetStoppedProcesses**](ProcessesV1Api.md#getstoppedprocesses) | **GET** /processes/v1/{appId}/list/stopped | 
 *ProcessesV2Api* | [**GetLatestProcesses**](ProcessesV2Api.md#getlatestprocesses) | **GET** /processes/v2/{appId}/list/latest | 
 *ProcessesV2Api* | [**GetProcessInfo**](ProcessesV2Api.md#getprocessinfo) | **GET** /processes/v2/{appId}/info/{processId} | 
+*ProcessesV2Api* | [**StopProcess**](ProcessesV2Api.md#stopprocess) | **POST** /processes/v2/{appId}/stop/{processId} | 
 *RoomV1Api* | [**CreateRoomDeprecated**](RoomV1Api.md#createroomdeprecated) | **POST** /rooms/v1/{appId}/create | 
 *RoomV1Api* | [**DestroyRoomDeprecated**](RoomV1Api.md#destroyroomdeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
 *RoomV1Api* | [**GetActiveRoomsForProcessDeprecated**](RoomV1Api.md#getactiveroomsforprocessdeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
@@ -162,12 +167,15 @@ Class | Method | HTTP request | Description
  - [Model.ApiError](ApiError.md)
  - [Model.AppConfig](AppConfig.md)
  - [Model.Application](Application.md)
- - [Model.ApplicationWithDeployment](ApplicationWithDeployment.md)
- - [Model.ApplicationWithDeploymentAllOf](ApplicationWithDeploymentAllOf.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuild](ApplicationWithLatestDeploymentAndBuild.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuildAllOf](ApplicationWithLatestDeploymentAndBuildAllOf.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuildAllOfDeployment](ApplicationWithLatestDeploymentAndBuildAllOfDeployment.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuildAllOfDeploymentAllOf](ApplicationWithLatestDeploymentAndBuildAllOfDeploymentAllOf.md)
  - [Model.AuthConfiguration](AuthConfiguration.md)
  - [Model.AuthConfigurationGoogle](AuthConfigurationGoogle.md)
  - [Model.Build](Build.md)
  - [Model.BuildRegionalContainerTagsInner](BuildRegionalContainerTagsInner.md)
+ - [Model.BuildStatus](BuildStatus.md)
  - [Model.CardBrand](CardBrand.md)
  - [Model.CardPaymentMethod](CardPaymentMethod.md)
  - [Model.ConnectionInfo](ConnectionInfo.md)
@@ -176,10 +184,12 @@ Class | Method | HTTP request | Description
  - [Model.CreateBuildParams](CreateBuildParams.md)
  - [Model.CreateLobbyParams](CreateLobbyParams.md)
  - [Model.CreateLobbyV3Params](CreateLobbyV3Params.md)
+ - [Model.CreateOrgToken](CreateOrgToken.md)
  - [Model.CreatePrivateLobbyRequest](CreatePrivateLobbyRequest.md)
  - [Model.CreateRoomParams](CreateRoomParams.md)
  - [Model.CreateRoomResponse](CreateRoomResponse.md)
  - [Model.CreateRoomResponseAllOf](CreateRoomResponseAllOf.md)
+ - [Model.CreatedOrgToken](CreatedOrgToken.md)
  - [Model.CustomerPortalUrl](CustomerPortalUrl.md)
  - [Model.Deployment](Deployment.md)
  - [Model.DeploymentConfig](DeploymentConfig.md)
@@ -187,7 +197,9 @@ Class | Method | HTTP request | Description
  - [Model.DiscoveryResponseInner](DiscoveryResponseInner.md)
  - [Model.ExposedPort](ExposedPort.md)
  - [Model.Invoice](Invoice.md)
+ - [Model.InvoiceStatus](InvoiceStatus.md)
  - [Model.LinkPaymentMethod](LinkPaymentMethod.md)
+ - [Model.ListOrgTokens](ListOrgTokens.md)
  - [Model.Lobby](Lobby.md)
  - [Model.LobbyV3](LobbyV3.md)
  - [Model.LobbyVisibility](LobbyVisibility.md)
@@ -196,6 +208,8 @@ Class | Method | HTTP request | Description
  - [Model.LoginResponse](LoginResponse.md)
  - [Model.MetricName](MetricName.md)
  - [Model.MetricValue](MetricValue.md)
+ - [Model.OrgToken](OrgToken.md)
+ - [Model.OrgTokenStatus](OrgTokenStatus.md)
  - [Model.PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod](PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.md)
  - [Model.PickRoomExcludeKeyofRoomAllocations](PickRoomExcludeKeyofRoomAllocations.md)
  - [Model.PlanName](PlanName.md)

@@ -132,7 +132,7 @@ export interface Process {
      * @type {ExposedPort}
      * @memberof Process
      */
-    exposedPort?: ExposedPort;
+    exposedPort: ExposedPort | null;
     /**
      * 
      * @type {number}
@@ -193,6 +193,7 @@ export function instanceOfProcess(value: object): boolean {
     isInstance = isInstance && "startingAt" in value;
     isInstance = isInstance && "roomsPerProcess" in value;
     isInstance = isInstance && "additionalExposedPorts" in value;
+    isInstance = isInstance && "exposedPort" in value;
     isInstance = isInstance && "port" in value;
     isInstance = isInstance && "host" in value;
     isInstance = isInstance && "region" in value;
@@ -228,7 +229,7 @@ export function ProcessFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'startingAt': (new Date(json['startingAt'])),
         'roomsPerProcess': json['roomsPerProcess'],
         'additionalExposedPorts': ((json['additionalExposedPorts'] as Array<any>).map(ExposedPortFromJSON)),
-        'exposedPort': !exists(json, 'exposedPort') ? undefined : ExposedPortFromJSON(json['exposedPort']),
+        'exposedPort': ExposedPortFromJSON(json['exposedPort']),
         'port': json['port'],
         'host': json['host'],
         'region': RegionFromJSON(json['region']),

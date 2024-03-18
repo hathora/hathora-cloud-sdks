@@ -825,6 +825,7 @@ public class Process {
     openapiRequiredFields.add("startingAt");
     openapiRequiredFields.add("roomsPerProcess");
     openapiRequiredFields.add("additionalExposedPorts");
+    openapiRequiredFields.add("exposedPort");
     openapiRequiredFields.add("port");
     openapiRequiredFields.add("host");
     openapiRequiredFields.add("region");
@@ -862,10 +863,8 @@ public class Process {
       for (int i = 0; i < jsonArrayadditionalExposedPorts.size(); i++) {
         ExposedPort.validateJsonObject(jsonArrayadditionalExposedPorts.get(i).getAsJsonObject());
       };
-      // validate the optional field `exposedPort`
-      if (jsonObj.get("exposedPort") != null && !jsonObj.get("exposedPort").isJsonNull()) {
-        ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
-      }
+      // validate the required field `exposedPort`
+      ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
       if (!jsonObj.get("host").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
       }

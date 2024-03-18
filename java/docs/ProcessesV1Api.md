@@ -77,6 +77,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 
@@ -148,6 +149,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getStoppedProcesses"></a>
@@ -218,5 +220,6 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 

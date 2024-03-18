@@ -62,7 +62,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="startingAt">When the process started being provisioned. (required).</param>
         /// <param name="roomsPerProcess">Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. (required).</param>
         /// <param name="additionalExposedPorts">additionalExposedPorts (required).</param>
-        /// <param name="exposedPort">exposedPort.</param>
+        /// <param name="exposedPort">exposedPort (required).</param>
         /// <param name="port">port (required).</param>
         /// <param name="host">host (required).</param>
         /// <param name="region">region (required).</param>
@@ -111,6 +111,12 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("additionalExposedPorts is a required property for Process and cannot be null");
             }
             this.AdditionalExposedPorts = additionalExposedPorts;
+            // to ensure "exposedPort" is required (not null)
+            if (exposedPort == null)
+            {
+                throw new ArgumentNullException("exposedPort is a required property for Process and cannot be null");
+            }
+            this.ExposedPort = exposedPort;
             this.Port = port;
             // to ensure "host" is required (not null)
             if (host == null)
@@ -132,7 +138,6 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("appId is a required property for Process and cannot be null");
             }
             this.AppId = appId;
-            this.ExposedPort = exposedPort;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -247,7 +252,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Gets or Sets ExposedPort
         /// </summary>
-        [DataMember(Name = "exposedPort", EmitDefaultValue = false)]
+        [DataMember(Name = "exposedPort", IsRequired = true, EmitDefaultValue = true)]
         public ExposedPort ExposedPort { get; set; }
 
         /// <summary>

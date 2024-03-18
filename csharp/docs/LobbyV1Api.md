@@ -101,6 +101,7 @@ catch (ApiException e)
 | **200** | Ok |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -201,6 +202,7 @@ catch (ApiException e)
 | **200** | Ok |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -296,7 +298,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **401** |  |  -  |
 | **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

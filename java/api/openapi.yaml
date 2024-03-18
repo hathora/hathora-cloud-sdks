@@ -33,13 +33,15 @@ tags:
     \ We store 72 hours of metrics data."
   name: MetricsV1
 - description: "Operations to get data on active and stopped [processes](https://hathora.dev/docs/concepts/hathora-entities#process)."
-  name: ProcessesV1
+  name: ProcessesV2
 - description: "Operations to create, manage, and connect to [rooms](https://hathora.dev/docs/concepts/hathora-entities#room)."
   name: RoomV2
 - description: "Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3)."
   name: LobbyV1
 - description: "Deprecated. Use [LobbyV3](https://hathora.dev/api#tag/LobbyV3)."
   name: LobbyV2
+- description: "Deprecated. Use [ProcessesV2](https://hathora.dev/api#tag/ProcessesV2)."
+  name: ProcessesV1
 - description: "Deprecated. Use [RoomV2](https://hathora.dev/api#tag/RoomV2)."
   name: RoomV1
 paths:
@@ -55,7 +57,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/ApplicationWithDeployment'
+                  $ref: '#/components/schemas/ApplicationWithLatestDeploymentAndBuild'
                 type: array
           description: Ok
       security:
@@ -80,6 +82,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application'
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "422":
           content:
@@ -125,6 +133,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Application'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -169,6 +183,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Application'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -196,6 +216,12 @@ paths:
       responses:
         "204":
           description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -332,6 +358,12 @@ paths:
                 format: double
                 type: number
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -354,6 +386,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaymentMethod'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -388,6 +426,12 @@ paths:
               schema:
                 type: string
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -413,6 +457,12 @@ paths:
                   $ref: '#/components/schemas/Invoice'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -446,6 +496,12 @@ paths:
                   $ref: '#/components/schemas/Build'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -483,6 +539,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Build'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -521,6 +583,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Build'
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
           description: ""
         "404":
           content:
@@ -574,6 +642,12 @@ paths:
                 format: byte
                 type: string
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -615,6 +689,12 @@ paths:
       responses:
         "204":
           description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -660,6 +740,49 @@ paths:
                   $ref: '#/components/schemas/Deployment'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - DeploymentV1
+      x-accepts: application/json
+  /deployments/v1/{appId}/latest:
+    get:
+      description: "Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment)\
+        \ for an [application](https://hathora.dev/docs/concepts/hathora-entities#application)."
+      operationId: GetLatestDeployment
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+          description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -697,6 +820,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Deployment'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -748,7 +877,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "422":
           content:
             application/json:
               schema:
@@ -831,6 +972,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -906,6 +1053,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -971,12 +1124,6 @@ paths:
                   $ref: '#/components/schemas/Lobby'
                 type: array
           description: Ok
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiError'
-          description: ""
         "404":
           content:
             application/json:
@@ -1026,6 +1173,12 @@ paths:
                 $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "402":
           content:
             application/json:
               schema:
@@ -1105,6 +1258,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -1174,6 +1333,12 @@ paths:
                 $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "402":
           content:
             application/json:
               schema:
@@ -1253,6 +1418,12 @@ paths:
                 $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "402":
           content:
             application/json:
               schema:
@@ -1398,6 +1569,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Lobby'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -1466,6 +1643,12 @@ paths:
                 $ref: '#/components/schemas/ApiError'
           description: ""
         "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "402":
           content:
             application/json:
               schema:
@@ -1652,6 +1835,12 @@ paths:
                 format: byte
                 type: string
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -1706,6 +1895,12 @@ paths:
                 type: string
           description: Ok
         "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "401":
           content:
             application/json:
               schema:
@@ -1767,6 +1962,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -1774,12 +1975,6 @@ paths:
                 $ref: '#/components/schemas/ApiError'
           description: ""
         "410":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiError'
-          description: ""
-        "500":
           content:
             application/json:
               schema:
@@ -1833,6 +2028,12 @@ paths:
                 format: byte
                 type: string
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -1861,6 +2062,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/VerificationEmailResponse'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "500":
           content:
             application/json:
@@ -1938,6 +2145,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/MetricsResponse'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -1992,6 +2205,12 @@ paths:
                   $ref: '#/components/schemas/ProcessWithRooms'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2034,6 +2253,12 @@ paths:
                   $ref: '#/components/schemas/Process'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2072,6 +2297,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Process'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2115,13 +2346,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProcessV2'
           description: Ok
-        "404":
+        "401":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
-        "500":
+        "404":
           content:
             application/json:
               schema:
@@ -2173,7 +2404,59 @@ paths:
                   $ref: '#/components/schemas/ProcessV2'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - ProcessesV2
+      x-accepts: application/json
+  /processes/v2/{appId}/stop/{processId}:
+    post:
+      description: "Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process)\
+        \ immediately."
+      operationId: StopProcess
+      parameters:
+      - explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AppId'
+        style: simple
+      - explode: false
+        in: path
+        name: processId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ProcessId'
+        style: simple
+      responses:
+        "204":
+          description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "500":
           content:
             application/json:
               schema:
@@ -2217,6 +2500,12 @@ paths:
                 $ref: '#/components/schemas/RoomId'
           description: ""
         "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "401":
           content:
             application/json:
               schema:
@@ -2278,6 +2567,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Room'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2317,6 +2612,12 @@ paths:
                   $ref: '#/components/schemas/RoomWithoutAllocations'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2356,6 +2657,12 @@ paths:
                   $ref: '#/components/schemas/RoomWithoutAllocations'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2389,6 +2696,12 @@ paths:
       responses:
         "204":
           description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2428,6 +2741,12 @@ paths:
       responses:
         "204":
           description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2472,6 +2791,12 @@ paths:
                 $ref: '#/components/schemas/ConnectionInfo'
           description: Ok
         "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "402":
           content:
             application/json:
               schema:
@@ -2534,6 +2859,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "402":
           content:
             application/json:
@@ -2590,6 +2921,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Room'
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2630,6 +2967,12 @@ paths:
                   $ref: '#/components/schemas/RoomWithoutAllocations'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2670,6 +3013,12 @@ paths:
                   $ref: '#/components/schemas/RoomWithoutAllocations'
                 type: array
           description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2704,6 +3053,12 @@ paths:
       responses:
         "204":
           description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2745,6 +3100,12 @@ paths:
       responses:
         "204":
           description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2795,6 +3156,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: ""
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2838,6 +3205,12 @@ paths:
       responses:
         "204":
           description: No content
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
         "404":
           content:
             application/json:
@@ -2855,6 +3228,134 @@ paths:
       tags:
       - RoomV2
       x-content-type: application/json
+      x-accepts: application/json
+  /tokens/v1/orgs/{orgId}:
+    get:
+      description: List all organization tokens for a given org.
+      operationId: GetOrgTokens
+      parameters:
+      - explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          $ref: '#/components/schemas/OrgId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOrgTokens'
+          description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - OrgTokensV1
+      x-accepts: application/json
+  /tokens/v1/orgs/{orgId}/create:
+    post:
+      description: Create a new organization token.
+      operationId: CreateOrgToken
+      parameters:
+      - explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          $ref: '#/components/schemas/OrgId'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrgToken'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatedOrgToken'
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - OrgTokensV1
+      x-content-type: application/json
+      x-accepts: application/json
+  /tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke:
+    post:
+      description: Revoke an organization token.
+      operationId: RevokeOrgToken
+      parameters:
+      - explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          $ref: '#/components/schemas/OrgId'
+        style: simple
+      - explode: false
+        in: path
+        name: orgTokenId
+        required: true
+        schema:
+          $ref: '#/components/schemas/OrgId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: boolean
+          description: Ok
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+          description: ""
+      security:
+      - hathoraDevToken: []
+      tags:
+      - OrgTokensV1
       x-accepts: application/json
 components:
   examples: {}
@@ -2899,20 +3400,21 @@ components:
           type: object
       type: object
     OrgId:
-      description: System generated unique identifier for an organization.
-      example: google-oauth2|107030234048588177467
+      description: System generated unique identifier for an organization. Not guaranteed
+        to have a specific format.
+      example: org-6f706e83-0ec1-437a-9a46-7d4281eb2f39
       type: string
     Application:
       description: An application object is the top level namespace for the game server.
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         deletedAt: 2000-01-23T04:56:07.000+00:00
-        createdBy: dev@hathora.dev
+        createdBy: google-oauth2|107030234048588177467
         appName: minecraft
         appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         appSecret: secret-6f706e83-0ec1-437a-9a46-7d4281eb2f39
-        deletedBy: dev@hathora.dev
-        orgId: google-oauth2|107030234048588177467
+        deletedBy: google-oauth2|107030234048588177467
+        orgId: org-6f706e83-0ec1-437a-9a46-7d4281eb2f39
         authConfiguration:
           nickname: "{}"
           anonymous: "{}"
@@ -2920,8 +3422,8 @@ components:
             clientId: clientId
       properties:
         deletedBy:
-          description: Email address for the user that deleted the application.
-          example: dev@hathora.dev
+          description: UserId or email address for the user that deleted the application.
+          example: google-oauth2|107030234048588177467
           nullable: true
           type: string
         deletedAt:
@@ -2934,12 +3436,13 @@ components:
           format: date-time
           type: string
         createdBy:
-          description: Email address for the user that deleted the application.
-          example: dev@hathora.dev
+          description: UserId or email address for the user that created the application.
+          example: google-oauth2|107030234048588177467
           type: string
         orgId:
-          description: System generated unique identifier for an organization.
-          example: google-oauth2|107030234048588177467
+          description: System generated unique identifier for an organization. Not
+            guaranteed to have a specific format.
+          example: org-6f706e83-0ec1-437a-9a46-7d4281eb2f39
           type: string
         authConfiguration:
           $ref: '#/components/schemas/AuthConfiguration'
@@ -3064,18 +3567,25 @@ components:
           value: "TRUE"
         - name: EULA
           value: "TRUE"
+        idleTimeoutEnabled: true
         createdAt: 2000-01-23T04:56:07.000+00:00
         additionalContainerPorts:
           transportType: tcp
           port: 4000
           name: debug
-        createdBy: dev@hathora.dev
+        createdBy: google-oauth2|107030234048588177467
         deploymentId: 1
         appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         containerPort: 0.8008281904610115
         transportType: tcp
         requestedMemoryMB: 1024
       properties:
+        idleTimeoutEnabled:
+          default: true
+          description: |-
+            Option to shut down processes that have had no new connections or rooms
+            for five minutes.
+          type: boolean
         env:
           description: The environment variable that our process will have access
             to at runtime.
@@ -3121,8 +3631,8 @@ components:
           format: date-time
           type: string
         createdBy:
-          description: Email address for the user that created the deployment.
-          example: dev@hathora.dev
+          description: UserId or email address for the user that created the deployment.
+          example: google-oauth2|107030234048588177467
           type: string
         requestedMemoryMB:
           description: The amount of memory allocated to your process.
@@ -3164,10 +3674,118 @@ components:
       - roomsPerProcess
       - transportType
       type: object
-    ApplicationWithDeployment:
+    BuildStatus:
+      enum:
+      - created
+      - running
+      - succeeded
+      - failed
+      type: string
+    Region:
+      enum:
+      - Seattle
+      - Los_Angeles
+      - Washington_DC
+      - Chicago
+      - London
+      - Frankfurt
+      - Mumbai
+      - Singapore
+      - Tokyo
+      - Sydney
+      - Sao_Paulo
+      type: string
+    BuildTag:
+      description: "Tag to associate an external version with a build. It is accessible\
+        \ via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo)."
+      example: 0.1.14-14c793
+      maxLength: 1000
+      type: string
+    Build:
+      description: A build represents a game server artifact and its associated metadata.
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        deletedAt: 2000-01-23T04:56:07.000+00:00
+        buildTag: ""
+        regionalContainerTags:
+        - region: null
+          containerTag: containerTag
+        - region: null
+          containerTag: containerTag
+        createdBy: google-oauth2|107030234048588177467
+        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
+        startedAt: 2000-01-23T04:56:07.000+00:00
+        buildId: 1
+        imageSize: 0
+        status: null
+        finishedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        buildTag:
+          allOf:
+          - $ref: '#/components/schemas/BuildTag'
+          nullable: true
+        regionalContainerTags:
+          deprecated: true
+          items:
+            $ref: '#/components/schemas/Build_regionalContainerTags_inner'
+          type: array
+        imageSize:
+          description: The size (in bytes) of the Docker image built by Hathora.
+          format: int32
+          type: integer
+        status:
+          $ref: '#/components/schemas/BuildStatus'
+        deletedAt:
+          description: When the build was deleted.
+          format: date-time
+          nullable: true
+          type: string
+        finishedAt:
+          description: "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild)\
+            \ finished executing."
+          format: date-time
+          nullable: true
+          type: string
+        startedAt:
+          description: "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild)\
+            \ is called."
+          format: date-time
+          nullable: true
+          type: string
+        createdAt:
+          description: "When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild)\
+            \ is called."
+          format: date-time
+          type: string
+        createdBy:
+          description: UserId or email address for the user that created the build.
+          example: google-oauth2|107030234048588177467
+          type: string
+        buildId:
+          description: System generated id for a build. Increments by 1.
+          example: 1
+          format: int32
+          type: integer
+        appId:
+          description: System generated unique identifier for an application.
+          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
+          type: string
+      required:
+      - appId
+      - buildId
+      - createdAt
+      - createdBy
+      - deletedAt
+      - finishedAt
+      - imageSize
+      - regionalContainerTags
+      - startedAt
+      - status
+      type: object
+    ApplicationWithLatestDeploymentAndBuild:
       allOf:
       - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationWithDeployment_allOf'
+      - $ref: '#/components/schemas/ApplicationWithLatestDeploymentAndBuild_allOf'
     AppConfig:
       example:
         appName: minecraft
@@ -3303,8 +3921,13 @@ components:
       required:
       - returnUrl
       type: object
+    InvoiceStatus:
+      enum:
+      - pending
+      - paid
+      - overdue
+      type: string
     Invoice:
-      description: Billing types
       example:
         amountDue: 0.8008281904610115
         pdfUrl: pdfUrl
@@ -3312,14 +3935,10 @@ components:
         year: 6.027456183070403
         dueDate: 2000-01-23T04:56:07.000+00:00
         id: id
-        status: pending
+        status: null
       properties:
         status:
-          enum:
-          - pending
-          - paid
-          - overdue
-          type: string
+          $ref: '#/components/schemas/InvoiceStatus'
         amountDue:
           format: double
           type: number
@@ -3344,123 +3963,6 @@ components:
       - pdfUrl
       - status
       - year
-      type: object
-    Region:
-      enum:
-      - Seattle
-      - Los_Angeles
-      - Washington_DC
-      - Chicago
-      - London
-      - Frankfurt
-      - Mumbai
-      - Singapore
-      - Tokyo
-      - Sydney
-      - Sao_Paulo
-      type: string
-    BuildTag:
-      description: "Tag to associate an external version with a build. It is accessible\
-        \ via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo)."
-      example: 0.1.14-14c793
-      maxLength: 1000
-      type: string
-    Build:
-      description: A build represents a game server artifact and its associated metadata.
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        deletedAt: 2000-01-23T04:56:07.000+00:00
-        buildTag: ""
-        regionalContainerTags:
-        - region: null
-          containerTag: containerTag
-        - region: null
-          containerTag: containerTag
-        createdBy: dev@hathora.dev
-        appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
-        startedAt: 2000-01-23T04:56:07.000+00:00
-        buildId: 1
-        imageSize: 0
-        status: created
-        finishedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        buildTag:
-          allOf:
-          - $ref: '#/components/schemas/BuildTag'
-          nullable: true
-        regionalContainerTags:
-          deprecated: true
-          items:
-            $ref: '#/components/schemas/Build_regionalContainerTags_inner'
-          type: array
-        imageSize:
-          description: The size (in bytes) of the Docker image built by Hathora.
-          format: int32
-          type: integer
-        status:
-          description: |-
-            Current status of your build.
-
-            `created`: a build was created but not yet run
-
-            `running`: the build process is actively executing
-
-            `succeeded`: the game server artifact was successfully built and stored in the Hathora registries
-
-            `failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`
-          enum:
-          - created
-          - running
-          - succeeded
-          - failed
-          type: string
-        deletedAt:
-          description: When the build was deleted.
-          format: date-time
-          nullable: true
-          type: string
-        finishedAt:
-          description: "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild)\
-            \ finished executing."
-          format: date-time
-          nullable: true
-          type: string
-        startedAt:
-          description: "When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild)\
-            \ is called."
-          format: date-time
-          nullable: true
-          type: string
-        createdAt:
-          description: "When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild)\
-            \ is called."
-          format: date-time
-          type: string
-        createdBy:
-          description: Email address for the user that created the build.
-          example: dev@hathora.dev
-          type: string
-        buildId:
-          description: System generated id for a build. Increments by 1.
-          example: 1
-          format: int32
-          type: integer
-        appId:
-          description: System generated unique identifier for an application.
-          example: app-af469a92-5b45-4565-b3c4-b79878de67d2
-          type: string
-      required:
-      - appId
-      - buildId
-      - buildTag
-      - createdAt
-      - createdBy
-      - deletedAt
-      - finishedAt
-      - imageSize
-      - regionalContainerTags
-      - startedAt
-      - status
       type: object
     CreateBuildParams:
       example:
@@ -3499,7 +4001,14 @@ components:
           value: "TRUE"
         - name: EULA
           value: "TRUE"
+        idleTimeoutEnabled: true
       properties:
+        idleTimeoutEnabled:
+          default: true
+          description: |-
+            Option to shut down processes that have had no new connections or rooms
+            for five minutes.
+          type: boolean
         env:
           description: The environment variable that our process will have access
             to at runtime.
@@ -3587,7 +4096,7 @@ components:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         visibility: private
-        createdBy: dev@hathora.dev
+        createdBy: google-oauth2|107030234048588177467
         initialConfig: "{}"
         appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         state: "{}"
@@ -3615,8 +4124,8 @@ components:
           format: date-time
           type: string
         createdBy:
-          description: Email address for the user that created the lobby.
-          example: dev@hathora.dev
+          description: UserId or email address for the user that created the lobby.
+          example: google-oauth2|107030234048588177467
           type: string
         local:
           deprecated: true
@@ -3694,7 +4203,7 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         roomConfig: ""
         visibility: private
-        createdBy: dev@hathora.dev
+        createdBy: google-oauth2|107030234048588177467
         appId: app-af469a92-5b45-4565-b3c4-b79878de67d2
         region: null
         shortCode: LFG4
@@ -3710,8 +4219,8 @@ components:
           format: date-time
           type: string
         createdBy:
-          description: Email address for the user that created the lobby.
-          example: dev@hathora.dev
+          description: UserId or email address for the user that created the lobby.
+          example: google-oauth2|107030234048588177467
           type: string
         roomConfig:
           allOf:
@@ -3913,11 +4422,7 @@ components:
         idleSince: 2000-01-23T04:56:07.000+00:00
         terminatedAt: 2000-01-23T04:56:07.000+00:00
         roomsPerProcess: 3
-        exposedPort:
-          host: 1.proxy.hathora.dev
-          name: default
-          port: 34567
-          transportType: tcp
+        exposedPort: ""
         startedAt: 2000-01-23T04:56:07.000+00:00
         roomsAllocated: 1
         roomsAllocatedUpdatedAt: 2000-01-23T04:56:07.000+00:00
@@ -4020,7 +4525,9 @@ components:
           maxItems: 2
           type: array
         exposedPort:
-          $ref: '#/components/schemas/ExposedPort'
+          allOf:
+          - $ref: '#/components/schemas/ExposedPort'
+          nullable: true
         port:
           deprecated: true
           format: double
@@ -4052,6 +4559,7 @@ components:
       - deploymentId
       - draining
       - egressedBytes
+      - exposedPort
       - host
       - idleSince
       - port
@@ -4175,11 +4683,7 @@ components:
       example:
         terminatedAt: 2000-01-23T04:56:07.000+00:00
         roomsPerProcess: 3
-        exposedPort:
-          host: 1.proxy.hathora.dev
-          name: default
-          port: 34567
-          transportType: tcp
+        exposedPort: ""
         startedAt: 2000-01-23T04:56:07.000+00:00
         roomsAllocated: 1
         stoppingAt: 2000-01-23T04:56:07.000+00:00
@@ -4243,7 +4747,9 @@ components:
           maxItems: 2
           type: array
         exposedPort:
-          $ref: '#/components/schemas/ExposedPort'
+          allOf:
+          - $ref: '#/components/schemas/ExposedPort'
+          nullable: true
         region:
           $ref: '#/components/schemas/Region'
         processId:
@@ -4265,6 +4771,7 @@ components:
       - appId
       - createdAt
       - deploymentId
+      - exposedPort
       - processId
       - region
       - roomsAllocated
@@ -4467,6 +4974,116 @@ components:
       required:
       - roomConfig
       type: object
+    OrgTokenId:
+      description: System generated unique identifier for an organization token.
+      example: org-token-af469a92-5b45-4565-b3c4-b79878de67d2
+      type: string
+    OrgTokenName:
+      description: Readable name for a token. Must be unique within an organization.
+      example: ci-token
+      maxLength: 64
+      type: string
+    OrgTokenStatus:
+      enum:
+      - active
+      - revoked
+      type: string
+    OrgToken:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        orgTokenId: org-token-af469a92-5b45-4565-b3c4-b79878de67d2
+        createdBy: createdBy
+        name: ci-token
+        lastFourCharsOfKey: lastFourCharsOfKey
+        orgId: orgId
+        status: null
+      properties:
+        createdAt:
+          format: date-time
+          type: string
+        createdBy:
+          type: string
+        lastFourCharsOfKey:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrgTokenStatus'
+        name:
+          description: Readable name for a token. Must be unique within an organization.
+          example: ci-token
+          maxLength: 64
+          type: string
+        orgId:
+          type: string
+        orgTokenId:
+          description: System generated unique identifier for an organization token.
+          example: org-token-af469a92-5b45-4565-b3c4-b79878de67d2
+          type: string
+      required:
+      - createdAt
+      - createdBy
+      - lastFourCharsOfKey
+      - name
+      - orgId
+      - orgTokenId
+      - status
+      type: object
+    ListOrgTokens:
+      example:
+        tokens:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          orgTokenId: org-token-af469a92-5b45-4565-b3c4-b79878de67d2
+          createdBy: createdBy
+          name: ci-token
+          lastFourCharsOfKey: lastFourCharsOfKey
+          orgId: orgId
+          status: null
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          orgTokenId: org-token-af469a92-5b45-4565-b3c4-b79878de67d2
+          createdBy: createdBy
+          name: ci-token
+          lastFourCharsOfKey: lastFourCharsOfKey
+          orgId: orgId
+          status: null
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/OrgToken'
+          type: array
+      required:
+      - tokens
+      type: object
+    CreatedOrgToken:
+      example:
+        plainTextToken: plainTextToken
+        orgToken:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          orgTokenId: org-token-af469a92-5b45-4565-b3c4-b79878de67d2
+          createdBy: createdBy
+          name: ci-token
+          lastFourCharsOfKey: lastFourCharsOfKey
+          orgId: orgId
+          status: null
+      properties:
+        plainTextToken:
+          type: string
+        orgToken:
+          $ref: '#/components/schemas/OrgToken'
+      required:
+      - orgToken
+      - plainTextToken
+      type: object
+    CreateOrgToken:
+      example:
+        name: ci-token
+      properties:
+        name:
+          description: Readable name for a token. Must be unique within an organization.
+          example: ci-token
+          maxLength: 64
+          type: string
+      required:
+      - name
+      type: object
     RunBuild_request:
       properties:
         file:
@@ -4520,14 +5137,6 @@ components:
       - name
       - value
       type: object
-    ApplicationWithDeployment_allOf:
-      properties:
-        deployment:
-          $ref: '#/components/schemas/Deployment'
-      required:
-      - deployment
-      type: object
-      example: null
     Build_regionalContainerTags_inner:
       example:
         region: null
@@ -4541,6 +5150,23 @@ components:
       - containerTag
       - region
       type: object
+    ApplicationWithLatestDeploymentAndBuild_allOf_deployment_allOf:
+      properties:
+        build:
+          $ref: '#/components/schemas/Build'
+      required:
+      - build
+      type: object
+    ApplicationWithLatestDeploymentAndBuild_allOf_deployment:
+      allOf:
+      - $ref: '#/components/schemas/Deployment'
+      - $ref: '#/components/schemas/ApplicationWithLatestDeploymentAndBuild_allOf_deployment_allOf'
+    ApplicationWithLatestDeploymentAndBuild_allOf:
+      properties:
+        deployment:
+          $ref: '#/components/schemas/ApplicationWithLatestDeploymentAndBuild_allOf_deployment'
+      type: object
+      example: null
     DiscoveryResponse_inner:
       properties:
         port:

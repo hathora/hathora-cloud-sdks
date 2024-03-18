@@ -82,6 +82,7 @@ public class Example {
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **400** |  |  -  |
+| **401** |  |  -  |
 | **402** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
@@ -152,6 +153,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 
@@ -221,6 +223,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getConnectionInfoDeprecated"></a>
@@ -285,6 +288,7 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **400** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 
@@ -354,6 +358,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getRoomInfoDeprecated"></a>
@@ -422,6 +427,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="suspendRoomDeprecated"></a>
@@ -489,6 +495,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 

@@ -74,6 +74,29 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <returns>ApiResponse of ProcessV2</returns>
         ApiResponse<ProcessV2> GetProcessInfoWithHttpInfo(string appId, string processId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns></returns>
+        void StopProcess(string appId, string processId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> StopProcessWithHttpInfo(string appId, string processId);
         #endregion Synchronous Operations
     }
 
@@ -135,6 +158,31 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProcessV2)</returns>
         System.Threading.Tasks.Task<ApiResponse<ProcessV2>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task StopProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> StopProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -587,6 +635,156 @@ namespace Hathora.Cloud.Sdk.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProcessInfo", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns></returns>
+        public void StopProcess(string appId, string processId)
+        {
+            StopProcessWithHttpInfo(appId, processId);
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> StopProcessWithHttpInfo(string appId, string processId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV2Api->StopProcess");
+
+            // verify the required parameter 'processId' is set
+            if (processId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV2Api->StopProcess");
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/processes/v2/{appId}/stop/{processId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("StopProcess", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task StopProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var task = StopProcessWithHttpInfoAsync(appId, processId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            await task.ConfigureAwait(false);
+#else
+            await task;
+#endif
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> StopProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV2Api->StopProcess");
+
+            // verify the required parameter 'processId' is set
+            if (processId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV2Api->StopProcess");
+
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var task = this.AsynchronousClient.PostAsync<Object>("/processes/v2/{appId}/stop/{processId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("StopProcess", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

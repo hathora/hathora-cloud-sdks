@@ -5,6 +5,7 @@ User specified deployment configuration for your application at runtime.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**IdleTimeoutEnabled** | **bool** | Option to shut down processes that have had no new connections or rooms for five minutes. | [optional] [default to true]
 **Env** | [**List&lt;DeploymentEnvInner&gt;**](DeploymentEnvInner.md) | The environment variable that our process will have access to at runtime. | 
 **RoomsPerProcess** | **int** | Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. | 
 **PlanName** | **PlanName** |  | 

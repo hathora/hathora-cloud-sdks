@@ -6,6 +6,7 @@ All URIs are relative to *https://api.hathora.dev*
 |------------- | ------------- | -------------|
 | [**getLatestProcesses**](ProcessesV2Api.md#getLatestProcesses) | **GET** /processes/v2/{appId}/list/latest |  |
 | [**getProcessInfo**](ProcessesV2Api.md#getProcessInfo) | **GET** /processes/v2/{appId}/info/{processId} |  |
+| [**stopProcess**](ProcessesV2Api.md#stopProcess) | **POST** /processes/v2/{appId}/stop/{processId} |  |
 
 
 <a name="getLatestProcesses"></a>
@@ -78,6 +79,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getProcessInfo"></a>
@@ -148,6 +150,77 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+
+<a name="stopProcess"></a>
+# **stopProcess**
+> stopProcess(appId, processId)
+
+
+
+Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+
+### Example
+```java
+// Import classes:
+import com.hathora.client.ApiClient;
+import com.hathora.client.ApiException;
+import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
+import com.hathora.client.models.*;
+import com.hathora.client.api.ProcessesV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
+
+    ProcessesV2Api apiInstance = new ProcessesV2Api(defaultClient);
+    String appId = "appId_example"; // String | 
+    String processId = "processId_example"; // String | 
+    try {
+      apiInstance.stopProcess(appId, processId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ProcessesV2Api#stopProcess");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**|  | |
+| **processId** | **String**|  | |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 

@@ -57,7 +57,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="state">JSON blob to store metadata for a room. Must be smaller than 1MB..</param>
         /// <param name="initialConfig">User input to initialize the game state. Object must be smaller than 64KB. (required).</param>
         /// <param name="createdAt">When the lobby was created. (required).</param>
-        /// <param name="createdBy">Email address for the user that created the lobby. (required).</param>
+        /// <param name="createdBy">UserId or email address for the user that created the lobby. (required).</param>
         /// <param name="local">local (required).</param>
         /// <param name="visibility">visibility (required).</param>
         /// <param name="region">region (required).</param>
@@ -133,10 +133,10 @@ namespace Hathora.Cloud.Sdk.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Email address for the user that created the lobby.
+        /// UserId or email address for the user that created the lobby.
         /// </summary>
-        /// <value>Email address for the user that created the lobby.</value>
-        /// <example>&quot;dev@hathora.dev&quot;</example>
+        /// <value>UserId or email address for the user that created the lobby.</value>
+        /// <example>&quot;google-oauth2|107030234048588177467&quot;</example>
         [DataMember(Name = "createdBy", IsRequired = true, EmitDefaultValue = true)]
         public string CreatedBy { get; set; }
 

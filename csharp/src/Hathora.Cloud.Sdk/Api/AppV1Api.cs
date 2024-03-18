@@ -96,8 +96,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an &#x60;appId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;ApplicationWithDeployment&gt;</returns>
-        List<ApplicationWithDeployment> GetApps();
+        /// <returns>List&lt;ApplicationWithLatestDeploymentAndBuild&gt;</returns>
+        List<ApplicationWithLatestDeploymentAndBuild> GetApps();
 
         /// <summary>
         /// 
@@ -106,8 +106,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an &#x60;appId&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;ApplicationWithDeployment&gt;</returns>
-        ApiResponse<List<ApplicationWithDeployment>> GetAppsWithHttpInfo();
+        /// <returns>ApiResponse of List&lt;ApplicationWithLatestDeploymentAndBuild&gt;</returns>
+        ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>> GetAppsWithHttpInfo();
         /// <summary>
         /// 
         /// </summary>
@@ -217,8 +217,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;ApplicationWithDeployment&gt;</returns>
-        System.Threading.Tasks.Task<List<ApplicationWithDeployment>> GetAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of List&lt;ApplicationWithLatestDeploymentAndBuild&gt;</returns>
+        System.Threading.Tasks.Task<List<ApplicationWithLatestDeploymentAndBuild>> GetAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -228,8 +228,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ApplicationWithDeployment&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ApplicationWithDeployment>>> GetAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (List&lt;ApplicationWithLatestDeploymentAndBuild&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>>> GetAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -817,10 +817,10 @@ namespace Hathora.Cloud.Sdk.Api
         ///  Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an &#x60;appId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;ApplicationWithDeployment&gt;</returns>
-        public List<ApplicationWithDeployment> GetApps()
+        /// <returns>List&lt;ApplicationWithLatestDeploymentAndBuild&gt;</returns>
+        public List<ApplicationWithLatestDeploymentAndBuild> GetApps()
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> localVarResponse = GetAppsWithHttpInfo();
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>> localVarResponse = GetAppsWithHttpInfo();
             return localVarResponse.Data;
         }
 
@@ -828,8 +828,8 @@ namespace Hathora.Cloud.Sdk.Api
         ///  Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an &#x60;appId&#x60;.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;ApplicationWithDeployment&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> GetAppsWithHttpInfo()
+        /// <returns>ApiResponse of List&lt;ApplicationWithLatestDeploymentAndBuild&gt;</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>> GetAppsWithHttpInfo()
         {
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -856,7 +856,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<ApplicationWithDeployment>>("/apps/v1/list", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<List<ApplicationWithLatestDeploymentAndBuild>>("/apps/v1/list", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -872,14 +872,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;ApplicationWithDeployment&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ApplicationWithDeployment>> GetAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of List&lt;ApplicationWithLatestDeploymentAndBuild&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ApplicationWithLatestDeploymentAndBuild>> GetAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetAppsWithHttpInfoAsync(cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -889,8 +889,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ApplicationWithDeployment&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithDeployment>>> GetAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (List&lt;ApplicationWithLatestDeploymentAndBuild&gt;)</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>>> GetAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -920,7 +920,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<List<ApplicationWithDeployment>>("/apps/v1/list", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<List<ApplicationWithLatestDeploymentAndBuild>>("/apps/v1/list", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
