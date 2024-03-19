@@ -7,6 +7,7 @@ All URIs are relative to *https://api.hathora.dev*
 | [**createDeployment**](DeploymentV1Api.md#createDeployment) | **POST** /deployments/v1/{appId}/create/{buildId} |  |
 | [**getDeploymentInfo**](DeploymentV1Api.md#getDeploymentInfo) | **GET** /deployments/v1/{appId}/info/{deploymentId} |  |
 | [**getDeployments**](DeploymentV1Api.md#getDeployments) | **GET** /deployments/v1/{appId}/list |  |
+| [**getLatestDeployment**](DeploymentV1Api.md#getLatestDeployment) | **GET** /deployments/v1/{appId}/latest |  |
 
 
 <a name="createDeployment"></a>
@@ -80,7 +81,9 @@ public class Example {
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **400** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
+| **422** |  |  -  |
 | **500** |  |  -  |
 
 <a name="getDeploymentInfo"></a>
@@ -151,6 +154,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getDeployments"></a>
@@ -219,5 +223,75 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+
+<a name="getLatestDeployment"></a>
+# **getLatestDeployment**
+> Deployment getLatestDeployment(appId)
+
+
+
+Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+
+### Example
+```java
+// Import classes:
+import com.hathora.client.ApiClient;
+import com.hathora.client.ApiException;
+import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
+import com.hathora.client.models.*;
+import com.hathora.client.api.DeploymentV1Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
+
+    DeploymentV1Api apiInstance = new DeploymentV1Api(defaultClient);
+    String appId = "appId_example"; // String | 
+    try {
+      Deployment result = apiInstance.getLatestDeployment(appId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DeploymentV1Api#getLatestDeployment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**|  | |
+
+### Return type
+
+[**Deployment**](Deployment.md)
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 

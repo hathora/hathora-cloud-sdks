@@ -12,6 +12,7 @@ export * from './LobbyV3Api';
 export * from './LogV1Api';
 export * from './ManagementV1Api';
 export * from './MetricsV1Api';
+export * from './OrgTokensV1Api';
 export * from './ProcessesV1Api';
 export * from './ProcessesV2Api';
 export * from './RoomV1Api';

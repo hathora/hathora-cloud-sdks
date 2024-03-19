@@ -12,6 +12,7 @@ src/apis/LobbyV3Api.ts
 src/apis/LogV1Api.ts
 src/apis/ManagementV1Api.ts
 src/apis/MetricsV1Api.ts
+src/apis/OrgTokensV1Api.ts
 src/apis/ProcessesV1Api.ts
 src/apis/ProcessesV2Api.ts
 src/apis/RoomV1Api.ts
@@ -23,12 +24,15 @@ src/models/ActiveConnectionInfo.ts
 src/models/ApiError.ts
 src/models/AppConfig.ts
 src/models/Application.ts
-src/models/ApplicationWithDeployment.ts
-src/models/ApplicationWithDeploymentAllOf.ts
+src/models/ApplicationWithLatestDeploymentAndBuild.ts
+src/models/ApplicationWithLatestDeploymentAndBuildAllOf.ts
+src/models/ApplicationWithLatestDeploymentAndBuildAllOfDeployment.ts
+src/models/ApplicationWithLatestDeploymentAndBuildAllOfDeploymentAllOf.ts
 src/models/AuthConfiguration.ts
 src/models/AuthConfigurationGoogle.ts
 src/models/Build.ts
 src/models/BuildRegionalContainerTagsInner.ts
+src/models/BuildStatus.ts
 src/models/CardBrand.ts
 src/models/CardPaymentMethod.ts
 src/models/ConnectionInfo.ts
@@ -37,10 +41,12 @@ src/models/ContainerPort.ts
 src/models/CreateBuildParams.ts
 src/models/CreateLobbyParams.ts
 src/models/CreateLobbyV3Params.ts
+src/models/CreateOrgToken.ts
 src/models/CreatePrivateLobbyRequest.ts
 src/models/CreateRoomParams.ts
 src/models/CreateRoomResponse.ts
 src/models/CreateRoomResponseAllOf.ts
+src/models/CreatedOrgToken.ts
 src/models/CustomerPortalUrl.ts
 src/models/Deployment.ts
 src/models/DeploymentConfig.ts
@@ -48,7 +54,9 @@ src/models/DeploymentEnvInner.ts
 src/models/DiscoveryResponseInner.ts
 src/models/ExposedPort.ts
 src/models/Invoice.ts
+src/models/InvoiceStatus.ts
 src/models/LinkPaymentMethod.ts
+src/models/ListOrgTokens.ts
 src/models/Lobby.ts
 src/models/LobbyV3.ts
 src/models/LobbyVisibility.ts
@@ -57,6 +65,8 @@ src/models/LoginNicknameRequest.ts
 src/models/LoginResponse.ts
 src/models/MetricName.ts
 src/models/MetricValue.ts
+src/models/OrgToken.ts
+src/models/OrgTokenStatus.ts
 src/models/PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.ts
 src/models/PickRoomExcludeKeyofRoomAllocations.ts
 src/models/PlanName.ts

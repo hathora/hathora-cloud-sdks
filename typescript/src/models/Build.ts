@@ -19,6 +19,12 @@ import {
     BuildRegionalContainerTagsInnerFromJSONTyped,
     BuildRegionalContainerTagsInnerToJSON,
 } from './BuildRegionalContainerTagsInner';
+import type { BuildStatus } from './BuildStatus';
+import {
+    BuildStatusFromJSON,
+    BuildStatusFromJSONTyped,
+    BuildStatusToJSON,
+} from './BuildStatus';
 
 /**
  * A build represents a game server artifact and its associated metadata.
@@ -31,7 +37,7 @@ export interface Build {
      * @type {string}
      * @memberof Build
      */
-    buildTag: string | null;
+    buildTag?: string | null;
     /**
      * 
      * @type {Array<BuildRegionalContainerTagsInner>}
@@ -46,19 +52,11 @@ export interface Build {
      */
     imageSize: number;
     /**
-     * Current status of your build.
      * 
-     * `created`: a build was created but not yet run
-     * 
-     * `running`: the build process is actively executing
-     * 
-     * `succeeded`: the game server artifact was successfully built and stored in the Hathora registries
-     * 
-     * `failed`: the build process was unsuccessful, most likely due to an error with the `Dockerfile`
-     * @type {string}
+     * @type {BuildStatus}
      * @memberof Build
      */
-    status: BuildStatusEnum;
+    status: BuildStatus;
     /**
      * When the build was deleted.
      * @type {Date}
@@ -84,7 +82,7 @@ export interface Build {
      */
     createdAt: Date;
     /**
-     * Email address for the user that created the build.
+     * UserId or email address for the user that created the build.
      * @type {string}
      * @memberof Build
      */
@@ -103,25 +101,11 @@ export interface Build {
     appId: string;
 }
 
-
-/**
- * @export
- */
-export const BuildStatusEnum = {
-    Created: 'created',
-    Running: 'running',
-    Succeeded: 'succeeded',
-    Failed: 'failed'
-} as const;
-export type BuildStatusEnum = typeof BuildStatusEnum[keyof typeof BuildStatusEnum];
-
-
 /**
  * Check if a given object implements the Build interface.
  */
 export function instanceOfBuild(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "buildTag" in value;
     isInstance = isInstance && "regionalContainerTags" in value;
     isInstance = isInstance && "imageSize" in value;
     isInstance = isInstance && "status" in value;
@@ -146,10 +130,10 @@ export function BuildFromJSONTyped(json: any, ignoreDiscriminator: boolean): Bui
     }
     return {
         
-        'buildTag': json['buildTag'],
+        'buildTag': !exists(json, 'buildTag') ? undefined : json['buildTag'],
         'regionalContainerTags': ((json['regionalContainerTags'] as Array<any>).map(BuildRegionalContainerTagsInnerFromJSON)),
         'imageSize': json['imageSize'],
-        'status': json['status'],
+        'status': BuildStatusFromJSON(json['status']),
         'deletedAt': (json['deletedAt'] === null ? null : new Date(json['deletedAt'])),
         'finishedAt': (json['finishedAt'] === null ? null : new Date(json['finishedAt'])),
         'startedAt': (json['startedAt'] === null ? null : new Date(json['startedAt'])),
@@ -172,7 +156,7 @@ export function BuildToJSON(value?: Build | null): any {
         'buildTag': value.buildTag,
         'regionalContainerTags': ((value.regionalContainerTags as Array<any>).map(BuildRegionalContainerTagsInnerToJSON)),
         'imageSize': value.imageSize,
-        'status': value.status,
+        'status': BuildStatusToJSON(value.status),
         'deletedAt': (value.deletedAt === null ? null : value.deletedAt.toISOString()),
         'finishedAt': (value.finishedAt === null ? null : value.finishedAt.toISOString()),
         'startedAt': (value.startedAt === null ? null : value.startedAt.toISOString()),

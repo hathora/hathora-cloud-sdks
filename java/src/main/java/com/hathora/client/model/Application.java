@@ -96,7 +96,7 @@ public class Application {
   }
 
    /**
-   * Email address for the user that deleted the application.
+   * UserId or email address for the user that deleted the application.
    * @return deletedBy
   **/
   @javax.annotation.Nullable
@@ -162,7 +162,7 @@ public class Application {
   }
 
    /**
-   * Email address for the user that deleted the application.
+   * UserId or email address for the user that created the application.
    * @return createdBy
   **/
   @javax.annotation.Nonnull
@@ -184,7 +184,7 @@ public class Application {
   }
 
    /**
-   * System generated unique identifier for an organization.
+   * System generated unique identifier for an organization. Not guaranteed to have a specific format.
    * @return orgId
   **/
   @javax.annotation.Nonnull

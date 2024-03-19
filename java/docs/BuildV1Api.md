@@ -79,6 +79,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 
@@ -149,6 +150,7 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **500** |  |  -  |
@@ -221,6 +223,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getBuilds"></a>
@@ -289,6 +292,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="runBuild"></a>
@@ -361,6 +365,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 

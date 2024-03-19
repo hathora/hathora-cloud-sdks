@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ShortCode** | **string** | User-defined identifier for a lobby. | 
 **CreatedAt** | **DateTime** | When the lobby was created. | 
-**CreatedBy** | **string** | Email address for the user that created the lobby. | 
+**CreatedBy** | **string** | UserId or email address for the user that created the lobby. | 
 **RoomConfig** | **string** | Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo). | 
 **Visibility** | **LobbyVisibility** |  | 
 **Region** | **Region** |  | 

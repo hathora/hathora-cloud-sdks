@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **StartingAt** | **DateTime** | When the process started being provisioned. | 
 **RoomsPerProcess** | **int** | Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. | 
 **AdditionalExposedPorts** | [**List&lt;ExposedPort&gt;**](ExposedPort.md) |  | 
-**ExposedPort** | [**ExposedPort**](ExposedPort.md) |  | [optional] 
+**ExposedPort** | [**ExposedPort**](ExposedPort.md) |  | 
 **Port** | **double** |  | 
 **Host** | **string** |  | 
 **Region** | **Region** |  | 

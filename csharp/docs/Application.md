@@ -5,11 +5,11 @@ An application object is the top level namespace for the game server.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeletedBy** | **string** | Email address for the user that deleted the application. | 
+**DeletedBy** | **string** | UserId or email address for the user that deleted the application. | 
 **DeletedAt** | **DateTime?** | When the application was deleted. | 
 **CreatedAt** | **DateTime** | When the application was created. | 
-**CreatedBy** | **string** | Email address for the user that deleted the application. | 
-**OrgId** | **string** | System generated unique identifier for an organization. | 
+**CreatedBy** | **string** | UserId or email address for the user that created the application. | 
+**OrgId** | **string** | System generated unique identifier for an organization. Not guaranteed to have a specific format. | 
 **AuthConfiguration** | [**AuthConfiguration**](AuthConfiguration.md) |  | 
 **AppSecret** | **string** | Secret that is used for identity and access management. | 
 **AppId** | **string** | System generated unique identifier for an application. | 

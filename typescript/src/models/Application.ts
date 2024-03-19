@@ -27,7 +27,7 @@ import {
  */
 export interface Application {
     /**
-     * Email address for the user that deleted the application.
+     * UserId or email address for the user that deleted the application.
      * @type {string}
      * @memberof Application
      */
@@ -45,13 +45,13 @@ export interface Application {
      */
     createdAt: Date;
     /**
-     * Email address for the user that deleted the application.
+     * UserId or email address for the user that created the application.
      * @type {string}
      * @memberof Application
      */
     createdBy: string;
     /**
-     * System generated unique identifier for an organization.
+     * System generated unique identifier for an organization. Not guaranteed to have a specific format.
      * @type {string}
      * @memberof Application
      */

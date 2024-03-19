@@ -80,6 +80,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Deployment" /> class.
         /// </summary>
+        /// <param name="idleTimeoutEnabled">Option to shut down processes that have had no new connections or rooms for five minutes. (default to true).</param>
         /// <param name="env">The environment variable that our process will have access to at runtime. (required).</param>
         /// <param name="roomsPerProcess">Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. (required).</param>
         /// <param name="planName">planName (required).</param>
@@ -88,13 +89,13 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="transportType">transportType (required).</param>
         /// <param name="containerPort">containerPort (required).</param>
         /// <param name="createdAt">When the deployment was created. (required).</param>
-        /// <param name="createdBy">Email address for the user that created the deployment. (required).</param>
+        /// <param name="createdBy">UserId or email address for the user that created the deployment. (required).</param>
         /// <param name="requestedMemoryMB">The amount of memory allocated to your process. (required).</param>
         /// <param name="requestedCPU">The number of cores allocated to your process. (required).</param>
         /// <param name="deploymentId">System generated id for a deployment. Increments by 1. (required).</param>
         /// <param name="buildId">System generated id for a build. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Deployment(List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), TransportTypeEnum transportType = default(TransportTypeEnum), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), int requestedMemoryMB = default(int), double requestedCPU = default(double), int deploymentId = default(int), int buildId = default(int), string appId = default(string))
+        public Deployment(bool idleTimeoutEnabled = true, List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), TransportTypeEnum transportType = default(TransportTypeEnum), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), int requestedMemoryMB = default(int), double requestedCPU = default(double), int deploymentId = default(int), int buildId = default(int), string appId = default(string))
         {
             // to ensure "env" is required (not null)
             if (env == null)
@@ -135,8 +136,16 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("appId is a required property for Deployment and cannot be null");
             }
             this.AppId = appId;
+            this.IdleTimeoutEnabled = idleTimeoutEnabled;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Option to shut down processes that have had no new connections or rooms for five minutes.
+        /// </summary>
+        /// <value>Option to shut down processes that have had no new connections or rooms for five minutes.</value>
+        [DataMember(Name = "idleTimeoutEnabled", EmitDefaultValue = true)]
+        public bool IdleTimeoutEnabled { get; set; }
 
         /// <summary>
         /// The environment variable that our process will have access to at runtime.
@@ -181,10 +190,10 @@ namespace Hathora.Cloud.Sdk.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Email address for the user that created the deployment.
+        /// UserId or email address for the user that created the deployment.
         /// </summary>
-        /// <value>Email address for the user that created the deployment.</value>
-        /// <example>&quot;dev@hathora.dev&quot;</example>
+        /// <value>UserId or email address for the user that created the deployment.</value>
+        /// <example>&quot;google-oauth2|107030234048588177467&quot;</example>
         [DataMember(Name = "createdBy", IsRequired = true, EmitDefaultValue = true)]
         public string CreatedBy { get; set; }
 
@@ -242,6 +251,7 @@ namespace Hathora.Cloud.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Deployment {\n");
+            sb.Append("  IdleTimeoutEnabled: ").Append(IdleTimeoutEnabled).Append("\n");
             sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("  RoomsPerProcess: ").Append(RoomsPerProcess).Append("\n");
             sb.Append("  PlanName: ").Append(PlanName).Append("\n");
@@ -292,6 +302,10 @@ namespace Hathora.Cloud.Sdk.Model
                 return false;
             }
             return 
+                (
+                    this.IdleTimeoutEnabled == input.IdleTimeoutEnabled ||
+                    this.IdleTimeoutEnabled.Equals(input.IdleTimeoutEnabled)
+                ) && 
                 (
                     this.Env == input.Env ||
                     this.Env != null &&
@@ -368,6 +382,7 @@ namespace Hathora.Cloud.Sdk.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.IdleTimeoutEnabled.GetHashCode();
                 if (this.Env != null)
                 {
                     hashCode = (hashCode * 59) + this.Env.GetHashCode();

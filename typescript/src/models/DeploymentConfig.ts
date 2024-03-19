@@ -45,6 +45,13 @@ import {
  */
 export interface DeploymentConfig {
     /**
+     * Option to shut down processes that have had no new connections or rooms
+     * for five minutes.
+     * @type {boolean}
+     * @memberof DeploymentConfig
+     */
+    idleTimeoutEnabled?: boolean;
+    /**
      * The environment variable that our process will have access to at runtime.
      * @type {Array<DeploymentEnvInner>}
      * @memberof DeploymentConfig
@@ -106,6 +113,7 @@ export function DeploymentConfigFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
+        'idleTimeoutEnabled': !exists(json, 'idleTimeoutEnabled') ? undefined : json['idleTimeoutEnabled'],
         'env': ((json['env'] as Array<any>).map(DeploymentEnvInnerFromJSON)),
         'roomsPerProcess': json['roomsPerProcess'],
         'planName': PlanNameFromJSON(json['planName']),
@@ -124,6 +132,7 @@ export function DeploymentConfigToJSON(value?: DeploymentConfig | null): any {
     }
     return {
         
+        'idleTimeoutEnabled': value.idleTimeoutEnabled,
         'env': ((value.env as Array<any>).map(DeploymentEnvInnerToJSON)),
         'roomsPerProcess': value.roomsPerProcess,
         'planName': PlanNameToJSON(value.planName),

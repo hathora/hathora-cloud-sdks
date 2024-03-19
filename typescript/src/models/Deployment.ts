@@ -39,6 +39,13 @@ import {
  */
 export interface Deployment {
     /**
+     * Option to shut down processes that have had no new connections or rooms
+     * for five minutes.
+     * @type {boolean}
+     * @memberof Deployment
+     */
+    idleTimeoutEnabled?: boolean;
+    /**
      * The environment variable that our process will have access to at runtime.
      * @type {Array<DeploymentEnvInner>}
      * @memberof Deployment
@@ -89,7 +96,7 @@ export interface Deployment {
      */
     createdAt: Date;
     /**
-     * Email address for the user that created the deployment.
+     * UserId or email address for the user that created the deployment.
      * @type {string}
      * @memberof Deployment
      */
@@ -171,6 +178,7 @@ export function DeploymentFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
+        'idleTimeoutEnabled': !exists(json, 'idleTimeoutEnabled') ? undefined : json['idleTimeoutEnabled'],
         'env': ((json['env'] as Array<any>).map(DeploymentEnvInnerFromJSON)),
         'roomsPerProcess': json['roomsPerProcess'],
         'planName': PlanNameFromJSON(json['planName']),
@@ -197,6 +205,7 @@ export function DeploymentToJSON(value?: Deployment | null): any {
     }
     return {
         
+        'idleTimeoutEnabled': value.idleTimeoutEnabled,
         'env': ((value.env as Array<any>).map(DeploymentEnvInnerToJSON)),
         'roomsPerProcess': value.roomsPerProcess,
         'planName': PlanNameToJSON(value.planName),

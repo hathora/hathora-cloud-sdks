@@ -101,9 +101,9 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **400** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **410** |  |  -  |
-| **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -202,6 +202,7 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -301,6 +302,7 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -401,6 +403,7 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **400** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **410** |  |  -  |
 | **500** |  |  -  |

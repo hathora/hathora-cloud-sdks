@@ -13,18 +13,25 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { InvoiceStatus } from './InvoiceStatus';
+import {
+    InvoiceStatusFromJSON,
+    InvoiceStatusFromJSONTyped,
+    InvoiceStatusToJSON,
+} from './InvoiceStatus';
+
 /**
- * Billing types
+ * 
  * @export
  * @interface Invoice
  */
 export interface Invoice {
     /**
      * 
-     * @type {string}
+     * @type {InvoiceStatus}
      * @memberof Invoice
      */
-    status: InvoiceStatusEnum;
+    status: InvoiceStatus;
     /**
      * 
      * @type {number}
@@ -63,18 +70,6 @@ export interface Invoice {
     id: string;
 }
 
-
-/**
- * @export
- */
-export const InvoiceStatusEnum = {
-    Pending: 'pending',
-    Paid: 'paid',
-    Overdue: 'overdue'
-} as const;
-export type InvoiceStatusEnum = typeof InvoiceStatusEnum[keyof typeof InvoiceStatusEnum];
-
-
 /**
  * Check if a given object implements the Invoice interface.
  */
@@ -101,7 +96,7 @@ export function InvoiceFromJSONTyped(json: any, ignoreDiscriminator: boolean): I
     }
     return {
         
-        'status': json['status'],
+        'status': InvoiceStatusFromJSON(json['status']),
         'amountDue': json['amountDue'],
         'pdfUrl': json['pdfUrl'],
         'dueDate': (new Date(json['dueDate'])),
@@ -120,7 +115,7 @@ export function InvoiceToJSON(value?: Invoice | null): any {
     }
     return {
         
-        'status': value.status,
+        'status': InvoiceStatusToJSON(value.status),
         'amountDue': value.amountDue,
         'pdfUrl': value.pdfUrl,
         'dueDate': (value.dueDate.toISOString()),

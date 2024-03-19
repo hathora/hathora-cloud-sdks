@@ -99,6 +99,7 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **401** |  |  -  |
 | **422** |  |  -  |
 | **500** |  |  -  |
 
@@ -189,6 +190,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **500** |  |  -  |
 
@@ -283,13 +285,14 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getapps"></a>
 # **GetApps**
-> List&lt;ApplicationWithDeployment&gt; GetApps ()
+> List&lt;ApplicationWithLatestDeploymentAndBuild&gt; GetApps ()
 
 
 
@@ -318,7 +321,7 @@ namespace Example
 
             try
             {
-                List<ApplicationWithDeployment> result = apiInstance.GetApps();
+                List<ApplicationWithLatestDeploymentAndBuild> result = apiInstance.GetApps();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -338,7 +341,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<List<ApplicationWithDeployment>> response = apiInstance.GetAppsWithHttpInfo();
+    ApiResponse<List<ApplicationWithLatestDeploymentAndBuild>> response = apiInstance.GetAppsWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -355,7 +358,7 @@ catch (ApiException e)
 This endpoint does not need any parameter.
 ### Return type
 
-[**List&lt;ApplicationWithDeployment&gt;**](ApplicationWithDeployment.md)
+[**List&lt;ApplicationWithLatestDeploymentAndBuild&gt;**](ApplicationWithLatestDeploymentAndBuild.md)
 
 ### Authorization
 
@@ -465,6 +468,7 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **500** |  |  -  |

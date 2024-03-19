@@ -41,11 +41,11 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Application" /> class.
         /// </summary>
-        /// <param name="deletedBy">Email address for the user that deleted the application. (required).</param>
+        /// <param name="deletedBy">UserId or email address for the user that deleted the application. (required).</param>
         /// <param name="deletedAt">When the application was deleted. (required).</param>
         /// <param name="createdAt">When the application was created. (required).</param>
-        /// <param name="createdBy">Email address for the user that deleted the application. (required).</param>
-        /// <param name="orgId">System generated unique identifier for an organization. (required).</param>
+        /// <param name="createdBy">UserId or email address for the user that created the application. (required).</param>
+        /// <param name="orgId">System generated unique identifier for an organization. Not guaranteed to have a specific format. (required).</param>
         /// <param name="authConfiguration">authConfiguration (required).</param>
         /// <param name="appSecret">Secret that is used for identity and access management. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
@@ -105,10 +105,10 @@ namespace Hathora.Cloud.Sdk.Model
         }
 
         /// <summary>
-        /// Email address for the user that deleted the application.
+        /// UserId or email address for the user that deleted the application.
         /// </summary>
-        /// <value>Email address for the user that deleted the application.</value>
-        /// <example>&quot;dev@hathora.dev&quot;</example>
+        /// <value>UserId or email address for the user that deleted the application.</value>
+        /// <example>&quot;google-oauth2|107030234048588177467&quot;</example>
         [DataMember(Name = "deletedBy", IsRequired = true, EmitDefaultValue = true)]
         public string DeletedBy { get; set; }
 
@@ -127,18 +127,18 @@ namespace Hathora.Cloud.Sdk.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Email address for the user that deleted the application.
+        /// UserId or email address for the user that created the application.
         /// </summary>
-        /// <value>Email address for the user that deleted the application.</value>
-        /// <example>&quot;dev@hathora.dev&quot;</example>
+        /// <value>UserId or email address for the user that created the application.</value>
+        /// <example>&quot;google-oauth2|107030234048588177467&quot;</example>
         [DataMember(Name = "createdBy", IsRequired = true, EmitDefaultValue = true)]
         public string CreatedBy { get; set; }
 
         /// <summary>
-        /// System generated unique identifier for an organization.
+        /// System generated unique identifier for an organization. Not guaranteed to have a specific format.
         /// </summary>
-        /// <value>System generated unique identifier for an organization.</value>
-        /// <example>&quot;google-oauth2|107030234048588177467&quot;</example>
+        /// <value>System generated unique identifier for an organization. Not guaranteed to have a specific format.</value>
+        /// <example>&quot;org-6f706e83-0ec1-437a-9a46-7d4281eb2f39&quot;</example>
         [DataMember(Name = "orgId", IsRequired = true, EmitDefaultValue = true)]
         public string OrgId { get; set; }
 

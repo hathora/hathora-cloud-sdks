@@ -55,7 +55,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <param name="shortCode">User-defined identifier for a lobby. (required).</param>
         /// <param name="createdAt">When the lobby was created. (required).</param>
-        /// <param name="createdBy">Email address for the user that created the lobby. (required).</param>
+        /// <param name="createdBy">UserId or email address for the user that created the lobby. (required).</param>
         /// <param name="roomConfig">Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo). (required).</param>
         /// <param name="visibility">visibility (required).</param>
         /// <param name="region">region (required).</param>
@@ -115,10 +115,10 @@ namespace Hathora.Cloud.Sdk.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Email address for the user that created the lobby.
+        /// UserId or email address for the user that created the lobby.
         /// </summary>
-        /// <value>Email address for the user that created the lobby.</value>
-        /// <example>&quot;dev@hathora.dev&quot;</example>
+        /// <value>UserId or email address for the user that created the lobby.</value>
+        /// <example>&quot;google-oauth2|107030234048588177467&quot;</example>
         [DataMember(Name = "createdBy", IsRequired = true, EmitDefaultValue = true)]
         public string CreatedBy { get; set; }
 

@@ -25,43 +25,17 @@ using OpenAPIDateConverter = Hathora.Cloud.Sdk.Client.OpenAPIDateConverter;
 namespace Hathora.Cloud.Sdk.Model
 {
     /// <summary>
-    /// Billing types
+    /// Invoice
     /// </summary>
     [DataContract(Name = "Invoice")]
     public partial class Invoice : IEquatable<Invoice>
     {
-        /// <summary>
-        /// Defines Status
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum StatusEnum
-        {
-            /// <summary>
-            /// Enum Pending for value: pending
-            /// </summary>
-            [EnumMember(Value = "pending")]
-            Pending = 1,
-
-            /// <summary>
-            /// Enum Paid for value: paid
-            /// </summary>
-            [EnumMember(Value = "paid")]
-            Paid = 2,
-
-            /// <summary>
-            /// Enum Overdue for value: overdue
-            /// </summary>
-            [EnumMember(Value = "overdue")]
-            Overdue = 3
-
-        }
-
 
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public StatusEnum Status { get; set; }
+        public InvoiceStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Invoice" /> class.
         /// </summary>
@@ -80,7 +54,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="year">year (required).</param>
         /// <param name="month">month (required).</param>
         /// <param name="id">id (required).</param>
-        public Invoice(StatusEnum status = default(StatusEnum), double amountDue = default(double), string pdfUrl = default(string), DateTime dueDate = default(DateTime), double year = default(double), double month = default(double), string id = default(string))
+        public Invoice(InvoiceStatus status = default(InvoiceStatus), double amountDue = default(double), string pdfUrl = default(string), DateTime dueDate = default(DateTime), double year = default(double), double month = default(double), string id = default(string))
         {
             this.Status = status;
             this.AmountDue = amountDue;
