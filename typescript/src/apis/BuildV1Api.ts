@@ -28,26 +28,26 @@ import {
     CreateBuildParamsToJSON,
 } from '../models';
 
-export interface CreateBuildRequest {
+export interface CreateBuildDeprecatedRequest {
     appId: string;
     createBuildParams: CreateBuildParams;
 }
 
-export interface DeleteBuildRequest {
+export interface DeleteBuildDeprecatedRequest {
     appId: string;
     buildId: number;
 }
 
-export interface GetBuildInfoRequest {
+export interface GetBuildInfoDeprecatedRequest {
     appId: string;
     buildId: number;
 }
 
-export interface GetBuildsRequest {
+export interface GetBuildsDeprecatedRequest {
     appId: string;
 }
 
-export interface RunBuildRequest {
+export interface RunBuildDeprecatedRequest {
     appId: string;
     buildId: number;
     file: Blob;
@@ -65,59 +65,63 @@ export interface BuildV1ApiInterface {
      * @param {string} appId 
      * @param {CreateBuildParams} createBuildParams 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof BuildV1ApiInterface
      */
-    createBuildRaw(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
+    createBuildDeprecatedRaw(requestParameters: CreateBuildDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
 
     /**
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    createBuild(appId: string, createBuildParams: CreateBuildParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
+    createBuildDeprecated(appId: string, createBuildParams: CreateBuildParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
 
     /**
      * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      * @param {string} appId 
      * @param {number} buildId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof BuildV1ApiInterface
      */
-    deleteBuildRaw(requestParameters: DeleteBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    deleteBuildDeprecatedRaw(requestParameters: DeleteBuildDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      */
-    deleteBuild(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    deleteBuildDeprecated(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      * @param {string} appId 
      * @param {number} buildId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof BuildV1ApiInterface
      */
-    getBuildInfoRaw(requestParameters: GetBuildInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
+    getBuildInfoDeprecatedRaw(requestParameters: GetBuildInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>>;
 
     /**
      * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
-    getBuildInfo(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
+    getBuildInfoDeprecated(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build>;
 
     /**
      * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param {string} appId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof BuildV1ApiInterface
      */
-    getBuildsRaw(requestParameters: GetBuildsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Build>>>;
+    getBuildsDeprecatedRaw(requestParameters: GetBuildsDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Build>>>;
 
     /**
      * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    getBuilds(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>>;
+    getBuildsDeprecated(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>>;
 
     /**
      * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
@@ -125,15 +129,16 @@ export interface BuildV1ApiInterface {
      * @param {number} buildId 
      * @param {Blob} file 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof BuildV1ApiInterface
      */
-    runBuildRaw(requestParameters: RunBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    runBuildDeprecatedRaw(requestParameters: RunBuildDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
 
     /**
      * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
-    runBuild(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    runBuildDeprecated(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
 
 }
 
@@ -145,13 +150,13 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    async createBuildRaw(requestParameters: CreateBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
+    async createBuildDeprecatedRaw(requestParameters: CreateBuildDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createBuild.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createBuildDeprecated.');
         }
 
         if (requestParameters.createBuildParams === null || requestParameters.createBuildParams === undefined) {
-            throw new runtime.RequiredError('createBuildParams','Required parameter requestParameters.createBuildParams was null or undefined when calling createBuild.');
+            throw new runtime.RequiredError('createBuildParams','Required parameter requestParameters.createBuildParams was null or undefined when calling createBuildDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -182,21 +187,21 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Creates a new [build](https://hathora.dev/docs/concepts/hathora-entities#build). Responds with a `buildId` that you must pass to [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) to build the game server artifact. You can optionally pass in a `buildTag` to associate an external version with a build.
      */
-    async createBuild(appId: string, createBuildParams: CreateBuildParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
-        const response = await this.createBuildRaw({ appId: appId, createBuildParams: createBuildParams }, initOverrides);
+    async createBuildDeprecated(appId: string, createBuildParams: CreateBuildParams, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
+        const response = await this.createBuildDeprecatedRaw({ appId: appId, createBuildParams: createBuildParams }, initOverrides);
         return await response.value();
     }
 
     /**
      * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      */
-    async deleteBuildRaw(requestParameters: DeleteBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async deleteBuildDeprecatedRaw(requestParameters: DeleteBuildDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deleteBuild.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling deleteBuildDeprecated.');
         }
 
         if (requestParameters.buildId === null || requestParameters.buildId === undefined) {
-            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling deleteBuild.');
+            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling deleteBuildDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -224,20 +229,20 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Delete a [build](https://hathora.dev/docs/concepts/hathora-entities#build). All associated metadata is deleted.
      */
-    async deleteBuild(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deleteBuildRaw({ appId: appId, buildId: buildId }, initOverrides);
+    async deleteBuildDeprecated(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteBuildDeprecatedRaw({ appId: appId, buildId: buildId }, initOverrides);
     }
 
     /**
      * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
-    async getBuildInfoRaw(requestParameters: GetBuildInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
+    async getBuildInfoDeprecatedRaw(requestParameters: GetBuildInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Build>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getBuildInfo.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getBuildInfoDeprecated.');
         }
 
         if (requestParameters.buildId === null || requestParameters.buildId === undefined) {
-            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling getBuildInfo.');
+            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling getBuildInfoDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -265,17 +270,17 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Get details for a [build](https://hathora.dev/docs/concepts/hathora-entities#build).
      */
-    async getBuildInfo(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
-        const response = await this.getBuildInfoRaw({ appId: appId, buildId: buildId }, initOverrides);
+    async getBuildInfoDeprecated(appId: string, buildId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Build> {
+        const response = await this.getBuildInfoDeprecatedRaw({ appId: appId, buildId: buildId }, initOverrides);
         return await response.value();
     }
 
     /**
      * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    async getBuildsRaw(requestParameters: GetBuildsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Build>>> {
+    async getBuildsDeprecatedRaw(requestParameters: GetBuildsDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Build>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getBuilds.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getBuildsDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -303,25 +308,25 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Returns an array of [builds](https://hathora.dev/docs/concepts/hathora-entities#build) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    async getBuilds(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>> {
-        const response = await this.getBuildsRaw({ appId: appId }, initOverrides);
+    async getBuildsDeprecated(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Build>> {
+        const response = await this.getBuildsDeprecatedRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 
     /**
      * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
-    async runBuildRaw(requestParameters: RunBuildRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async runBuildDeprecatedRaw(requestParameters: RunBuildDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling runBuild.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling runBuildDeprecated.');
         }
 
         if (requestParameters.buildId === null || requestParameters.buildId === undefined) {
-            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling runBuild.');
+            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling runBuildDeprecated.');
         }
 
         if (requestParameters.file === null || requestParameters.file === undefined) {
-            throw new runtime.RequiredError('file','Required parameter requestParameters.file was null or undefined when calling runBuild.');
+            throw new runtime.RequiredError('file','Required parameter requestParameters.file was null or undefined when calling runBuildDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -374,8 +379,8 @@ export class BuildV1Api extends runtime.BaseAPI implements BuildV1ApiInterface {
     /**
      * Builds a game server artifact from a tarball you provide. Pass in the `buildId` generated from [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild).
      */
-    async runBuild(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.runBuildRaw({ appId: appId, buildId: buildId, file: file }, initOverrides);
+    async runBuildDeprecated(appId: string, buildId: number, file: Blob, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.runBuildDeprecatedRaw({ appId: appId, buildId: buildId, file: file }, initOverrides);
         return await response.value();
     }
 

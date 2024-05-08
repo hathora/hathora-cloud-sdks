@@ -94,6 +94,7 @@ public class RoomV1Api {
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -183,6 +184,7 @@ public class RoomV1Api {
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -210,6 +212,7 @@ public class RoomV1Api {
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -239,6 +242,7 @@ public class RoomV1Api {
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -264,6 +268,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -344,6 +349,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -366,6 +372,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -390,6 +397,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -1022,6 +1030,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -1102,6 +1111,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -1124,6 +1134,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
@@ -1148,6 +1159,7 @@ public class RoomV1Api {
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated

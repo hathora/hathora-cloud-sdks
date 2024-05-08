@@ -22,8 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hathora.client.model.Build;
 import com.hathora.client.model.ContainerPort;
-import com.hathora.client.model.DeploymentEnvInner;
-import com.hathora.client.model.PlanName;
+import com.hathora.client.model.DeploymentV2EnvInner;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -57,19 +56,15 @@ import com.hathora.client.JSON;
 public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
   public static final String SERIALIZED_NAME_IDLE_TIMEOUT_ENABLED = "idleTimeoutEnabled";
   @SerializedName(SERIALIZED_NAME_IDLE_TIMEOUT_ENABLED)
-  private Boolean idleTimeoutEnabled = true;
+  private Boolean idleTimeoutEnabled;
 
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
-  private List<DeploymentEnvInner> env = new ArrayList<>();
+  private List<DeploymentV2EnvInner> env = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
   @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
   private Integer roomsPerProcess;
-
-  public static final String SERIALIZED_NAME_PLAN_NAME = "planName";
-  @SerializedName(SERIALIZED_NAME_PLAN_NAME)
-  private PlanName planName;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_CONTAINER_PORTS = "additionalContainerPorts";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_CONTAINER_PORTS)
@@ -78,63 +73,6 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
   public static final String SERIALIZED_NAME_DEFAULT_CONTAINER_PORT = "defaultContainerPort";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CONTAINER_PORT)
   private ContainerPort defaultContainerPort;
-
-  /**
-   * Gets or Sets transportType
-   */
-  @JsonAdapter(TransportTypeEnum.Adapter.class)
-  public enum TransportTypeEnum {
-    TCP("tcp"),
-    
-    UDP("udp"),
-    
-    TLS("tls");
-
-    private String value;
-
-    TransportTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TransportTypeEnum fromValue(String value) {
-      for (TransportTypeEnum b : TransportTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TransportTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TransportTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TransportTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TransportTypeEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_TRANSPORT_TYPE = "transportType";
-  @SerializedName(SERIALIZED_NAME_TRANSPORT_TYPE)
-  private TransportTypeEnum transportType;
-
-  public static final String SERIALIZED_NAME_CONTAINER_PORT = "containerPort";
-  @SerializedName(SERIALIZED_NAME_CONTAINER_PORT)
-  private Double containerPort;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -146,7 +84,7 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
 
   public static final String SERIALIZED_NAME_REQUESTED_MEMORY_M_B = "requestedMemoryMB";
   @SerializedName(SERIALIZED_NAME_REQUESTED_MEMORY_M_B)
-  private Integer requestedMemoryMB;
+  private Double requestedMemoryMB;
 
   public static final String SERIALIZED_NAME_REQUESTED_C_P_U = "requestedCPU";
   @SerializedName(SERIALIZED_NAME_REQUESTED_C_P_U)
@@ -181,7 +119,7 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
    * Option to shut down processes that have had no new connections or rooms for five minutes.
    * @return idleTimeoutEnabled
   **/
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
 
   public Boolean getIdleTimeoutEnabled() {
     return idleTimeoutEnabled;
@@ -193,13 +131,13 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
   }
 
 
-  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment env(List<DeploymentEnvInner> env) {
+  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment env(List<DeploymentV2EnvInner> env) {
     
     this.env = env;
     return this;
   }
 
-  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment addEnvItem(DeploymentEnvInner envItem) {
+  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment addEnvItem(DeploymentV2EnvInner envItem) {
     if (this.env == null) {
       this.env = new ArrayList<>();
     }
@@ -213,12 +151,12 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
   **/
   @javax.annotation.Nonnull
 
-  public List<DeploymentEnvInner> getEnv() {
+  public List<DeploymentV2EnvInner> getEnv() {
     return env;
   }
 
 
-  public void setEnv(List<DeploymentEnvInner> env) {
+  public void setEnv(List<DeploymentV2EnvInner> env) {
     this.env = env;
   }
 
@@ -244,28 +182,6 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
 
   public void setRoomsPerProcess(Integer roomsPerProcess) {
     this.roomsPerProcess = roomsPerProcess;
-  }
-
-
-  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment planName(PlanName planName) {
-    
-    this.planName = planName;
-    return this;
-  }
-
-   /**
-   * Get planName
-   * @return planName
-  **/
-  @javax.annotation.Nonnull
-
-  public PlanName getPlanName() {
-    return planName;
-  }
-
-
-  public void setPlanName(PlanName planName) {
-    this.planName = planName;
   }
 
 
@@ -321,54 +237,6 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
   }
 
 
-  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment transportType(TransportTypeEnum transportType) {
-    
-    this.transportType = transportType;
-    return this;
-  }
-
-   /**
-   * Get transportType
-   * @return transportType
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public TransportTypeEnum getTransportType() {
-    return transportType;
-  }
-
-
-  public void setTransportType(TransportTypeEnum transportType) {
-    this.transportType = transportType;
-  }
-
-
-  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment containerPort(Double containerPort) {
-    
-    this.containerPort = containerPort;
-    return this;
-  }
-
-   /**
-   * Get containerPort
-   * @return containerPort
-   * @deprecated
-  **/
-  @Deprecated
-  @javax.annotation.Nonnull
-
-  public Double getContainerPort() {
-    return containerPort;
-  }
-
-
-  public void setContainerPort(Double containerPort) {
-    this.containerPort = containerPort;
-  }
-
-
   public ApplicationWithLatestDeploymentAndBuildAllOfDeployment createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
@@ -413,7 +281,7 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
   }
 
 
-  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment requestedMemoryMB(Integer requestedMemoryMB) {
+  public ApplicationWithLatestDeploymentAndBuildAllOfDeployment requestedMemoryMB(Double requestedMemoryMB) {
     
     this.requestedMemoryMB = requestedMemoryMB;
     return this;
@@ -425,12 +293,12 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
   **/
   @javax.annotation.Nonnull
 
-  public Integer getRequestedMemoryMB() {
+  public Double getRequestedMemoryMB() {
     return requestedMemoryMB;
   }
 
 
-  public void setRequestedMemoryMB(Integer requestedMemoryMB) {
+  public void setRequestedMemoryMB(Double requestedMemoryMB) {
     this.requestedMemoryMB = requestedMemoryMB;
   }
 
@@ -602,11 +470,8 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
     return Objects.equals(this.idleTimeoutEnabled, applicationWithLatestDeploymentAndBuildAllOfDeployment.idleTimeoutEnabled) &&
         Objects.equals(this.env, applicationWithLatestDeploymentAndBuildAllOfDeployment.env) &&
         Objects.equals(this.roomsPerProcess, applicationWithLatestDeploymentAndBuildAllOfDeployment.roomsPerProcess) &&
-        Objects.equals(this.planName, applicationWithLatestDeploymentAndBuildAllOfDeployment.planName) &&
         Objects.equals(this.additionalContainerPorts, applicationWithLatestDeploymentAndBuildAllOfDeployment.additionalContainerPorts) &&
         Objects.equals(this.defaultContainerPort, applicationWithLatestDeploymentAndBuildAllOfDeployment.defaultContainerPort) &&
-        Objects.equals(this.transportType, applicationWithLatestDeploymentAndBuildAllOfDeployment.transportType) &&
-        Objects.equals(this.containerPort, applicationWithLatestDeploymentAndBuildAllOfDeployment.containerPort) &&
         Objects.equals(this.createdAt, applicationWithLatestDeploymentAndBuildAllOfDeployment.createdAt) &&
         Objects.equals(this.createdBy, applicationWithLatestDeploymentAndBuildAllOfDeployment.createdBy) &&
         Objects.equals(this.requestedMemoryMB, applicationWithLatestDeploymentAndBuildAllOfDeployment.requestedMemoryMB) &&
@@ -620,7 +485,7 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(idleTimeoutEnabled, env, roomsPerProcess, planName, additionalContainerPorts, defaultContainerPort, transportType, containerPort, createdAt, createdBy, requestedMemoryMB, requestedCPU, deploymentId, buildId, appId, build, additionalProperties);
+    return Objects.hash(idleTimeoutEnabled, env, roomsPerProcess, additionalContainerPorts, defaultContainerPort, createdAt, createdBy, requestedMemoryMB, requestedCPU, deploymentId, buildId, appId, build, additionalProperties);
   }
 
   @Override
@@ -630,11 +495,8 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
     sb.append("    idleTimeoutEnabled: ").append(toIndentedString(idleTimeoutEnabled)).append("\n");
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    roomsPerProcess: ").append(toIndentedString(roomsPerProcess)).append("\n");
-    sb.append("    planName: ").append(toIndentedString(planName)).append("\n");
     sb.append("    additionalContainerPorts: ").append(toIndentedString(additionalContainerPorts)).append("\n");
     sb.append("    defaultContainerPort: ").append(toIndentedString(defaultContainerPort)).append("\n");
-    sb.append("    transportType: ").append(toIndentedString(transportType)).append("\n");
-    sb.append("    containerPort: ").append(toIndentedString(containerPort)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    requestedMemoryMB: ").append(toIndentedString(requestedMemoryMB)).append("\n");
@@ -669,11 +531,8 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
     openapiFields.add("idleTimeoutEnabled");
     openapiFields.add("env");
     openapiFields.add("roomsPerProcess");
-    openapiFields.add("planName");
     openapiFields.add("additionalContainerPorts");
     openapiFields.add("defaultContainerPort");
-    openapiFields.add("transportType");
-    openapiFields.add("containerPort");
     openapiFields.add("createdAt");
     openapiFields.add("createdBy");
     openapiFields.add("requestedMemoryMB");
@@ -685,13 +544,11 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("idleTimeoutEnabled");
     openapiRequiredFields.add("env");
     openapiRequiredFields.add("roomsPerProcess");
-    openapiRequiredFields.add("planName");
     openapiRequiredFields.add("additionalContainerPorts");
     openapiRequiredFields.add("defaultContainerPort");
-    openapiRequiredFields.add("transportType");
-    openapiRequiredFields.add("containerPort");
     openapiRequiredFields.add("createdAt");
     openapiRequiredFields.add("createdBy");
     openapiRequiredFields.add("requestedMemoryMB");
@@ -729,7 +586,7 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
       JsonArray jsonArrayenv = jsonObj.getAsJsonArray("env");
       // validate the required field `env` (array)
       for (int i = 0; i < jsonArrayenv.size(); i++) {
-        DeploymentEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
+        DeploymentV2EnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
       };
       // ensure the json data is an array
       if (!jsonObj.get("additionalContainerPorts").isJsonArray()) {
@@ -743,9 +600,6 @@ public class ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
       };
       // validate the required field `defaultContainerPort`
       ContainerPort.validateJsonObject(jsonObj.getAsJsonObject("defaultContainerPort"));
-      if (!jsonObj.get("transportType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `transportType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transportType").toString()));
-      }
       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
       }

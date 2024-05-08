@@ -115,7 +115,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// JSON blob to store metadata for a room. Must be smaller than 1MB.
         /// </summary>
         /// <value>JSON blob to store metadata for a room. Must be smaller than 1MB.</value>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
+        [DataMember(Name = "state", EmitDefaultValue = true)]
         public Object State { get; set; }
 
         /// <summary>

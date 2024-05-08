@@ -94,7 +94,13 @@ namespace Hathora.Cloud.Sdk.Model
         /// Enum SaoPaulo for value: Sao_Paulo
         /// </summary>
         [EnumMember(Value = "Sao_Paulo")]
-        SaoPaulo = 11
+        SaoPaulo = 11,
+
+        /// <summary>
+        /// Enum Dallas for value: Dallas
+        /// </summary>
+        [EnumMember(Value = "Dallas")]
+        Dallas = 12
 
     }
 

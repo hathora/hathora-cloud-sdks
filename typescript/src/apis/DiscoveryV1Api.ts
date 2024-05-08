@@ -15,11 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
-  DiscoveryResponseInner,
+  PingEndpointsInner,
 } from '../models';
 import {
-    DiscoveryResponseInnerFromJSON,
-    DiscoveryResponseInnerToJSON,
+    PingEndpointsInnerFromJSON,
+    PingEndpointsInnerToJSON,
 } from '../models';
 
 /**
@@ -30,17 +30,18 @@ import {
  */
 export interface DiscoveryV1ApiInterface {
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof DiscoveryV1ApiInterface
      */
-    getPingServiceEndpointsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DiscoveryResponseInner>>>;
+    getPingServiceEndpointsDeprecatedRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PingEndpointsInner>>>;
 
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      */
-    getPingServiceEndpoints(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DiscoveryResponseInner>>;
+    getPingServiceEndpointsDeprecated(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PingEndpointsInner>>;
 
 }
 
@@ -50,9 +51,9 @@ export interface DiscoveryV1ApiInterface {
 export class DiscoveryV1Api extends runtime.BaseAPI implements DiscoveryV1ApiInterface {
 
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      */
-    async getPingServiceEndpointsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DiscoveryResponseInner>>> {
+    async getPingServiceEndpointsDeprecatedRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PingEndpointsInner>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -64,14 +65,14 @@ export class DiscoveryV1Api extends runtime.BaseAPI implements DiscoveryV1ApiInt
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(DiscoveryResponseInnerFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PingEndpointsInnerFromJSON));
     }
 
     /**
-     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      */
-    async getPingServiceEndpoints(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DiscoveryResponseInner>> {
-        const response = await this.getPingServiceEndpointsRaw(initOverrides);
+    async getPingServiceEndpointsDeprecated(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PingEndpointsInner>> {
+        const response = await this.getPingServiceEndpointsDeprecatedRaw(initOverrides);
         return await response.value();
     }
 

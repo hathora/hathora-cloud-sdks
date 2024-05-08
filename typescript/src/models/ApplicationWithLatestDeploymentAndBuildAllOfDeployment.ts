@@ -25,18 +25,12 @@ import {
     ContainerPortFromJSONTyped,
     ContainerPortToJSON,
 } from './ContainerPort';
-import type { DeploymentEnvInner } from './DeploymentEnvInner';
+import type { DeploymentV2EnvInner } from './DeploymentV2EnvInner';
 import {
-    DeploymentEnvInnerFromJSON,
-    DeploymentEnvInnerFromJSONTyped,
-    DeploymentEnvInnerToJSON,
-} from './DeploymentEnvInner';
-import type { PlanName } from './PlanName';
-import {
-    PlanNameFromJSON,
-    PlanNameFromJSONTyped,
-    PlanNameToJSON,
-} from './PlanName';
+    DeploymentV2EnvInnerFromJSON,
+    DeploymentV2EnvInnerFromJSONTyped,
+    DeploymentV2EnvInnerToJSON,
+} from './DeploymentV2EnvInner';
 
 /**
  * 
@@ -50,25 +44,19 @@ export interface ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
      * @type {boolean}
      * @memberof ApplicationWithLatestDeploymentAndBuildAllOfDeployment
      */
-    idleTimeoutEnabled?: boolean;
+    idleTimeoutEnabled: boolean;
     /**
      * The environment variable that our process will have access to at runtime.
-     * @type {Array<DeploymentEnvInner>}
+     * @type {Array<DeploymentV2EnvInner>}
      * @memberof ApplicationWithLatestDeploymentAndBuildAllOfDeployment
      */
-    env: Array<DeploymentEnvInner>;
+    env: Array<DeploymentV2EnvInner>;
     /**
      * Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
      * @type {number}
      * @memberof ApplicationWithLatestDeploymentAndBuildAllOfDeployment
      */
     roomsPerProcess: number;
-    /**
-     * 
-     * @type {PlanName}
-     * @memberof ApplicationWithLatestDeploymentAndBuildAllOfDeployment
-     */
-    planName: PlanName;
     /**
      * Additional ports your server listens on.
      * @type {Array<ContainerPort>}
@@ -81,20 +69,6 @@ export interface ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
      * @memberof ApplicationWithLatestDeploymentAndBuildAllOfDeployment
      */
     defaultContainerPort: ContainerPort;
-    /**
-     * 
-     * @type {string}
-     * @memberof ApplicationWithLatestDeploymentAndBuildAllOfDeployment
-     * @deprecated
-     */
-    transportType: ApplicationWithLatestDeploymentAndBuildAllOfDeploymentTransportTypeEnum;
-    /**
-     * 
-     * @type {number}
-     * @memberof ApplicationWithLatestDeploymentAndBuildAllOfDeployment
-     * @deprecated
-     */
-    containerPort: number;
     /**
      * When the deployment was created.
      * @type {Date}
@@ -145,30 +119,16 @@ export interface ApplicationWithLatestDeploymentAndBuildAllOfDeployment {
     build: Build;
 }
 
-
-/**
- * @export
- */
-export const ApplicationWithLatestDeploymentAndBuildAllOfDeploymentTransportTypeEnum = {
-    Tcp: 'tcp',
-    Udp: 'udp',
-    Tls: 'tls'
-} as const;
-export type ApplicationWithLatestDeploymentAndBuildAllOfDeploymentTransportTypeEnum = typeof ApplicationWithLatestDeploymentAndBuildAllOfDeploymentTransportTypeEnum[keyof typeof ApplicationWithLatestDeploymentAndBuildAllOfDeploymentTransportTypeEnum];
-
-
 /**
  * Check if a given object implements the ApplicationWithLatestDeploymentAndBuildAllOfDeployment interface.
  */
 export function instanceOfApplicationWithLatestDeploymentAndBuildAllOfDeployment(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "idleTimeoutEnabled" in value;
     isInstance = isInstance && "env" in value;
     isInstance = isInstance && "roomsPerProcess" in value;
-    isInstance = isInstance && "planName" in value;
     isInstance = isInstance && "additionalContainerPorts" in value;
     isInstance = isInstance && "defaultContainerPort" in value;
-    isInstance = isInstance && "transportType" in value;
-    isInstance = isInstance && "containerPort" in value;
     isInstance = isInstance && "createdAt" in value;
     isInstance = isInstance && "createdBy" in value;
     isInstance = isInstance && "requestedMemoryMB" in value;
@@ -191,14 +151,11 @@ export function ApplicationWithLatestDeploymentAndBuildAllOfDeploymentFromJSONTy
     }
     return {
         
-        'idleTimeoutEnabled': !exists(json, 'idleTimeoutEnabled') ? undefined : json['idleTimeoutEnabled'],
-        'env': ((json['env'] as Array<any>).map(DeploymentEnvInnerFromJSON)),
+        'idleTimeoutEnabled': json['idleTimeoutEnabled'],
+        'env': ((json['env'] as Array<any>).map(DeploymentV2EnvInnerFromJSON)),
         'roomsPerProcess': json['roomsPerProcess'],
-        'planName': PlanNameFromJSON(json['planName']),
         'additionalContainerPorts': ((json['additionalContainerPorts'] as Array<any>).map(ContainerPortFromJSON)),
         'defaultContainerPort': ContainerPortFromJSON(json['defaultContainerPort']),
-        'transportType': json['transportType'],
-        'containerPort': json['containerPort'],
         'createdAt': (new Date(json['createdAt'])),
         'createdBy': json['createdBy'],
         'requestedMemoryMB': json['requestedMemoryMB'],
@@ -220,13 +177,10 @@ export function ApplicationWithLatestDeploymentAndBuildAllOfDeploymentToJSON(val
     return {
         
         'idleTimeoutEnabled': value.idleTimeoutEnabled,
-        'env': ((value.env as Array<any>).map(DeploymentEnvInnerToJSON)),
+        'env': ((value.env as Array<any>).map(DeploymentV2EnvInnerToJSON)),
         'roomsPerProcess': value.roomsPerProcess,
-        'planName': PlanNameToJSON(value.planName),
         'additionalContainerPorts': ((value.additionalContainerPorts as Array<any>).map(ContainerPortToJSON)),
         'defaultContainerPort': ContainerPortToJSON(value.defaultContainerPort),
-        'transportType': value.transportType,
-        'containerPort': value.containerPort,
         'createdAt': (value.createdAt.toISOString()),
         'createdBy': value.createdBy,
         'requestedMemoryMB': value.requestedMemoryMB,

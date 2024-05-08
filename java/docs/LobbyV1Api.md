@@ -57,7 +57,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 | **local** | **Boolean**|  | [optional] [default to false] |
 
 ### Return type
@@ -133,7 +133,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 | **local** | **Boolean**|  | [optional] [default to false] |
 
 ### Return type
@@ -205,7 +205,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
 | **local** | **Boolean**|  | [optional] [default to false] |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 
 ### Return type
 

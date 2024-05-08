@@ -4,10 +4,84 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**createProcess**](ProcessesV2Api.md#createProcess) | **POST** /processes/v2/{appId}/create/{region} |  |
 | [**getLatestProcesses**](ProcessesV2Api.md#getLatestProcesses) | **GET** /processes/v2/{appId}/list/latest |  |
 | [**getProcessInfo**](ProcessesV2Api.md#getProcessInfo) | **GET** /processes/v2/{appId}/info/{processId} |  |
 | [**stopProcess**](ProcessesV2Api.md#stopProcess) | **POST** /processes/v2/{appId}/stop/{processId} |  |
 
+
+<a name="createProcess"></a>
+# **createProcess**
+> ProcessV2 createProcess(appId, region)
+
+
+
+Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+
+### Example
+```java
+// Import classes:
+import com.hathora.client.ApiClient;
+import com.hathora.client.ApiException;
+import com.hathora.client.Configuration;
+import com.hathora.client.auth.*;
+import com.hathora.client.models.*;
+import com.hathora.client.api.ProcessesV2Api;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api.hathora.dev");
+    
+    // Configure HTTP bearer authorization: hathoraDevToken
+    HttpBearerAuth hathoraDevToken = (HttpBearerAuth) defaultClient.getAuthentication("hathoraDevToken");
+    hathoraDevToken.setBearerToken("BEARER TOKEN");
+
+    ProcessesV2Api apiInstance = new ProcessesV2Api(defaultClient);
+    String appId = "appId_example"; // String | 
+    Region region = Region.fromValue("Seattle"); // Region | 
+    try {
+      ProcessV2 result = apiInstance.createProcess(appId, region);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ProcessesV2Api#createProcess");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**|  | |
+| **region** | [**Region**](.md)|  | [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
+
+### Return type
+
+[**ProcessV2**](ProcessV2.md)
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** |  |  -  |
+| **401** |  |  -  |
+| **402** |  |  -  |
+| **404** |  |  -  |
+| **500** |  |  -  |
 
 <a name="getLatestProcesses"></a>
 # **getLatestProcesses**

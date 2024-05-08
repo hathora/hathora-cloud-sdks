@@ -33,7 +33,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBuildParams" /> class.
         /// </summary>
-        /// <param name="buildTag">Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo)..</param>
+        /// <param name="buildTag">Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo)..</param>
         public CreateBuildParams(string buildTag = default(string))
         {
             this.BuildTag = buildTag;
@@ -41,9 +41,9 @@ namespace Hathora.Cloud.Sdk.Model
         }
 
         /// <summary>
-        /// Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+        /// Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
         /// </summary>
-        /// <value>Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).</value>
+        /// <value>Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).</value>
         /// <example>&quot;0.1.14-14c793&quot;</example>
         [DataMember(Name = "buildTag", EmitDefaultValue = false)]
         public string BuildTag { get; set; }

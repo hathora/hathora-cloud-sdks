@@ -1091,6 +1091,7 @@ public class LobbyV2Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
      */
@@ -1179,6 +1180,7 @@ public class LobbyV2Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
      */
@@ -1203,6 +1205,7 @@ public class LobbyV2Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
      */
@@ -1229,6 +1232,7 @@ public class LobbyV2Api {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
      </table>
      * @deprecated
      */

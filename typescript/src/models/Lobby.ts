@@ -43,7 +43,7 @@ export interface Lobby {
      * @type {object}
      * @memberof Lobby
      */
-    state?: object;
+    state?: object | null;
     /**
      * User input to initialize the game state. Object must be smaller than 64KB.
      * @type {object}

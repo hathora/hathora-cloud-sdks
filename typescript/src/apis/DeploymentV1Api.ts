@@ -28,22 +28,22 @@ import {
     DeploymentConfigToJSON,
 } from '../models';
 
-export interface CreateDeploymentRequest {
+export interface CreateDeploymentDeprecatedRequest {
     appId: string;
     buildId: number;
     deploymentConfig: DeploymentConfig;
 }
 
-export interface GetDeploymentInfoRequest {
+export interface GetDeploymentInfoDeprecatedRequest {
     appId: string;
     deploymentId: number;
 }
 
-export interface GetDeploymentsRequest {
+export interface GetDeploymentsDeprecatedRequest {
     appId: string;
 }
 
-export interface GetLatestDeploymentRequest {
+export interface GetLatestDeploymentDeprecatedRequest {
     appId: string;
 }
 
@@ -60,58 +60,62 @@ export interface DeploymentV1ApiInterface {
      * @param {number} buildId 
      * @param {DeploymentConfig} deploymentConfig 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof DeploymentV1ApiInterface
      */
-    createDeploymentRaw(requestParameters: CreateDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
+    createDeploymentDeprecatedRaw(requestParameters: CreateDeploymentDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
 
     /**
      * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
-    createDeployment(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
+    createDeploymentDeprecated(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
     /**
      * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      * @param {string} appId 
      * @param {number} deploymentId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof DeploymentV1ApiInterface
      */
-    getDeploymentInfoRaw(requestParameters: GetDeploymentInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
+    getDeploymentInfoDeprecatedRaw(requestParameters: GetDeploymentInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
 
     /**
      * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      */
-    getDeploymentInfo(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
+    getDeploymentInfoDeprecated(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
     /**
      * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param {string} appId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof DeploymentV1ApiInterface
      */
-    getDeploymentsRaw(requestParameters: GetDeploymentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Deployment>>>;
+    getDeploymentsDeprecatedRaw(requestParameters: GetDeploymentsDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Deployment>>>;
 
     /**
      * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>>;
+    getDeploymentsDeprecated(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>>;
 
     /**
      * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      * @param {string} appId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof DeploymentV1ApiInterface
      */
-    getLatestDeploymentRaw(requestParameters: GetLatestDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
+    getLatestDeploymentDeprecatedRaw(requestParameters: GetLatestDeploymentDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>>;
 
     /**
      * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    getLatestDeployment(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
+    getLatestDeploymentDeprecated(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment>;
 
 }
 
@@ -123,17 +127,17 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     /**
      * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
-    async createDeploymentRaw(requestParameters: CreateDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
+    async createDeploymentDeprecatedRaw(requestParameters: CreateDeploymentDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createDeployment.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createDeploymentDeprecated.');
         }
 
         if (requestParameters.buildId === null || requestParameters.buildId === undefined) {
-            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling createDeployment.');
+            throw new runtime.RequiredError('buildId','Required parameter requestParameters.buildId was null or undefined when calling createDeploymentDeprecated.');
         }
 
         if (requestParameters.deploymentConfig === null || requestParameters.deploymentConfig === undefined) {
-            throw new runtime.RequiredError('deploymentConfig','Required parameter requestParameters.deploymentConfig was null or undefined when calling createDeployment.');
+            throw new runtime.RequiredError('deploymentConfig','Required parameter requestParameters.deploymentConfig was null or undefined when calling createDeploymentDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -164,21 +168,21 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     /**
      * Create a new [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment). Creating a new deployment means all new rooms created will use the latest deployment configuration, but existing games in progress will not be affected.
      */
-    async createDeployment(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
-        const response = await this.createDeploymentRaw({ appId: appId, buildId: buildId, deploymentConfig: deploymentConfig }, initOverrides);
+    async createDeploymentDeprecated(appId: string, buildId: number, deploymentConfig: DeploymentConfig, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
+        const response = await this.createDeploymentDeprecatedRaw({ appId: appId, buildId: buildId, deploymentConfig: deploymentConfig }, initOverrides);
         return await response.value();
     }
 
     /**
      * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      */
-    async getDeploymentInfoRaw(requestParameters: GetDeploymentInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
+    async getDeploymentInfoDeprecatedRaw(requestParameters: GetDeploymentInfoDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getDeploymentInfo.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getDeploymentInfoDeprecated.');
         }
 
         if (requestParameters.deploymentId === null || requestParameters.deploymentId === undefined) {
-            throw new runtime.RequiredError('deploymentId','Required parameter requestParameters.deploymentId was null or undefined when calling getDeploymentInfo.');
+            throw new runtime.RequiredError('deploymentId','Required parameter requestParameters.deploymentId was null or undefined when calling getDeploymentInfoDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -206,17 +210,17 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     /**
      * Get details for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment).
      */
-    async getDeploymentInfo(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
-        const response = await this.getDeploymentInfoRaw({ appId: appId, deploymentId: deploymentId }, initOverrides);
+    async getDeploymentInfoDeprecated(appId: string, deploymentId: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
+        const response = await this.getDeploymentInfoDeprecatedRaw({ appId: appId, deploymentId: deploymentId }, initOverrides);
         return await response.value();
     }
 
     /**
      * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    async getDeploymentsRaw(requestParameters: GetDeploymentsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Deployment>>> {
+    async getDeploymentsDeprecatedRaw(requestParameters: GetDeploymentsDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Deployment>>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getDeployments.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getDeploymentsDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -244,17 +248,17 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     /**
      * Returns an array of [deployments](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    async getDeployments(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>> {
-        const response = await this.getDeploymentsRaw({ appId: appId }, initOverrides);
+    async getDeploymentsDeprecated(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Deployment>> {
+        const response = await this.getDeploymentsDeprecatedRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 
     /**
      * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    async getLatestDeploymentRaw(requestParameters: GetLatestDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
+    async getLatestDeploymentDeprecatedRaw(requestParameters: GetLatestDeploymentDeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Deployment>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getLatestDeployment.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getLatestDeploymentDeprecated.');
         }
 
         const queryParameters: any = {};
@@ -282,8 +286,8 @@ export class DeploymentV1Api extends runtime.BaseAPI implements DeploymentV1ApiI
     /**
      * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
      */
-    async getLatestDeployment(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
-        const response = await this.getLatestDeploymentRaw({ appId: appId }, initOverrides);
+    async getLatestDeploymentDeprecated(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Deployment> {
+        const response = await this.getLatestDeploymentDeprecatedRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
 

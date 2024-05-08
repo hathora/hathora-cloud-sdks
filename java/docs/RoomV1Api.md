@@ -86,6 +86,7 @@ public class Example {
 | **402** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 <a name="destroyRoomDeprecated"></a>
@@ -155,6 +156,7 @@ null (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 <a name="getActiveRoomsForProcessDeprecated"></a>
@@ -497,5 +499,6 @@ null (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 

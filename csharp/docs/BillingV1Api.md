@@ -360,6 +360,7 @@ catch (ApiException e)
 | **200** | Ok |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

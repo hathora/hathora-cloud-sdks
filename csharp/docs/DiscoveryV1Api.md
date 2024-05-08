@@ -4,15 +4,15 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetPingServiceEndpoints**](DiscoveryV1Api.md#getpingserviceendpoints) | **GET** /discovery/v1/ping |  |
+| [**GetPingServiceEndpointsDeprecated**](DiscoveryV1Api.md#getpingserviceendpointsdeprecated) | **GET** /discovery/v1/ping |  |
 
-<a name="getpingserviceendpoints"></a>
-# **GetPingServiceEndpoints**
-> List&lt;DiscoveryResponseInner&gt; GetPingServiceEndpoints ()
+<a name="getpingserviceendpointsdeprecated"></a>
+# **GetPingServiceEndpointsDeprecated**
+> List&lt;PingEndpointsInner&gt; GetPingServiceEndpointsDeprecated ()
 
 
 
-Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to `wss://<host>:<port>/ws` and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
 
 ### Example
 ```csharp
@@ -24,7 +24,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetPingServiceEndpointsExample
+    public class GetPingServiceEndpointsDeprecatedExample
     {
         public static void Main()
         {
@@ -34,12 +34,12 @@ namespace Example
 
             try
             {
-                List<DiscoveryResponseInner> result = apiInstance.GetPingServiceEndpoints();
+                List<PingEndpointsInner> result = apiInstance.GetPingServiceEndpointsDeprecated();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DiscoveryV1Api.GetPingServiceEndpoints: " + e.Message);
+                Debug.Print("Exception when calling DiscoveryV1Api.GetPingServiceEndpointsDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -48,20 +48,20 @@ namespace Example
 }
 ```
 
-#### Using the GetPingServiceEndpointsWithHttpInfo variant
+#### Using the GetPingServiceEndpointsDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<List<DiscoveryResponseInner>> response = apiInstance.GetPingServiceEndpointsWithHttpInfo();
+    ApiResponse<List<PingEndpointsInner>> response = apiInstance.GetPingServiceEndpointsDeprecatedWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DiscoveryV1Api.GetPingServiceEndpointsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling DiscoveryV1Api.GetPingServiceEndpointsDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -71,7 +71,7 @@ catch (ApiException e)
 This endpoint does not need any parameter.
 ### Return type
 
-[**List&lt;DiscoveryResponseInner&gt;**](DiscoveryResponseInner.md)
+[**List&lt;PingEndpointsInner&gt;**](PingEndpointsInner.md)
 
 ### Authorization
 

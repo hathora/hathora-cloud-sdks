@@ -20,7 +20,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface CreateBuildParams {
     /**
-     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
      * @type {string}
      * @memberof CreateBuildParams
      */

@@ -47,18 +47,18 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Build" /> class.
         /// </summary>
-        /// <param name="buildTag">Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo)..</param>
+        /// <param name="buildTag">Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo)..</param>
         /// <param name="regionalContainerTags">regionalContainerTags (required).</param>
         /// <param name="imageSize">The size (in bytes) of the Docker image built by Hathora. (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="deletedAt">When the build was deleted. (required).</param>
-        /// <param name="finishedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing. (required).</param>
-        /// <param name="startedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called. (required).</param>
-        /// <param name="createdAt">When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called. (required).</param>
+        /// <param name="finishedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing. (required).</param>
+        /// <param name="startedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called. (required).</param>
+        /// <param name="createdAt">When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called. (required).</param>
         /// <param name="createdBy">UserId or email address for the user that created the build. (required).</param>
         /// <param name="buildId">System generated id for a build. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Build(string buildTag = default(string), List<BuildRegionalContainerTagsInner> regionalContainerTags = default(List<BuildRegionalContainerTagsInner>), int imageSize = default(int), BuildStatus status = default(BuildStatus), DateTime? deletedAt = default(DateTime?), DateTime? finishedAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), int buildId = default(int), string appId = default(string))
+        public Build(string buildTag = default(string), List<BuildRegionalContainerTagsInner> regionalContainerTags = default(List<BuildRegionalContainerTagsInner>), long imageSize = default(long), BuildStatus status = default(BuildStatus), DateTime? deletedAt = default(DateTime?), DateTime? finishedAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), int buildId = default(int), string appId = default(string))
         {
             // to ensure "regionalContainerTags" is required (not null)
             if (regionalContainerTags == null)
@@ -105,9 +105,9 @@ namespace Hathora.Cloud.Sdk.Model
         }
 
         /// <summary>
-        /// Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+        /// Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
         /// </summary>
-        /// <value>Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).</value>
+        /// <value>Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).</value>
         /// <example>&quot;0.1.14-14c793&quot;</example>
         [DataMember(Name = "buildTag", EmitDefaultValue = true)]
         public string BuildTag { get; set; }
@@ -124,7 +124,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <value>The size (in bytes) of the Docker image built by Hathora.</value>
         [DataMember(Name = "imageSize", IsRequired = true, EmitDefaultValue = true)]
-        public int ImageSize { get; set; }
+        public long ImageSize { get; set; }
 
         /// <summary>
         /// When the build was deleted.
@@ -134,23 +134,23 @@ namespace Hathora.Cloud.Sdk.Model
         public DateTime? DeletedAt { get; set; }
 
         /// <summary>
-        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
+        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing.
         /// </summary>
-        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.</value>
+        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing.</value>
         [DataMember(Name = "finishedAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTime? FinishedAt { get; set; }
 
         /// <summary>
-        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
+        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.
         /// </summary>
-        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.</value>
+        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.</value>
         [DataMember(Name = "startedAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTime? StartedAt { get; set; }
 
         /// <summary>
-        /// When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
+        /// When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.
         /// </summary>
-        /// <value>When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.</value>
+        /// <value>When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.</value>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTime CreatedAt { get; set; }
 

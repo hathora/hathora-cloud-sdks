@@ -28,7 +28,8 @@ export const Region = {
     Singapore: 'Singapore',
     Tokyo: 'Tokyo',
     Sydney: 'Sydney',
-    SaoPaulo: 'Sao_Paulo'
+    SaoPaulo: 'Sao_Paulo',
+    Dallas: 'Dallas'
 } as const;
 export type Region = typeof Region[keyof typeof Region];
 

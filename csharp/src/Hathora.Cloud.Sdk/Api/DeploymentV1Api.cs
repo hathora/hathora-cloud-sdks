@@ -37,7 +37,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
         /// <returns>Deployment</returns>
-        Deployment CreateDeployment(string appId, int buildId, DeploymentConfig deploymentConfig);
+        [Obsolete]
+        Deployment CreateDeploymentDeprecated(string appId, int buildId, DeploymentConfig deploymentConfig);
 
         /// <summary>
         /// 
@@ -50,7 +51,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
         /// <returns>ApiResponse of Deployment</returns>
-        ApiResponse<Deployment> CreateDeploymentWithHttpInfo(string appId, int buildId, DeploymentConfig deploymentConfig);
+        [Obsolete]
+        ApiResponse<Deployment> CreateDeploymentDeprecatedWithHttpInfo(string appId, int buildId, DeploymentConfig deploymentConfig);
         /// <summary>
         /// 
         /// </summary>
@@ -61,7 +63,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
         /// <returns>Deployment</returns>
-        Deployment GetDeploymentInfo(string appId, int deploymentId);
+        [Obsolete]
+        Deployment GetDeploymentInfoDeprecated(string appId, int deploymentId);
 
         /// <summary>
         /// 
@@ -73,7 +76,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
         /// <returns>ApiResponse of Deployment</returns>
-        ApiResponse<Deployment> GetDeploymentInfoWithHttpInfo(string appId, int deploymentId);
+        [Obsolete]
+        ApiResponse<Deployment> GetDeploymentInfoDeprecatedWithHttpInfo(string appId, int deploymentId);
         /// <summary>
         /// 
         /// </summary>
@@ -83,7 +87,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>List&lt;Deployment&gt;</returns>
-        List<Deployment> GetDeployments(string appId);
+        [Obsolete]
+        List<Deployment> GetDeploymentsDeprecated(string appId);
 
         /// <summary>
         /// 
@@ -94,7 +99,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>ApiResponse of List&lt;Deployment&gt;</returns>
-        ApiResponse<List<Deployment>> GetDeploymentsWithHttpInfo(string appId);
+        [Obsolete]
+        ApiResponse<List<Deployment>> GetDeploymentsDeprecatedWithHttpInfo(string appId);
         /// <summary>
         /// 
         /// </summary>
@@ -104,7 +110,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>Deployment</returns>
-        Deployment GetLatestDeployment(string appId);
+        [Obsolete]
+        Deployment GetLatestDeploymentDeprecated(string appId);
 
         /// <summary>
         /// 
@@ -115,7 +122,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>ApiResponse of Deployment</returns>
-        ApiResponse<Deployment> GetLatestDeploymentWithHttpInfo(string appId);
+        [Obsolete]
+        ApiResponse<Deployment> GetLatestDeploymentDeprecatedWithHttpInfo(string appId);
         #endregion Synchronous Operations
     }
 
@@ -137,7 +145,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        System.Threading.Tasks.Task<Deployment> CreateDeploymentAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Deployment> CreateDeploymentDeprecatedAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -151,7 +160,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deployment>> CreateDeploymentWithHttpInfoAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Deployment>> CreateDeploymentDeprecatedWithHttpInfoAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -163,7 +173,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        System.Threading.Tasks.Task<Deployment> GetDeploymentInfoAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Deployment> GetDeploymentInfoDeprecatedAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -176,7 +187,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deployment>> GetDeploymentInfoWithHttpInfoAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Deployment>> GetDeploymentInfoDeprecatedWithHttpInfoAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -187,7 +199,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Deployment&gt;</returns>
-        System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsDeprecatedAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -199,7 +212,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Deployment&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Deployment>>> GetDeploymentsWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<List<Deployment>>> GetDeploymentsDeprecatedWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -210,7 +224,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        System.Threading.Tasks.Task<Deployment> GetLatestDeploymentAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Deployment> GetLatestDeploymentDeprecatedAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -222,7 +237,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Deployment>> GetLatestDeploymentWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Deployment>> GetLatestDeploymentDeprecatedWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -375,9 +391,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
         /// <returns>Deployment</returns>
-        public Deployment CreateDeployment(string appId, int buildId, DeploymentConfig deploymentConfig)
+        [Obsolete]
+        public Deployment CreateDeploymentDeprecated(string appId, int buildId, DeploymentConfig deploymentConfig)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = CreateDeploymentWithHttpInfo(appId, buildId, deploymentConfig);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = CreateDeploymentDeprecatedWithHttpInfo(appId, buildId, deploymentConfig);
             return localVarResponse.Data;
         }
 
@@ -389,15 +406,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="deploymentConfig"></param>
         /// <returns>ApiResponse of Deployment</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> CreateDeploymentWithHttpInfo(string appId, int buildId, DeploymentConfig deploymentConfig)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> CreateDeploymentDeprecatedWithHttpInfo(string appId, int buildId, DeploymentConfig deploymentConfig)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->CreateDeployment");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->CreateDeploymentDeprecated");
 
             // verify the required parameter 'deploymentConfig' is set
             if (deploymentConfig == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'deploymentConfig' when calling DeploymentV1Api->CreateDeployment");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'deploymentConfig' when calling DeploymentV1Api->CreateDeploymentDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -432,7 +450,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateDeployment", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateDeploymentDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -448,9 +466,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        public async System.Threading.Tasks.Task<Deployment> CreateDeploymentAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Deployment> CreateDeploymentDeprecatedAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateDeploymentWithHttpInfoAsync(appId, buildId, deploymentConfig, cancellationToken);
+            var task = CreateDeploymentDeprecatedWithHttpInfoAsync(appId, buildId, deploymentConfig, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -468,15 +487,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentConfig"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> CreateDeploymentWithHttpInfoAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> CreateDeploymentDeprecatedWithHttpInfoAsync(string appId, int buildId, DeploymentConfig deploymentConfig, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->CreateDeployment");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->CreateDeploymentDeprecated");
 
             // verify the required parameter 'deploymentConfig' is set
             if (deploymentConfig == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'deploymentConfig' when calling DeploymentV1Api->CreateDeployment");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'deploymentConfig' when calling DeploymentV1Api->CreateDeploymentDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -520,7 +540,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateDeployment", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateDeploymentDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -534,9 +554,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
         /// <returns>Deployment</returns>
-        public Deployment GetDeploymentInfo(string appId, int deploymentId)
+        [Obsolete]
+        public Deployment GetDeploymentInfoDeprecated(string appId, int deploymentId)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = GetDeploymentInfoWithHttpInfo(appId, deploymentId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = GetDeploymentInfoDeprecatedWithHttpInfo(appId, deploymentId);
             return localVarResponse.Data;
         }
 
@@ -547,11 +568,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="deploymentId"></param>
         /// <returns>ApiResponse of Deployment</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> GetDeploymentInfoWithHttpInfo(string appId, int deploymentId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> GetDeploymentInfoDeprecatedWithHttpInfo(string appId, int deploymentId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentInfoDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -584,7 +606,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetDeploymentInfo", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetDeploymentInfoDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -599,9 +621,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        public async System.Threading.Tasks.Task<Deployment> GetDeploymentInfoAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Deployment> GetDeploymentInfoDeprecatedAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = GetDeploymentInfoWithHttpInfoAsync(appId, deploymentId, cancellationToken);
+            var task = GetDeploymentInfoDeprecatedWithHttpInfoAsync(appId, deploymentId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -618,11 +641,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> GetDeploymentInfoWithHttpInfoAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> GetDeploymentInfoDeprecatedWithHttpInfoAsync(string appId, int deploymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentInfoDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -664,7 +688,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetDeploymentInfo", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetDeploymentInfoDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -677,9 +701,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>List&lt;Deployment&gt;</returns>
-        public List<Deployment> GetDeployments(string appId)
+        [Obsolete]
+        public List<Deployment> GetDeploymentsDeprecated(string appId)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> localVarResponse = GetDeploymentsWithHttpInfo(appId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> localVarResponse = GetDeploymentsDeprecatedWithHttpInfo(appId);
             return localVarResponse.Data;
         }
 
@@ -689,11 +714,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>ApiResponse of List&lt;Deployment&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> GetDeploymentsWithHttpInfo(string appId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> GetDeploymentsDeprecatedWithHttpInfo(string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeployments");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentsDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -725,7 +751,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetDeployments", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetDeploymentsDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -739,9 +765,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Deployment&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<List<Deployment>> GetDeploymentsDeprecatedAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = GetDeploymentsWithHttpInfoAsync(appId, cancellationToken);
+            var task = GetDeploymentsDeprecatedWithHttpInfoAsync(appId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -757,11 +784,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Deployment&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>>> GetDeploymentsWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Deployment>>> GetDeploymentsDeprecatedWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeployments");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetDeploymentsDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -802,7 +830,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetDeployments", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetDeploymentsDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -815,9 +843,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>Deployment</returns>
-        public Deployment GetLatestDeployment(string appId)
+        [Obsolete]
+        public Deployment GetLatestDeploymentDeprecated(string appId)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = GetLatestDeploymentWithHttpInfo(appId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = GetLatestDeploymentDeprecatedWithHttpInfo(appId);
             return localVarResponse.Data;
         }
 
@@ -827,11 +856,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>ApiResponse of Deployment</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> GetLatestDeploymentWithHttpInfo(string appId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> GetLatestDeploymentDeprecatedWithHttpInfo(string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetLatestDeployment");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetLatestDeploymentDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -863,7 +893,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetLatestDeployment", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetLatestDeploymentDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -877,9 +907,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Deployment</returns>
-        public async System.Threading.Tasks.Task<Deployment> GetLatestDeploymentAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Deployment> GetLatestDeploymentDeprecatedAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = GetLatestDeploymentWithHttpInfoAsync(appId, cancellationToken);
+            var task = GetLatestDeploymentDeprecatedWithHttpInfoAsync(appId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Deployment> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -895,11 +926,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Deployment)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> GetLatestDeploymentWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Deployment>> GetLatestDeploymentDeprecatedWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetLatestDeployment");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling DeploymentV1Api->GetLatestDeploymentDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -940,7 +972,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetLatestDeployment", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetLatestDeploymentDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

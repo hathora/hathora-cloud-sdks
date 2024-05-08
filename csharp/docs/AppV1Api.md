@@ -101,6 +101,7 @@ catch (ApiException e)
 | **201** |  |  -  |
 | **401** |  |  -  |
 | **422** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -192,6 +193,7 @@ void (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -471,6 +473,7 @@ catch (ApiException e)
 | **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

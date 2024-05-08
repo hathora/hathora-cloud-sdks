@@ -12,7 +12,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="downloadLogForProcess"></a>
 # **downloadLogForProcess**
-> byte[] downloadLogForProcess(appId, processId)
+> File downloadLogForProcess(appId, processId)
 
 
 
@@ -41,7 +41,7 @@ public class Example {
     String appId = "appId_example"; // String | 
     String processId = "processId_example"; // String | 
     try {
-      byte[] result = apiInstance.downloadLogForProcess(appId, processId);
+      File result = apiInstance.downloadLogForProcess(appId, processId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LogV1Api#downloadLogForProcess");
@@ -63,7 +63,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -85,7 +85,7 @@ public class Example {
 
 <a name="getLogsForApp"></a>
 # **getLogsForApp**
-> byte[] getLogsForApp(appId, follow, tailLines, region)
+> File getLogsForApp(appId, follow, tailLines, region)
 
 
 
@@ -116,7 +116,7 @@ public class Example {
     Integer tailLines = 56; // Integer | 
     Region region = Region.fromValue("Seattle"); // Region | 
     try {
-      byte[] result = apiInstance.getLogsForApp(appId, follow, tailLines, region);
+      File result = apiInstance.getLogsForApp(appId, follow, tailLines, region);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LogV1Api#getLogsForApp");
@@ -136,11 +136,11 @@ public class Example {
 | **appId** | **String**|  | |
 | **follow** | **Boolean**|  | [optional] [default to false] |
 | **tailLines** | **Integer**|  | [optional] |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -149,7 +149,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -160,7 +160,7 @@ public class Example {
 
 <a name="getLogsForDeployment"></a>
 # **getLogsForDeployment**
-> byte[] getLogsForDeployment(appId, deploymentId, follow, tailLines)
+> File getLogsForDeployment(appId, deploymentId, follow, tailLines)
 
 
 
@@ -191,7 +191,7 @@ public class Example {
     Boolean follow = false; // Boolean | 
     Integer tailLines = 56; // Integer | 
     try {
-      byte[] result = apiInstance.getLogsForDeployment(appId, deploymentId, follow, tailLines);
+      File result = apiInstance.getLogsForDeployment(appId, deploymentId, follow, tailLines);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LogV1Api#getLogsForDeployment");
@@ -215,7 +215,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -235,7 +235,7 @@ public class Example {
 
 <a name="getLogsForProcess"></a>
 # **getLogsForProcess**
-> byte[] getLogsForProcess(appId, processId, follow, tailLines)
+> File getLogsForProcess(appId, processId, follow, tailLines)
 
 
 
@@ -266,7 +266,7 @@ public class Example {
     Boolean follow = false; // Boolean | 
     Integer tailLines = 56; // Integer | 
     try {
-      byte[] result = apiInstance.getLogsForProcess(appId, processId, follow, tailLines);
+      File result = apiInstance.getLogsForProcess(appId, processId, follow, tailLines);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LogV1Api#getLogsForProcess");
@@ -290,7 +290,7 @@ public class Example {
 
 ### Return type
 
-**byte[]**
+[**File**](File.md)
 
 ### Authorization
 
@@ -299,7 +299,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json
+ - **Accept**: application/octet-stream, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

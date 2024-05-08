@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import com.hathora.client.model.ApiError;
 import com.hathora.client.model.VerificationEmailRequest;
-import com.hathora.client.model.VerificationEmailResponse;
+import com.hathora.client.model.VerificationEmailSuccess;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +86,7 @@ public class ManagementV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -149,18 +150,19 @@ public class ManagementV1Api {
      * 
      * 
      * @param verificationEmailRequest  (required)
-     * @return VerificationEmailResponse
+     * @return VerificationEmailSuccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public VerificationEmailResponse sendVerificationEmail(VerificationEmailRequest verificationEmailRequest) throws ApiException {
-        ApiResponse<VerificationEmailResponse> localVarResp = sendVerificationEmailWithHttpInfo(verificationEmailRequest);
+    public VerificationEmailSuccess sendVerificationEmail(VerificationEmailRequest verificationEmailRequest) throws ApiException {
+        ApiResponse<VerificationEmailSuccess> localVarResp = sendVerificationEmailWithHttpInfo(verificationEmailRequest);
         return localVarResp.getData();
     }
 
@@ -168,19 +170,20 @@ public class ManagementV1Api {
      * 
      * 
      * @param verificationEmailRequest  (required)
-     * @return ApiResponse&lt;VerificationEmailResponse&gt;
+     * @return ApiResponse&lt;VerificationEmailSuccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VerificationEmailResponse> sendVerificationEmailWithHttpInfo(VerificationEmailRequest verificationEmailRequest) throws ApiException {
+    public ApiResponse<VerificationEmailSuccess> sendVerificationEmailWithHttpInfo(VerificationEmailRequest verificationEmailRequest) throws ApiException {
         okhttp3.Call localVarCall = sendVerificationEmailValidateBeforeCall(verificationEmailRequest, null);
-        Type localVarReturnType = new TypeToken<VerificationEmailResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<VerificationEmailSuccess>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -196,13 +199,14 @@ public class ManagementV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sendVerificationEmailAsync(VerificationEmailRequest verificationEmailRequest, final ApiCallback<VerificationEmailResponse> _callback) throws ApiException {
+    public okhttp3.Call sendVerificationEmailAsync(VerificationEmailRequest verificationEmailRequest, final ApiCallback<VerificationEmailSuccess> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = sendVerificationEmailValidateBeforeCall(verificationEmailRequest, _callback);
-        Type localVarReturnType = new TypeToken<VerificationEmailResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<VerificationEmailSuccess>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -9,7 +9,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="sendVerificationEmail"></a>
 # **sendVerificationEmail**
-> VerificationEmailResponse sendVerificationEmail(verificationEmailRequest)
+> VerificationEmailSuccess sendVerificationEmail(verificationEmailRequest)
 
 
 
@@ -30,7 +30,7 @@ public class Example {
     ManagementV1Api apiInstance = new ManagementV1Api(defaultClient);
     VerificationEmailRequest verificationEmailRequest = new VerificationEmailRequest(); // VerificationEmailRequest | 
     try {
-      VerificationEmailResponse result = apiInstance.sendVerificationEmail(verificationEmailRequest);
+      VerificationEmailSuccess result = apiInstance.sendVerificationEmail(verificationEmailRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ManagementV1Api#sendVerificationEmail");
@@ -51,7 +51,7 @@ public class Example {
 
 ### Return type
 
-[**VerificationEmailResponse**](VerificationEmailResponse.md)
+[**VerificationEmailSuccess**](VerificationEmailSuccess.md)
 
 ### Authorization
 
@@ -67,5 +67,6 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **401** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 

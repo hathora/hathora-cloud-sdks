@@ -18,9 +18,9 @@ import type {
   ApiError,
   ConnectionInfoV2,
   CreateRoomParams,
-  CreateRoomResponse,
   PickRoomExcludeKeyofRoomAllocations,
   Room,
+  RoomConnectionData,
   UpdateRoomConfigParams,
 } from '../models';
 import {
@@ -30,12 +30,12 @@ import {
     ConnectionInfoV2ToJSON,
     CreateRoomParamsFromJSON,
     CreateRoomParamsToJSON,
-    CreateRoomResponseFromJSON,
-    CreateRoomResponseToJSON,
     PickRoomExcludeKeyofRoomAllocationsFromJSON,
     PickRoomExcludeKeyofRoomAllocationsToJSON,
     RoomFromJSON,
     RoomToJSON,
+    RoomConnectionDataFromJSON,
+    RoomConnectionDataToJSON,
     UpdateRoomConfigParamsFromJSON,
     UpdateRoomConfigParamsToJSON,
 } from '../models';
@@ -71,7 +71,7 @@ export interface GetRoomInfoRequest {
     roomId: string;
 }
 
-export interface SuspendRoomRequest {
+export interface SuspendRoomV2DeprecatedRequest {
     appId: string;
     roomId: string;
 }
@@ -98,12 +98,12 @@ export interface RoomV2ApiInterface {
      * @throws {RequiredError}
      * @memberof RoomV2ApiInterface
      */
-    createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRoomResponse>>;
+    createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RoomConnectionData>>;
 
     /**
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      */
-    createRoom(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRoomResponse>;
+    createRoom(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RoomConnectionData>;
 
     /**
      * Destroy a [room](https://hathora.dev/docs/concepts/hathora-entities#room). All associated metadata is deleted.
@@ -185,15 +185,16 @@ export interface RoomV2ApiInterface {
      * @param {string} appId 
      * @param {string} roomId 
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      * @memberof RoomV2ApiInterface
      */
-    suspendRoomRaw(requestParameters: SuspendRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    suspendRoomV2DeprecatedRaw(requestParameters: SuspendRoomV2DeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
      */
-    suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    suspendRoomV2Deprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
     /**
      * 
@@ -220,7 +221,7 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
     /**
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      */
-    async createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRoomResponse>> {
+    async createRoomRaw(requestParameters: CreateRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RoomConnectionData>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createRoom.');
         }
@@ -255,13 +256,13 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
             body: CreateRoomParamsToJSON(requestParameters.createRoomParams),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateRoomResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => RoomConnectionDataFromJSON(jsonValue));
     }
 
     /**
      * Create a new [room](https://hathora.dev/docs/concepts/hathora-entities#room) for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application). Poll the [`GetConnectionInfo()`](https://hathora.dev/api#tag/RoomV2/operation/GetConnectionInfo) endpoint to get connection details for an active room.
      */
-    async createRoom(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRoomResponse> {
+    async createRoom(appId: string, createRoomParams: CreateRoomParams, roomId?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RoomConnectionData> {
         const response = await this.createRoomRaw({ appId: appId, createRoomParams: createRoomParams, roomId: roomId }, initOverrides);
         return await response.value();
     }
@@ -470,13 +471,13 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
     /**
      * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
      */
-    async suspendRoomRaw(requestParameters: SuspendRoomRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async suspendRoomV2DeprecatedRaw(requestParameters: SuspendRoomV2DeprecatedRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
-            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling suspendRoom.');
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling suspendRoomV2Deprecated.');
         }
 
         if (requestParameters.roomId === null || requestParameters.roomId === undefined) {
-            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling suspendRoom.');
+            throw new runtime.RequiredError('roomId','Required parameter requestParameters.roomId was null or undefined when calling suspendRoomV2Deprecated.');
         }
 
         const queryParameters: any = {};
@@ -504,8 +505,8 @@ export class RoomV2Api extends runtime.BaseAPI implements RoomV2ApiInterface {
     /**
      * Suspend a [room](https://hathora.dev/docs/concepts/hathora-entities#room). The room is unallocated from the process but can be rescheduled later using the same `roomId`.
      */
-    async suspendRoom(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.suspendRoomRaw({ appId: appId, roomId: roomId }, initOverrides);
+    async suspendRoomV2Deprecated(appId: string, roomId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.suspendRoomV2DeprecatedRaw({ appId: appId, roomId: roomId }, initOverrides);
     }
 
     /**
