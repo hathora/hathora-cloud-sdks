@@ -4,15 +4,15 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateBuild**](BuildV1Api.md#createbuild) | **POST** /builds/v1/{appId}/create |  |
-| [**DeleteBuild**](BuildV1Api.md#deletebuild) | **DELETE** /builds/v1/{appId}/delete/{buildId} |  |
-| [**GetBuildInfo**](BuildV1Api.md#getbuildinfo) | **GET** /builds/v1/{appId}/info/{buildId} |  |
-| [**GetBuilds**](BuildV1Api.md#getbuilds) | **GET** /builds/v1/{appId}/list |  |
-| [**RunBuild**](BuildV1Api.md#runbuild) | **POST** /builds/v1/{appId}/run/{buildId} |  |
+| [**CreateBuildDeprecated**](BuildV1Api.md#createbuilddeprecated) | **POST** /builds/v1/{appId}/create |  |
+| [**DeleteBuildDeprecated**](BuildV1Api.md#deletebuilddeprecated) | **DELETE** /builds/v1/{appId}/delete/{buildId} |  |
+| [**GetBuildInfoDeprecated**](BuildV1Api.md#getbuildinfodeprecated) | **GET** /builds/v1/{appId}/info/{buildId} |  |
+| [**GetBuildsDeprecated**](BuildV1Api.md#getbuildsdeprecated) | **GET** /builds/v1/{appId}/list |  |
+| [**RunBuildDeprecated**](BuildV1Api.md#runbuilddeprecated) | **POST** /builds/v1/{appId}/run/{buildId} |  |
 
-<a name="createbuild"></a>
-# **CreateBuild**
-> Build CreateBuild (string appId, CreateBuildParams createBuildParams)
+<a name="createbuilddeprecated"></a>
+# **CreateBuildDeprecated**
+> Build CreateBuildDeprecated (string appId, CreateBuildParams createBuildParams)
 
 
 
@@ -28,7 +28,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class CreateBuildExample
+    public class CreateBuildDeprecatedExample
     {
         public static void Main()
         {
@@ -43,12 +43,12 @@ namespace Example
 
             try
             {
-                Build result = apiInstance.CreateBuild(appId, createBuildParams);
+                Build result = apiInstance.CreateBuildDeprecated(appId, createBuildParams);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BuildV1Api.CreateBuild: " + e.Message);
+                Debug.Print("Exception when calling BuildV1Api.CreateBuildDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -57,20 +57,20 @@ namespace Example
 }
 ```
 
-#### Using the CreateBuildWithHttpInfo variant
+#### Using the CreateBuildDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Build> response = apiInstance.CreateBuildWithHttpInfo(appId, createBuildParams);
+    ApiResponse<Build> response = apiInstance.CreateBuildDeprecatedWithHttpInfo(appId, createBuildParams);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling BuildV1Api.CreateBuildWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling BuildV1Api.CreateBuildDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -103,13 +103,14 @@ catch (ApiException e)
 | **201** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="deletebuild"></a>
-# **DeleteBuild**
-> void DeleteBuild (string appId, int buildId)
+<a name="deletebuilddeprecated"></a>
+# **DeleteBuildDeprecated**
+> void DeleteBuildDeprecated (string appId, int buildId)
 
 
 
@@ -125,7 +126,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class DeleteBuildExample
+    public class DeleteBuildDeprecatedExample
     {
         public static void Main()
         {
@@ -140,11 +141,11 @@ namespace Example
 
             try
             {
-                apiInstance.DeleteBuild(appId, buildId);
+                apiInstance.DeleteBuildDeprecated(appId, buildId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BuildV1Api.DeleteBuild: " + e.Message);
+                Debug.Print("Exception when calling BuildV1Api.DeleteBuildDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -153,17 +154,17 @@ namespace Example
 }
 ```
 
-#### Using the DeleteBuildWithHttpInfo variant
+#### Using the DeleteBuildDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    apiInstance.DeleteBuildWithHttpInfo(appId, buildId);
+    apiInstance.DeleteBuildDeprecatedWithHttpInfo(appId, buildId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling BuildV1Api.DeleteBuildWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling BuildV1Api.DeleteBuildDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -201,9 +202,9 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getbuildinfo"></a>
-# **GetBuildInfo**
-> Build GetBuildInfo (string appId, int buildId)
+<a name="getbuildinfodeprecated"></a>
+# **GetBuildInfoDeprecated**
+> Build GetBuildInfoDeprecated (string appId, int buildId)
 
 
 
@@ -219,7 +220,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetBuildInfoExample
+    public class GetBuildInfoDeprecatedExample
     {
         public static void Main()
         {
@@ -234,12 +235,12 @@ namespace Example
 
             try
             {
-                Build result = apiInstance.GetBuildInfo(appId, buildId);
+                Build result = apiInstance.GetBuildInfoDeprecated(appId, buildId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BuildV1Api.GetBuildInfo: " + e.Message);
+                Debug.Print("Exception when calling BuildV1Api.GetBuildInfoDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -248,20 +249,20 @@ namespace Example
 }
 ```
 
-#### Using the GetBuildInfoWithHttpInfo variant
+#### Using the GetBuildInfoDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Build> response = apiInstance.GetBuildInfoWithHttpInfo(appId, buildId);
+    ApiResponse<Build> response = apiInstance.GetBuildInfoDeprecatedWithHttpInfo(appId, buildId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling BuildV1Api.GetBuildInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling BuildV1Api.GetBuildInfoDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -297,9 +298,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getbuilds"></a>
-# **GetBuilds**
-> List&lt;Build&gt; GetBuilds (string appId)
+<a name="getbuildsdeprecated"></a>
+# **GetBuildsDeprecated**
+> List&lt;Build&gt; GetBuildsDeprecated (string appId)
 
 
 
@@ -315,7 +316,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetBuildsExample
+    public class GetBuildsDeprecatedExample
     {
         public static void Main()
         {
@@ -329,12 +330,12 @@ namespace Example
 
             try
             {
-                List<Build> result = apiInstance.GetBuilds(appId);
+                List<Build> result = apiInstance.GetBuildsDeprecated(appId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BuildV1Api.GetBuilds: " + e.Message);
+                Debug.Print("Exception when calling BuildV1Api.GetBuildsDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -343,20 +344,20 @@ namespace Example
 }
 ```
 
-#### Using the GetBuildsWithHttpInfo variant
+#### Using the GetBuildsDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<List<Build>> response = apiInstance.GetBuildsWithHttpInfo(appId);
+    ApiResponse<List<Build>> response = apiInstance.GetBuildsDeprecatedWithHttpInfo(appId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling BuildV1Api.GetBuildsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling BuildV1Api.GetBuildsDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -391,9 +392,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="runbuild"></a>
-# **RunBuild**
-> byte[] RunBuild (string appId, int buildId, System.IO.Stream file)
+<a name="runbuilddeprecated"></a>
+# **RunBuildDeprecated**
+> byte[] RunBuildDeprecated (string appId, int buildId, System.IO.Stream file)
 
 
 
@@ -409,7 +410,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class RunBuildExample
+    public class RunBuildDeprecatedExample
     {
         public static void Main()
         {
@@ -425,12 +426,12 @@ namespace Example
 
             try
             {
-                byte[] result = apiInstance.RunBuild(appId, buildId, file);
+                byte[] result = apiInstance.RunBuildDeprecated(appId, buildId, file);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling BuildV1Api.RunBuild: " + e.Message);
+                Debug.Print("Exception when calling BuildV1Api.RunBuildDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -439,20 +440,20 @@ namespace Example
 }
 ```
 
-#### Using the RunBuildWithHttpInfo variant
+#### Using the RunBuildDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<byte[]> response = apiInstance.RunBuildWithHttpInfo(appId, buildId, file);
+    ApiResponse<byte[]> response = apiInstance.RunBuildDeprecatedWithHttpInfo(appId, buildId, file);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling BuildV1Api.RunBuildWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling BuildV1Api.RunBuildDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -486,6 +487,7 @@ catch (ApiException e)
 | **200** | Ok |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.hathora.client.model.ApiError;
+import java.io.File;
 import com.hathora.client.model.Region;
 
 import java.lang.reflect.Type;
@@ -119,7 +120,7 @@ public class LogV1Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "text/plain",
+            "application/octet-stream",
             "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -159,7 +160,7 @@ public class LogV1Api {
      * Download entire log file for a stopped process.
      * @param appId  (required)
      * @param processId  (required)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -171,8 +172,8 @@ public class LogV1Api {
         <tr><td> 410 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] downloadLogForProcess(String appId, String processId) throws ApiException {
-        ApiResponse<byte[]> localVarResp = downloadLogForProcessWithHttpInfo(appId, processId);
+    public File downloadLogForProcess(String appId, String processId) throws ApiException {
+        ApiResponse<File> localVarResp = downloadLogForProcessWithHttpInfo(appId, processId);
         return localVarResp.getData();
     }
 
@@ -181,7 +182,7 @@ public class LogV1Api {
      * Download entire log file for a stopped process.
      * @param appId  (required)
      * @param processId  (required)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -193,9 +194,9 @@ public class LogV1Api {
         <tr><td> 410 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> downloadLogForProcessWithHttpInfo(String appId, String processId) throws ApiException {
+    public ApiResponse<File> downloadLogForProcessWithHttpInfo(String appId, String processId) throws ApiException {
         okhttp3.Call localVarCall = downloadLogForProcessValidateBeforeCall(appId, processId, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -217,10 +218,10 @@ public class LogV1Api {
         <tr><td> 410 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call downloadLogForProcessAsync(String appId, String processId, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call downloadLogForProcessAsync(String appId, String processId, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = downloadLogForProcessValidateBeforeCall(appId, processId, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -282,7 +283,7 @@ public class LogV1Api {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
+            "application/octet-stream",
             "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -320,7 +321,7 @@ public class LogV1Api {
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
      * @param region  (optional)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -332,8 +333,8 @@ public class LogV1Api {
      * @deprecated
      */
     @Deprecated
-    public byte[] getLogsForApp(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getLogsForAppWithHttpInfo(appId, follow, tailLines, region);
+    public File getLogsForApp(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
+        ApiResponse<File> localVarResp = getLogsForAppWithHttpInfo(appId, follow, tailLines, region);
         return localVarResp.getData();
     }
 
@@ -344,7 +345,7 @@ public class LogV1Api {
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
      * @param region  (optional)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -356,9 +357,9 @@ public class LogV1Api {
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<byte[]> getLogsForAppWithHttpInfo(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
+    public ApiResponse<File> getLogsForAppWithHttpInfo(String appId, Boolean follow, Integer tailLines, Region region) throws ApiException {
         okhttp3.Call localVarCall = getLogsForAppValidateBeforeCall(appId, follow, tailLines, region, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -382,10 +383,10 @@ public class LogV1Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call getLogsForAppAsync(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getLogsForAppAsync(String appId, Boolean follow, Integer tailLines, Region region, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForAppValidateBeforeCall(appId, follow, tailLines, region, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -444,7 +445,7 @@ public class LogV1Api {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
+            "application/octet-stream",
             "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -487,7 +488,7 @@ public class LogV1Api {
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -499,8 +500,8 @@ public class LogV1Api {
      * @deprecated
      */
     @Deprecated
-    public byte[] getLogsForDeployment(String appId, Integer deploymentId, Boolean follow, Integer tailLines) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
+    public File getLogsForDeployment(String appId, Integer deploymentId, Boolean follow, Integer tailLines) throws ApiException {
+        ApiResponse<File> localVarResp = getLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
         return localVarResp.getData();
     }
 
@@ -511,7 +512,7 @@ public class LogV1Api {
      * @param deploymentId  (required)
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -523,9 +524,9 @@ public class LogV1Api {
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<byte[]> getLogsForDeploymentWithHttpInfo(String appId, Integer deploymentId, Boolean follow, Integer tailLines) throws ApiException {
+    public ApiResponse<File> getLogsForDeploymentWithHttpInfo(String appId, Integer deploymentId, Boolean follow, Integer tailLines) throws ApiException {
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -549,10 +550,10 @@ public class LogV1Api {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call getLogsForDeploymentAsync(String appId, Integer deploymentId, Boolean follow, Integer tailLines, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getLogsForDeploymentAsync(String appId, Integer deploymentId, Boolean follow, Integer tailLines, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForDeploymentValidateBeforeCall(appId, deploymentId, follow, tailLines, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -612,7 +613,7 @@ public class LogV1Api {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
+            "application/octet-stream",
             "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -654,7 +655,7 @@ public class LogV1Api {
      * @param processId  (required)
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
-     * @return byte[]
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -667,8 +668,8 @@ public class LogV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public byte[] getLogsForProcess(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
-        ApiResponse<byte[]> localVarResp = getLogsForProcessWithHttpInfo(appId, processId, follow, tailLines);
+    public File getLogsForProcess(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
+        ApiResponse<File> localVarResp = getLogsForProcessWithHttpInfo(appId, processId, follow, tailLines);
         return localVarResp.getData();
     }
 
@@ -679,7 +680,7 @@ public class LogV1Api {
      * @param processId  (required)
      * @param follow  (optional, default to false)
      * @param tailLines  (optional)
-     * @return ApiResponse&lt;byte[]&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -692,9 +693,9 @@ public class LogV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<byte[]> getLogsForProcessWithHttpInfo(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
+    public ApiResponse<File> getLogsForProcessWithHttpInfo(String appId, String processId, Boolean follow, Integer tailLines) throws ApiException {
         okhttp3.Call localVarCall = getLogsForProcessValidateBeforeCall(appId, processId, follow, tailLines, null);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -719,10 +720,10 @@ public class LogV1Api {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLogsForProcessAsync(String appId, String processId, Boolean follow, Integer tailLines, final ApiCallback<byte[]> _callback) throws ApiException {
+    public okhttp3.Call getLogsForProcessAsync(String appId, String processId, Boolean follow, Integer tailLines, final ApiCallback<File> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLogsForProcessValidateBeforeCall(appId, processId, follow, tailLines, _callback);
-        Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

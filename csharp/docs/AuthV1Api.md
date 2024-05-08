@@ -10,7 +10,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="loginanonymous"></a>
 # **LoginAnonymous**
-> LoginResponse LoginAnonymous (string appId)
+> PlayerTokenObject LoginAnonymous (string appId)
 
 
 
@@ -37,7 +37,7 @@ namespace Example
 
             try
             {
-                LoginResponse result = apiInstance.LoginAnonymous(appId);
+                PlayerTokenObject result = apiInstance.LoginAnonymous(appId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -57,7 +57,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<LoginResponse> response = apiInstance.LoginAnonymousWithHttpInfo(appId);
+    ApiResponse<PlayerTokenObject> response = apiInstance.LoginAnonymousWithHttpInfo(appId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -78,7 +78,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**LoginResponse**](LoginResponse.md)
+[**PlayerTokenObject**](PlayerTokenObject.md)
 
 ### Authorization
 
@@ -100,7 +100,7 @@ No authorization required
 
 <a name="logingoogle"></a>
 # **LoginGoogle**
-> LoginResponse LoginGoogle (string appId, LoginGoogleRequest loginGoogleRequest)
+> PlayerTokenObject LoginGoogle (string appId, GoogleIdTokenObject googleIdTokenObject)
 
 
 
@@ -124,11 +124,11 @@ namespace Example
             config.BasePath = "https://api.hathora.dev";
             var apiInstance = new AuthV1Api(config);
             var appId = "appId_example";  // string | 
-            var loginGoogleRequest = new LoginGoogleRequest(); // LoginGoogleRequest | 
+            var googleIdTokenObject = new GoogleIdTokenObject(); // GoogleIdTokenObject | 
 
             try
             {
-                LoginResponse result = apiInstance.LoginGoogle(appId, loginGoogleRequest);
+                PlayerTokenObject result = apiInstance.LoginGoogle(appId, googleIdTokenObject);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -148,7 +148,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<LoginResponse> response = apiInstance.LoginGoogleWithHttpInfo(appId, loginGoogleRequest);
+    ApiResponse<PlayerTokenObject> response = apiInstance.LoginGoogleWithHttpInfo(appId, googleIdTokenObject);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -166,11 +166,11 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **loginGoogleRequest** | [**LoginGoogleRequest**](LoginGoogleRequest.md) |  |  |
+| **googleIdTokenObject** | [**GoogleIdTokenObject**](GoogleIdTokenObject.md) |  |  |
 
 ### Return type
 
-[**LoginResponse**](LoginResponse.md)
+[**PlayerTokenObject**](PlayerTokenObject.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ No authorization required
 
 <a name="loginnickname"></a>
 # **LoginNickname**
-> LoginResponse LoginNickname (string appId, LoginNicknameRequest loginNicknameRequest)
+> PlayerTokenObject LoginNickname (string appId, NicknameObject nicknameObject)
 
 
 
@@ -217,11 +217,11 @@ namespace Example
             config.BasePath = "https://api.hathora.dev";
             var apiInstance = new AuthV1Api(config);
             var appId = "appId_example";  // string | 
-            var loginNicknameRequest = new LoginNicknameRequest(); // LoginNicknameRequest | 
+            var nicknameObject = new NicknameObject(); // NicknameObject | 
 
             try
             {
-                LoginResponse result = apiInstance.LoginNickname(appId, loginNicknameRequest);
+                PlayerTokenObject result = apiInstance.LoginNickname(appId, nicknameObject);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -241,7 +241,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<LoginResponse> response = apiInstance.LoginNicknameWithHttpInfo(appId, loginNicknameRequest);
+    ApiResponse<PlayerTokenObject> response = apiInstance.LoginNicknameWithHttpInfo(appId, nicknameObject);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -259,11 +259,11 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **appId** | **string** |  |  |
-| **loginNicknameRequest** | [**LoginNicknameRequest**](LoginNicknameRequest.md) |  |  |
+| **nicknameObject** | [**NicknameObject**](NicknameObject.md) |  |  |
 
 ### Return type
 
-[**LoginResponse**](LoginResponse.md)
+[**PlayerTokenObject**](PlayerTokenObject.md)
 
 ### Authorization
 

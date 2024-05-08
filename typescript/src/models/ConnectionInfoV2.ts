@@ -19,6 +19,12 @@ import {
     ExposedPortFromJSONTyped,
     ExposedPortToJSON,
 } from './ExposedPort';
+import type { RoomReadyStatus } from './RoomReadyStatus';
+import {
+    RoomReadyStatusFromJSON,
+    RoomReadyStatusFromJSONTyped,
+    RoomReadyStatusToJSON,
+} from './RoomReadyStatus';
 
 /**
  * Connection information for the default and additional ports.
@@ -39,11 +45,11 @@ export interface ConnectionInfoV2 {
      */
     exposedPort?: ExposedPort;
     /**
-     * `exposedPort` will only be available when the `status` of a room is "active".
-     * @type {string}
+     * 
+     * @type {RoomReadyStatus}
      * @memberof ConnectionInfoV2
      */
-    status: ConnectionInfoV2StatusEnum;
+    status: RoomReadyStatus;
     /**
      * Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own.
      * Note: error will be returned if `roomId` is not globally unique.
@@ -52,17 +58,6 @@ export interface ConnectionInfoV2 {
      */
     roomId: string;
 }
-
-
-/**
- * @export
- */
-export const ConnectionInfoV2StatusEnum = {
-    Starting: 'starting',
-    Active: 'active'
-} as const;
-export type ConnectionInfoV2StatusEnum = typeof ConnectionInfoV2StatusEnum[keyof typeof ConnectionInfoV2StatusEnum];
-
 
 /**
  * Check if a given object implements the ConnectionInfoV2 interface.
@@ -88,7 +83,7 @@ export function ConnectionInfoV2FromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'additionalExposedPorts': ((json['additionalExposedPorts'] as Array<any>).map(ExposedPortFromJSON)),
         'exposedPort': !exists(json, 'exposedPort') ? undefined : ExposedPortFromJSON(json['exposedPort']),
-        'status': json['status'],
+        'status': RoomReadyStatusFromJSON(json['status']),
         'roomId': json['roomId'],
     };
 }
@@ -104,7 +99,7 @@ export function ConnectionInfoV2ToJSON(value?: ConnectionInfoV2 | null): any {
         
         'additionalExposedPorts': ((value.additionalExposedPorts as Array<any>).map(ExposedPortToJSON)),
         'exposedPort': ExposedPortToJSON(value.exposedPort),
-        'status': value.status,
+        'status': RoomReadyStatusToJSON(value.status),
         'roomId': value.roomId,
     };
 }

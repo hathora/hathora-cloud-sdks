@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hathora.client.model.ContainerPort;
-import com.hathora.client.model.DeploymentEnvInner;
+import com.hathora.client.model.DeploymentV2EnvInner;
 import com.hathora.client.model.PlanName;
 import com.hathora.client.model.TransportType;
 import java.io.IOException;
@@ -60,7 +60,7 @@ public class DeploymentConfig {
 
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
-  private List<DeploymentEnvInner> env = new ArrayList<>();
+  private List<DeploymentV2EnvInner> env = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
   @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
@@ -107,13 +107,13 @@ public class DeploymentConfig {
   }
 
 
-  public DeploymentConfig env(List<DeploymentEnvInner> env) {
+  public DeploymentConfig env(List<DeploymentV2EnvInner> env) {
     
     this.env = env;
     return this;
   }
 
-  public DeploymentConfig addEnvItem(DeploymentEnvInner envItem) {
+  public DeploymentConfig addEnvItem(DeploymentV2EnvInner envItem) {
     if (this.env == null) {
       this.env = new ArrayList<>();
     }
@@ -127,12 +127,12 @@ public class DeploymentConfig {
   **/
   @javax.annotation.Nonnull
 
-  public List<DeploymentEnvInner> getEnv() {
+  public List<DeploymentV2EnvInner> getEnv() {
     return env;
   }
 
 
-  public void setEnv(List<DeploymentEnvInner> env) {
+  public void setEnv(List<DeploymentV2EnvInner> env) {
     this.env = env;
   }
 
@@ -406,7 +406,7 @@ public class DeploymentConfig {
       JsonArray jsonArrayenv = jsonObj.getAsJsonArray("env");
       // validate the required field `env` (array)
       for (int i = 0; i < jsonArrayenv.size(); i++) {
-        DeploymentEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
+        DeploymentV2EnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
       };
       if (jsonObj.get("additionalContainerPorts") != null && !jsonObj.get("additionalContainerPorts").isJsonNull()) {
         JsonArray jsonArrayadditionalContainerPorts = jsonObj.getAsJsonArray("additionalContainerPorts");

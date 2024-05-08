@@ -60,7 +60,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="additionalContainerPorts">Additional ports your server listens on..</param>
         /// <param name="transportType">transportType (required).</param>
         /// <param name="containerPort">Default port the server listens on. (required).</param>
-        public DeploymentConfig(bool idleTimeoutEnabled = true, List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), TransportType transportType = default(TransportType), int containerPort = default(int))
+        public DeploymentConfig(bool idleTimeoutEnabled = true, List<DeploymentV2EnvInner> env = default(List<DeploymentV2EnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), TransportType transportType = default(TransportType), int containerPort = default(int))
         {
             // to ensure "env" is required (not null)
             if (env == null)
@@ -89,7 +89,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <value>The environment variable that our process will have access to at runtime.</value>
         [DataMember(Name = "env", IsRequired = true, EmitDefaultValue = true)]
-        public List<DeploymentEnvInner> Env { get; set; }
+        public List<DeploymentV2EnvInner> Env { get; set; }
 
         /// <summary>
         /// Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.

@@ -33,7 +33,7 @@ import {
  */
 export interface Build {
     /**
-     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+     * Tag to associate an external version with a build. It is accessible via [`GetBuildInfo()`](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
      * @type {string}
      * @memberof Build
      */
@@ -64,19 +64,19 @@ export interface Build {
      */
     deletedAt: Date | null;
     /**
-     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
+     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing.
      * @type {Date}
      * @memberof Build
      */
     finishedAt: Date | null;
     /**
-     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
+     * When [`RunBuild()`](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.
      * @type {Date}
      * @memberof Build
      */
     startedAt: Date | null;
     /**
-     * When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
+     * When [`CreateBuild()`](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.
      * @type {Date}
      * @memberof Build
      */

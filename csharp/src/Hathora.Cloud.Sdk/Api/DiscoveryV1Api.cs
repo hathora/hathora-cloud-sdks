@@ -30,21 +30,23 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        /// Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;DiscoveryResponseInner&gt;</returns>
-        List<DiscoveryResponseInner> GetPingServiceEndpoints();
+        /// <returns>List&lt;PingEndpointsInner&gt;</returns>
+        [Obsolete]
+        List<PingEndpointsInner> GetPingServiceEndpointsDeprecated();
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        /// Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;DiscoveryResponseInner&gt;</returns>
-        ApiResponse<List<DiscoveryResponseInner>> GetPingServiceEndpointsWithHttpInfo();
+        /// <returns>ApiResponse of List&lt;PingEndpointsInner&gt;</returns>
+        [Obsolete]
+        ApiResponse<List<PingEndpointsInner>> GetPingServiceEndpointsDeprecatedWithHttpInfo();
         #endregion Synchronous Operations
     }
 
@@ -58,23 +60,25 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        /// Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;DiscoveryResponseInner&gt;</returns>
-        System.Threading.Tasks.Task<List<DiscoveryResponseInner>> GetPingServiceEndpointsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of List&lt;PingEndpointsInner&gt;</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<List<PingEndpointsInner>> GetPingServiceEndpointsDeprecatedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        /// Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;DiscoveryResponseInner&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<DiscoveryResponseInner>>> GetPingServiceEndpointsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (List&lt;PingEndpointsInner&gt;)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<List<PingEndpointsInner>>> GetPingServiceEndpointsDeprecatedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -220,22 +224,24 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        ///  Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;DiscoveryResponseInner&gt;</returns>
-        public List<DiscoveryResponseInner> GetPingServiceEndpoints()
+        /// <returns>List&lt;PingEndpointsInner&gt;</returns>
+        [Obsolete]
+        public List<PingEndpointsInner> GetPingServiceEndpointsDeprecated()
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<DiscoveryResponseInner>> localVarResponse = GetPingServiceEndpointsWithHttpInfo();
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<PingEndpointsInner>> localVarResponse = GetPingServiceEndpointsDeprecatedWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        ///  Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;DiscoveryResponseInner&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<DiscoveryResponseInner>> GetPingServiceEndpointsWithHttpInfo()
+        /// <returns>ApiResponse of List&lt;PingEndpointsInner&gt;</returns>
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<PingEndpointsInner>> GetPingServiceEndpointsDeprecatedWithHttpInfo()
         {
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -256,11 +262,11 @@ namespace Hathora.Cloud.Sdk.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<DiscoveryResponseInner>>("/discovery/v1/ping", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<List<PingEndpointsInner>>("/discovery/v1/ping", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetPingServiceEndpoints", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPingServiceEndpointsDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -268,29 +274,31 @@ namespace Hathora.Cloud.Sdk.Api
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        ///  Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;DiscoveryResponseInner&gt;</returns>
-        public async System.Threading.Tasks.Task<List<DiscoveryResponseInner>> GetPingServiceEndpointsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of List&lt;PingEndpointsInner&gt;</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<List<PingEndpointsInner>> GetPingServiceEndpointsDeprecatedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = GetPingServiceEndpointsWithHttpInfoAsync(cancellationToken);
+            var task = GetPingServiceEndpointsDeprecatedWithHttpInfoAsync(cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<DiscoveryResponseInner>> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<PingEndpointsInner>> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<DiscoveryResponseInner>> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<PingEndpointsInner>> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+        ///  Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;DiscoveryResponseInner&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<DiscoveryResponseInner>>> GetPingServiceEndpointsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (List&lt;PingEndpointsInner&gt;)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<PingEndpointsInner>>> GetPingServiceEndpointsDeprecatedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -314,7 +322,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<List<DiscoveryResponseInner>>("/discovery/v1/ping", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<List<PingEndpointsInner>>("/discovery/v1/ping", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -324,7 +332,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetPingServiceEndpoints", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPingServiceEndpointsDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

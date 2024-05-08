@@ -31,8 +31,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
-        /// <returns>VerificationEmailResponse</returns>
-        VerificationEmailResponse SendVerificationEmail(VerificationEmailRequest verificationEmailRequest);
+        /// <returns>VerificationEmailSuccess</returns>
+        VerificationEmailSuccess SendVerificationEmail(VerificationEmailRequest verificationEmailRequest);
 
         /// <summary>
         /// 
@@ -42,8 +42,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
-        /// <returns>ApiResponse of VerificationEmailResponse</returns>
-        ApiResponse<VerificationEmailResponse> SendVerificationEmailWithHttpInfo(VerificationEmailRequest verificationEmailRequest);
+        /// <returns>ApiResponse of VerificationEmailSuccess</returns>
+        ApiResponse<VerificationEmailSuccess> SendVerificationEmailWithHttpInfo(VerificationEmailRequest verificationEmailRequest);
         #endregion Synchronous Operations
     }
 
@@ -62,8 +62,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of VerificationEmailResponse</returns>
-        System.Threading.Tasks.Task<VerificationEmailResponse> SendVerificationEmailAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of VerificationEmailSuccess</returns>
+        System.Threading.Tasks.Task<VerificationEmailSuccess> SendVerificationEmailAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -74,8 +74,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (VerificationEmailResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<VerificationEmailResponse>> SendVerificationEmailWithHttpInfoAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (VerificationEmailSuccess)</returns>
+        System.Threading.Tasks.Task<ApiResponse<VerificationEmailSuccess>> SendVerificationEmailWithHttpInfoAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -225,10 +225,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
-        /// <returns>VerificationEmailResponse</returns>
-        public VerificationEmailResponse SendVerificationEmail(VerificationEmailRequest verificationEmailRequest)
+        /// <returns>VerificationEmailSuccess</returns>
+        public VerificationEmailSuccess SendVerificationEmail(VerificationEmailRequest verificationEmailRequest)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailResponse> localVarResponse = SendVerificationEmailWithHttpInfo(verificationEmailRequest);
+            Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailSuccess> localVarResponse = SendVerificationEmailWithHttpInfo(verificationEmailRequest);
             return localVarResponse.Data;
         }
 
@@ -237,8 +237,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// </summary>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
-        /// <returns>ApiResponse of VerificationEmailResponse</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailResponse> SendVerificationEmailWithHttpInfo(VerificationEmailRequest verificationEmailRequest)
+        /// <returns>ApiResponse of VerificationEmailSuccess</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailSuccess> SendVerificationEmailWithHttpInfo(VerificationEmailRequest verificationEmailRequest)
         {
             // verify the required parameter 'verificationEmailRequest' is set
             if (verificationEmailRequest == null)
@@ -265,7 +265,7 @@ namespace Hathora.Cloud.Sdk.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<VerificationEmailResponse>("/management/v1/sendverificationemail", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<VerificationEmailSuccess>("/management/v1/sendverificationemail", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -282,14 +282,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of VerificationEmailResponse</returns>
-        public async System.Threading.Tasks.Task<VerificationEmailResponse> SendVerificationEmailAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of VerificationEmailSuccess</returns>
+        public async System.Threading.Tasks.Task<VerificationEmailSuccess> SendVerificationEmailAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = SendVerificationEmailWithHttpInfoAsync(verificationEmailRequest, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailResponse> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailSuccess> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailResponse> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailSuccess> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -300,8 +300,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="verificationEmailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (VerificationEmailResponse)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailResponse>> SendVerificationEmailWithHttpInfoAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (VerificationEmailSuccess)</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<VerificationEmailSuccess>> SendVerificationEmailWithHttpInfoAsync(VerificationEmailRequest verificationEmailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'verificationEmailRequest' is set
             if (verificationEmailRequest == null)
@@ -331,7 +331,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.PostAsync<VerificationEmailResponse>("/management/v1/sendverificationemail", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.PostAsync<VerificationEmailSuccess>("/management/v1/sendverificationemail", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);

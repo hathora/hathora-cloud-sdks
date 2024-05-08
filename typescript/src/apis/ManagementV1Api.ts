@@ -17,15 +17,15 @@ import * as runtime from '../runtime';
 import type {
   ApiError,
   VerificationEmailRequest,
-  VerificationEmailResponse,
+  VerificationEmailSuccess,
 } from '../models';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
     VerificationEmailRequestFromJSON,
     VerificationEmailRequestToJSON,
-    VerificationEmailResponseFromJSON,
-    VerificationEmailResponseToJSON,
+    VerificationEmailSuccessFromJSON,
+    VerificationEmailSuccessToJSON,
 } from '../models';
 
 export interface SendVerificationEmailRequest {
@@ -46,11 +46,11 @@ export interface ManagementV1ApiInterface {
      * @throws {RequiredError}
      * @memberof ManagementV1ApiInterface
      */
-    sendVerificationEmailRaw(requestParameters: SendVerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationEmailResponse>>;
+    sendVerificationEmailRaw(requestParameters: SendVerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationEmailSuccess>>;
 
     /**
      */
-    sendVerificationEmail(verificationEmailRequest: VerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerificationEmailResponse>;
+    sendVerificationEmail(verificationEmailRequest: VerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerificationEmailSuccess>;
 
 }
 
@@ -61,7 +61,7 @@ export class ManagementV1Api extends runtime.BaseAPI implements ManagementV1ApiI
 
     /**
      */
-    async sendVerificationEmailRaw(requestParameters: SendVerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationEmailResponse>> {
+    async sendVerificationEmailRaw(requestParameters: SendVerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VerificationEmailSuccess>> {
         if (requestParameters.verificationEmailRequest === null || requestParameters.verificationEmailRequest === undefined) {
             throw new runtime.RequiredError('verificationEmailRequest','Required parameter requestParameters.verificationEmailRequest was null or undefined when calling sendVerificationEmail.');
         }
@@ -80,12 +80,12 @@ export class ManagementV1Api extends runtime.BaseAPI implements ManagementV1ApiI
             body: VerificationEmailRequestToJSON(requestParameters.verificationEmailRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => VerificationEmailResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => VerificationEmailSuccessFromJSON(jsonValue));
     }
 
     /**
      */
-    async sendVerificationEmail(verificationEmailRequest: VerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerificationEmailResponse> {
+    async sendVerificationEmail(verificationEmailRequest: VerificationEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VerificationEmailSuccess> {
         const response = await this.sendVerificationEmailRaw({ verificationEmailRequest: verificationEmailRequest }, initOverrides);
         return await response.value();
     }

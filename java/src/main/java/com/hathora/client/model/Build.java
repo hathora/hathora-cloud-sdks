@@ -64,7 +64,7 @@ public class Build {
 
   public static final String SERIALIZED_NAME_IMAGE_SIZE = "imageSize";
   @SerializedName(SERIALIZED_NAME_IMAGE_SIZE)
-  private Integer imageSize;
+  private Long imageSize;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -108,7 +108,7 @@ public class Build {
   }
 
    /**
-   * Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+   * Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
    * @return buildTag
   **/
   @javax.annotation.Nullable
@@ -155,7 +155,7 @@ public class Build {
   }
 
 
-  public Build imageSize(Integer imageSize) {
+  public Build imageSize(Long imageSize) {
     
     this.imageSize = imageSize;
     return this;
@@ -167,12 +167,12 @@ public class Build {
   **/
   @javax.annotation.Nonnull
 
-  public Integer getImageSize() {
+  public Long getImageSize() {
     return imageSize;
   }
 
 
-  public void setImageSize(Integer imageSize) {
+  public void setImageSize(Long imageSize) {
     this.imageSize = imageSize;
   }
 
@@ -228,7 +228,7 @@ public class Build {
   }
 
    /**
-   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
+   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing.
    * @return finishedAt
   **/
   @javax.annotation.Nullable
@@ -250,7 +250,7 @@ public class Build {
   }
 
    /**
-   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
+   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.
    * @return startedAt
   **/
   @javax.annotation.Nullable
@@ -272,7 +272,7 @@ public class Build {
   }
 
    /**
-   * When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
+   * When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.
    * @return createdAt
   **/
   @javax.annotation.Nonnull

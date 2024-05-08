@@ -4,16 +4,16 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getPingServiceEndpoints**](DiscoveryV1Api.md#getPingServiceEndpoints) | **GET** /discovery/v1/ping |  |
+| [**getPingServiceEndpointsDeprecated**](DiscoveryV1Api.md#getPingServiceEndpointsDeprecated) | **GET** /discovery/v1/ping |  |
 
 
-<a name="getPingServiceEndpoints"></a>
-# **getPingServiceEndpoints**
-> List&lt;DiscoveryResponseInner&gt; getPingServiceEndpoints()
+<a name="getPingServiceEndpointsDeprecated"></a>
+# **getPingServiceEndpointsDeprecated**
+> List&lt;PingEndpointsInner&gt; getPingServiceEndpointsDeprecated()
 
 
 
-Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
 
 ### Example
 ```java
@@ -31,10 +31,10 @@ public class Example {
 
     DiscoveryV1Api apiInstance = new DiscoveryV1Api(defaultClient);
     try {
-      List<DiscoveryResponseInner> result = apiInstance.getPingServiceEndpoints();
+      List<PingEndpointsInner> result = apiInstance.getPingServiceEndpointsDeprecated();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling DiscoveryV1Api#getPingServiceEndpoints");
+      System.err.println("Exception when calling DiscoveryV1Api#getPingServiceEndpointsDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;DiscoveryResponseInner&gt;**](DiscoveryResponseInner.md)
+[**List&lt;PingEndpointsInner&gt;**](PingEndpointsInner.md)
 
 ### Authorization
 

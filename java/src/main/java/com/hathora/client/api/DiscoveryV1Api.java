@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.hathora.client.model.DiscoveryResponseInner;
+import com.hathora.client.model.PingEndpointsInner;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class DiscoveryV1Api {
     }
 
     /**
-     * Build call for getPingServiceEndpoints
+     * Build call for getPingServiceEndpointsDeprecated
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -83,8 +83,10 @@ public class DiscoveryV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getPingServiceEndpointsCall(final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getPingServiceEndpointsDeprecatedCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -128,48 +130,53 @@ public class DiscoveryV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPingServiceEndpointsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getPingServiceEndpointsCall(_callback);
+    private okhttp3.Call getPingServiceEndpointsDeprecatedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPingServiceEndpointsDeprecatedCall(_callback);
 
     }
 
     /**
      * 
-     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
-     * @return List&lt;DiscoveryResponseInner&gt;
+     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+     * @return List&lt;PingEndpointsInner&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public List<DiscoveryResponseInner> getPingServiceEndpoints() throws ApiException {
-        ApiResponse<List<DiscoveryResponseInner>> localVarResp = getPingServiceEndpointsWithHttpInfo();
+    @Deprecated
+    public List<PingEndpointsInner> getPingServiceEndpointsDeprecated() throws ApiException {
+        ApiResponse<List<PingEndpointsInner>> localVarResp = getPingServiceEndpointsDeprecatedWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
-     * @return ApiResponse&lt;List&lt;DiscoveryResponseInner&gt;&gt;
+     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+     * @return ApiResponse&lt;List&lt;PingEndpointsInner&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<List<DiscoveryResponseInner>> getPingServiceEndpointsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getPingServiceEndpointsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<DiscoveryResponseInner>>(){}.getType();
+    @Deprecated
+    public ApiResponse<List<PingEndpointsInner>> getPingServiceEndpointsDeprecatedWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPingServiceEndpointsDeprecatedValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<List<PingEndpointsInner>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Returns an array of all regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
+     * Returns an array of V1 regions with a host and port that a client can directly ping. Open a websocket connection to &#x60;wss://&lt;host&gt;:&lt;port&gt;/ws&#x60; and send a packet. To calculate ping, measure the time it takes to get an echo packet back.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -178,11 +185,13 @@ public class DiscoveryV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getPingServiceEndpointsAsync(final ApiCallback<List<DiscoveryResponseInner>> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getPingServiceEndpointsDeprecatedAsync(final ApiCallback<List<PingEndpointsInner>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPingServiceEndpointsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<DiscoveryResponseInner>>(){}.getType();
+        okhttp3.Call localVarCall = getPingServiceEndpointsDeprecatedValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<List<PingEndpointsInner>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

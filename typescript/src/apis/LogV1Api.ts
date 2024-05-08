@@ -66,12 +66,12 @@ export interface LogV1ApiInterface {
      * @throws {RequiredError}
      * @memberof LogV1ApiInterface
      */
-    downloadLogForProcessRaw(requestParameters: DownloadLogForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    downloadLogForProcessRaw(requestParameters: DownloadLogForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>>;
 
     /**
      * Download entire log file for a stopped process.
      */
-    downloadLogForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    downloadLogForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob>;
 
     /**
      * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
@@ -84,12 +84,12 @@ export interface LogV1ApiInterface {
      * @throws {RequiredError}
      * @memberof LogV1ApiInterface
      */
-    getLogsForAppRaw(requestParameters: GetLogsForAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    getLogsForAppRaw(requestParameters: GetLogsForAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>>;
 
     /**
      * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
-    getLogsForApp(appId: string, follow?: boolean, tailLines?: number, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    getLogsForApp(appId: string, follow?: boolean, tailLines?: number, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob>;
 
     /**
      * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
@@ -102,12 +102,12 @@ export interface LogV1ApiInterface {
      * @throws {RequiredError}
      * @memberof LogV1ApiInterface
      */
-    getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>>;
 
     /**
      * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
      */
-    getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob>;
 
     /**
      * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
@@ -119,12 +119,12 @@ export interface LogV1ApiInterface {
      * @throws {RequiredError}
      * @memberof LogV1ApiInterface
      */
-    getLogsForProcessRaw(requestParameters: GetLogsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    getLogsForProcessRaw(requestParameters: GetLogsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>>;
 
     /**
      * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
      */
-    getLogsForProcess(appId: string, processId: string, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    getLogsForProcess(appId: string, processId: string, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob>;
 
 }
 
@@ -136,7 +136,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
     /**
      * Download entire log file for a stopped process.
      */
-    async downloadLogForProcessRaw(requestParameters: DownloadLogForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async downloadLogForProcessRaw(requestParameters: DownloadLogForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling downloadLogForProcess.');
         }
@@ -164,17 +164,13 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<string>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.BlobApiResponse(response);
     }
 
     /**
      * Download entire log file for a stopped process.
      */
-    async downloadLogForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    async downloadLogForProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob> {
         const response = await this.downloadLogForProcessRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
     }
@@ -182,7 +178,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
     /**
      * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
-    async getLogsForAppRaw(requestParameters: GetLogsForAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async getLogsForAppRaw(requestParameters: GetLogsForAppRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getLogsForApp.');
         }
@@ -218,17 +214,13 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<string>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.BlobApiResponse(response);
     }
 
     /**
      * Returns a stream of logs for an [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
      */
-    async getLogsForApp(appId: string, follow?: boolean, tailLines?: number, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    async getLogsForApp(appId: string, follow?: boolean, tailLines?: number, region?: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob> {
         const response = await this.getLogsForAppRaw({ appId: appId, follow: follow, tailLines: tailLines, region: region }, initOverrides);
         return await response.value();
     }
@@ -236,7 +228,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
     /**
      * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
      */
-    async getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async getLogsForDeploymentRaw(requestParameters: GetLogsForDeploymentRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getLogsForDeployment.');
         }
@@ -272,17 +264,13 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<string>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.BlobApiResponse(response);
     }
 
     /**
      * Returns a stream of logs for a [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) using `appId` and `deploymentId`.
      */
-    async getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    async getLogsForDeployment(appId: string, deploymentId: number, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob> {
         const response = await this.getLogsForDeploymentRaw({ appId: appId, deploymentId: deploymentId, follow: follow, tailLines: tailLines }, initOverrides);
         return await response.value();
     }
@@ -290,7 +278,7 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
     /**
      * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
      */
-    async getLogsForProcessRaw(requestParameters: GetLogsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async getLogsForProcessRaw(requestParameters: GetLogsForProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getLogsForProcess.');
         }
@@ -326,17 +314,13 @@ export class LogV1Api extends runtime.BaseAPI implements LogV1ApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<string>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.BlobApiResponse(response);
     }
 
     /**
      * Returns a stream of logs for a [process](https://hathora.dev/docs/concepts/hathora-entities#process) using `appId` and `processId`.
      */
-    async getLogsForProcess(appId: string, processId: string, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+    async getLogsForProcess(appId: string, processId: string, follow?: boolean, tailLines?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob> {
         const response = await this.getLogsForProcessRaw({ appId: appId, processId: processId, follow: follow, tailLines: tailLines }, initOverrides);
         return await response.value();
     }

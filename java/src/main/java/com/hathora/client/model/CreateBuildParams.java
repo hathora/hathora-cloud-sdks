@@ -62,7 +62,7 @@ public class CreateBuildParams {
   }
 
    /**
-   * Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+   * Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
    * @return buildTag
   **/
   @javax.annotation.Nullable

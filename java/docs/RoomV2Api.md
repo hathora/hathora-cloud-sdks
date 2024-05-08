@@ -10,13 +10,13 @@ All URIs are relative to *https://api.hathora.dev*
 | [**getConnectionInfo**](RoomV2Api.md#getConnectionInfo) | **GET** /rooms/v2/{appId}/connectioninfo/{roomId} |  |
 | [**getInactiveRoomsForProcess**](RoomV2Api.md#getInactiveRoomsForProcess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive |  |
 | [**getRoomInfo**](RoomV2Api.md#getRoomInfo) | **GET** /rooms/v2/{appId}/info/{roomId} |  |
-| [**suspendRoom**](RoomV2Api.md#suspendRoom) | **POST** /rooms/v2/{appId}/suspend/{roomId} |  |
+| [**suspendRoomV2Deprecated**](RoomV2Api.md#suspendRoomV2Deprecated) | **POST** /rooms/v2/{appId}/suspend/{roomId} |  |
 | [**updateRoomConfig**](RoomV2Api.md#updateRoomConfig) | **POST** /rooms/v2/{appId}/update/{roomId} |  |
 
 
 <a name="createRoom"></a>
 # **createRoom**
-> CreateRoomResponse createRoom(appId, createRoomParams, roomId)
+> RoomConnectionData createRoom(appId, createRoomParams, roomId)
 
 
 
@@ -46,7 +46,7 @@ public class Example {
     CreateRoomParams createRoomParams = new CreateRoomParams(); // CreateRoomParams | 
     String roomId = "roomId_example"; // String | 
     try {
-      CreateRoomResponse result = apiInstance.createRoom(appId, createRoomParams, roomId);
+      RoomConnectionData result = apiInstance.createRoom(appId, createRoomParams, roomId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling RoomV2Api#createRoom");
@@ -69,7 +69,7 @@ public class Example {
 
 ### Return type
 
-[**CreateRoomResponse**](CreateRoomResponse.md)
+[**RoomConnectionData**](RoomConnectionData.md)
 
 ### Authorization
 
@@ -89,6 +89,7 @@ public class Example {
 | **402** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 <a name="destroyRoom"></a>
@@ -160,6 +161,7 @@ null (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 <a name="getActiveRoomsForProcess"></a>
@@ -443,9 +445,9 @@ public class Example {
 | **401** |  |  -  |
 | **404** |  |  -  |
 
-<a name="suspendRoom"></a>
-# **suspendRoom**
-> suspendRoom(appId, roomId)
+<a name="suspendRoomV2Deprecated"></a>
+# **suspendRoomV2Deprecated**
+> suspendRoomV2Deprecated(appId, roomId)
 
 
 
@@ -474,9 +476,9 @@ public class Example {
     String appId = "appId_example"; // String | 
     String roomId = "roomId_example"; // String | 
     try {
-      apiInstance.suspendRoom(appId, roomId);
+      apiInstance.suspendRoomV2Deprecated(appId, roomId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RoomV2Api#suspendRoom");
+      System.err.println("Exception when calling RoomV2Api#suspendRoomV2Deprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -512,6 +514,7 @@ null (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 <a name="updateRoomConfig"></a>
@@ -583,5 +586,6 @@ null (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 

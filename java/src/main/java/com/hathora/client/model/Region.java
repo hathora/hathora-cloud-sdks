@@ -49,7 +49,9 @@ public enum Region {
   
   SYDNEY("Sydney"),
   
-  SAO_PAULO("Sao_Paulo");
+  SAO_PAULO("Sao_Paulo"),
+  
+  DALLAS("Dallas");
 
   private String value;
 

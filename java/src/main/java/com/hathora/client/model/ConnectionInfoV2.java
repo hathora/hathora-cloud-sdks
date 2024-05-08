@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hathora.client.model.ExposedPort;
+import com.hathora.client.model.RoomReadyStatus;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,56 +60,9 @@ public class ConnectionInfoV2 {
   @SerializedName(SERIALIZED_NAME_EXPOSED_PORT)
   private ExposedPort exposedPort;
 
-  /**
-   * &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    STARTING("starting"),
-    
-    ACTIVE("active");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  private RoomReadyStatus status;
 
   public static final String SERIALIZED_NAME_ROOM_ID = "roomId";
   @SerializedName(SERIALIZED_NAME_ROOM_ID)
@@ -169,24 +123,24 @@ public class ConnectionInfoV2 {
   }
 
 
-  public ConnectionInfoV2 status(StatusEnum status) {
+  public ConnectionInfoV2 status(RoomReadyStatus status) {
     
     this.status = status;
     return this;
   }
 
    /**
-   * &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
+   * Get status
    * @return status
   **/
   @javax.annotation.Nonnull
 
-  public StatusEnum getStatus() {
+  public RoomReadyStatus getStatus() {
     return status;
   }
 
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(RoomReadyStatus status) {
     this.status = status;
   }
 
@@ -354,9 +308,6 @@ public class ConnectionInfoV2 {
       // validate the optional field `exposedPort`
       if (jsonObj.get("exposedPort") != null && !jsonObj.get("exposedPort").isJsonNull()) {
         ExposedPort.validateJsonObject(jsonObj.getAsJsonObject("exposedPort"));
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if (!jsonObj.get("roomId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));

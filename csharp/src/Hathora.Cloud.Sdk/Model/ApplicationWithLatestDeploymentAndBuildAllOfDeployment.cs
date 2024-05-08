@@ -30,45 +30,6 @@ namespace Hathora.Cloud.Sdk.Model
     [DataContract(Name = "ApplicationWithLatestDeploymentAndBuild_allOf_deployment")]
     public partial class ApplicationWithLatestDeploymentAndBuildAllOfDeployment : IEquatable<ApplicationWithLatestDeploymentAndBuildAllOfDeployment>
     {
-
-        /// <summary>
-        /// Gets or Sets PlanName
-        /// </summary>
-        [DataMember(Name = "planName", IsRequired = true, EmitDefaultValue = true)]
-        public PlanName PlanName { get; set; }
-        /// <summary>
-        /// Defines TransportType
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum TransportTypeEnum
-        {
-            /// <summary>
-            /// Enum Tcp for value: tcp
-            /// </summary>
-            [EnumMember(Value = "tcp")]
-            Tcp = 1,
-
-            /// <summary>
-            /// Enum Udp for value: udp
-            /// </summary>
-            [EnumMember(Value = "udp")]
-            Udp = 2,
-
-            /// <summary>
-            /// Enum Tls for value: tls
-            /// </summary>
-            [EnumMember(Value = "tls")]
-            Tls = 3
-
-        }
-
-
-        /// <summary>
-        /// Gets or Sets TransportType
-        /// </summary>
-        [DataMember(Name = "transportType", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public TransportTypeEnum TransportType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationWithLatestDeploymentAndBuildAllOfDeployment" /> class.
         /// </summary>
@@ -80,14 +41,11 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationWithLatestDeploymentAndBuildAllOfDeployment" /> class.
         /// </summary>
-        /// <param name="idleTimeoutEnabled">Option to shut down processes that have had no new connections or rooms for five minutes. (default to true).</param>
+        /// <param name="idleTimeoutEnabled">Option to shut down processes that have had no new connections or rooms for five minutes. (required).</param>
         /// <param name="env">The environment variable that our process will have access to at runtime. (required).</param>
         /// <param name="roomsPerProcess">Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. (required).</param>
-        /// <param name="planName">planName (required).</param>
         /// <param name="additionalContainerPorts">Additional ports your server listens on. (required).</param>
         /// <param name="defaultContainerPort">defaultContainerPort (required).</param>
-        /// <param name="transportType">transportType (required).</param>
-        /// <param name="containerPort">containerPort (required).</param>
         /// <param name="createdAt">When the deployment was created. (required).</param>
         /// <param name="createdBy">UserId or email address for the user that created the deployment. (required).</param>
         /// <param name="requestedMemoryMB">The amount of memory allocated to your process. (required).</param>
@@ -96,8 +54,9 @@ namespace Hathora.Cloud.Sdk.Model
         /// <param name="buildId">System generated id for a build. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
         /// <param name="build">build (required).</param>
-        public ApplicationWithLatestDeploymentAndBuildAllOfDeployment(bool idleTimeoutEnabled = true, List<DeploymentEnvInner> env = default(List<DeploymentEnvInner>), int roomsPerProcess = default(int), PlanName planName = default(PlanName), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), TransportTypeEnum transportType = default(TransportTypeEnum), double containerPort = default(double), DateTime createdAt = default(DateTime), string createdBy = default(string), int requestedMemoryMB = default(int), double requestedCPU = default(double), int deploymentId = default(int), int buildId = default(int), string appId = default(string), Build build = default(Build))
+        public ApplicationWithLatestDeploymentAndBuildAllOfDeployment(bool idleTimeoutEnabled = default(bool), List<DeploymentV2EnvInner> env = default(List<DeploymentV2EnvInner>), int roomsPerProcess = default(int), List<ContainerPort> additionalContainerPorts = default(List<ContainerPort>), ContainerPort defaultContainerPort = default(ContainerPort), DateTime createdAt = default(DateTime), string createdBy = default(string), double requestedMemoryMB = default(double), double requestedCPU = default(double), int deploymentId = default(int), int buildId = default(int), string appId = default(string), Build build = default(Build))
         {
+            this.IdleTimeoutEnabled = idleTimeoutEnabled;
             // to ensure "env" is required (not null)
             if (env == null)
             {
@@ -105,7 +64,6 @@ namespace Hathora.Cloud.Sdk.Model
             }
             this.Env = env;
             this.RoomsPerProcess = roomsPerProcess;
-            this.PlanName = planName;
             // to ensure "additionalContainerPorts" is required (not null)
             if (additionalContainerPorts == null)
             {
@@ -118,8 +76,6 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("defaultContainerPort is a required property for ApplicationWithLatestDeploymentAndBuildAllOfDeployment and cannot be null");
             }
             this.DefaultContainerPort = defaultContainerPort;
-            this.TransportType = transportType;
-            this.ContainerPort = containerPort;
             this.CreatedAt = createdAt;
             // to ensure "createdBy" is required (not null)
             if (createdBy == null)
@@ -143,7 +99,6 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("build is a required property for ApplicationWithLatestDeploymentAndBuildAllOfDeployment and cannot be null");
             }
             this.Build = build;
-            this.IdleTimeoutEnabled = idleTimeoutEnabled;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -151,7 +106,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// Option to shut down processes that have had no new connections or rooms for five minutes.
         /// </summary>
         /// <value>Option to shut down processes that have had no new connections or rooms for five minutes.</value>
-        [DataMember(Name = "idleTimeoutEnabled", EmitDefaultValue = true)]
+        [DataMember(Name = "idleTimeoutEnabled", IsRequired = true, EmitDefaultValue = true)]
         public bool IdleTimeoutEnabled { get; set; }
 
         /// <summary>
@@ -159,7 +114,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <value>The environment variable that our process will have access to at runtime.</value>
         [DataMember(Name = "env", IsRequired = true, EmitDefaultValue = true)]
-        public List<DeploymentEnvInner> Env { get; set; }
+        public List<DeploymentV2EnvInner> Env { get; set; }
 
         /// <summary>
         /// Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
@@ -183,13 +138,6 @@ namespace Hathora.Cloud.Sdk.Model
         public ContainerPort DefaultContainerPort { get; set; }
 
         /// <summary>
-        /// Gets or Sets ContainerPort
-        /// </summary>
-        [DataMember(Name = "containerPort", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public double ContainerPort { get; set; }
-
-        /// <summary>
         /// When the deployment was created.
         /// </summary>
         /// <value>When the deployment was created.</value>
@@ -210,7 +158,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// <value>The amount of memory allocated to your process.</value>
         /// <example>1024</example>
         [DataMember(Name = "requestedMemoryMB", IsRequired = true, EmitDefaultValue = true)]
-        public int RequestedMemoryMB { get; set; }
+        public double RequestedMemoryMB { get; set; }
 
         /// <summary>
         /// The number of cores allocated to your process.
@@ -267,11 +215,8 @@ namespace Hathora.Cloud.Sdk.Model
             sb.Append("  IdleTimeoutEnabled: ").Append(IdleTimeoutEnabled).Append("\n");
             sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("  RoomsPerProcess: ").Append(RoomsPerProcess).Append("\n");
-            sb.Append("  PlanName: ").Append(PlanName).Append("\n");
             sb.Append("  AdditionalContainerPorts: ").Append(AdditionalContainerPorts).Append("\n");
             sb.Append("  DefaultContainerPort: ").Append(DefaultContainerPort).Append("\n");
-            sb.Append("  TransportType: ").Append(TransportType).Append("\n");
-            sb.Append("  ContainerPort: ").Append(ContainerPort).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  RequestedMemoryMB: ").Append(RequestedMemoryMB).Append("\n");
@@ -331,10 +276,6 @@ namespace Hathora.Cloud.Sdk.Model
                     this.RoomsPerProcess.Equals(input.RoomsPerProcess)
                 ) && 
                 (
-                    this.PlanName == input.PlanName ||
-                    this.PlanName.Equals(input.PlanName)
-                ) && 
-                (
                     this.AdditionalContainerPorts == input.AdditionalContainerPorts ||
                     this.AdditionalContainerPorts != null &&
                     input.AdditionalContainerPorts != null &&
@@ -344,14 +285,6 @@ namespace Hathora.Cloud.Sdk.Model
                     this.DefaultContainerPort == input.DefaultContainerPort ||
                     (this.DefaultContainerPort != null &&
                     this.DefaultContainerPort.Equals(input.DefaultContainerPort))
-                ) && 
-                (
-                    this.TransportType == input.TransportType ||
-                    this.TransportType.Equals(input.TransportType)
-                ) && 
-                (
-                    this.ContainerPort == input.ContainerPort ||
-                    this.ContainerPort.Equals(input.ContainerPort)
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -407,7 +340,6 @@ namespace Hathora.Cloud.Sdk.Model
                     hashCode = (hashCode * 59) + this.Env.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.RoomsPerProcess.GetHashCode();
-                hashCode = (hashCode * 59) + this.PlanName.GetHashCode();
                 if (this.AdditionalContainerPorts != null)
                 {
                     hashCode = (hashCode * 59) + this.AdditionalContainerPorts.GetHashCode();
@@ -416,8 +348,6 @@ namespace Hathora.Cloud.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.DefaultContainerPort.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.TransportType.GetHashCode();
-                hashCode = (hashCode * 59) + this.ContainerPort.GetHashCode();
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();

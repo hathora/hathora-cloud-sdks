@@ -10,12 +10,12 @@ All URIs are relative to *https://api.hathora.dev*
 | [**GetConnectionInfo**](RoomV2Api.md#getconnectioninfo) | **GET** /rooms/v2/{appId}/connectioninfo/{roomId} |  |
 | [**GetInactiveRoomsForProcess**](RoomV2Api.md#getinactiveroomsforprocess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive |  |
 | [**GetRoomInfo**](RoomV2Api.md#getroominfo) | **GET** /rooms/v2/{appId}/info/{roomId} |  |
-| [**SuspendRoom**](RoomV2Api.md#suspendroom) | **POST** /rooms/v2/{appId}/suspend/{roomId} |  |
+| [**SuspendRoomV2Deprecated**](RoomV2Api.md#suspendroomv2deprecated) | **POST** /rooms/v2/{appId}/suspend/{roomId} |  |
 | [**UpdateRoomConfig**](RoomV2Api.md#updateroomconfig) | **POST** /rooms/v2/{appId}/update/{roomId} |  |
 
 <a name="createroom"></a>
 # **CreateRoom**
-> CreateRoomResponse CreateRoom (string appId, CreateRoomParams createRoomParams, string roomId = null)
+> RoomConnectionData CreateRoom (string appId, CreateRoomParams createRoomParams, string roomId = null)
 
 
 
@@ -47,7 +47,7 @@ namespace Example
 
             try
             {
-                CreateRoomResponse result = apiInstance.CreateRoom(appId, createRoomParams, roomId);
+                RoomConnectionData result = apiInstance.CreateRoom(appId, createRoomParams, roomId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -67,7 +67,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<CreateRoomResponse> response = apiInstance.CreateRoomWithHttpInfo(appId, createRoomParams, roomId);
+    ApiResponse<RoomConnectionData> response = apiInstance.CreateRoomWithHttpInfo(appId, createRoomParams, roomId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -90,7 +90,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**CreateRoomResponse**](CreateRoomResponse.md)
+[**RoomConnectionData**](RoomConnectionData.md)
 
 ### Authorization
 
@@ -111,6 +111,7 @@ catch (ApiException e)
 | **402** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -204,6 +205,7 @@ void (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -591,9 +593,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="suspendroom"></a>
-# **SuspendRoom**
-> void SuspendRoom (string appId, string roomId)
+<a name="suspendroomv2deprecated"></a>
+# **SuspendRoomV2Deprecated**
+> void SuspendRoomV2Deprecated (string appId, string roomId)
 
 
 
@@ -609,7 +611,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class SuspendRoomExample
+    public class SuspendRoomV2DeprecatedExample
     {
         public static void Main()
         {
@@ -624,11 +626,11 @@ namespace Example
 
             try
             {
-                apiInstance.SuspendRoom(appId, roomId);
+                apiInstance.SuspendRoomV2Deprecated(appId, roomId);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling RoomV2Api.SuspendRoom: " + e.Message);
+                Debug.Print("Exception when calling RoomV2Api.SuspendRoomV2Deprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -637,17 +639,17 @@ namespace Example
 }
 ```
 
-#### Using the SuspendRoomWithHttpInfo variant
+#### Using the SuspendRoomV2DeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    apiInstance.SuspendRoomWithHttpInfo(appId, roomId);
+    apiInstance.SuspendRoomV2DeprecatedWithHttpInfo(appId, roomId);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling RoomV2Api.SuspendRoomWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling RoomV2Api.SuspendRoomV2DeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -680,6 +682,7 @@ void (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -773,6 +776,7 @@ void (empty response body)
 | **204** | No content |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -8,7 +8,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="sendverificationemail"></a>
 # **SendVerificationEmail**
-> VerificationEmailResponse SendVerificationEmail (VerificationEmailRequest verificationEmailRequest)
+> VerificationEmailSuccess SendVerificationEmail (VerificationEmailRequest verificationEmailRequest)
 
 
 
@@ -33,7 +33,7 @@ namespace Example
 
             try
             {
-                VerificationEmailResponse result = apiInstance.SendVerificationEmail(verificationEmailRequest);
+                VerificationEmailSuccess result = apiInstance.SendVerificationEmail(verificationEmailRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -53,7 +53,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<VerificationEmailResponse> response = apiInstance.SendVerificationEmailWithHttpInfo(verificationEmailRequest);
+    ApiResponse<VerificationEmailSuccess> response = apiInstance.SendVerificationEmailWithHttpInfo(verificationEmailRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -74,7 +74,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**VerificationEmailResponse**](VerificationEmailResponse.md)
+[**VerificationEmailSuccess**](VerificationEmailSuccess.md)
 
 ### Authorization
 
@@ -91,6 +91,7 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **401** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

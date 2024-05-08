@@ -28,9 +28,9 @@ import java.io.IOException;
 
 
 import com.hathora.client.model.ApiError;
-import com.hathora.client.model.LoginGoogleRequest;
-import com.hathora.client.model.LoginNicknameRequest;
-import com.hathora.client.model.LoginResponse;
+import com.hathora.client.model.GoogleIdTokenObject;
+import com.hathora.client.model.NicknameObject;
+import com.hathora.client.model.PlayerTokenObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -149,7 +149,7 @@ public class AuthV1Api {
      * 
      * Returns a unique player token for an anonymous user.
      * @param appId  (required)
-     * @return LoginResponse
+     * @return PlayerTokenObject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -158,8 +158,8 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public LoginResponse loginAnonymous(String appId) throws ApiException {
-        ApiResponse<LoginResponse> localVarResp = loginAnonymousWithHttpInfo(appId);
+    public PlayerTokenObject loginAnonymous(String appId) throws ApiException {
+        ApiResponse<PlayerTokenObject> localVarResp = loginAnonymousWithHttpInfo(appId);
         return localVarResp.getData();
     }
 
@@ -167,7 +167,7 @@ public class AuthV1Api {
      * 
      * Returns a unique player token for an anonymous user.
      * @param appId  (required)
-     * @return ApiResponse&lt;LoginResponse&gt;
+     * @return ApiResponse&lt;PlayerTokenObject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -176,9 +176,9 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoginResponse> loginAnonymousWithHttpInfo(String appId) throws ApiException {
+    public ApiResponse<PlayerTokenObject> loginAnonymousWithHttpInfo(String appId) throws ApiException {
         okhttp3.Call localVarCall = loginAnonymousValidateBeforeCall(appId, null);
-        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlayerTokenObject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -196,17 +196,17 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginAnonymousAsync(String appId, final ApiCallback<LoginResponse> _callback) throws ApiException {
+    public okhttp3.Call loginAnonymousAsync(String appId, final ApiCallback<PlayerTokenObject> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = loginAnonymousValidateBeforeCall(appId, _callback);
-        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlayerTokenObject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for loginGoogle
      * @param appId  (required)
-     * @param loginGoogleRequest  (required)
+     * @param googleIdTokenObject  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -218,7 +218,7 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginGoogleCall(String appId, LoginGoogleRequest loginGoogleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call loginGoogleCall(String appId, GoogleIdTokenObject googleIdTokenObject, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -232,7 +232,7 @@ public class AuthV1Api {
             basePath = null;
         }
 
-        Object localVarPostBody = loginGoogleRequest;
+        Object localVarPostBody = googleIdTokenObject;
 
         // create path and map variables
         String localVarPath = "/auth/v1/{appId}/login/google"
@@ -265,18 +265,18 @@ public class AuthV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call loginGoogleValidateBeforeCall(String appId, LoginGoogleRequest loginGoogleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call loginGoogleValidateBeforeCall(String appId, GoogleIdTokenObject googleIdTokenObject, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling loginGoogle(Async)");
         }
 
-        // verify the required parameter 'loginGoogleRequest' is set
-        if (loginGoogleRequest == null) {
-            throw new ApiException("Missing the required parameter 'loginGoogleRequest' when calling loginGoogle(Async)");
+        // verify the required parameter 'googleIdTokenObject' is set
+        if (googleIdTokenObject == null) {
+            throw new ApiException("Missing the required parameter 'googleIdTokenObject' when calling loginGoogle(Async)");
         }
 
-        return loginGoogleCall(appId, loginGoogleRequest, _callback);
+        return loginGoogleCall(appId, googleIdTokenObject, _callback);
 
     }
 
@@ -284,8 +284,8 @@ public class AuthV1Api {
      * 
      * Returns a unique player token using a Google-signed OIDC &#x60;idToken&#x60;.
      * @param appId  (required)
-     * @param loginGoogleRequest  (required)
-     * @return LoginResponse
+     * @param googleIdTokenObject  (required)
+     * @return PlayerTokenObject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -295,8 +295,8 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public LoginResponse loginGoogle(String appId, LoginGoogleRequest loginGoogleRequest) throws ApiException {
-        ApiResponse<LoginResponse> localVarResp = loginGoogleWithHttpInfo(appId, loginGoogleRequest);
+    public PlayerTokenObject loginGoogle(String appId, GoogleIdTokenObject googleIdTokenObject) throws ApiException {
+        ApiResponse<PlayerTokenObject> localVarResp = loginGoogleWithHttpInfo(appId, googleIdTokenObject);
         return localVarResp.getData();
     }
 
@@ -304,8 +304,8 @@ public class AuthV1Api {
      * 
      * Returns a unique player token using a Google-signed OIDC &#x60;idToken&#x60;.
      * @param appId  (required)
-     * @param loginGoogleRequest  (required)
-     * @return ApiResponse&lt;LoginResponse&gt;
+     * @param googleIdTokenObject  (required)
+     * @return ApiResponse&lt;PlayerTokenObject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -315,9 +315,9 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoginResponse> loginGoogleWithHttpInfo(String appId, LoginGoogleRequest loginGoogleRequest) throws ApiException {
-        okhttp3.Call localVarCall = loginGoogleValidateBeforeCall(appId, loginGoogleRequest, null);
-        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
+    public ApiResponse<PlayerTokenObject> loginGoogleWithHttpInfo(String appId, GoogleIdTokenObject googleIdTokenObject) throws ApiException {
+        okhttp3.Call localVarCall = loginGoogleValidateBeforeCall(appId, googleIdTokenObject, null);
+        Type localVarReturnType = new TypeToken<PlayerTokenObject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -325,7 +325,7 @@ public class AuthV1Api {
      *  (asynchronously)
      * Returns a unique player token using a Google-signed OIDC &#x60;idToken&#x60;.
      * @param appId  (required)
-     * @param loginGoogleRequest  (required)
+     * @param googleIdTokenObject  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -337,17 +337,17 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginGoogleAsync(String appId, LoginGoogleRequest loginGoogleRequest, final ApiCallback<LoginResponse> _callback) throws ApiException {
+    public okhttp3.Call loginGoogleAsync(String appId, GoogleIdTokenObject googleIdTokenObject, final ApiCallback<PlayerTokenObject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = loginGoogleValidateBeforeCall(appId, loginGoogleRequest, _callback);
-        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
+        okhttp3.Call localVarCall = loginGoogleValidateBeforeCall(appId, googleIdTokenObject, _callback);
+        Type localVarReturnType = new TypeToken<PlayerTokenObject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for loginNickname
      * @param appId  (required)
-     * @param loginNicknameRequest  (required)
+     * @param nicknameObject  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -358,7 +358,7 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginNicknameCall(String appId, LoginNicknameRequest loginNicknameRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call loginNicknameCall(String appId, NicknameObject nicknameObject, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -372,7 +372,7 @@ public class AuthV1Api {
             basePath = null;
         }
 
-        Object localVarPostBody = loginNicknameRequest;
+        Object localVarPostBody = nicknameObject;
 
         // create path and map variables
         String localVarPath = "/auth/v1/{appId}/login/nickname"
@@ -405,18 +405,18 @@ public class AuthV1Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call loginNicknameValidateBeforeCall(String appId, LoginNicknameRequest loginNicknameRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call loginNicknameValidateBeforeCall(String appId, NicknameObject nicknameObject, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
             throw new ApiException("Missing the required parameter 'appId' when calling loginNickname(Async)");
         }
 
-        // verify the required parameter 'loginNicknameRequest' is set
-        if (loginNicknameRequest == null) {
-            throw new ApiException("Missing the required parameter 'loginNicknameRequest' when calling loginNickname(Async)");
+        // verify the required parameter 'nicknameObject' is set
+        if (nicknameObject == null) {
+            throw new ApiException("Missing the required parameter 'nicknameObject' when calling loginNickname(Async)");
         }
 
-        return loginNicknameCall(appId, loginNicknameRequest, _callback);
+        return loginNicknameCall(appId, nicknameObject, _callback);
 
     }
 
@@ -424,8 +424,8 @@ public class AuthV1Api {
      * 
      * Returns a unique player token with a specified nickname for a user.
      * @param appId  (required)
-     * @param loginNicknameRequest  (required)
-     * @return LoginResponse
+     * @param nicknameObject  (required)
+     * @return PlayerTokenObject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -434,8 +434,8 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public LoginResponse loginNickname(String appId, LoginNicknameRequest loginNicknameRequest) throws ApiException {
-        ApiResponse<LoginResponse> localVarResp = loginNicknameWithHttpInfo(appId, loginNicknameRequest);
+    public PlayerTokenObject loginNickname(String appId, NicknameObject nicknameObject) throws ApiException {
+        ApiResponse<PlayerTokenObject> localVarResp = loginNicknameWithHttpInfo(appId, nicknameObject);
         return localVarResp.getData();
     }
 
@@ -443,8 +443,8 @@ public class AuthV1Api {
      * 
      * Returns a unique player token with a specified nickname for a user.
      * @param appId  (required)
-     * @param loginNicknameRequest  (required)
-     * @return ApiResponse&lt;LoginResponse&gt;
+     * @param nicknameObject  (required)
+     * @return ApiResponse&lt;PlayerTokenObject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -453,9 +453,9 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LoginResponse> loginNicknameWithHttpInfo(String appId, LoginNicknameRequest loginNicknameRequest) throws ApiException {
-        okhttp3.Call localVarCall = loginNicknameValidateBeforeCall(appId, loginNicknameRequest, null);
-        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
+    public ApiResponse<PlayerTokenObject> loginNicknameWithHttpInfo(String appId, NicknameObject nicknameObject) throws ApiException {
+        okhttp3.Call localVarCall = loginNicknameValidateBeforeCall(appId, nicknameObject, null);
+        Type localVarReturnType = new TypeToken<PlayerTokenObject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -463,7 +463,7 @@ public class AuthV1Api {
      *  (asynchronously)
      * Returns a unique player token with a specified nickname for a user.
      * @param appId  (required)
-     * @param loginNicknameRequest  (required)
+     * @param nicknameObject  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -474,10 +474,10 @@ public class AuthV1Api {
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loginNicknameAsync(String appId, LoginNicknameRequest loginNicknameRequest, final ApiCallback<LoginResponse> _callback) throws ApiException {
+    public okhttp3.Call loginNicknameAsync(String appId, NicknameObject nicknameObject, final ApiCallback<PlayerTokenObject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = loginNicknameValidateBeforeCall(appId, loginNicknameRequest, _callback);
-        Type localVarReturnType = new TypeToken<LoginResponse>(){}.getType();
+        okhttp3.Call localVarCall = loginNicknameValidateBeforeCall(appId, nicknameObject, _callback);
+        Type localVarReturnType = new TypeToken<PlayerTokenObject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

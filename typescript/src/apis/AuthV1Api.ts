@@ -16,33 +16,33 @@
 import * as runtime from '../runtime';
 import type {
   ApiError,
-  LoginGoogleRequest,
-  LoginNicknameRequest,
-  LoginResponse,
+  GoogleIdTokenObject,
+  NicknameObject,
+  PlayerTokenObject,
 } from '../models';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
-    LoginGoogleRequestFromJSON,
-    LoginGoogleRequestToJSON,
-    LoginNicknameRequestFromJSON,
-    LoginNicknameRequestToJSON,
-    LoginResponseFromJSON,
-    LoginResponseToJSON,
+    GoogleIdTokenObjectFromJSON,
+    GoogleIdTokenObjectToJSON,
+    NicknameObjectFromJSON,
+    NicknameObjectToJSON,
+    PlayerTokenObjectFromJSON,
+    PlayerTokenObjectToJSON,
 } from '../models';
 
 export interface LoginAnonymousRequest {
     appId: string;
 }
 
-export interface LoginGoogleOperationRequest {
+export interface LoginGoogleRequest {
     appId: string;
-    loginGoogleRequest: LoginGoogleRequest;
+    googleIdTokenObject: GoogleIdTokenObject;
 }
 
-export interface LoginNicknameOperationRequest {
+export interface LoginNicknameRequest {
     appId: string;
-    loginNicknameRequest: LoginNicknameRequest;
+    nicknameObject: NicknameObject;
 }
 
 /**
@@ -59,42 +59,42 @@ export interface AuthV1ApiInterface {
      * @throws {RequiredError}
      * @memberof AuthV1ApiInterface
      */
-    loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>>;
+    loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlayerTokenObject>>;
 
     /**
      * Returns a unique player token for an anonymous user.
      */
-    loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse>;
+    loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlayerTokenObject>;
 
     /**
      * Returns a unique player token using a Google-signed OIDC `idToken`.
      * @param {string} appId 
-     * @param {LoginGoogleRequest} loginGoogleRequest 
+     * @param {GoogleIdTokenObject} googleIdTokenObject 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthV1ApiInterface
      */
-    loginGoogleRaw(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>>;
+    loginGoogleRaw(requestParameters: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlayerTokenObject>>;
 
     /**
      * Returns a unique player token using a Google-signed OIDC `idToken`.
      */
-    loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse>;
+    loginGoogle(appId: string, googleIdTokenObject: GoogleIdTokenObject, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlayerTokenObject>;
 
     /**
      * Returns a unique player token with a specified nickname for a user.
      * @param {string} appId 
-     * @param {LoginNicknameRequest} loginNicknameRequest 
+     * @param {NicknameObject} nicknameObject 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthV1ApiInterface
      */
-    loginNicknameRaw(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>>;
+    loginNicknameRaw(requestParameters: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlayerTokenObject>>;
 
     /**
      * Returns a unique player token with a specified nickname for a user.
      */
-    loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse>;
+    loginNickname(appId: string, nicknameObject: NicknameObject, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlayerTokenObject>;
 
 }
 
@@ -106,7 +106,7 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
     /**
      * Returns a unique player token for an anonymous user.
      */
-    async loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
+    async loginAnonymousRaw(requestParameters: LoginAnonymousRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlayerTokenObject>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling loginAnonymous.');
         }
@@ -122,13 +122,13 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LoginResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PlayerTokenObjectFromJSON(jsonValue));
     }
 
     /**
      * Returns a unique player token for an anonymous user.
      */
-    async loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
+    async loginAnonymous(appId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlayerTokenObject> {
         const response = await this.loginAnonymousRaw({ appId: appId }, initOverrides);
         return await response.value();
     }
@@ -136,13 +136,13 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
     /**
      * Returns a unique player token using a Google-signed OIDC `idToken`.
      */
-    async loginGoogleRaw(requestParameters: LoginGoogleOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
+    async loginGoogleRaw(requestParameters: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlayerTokenObject>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling loginGoogle.');
         }
 
-        if (requestParameters.loginGoogleRequest === null || requestParameters.loginGoogleRequest === undefined) {
-            throw new runtime.RequiredError('loginGoogleRequest','Required parameter requestParameters.loginGoogleRequest was null or undefined when calling loginGoogle.');
+        if (requestParameters.googleIdTokenObject === null || requestParameters.googleIdTokenObject === undefined) {
+            throw new runtime.RequiredError('googleIdTokenObject','Required parameter requestParameters.googleIdTokenObject was null or undefined when calling loginGoogle.');
         }
 
         const queryParameters: any = {};
@@ -156,30 +156,30 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: LoginGoogleRequestToJSON(requestParameters.loginGoogleRequest),
+            body: GoogleIdTokenObjectToJSON(requestParameters.googleIdTokenObject),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LoginResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PlayerTokenObjectFromJSON(jsonValue));
     }
 
     /**
      * Returns a unique player token using a Google-signed OIDC `idToken`.
      */
-    async loginGoogle(appId: string, loginGoogleRequest: LoginGoogleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
-        const response = await this.loginGoogleRaw({ appId: appId, loginGoogleRequest: loginGoogleRequest }, initOverrides);
+    async loginGoogle(appId: string, googleIdTokenObject: GoogleIdTokenObject, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlayerTokenObject> {
+        const response = await this.loginGoogleRaw({ appId: appId, googleIdTokenObject: googleIdTokenObject }, initOverrides);
         return await response.value();
     }
 
     /**
      * Returns a unique player token with a specified nickname for a user.
      */
-    async loginNicknameRaw(requestParameters: LoginNicknameOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LoginResponse>> {
+    async loginNicknameRaw(requestParameters: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlayerTokenObject>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling loginNickname.');
         }
 
-        if (requestParameters.loginNicknameRequest === null || requestParameters.loginNicknameRequest === undefined) {
-            throw new runtime.RequiredError('loginNicknameRequest','Required parameter requestParameters.loginNicknameRequest was null or undefined when calling loginNickname.');
+        if (requestParameters.nicknameObject === null || requestParameters.nicknameObject === undefined) {
+            throw new runtime.RequiredError('nicknameObject','Required parameter requestParameters.nicknameObject was null or undefined when calling loginNickname.');
         }
 
         const queryParameters: any = {};
@@ -193,17 +193,17 @@ export class AuthV1Api extends runtime.BaseAPI implements AuthV1ApiInterface {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: LoginNicknameRequestToJSON(requestParameters.loginNicknameRequest),
+            body: NicknameObjectToJSON(requestParameters.nicknameObject),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => LoginResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PlayerTokenObjectFromJSON(jsonValue));
     }
 
     /**
      * Returns a unique player token with a specified nickname for a user.
      */
-    async loginNickname(appId: string, loginNicknameRequest: LoginNicknameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LoginResponse> {
-        const response = await this.loginNicknameRaw({ appId: appId, loginNicknameRequest: loginNicknameRequest }, initOverrides);
+    async loginNickname(appId: string, nicknameObject: NicknameObject, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlayerTokenObject> {
+        const response = await this.loginNicknameRaw({ appId: appId, nicknameObject: nicknameObject }, initOverrides);
         return await response.value();
     }
 
