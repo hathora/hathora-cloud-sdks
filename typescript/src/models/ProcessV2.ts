@@ -91,7 +91,7 @@ export interface ProcessV2 {
      * @type {ExposedPort}
      * @memberof ProcessV2
      */
-    exposedPort?: ExposedPort;
+    exposedPort: ExposedPort | null;
     /**
      * 
      * @type {Region}
@@ -131,6 +131,7 @@ export function instanceOfProcessV2(value: object): boolean {
     isInstance = isInstance && "createdAt" in value;
     isInstance = isInstance && "roomsPerProcess" in value;
     isInstance = isInstance && "additionalExposedPorts" in value;
+    isInstance = isInstance && "exposedPort" in value;
     isInstance = isInstance && "region" in value;
     isInstance = isInstance && "processId" in value;
     isInstance = isInstance && "deploymentId" in value;
@@ -157,7 +158,7 @@ export function ProcessV2FromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'createdAt': (new Date(json['createdAt'])),
         'roomsPerProcess': json['roomsPerProcess'],
         'additionalExposedPorts': ((json['additionalExposedPorts'] as Array<any>).map(ExposedPortFromJSON)),
-        'exposedPort': !exists(json, 'exposedPort') ? undefined : ExposedPortFromJSON(json['exposedPort']),
+        'exposedPort': ExposedPortFromJSON(json['exposedPort']),
         'region': RegionFromJSON(json['region']),
         'processId': json['processId'],
         'deploymentId': json['deploymentId'],

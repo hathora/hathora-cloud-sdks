@@ -30,9 +30,9 @@ import java.io.IOException;
 import com.hathora.client.model.ApiError;
 import com.hathora.client.model.ConnectionInfoV2;
 import com.hathora.client.model.CreateRoomParams;
-import com.hathora.client.model.CreateRoomResponse;
 import com.hathora.client.model.PickRoomExcludeKeyofRoomAllocations;
 import com.hathora.client.model.Room;
+import com.hathora.client.model.RoomConnectionData;
 import com.hathora.client.model.UpdateRoomConfigParams;
 
 import java.lang.reflect.Type;
@@ -92,9 +92,11 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -170,21 +172,23 @@ public class RoomV2Api {
      * @param appId  (required)
      * @param createRoomParams  (required)
      * @param roomId  (optional)
-     * @return CreateRoomResponse
+     * @return RoomConnectionData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public CreateRoomResponse createRoom(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
-        ApiResponse<CreateRoomResponse> localVarResp = createRoomWithHttpInfo(appId, createRoomParams, roomId);
+    public RoomConnectionData createRoom(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
+        ApiResponse<RoomConnectionData> localVarResp = createRoomWithHttpInfo(appId, createRoomParams, roomId);
         return localVarResp.getData();
     }
 
@@ -194,22 +198,24 @@ public class RoomV2Api {
      * @param appId  (required)
      * @param createRoomParams  (required)
      * @param roomId  (optional)
-     * @return ApiResponse&lt;CreateRoomResponse&gt;
+     * @return ApiResponse&lt;RoomConnectionData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateRoomResponse> createRoomWithHttpInfo(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
+    public ApiResponse<RoomConnectionData> createRoomWithHttpInfo(String appId, CreateRoomParams createRoomParams, String roomId) throws ApiException {
         okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomParams, roomId, null);
-        Type localVarReturnType = new TypeToken<CreateRoomResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RoomConnectionData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -227,16 +233,18 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createRoomAsync(String appId, CreateRoomParams createRoomParams, String roomId, final ApiCallback<CreateRoomResponse> _callback) throws ApiException {
+    public okhttp3.Call createRoomAsync(String appId, CreateRoomParams createRoomParams, String roomId, final ApiCallback<RoomConnectionData> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createRoomValidateBeforeCall(appId, createRoomParams, roomId, _callback);
-        Type localVarReturnType = new TypeToken<CreateRoomResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RoomConnectionData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -251,7 +259,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -327,7 +337,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -346,7 +358,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -367,7 +381,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -388,6 +404,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -464,6 +481,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -483,6 +501,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -504,6 +523,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -526,6 +546,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
@@ -604,6 +625,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
@@ -625,6 +647,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
@@ -648,6 +671,7 @@ public class RoomV2Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
@@ -670,6 +694,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -746,6 +771,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -765,6 +791,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -786,6 +813,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -807,6 +835,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -883,6 +912,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -902,6 +932,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -923,6 +954,7 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -934,7 +966,7 @@ public class RoomV2Api {
         return localVarCall;
     }
     /**
-     * Build call for suspendRoom
+     * Build call for suspendRoomV2Deprecated
      * @param appId  (required)
      * @param roomId  (required)
      * @param _callback Callback for upload/download progress
@@ -944,11 +976,15 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call suspendRoomCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call suspendRoomV2DeprecatedCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -994,19 +1030,20 @@ public class RoomV2Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call suspendRoomValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call suspendRoomV2DeprecatedValidateBeforeCall(String appId, String roomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling suspendRoom(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling suspendRoomV2Deprecated(Async)");
         }
 
         // verify the required parameter 'roomId' is set
         if (roomId == null) {
-            throw new ApiException("Missing the required parameter 'roomId' when calling suspendRoom(Async)");
+            throw new ApiException("Missing the required parameter 'roomId' when calling suspendRoomV2Deprecated(Async)");
         }
 
-        return suspendRoomCall(appId, roomId, _callback);
+        return suspendRoomV2DeprecatedCall(appId, roomId, _callback);
 
     }
 
@@ -1020,12 +1057,16 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public void suspendRoom(String appId, String roomId) throws ApiException {
-        suspendRoomWithHttpInfo(appId, roomId);
+    @Deprecated
+    public void suspendRoomV2Deprecated(String appId, String roomId) throws ApiException {
+        suspendRoomV2DeprecatedWithHttpInfo(appId, roomId);
     }
 
     /**
@@ -1039,12 +1080,16 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Void> suspendRoomWithHttpInfo(String appId, String roomId) throws ApiException {
-        okhttp3.Call localVarCall = suspendRoomValidateBeforeCall(appId, roomId, null);
+    @Deprecated
+    public ApiResponse<Void> suspendRoomV2DeprecatedWithHttpInfo(String appId, String roomId) throws ApiException {
+        okhttp3.Call localVarCall = suspendRoomV2DeprecatedValidateBeforeCall(appId, roomId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1060,13 +1105,17 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call suspendRoomAsync(String appId, String roomId, final ApiCallback<Void> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call suspendRoomV2DeprecatedAsync(String appId, String roomId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = suspendRoomValidateBeforeCall(appId, roomId, _callback);
+        okhttp3.Call localVarCall = suspendRoomV2DeprecatedValidateBeforeCall(appId, roomId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1082,7 +1131,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -1165,7 +1216,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -1185,7 +1238,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -1207,7 +1262,9 @@ public class RoomV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */

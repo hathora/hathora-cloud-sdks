@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hathora.client.model.ContainerPort;
-import com.hathora.client.model.DeploymentEnvInner;
+import com.hathora.client.model.DeploymentV2EnvInner;
 import com.hathora.client.model.PlanName;
 import java.io.IOException;
 import java.time.OffsetDateTime;
@@ -54,9 +54,13 @@ import com.hathora.client.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Deployment {
+  public static final String SERIALIZED_NAME_IDLE_TIMEOUT_ENABLED = "idleTimeoutEnabled";
+  @SerializedName(SERIALIZED_NAME_IDLE_TIMEOUT_ENABLED)
+  private Boolean idleTimeoutEnabled = true;
+
   public static final String SERIALIZED_NAME_ENV = "env";
   @SerializedName(SERIALIZED_NAME_ENV)
-  private List<DeploymentEnvInner> env = new ArrayList<>();
+  private List<DeploymentV2EnvInner> env = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ROOMS_PER_PROCESS = "roomsPerProcess";
   @SerializedName(SERIALIZED_NAME_ROOMS_PER_PROCESS)
@@ -162,13 +166,35 @@ public class Deployment {
   public Deployment() {
   }
 
-  public Deployment env(List<DeploymentEnvInner> env) {
+  public Deployment idleTimeoutEnabled(Boolean idleTimeoutEnabled) {
+    
+    this.idleTimeoutEnabled = idleTimeoutEnabled;
+    return this;
+  }
+
+   /**
+   * Option to shut down processes that have had no new connections or rooms for five minutes.
+   * @return idleTimeoutEnabled
+  **/
+  @javax.annotation.Nullable
+
+  public Boolean getIdleTimeoutEnabled() {
+    return idleTimeoutEnabled;
+  }
+
+
+  public void setIdleTimeoutEnabled(Boolean idleTimeoutEnabled) {
+    this.idleTimeoutEnabled = idleTimeoutEnabled;
+  }
+
+
+  public Deployment env(List<DeploymentV2EnvInner> env) {
     
     this.env = env;
     return this;
   }
 
-  public Deployment addEnvItem(DeploymentEnvInner envItem) {
+  public Deployment addEnvItem(DeploymentV2EnvInner envItem) {
     if (this.env == null) {
       this.env = new ArrayList<>();
     }
@@ -182,12 +208,12 @@ public class Deployment {
   **/
   @javax.annotation.Nonnull
 
-  public List<DeploymentEnvInner> getEnv() {
+  public List<DeploymentV2EnvInner> getEnv() {
     return env;
   }
 
 
-  public void setEnv(List<DeploymentEnvInner> env) {
+  public void setEnv(List<DeploymentV2EnvInner> env) {
     this.env = env;
   }
 
@@ -367,7 +393,7 @@ public class Deployment {
   }
 
    /**
-   * Email address for the user that created the deployment.
+   * UserId or email address for the user that created the deployment.
    * @return createdBy
   **/
   @javax.annotation.Nonnull
@@ -546,7 +572,8 @@ public class Deployment {
       return false;
     }
     Deployment deployment = (Deployment) o;
-    return Objects.equals(this.env, deployment.env) &&
+    return Objects.equals(this.idleTimeoutEnabled, deployment.idleTimeoutEnabled) &&
+        Objects.equals(this.env, deployment.env) &&
         Objects.equals(this.roomsPerProcess, deployment.roomsPerProcess) &&
         Objects.equals(this.planName, deployment.planName) &&
         Objects.equals(this.additionalContainerPorts, deployment.additionalContainerPorts) &&
@@ -565,13 +592,14 @@ public class Deployment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(env, roomsPerProcess, planName, additionalContainerPorts, defaultContainerPort, transportType, containerPort, createdAt, createdBy, requestedMemoryMB, requestedCPU, deploymentId, buildId, appId, additionalProperties);
+    return Objects.hash(idleTimeoutEnabled, env, roomsPerProcess, planName, additionalContainerPorts, defaultContainerPort, transportType, containerPort, createdAt, createdBy, requestedMemoryMB, requestedCPU, deploymentId, buildId, appId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Deployment {\n");
+    sb.append("    idleTimeoutEnabled: ").append(toIndentedString(idleTimeoutEnabled)).append("\n");
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    roomsPerProcess: ").append(toIndentedString(roomsPerProcess)).append("\n");
     sb.append("    planName: ").append(toIndentedString(planName)).append("\n");
@@ -609,6 +637,7 @@ public class Deployment {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("idleTimeoutEnabled");
     openapiFields.add("env");
     openapiFields.add("roomsPerProcess");
     openapiFields.add("planName");
@@ -669,7 +698,7 @@ public class Deployment {
       JsonArray jsonArrayenv = jsonObj.getAsJsonArray("env");
       // validate the required field `env` (array)
       for (int i = 0; i < jsonArrayenv.size(); i++) {
-        DeploymentEnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
+        DeploymentV2EnvInner.validateJsonObject(jsonArrayenv.get(i).getAsJsonObject());
       };
       // ensure the json data is an array
       if (!jsonObj.get("additionalContainerPorts").isJsonArray()) {

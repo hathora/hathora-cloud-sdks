@@ -83,6 +83,7 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **500** |  |  -  |

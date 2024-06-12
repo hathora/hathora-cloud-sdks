@@ -15,7 +15,7 @@
 |**createdAt** | **OffsetDateTime** | When the process started being provisioned. |  |
 |**roomsPerProcess** | **Integer** | Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. |  |
 |**additionalExposedPorts** | [**List&lt;ExposedPort&gt;**](ExposedPort.md) |  |  |
-|**exposedPort** | [**ExposedPort**](ExposedPort.md) |  |  [optional] |
+|**exposedPort** | [**ExposedPort**](ExposedPort.md) |  |  |
 |**region** | **Region** |  |  |
 |**processId** | **String** | System generated unique identifier to a runtime instance of your game server. |  |
 |**deploymentId** | **Integer** | System generated id for a deployment. Increments by 1. |  |

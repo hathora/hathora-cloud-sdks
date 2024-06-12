@@ -85,6 +85,7 @@ public class Example {
 | **201** |  |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -160,6 +161,7 @@ public class Example {
 | **201** |  |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -235,6 +237,7 @@ public class Example {
 | **201** |  |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -310,6 +313,7 @@ public class Example {
 | **201** |  |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -424,7 +428,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **region** | [**Region**](.md)| Region to filter by. If omitted, active public lobbies in all regions will be returned. | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)| Region to filter by. If omitted, active public lobbies in all regions will be returned. | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 
 ### Return type
 
@@ -514,6 +518,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
+| **429** |  |  -  |
 

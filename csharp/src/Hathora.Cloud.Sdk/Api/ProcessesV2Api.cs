@@ -30,6 +30,29 @@ namespace Hathora.Cloud.Sdk.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <returns>ProcessV2</returns>
+        ProcessV2 CreateProcess(string appId, Region region);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <returns>ApiResponse of ProcessV2</returns>
+        ApiResponse<ProcessV2> CreateProcessWithHttpInfo(string appId, Region region);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a &#x60;status&#x60; or &#x60;region&#x60;.
         /// </remarks>
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -74,6 +97,29 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <returns>ApiResponse of ProcessV2</returns>
         ApiResponse<ProcessV2> GetProcessInfoWithHttpInfo(string appId, string processId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns></returns>
+        void StopProcess(string appId, string processId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> StopProcessWithHttpInfo(string appId, string processId);
         #endregion Synchronous Operations
     }
 
@@ -83,6 +129,31 @@ namespace Hathora.Cloud.Sdk.Api
     public interface IProcessesV2ApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProcessV2</returns>
+        System.Threading.Tasks.Task<ProcessV2> CreateProcessAsync(string appId, Region region, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProcessV2)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ProcessV2>> CreateProcessWithHttpInfoAsync(string appId, Region region, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -135,6 +206,31 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ProcessV2)</returns>
         System.Threading.Tasks.Task<ApiResponse<ProcessV2>> GetProcessInfoWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task StopProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </remarks>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> StopProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -277,6 +373,150 @@ namespace Hathora.Cloud.Sdk.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        ///  Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <returns>ProcessV2</returns>
+        public ProcessV2 CreateProcess(string appId, Region region)
+        {
+            Hathora.Cloud.Sdk.Client.ApiResponse<ProcessV2> localVarResponse = CreateProcessWithHttpInfo(appId, region);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <returns>ApiResponse of ProcessV2</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<ProcessV2> CreateProcessWithHttpInfo(string appId, Region region)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV2Api->CreateProcess");
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("region", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(region)); // path parameter
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ProcessV2>("/processes/v2/{appId}/create/{region}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProcess", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ProcessV2</returns>
+        public async System.Threading.Tasks.Task<ProcessV2> CreateProcessAsync(string appId, Region region, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var task = CreateProcessWithHttpInfoAsync(appId, region, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            Hathora.Cloud.Sdk.Client.ApiResponse<ProcessV2> localVarResponse = await task.ConfigureAwait(false);
+#else
+            Hathora.Cloud.Sdk.Client.ApiResponse<ProcessV2> localVarResponse = await task;
+#endif
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="region"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ProcessV2)</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<ProcessV2>> CreateProcessWithHttpInfoAsync(string appId, Region region, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV2Api->CreateProcess");
+
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("region", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(region)); // path parameter
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var task = this.AsynchronousClient.PostAsync<ProcessV2>("/processes/v2/{appId}/create/{region}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProcess", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -587,6 +827,156 @@ namespace Hathora.Cloud.Sdk.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProcessInfo", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns></returns>
+        public void StopProcess(string appId, string processId)
+        {
+            StopProcessWithHttpInfo(appId, processId);
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> StopProcessWithHttpInfo(string appId, string processId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV2Api->StopProcess");
+
+            // verify the required parameter 'processId' is set
+            if (processId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV2Api->StopProcess");
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/processes/v2/{appId}/stop/{processId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("StopProcess", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task StopProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            var task = StopProcessWithHttpInfoAsync(appId, processId, cancellationToken);
+#if UNITY_EDITOR || !UNITY_WEBGL
+            await task.ConfigureAwait(false);
+#else
+            await task;
+#endif
+        }
+
+        /// <summary>
+        ///  Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+        /// </summary>
+        /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="processId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> StopProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ProcessesV2Api->StopProcess");
+
+            // verify the required parameter 'processId' is set
+            if (processId == null)
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'processId' when calling ProcessesV2Api->StopProcess");
+
+
+            Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Hathora.Cloud.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("appId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("processId", Hathora.Cloud.Sdk.Client.ClientUtils.ParameterToString(processId)); // path parameter
+
+            // authentication (hathoraDevToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var task = this.AsynchronousClient.PostAsync<Object>("/processes/v2/{appId}/stop/{processId}", localVarRequestOptions, this.Configuration, cancellationToken);
+
+#if UNITY_EDITOR || !UNITY_WEBGL
+            var localVarResponse = await task.ConfigureAwait(false);
+#else
+            var localVarResponse = await task;
+#endif
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("StopProcess", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

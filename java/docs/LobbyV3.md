@@ -10,7 +10,7 @@ A lobby object allows you to store and manage metadata for your rooms.
 |------------ | ------------- | ------------- | -------------|
 |**shortCode** | **String** | User-defined identifier for a lobby. |  |
 |**createdAt** | **OffsetDateTime** | When the lobby was created. |  |
-|**createdBy** | **String** | Email address for the user that created the lobby. |  |
+|**createdBy** | **String** | UserId or email address for the user that created the lobby. |  |
 |**roomConfig** | **String** | Optional configuration parameters for the room. Can be any string including stringified JSON. It is accessible from the room via [&#x60;GetRoomInfo()&#x60;](https://hathora.dev/api#tag/RoomV2/operation/GetRoomInfo). |  |
 |**visibility** | **LobbyVisibility** |  |  |
 |**region** | **Region** |  |  |

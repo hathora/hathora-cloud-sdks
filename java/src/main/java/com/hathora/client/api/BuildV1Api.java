@@ -77,7 +77,7 @@ public class BuildV1Api {
     }
 
     /**
-     * Build call for createBuild
+     * Build call for createBuildDeprecated
      * @param appId  (required)
      * @param createBuildParams  (required)
      * @param _callback Callback for upload/download progress
@@ -87,11 +87,15 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createBuildCall(String appId, CreateBuildParams createBuildParams, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createBuildDeprecatedCall(String appId, CreateBuildParams createBuildParams, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,19 +141,20 @@ public class BuildV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createBuildValidateBeforeCall(String appId, CreateBuildParams createBuildParams, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createBuildDeprecatedValidateBeforeCall(String appId, CreateBuildParams createBuildParams, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling createBuild(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling createBuildDeprecated(Async)");
         }
 
         // verify the required parameter 'createBuildParams' is set
         if (createBuildParams == null) {
-            throw new ApiException("Missing the required parameter 'createBuildParams' when calling createBuild(Async)");
+            throw new ApiException("Missing the required parameter 'createBuildParams' when calling createBuildDeprecated(Async)");
         }
 
-        return createBuildCall(appId, createBuildParams, _callback);
+        return createBuildDeprecatedCall(appId, createBuildParams, _callback);
 
     }
 
@@ -164,12 +169,16 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Build createBuild(String appId, CreateBuildParams createBuildParams) throws ApiException {
-        ApiResponse<Build> localVarResp = createBuildWithHttpInfo(appId, createBuildParams);
+    @Deprecated
+    public Build createBuildDeprecated(String appId, CreateBuildParams createBuildParams) throws ApiException {
+        ApiResponse<Build> localVarResp = createBuildDeprecatedWithHttpInfo(appId, createBuildParams);
         return localVarResp.getData();
     }
 
@@ -184,12 +193,16 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Build> createBuildWithHttpInfo(String appId, CreateBuildParams createBuildParams) throws ApiException {
-        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, createBuildParams, null);
+    @Deprecated
+    public ApiResponse<Build> createBuildDeprecatedWithHttpInfo(String appId, CreateBuildParams createBuildParams) throws ApiException {
+        okhttp3.Call localVarCall = createBuildDeprecatedValidateBeforeCall(appId, createBuildParams, null);
         Type localVarReturnType = new TypeToken<Build>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -206,19 +219,23 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createBuildAsync(String appId, CreateBuildParams createBuildParams, final ApiCallback<Build> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createBuildDeprecatedAsync(String appId, CreateBuildParams createBuildParams, final ApiCallback<Build> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createBuildValidateBeforeCall(appId, createBuildParams, _callback);
+        okhttp3.Call localVarCall = createBuildDeprecatedValidateBeforeCall(appId, createBuildParams, _callback);
         Type localVarReturnType = new TypeToken<Build>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteBuild
+     * Build call for deleteBuildDeprecated
      * @param appId  (required)
      * @param buildId  (required)
      * @param _callback Callback for upload/download progress
@@ -228,12 +245,15 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call deleteBuildCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call deleteBuildDeprecatedCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -279,19 +299,20 @@ public class BuildV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteBuildValidateBeforeCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteBuildDeprecatedValidateBeforeCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling deleteBuild(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling deleteBuildDeprecated(Async)");
         }
 
         // verify the required parameter 'buildId' is set
         if (buildId == null) {
-            throw new ApiException("Missing the required parameter 'buildId' when calling deleteBuild(Async)");
+            throw new ApiException("Missing the required parameter 'buildId' when calling deleteBuildDeprecated(Async)");
         }
 
-        return deleteBuildCall(appId, buildId, _callback);
+        return deleteBuildDeprecatedCall(appId, buildId, _callback);
 
     }
 
@@ -305,13 +326,16 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public void deleteBuild(String appId, Integer buildId) throws ApiException {
-        deleteBuildWithHttpInfo(appId, buildId);
+    @Deprecated
+    public void deleteBuildDeprecated(String appId, Integer buildId) throws ApiException {
+        deleteBuildDeprecatedWithHttpInfo(appId, buildId);
     }
 
     /**
@@ -325,13 +349,16 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Void> deleteBuildWithHttpInfo(String appId, Integer buildId) throws ApiException {
-        okhttp3.Call localVarCall = deleteBuildValidateBeforeCall(appId, buildId, null);
+    @Deprecated
+    public ApiResponse<Void> deleteBuildDeprecatedWithHttpInfo(String appId, Integer buildId) throws ApiException {
+        okhttp3.Call localVarCall = deleteBuildDeprecatedValidateBeforeCall(appId, buildId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -347,19 +374,22 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 422 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call deleteBuildAsync(String appId, Integer buildId, final ApiCallback<Void> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call deleteBuildDeprecatedAsync(String appId, Integer buildId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteBuildValidateBeforeCall(appId, buildId, _callback);
+        okhttp3.Call localVarCall = deleteBuildDeprecatedValidateBeforeCall(appId, buildId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getBuildInfo
+     * Build call for getBuildInfoDeprecated
      * @param appId  (required)
      * @param buildId  (required)
      * @param _callback Callback for upload/download progress
@@ -369,10 +399,13 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getBuildInfoCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getBuildInfoDeprecatedCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -418,19 +451,20 @@ public class BuildV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBuildInfoValidateBeforeCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBuildInfoDeprecatedValidateBeforeCall(String appId, Integer buildId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getBuildInfo(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getBuildInfoDeprecated(Async)");
         }
 
         // verify the required parameter 'buildId' is set
         if (buildId == null) {
-            throw new ApiException("Missing the required parameter 'buildId' when calling getBuildInfo(Async)");
+            throw new ApiException("Missing the required parameter 'buildId' when calling getBuildInfoDeprecated(Async)");
         }
 
-        return getBuildInfoCall(appId, buildId, _callback);
+        return getBuildInfoDeprecatedCall(appId, buildId, _callback);
 
     }
 
@@ -445,11 +479,14 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Build getBuildInfo(String appId, Integer buildId) throws ApiException {
-        ApiResponse<Build> localVarResp = getBuildInfoWithHttpInfo(appId, buildId);
+    @Deprecated
+    public Build getBuildInfoDeprecated(String appId, Integer buildId) throws ApiException {
+        ApiResponse<Build> localVarResp = getBuildInfoDeprecatedWithHttpInfo(appId, buildId);
         return localVarResp.getData();
     }
 
@@ -464,11 +501,14 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Build> getBuildInfoWithHttpInfo(String appId, Integer buildId) throws ApiException {
-        okhttp3.Call localVarCall = getBuildInfoValidateBeforeCall(appId, buildId, null);
+    @Deprecated
+    public ApiResponse<Build> getBuildInfoDeprecatedWithHttpInfo(String appId, Integer buildId) throws ApiException {
+        okhttp3.Call localVarCall = getBuildInfoDeprecatedValidateBeforeCall(appId, buildId, null);
         Type localVarReturnType = new TypeToken<Build>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -485,18 +525,21 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getBuildInfoAsync(String appId, Integer buildId, final ApiCallback<Build> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getBuildInfoDeprecatedAsync(String appId, Integer buildId, final ApiCallback<Build> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBuildInfoValidateBeforeCall(appId, buildId, _callback);
+        okhttp3.Call localVarCall = getBuildInfoDeprecatedValidateBeforeCall(appId, buildId, _callback);
         Type localVarReturnType = new TypeToken<Build>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getBuilds
+     * Build call for getBuildsDeprecated
      * @param appId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -505,10 +548,13 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getBuildsCall(String appId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getBuildsDeprecatedCall(String appId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -553,14 +599,15 @@ public class BuildV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBuildsValidateBeforeCall(String appId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBuildsDeprecatedValidateBeforeCall(String appId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getBuilds(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getBuildsDeprecated(Async)");
         }
 
-        return getBuildsCall(appId, _callback);
+        return getBuildsDeprecatedCall(appId, _callback);
 
     }
 
@@ -574,11 +621,14 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public List<Build> getBuilds(String appId) throws ApiException {
-        ApiResponse<List<Build>> localVarResp = getBuildsWithHttpInfo(appId);
+    @Deprecated
+    public List<Build> getBuildsDeprecated(String appId) throws ApiException {
+        ApiResponse<List<Build>> localVarResp = getBuildsDeprecatedWithHttpInfo(appId);
         return localVarResp.getData();
     }
 
@@ -592,11 +642,14 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<List<Build>> getBuildsWithHttpInfo(String appId) throws ApiException {
-        okhttp3.Call localVarCall = getBuildsValidateBeforeCall(appId, null);
+    @Deprecated
+    public ApiResponse<List<Build>> getBuildsDeprecatedWithHttpInfo(String appId) throws ApiException {
+        okhttp3.Call localVarCall = getBuildsDeprecatedValidateBeforeCall(appId, null);
         Type localVarReturnType = new TypeToken<List<Build>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -612,18 +665,21 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getBuildsAsync(String appId, final ApiCallback<List<Build>> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getBuildsDeprecatedAsync(String appId, final ApiCallback<List<Build>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBuildsValidateBeforeCall(appId, _callback);
+        okhttp3.Call localVarCall = getBuildsDeprecatedValidateBeforeCall(appId, _callback);
         Type localVarReturnType = new TypeToken<List<Build>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for runBuild
+     * Build call for runBuildDeprecated
      * @param appId  (required)
      * @param buildId  (required)
      * @param _file  (required)
@@ -634,11 +690,15 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call runBuildCall(String appId, Integer buildId, File _file, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call runBuildDeprecatedCall(String appId, Integer buildId, File _file, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -690,24 +750,25 @@ public class BuildV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call runBuildValidateBeforeCall(String appId, Integer buildId, File _file, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call runBuildDeprecatedValidateBeforeCall(String appId, Integer buildId, File _file, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling runBuild(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling runBuildDeprecated(Async)");
         }
 
         // verify the required parameter 'buildId' is set
         if (buildId == null) {
-            throw new ApiException("Missing the required parameter 'buildId' when calling runBuild(Async)");
+            throw new ApiException("Missing the required parameter 'buildId' when calling runBuildDeprecated(Async)");
         }
 
         // verify the required parameter '_file' is set
         if (_file == null) {
-            throw new ApiException("Missing the required parameter '_file' when calling runBuild(Async)");
+            throw new ApiException("Missing the required parameter '_file' when calling runBuildDeprecated(Async)");
         }
 
-        return runBuildCall(appId, buildId, _file, _callback);
+        return runBuildDeprecatedCall(appId, buildId, _file, _callback);
 
     }
 
@@ -723,12 +784,16 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public byte[] runBuild(String appId, Integer buildId, File _file) throws ApiException {
-        ApiResponse<byte[]> localVarResp = runBuildWithHttpInfo(appId, buildId, _file);
+    @Deprecated
+    public byte[] runBuildDeprecated(String appId, Integer buildId, File _file) throws ApiException {
+        ApiResponse<byte[]> localVarResp = runBuildDeprecatedWithHttpInfo(appId, buildId, _file);
         return localVarResp.getData();
     }
 
@@ -744,12 +809,16 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<byte[]> runBuildWithHttpInfo(String appId, Integer buildId, File _file) throws ApiException {
-        okhttp3.Call localVarCall = runBuildValidateBeforeCall(appId, buildId, _file, null);
+    @Deprecated
+    public ApiResponse<byte[]> runBuildDeprecatedWithHttpInfo(String appId, Integer buildId, File _file) throws ApiException {
+        okhttp3.Call localVarCall = runBuildDeprecatedValidateBeforeCall(appId, buildId, _file, null);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -767,13 +836,17 @@ public class BuildV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call runBuildAsync(String appId, Integer buildId, File _file, final ApiCallback<byte[]> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call runBuildDeprecatedAsync(String appId, Integer buildId, File _file, final ApiCallback<byte[]> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = runBuildValidateBeforeCall(appId, buildId, _file, _callback);
+        okhttp3.Call localVarCall = runBuildDeprecatedValidateBeforeCall(appId, buildId, _file, _callback);
         Type localVarReturnType = new TypeToken<byte[]>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

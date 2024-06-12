@@ -76,7 +76,7 @@ public class DeploymentV1Api {
     }
 
     /**
-     * Build call for createDeployment
+     * Build call for createDeploymentDeprecated
      * @param appId  (required)
      * @param buildId  (required)
      * @param deploymentConfig  (required)
@@ -88,11 +88,15 @@ public class DeploymentV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createDeploymentCall(String appId, Integer buildId, DeploymentConfig deploymentConfig, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createDeploymentDeprecatedCall(String appId, Integer buildId, DeploymentConfig deploymentConfig, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,24 +143,25 @@ public class DeploymentV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDeploymentValidateBeforeCall(String appId, Integer buildId, DeploymentConfig deploymentConfig, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDeploymentDeprecatedValidateBeforeCall(String appId, Integer buildId, DeploymentConfig deploymentConfig, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling createDeployment(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling createDeploymentDeprecated(Async)");
         }
 
         // verify the required parameter 'buildId' is set
         if (buildId == null) {
-            throw new ApiException("Missing the required parameter 'buildId' when calling createDeployment(Async)");
+            throw new ApiException("Missing the required parameter 'buildId' when calling createDeploymentDeprecated(Async)");
         }
 
         // verify the required parameter 'deploymentConfig' is set
         if (deploymentConfig == null) {
-            throw new ApiException("Missing the required parameter 'deploymentConfig' when calling createDeployment(Async)");
+            throw new ApiException("Missing the required parameter 'deploymentConfig' when calling createDeploymentDeprecated(Async)");
         }
 
-        return createDeploymentCall(appId, buildId, deploymentConfig, _callback);
+        return createDeploymentDeprecatedCall(appId, buildId, deploymentConfig, _callback);
 
     }
 
@@ -173,12 +178,16 @@ public class DeploymentV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Deployment createDeployment(String appId, Integer buildId, DeploymentConfig deploymentConfig) throws ApiException {
-        ApiResponse<Deployment> localVarResp = createDeploymentWithHttpInfo(appId, buildId, deploymentConfig);
+    @Deprecated
+    public Deployment createDeploymentDeprecated(String appId, Integer buildId, DeploymentConfig deploymentConfig) throws ApiException {
+        ApiResponse<Deployment> localVarResp = createDeploymentDeprecatedWithHttpInfo(appId, buildId, deploymentConfig);
         return localVarResp.getData();
     }
 
@@ -195,12 +204,16 @@ public class DeploymentV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Deployment> createDeploymentWithHttpInfo(String appId, Integer buildId, DeploymentConfig deploymentConfig) throws ApiException {
-        okhttp3.Call localVarCall = createDeploymentValidateBeforeCall(appId, buildId, deploymentConfig, null);
+    @Deprecated
+    public ApiResponse<Deployment> createDeploymentDeprecatedWithHttpInfo(String appId, Integer buildId, DeploymentConfig deploymentConfig) throws ApiException {
+        okhttp3.Call localVarCall = createDeploymentDeprecatedValidateBeforeCall(appId, buildId, deploymentConfig, null);
         Type localVarReturnType = new TypeToken<Deployment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -219,19 +232,23 @@ public class DeploymentV1Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call createDeploymentAsync(String appId, Integer buildId, DeploymentConfig deploymentConfig, final ApiCallback<Deployment> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call createDeploymentDeprecatedAsync(String appId, Integer buildId, DeploymentConfig deploymentConfig, final ApiCallback<Deployment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDeploymentValidateBeforeCall(appId, buildId, deploymentConfig, _callback);
+        okhttp3.Call localVarCall = createDeploymentDeprecatedValidateBeforeCall(appId, buildId, deploymentConfig, _callback);
         Type localVarReturnType = new TypeToken<Deployment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getDeploymentInfo
+     * Build call for getDeploymentInfoDeprecated
      * @param appId  (required)
      * @param deploymentId  (required)
      * @param _callback Callback for upload/download progress
@@ -241,10 +258,13 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getDeploymentInfoCall(String appId, Integer deploymentId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getDeploymentInfoDeprecatedCall(String appId, Integer deploymentId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -290,19 +310,20 @@ public class DeploymentV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDeploymentInfoValidateBeforeCall(String appId, Integer deploymentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeploymentInfoDeprecatedValidateBeforeCall(String appId, Integer deploymentId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getDeploymentInfo(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getDeploymentInfoDeprecated(Async)");
         }
 
         // verify the required parameter 'deploymentId' is set
         if (deploymentId == null) {
-            throw new ApiException("Missing the required parameter 'deploymentId' when calling getDeploymentInfo(Async)");
+            throw new ApiException("Missing the required parameter 'deploymentId' when calling getDeploymentInfoDeprecated(Async)");
         }
 
-        return getDeploymentInfoCall(appId, deploymentId, _callback);
+        return getDeploymentInfoDeprecatedCall(appId, deploymentId, _callback);
 
     }
 
@@ -317,11 +338,14 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public Deployment getDeploymentInfo(String appId, Integer deploymentId) throws ApiException {
-        ApiResponse<Deployment> localVarResp = getDeploymentInfoWithHttpInfo(appId, deploymentId);
+    @Deprecated
+    public Deployment getDeploymentInfoDeprecated(String appId, Integer deploymentId) throws ApiException {
+        ApiResponse<Deployment> localVarResp = getDeploymentInfoDeprecatedWithHttpInfo(appId, deploymentId);
         return localVarResp.getData();
     }
 
@@ -336,11 +360,14 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<Deployment> getDeploymentInfoWithHttpInfo(String appId, Integer deploymentId) throws ApiException {
-        okhttp3.Call localVarCall = getDeploymentInfoValidateBeforeCall(appId, deploymentId, null);
+    @Deprecated
+    public ApiResponse<Deployment> getDeploymentInfoDeprecatedWithHttpInfo(String appId, Integer deploymentId) throws ApiException {
+        okhttp3.Call localVarCall = getDeploymentInfoDeprecatedValidateBeforeCall(appId, deploymentId, null);
         Type localVarReturnType = new TypeToken<Deployment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -357,18 +384,21 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getDeploymentInfoAsync(String appId, Integer deploymentId, final ApiCallback<Deployment> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getDeploymentInfoDeprecatedAsync(String appId, Integer deploymentId, final ApiCallback<Deployment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDeploymentInfoValidateBeforeCall(appId, deploymentId, _callback);
+        okhttp3.Call localVarCall = getDeploymentInfoDeprecatedValidateBeforeCall(appId, deploymentId, _callback);
         Type localVarReturnType = new TypeToken<Deployment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getDeployments
+     * Build call for getDeploymentsDeprecated
      * @param appId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -377,10 +407,13 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getDeploymentsCall(String appId, final ApiCallback _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getDeploymentsDeprecatedCall(String appId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -425,14 +458,15 @@ public class DeploymentV1Api {
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDeploymentsValidateBeforeCall(String appId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeploymentsDeprecatedValidateBeforeCall(String appId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'appId' is set
         if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getDeployments(Async)");
+            throw new ApiException("Missing the required parameter 'appId' when calling getDeploymentsDeprecated(Async)");
         }
 
-        return getDeploymentsCall(appId, _callback);
+        return getDeploymentsDeprecatedCall(appId, _callback);
 
     }
 
@@ -446,11 +480,14 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public List<Deployment> getDeployments(String appId) throws ApiException {
-        ApiResponse<List<Deployment>> localVarResp = getDeploymentsWithHttpInfo(appId);
+    @Deprecated
+    public List<Deployment> getDeploymentsDeprecated(String appId) throws ApiException {
+        ApiResponse<List<Deployment>> localVarResp = getDeploymentsDeprecatedWithHttpInfo(appId);
         return localVarResp.getData();
     }
 
@@ -464,11 +501,14 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public ApiResponse<List<Deployment>> getDeploymentsWithHttpInfo(String appId) throws ApiException {
-        okhttp3.Call localVarCall = getDeploymentsValidateBeforeCall(appId, null);
+    @Deprecated
+    public ApiResponse<List<Deployment>> getDeploymentsDeprecatedWithHttpInfo(String appId) throws ApiException {
+        okhttp3.Call localVarCall = getDeploymentsDeprecatedValidateBeforeCall(appId, null);
         Type localVarReturnType = new TypeToken<List<Deployment>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -484,13 +524,156 @@ public class DeploymentV1Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
+     * @deprecated
      */
-    public okhttp3.Call getDeploymentsAsync(String appId, final ApiCallback<List<Deployment>> _callback) throws ApiException {
+    @Deprecated
+    public okhttp3.Call getDeploymentsDeprecatedAsync(String appId, final ApiCallback<List<Deployment>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDeploymentsValidateBeforeCall(appId, _callback);
+        okhttp3.Call localVarCall = getDeploymentsDeprecatedValidateBeforeCall(appId, _callback);
         Type localVarReturnType = new TypeToken<List<Deployment>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getLatestDeploymentDeprecated
+     * @param appId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     * @deprecated
+     */
+    @Deprecated
+    public okhttp3.Call getLatestDeploymentDeprecatedCall(String appId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/deployments/v1/{appId}/latest"
+            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @Deprecated
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getLatestDeploymentDeprecatedValidateBeforeCall(String appId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling getLatestDeploymentDeprecated(Async)");
+        }
+
+        return getLatestDeploymentDeprecatedCall(appId, _callback);
+
+    }
+
+    /**
+     * 
+     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * @param appId  (required)
+     * @return Deployment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     * @deprecated
+     */
+    @Deprecated
+    public Deployment getLatestDeploymentDeprecated(String appId) throws ApiException {
+        ApiResponse<Deployment> localVarResp = getLatestDeploymentDeprecatedWithHttpInfo(appId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * @param appId  (required)
+     * @return ApiResponse&lt;Deployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     * @deprecated
+     */
+    @Deprecated
+    public ApiResponse<Deployment> getLatestDeploymentDeprecatedWithHttpInfo(String appId) throws ApiException {
+        okhttp3.Call localVarCall = getLatestDeploymentDeprecatedValidateBeforeCall(appId, null);
+        Type localVarReturnType = new TypeToken<Deployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+     * @param appId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     * @deprecated
+     */
+    @Deprecated
+    public okhttp3.Call getLatestDeploymentDeprecatedAsync(String appId, final ApiCallback<Deployment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getLatestDeploymentDeprecatedValidateBeforeCall(appId, _callback);
+        Type localVarReturnType = new TypeToken<Deployment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

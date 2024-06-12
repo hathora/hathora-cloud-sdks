@@ -19,12 +19,12 @@ import {
     ContainerPortFromJSONTyped,
     ContainerPortToJSON,
 } from './ContainerPort';
-import type { DeploymentEnvInner } from './DeploymentEnvInner';
+import type { DeploymentV2EnvInner } from './DeploymentV2EnvInner';
 import {
-    DeploymentEnvInnerFromJSON,
-    DeploymentEnvInnerFromJSONTyped,
-    DeploymentEnvInnerToJSON,
-} from './DeploymentEnvInner';
+    DeploymentV2EnvInnerFromJSON,
+    DeploymentV2EnvInnerFromJSONTyped,
+    DeploymentV2EnvInnerToJSON,
+} from './DeploymentV2EnvInner';
 import type { PlanName } from './PlanName';
 import {
     PlanNameFromJSON,
@@ -45,11 +45,18 @@ import {
  */
 export interface DeploymentConfig {
     /**
-     * The environment variable that our process will have access to at runtime.
-     * @type {Array<DeploymentEnvInner>}
+     * Option to shut down processes that have had no new connections or rooms
+     * for five minutes.
+     * @type {boolean}
      * @memberof DeploymentConfig
      */
-    env: Array<DeploymentEnvInner>;
+    idleTimeoutEnabled?: boolean;
+    /**
+     * The environment variable that our process will have access to at runtime.
+     * @type {Array<DeploymentV2EnvInner>}
+     * @memberof DeploymentConfig
+     */
+    env: Array<DeploymentV2EnvInner>;
     /**
      * Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process.
      * @type {number}
@@ -106,7 +113,8 @@ export function DeploymentConfigFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'env': ((json['env'] as Array<any>).map(DeploymentEnvInnerFromJSON)),
+        'idleTimeoutEnabled': !exists(json, 'idleTimeoutEnabled') ? undefined : json['idleTimeoutEnabled'],
+        'env': ((json['env'] as Array<any>).map(DeploymentV2EnvInnerFromJSON)),
         'roomsPerProcess': json['roomsPerProcess'],
         'planName': PlanNameFromJSON(json['planName']),
         'additionalContainerPorts': !exists(json, 'additionalContainerPorts') ? undefined : ((json['additionalContainerPorts'] as Array<any>).map(ContainerPortFromJSON)),
@@ -124,7 +132,8 @@ export function DeploymentConfigToJSON(value?: DeploymentConfig | null): any {
     }
     return {
         
-        'env': ((value.env as Array<any>).map(DeploymentEnvInnerToJSON)),
+        'idleTimeoutEnabled': value.idleTimeoutEnabled,
+        'env': ((value.env as Array<any>).map(DeploymentV2EnvInnerToJSON)),
         'roomsPerProcess': value.roomsPerProcess,
         'planName': PlanNameToJSON(value.planName),
         'additionalContainerPorts': value.additionalContainerPorts === undefined ? undefined : ((value.additionalContainerPorts as Array<any>).map(ContainerPortToJSON)),

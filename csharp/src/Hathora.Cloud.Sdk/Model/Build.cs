@@ -30,46 +30,12 @@ namespace Hathora.Cloud.Sdk.Model
     [DataContract(Name = "Build")]
     public partial class Build : IEquatable<Build>
     {
-        /// <summary>
-        /// Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;
-        /// </summary>
-        /// <value>Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum StatusEnum
-        {
-            /// <summary>
-            /// Enum Created for value: created
-            /// </summary>
-            [EnumMember(Value = "created")]
-            Created = 1,
-
-            /// <summary>
-            /// Enum Running for value: running
-            /// </summary>
-            [EnumMember(Value = "running")]
-            Running = 2,
-
-            /// <summary>
-            /// Enum Succeeded for value: succeeded
-            /// </summary>
-            [EnumMember(Value = "succeeded")]
-            Succeeded = 3,
-
-            /// <summary>
-            /// Enum Failed for value: failed
-            /// </summary>
-            [EnumMember(Value = "failed")]
-            Failed = 4
-
-        }
-
 
         /// <summary>
-        /// Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;
+        /// Gets or Sets Status
         /// </summary>
-        /// <value>Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;</value>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public StatusEnum Status { get; set; }
+        public BuildStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Build" /> class.
         /// </summary>
@@ -81,25 +47,19 @@ namespace Hathora.Cloud.Sdk.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Build" /> class.
         /// </summary>
-        /// <param name="buildTag">Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo). (required).</param>
+        /// <param name="buildTag">Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo)..</param>
         /// <param name="regionalContainerTags">regionalContainerTags (required).</param>
         /// <param name="imageSize">The size (in bytes) of the Docker image built by Hathora. (required).</param>
-        /// <param name="status">Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60; (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="deletedAt">When the build was deleted. (required).</param>
-        /// <param name="finishedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing. (required).</param>
-        /// <param name="startedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called. (required).</param>
-        /// <param name="createdAt">When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called. (required).</param>
-        /// <param name="createdBy">Email address for the user that created the build. (required).</param>
+        /// <param name="finishedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing. (required).</param>
+        /// <param name="startedAt">When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called. (required).</param>
+        /// <param name="createdAt">When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called. (required).</param>
+        /// <param name="createdBy">UserId or email address for the user that created the build. (required).</param>
         /// <param name="buildId">System generated id for a build. Increments by 1. (required).</param>
         /// <param name="appId">System generated unique identifier for an application. (required).</param>
-        public Build(string buildTag = default(string), List<BuildRegionalContainerTagsInner> regionalContainerTags = default(List<BuildRegionalContainerTagsInner>), int imageSize = default(int), StatusEnum status = default(StatusEnum), DateTime? deletedAt = default(DateTime?), DateTime? finishedAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), int buildId = default(int), string appId = default(string))
+        public Build(string buildTag = default(string), List<BuildRegionalContainerTagsInner> regionalContainerTags = default(List<BuildRegionalContainerTagsInner>), long imageSize = default(long), BuildStatus status = default(BuildStatus), DateTime? deletedAt = default(DateTime?), DateTime? finishedAt = default(DateTime?), DateTime? startedAt = default(DateTime?), DateTime createdAt = default(DateTime), string createdBy = default(string), int buildId = default(int), string appId = default(string))
         {
-            // to ensure "buildTag" is required (not null)
-            if (buildTag == null)
-            {
-                throw new ArgumentNullException("buildTag is a required property for Build and cannot be null");
-            }
-            this.BuildTag = buildTag;
             // to ensure "regionalContainerTags" is required (not null)
             if (regionalContainerTags == null)
             {
@@ -140,15 +100,16 @@ namespace Hathora.Cloud.Sdk.Model
                 throw new ArgumentNullException("appId is a required property for Build and cannot be null");
             }
             this.AppId = appId;
+            this.BuildTag = buildTag;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+        /// Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
         /// </summary>
-        /// <value>Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).</value>
+        /// <value>Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).</value>
         /// <example>&quot;0.1.14-14c793&quot;</example>
-        [DataMember(Name = "buildTag", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "buildTag", EmitDefaultValue = true)]
         public string BuildTag { get; set; }
 
         /// <summary>
@@ -163,7 +124,7 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <value>The size (in bytes) of the Docker image built by Hathora.</value>
         [DataMember(Name = "imageSize", IsRequired = true, EmitDefaultValue = true)]
-        public int ImageSize { get; set; }
+        public long ImageSize { get; set; }
 
         /// <summary>
         /// When the build was deleted.
@@ -173,31 +134,31 @@ namespace Hathora.Cloud.Sdk.Model
         public DateTime? DeletedAt { get; set; }
 
         /// <summary>
-        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
+        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing.
         /// </summary>
-        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.</value>
+        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing.</value>
         [DataMember(Name = "finishedAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTime? FinishedAt { get; set; }
 
         /// <summary>
-        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
+        /// When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.
         /// </summary>
-        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.</value>
+        /// <value>When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.</value>
         [DataMember(Name = "startedAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTime? StartedAt { get; set; }
 
         /// <summary>
-        /// When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
+        /// When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.
         /// </summary>
-        /// <value>When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.</value>
+        /// <value>When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.</value>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Email address for the user that created the build.
+        /// UserId or email address for the user that created the build.
         /// </summary>
-        /// <value>Email address for the user that created the build.</value>
-        /// <example>&quot;dev@hathora.dev&quot;</example>
+        /// <value>UserId or email address for the user that created the build.</value>
+        /// <example>&quot;google-oauth2|107030234048588177467&quot;</example>
         [DataMember(Name = "createdBy", IsRequired = true, EmitDefaultValue = true)]
         public string CreatedBy { get; set; }
 

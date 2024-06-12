@@ -21,10 +21,12 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.hathora.client.model.BuildRegionalContainerTagsInner;
+import com.hathora.client.model.BuildStatus;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,62 +64,11 @@ public class Build {
 
   public static final String SERIALIZED_NAME_IMAGE_SIZE = "imageSize";
   @SerializedName(SERIALIZED_NAME_IMAGE_SIZE)
-  private Integer imageSize;
-
-  /**
-   * Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    CREATED("created"),
-    
-    RUNNING("running"),
-    
-    SUCCEEDED("succeeded"),
-    
-    FAILED("failed");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
+  private Long imageSize;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  private BuildStatus status;
 
   public static final String SERIALIZED_NAME_DELETED_AT = "deletedAt";
   @SerializedName(SERIALIZED_NAME_DELETED_AT)
@@ -157,7 +108,7 @@ public class Build {
   }
 
    /**
-   * Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/GetBuildInfo).
+   * Tag to associate an external version with a build. It is accessible via [&#x60;GetBuildInfo()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/GetBuildInfo).
    * @return buildTag
   **/
   @javax.annotation.Nullable
@@ -204,7 +155,7 @@ public class Build {
   }
 
 
-  public Build imageSize(Integer imageSize) {
+  public Build imageSize(Long imageSize) {
     
     this.imageSize = imageSize;
     return this;
@@ -216,34 +167,34 @@ public class Build {
   **/
   @javax.annotation.Nonnull
 
-  public Integer getImageSize() {
+  public Long getImageSize() {
     return imageSize;
   }
 
 
-  public void setImageSize(Integer imageSize) {
+  public void setImageSize(Long imageSize) {
     this.imageSize = imageSize;
   }
 
 
-  public Build status(StatusEnum status) {
+  public Build status(BuildStatus status) {
     
     this.status = status;
     return this;
   }
 
    /**
-   * Current status of your build.  &#x60;created&#x60;: a build was created but not yet run  &#x60;running&#x60;: the build process is actively executing  &#x60;succeeded&#x60;: the game server artifact was successfully built and stored in the Hathora registries  &#x60;failed&#x60;: the build process was unsuccessful, most likely due to an error with the &#x60;Dockerfile&#x60;
+   * Get status
    * @return status
   **/
   @javax.annotation.Nonnull
 
-  public StatusEnum getStatus() {
+  public BuildStatus getStatus() {
     return status;
   }
 
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(BuildStatus status) {
     this.status = status;
   }
 
@@ -277,7 +228,7 @@ public class Build {
   }
 
    /**
-   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) finished executing.
+   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) finished executing.
    * @return finishedAt
   **/
   @javax.annotation.Nullable
@@ -299,7 +250,7 @@ public class Build {
   }
 
    /**
-   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/RunBuild) is called.
+   * When [&#x60;RunBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/RunBuild) is called.
    * @return startedAt
   **/
   @javax.annotation.Nullable
@@ -321,7 +272,7 @@ public class Build {
   }
 
    /**
-   * When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV1/operation/CreateBuild) is called.
+   * When [&#x60;CreateBuild()&#x60;](https://hathora.dev/api#tag/BuildV2/operation/CreateBuild) is called.
    * @return createdAt
   **/
   @javax.annotation.Nonnull
@@ -343,7 +294,7 @@ public class Build {
   }
 
    /**
-   * Email address for the user that created the build.
+   * UserId or email address for the user that created the build.
    * @return createdBy
   **/
   @javax.annotation.Nonnull
@@ -470,9 +421,20 @@ public class Build {
         Objects.equals(this.additionalProperties, build.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(buildTag, regionalContainerTags, imageSize, status, deletedAt, finishedAt, startedAt, createdAt, createdBy, buildId, appId, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -527,7 +489,6 @@ public class Build {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("buildTag");
     openapiRequiredFields.add("regionalContainerTags");
     openapiRequiredFields.add("imageSize");
     openapiRequiredFields.add("status");
@@ -559,7 +520,7 @@ public class Build {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("buildTag").isJsonPrimitive()) {
+      if ((jsonObj.get("buildTag") != null && !jsonObj.get("buildTag").isJsonNull()) && !jsonObj.get("buildTag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `buildTag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("buildTag").toString()));
       }
       // ensure the json data is an array
@@ -572,9 +533,6 @@ public class Build {
       for (int i = 0; i < jsonArrayregionalContainerTags.size(); i++) {
         BuildRegionalContainerTagsInner.validateJsonObject(jsonArrayregionalContainerTags.get(i).getAsJsonObject());
       };
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
       }

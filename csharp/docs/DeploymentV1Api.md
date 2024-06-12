@@ -4,13 +4,14 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateDeployment**](DeploymentV1Api.md#createdeployment) | **POST** /deployments/v1/{appId}/create/{buildId} |  |
-| [**GetDeploymentInfo**](DeploymentV1Api.md#getdeploymentinfo) | **GET** /deployments/v1/{appId}/info/{deploymentId} |  |
-| [**GetDeployments**](DeploymentV1Api.md#getdeployments) | **GET** /deployments/v1/{appId}/list |  |
+| [**CreateDeploymentDeprecated**](DeploymentV1Api.md#createdeploymentdeprecated) | **POST** /deployments/v1/{appId}/create/{buildId} |  |
+| [**GetDeploymentInfoDeprecated**](DeploymentV1Api.md#getdeploymentinfodeprecated) | **GET** /deployments/v1/{appId}/info/{deploymentId} |  |
+| [**GetDeploymentsDeprecated**](DeploymentV1Api.md#getdeploymentsdeprecated) | **GET** /deployments/v1/{appId}/list |  |
+| [**GetLatestDeploymentDeprecated**](DeploymentV1Api.md#getlatestdeploymentdeprecated) | **GET** /deployments/v1/{appId}/latest |  |
 
-<a name="createdeployment"></a>
-# **CreateDeployment**
-> Deployment CreateDeployment (string appId, int buildId, DeploymentConfig deploymentConfig)
+<a name="createdeploymentdeprecated"></a>
+# **CreateDeploymentDeprecated**
+> Deployment CreateDeploymentDeprecated (string appId, int buildId, DeploymentConfig deploymentConfig)
 
 
 
@@ -26,7 +27,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class CreateDeploymentExample
+    public class CreateDeploymentDeprecatedExample
     {
         public static void Main()
         {
@@ -42,12 +43,12 @@ namespace Example
 
             try
             {
-                Deployment result = apiInstance.CreateDeployment(appId, buildId, deploymentConfig);
+                Deployment result = apiInstance.CreateDeploymentDeprecated(appId, buildId, deploymentConfig);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DeploymentV1Api.CreateDeployment: " + e.Message);
+                Debug.Print("Exception when calling DeploymentV1Api.CreateDeploymentDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -56,20 +57,20 @@ namespace Example
 }
 ```
 
-#### Using the CreateDeploymentWithHttpInfo variant
+#### Using the CreateDeploymentDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Deployment> response = apiInstance.CreateDeploymentWithHttpInfo(appId, buildId, deploymentConfig);
+    ApiResponse<Deployment> response = apiInstance.CreateDeploymentDeprecatedWithHttpInfo(appId, buildId, deploymentConfig);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DeploymentV1Api.CreateDeploymentWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling DeploymentV1Api.CreateDeploymentDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -102,14 +103,16 @@ catch (ApiException e)
 |-------------|-------------|------------------|
 | **201** |  |  -  |
 | **400** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getdeploymentinfo"></a>
-# **GetDeploymentInfo**
-> Deployment GetDeploymentInfo (string appId, int deploymentId)
+<a name="getdeploymentinfodeprecated"></a>
+# **GetDeploymentInfoDeprecated**
+> Deployment GetDeploymentInfoDeprecated (string appId, int deploymentId)
 
 
 
@@ -125,7 +128,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetDeploymentInfoExample
+    public class GetDeploymentInfoDeprecatedExample
     {
         public static void Main()
         {
@@ -140,12 +143,12 @@ namespace Example
 
             try
             {
-                Deployment result = apiInstance.GetDeploymentInfo(appId, deploymentId);
+                Deployment result = apiInstance.GetDeploymentInfoDeprecated(appId, deploymentId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DeploymentV1Api.GetDeploymentInfo: " + e.Message);
+                Debug.Print("Exception when calling DeploymentV1Api.GetDeploymentInfoDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -154,20 +157,20 @@ namespace Example
 }
 ```
 
-#### Using the GetDeploymentInfoWithHttpInfo variant
+#### Using the GetDeploymentInfoDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<Deployment> response = apiInstance.GetDeploymentInfoWithHttpInfo(appId, deploymentId);
+    ApiResponse<Deployment> response = apiInstance.GetDeploymentInfoDeprecatedWithHttpInfo(appId, deploymentId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DeploymentV1Api.GetDeploymentInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling DeploymentV1Api.GetDeploymentInfoDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -198,13 +201,14 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getdeployments"></a>
-# **GetDeployments**
-> List&lt;Deployment&gt; GetDeployments (string appId)
+<a name="getdeploymentsdeprecated"></a>
+# **GetDeploymentsDeprecated**
+> List&lt;Deployment&gt; GetDeploymentsDeprecated (string appId)
 
 
 
@@ -220,7 +224,7 @@ using Hathora.Cloud.Sdk.Model;
 
 namespace Example
 {
-    public class GetDeploymentsExample
+    public class GetDeploymentsDeprecatedExample
     {
         public static void Main()
         {
@@ -234,12 +238,12 @@ namespace Example
 
             try
             {
-                List<Deployment> result = apiInstance.GetDeployments(appId);
+                List<Deployment> result = apiInstance.GetDeploymentsDeprecated(appId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DeploymentV1Api.GetDeployments: " + e.Message);
+                Debug.Print("Exception when calling DeploymentV1Api.GetDeploymentsDeprecated: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -248,20 +252,20 @@ namespace Example
 }
 ```
 
-#### Using the GetDeploymentsWithHttpInfo variant
+#### Using the GetDeploymentsDeprecatedWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<List<Deployment>> response = apiInstance.GetDeploymentsWithHttpInfo(appId);
+    ApiResponse<List<Deployment>> response = apiInstance.GetDeploymentsDeprecatedWithHttpInfo(appId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DeploymentV1Api.GetDeploymentsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling DeploymentV1Api.GetDeploymentsDeprecatedWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -291,6 +295,101 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getlatestdeploymentdeprecated"></a>
+# **GetLatestDeploymentDeprecated**
+> Deployment GetLatestDeploymentDeprecated (string appId)
+
+
+
+Get the latest [deployment](https://hathora.dev/docs/concepts/hathora-entities#deployment) for an [application](https://hathora.dev/docs/concepts/hathora-entities#application).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Hathora.Cloud.Sdk.Api;
+using Hathora.Cloud.Sdk.Client;
+using Hathora.Cloud.Sdk.Model;
+
+namespace Example
+{
+    public class GetLatestDeploymentDeprecatedExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.hathora.dev";
+            // Configure Bearer token for authorization: hathoraDevToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DeploymentV1Api(config);
+            var appId = "appId_example";  // string | 
+
+            try
+            {
+                Deployment result = apiInstance.GetLatestDeploymentDeprecated(appId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DeploymentV1Api.GetLatestDeploymentDeprecated: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetLatestDeploymentDeprecatedWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<Deployment> response = apiInstance.GetLatestDeploymentDeprecatedWithHttpInfo(appId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling DeploymentV1Api.GetLatestDeploymentDeprecatedWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **appId** | **string** |  |  |
+
+### Return type
+
+[**Deployment**](Deployment.md)
+
+### Authorization
+
+[hathoraDevToken](../README.md#hathoraDevToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -30,35 +30,12 @@ namespace Hathora.Cloud.Sdk.Model
     [DataContract(Name = "ConnectionInfoV2")]
     public partial class ConnectionInfoV2 : IEquatable<ConnectionInfoV2>
     {
-        /// <summary>
-        /// &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
-        /// </summary>
-        /// <value>&#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum StatusEnum
-        {
-            /// <summary>
-            /// Enum Starting for value: starting
-            /// </summary>
-            [EnumMember(Value = "starting")]
-            Starting = 1,
-
-            /// <summary>
-            /// Enum Active for value: active
-            /// </summary>
-            [EnumMember(Value = "active")]
-            Active = 2
-
-        }
-
 
         /// <summary>
-        /// &#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.
+        /// Gets or Sets Status
         /// </summary>
-        /// <value>&#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;.</value>
-        /// <example>&quot;active&quot;</example>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public StatusEnum Status { get; set; }
+        public RoomReadyStatus Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ConnectionInfoV2" /> class.
         /// </summary>
@@ -72,9 +49,9 @@ namespace Hathora.Cloud.Sdk.Model
         /// </summary>
         /// <param name="additionalExposedPorts">additionalExposedPorts (required).</param>
         /// <param name="exposedPort">exposedPort.</param>
-        /// <param name="status">&#x60;exposedPort&#x60; will only be available when the &#x60;status&#x60; of a room is \&quot;active\&quot;. (required).</param>
+        /// <param name="status">status (required).</param>
         /// <param name="roomId">Unique identifier to a game session or match. Use the default system generated ID or overwrite it with your own. Note: error will be returned if &#x60;roomId&#x60; is not globally unique. (required).</param>
-        public ConnectionInfoV2(List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), StatusEnum status = default(StatusEnum), string roomId = default(string))
+        public ConnectionInfoV2(List<ExposedPort> additionalExposedPorts = default(List<ExposedPort>), ExposedPort exposedPort = default(ExposedPort), RoomReadyStatus status = default(RoomReadyStatus), string roomId = default(string))
         {
             // to ensure "additionalExposedPorts" is required (not null)
             if (additionalExposedPorts == null)

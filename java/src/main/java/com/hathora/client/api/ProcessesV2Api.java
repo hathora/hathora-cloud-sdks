@@ -77,6 +77,155 @@ public class ProcessesV2Api {
     }
 
     /**
+     * Build call for createProcess
+     * @param appId  (required)
+     * @param region  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createProcessCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/processes/v2/{appId}/create/{region}"
+            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()))
+            .replace("{" + "region" + "}", localVarApiClient.escapeString(region.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createProcessValidateBeforeCall(String appId, Region region, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling createProcess(Async)");
+        }
+
+        // verify the required parameter 'region' is set
+        if (region == null) {
+            throw new ApiException("Missing the required parameter 'region' when calling createProcess(Async)");
+        }
+
+        return createProcessCall(appId, region, _callback);
+
+    }
+
+    /**
+     * 
+     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+     * @param appId  (required)
+     * @param region  (required)
+     * @return ProcessV2
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProcessV2 createProcess(String appId, Region region) throws ApiException {
+        ApiResponse<ProcessV2> localVarResp = createProcessWithHttpInfo(appId, region);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+     * @param appId  (required)
+     * @param region  (required)
+     * @return ApiResponse&lt;ProcessV2&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProcessV2> createProcessWithHttpInfo(String appId, Region region) throws ApiException {
+        okhttp3.Call localVarCall = createProcessValidateBeforeCall(appId, region, null);
+        Type localVarReturnType = new TypeToken<ProcessV2>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+     * @param appId  (required)
+     * @param region  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 402 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createProcessAsync(String appId, Region region, final ApiCallback<ProcessV2> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createProcessValidateBeforeCall(appId, region, _callback);
+        Type localVarReturnType = new TypeToken<ProcessV2>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getLatestProcesses
      * @param appId  (required)
      * @param status  (optional)
@@ -88,6 +237,7 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -167,6 +317,7 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -187,6 +338,7 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -209,6 +361,7 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
@@ -230,8 +383,8 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProcessInfoCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
@@ -307,8 +460,8 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public ProcessV2 getProcessInfo(String appId, String processId) throws ApiException {
@@ -327,8 +480,8 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ProcessV2> getProcessInfoWithHttpInfo(String appId, String processId) throws ApiException {
@@ -349,8 +502,8 @@ public class ProcessesV2Api {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Ok </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
         <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProcessInfoAsync(String appId, String processId, final ApiCallback<ProcessV2> _callback) throws ApiException {
@@ -358,6 +511,147 @@ public class ProcessesV2Api {
         okhttp3.Call localVarCall = getProcessInfoValidateBeforeCall(appId, processId, _callback);
         Type localVarReturnType = new TypeToken<ProcessV2>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for stopProcess
+     * @param appId  (required)
+     * @param processId  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call stopProcessCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/processes/v2/{appId}/stop/{processId}"
+            .replace("{" + "appId" + "}", localVarApiClient.escapeString(appId.toString()))
+            .replace("{" + "processId" + "}", localVarApiClient.escapeString(processId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "hathoraDevToken" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call stopProcessValidateBeforeCall(String appId, String processId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling stopProcess(Async)");
+        }
+
+        // verify the required parameter 'processId' is set
+        if (processId == null) {
+            throw new ApiException("Missing the required parameter 'processId' when calling stopProcess(Async)");
+        }
+
+        return stopProcessCall(appId, processId, _callback);
+
+    }
+
+    /**
+     * 
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     * @param appId  (required)
+     * @param processId  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public void stopProcess(String appId, String processId) throws ApiException {
+        stopProcessWithHttpInfo(appId, processId);
+    }
+
+    /**
+     * 
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     * @param appId  (required)
+     * @param processId  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> stopProcessWithHttpInfo(String appId, String processId) throws ApiException {
+        okhttp3.Call localVarCall = stopProcessValidateBeforeCall(appId, processId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     * @param appId  (required)
+     * @param processId  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call stopProcessAsync(String appId, String processId, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = stopProcessValidateBeforeCall(appId, processId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

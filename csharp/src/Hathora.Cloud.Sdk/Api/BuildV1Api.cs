@@ -36,7 +36,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createBuildParams"></param>
         /// <returns>Build</returns>
-        Build CreateBuild(string appId, CreateBuildParams createBuildParams);
+        [Obsolete]
+        Build CreateBuildDeprecated(string appId, CreateBuildParams createBuildParams);
 
         /// <summary>
         /// 
@@ -48,7 +49,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createBuildParams"></param>
         /// <returns>ApiResponse of Build</returns>
-        ApiResponse<Build> CreateBuildWithHttpInfo(string appId, CreateBuildParams createBuildParams);
+        [Obsolete]
+        ApiResponse<Build> CreateBuildDeprecatedWithHttpInfo(string appId, CreateBuildParams createBuildParams);
         /// <summary>
         /// 
         /// </summary>
@@ -59,7 +61,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns></returns>
-        void DeleteBuild(string appId, int buildId);
+        [Obsolete]
+        void DeleteBuildDeprecated(string appId, int buildId);
 
         /// <summary>
         /// 
@@ -71,7 +74,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteBuildWithHttpInfo(string appId, int buildId);
+        [Obsolete]
+        ApiResponse<Object> DeleteBuildDeprecatedWithHttpInfo(string appId, int buildId);
         /// <summary>
         /// 
         /// </summary>
@@ -82,7 +86,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns>Build</returns>
-        Build GetBuildInfo(string appId, int buildId);
+        [Obsolete]
+        Build GetBuildInfoDeprecated(string appId, int buildId);
 
         /// <summary>
         /// 
@@ -94,7 +99,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns>ApiResponse of Build</returns>
-        ApiResponse<Build> GetBuildInfoWithHttpInfo(string appId, int buildId);
+        [Obsolete]
+        ApiResponse<Build> GetBuildInfoDeprecatedWithHttpInfo(string appId, int buildId);
         /// <summary>
         /// 
         /// </summary>
@@ -104,7 +110,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>List&lt;Build&gt;</returns>
-        List<Build> GetBuilds(string appId);
+        [Obsolete]
+        List<Build> GetBuildsDeprecated(string appId);
 
         /// <summary>
         /// 
@@ -115,7 +122,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>ApiResponse of List&lt;Build&gt;</returns>
-        ApiResponse<List<Build>> GetBuildsWithHttpInfo(string appId);
+        [Obsolete]
+        ApiResponse<List<Build>> GetBuildsDeprecatedWithHttpInfo(string appId);
         /// <summary>
         /// 
         /// </summary>
@@ -127,7 +135,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="file"></param>
         /// <returns>byte[]</returns>
-        byte[] RunBuild(string appId, int buildId, System.IO.Stream file);
+        [Obsolete]
+        byte[] RunBuildDeprecated(string appId, int buildId, System.IO.Stream file);
 
         /// <summary>
         /// 
@@ -140,7 +149,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="file"></param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> RunBuildWithHttpInfo(string appId, int buildId, System.IO.Stream file);
+        [Obsolete]
+        ApiResponse<byte[]> RunBuildDeprecatedWithHttpInfo(string appId, int buildId, System.IO.Stream file);
         #endregion Synchronous Operations
     }
 
@@ -161,7 +171,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Build</returns>
-        System.Threading.Tasks.Task<Build> CreateBuildAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Build> CreateBuildDeprecatedAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -174,7 +185,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Build)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Build>> CreateBuildWithHttpInfoAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Build>> CreateBuildDeprecatedWithHttpInfoAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -186,7 +198,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteBuildAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task DeleteBuildDeprecatedAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -199,7 +212,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteBuildWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteBuildDeprecatedWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -211,7 +225,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Build</returns>
-        System.Threading.Tasks.Task<Build> GetBuildInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<Build> GetBuildInfoDeprecatedAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -224,7 +239,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Build)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Build>> GetBuildInfoWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Build>> GetBuildInfoDeprecatedWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -235,7 +251,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Build&gt;</returns>
-        System.Threading.Tasks.Task<List<Build>> GetBuildsAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<List<Build>> GetBuildsDeprecatedAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -247,7 +264,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Build&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Build>>> GetBuildsWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<List<Build>>> GetBuildsDeprecatedWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -260,7 +278,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="file"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> RunBuildAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<byte[]> RunBuildDeprecatedAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -274,7 +293,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="file"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> RunBuildWithHttpInfoAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> RunBuildDeprecatedWithHttpInfoAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -426,9 +446,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createBuildParams"></param>
         /// <returns>Build</returns>
-        public Build CreateBuild(string appId, CreateBuildParams createBuildParams)
+        [Obsolete]
+        public Build CreateBuildDeprecated(string appId, CreateBuildParams createBuildParams)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = CreateBuildWithHttpInfo(appId, createBuildParams);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = CreateBuildDeprecatedWithHttpInfo(appId, createBuildParams);
             return localVarResponse.Data;
         }
 
@@ -439,15 +460,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createBuildParams"></param>
         /// <returns>ApiResponse of Build</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Build> CreateBuildWithHttpInfo(string appId, CreateBuildParams createBuildParams)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Build> CreateBuildDeprecatedWithHttpInfo(string appId, CreateBuildParams createBuildParams)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->CreateBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->CreateBuildDeprecated");
 
             // verify the required parameter 'createBuildParams' is set
             if (createBuildParams == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildParams' when calling BuildV1Api->CreateBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildParams' when calling BuildV1Api->CreateBuildDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -481,7 +503,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateBuild", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateBuildDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -496,9 +518,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Build</returns>
-        public async System.Threading.Tasks.Task<Build> CreateBuildAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Build> CreateBuildDeprecatedAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = CreateBuildWithHttpInfoAsync(appId, createBuildParams, cancellationToken);
+            var task = CreateBuildDeprecatedWithHttpInfoAsync(appId, createBuildParams, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -515,15 +538,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createBuildParams"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Build)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Build>> CreateBuildWithHttpInfoAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Build>> CreateBuildDeprecatedWithHttpInfoAsync(string appId, CreateBuildParams createBuildParams, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->CreateBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->CreateBuildDeprecated");
 
             // verify the required parameter 'createBuildParams' is set
             if (createBuildParams == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildParams' when calling BuildV1Api->CreateBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'createBuildParams' when calling BuildV1Api->CreateBuildDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -566,7 +590,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateBuild", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateBuildDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -580,9 +604,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns></returns>
-        public void DeleteBuild(string appId, int buildId)
+        [Obsolete]
+        public void DeleteBuildDeprecated(string appId, int buildId)
         {
-            DeleteBuildWithHttpInfo(appId, buildId);
+            DeleteBuildDeprecatedWithHttpInfo(appId, buildId);
         }
 
         /// <summary>
@@ -592,11 +617,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> DeleteBuildWithHttpInfo(string appId, int buildId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> DeleteBuildDeprecatedWithHttpInfo(string appId, int buildId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->DeleteBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->DeleteBuildDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -629,7 +655,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("DeleteBuild", localVarResponse);
+                Exception _exception = this.ExceptionFactory("DeleteBuildDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -644,9 +670,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteBuildAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task DeleteBuildDeprecatedAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = DeleteBuildWithHttpInfoAsync(appId, buildId, cancellationToken);
+            var task = DeleteBuildDeprecatedWithHttpInfoAsync(appId, buildId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             await task.ConfigureAwait(false);
 #else
@@ -662,11 +689,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> DeleteBuildWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> DeleteBuildDeprecatedWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->DeleteBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->DeleteBuildDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -708,7 +736,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("DeleteBuild", localVarResponse);
+                Exception _exception = this.ExceptionFactory("DeleteBuildDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -722,9 +750,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns>Build</returns>
-        public Build GetBuildInfo(string appId, int buildId)
+        [Obsolete]
+        public Build GetBuildInfoDeprecated(string appId, int buildId)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = GetBuildInfoWithHttpInfo(appId, buildId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = GetBuildInfoDeprecatedWithHttpInfo(appId, buildId);
             return localVarResponse.Data;
         }
 
@@ -735,11 +764,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="buildId"></param>
         /// <returns>ApiResponse of Build</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Build> GetBuildInfoWithHttpInfo(string appId, int buildId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Build> GetBuildInfoDeprecatedWithHttpInfo(string appId, int buildId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuildInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuildInfoDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -772,7 +802,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetBuildInfo", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetBuildInfoDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -787,9 +817,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Build</returns>
-        public async System.Threading.Tasks.Task<Build> GetBuildInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Build> GetBuildInfoDeprecatedAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = GetBuildInfoWithHttpInfoAsync(appId, buildId, cancellationToken);
+            var task = GetBuildInfoDeprecatedWithHttpInfoAsync(appId, buildId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<Build> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -806,11 +837,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Build)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Build>> GetBuildInfoWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Build>> GetBuildInfoDeprecatedWithHttpInfoAsync(string appId, int buildId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuildInfo");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuildInfoDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -852,7 +884,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetBuildInfo", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetBuildInfoDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -865,9 +897,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>List&lt;Build&gt;</returns>
-        public List<Build> GetBuilds(string appId)
+        [Obsolete]
+        public List<Build> GetBuildsDeprecated(string appId)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<List<Build>> localVarResponse = GetBuildsWithHttpInfo(appId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<List<Build>> localVarResponse = GetBuildsDeprecatedWithHttpInfo(appId);
             return localVarResponse.Data;
         }
 
@@ -877,11 +910,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <returns>ApiResponse of List&lt;Build&gt;</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Build>> GetBuildsWithHttpInfo(string appId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<List<Build>> GetBuildsDeprecatedWithHttpInfo(string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuilds");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuildsDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -913,7 +947,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetBuilds", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetBuildsDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -927,9 +961,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of List&lt;Build&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Build>> GetBuildsAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<List<Build>> GetBuildsDeprecatedAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = GetBuildsWithHttpInfoAsync(appId, cancellationToken);
+            var task = GetBuildsDeprecatedWithHttpInfoAsync(appId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<List<Build>> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -945,11 +980,12 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;Build&gt;)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Build>>> GetBuildsWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<List<Build>>> GetBuildsDeprecatedWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuilds");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->GetBuildsDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -990,7 +1026,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetBuilds", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetBuildsDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1005,9 +1041,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="file"></param>
         /// <returns>byte[]</returns>
-        public byte[] RunBuild(string appId, int buildId, System.IO.Stream file)
+        [Obsolete]
+        public byte[] RunBuildDeprecated(string appId, int buildId, System.IO.Stream file)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = RunBuildWithHttpInfo(appId, buildId, file);
+            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = RunBuildDeprecatedWithHttpInfo(appId, buildId, file);
             return localVarResponse.Data;
         }
 
@@ -1019,15 +1056,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="buildId"></param>
         /// <param name="file"></param>
         /// <returns>ApiResponse of byte[]</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> RunBuildWithHttpInfo(string appId, int buildId, System.IO.Stream file)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> RunBuildDeprecatedWithHttpInfo(string appId, int buildId, System.IO.Stream file)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->RunBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->RunBuildDeprecated");
 
             // verify the required parameter 'file' is set
             if (file == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'file' when calling BuildV1Api->RunBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'file' when calling BuildV1Api->RunBuildDeprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1062,7 +1100,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("RunBuild", localVarResponse);
+                Exception _exception = this.ExceptionFactory("RunBuildDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1078,9 +1116,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="file"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> RunBuildAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<byte[]> RunBuildDeprecatedAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = RunBuildWithHttpInfoAsync(appId, buildId, file, cancellationToken);
+            var task = RunBuildDeprecatedWithHttpInfoAsync(appId, buildId, file, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task.ConfigureAwait(false);
 #else
@@ -1098,15 +1137,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="file"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> RunBuildWithHttpInfoAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> RunBuildDeprecatedWithHttpInfoAsync(string appId, int buildId, System.IO.Stream file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->RunBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling BuildV1Api->RunBuildDeprecated");
 
             // verify the required parameter 'file' is set
             if (file == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'file' when calling BuildV1Api->RunBuild");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'file' when calling BuildV1Api->RunBuildDeprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1151,7 +1191,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("RunBuild", localVarResponse);
+                Exception _exception = this.ExceptionFactory("RunBuildDeprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

@@ -35,8 +35,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <returns>byte[]</returns>
-        byte[] DownloadLogForProcess(string appId, string processId);
+        /// <returns>System.IO.Stream</returns>
+        System.IO.Stream DownloadLogForProcess(string appId, string processId);
 
         /// <summary>
         /// 
@@ -47,8 +47,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> DownloadLogForProcessWithHttpInfo(string appId, string processId);
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        ApiResponse<System.IO.Stream> DownloadLogForProcessWithHttpInfo(string appId, string processId);
         /// <summary>
         /// 
         /// </summary>
@@ -60,9 +60,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
-        /// <returns>byte[]</returns>
+        /// <returns>System.IO.Stream</returns>
         [Obsolete]
-        byte[] GetLogsForApp(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?));
+        System.IO.Stream GetLogsForApp(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?));
 
         /// <summary>
         /// 
@@ -75,9 +75,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
         [Obsolete]
-        ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?));
+        ApiResponse<System.IO.Stream> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?));
         /// <summary>
         /// 
         /// </summary>
@@ -89,9 +89,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>byte[]</returns>
+        /// <returns>System.IO.Stream</returns>
         [Obsolete]
-        byte[] GetLogsForDeployment(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?));
+        System.IO.Stream GetLogsForDeployment(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?));
 
         /// <summary>
         /// 
@@ -104,9 +104,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
         [Obsolete]
-        ApiResponse<byte[]> GetLogsForDeploymentWithHttpInfo(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?));
+        ApiResponse<System.IO.Stream> GetLogsForDeploymentWithHttpInfo(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?));
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +118,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>byte[]</returns>
-        byte[] GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?));
+        /// <returns>System.IO.Stream</returns>
+        System.IO.Stream GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?));
 
         /// <summary>
         /// 
@@ -132,8 +132,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?));
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        ApiResponse<System.IO.Stream> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?));
         #endregion Synchronous Operations
     }
 
@@ -153,8 +153,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> DownloadLogForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> DownloadLogForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -166,8 +166,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> DownloadLogForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> DownloadLogForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -180,9 +180,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
+        /// <returns>Task of System.IO.Stream</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<System.IO.Stream> GetLogsForAppAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -196,9 +196,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -211,9 +211,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
+        /// <returns>Task of System.IO.Stream</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<byte[]> GetLogsForDeploymentAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<System.IO.Stream> GetLogsForDeploymentAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -227,9 +227,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForDeploymentWithHttpInfoAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetLogsForDeploymentWithHttpInfoAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -242,8 +242,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task<System.IO.Stream> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -257,8 +257,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -409,10 +409,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <returns>byte[]</returns>
-        public byte[] DownloadLogForProcess(string appId, string processId)
+        /// <returns>System.IO.Stream</returns>
+        public System.IO.Stream DownloadLogForProcess(string appId, string processId)
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = DownloadLogForProcessWithHttpInfo(appId, processId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = DownloadLogForProcessWithHttpInfo(appId, processId);
             return localVarResponse.Data;
         }
 
@@ -422,8 +422,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <exception cref="Hathora.Cloud.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
         /// <param name="processId"></param>
-        /// <returns>ApiResponse of byte[]</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> DownloadLogForProcessWithHttpInfo(string appId, string processId)
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> DownloadLogForProcessWithHttpInfo(string appId, string processId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -440,7 +440,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -461,7 +461,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<byte[]>("/logs/v1/{appId}/process/{processId}/download", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<System.IO.Stream>("/logs/v1/{appId}/process/{processId}/download", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -479,14 +479,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> DownloadLogForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> DownloadLogForProcessAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = DownloadLogForProcessWithHttpInfoAsync(appId, processId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -498,8 +498,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="processId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> DownloadLogForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream>> DownloadLogForProcessWithHttpInfoAsync(string appId, string processId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -517,7 +517,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -540,7 +540,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/process/{processId}/download", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<System.IO.Stream>("/logs/v1/{appId}/process/{processId}/download", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -565,11 +565,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
-        /// <returns>byte[]</returns>
+        /// <returns>System.IO.Stream</returns>
         [Obsolete]
-        public byte[] GetLogsForApp(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?))
+        public System.IO.Stream GetLogsForApp(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = GetLogsForAppWithHttpInfo(appId, follow, tailLines, region);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = GetLogsForAppWithHttpInfo(appId, follow, tailLines, region);
             return localVarResponse.Data;
         }
 
@@ -581,9 +581,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> GetLogsForAppWithHttpInfo(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -596,7 +596,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -628,7 +628,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<byte[]>("/logs/v1/{appId}/all", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<System.IO.Stream>("/logs/v1/{appId}/all", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -648,15 +648,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
+        /// <returns>Task of System.IO.Stream</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<byte[]> GetLogsForAppAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetLogsForAppAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetLogsForAppWithHttpInfoAsync(appId, follow, tailLines, region, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -670,9 +670,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="tailLines"> (optional)</param>
         /// <param name="region"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream>> GetLogsForAppWithHttpInfoAsync(string appId, bool? follow = default(bool?), int? tailLines = default(int?), Region? region = default(Region?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -686,7 +686,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -720,7 +720,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/all", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<System.IO.Stream>("/logs/v1/{appId}/all", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -745,11 +745,11 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>byte[]</returns>
+        /// <returns>System.IO.Stream</returns>
         [Obsolete]
-        public byte[] GetLogsForDeployment(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?))
+        public System.IO.Stream GetLogsForDeployment(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = GetLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = GetLogsForDeploymentWithHttpInfo(appId, deploymentId, follow, tailLines);
             return localVarResponse.Data;
         }
 
@@ -761,9 +761,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="deploymentId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
         [Obsolete]
-        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForDeploymentWithHttpInfo(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?))
+        public Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> GetLogsForDeploymentWithHttpInfo(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -776,7 +776,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -805,7 +805,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<byte[]>("/logs/v1/{appId}/deployment/{deploymentId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<System.IO.Stream>("/logs/v1/{appId}/deployment/{deploymentId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -825,15 +825,15 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
+        /// <returns>Task of System.IO.Stream</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<byte[]> GetLogsForDeploymentAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetLogsForDeploymentAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetLogsForDeploymentWithHttpInfoAsync(appId, deploymentId, follow, tailLines, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -847,9 +847,9 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForDeploymentWithHttpInfoAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream>> GetLogsForDeploymentWithHttpInfoAsync(string appId, int deploymentId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -863,7 +863,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -894,7 +894,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/deployment/{deploymentId}", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<System.IO.Stream>("/logs/v1/{appId}/deployment/{deploymentId}", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -919,10 +919,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>byte[]</returns>
-        public byte[] GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?))
+        /// <returns>System.IO.Stream</returns>
+        public System.IO.Stream GetLogsForProcess(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = GetLogsForProcessWithHttpInfo(appId, processId, follow, tailLines);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = GetLogsForProcessWithHttpInfo(appId, processId, follow, tailLines);
             return localVarResponse.Data;
         }
 
@@ -934,8 +934,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="processId"></param>
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
-        /// <returns>ApiResponse of byte[]</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?))
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> GetLogsForProcessWithHttpInfo(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -952,7 +952,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -981,7 +981,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<byte[]>("/logs/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<System.IO.Stream>("/logs/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1001,14 +1001,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetLogsForProcessAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = GetLogsForProcessWithHttpInfoAsync(appId, processId, follow, tailLines, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<byte[]> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -1022,8 +1022,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="follow"> (optional, default to false)</param>
         /// <param name="tailLines"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<byte[]>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<System.IO.Stream>> GetLogsForProcessWithHttpInfoAsync(string appId, string processId, bool? follow = default(bool?), int? tailLines = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1041,7 +1041,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
+                "application/octet-stream",
                 "application/json"
             };
 
@@ -1072,7 +1072,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.GetAsync<byte[]>("/logs/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.GetAsync<System.IO.Stream>("/logs/v1/{appId}/process/{processId}", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);

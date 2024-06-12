@@ -1,11 +1,10 @@
 # Hathora.Cloud.Sdk.Model.Invoice
-Billing types
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **string** |  | 
+**Status** | **InvoiceStatus** |  | 
 **AmountDue** | **double** |  | 
 **PdfUrl** | **string** |  | 
 **DueDate** | **DateTime** |  | 

@@ -4,16 +4,16 @@ All URIs are relative to *https://api.hathora.dev*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createBuild**](BuildV1Api.md#createBuild) | **POST** /builds/v1/{appId}/create |  |
-| [**deleteBuild**](BuildV1Api.md#deleteBuild) | **DELETE** /builds/v1/{appId}/delete/{buildId} |  |
-| [**getBuildInfo**](BuildV1Api.md#getBuildInfo) | **GET** /builds/v1/{appId}/info/{buildId} |  |
-| [**getBuilds**](BuildV1Api.md#getBuilds) | **GET** /builds/v1/{appId}/list |  |
-| [**runBuild**](BuildV1Api.md#runBuild) | **POST** /builds/v1/{appId}/run/{buildId} |  |
+| [**createBuildDeprecated**](BuildV1Api.md#createBuildDeprecated) | **POST** /builds/v1/{appId}/create |  |
+| [**deleteBuildDeprecated**](BuildV1Api.md#deleteBuildDeprecated) | **DELETE** /builds/v1/{appId}/delete/{buildId} |  |
+| [**getBuildInfoDeprecated**](BuildV1Api.md#getBuildInfoDeprecated) | **GET** /builds/v1/{appId}/info/{buildId} |  |
+| [**getBuildsDeprecated**](BuildV1Api.md#getBuildsDeprecated) | **GET** /builds/v1/{appId}/list |  |
+| [**runBuildDeprecated**](BuildV1Api.md#runBuildDeprecated) | **POST** /builds/v1/{appId}/run/{buildId} |  |
 
 
-<a name="createBuild"></a>
-# **createBuild**
-> Build createBuild(appId, createBuildParams)
+<a name="createBuildDeprecated"></a>
+# **createBuildDeprecated**
+> Build createBuildDeprecated(appId, createBuildParams)
 
 
 
@@ -42,10 +42,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     CreateBuildParams createBuildParams = new CreateBuildParams(); // CreateBuildParams | 
     try {
-      Build result = apiInstance.createBuild(appId, createBuildParams);
+      Build result = apiInstance.createBuildDeprecated(appId, createBuildParams);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuildV1Api#createBuild");
+      System.err.println("Exception when calling BuildV1Api#createBuildDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -79,12 +79,14 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
-<a name="deleteBuild"></a>
-# **deleteBuild**
-> deleteBuild(appId, buildId)
+<a name="deleteBuildDeprecated"></a>
+# **deleteBuildDeprecated**
+> deleteBuildDeprecated(appId, buildId)
 
 
 
@@ -113,9 +115,9 @@ public class Example {
     String appId = "appId_example"; // String | 
     Integer buildId = 56; // Integer | 
     try {
-      apiInstance.deleteBuild(appId, buildId);
+      apiInstance.deleteBuildDeprecated(appId, buildId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuildV1Api#deleteBuild");
+      System.err.println("Exception when calling BuildV1Api#deleteBuildDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -149,13 +151,14 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **500** |  |  -  |
 
-<a name="getBuildInfo"></a>
-# **getBuildInfo**
-> Build getBuildInfo(appId, buildId)
+<a name="getBuildInfoDeprecated"></a>
+# **getBuildInfoDeprecated**
+> Build getBuildInfoDeprecated(appId, buildId)
 
 
 
@@ -184,10 +187,10 @@ public class Example {
     String appId = "appId_example"; // String | 
     Integer buildId = 56; // Integer | 
     try {
-      Build result = apiInstance.getBuildInfo(appId, buildId);
+      Build result = apiInstance.getBuildInfoDeprecated(appId, buildId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuildV1Api#getBuildInfo");
+      System.err.println("Exception when calling BuildV1Api#getBuildInfoDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -221,11 +224,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
-<a name="getBuilds"></a>
-# **getBuilds**
-> List&lt;Build&gt; getBuilds(appId)
+<a name="getBuildsDeprecated"></a>
+# **getBuildsDeprecated**
+> List&lt;Build&gt; getBuildsDeprecated(appId)
 
 
 
@@ -253,10 +257,10 @@ public class Example {
     BuildV1Api apiInstance = new BuildV1Api(defaultClient);
     String appId = "appId_example"; // String | 
     try {
-      List<Build> result = apiInstance.getBuilds(appId);
+      List<Build> result = apiInstance.getBuildsDeprecated(appId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuildV1Api#getBuilds");
+      System.err.println("Exception when calling BuildV1Api#getBuildsDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -289,11 +293,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
-<a name="runBuild"></a>
-# **runBuild**
-> byte[] runBuild(appId, buildId, _file)
+<a name="runBuildDeprecated"></a>
+# **runBuildDeprecated**
+> byte[] runBuildDeprecated(appId, buildId, _file)
 
 
 
@@ -323,10 +328,10 @@ public class Example {
     Integer buildId = 56; // Integer | 
     File _file = new File("/path/to/file"); // File | 
     try {
-      byte[] result = apiInstance.runBuild(appId, buildId, _file);
+      byte[] result = apiInstance.runBuildDeprecated(appId, buildId, _file);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling BuildV1Api#runBuild");
+      System.err.println("Exception when calling BuildV1Api#runBuildDeprecated");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -361,6 +366,8 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 

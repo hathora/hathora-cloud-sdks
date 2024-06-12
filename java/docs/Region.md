@@ -27,5 +27,7 @@
 
 * `SAO_PAULO` (value: `"Sao_Paulo"`)
 
+* `DALLAS` (value: `"Dallas"`)
+
 
 

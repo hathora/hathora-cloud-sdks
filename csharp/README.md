@@ -103,15 +103,26 @@ Class | Method | HTTP request | Description
 *BillingV1Api* | [**GetInvoices**](BillingV1Api.md#getinvoices) | **GET** /billing/v1/invoices | 
 *BillingV1Api* | [**GetPaymentMethod**](BillingV1Api.md#getpaymentmethod) | **GET** /billing/v1/paymentmethod | 
 *BillingV1Api* | [**InitStripeCustomerPortalUrl**](BillingV1Api.md#initstripecustomerportalurl) | **POST** /billing/v1/customerportalurl | 
-*BuildV1Api* | [**CreateBuild**](BuildV1Api.md#createbuild) | **POST** /builds/v1/{appId}/create | 
-*BuildV1Api* | [**DeleteBuild**](BuildV1Api.md#deletebuild) | **DELETE** /builds/v1/{appId}/delete/{buildId} | 
-*BuildV1Api* | [**GetBuildInfo**](BuildV1Api.md#getbuildinfo) | **GET** /builds/v1/{appId}/info/{buildId} | 
-*BuildV1Api* | [**GetBuilds**](BuildV1Api.md#getbuilds) | **GET** /builds/v1/{appId}/list | 
-*BuildV1Api* | [**RunBuild**](BuildV1Api.md#runbuild) | **POST** /builds/v1/{appId}/run/{buildId} | 
-*DeploymentV1Api* | [**CreateDeployment**](DeploymentV1Api.md#createdeployment) | **POST** /deployments/v1/{appId}/create/{buildId} | 
-*DeploymentV1Api* | [**GetDeploymentInfo**](DeploymentV1Api.md#getdeploymentinfo) | **GET** /deployments/v1/{appId}/info/{deploymentId} | 
-*DeploymentV1Api* | [**GetDeployments**](DeploymentV1Api.md#getdeployments) | **GET** /deployments/v1/{appId}/list | 
-*DiscoveryV1Api* | [**GetPingServiceEndpoints**](DiscoveryV1Api.md#getpingserviceendpoints) | **GET** /discovery/v1/ping | 
+*BuildV1Api* | [**CreateBuildDeprecated**](BuildV1Api.md#createbuilddeprecated) | **POST** /builds/v1/{appId}/create | 
+*BuildV1Api* | [**DeleteBuildDeprecated**](BuildV1Api.md#deletebuilddeprecated) | **DELETE** /builds/v1/{appId}/delete/{buildId} | 
+*BuildV1Api* | [**GetBuildInfoDeprecated**](BuildV1Api.md#getbuildinfodeprecated) | **GET** /builds/v1/{appId}/info/{buildId} | 
+*BuildV1Api* | [**GetBuildsDeprecated**](BuildV1Api.md#getbuildsdeprecated) | **GET** /builds/v1/{appId}/list | 
+*BuildV1Api* | [**RunBuildDeprecated**](BuildV1Api.md#runbuilddeprecated) | **POST** /builds/v1/{appId}/run/{buildId} | 
+*BuildV2Api* | [**CreateBuild**](BuildV2Api.md#createbuild) | **POST** /builds/v2/{appId}/create | 
+*BuildV2Api* | [**DeleteBuild**](BuildV2Api.md#deletebuild) | **DELETE** /builds/v2/{appId}/delete/{buildId} | 
+*BuildV2Api* | [**GetBuildInfo**](BuildV2Api.md#getbuildinfo) | **GET** /builds/v2/{appId}/info/{buildId} | 
+*BuildV2Api* | [**GetBuilds**](BuildV2Api.md#getbuilds) | **GET** /builds/v2/{appId}/list | 
+*BuildV2Api* | [**RunBuild**](BuildV2Api.md#runbuild) | **POST** /builds/v2/{appId}/run/{buildId} | 
+*DeploymentV1Api* | [**CreateDeploymentDeprecated**](DeploymentV1Api.md#createdeploymentdeprecated) | **POST** /deployments/v1/{appId}/create/{buildId} | 
+*DeploymentV1Api* | [**GetDeploymentInfoDeprecated**](DeploymentV1Api.md#getdeploymentinfodeprecated) | **GET** /deployments/v1/{appId}/info/{deploymentId} | 
+*DeploymentV1Api* | [**GetDeploymentsDeprecated**](DeploymentV1Api.md#getdeploymentsdeprecated) | **GET** /deployments/v1/{appId}/list | 
+*DeploymentV1Api* | [**GetLatestDeploymentDeprecated**](DeploymentV1Api.md#getlatestdeploymentdeprecated) | **GET** /deployments/v1/{appId}/latest | 
+*DeploymentV2Api* | [**CreateDeployment**](DeploymentV2Api.md#createdeployment) | **POST** /deployments/v2/{appId}/create/{buildId} | 
+*DeploymentV2Api* | [**GetDeploymentInfo**](DeploymentV2Api.md#getdeploymentinfo) | **GET** /deployments/v2/{appId}/info/{deploymentId} | 
+*DeploymentV2Api* | [**GetDeployments**](DeploymentV2Api.md#getdeployments) | **GET** /deployments/v2/{appId}/list | 
+*DeploymentV2Api* | [**GetLatestDeployment**](DeploymentV2Api.md#getlatestdeployment) | **GET** /deployments/v2/{appId}/latest | 
+*DiscoveryV1Api* | [**GetPingServiceEndpointsDeprecated**](DiscoveryV1Api.md#getpingserviceendpointsdeprecated) | **GET** /discovery/v1/ping | 
+*DiscoveryV2Api* | [**GetPingServiceEndpoints**](DiscoveryV2Api.md#getpingserviceendpoints) | **GET** /discovery/v2/ping | 
 *LobbyV1Api* | [**CreatePrivateLobbyDeprecated**](LobbyV1Api.md#createprivatelobbydeprecated) | **POST** /lobby/v1/{appId}/create/private | 
 *LobbyV1Api* | [**CreatePublicLobbyDeprecated**](LobbyV1Api.md#createpubliclobbydeprecated) | **POST** /lobby/v1/{appId}/create/public | 
 *LobbyV1Api* | [**ListActivePublicLobbiesDeprecatedV1**](LobbyV1Api.md#listactivepubliclobbiesdeprecatedv1) | **GET** /lobby/v1/{appId}/list | 
@@ -132,11 +143,22 @@ Class | Method | HTTP request | Description
 *LogV1Api* | [**GetLogsForProcess**](LogV1Api.md#getlogsforprocess) | **GET** /logs/v1/{appId}/process/{processId} | 
 *ManagementV1Api* | [**SendVerificationEmail**](ManagementV1Api.md#sendverificationemail) | **POST** /management/v1/sendverificationemail | 
 *MetricsV1Api* | [**GetMetrics**](MetricsV1Api.md#getmetrics) | **GET** /metrics/v1/{appId}/process/{processId} | 
+*OrgTokensV1Api* | [**CreateOrgToken**](OrgTokensV1Api.md#createorgtoken) | **POST** /tokens/v1/orgs/{orgId}/create | 
+*OrgTokensV1Api* | [**GetOrgTokens**](OrgTokensV1Api.md#getorgtokens) | **GET** /tokens/v1/orgs/{orgId} | 
+*OrgTokensV1Api* | [**RevokeOrgToken**](OrgTokensV1Api.md#revokeorgtoken) | **POST** /tokens/v1/orgs/{orgId}/tokens/{orgTokenId}/revoke | 
+*OrganizationsV1Api* | [**AcceptInvite**](OrganizationsV1Api.md#acceptinvite) | **POST** /orgs/v1/{orgId}/invites/accept | 
+*OrganizationsV1Api* | [**GetOrgPendingInvites**](OrganizationsV1Api.md#getorgpendinginvites) | **GET** /orgs/v1/{orgId}/invites/pending | 
+*OrganizationsV1Api* | [**GetUserPendingInvites**](OrganizationsV1Api.md#getuserpendinginvites) | **GET** /orgs/v1/user/invites/pending | 
+*OrganizationsV1Api* | [**InviteUser**](OrganizationsV1Api.md#inviteuser) | **PUT** /orgs/v1/{orgId}/invites | 
+*OrganizationsV1Api* | [**RejectInvite**](OrganizationsV1Api.md#rejectinvite) | **POST** /orgs/v1/{orgId}/invites/reject | 
+*OrganizationsV1Api* | [**RescindInvite**](OrganizationsV1Api.md#rescindinvite) | **POST** /orgs/v1/{orgId}/invites/rescind | 
 *ProcessesV1Api* | [**GetProcessInfoDeprecated**](ProcessesV1Api.md#getprocessinfodeprecated) | **GET** /processes/v1/{appId}/info/{processId} | 
 *ProcessesV1Api* | [**GetRunningProcesses**](ProcessesV1Api.md#getrunningprocesses) | **GET** /processes/v1/{appId}/list/running | 
 *ProcessesV1Api* | [**GetStoppedProcesses**](ProcessesV1Api.md#getstoppedprocesses) | **GET** /processes/v1/{appId}/list/stopped | 
+*ProcessesV2Api* | [**CreateProcess**](ProcessesV2Api.md#createprocess) | **POST** /processes/v2/{appId}/create/{region} | 
 *ProcessesV2Api* | [**GetLatestProcesses**](ProcessesV2Api.md#getlatestprocesses) | **GET** /processes/v2/{appId}/list/latest | 
 *ProcessesV2Api* | [**GetProcessInfo**](ProcessesV2Api.md#getprocessinfo) | **GET** /processes/v2/{appId}/info/{processId} | 
+*ProcessesV2Api* | [**StopProcess**](ProcessesV2Api.md#stopprocess) | **POST** /processes/v2/{appId}/stop/{processId} | 
 *RoomV1Api* | [**CreateRoomDeprecated**](RoomV1Api.md#createroomdeprecated) | **POST** /rooms/v1/{appId}/create | 
 *RoomV1Api* | [**DestroyRoomDeprecated**](RoomV1Api.md#destroyroomdeprecated) | **POST** /rooms/v1/{appId}/destroy/{roomId} | 
 *RoomV1Api* | [**GetActiveRoomsForProcessDeprecated**](RoomV1Api.md#getactiveroomsforprocessdeprecated) | **GET** /rooms/v1/{appId}/list/{processId}/active | 
@@ -150,7 +172,7 @@ Class | Method | HTTP request | Description
 *RoomV2Api* | [**GetConnectionInfo**](RoomV2Api.md#getconnectioninfo) | **GET** /rooms/v2/{appId}/connectioninfo/{roomId} | 
 *RoomV2Api* | [**GetInactiveRoomsForProcess**](RoomV2Api.md#getinactiveroomsforprocess) | **GET** /rooms/v2/{appId}/list/{processId}/inactive | 
 *RoomV2Api* | [**GetRoomInfo**](RoomV2Api.md#getroominfo) | **GET** /rooms/v2/{appId}/info/{roomId} | 
-*RoomV2Api* | [**SuspendRoom**](RoomV2Api.md#suspendroom) | **POST** /rooms/v2/{appId}/suspend/{roomId} | 
+*RoomV2Api* | [**SuspendRoomV2Deprecated**](RoomV2Api.md#suspendroomv2deprecated) | **POST** /rooms/v2/{appId}/suspend/{roomId} | 
 *RoomV2Api* | [**UpdateRoomConfig**](RoomV2Api.md#updateroomconfig) | **POST** /rooms/v2/{appId}/update/{roomId} | 
 
 
@@ -162,12 +184,15 @@ Class | Method | HTTP request | Description
  - [Model.ApiError](ApiError.md)
  - [Model.AppConfig](AppConfig.md)
  - [Model.Application](Application.md)
- - [Model.ApplicationWithDeployment](ApplicationWithDeployment.md)
- - [Model.ApplicationWithDeploymentAllOf](ApplicationWithDeploymentAllOf.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuild](ApplicationWithLatestDeploymentAndBuild.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuildAllOf](ApplicationWithLatestDeploymentAndBuildAllOf.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuildAllOfDeployment](ApplicationWithLatestDeploymentAndBuildAllOfDeployment.md)
+ - [Model.ApplicationWithLatestDeploymentAndBuildAllOfDeploymentAllOf](ApplicationWithLatestDeploymentAndBuildAllOfDeploymentAllOf.md)
  - [Model.AuthConfiguration](AuthConfiguration.md)
  - [Model.AuthConfigurationGoogle](AuthConfigurationGoogle.md)
  - [Model.Build](Build.md)
  - [Model.BuildRegionalContainerTagsInner](BuildRegionalContainerTagsInner.md)
+ - [Model.BuildStatus](BuildStatus.md)
  - [Model.CardBrand](CardBrand.md)
  - [Model.CardPaymentMethod](CardPaymentMethod.md)
  - [Model.ConnectionInfo](ConnectionInfo.md)
@@ -176,29 +201,44 @@ Class | Method | HTTP request | Description
  - [Model.CreateBuildParams](CreateBuildParams.md)
  - [Model.CreateLobbyParams](CreateLobbyParams.md)
  - [Model.CreateLobbyV3Params](CreateLobbyV3Params.md)
+ - [Model.CreateOrgToken](CreateOrgToken.md)
  - [Model.CreatePrivateLobbyRequest](CreatePrivateLobbyRequest.md)
  - [Model.CreateRoomParams](CreateRoomParams.md)
- - [Model.CreateRoomResponse](CreateRoomResponse.md)
- - [Model.CreateRoomResponseAllOf](CreateRoomResponseAllOf.md)
+ - [Model.CreateUserInvite](CreateUserInvite.md)
+ - [Model.CreatedOrgToken](CreatedOrgToken.md)
  - [Model.CustomerPortalUrl](CustomerPortalUrl.md)
  - [Model.Deployment](Deployment.md)
  - [Model.DeploymentConfig](DeploymentConfig.md)
- - [Model.DeploymentEnvInner](DeploymentEnvInner.md)
- - [Model.DiscoveryResponseInner](DiscoveryResponseInner.md)
+ - [Model.DeploymentConfigV2](DeploymentConfigV2.md)
+ - [Model.DeploymentV2](DeploymentV2.md)
+ - [Model.DeploymentV2EnvInner](DeploymentV2EnvInner.md)
  - [Model.ExposedPort](ExposedPort.md)
+ - [Model.GoogleIdTokenObject](GoogleIdTokenObject.md)
+ - [Model.InviteStatusAccepted](InviteStatusAccepted.md)
+ - [Model.InviteStatusPending](InviteStatusPending.md)
+ - [Model.InviteStatusRejected](InviteStatusRejected.md)
+ - [Model.InviteStatusRescinded](InviteStatusRescinded.md)
  - [Model.Invoice](Invoice.md)
+ - [Model.InvoiceStatus](InvoiceStatus.md)
  - [Model.LinkPaymentMethod](LinkPaymentMethod.md)
+ - [Model.ListOrgTokens](ListOrgTokens.md)
  - [Model.Lobby](Lobby.md)
  - [Model.LobbyV3](LobbyV3.md)
  - [Model.LobbyVisibility](LobbyVisibility.md)
- - [Model.LoginGoogleRequest](LoginGoogleRequest.md)
- - [Model.LoginNicknameRequest](LoginNicknameRequest.md)
- - [Model.LoginResponse](LoginResponse.md)
  - [Model.MetricName](MetricName.md)
  - [Model.MetricValue](MetricValue.md)
+ - [Model.NewUserInfo](NewUserInfo.md)
+ - [Model.NicknameObject](NicknameObject.md)
+ - [Model.OrgInvitesPage](OrgInvitesPage.md)
+ - [Model.OrgPermission](OrgPermission.md)
+ - [Model.OrgToken](OrgToken.md)
+ - [Model.OrgTokenStatus](OrgTokenStatus.md)
+ - [Model.OrganizationInviteStatus](OrganizationInviteStatus.md)
  - [Model.PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod](PartialCardCardPaymentMethodAchAchPaymentMethodLinkLinkPaymentMethod.md)
  - [Model.PickRoomExcludeKeyofRoomAllocations](PickRoomExcludeKeyofRoomAllocations.md)
+ - [Model.PingEndpointsInner](PingEndpointsInner.md)
  - [Model.PlanName](PlanName.md)
+ - [Model.PlayerTokenObject](PlayerTokenObject.md)
  - [Model.Process](Process.md)
  - [Model.ProcessStatus](ProcessStatus.md)
  - [Model.ProcessV2](ProcessV2.md)
@@ -206,15 +246,19 @@ Class | Method | HTTP request | Description
  - [Model.ProcessWithRoomsAllOf](ProcessWithRoomsAllOf.md)
  - [Model.RecordPartialMetricNameMetricValueArray](RecordPartialMetricNameMetricValueArray.md)
  - [Model.Region](Region.md)
+ - [Model.RescindUserInvite](RescindUserInvite.md)
  - [Model.Room](Room.md)
  - [Model.RoomAllocation](RoomAllocation.md)
+ - [Model.RoomConnectionData](RoomConnectionData.md)
+ - [Model.RoomConnectionDataAllOf](RoomConnectionDataAllOf.md)
+ - [Model.RoomReadyStatus](RoomReadyStatus.md)
  - [Model.RoomStatus](RoomStatus.md)
  - [Model.SetLobbyStateParams](SetLobbyStateParams.md)
  - [Model.StartingConnectionInfo](StartingConnectionInfo.md)
  - [Model.TransportType](TransportType.md)
  - [Model.UpdateRoomConfigParams](UpdateRoomConfigParams.md)
  - [Model.VerificationEmailRequest](VerificationEmailRequest.md)
- - [Model.VerificationEmailResponse](VerificationEmailResponse.md)
+ - [Model.VerificationEmailSuccess](VerificationEmailSuccess.md)
 
 
 <a name="documentation-for-authorization"></a>

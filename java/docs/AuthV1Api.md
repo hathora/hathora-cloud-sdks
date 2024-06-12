@@ -11,7 +11,7 @@ All URIs are relative to *https://api.hathora.dev*
 
 <a name="loginAnonymous"></a>
 # **loginAnonymous**
-> LoginResponse loginAnonymous(appId)
+> PlayerTokenObject loginAnonymous(appId)
 
 
 
@@ -34,7 +34,7 @@ public class Example {
     AuthV1Api apiInstance = new AuthV1Api(defaultClient);
     String appId = "appId_example"; // String | 
     try {
-      LoginResponse result = apiInstance.loginAnonymous(appId);
+      PlayerTokenObject result = apiInstance.loginAnonymous(appId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthV1Api#loginAnonymous");
@@ -55,7 +55,7 @@ public class Example {
 
 ### Return type
 
-[**LoginResponse**](LoginResponse.md)
+[**PlayerTokenObject**](PlayerTokenObject.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ No authorization required
 
 <a name="loginGoogle"></a>
 # **loginGoogle**
-> LoginResponse loginGoogle(appId, loginGoogleRequest)
+> PlayerTokenObject loginGoogle(appId, googleIdTokenObject)
 
 
 
@@ -96,9 +96,9 @@ public class Example {
 
     AuthV1Api apiInstance = new AuthV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    LoginGoogleRequest loginGoogleRequest = new LoginGoogleRequest(); // LoginGoogleRequest | 
+    GoogleIdTokenObject googleIdTokenObject = new GoogleIdTokenObject(); // GoogleIdTokenObject | 
     try {
-      LoginResponse result = apiInstance.loginGoogle(appId, loginGoogleRequest);
+      PlayerTokenObject result = apiInstance.loginGoogle(appId, googleIdTokenObject);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthV1Api#loginGoogle");
@@ -116,11 +116,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **loginGoogleRequest** | [**LoginGoogleRequest**](LoginGoogleRequest.md)|  | |
+| **googleIdTokenObject** | [**GoogleIdTokenObject**](GoogleIdTokenObject.md)|  | |
 
 ### Return type
 
-[**LoginResponse**](LoginResponse.md)
+[**PlayerTokenObject**](PlayerTokenObject.md)
 
 ### Authorization
 
@@ -140,7 +140,7 @@ No authorization required
 
 <a name="loginNickname"></a>
 # **loginNickname**
-> LoginResponse loginNickname(appId, loginNicknameRequest)
+> PlayerTokenObject loginNickname(appId, nicknameObject)
 
 
 
@@ -162,9 +162,9 @@ public class Example {
 
     AuthV1Api apiInstance = new AuthV1Api(defaultClient);
     String appId = "appId_example"; // String | 
-    LoginNicknameRequest loginNicknameRequest = new LoginNicknameRequest(); // LoginNicknameRequest | 
+    NicknameObject nicknameObject = new NicknameObject(); // NicknameObject | 
     try {
-      LoginResponse result = apiInstance.loginNickname(appId, loginNicknameRequest);
+      PlayerTokenObject result = apiInstance.loginNickname(appId, nicknameObject);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AuthV1Api#loginNickname");
@@ -182,11 +182,11 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **loginNicknameRequest** | [**LoginNicknameRequest**](LoginNicknameRequest.md)|  | |
+| **nicknameObject** | [**NicknameObject**](NicknameObject.md)|  | |
 
 ### Return type
 
-[**LoginResponse**](LoginResponse.md)
+[**PlayerTokenObject**](PlayerTokenObject.md)
 
 ### Authorization
 

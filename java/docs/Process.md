@@ -23,7 +23,7 @@ A process object represents a runtime instance of your game server and its metad
 |**startingAt** | **OffsetDateTime** | When the process started being provisioned. |  |
 |**roomsPerProcess** | **Integer** | Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. |  |
 |**additionalExposedPorts** | [**List&lt;ExposedPort&gt;**](ExposedPort.md) |  |  |
-|**exposedPort** | [**ExposedPort**](ExposedPort.md) |  |  [optional] |
+|**exposedPort** | [**ExposedPort**](ExposedPort.md) |  |  |
 |**port** | **Double** |  |  |
 |**host** | **String** |  |  |
 |**region** | **Region** |  |  |

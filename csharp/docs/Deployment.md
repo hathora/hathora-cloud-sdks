@@ -5,7 +5,8 @@ Deployment is a versioned configuration for a build that describes runtime behav
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Env** | [**List&lt;DeploymentEnvInner&gt;**](DeploymentEnvInner.md) | The environment variable that our process will have access to at runtime. | 
+**IdleTimeoutEnabled** | **bool** | Option to shut down processes that have had no new connections or rooms for five minutes. | [optional] [default to true]
+**Env** | [**List&lt;DeploymentV2EnvInner&gt;**](DeploymentV2EnvInner.md) | The environment variable that our process will have access to at runtime. | 
 **RoomsPerProcess** | **int** | Governs how many [rooms](https://hathora.dev/docs/concepts/hathora-entities#room) can be scheduled in a process. | 
 **PlanName** | **PlanName** |  | 
 **AdditionalContainerPorts** | [**List&lt;ContainerPort&gt;**](ContainerPort.md) | Additional ports your server listens on. | 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 **TransportType** | **string** |  | 
 **ContainerPort** | **double** |  | 
 **CreatedAt** | **DateTime** | When the deployment was created. | 
-**CreatedBy** | **string** | Email address for the user that created the deployment. | 
+**CreatedBy** | **string** | UserId or email address for the user that created the deployment. | 
 **RequestedMemoryMB** | **int** | The amount of memory allocated to your process. | 
 **RequestedCPU** | **double** | The number of cores allocated to your process. | 
 **DeploymentId** | **int** | System generated id for a deployment. Increments by 1. | 

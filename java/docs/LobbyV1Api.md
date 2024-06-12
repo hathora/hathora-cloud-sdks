@@ -57,7 +57,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 | **local** | **Boolean**|  | [optional] [default to false] |
 
 ### Return type
@@ -79,6 +79,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -132,7 +133,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 | **local** | **Boolean**|  | [optional] [default to false] |
 
 ### Return type
@@ -154,6 +155,7 @@ public class Example {
 | **200** | Ok |  -  |
 | **400** |  |  -  |
 | **401** |  |  -  |
+| **402** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
 | **429** |  |  -  |
@@ -203,7 +205,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **appId** | **String**|  | |
 | **local** | **Boolean**|  | [optional] [default to false] |
-| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo] |
+| **region** | [**Region**](.md)|  | [optional] [enum: Seattle, Los_Angeles, Washington_DC, Chicago, London, Frankfurt, Mumbai, Singapore, Tokyo, Sydney, Sao_Paulo, Dallas] |
 
 ### Return type
 
@@ -222,6 +224,5 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **401** |  |  -  |
 | **404** |  |  -  |
 

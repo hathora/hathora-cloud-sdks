@@ -36,8 +36,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>CreateRoomResponse</returns>
-        CreateRoomResponse CreateRoom(string appId, CreateRoomParams createRoomParams, string roomId = default(string));
+        /// <returns>RoomConnectionData</returns>
+        RoomConnectionData CreateRoom(string appId, CreateRoomParams createRoomParams, string roomId = default(string));
 
         /// <summary>
         /// 
@@ -49,8 +49,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>ApiResponse of CreateRoomResponse</returns>
-        ApiResponse<CreateRoomResponse> CreateRoomWithHttpInfo(string appId, CreateRoomParams createRoomParams, string roomId = default(string));
+        /// <returns>ApiResponse of RoomConnectionData</returns>
+        ApiResponse<RoomConnectionData> CreateRoomWithHttpInfo(string appId, CreateRoomParams createRoomParams, string roomId = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -176,7 +176,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns></returns>
-        void SuspendRoom(string appId, string roomId);
+        [Obsolete]
+        void SuspendRoomV2Deprecated(string appId, string roomId);
 
         /// <summary>
         /// 
@@ -188,7 +189,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> SuspendRoomWithHttpInfo(string appId, string roomId);
+        [Obsolete]
+        ApiResponse<Object> SuspendRoomV2DeprecatedWithHttpInfo(string appId, string roomId);
         /// <summary>
         /// 
         /// </summary>
@@ -231,8 +233,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateRoomResponse</returns>
-        System.Threading.Tasks.Task<CreateRoomResponse> CreateRoomAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of RoomConnectionData</returns>
+        System.Threading.Tasks.Task<RoomConnectionData> CreateRoomAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -245,8 +247,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateRoomResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateRoomResponse>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (RoomConnectionData)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RoomConnectionData>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -383,7 +385,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SuspendRoomAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task SuspendRoomV2DeprecatedAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -396,7 +399,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SuspendRoomWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<Object>> SuspendRoomV2DeprecatedWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -575,10 +579,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>CreateRoomResponse</returns>
-        public CreateRoomResponse CreateRoom(string appId, CreateRoomParams createRoomParams, string roomId = default(string))
+        /// <returns>RoomConnectionData</returns>
+        public RoomConnectionData CreateRoom(string appId, CreateRoomParams createRoomParams, string roomId = default(string))
         {
-            Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> localVarResponse = CreateRoomWithHttpInfo(appId, createRoomParams, roomId);
+            Hathora.Cloud.Sdk.Client.ApiResponse<RoomConnectionData> localVarResponse = CreateRoomWithHttpInfo(appId, createRoomParams, roomId);
             return localVarResponse.Data;
         }
 
@@ -589,8 +593,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
-        /// <returns>ApiResponse of CreateRoomResponse</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> CreateRoomWithHttpInfo(string appId, CreateRoomParams createRoomParams, string roomId = default(string))
+        /// <returns>ApiResponse of RoomConnectionData</returns>
+        public Hathora.Cloud.Sdk.Client.ApiResponse<RoomConnectionData> CreateRoomWithHttpInfo(string appId, CreateRoomParams createRoomParams, string roomId = default(string))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -632,7 +636,7 @@ namespace Hathora.Cloud.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateRoomResponse>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<RoomConnectionData>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -651,14 +655,14 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateRoomResponse</returns>
-        public async System.Threading.Tasks.Task<CreateRoomResponse> CreateRoomAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of RoomConnectionData</returns>
+        public async System.Threading.Tasks.Task<RoomConnectionData> CreateRoomAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var task = CreateRoomWithHttpInfoAsync(appId, createRoomParams, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
-            Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> localVarResponse = await task.ConfigureAwait(false);
+            Hathora.Cloud.Sdk.Client.ApiResponse<RoomConnectionData> localVarResponse = await task.ConfigureAwait(false);
 #else
-            Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse> localVarResponse = await task;
+            Hathora.Cloud.Sdk.Client.ApiResponse<RoomConnectionData> localVarResponse = await task;
 #endif
             return localVarResponse.Data;
         }
@@ -671,8 +675,8 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="createRoomParams"></param>
         /// <param name="roomId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateRoomResponse)</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<CreateRoomResponse>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (RoomConnectionData)</returns>
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<RoomConnectionData>> CreateRoomWithHttpInfoAsync(string appId, CreateRoomParams createRoomParams, string roomId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -717,7 +721,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             // make the HTTP request
 
-            var task = this.AsynchronousClient.PostAsync<CreateRoomResponse>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration, cancellationToken);
+            var task = this.AsynchronousClient.PostAsync<RoomConnectionData>("/rooms/v2/{appId}/create", localVarRequestOptions, this.Configuration, cancellationToken);
 
 #if UNITY_EDITOR || !UNITY_WEBGL
             var localVarResponse = await task.ConfigureAwait(false);
@@ -1487,9 +1491,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns></returns>
-        public void SuspendRoom(string appId, string roomId)
+        [Obsolete]
+        public void SuspendRoomV2Deprecated(string appId, string roomId)
         {
-            SuspendRoomWithHttpInfo(appId, roomId);
+            SuspendRoomV2DeprecatedWithHttpInfo(appId, roomId);
         }
 
         /// <summary>
@@ -1499,15 +1504,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="appId"></param>
         /// <param name="roomId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> SuspendRoomWithHttpInfo(string appId, string roomId)
+        [Obsolete]
+        public Hathora.Cloud.Sdk.Client.ApiResponse<Object> SuspendRoomV2DeprecatedWithHttpInfo(string appId, string roomId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->SuspendRoom");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->SuspendRoomV2Deprecated");
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV2Api->SuspendRoom");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV2Api->SuspendRoomV2Deprecated");
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
 
@@ -1540,7 +1546,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SuspendRoom", localVarResponse);
+                Exception _exception = this.ExceptionFactory("SuspendRoomV2Deprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1555,9 +1561,10 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SuspendRoomAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task SuspendRoomV2DeprecatedAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var task = SuspendRoomWithHttpInfoAsync(appId, roomId, cancellationToken);
+            var task = SuspendRoomV2DeprecatedWithHttpInfoAsync(appId, roomId, cancellationToken);
 #if UNITY_EDITOR || !UNITY_WEBGL
             await task.ConfigureAwait(false);
 #else
@@ -1573,15 +1580,16 @@ namespace Hathora.Cloud.Sdk.Api
         /// <param name="roomId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> SuspendRoomWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        [Obsolete]
+        public async System.Threading.Tasks.Task<Hathora.Cloud.Sdk.Client.ApiResponse<Object>> SuspendRoomV2DeprecatedWithHttpInfoAsync(string appId, string roomId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->SuspendRoom");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling RoomV2Api->SuspendRoomV2Deprecated");
 
             // verify the required parameter 'roomId' is set
             if (roomId == null)
-                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV2Api->SuspendRoom");
+                throw new Hathora.Cloud.Sdk.Client.ApiException(400, "Missing required parameter 'roomId' when calling RoomV2Api->SuspendRoomV2Deprecated");
 
 
             Hathora.Cloud.Sdk.Client.RequestOptions localVarRequestOptions = new Hathora.Cloud.Sdk.Client.RequestOptions();
@@ -1623,7 +1631,7 @@ namespace Hathora.Cloud.Sdk.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SuspendRoom", localVarResponse);
+                Exception _exception = this.ExceptionFactory("SuspendRoomV2Deprecated", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

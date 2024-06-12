@@ -31,6 +31,11 @@ import {
     RegionToJSON,
 } from '../models';
 
+export interface CreateProcessRequest {
+    appId: string;
+    region: Region;
+}
+
 export interface GetLatestProcessesRequest {
     appId: string;
     status?: Array<ProcessStatus>;
@@ -42,6 +47,11 @@ export interface GetProcessInfoRequest {
     processId: string;
 }
 
+export interface StopProcessRequest {
+    appId: string;
+    processId: string;
+}
+
 /**
  * ProcessesV2Api - interface
  * 
@@ -49,6 +59,21 @@ export interface GetProcessInfoRequest {
  * @interface ProcessesV2ApiInterface
  */
 export interface ProcessesV2ApiInterface {
+    /**
+     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+     * @param {string} appId 
+     * @param {Region} region 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProcessesV2ApiInterface
+     */
+    createProcessRaw(requestParameters: CreateProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessV2>>;
+
+    /**
+     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+     */
+    createProcess(appId: string, region: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessV2>;
+
     /**
      * Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
      * @param {string} appId 
@@ -80,12 +105,69 @@ export interface ProcessesV2ApiInterface {
      */
     getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessV2>;
 
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     * @param {string} appId 
+     * @param {string} processId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ProcessesV2ApiInterface
+     */
+    stopProcessRaw(requestParameters: StopProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     */
+    stopProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+
 }
 
 /**
  * 
  */
 export class ProcessesV2Api extends runtime.BaseAPI implements ProcessesV2ApiInterface {
+
+    /**
+     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+     */
+    async createProcessRaw(requestParameters: CreateProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProcessV2>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling createProcess.');
+        }
+
+        if (requestParameters.region === null || requestParameters.region === undefined) {
+            throw new runtime.RequiredError('region','Required parameter requestParameters.region was null or undefined when calling createProcess.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("hathoraDevToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/processes/v2/{appId}/create/{region}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))).replace(`{${"region"}}`, encodeURIComponent(String(requestParameters.region))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProcessV2FromJSON(jsonValue));
+    }
+
+    /**
+     * Creates a [process](https://hathora.dev/docs/concepts/hathora-entities#process) without a room. Use this to pre-allocate processes ahead of time so that subsequent room assignment via [CreateRoom()](https://hathora.dev/api#tag/RoomV2/operation/CreateRoom) can be instant.
+     */
+    async createProcess(appId: string, region: Region, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessV2> {
+        const response = await this.createProcessRaw({ appId: appId, region: region }, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Retrieve the 10 most recent [processes](https://hathora.dev/docs/concepts/hathora-entities#process) objects for an [application](https://hathora.dev/docs/concepts/hathora-entities#application). Filter the array by optionally passing in a `status` or `region`.
@@ -173,6 +255,47 @@ export class ProcessesV2Api extends runtime.BaseAPI implements ProcessesV2ApiInt
     async getProcessInfo(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProcessV2> {
         const response = await this.getProcessInfoRaw({ appId: appId, processId: processId }, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     */
+    async stopProcessRaw(requestParameters: StopProcessRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling stopProcess.');
+        }
+
+        if (requestParameters.processId === null || requestParameters.processId === undefined) {
+            throw new runtime.RequiredError('processId','Required parameter requestParameters.processId was null or undefined when calling stopProcess.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("hathoraDevToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/processes/v2/{appId}/stop/{processId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))).replace(`{${"processId"}}`, encodeURIComponent(String(requestParameters.processId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Stops a [process](https://hathora.dev/docs/concepts/hathora-entities#process) immediately.
+     */
+    async stopProcess(appId: string, processId: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.stopProcessRaw({ appId: appId, processId: processId }, initOverrides);
     }
 
 }

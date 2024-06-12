@@ -77,7 +77,9 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** |  |  -  |
+| **401** |  |  -  |
 | **422** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 <a name="deleteApp"></a>
@@ -145,7 +147,9 @@ null (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 
 <a name="getAppInfo"></a>
@@ -214,11 +218,12 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 
 <a name="getApps"></a>
 # **getApps**
-> List&lt;ApplicationWithDeployment&gt; getApps()
+> List&lt;ApplicationWithLatestDeploymentAndBuild&gt; getApps()
 
 
 
@@ -245,7 +250,7 @@ public class Example {
 
     AppV1Api apiInstance = new AppV1Api(defaultClient);
     try {
-      List<ApplicationWithDeployment> result = apiInstance.getApps();
+      List<ApplicationWithLatestDeploymentAndBuild> result = apiInstance.getApps();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AppV1Api#getApps");
@@ -263,7 +268,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;ApplicationWithDeployment&gt;**](ApplicationWithDeployment.md)
+[**List&lt;ApplicationWithLatestDeploymentAndBuild&gt;**](ApplicationWithLatestDeploymentAndBuild.md)
 
 ### Authorization
 
@@ -347,7 +352,9 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **401** |  |  -  |
 | **404** |  |  -  |
 | **422** |  |  -  |
+| **429** |  |  -  |
 | **500** |  |  -  |
 

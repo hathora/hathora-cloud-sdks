@@ -18,7 +18,7 @@ import type {
   ApiError,
   AppConfig,
   Application,
-  ApplicationWithDeployment,
+  ApplicationWithLatestDeploymentAndBuild,
 } from '../models';
 import {
     ApiErrorFromJSON,
@@ -27,8 +27,8 @@ import {
     AppConfigToJSON,
     ApplicationFromJSON,
     ApplicationToJSON,
-    ApplicationWithDeploymentFromJSON,
-    ApplicationWithDeploymentToJSON,
+    ApplicationWithLatestDeploymentAndBuildFromJSON,
+    ApplicationWithLatestDeploymentAndBuildToJSON,
 } from '../models';
 
 export interface CreateAppRequest {
@@ -103,12 +103,12 @@ export interface AppV1ApiInterface {
      * @throws {RequiredError}
      * @memberof AppV1ApiInterface
      */
-    getAppsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ApplicationWithDeployment>>>;
+    getAppsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ApplicationWithLatestDeploymentAndBuild>>>;
 
     /**
      * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
      */
-    getApps(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ApplicationWithDeployment>>;
+    getApps(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ApplicationWithLatestDeploymentAndBuild>>;
 
     /**
      * Update data for an existing [application](https://hathora.dev/docs/concepts/hathora-entities#application) using `appId`.
@@ -251,7 +251,7 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
     /**
      * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
      */
-    async getAppsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ApplicationWithDeployment>>> {
+    async getAppsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ApplicationWithLatestDeploymentAndBuild>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -271,13 +271,13 @@ export class AppV1Api extends runtime.BaseAPI implements AppV1ApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ApplicationWithDeploymentFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ApplicationWithLatestDeploymentAndBuildFromJSON));
     }
 
     /**
      * Returns an unsorted list of your organization’s [applications](https://hathora.dev/docs/concepts/hathora-entities#application). An application is uniquely identified by an `appId`.
      */
-    async getApps(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ApplicationWithDeployment>> {
+    async getApps(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ApplicationWithLatestDeploymentAndBuild>> {
         const response = await this.getAppsRaw(initOverrides);
         return await response.value();
     }
