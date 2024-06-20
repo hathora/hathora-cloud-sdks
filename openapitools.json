@@ -30,17 +30,6 @@
           "scmUrl": "https://github.com/hathora/hathora-cloud-sdks"
         }
       },
-      "typescript": {
-        "generatorName": "typescript-fetch",
-        "output": "typescript",
-        "inputSpec": "swagger.json",
-        "additionalProperties": {
-          "npmName": "@hathora/hathora-cloud-sdk",
-          "supportsES6": true,
-          "withInterfaces": true,
-          "useSingleRequestParameter": false
-        }
-      },
       "csharp": {
         "generatorName": "csharp-netcore",
         "output": "csharp",
