@@ -466,9 +466,6 @@ public class ApplicationWithLatestDeploymentAndBuild {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("deletedBy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deletedBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deletedBy").toString()));
-      }
       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
       }
