@@ -42,3 +42,57 @@ diff --git a/java/src/main/java/com/hathora/client/model/Room.java b/java/src/ma
        if (!jsonObj.get("roomId").isJsonPrimitive()) {
          throw new IllegalArgumentException(String.format("Expected the field `roomId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roomId").toString()));
        }
+Index: java/src/main/java/com/hathora/client/model/Application.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/java/src/main/java/com/hathora/client/model/Application.java b/java/src/main/java/com/hathora/client/model/Application.java
+--- a/java/src/main/java/com/hathora/client/model/Application.java	(revision 6cd76a9d6f9d0ba930f5b05736746b842730bcc4)
++++ b/java/src/main/java/com/hathora/client/model/Application.java	(date 1726084569527)
+@@ -436,9 +436,6 @@
+           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+         }
+       }
+-      if (!jsonObj.get("deletedBy").isJsonPrimitive()) {
+-        throw new IllegalArgumentException(String.format("Expected the field `deletedBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deletedBy").toString()));
+-      }
+       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
+         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
+       }
+Index: java/src/main/java/com/hathora/client/model/ApplicationWithLatestDeploymentAndBuild.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/java/src/main/java/com/hathora/client/model/ApplicationWithLatestDeploymentAndBuild.java b/java/src/main/java/com/hathora/client/model/ApplicationWithLatestDeploymentAndBuild.java
+--- a/java/src/main/java/com/hathora/client/model/ApplicationWithLatestDeploymentAndBuild.java	(revision 6cd76a9d6f9d0ba930f5b05736746b842730bcc4)
++++ b/java/src/main/java/com/hathora/client/model/ApplicationWithLatestDeploymentAndBuild.java	(date 1726084569530)
+@@ -466,9 +466,6 @@
+           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+         }
+       }
+-      if (!jsonObj.get("deletedBy").isJsonPrimitive()) {
+-        throw new IllegalArgumentException(String.format("Expected the field `deletedBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deletedBy").toString()));
+-      }
+       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
+         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
+       }
+Index: java/src/main/java/com/hathora/client/model/ApplicationWithDeployment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/java/src/main/java/com/hathora/client/model/ApplicationWithDeployment.java b/java/src/main/java/com/hathora/client/model/ApplicationWithDeployment.java
+--- a/java/src/main/java/com/hathora/client/model/ApplicationWithDeployment.java	(revision 6cd76a9d6f9d0ba930f5b05736746b842730bcc4)
++++ b/java/src/main/java/com/hathora/client/model/ApplicationWithDeployment.java	(date 1726084569533)
+@@ -467,9 +467,6 @@
+           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+         }
+       }
+-      if (!jsonObj.get("deletedBy").isJsonPrimitive()) {
+-        throw new IllegalArgumentException(String.format("Expected the field `deletedBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deletedBy").toString()));
+-      }
+       if (!jsonObj.get("createdBy").isJsonPrimitive()) {
+         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));
+       }
