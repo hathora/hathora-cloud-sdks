@@ -32,6 +32,6 @@ jobs:
       - name: Publish to Apache Maven Central
         run: mvn -B deploy
         env:
-          MAVEN_USERNAME: dsiddharth
-          MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+          MAVEN_USERNAME: USC8HvBS
+          MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
