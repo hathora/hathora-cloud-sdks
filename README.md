@@ -1,4 +1,4 @@
-# Hathora Cloud SDKs
+# *DEPRECATED* Hathora Cloud SDKs
 
 Welcome to the DEPRECATED repo for the Hathora Cloud SDKs!
 
